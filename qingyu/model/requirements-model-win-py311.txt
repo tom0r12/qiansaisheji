@@ -1,0 +1,6 @@
+# Isolated Windows/Python3.11 functional-reproduction environment.
+# Original pinned repository used TensorFlow2.4.0rc1 and NumPy1.19.5.
+# This newer environment must not be represented as the original runtime.
+tensorflow==2.14.1
+tensorflow-addons==0.22.0
+numpy==1.26.4

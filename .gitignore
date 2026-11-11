@@ -1,0 +1,15 @@
+**/local_pdk/
+H77*/
+**/data/
+**/.venv*/
+**/__pycache__/
+*.lib
+*.db
+*.gds
+*.lef
+*.vcd
+*.saif
+*.ddc
+*.zip
+*.tgz
+.env
