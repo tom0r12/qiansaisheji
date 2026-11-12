@@ -1,0 +1,22 @@
+{
+  "schema": "qingyu-current-candidate-v1",
+  "selected_utc": "2026-11-11T14:36:11.772029+00:00",
+  "candidate": "opt30_fusedpipe4",
+  "source_directory": "experiments/h1500v/opt30_fusedpipe4",
+  "source_manifest": "experiments/h1500v/opt30_fusedpipe4/SOURCE_SHA256.json",
+  "source_manifest_sha256": "076f0b235d2f6873eb3ca5dc7e8faad2378aeebfd1cad0d468eb832e4fe98e45",
+  "result": "build/bus_queue_soc_opt30_fusedpipe4_20261111_142724_610244/result.json",
+  "result_sha256": "a5a37e149f1249529bb2c76f4003a68ff5b96fef47b8603917217c7440f1caae",
+  "mean_engineering_task_cycles": 92372.66666666667,
+  "clock_hz_assumed": 150000000,
+  "tasks_per_second_at_assumed_150mhz": 1623.8569851110356,
+  "verified_tasks": 12,
+  "verified_output_elements": 304128,
+  "shared_transactions_per_task": 37440,
+  "selection_reason": "Lowest measured complete engineering-window cycles among the verified four-row official-bus candidates; retains bounded control and fault/drain handling. Formal area and energy selection remains pending.",
+  "numerical_configuration": "INT16 operands/output, INT48 accumulation; fixed training-derived output headroom +1",
+  "images_manifest_sha256": "afffd63fc5326dd9cb1c040c8e155b7c92feee127a5fa44977374e01a5103179",
+  "official_loader_included": false,
+  "official_600_sample_evaluation": false,
+  "formal_ppa_measured": false
+}

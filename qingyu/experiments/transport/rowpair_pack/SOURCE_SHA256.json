@@ -1,0 +1,14 @@
+{
+  "schema": "qingyu-rowpair-pack-source-freeze-v1",
+  "files": {
+    "contract.json": "34424b3bc953e03151c6e62aef005c57573d4077a93ff41ba11fd9ece04dc3cc",
+    "README.md": "0dc35e94f25c360ad139d1621f751d39f482cf5dbac4a9ed20967c5aef19d91b",
+    "rowpair_pack.sv": "3623de4f6e25c612d367c7c2c553341f6425b6e39253f6ec35d324ed0e8acc25",
+    "run_checks.py": "fd58f4e087b8a2b315239eb068eaf298fb88f4b586a019cd37b27cbac12c688c",
+    "tb_rowpair_pack.sv": "ade4dc287c8f3fb9c7d7f108f46df7bd11365078e0dba928f161ae58b81d9d99"
+  },
+  "final_regression": "runs/20261111T165527044550Z/result.json",
+  "final_regression_sha256": "84f75c3ce13f968a07be69a59085419811c15d2c5b7a62f374317c5585fdcaee",
+  "alternative_simulator": "runs/20261111T165527031909Z/result.json",
+  "alternative_simulator_sha256": "7c4fc597ac3bd2ac60359d6a48ae69ee0f66305d9692c9fdb01c2f1ef5c34913"
+}

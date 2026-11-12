@@ -1,0 +1,31 @@
+{
+  "schema": "qingyu-int8soc-compact-server-source-v1",
+  "frozen_utc": "2026-11-11T18:43:47.544530+00:00",
+  "files": {
+    "BASE_SERVER_SOURCE_SHA256.json": "a10ddbc2440feb7e74f2f1e784edb729c6536909e8e03c780c5f1089d2221852",
+    "check_bundle.py": "8c34eee82d5c54cd41c6849b18f9684a4d7624e1837bdb94521dc84b983d54c8",
+    "check_model_gates.py": "6f7aecd70475fb9c7be368dc485ac28fe35aeb5abb15136b55b8b056ccf85bea",
+    "freeze_evidence.py": "fd614fe27ee438aeac34f0f14e64c8baca3c7177c0e05925d9096dbc375b13bc",
+    "local_fixture_check.py": "34cd21e29379a73840906454e18911fa7989eda2a6a429783d319dd0e02e8d0d",
+    "ORIGINS.json": "382be23b4f2db22dd6a721ad5e0ade003a49ce112a71b6d3744ef32670915938",
+    "prepare_bundle.py": "df6c746144785b2604b8d73dbc49a4b9eba56a85d81bbf85d52cd830b0a45977",
+    "README.md": "0545757758700d8d1ef3c7e3d09f4cedb343a7358110897a7459fb520fc74626",
+    "SERVER_README.md": "b682d3e9f6201d527c2540896effe807dde8ea5d25e5c10d972dd83b750ef7c6",
+    "tb_int8soc_behavior.sv": "75eba3928ca27d3a70b63bdc0603e69648b94fe021b5825892a491eb4abc1ff9",
+    "tb_int8soc_macro.sv": "8701f5ac0e842a911ec2a870a0c082bc4f5fd79b1e499997ba5d837349593a63",
+    "templates/assessment/common.tcl": "437a99d884e41050958c9debb1fc990b9d2d372d29eac479cf3d26f1ff625bee",
+    "templates/assessment/formal.tcl": "67095706fc3a8ff0be8d29c9b9f873f555bfe16c240326c9be922a482651cac1",
+    "templates/assessment/sta_power.tcl": "030cf8f049adf53f7778bd1e062a49d91ba5bafc18f793b32c5aa131cd8ec1b8",
+    "templates/assessment/synth.tcl": "c05ff645d09bc889dde439ca814a9263a3c520869ee0fa6c7389f0f5acbc4019",
+    "templates/library_identity.example.tcl": "0cacd52d65dc48ad827fa4d535f7dba11490d796c2a177aa623d0d43525783b6",
+    "templates/macro_models.example.json": "f0a6c78a9e20e6144adf6b9ccb546cf689cad319acf9d8bd19c389c7e950b436",
+    "templates/platform_config.example.tcl": "e020087f57382bed8ce54ae54d3eac290ce3af1fb51c2bf9e7fc5b3605dfbe20",
+    "templates/run_int8_server.py": "738ef9630382ae330dc000d98e5214c3348e799a8bb20d15a31677ed23c36156",
+    "VALIDATION.json": "87ce313801b30949a733b6a3f661ac89c1387aee9d24565be599366eb601b32d"
+  },
+  "source_boundary": "Independent fixture and packaging only. Actual compiled source and physical configuration bound by each package.",
+  "external_dependencies": {
+    "experiments/memory/private_x_compact/SOURCE_SHA256.json": "2942b05ce77ffa53f0ee5b003428f353ada773d8b186890db047afdbb108e193",
+    "experiments/integration/int8soc_server/SOURCE_SHA256.json": "a10ddbc2440feb7e74f2f1e784edb729c6536909e8e03c780c5f1089d2221852"
+  }
+}

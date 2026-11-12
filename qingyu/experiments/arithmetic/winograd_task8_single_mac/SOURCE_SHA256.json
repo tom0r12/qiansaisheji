@@ -1,0 +1,18 @@
+{
+  "schema": "qingyu-frozen-single-mac-source-v1",
+  "files": {
+    "contract.json": "6faf4aefce6d1f4a847c282d6c01435459762618deef11cc52f1d001b39b52a4",
+    "export_vectors.py": "1637cb676f71268f0fb57a514ce5551c827e3bb74a778fd03239b7e5094cde1c",
+    "README.md": "e3ef0826439a052f533bd5e4cd021b8d461c4bd7143c60fef474095ca781e423",
+    "run_checks.py": "a0e043e5c03b14583cfb1d9295c9339a92743620058dbdd197507cb06877c460",
+    "tb_winograd_task8.sv": "75ea9ef43b5dd95b6c3854e55348f35c1a9be5e15c0a52865a3f6b550638b1e0",
+    "winograd_int8_task8.sv": "3f2e4e1b3dab4540a2e705f5e1f512632ca22a2cbe0248dffa62a0fd2fab791a"
+  },
+  "external_dependencies": {
+    "experiments/arithmetic/winograd_array8/winograd_int8_pair_acc32.sv": "e117a74f05340c29111d3ddc845de084c7ca87eb7d9038d9c361968131942f44",
+    "rtl/qingyu_sram16.sv": "d3d35a1e99e07c75fac13e450c87685e773dc4953ab5a7752dd0ba0622943b18"
+  },
+  "validation_report": "build/winograd_task8_single_mac/20261111T183314428041Z/result.json",
+  "validation_report_sha256": "7c279fcdf3e05e8667b429208df208ea91b678a6bd8d423ef3d98d0b623f2fa5",
+  "qualification": "Behavioral core regression only; actual macros/SoC/STA/LEC/PPA remain separate"
+}

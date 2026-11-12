@@ -1,0 +1,133 @@
+{
+  "schema": "qingyu-outputqueue-local-validation-v1",
+  "candidate": "opt32_outputqueue",
+  "selected_candidate_changed": false,
+  "passed": true,
+  "source_manifest": {
+    "path": "experiments/h1500v/opt32_outputqueue/SOURCE_SHA256.json",
+    "sha256": "5d6af12910b277419c4c15a98e79bc64c67ab768059e39f615e692818ab9dad1"
+  },
+  "source_changes_from_opt31": [
+    "qingyu_e203_soc_top.v",
+    "qingyu_fio.sv"
+  ],
+  "evidence": {
+    "soc32": {
+      "path": "build/bus_outputqueue_soc_opt32_outputqueue_20261111_155714_729566/result.json",
+      "sha256": "e76b7aa8a3399813f54e52792ffaf014d0d34cfe839911a33a3f41d363533afa"
+    },
+    "soc32_first_layer": {
+      "path": "build/bus_outputqueue_soc_opt32_outputqueue_20261111_155209_533134/result.json",
+      "sha256": "f1cf3f3f625ca3ff2317f790aae2075c3410b0783141810f3f463c898111642a"
+    },
+    "soc31": {
+      "path": "build/bus_zeroack_soc_opt31_fastwrite_20261111_153843_110596/result.json",
+      "sha256": "c1425590c1f124f71d6f6926e990fe1d8ea6e766c62f0218787c438cd11b10b0"
+    },
+    "soc30": {
+      "path": "build/bus_queue_soc_opt30_fusedpipe4_20261111_142724_610244/result.json",
+      "sha256": "a5a37e149f1249529bb2c76f4003a68ff5b96fef47b8603917217c7440f1caae"
+    },
+    "output_faults": {
+      "path": "build/outputqueue_checks/20261111T155608191003Z/result.json",
+      "sha256": "74184146a253bf9847efd852727bbbd5a479a56308bb02ce267afa370a5b765a"
+    },
+    "legacy_faults": {
+      "path": "build/fio_faults_opt32_outputqueue_20261111_154820_189859/result.json",
+      "sha256": "df2c5363177a4a95ef066cd806376ebd170ba26e7e63a3e3470cdbdfc62de8e8"
+    },
+    "concurrent_faults": {
+      "path": "build/fio_queue_faults/20261111T154820202941Z/result.json",
+      "sha256": "1658d06ff92702de7e01d38accff546d50b2b27dad35327b8709eea272240985"
+    },
+    "fused_pipeline": {
+      "path": "build/fused_pipe_checks/20261111T154820251764Z/result.json",
+      "sha256": "10044f49d8a08f2d523377775671300374beae208ef38a9106b142e99bbc4948"
+    },
+    "bounded_wait": {
+      "path": "build/fused_wait_opt32_outputqueue_20261111_154820_359376/result.json",
+      "sha256": "c461f89a6330e06be7fdba4d6846db45f4b84e0f447d6633c90e88517b3dfe8c"
+    },
+    "memfabric_microbenchmark": {
+      "path": "build/memfab_bandwidth/20261111T153331030931Z/result.json",
+      "sha256": "9ba6fabe74f237928574056504557db1df8e23204bf86102d95d9ead11c56d8b"
+    },
+    "baseline_profile": {
+      "path": "build/bus_profile_opt30_fusedpipe4_20261111_152753_461635/result.json",
+      "sha256": "f0840db24c8724c57e3affc450894c7b1d7b0c5207483a5fd25aa051f6b76da4"
+    }
+  },
+  "real_model_comparison": {
+    "layers": 12,
+    "checked_outputs": 304128,
+    "same_shared_expected_and_firmware_hashes": true,
+    "cycles_by_layer": [
+      66025,
+      66100,
+      66100,
+      66100,
+      66100,
+      66100,
+      66100,
+      66100,
+      66100,
+      66100,
+      66100,
+      66100
+    ],
+    "mean_complete_cycles": 66093.75,
+    "opt31_mean_cycles": 75061.16666666667,
+    "opt30_mean_cycles": 92372.66666666667,
+    "cycle_reduction_from_opt31_percent": 11.946812266440487,
+    "throughput_increase_from_opt31_percent": 13.567722616233269,
+    "cycle_reduction_from_opt30_percent": 28.44880159354499,
+    "tasks_per_second_at_assumed_150mhz": 2269.503546099291,
+    "shared_commands_and_responses_per_task": 37440,
+    "output_commands_and_responses_per_task": 12672,
+    "max_output_inflight_observed_soc": 2,
+    "max_output_command_accept_burst_soc": 59
+  },
+  "protocol_evidence": {
+    "synthetic_stream_seeds": [
+      17,
+      271,
+      818
+    ],
+    "max_inflight_stressed": 4,
+    "saturated_command_accept_burst": 64,
+    "coverage": [
+      "two tiles including all 99 rows and three-row tails",
+      "random command/response stalls and held payload stability",
+      "first/middle/final response errors followed by complete restart",
+      "soft reset with zero/one/four accepted writes and held offers",
+      "hardware reset preserves committed memory",
+      "metadata error coincides with held output command acceptance, all four output responses drain",
+      "six-source fair arbiter mask59 random error/backpressure/reset tests",
+      "existing real-FIO loading, faults, concurrent-owner and bounded-WAIT suites"
+    ]
+  },
+  "lint": {
+    "build_log": {
+      "path": "build/bus_outputqueue_soc_opt32_outputqueue_20261111_155209_533134/build.log",
+      "sha256": "5ad205da180172641a7619640a29eb7f5fd237a2e920328a87018bc2fd647b9a"
+    },
+    "focused_LATCH_MULTIDRIVEN_UNOPTFLAT": [],
+    "vendor_warning_counts": {
+      "LATCH": 15,
+      "MULTIDRIVEN": 0,
+      "UNOPTFLAT": 2
+    },
+    "error_count": 0
+  },
+  "reproduce": [
+    "python3 scripts/run_outputqueue_checks.py --candidate opt32_outputqueue",
+    "python3 scripts/run_bus_outputqueue_candidate_soc.py --candidate opt32_outputqueue --layers 12 --jobs 2 --images build/model_headroom1_20261111/soc_images_out16 --data-kind KWT_VALIDATION"
+  ],
+  "limits": [
+    "Local functional verification; no PPA, STA, CDC, formal equivalence or official 600-sample score",
+    "Source staging preload remains outside engineering timing; official loader start boundary is open",
+    "The arithmetic/input/output formats remain unchanged INT16 four-row",
+    "Current traffic has 12832 reads and 24608 writes: under observed synchronous-read II2 and zero-write II1, a conditional target-service floor is 50272 cycles, before further overhead; this change alone cannot reach 10450 full tasks/s",
+    "Functional macro stand-in is not official SRAM timing/power evidence"
+  ]
+}

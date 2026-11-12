@@ -1,0 +1,105 @@
+{
+  "schema": "qingyu-private-x-compact-validation-v1",
+  "passed": true,
+  "result": "build/private_x_compact/20261111T181817149970Z/result.json",
+  "result_sha256": "34cec5c85e05372a53268268c23fea1466ade3ed976c88ff03d9d91a0b9aeabe",
+  "core_results": [
+    {
+      "core": "winograd_task9",
+      "metrics": {
+        "real_or_synthetic_cases": 12,
+        "successful": 23,
+        "accumulator_checks": 604512,
+        "resets": 8,
+        "aborted": 7,
+        "errors": 2,
+        "stalled": 4436,
+        "fast_cycles": 9355,
+        "total_cycles": 244388,
+        "replacements": 3816,
+        "error_held": 1
+      },
+      "macro_instances": {
+        "128": 48,
+        "1024": 0,
+        "4096": 0
+      },
+      "monitor": {
+        "rows": 9,
+        "pages": 3,
+        "logical_reads": 1209987,
+        "logical_writes": 98270
+      }
+    },
+    {
+      "core": "winograd_task8_prefetch",
+      "metrics": {
+        "real_or_synthetic_cases": 12,
+        "successful": 23,
+        "accumulator_checks": 604400,
+        "resets": 8,
+        "aborted": 7,
+        "errors": 2,
+        "stalled": 4366,
+        "fast_cycles": 9931,
+        "total_cycles": 256879,
+        "replacements": 382,
+        "error_held": 1
+      },
+      "macro_instances": {
+        "128": 53,
+        "1024": 0,
+        "4096": 0
+      },
+      "monitor": {
+        "rows": 8,
+        "pages": 4,
+        "logical_reads": 1209448,
+        "logical_writes": 98270
+      }
+    }
+  ],
+  "unit": [
+    {
+      "seed": 2371,
+      "metrics": {
+        "checks": 5380,
+        "illegal352": 2786,
+        "illegal416": 2387
+      }
+    },
+    {
+      "seed": 2477,
+      "metrics": {
+        "checks": 5380,
+        "illegal352": 2796,
+        "illegal416": 2402
+      }
+    },
+    {
+      "seed": 2551,
+      "metrics": {
+        "checks": 5380,
+        "illegal352": 2793,
+        "illegal416": 2405
+      }
+    }
+  ],
+  "wrapper_sha256": "0e7485342b9540c2e6e43cf7e6ae5eed8ca707c856d3895c7abbb41b75ce879e",
+  "models_sha256": "cd78caa3d3484f22d397b173e9c6a610c76939f53b7ff332a0dd55354bae9a33",
+  "vectors_manifest_sha256": "a27c88cc5bcc74c6fdf3e78af4630d7e878b28a7121190cef36f3014e8b8b529",
+  "scope": "Frozen original core/TB, actual ASIC RAMSP interface with local one-cycle #1/Q=X-on-write functional stand-ins",
+  "unique_real_tasks_per_mapping": 12,
+  "unique_real_output_elements_per_mapping": 304128,
+  "real_sample": "sample9 generated silence; not official600 evaluation",
+  "original_core_and_runner_modified": false,
+  "official_models_executed": false,
+  "sta_passed": false,
+  "area_measured": false,
+  "energy_measured": false,
+  "strict_lint": "Both352/416 configurations, no errors/warnings after filename and unused-model-pin waivers",
+  "expected_failure": "unsupported_parameter.log must return nonzero",
+  "preflight_failure": "build/private_x_compact/preflight_failure_20261111T1818.json",
+  "read_only_peer_review": "No blocking issue; actual macro CQ plus mux STA remains required",
+  "post_validation_changes": "Contract status and documentation only; VALIDATED_CONTRACT.json preserves original"
+}

@@ -1,0 +1,44 @@
+{
+  "schema": "qingyu-winograd-int8-component-v1",
+  "status": "independent_arithmetic_experiment_not_production_integrated",
+  "base_candidate_modified": false,
+  "vendor_modified": false,
+  "numeric_format_changed_by_identity": false,
+  "full_soc_or_ppa_measured": false,
+  "clock": "single clk; no declared frequency closure",
+  "reset": "synchronous active-low rst_n; clears partial frames, pipeline and unconsumed outputs",
+  "frame": "32 accepted pairs = 64 vector terms; no gaps or stalls count as terms",
+  "bias_sampling": "first accepted pair only, added exactly once",
+  "factor_source": "hardware factor32 modules for the same X and W vectors; no software precomputed factors",
+  "factor_reuse": "R can be reused only across channels of the same input row, C only across rows of the same weight column; recompute after data changes and inside cold task window",
+  "protocol": "source holds valid and payload until ready; result payload and valid remain stable until accepted; ordered responses; reset discards all outstanding work",
+  "dot64_parameters": {
+    "BIAS_W": {"supported": [16, 48], "default": 16},
+    "RESULT_W": "derived localparam max(24,BIAS_W+1); not externally overridable"
+  },
+  "bounds": {
+    "operand_signed8": [-128, 127],
+    "preadd_signed9": [-256, 254],
+    "pair_product_signed18": [-65024, 65536],
+    "factor_signed21": [-520192, 524288],
+    "pair_sum_signed23": [-2080768, 2097152],
+    "direct_dot_signed22": [-1040384, 1048576],
+    "conservative_bias16_factor_pair_triangle_bound": 3178496,
+    "bias16_result_width": 24,
+    "bias48_result_width": 49
+  },
+  "timing_cycles_without_stalls": {
+    "accepted_pairs_per_cycle": 1,
+    "pairs_per_frame": 32,
+    "last_input_handshake_to_result_valid_cycles": 1,
+    "first_input_handshake_to_result_handshake_cycles": 33,
+    "steady_frame_response_initiation_interval": 32
+  },
+  "functional_limits": [
+    "out_dot is signed22 only when supplied R/C belong to the same vectors",
+    "BIAS_W=48 returns exact signed49 mathematics, not a legacy per-k signed48 overflow trap",
+    "No rounding, output saturation, SRAM layout, array schedule or official bus integration is included",
+    "Final pair sum, two factor subtractions and bias addition currently share one combinational correction path; 150MHz unverified",
+    "Factor multiplication saves work only when reused across a matrix; isolated scalar dot plus its newly computed factors uses 96 multiplications rather than 64"
+  ]
+}

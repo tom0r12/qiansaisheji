@@ -1,0 +1,27 @@
+{
+  "schema": "qingyu-frozen-task8-prefetch-source-v1",
+  "frozen_utc": "2026-11-11T17:36:01.276611+00:00",
+  "files": {
+    "BASE_SOURCE_SHA256.json": "2a94f2369b24e3b8b0f3181e0f65f49d19a4e47b73449ad1a6457909899c85c3",
+    "contract.json": "6a880a1e17d983d2e17e733474bccbaef3d30ae4a3b79bf06b3842443aeaa11c",
+    "export_vectors.py": "1637cb676f71268f0fb57a514ce5551c827e3bb74a778fd03239b7e5094cde1c",
+    "README.md": "327af471783dce09f8c92412af50263952165403f6e58a37899a6cc1f3f1f5a3",
+    "run_checks.py": "f30fef111c51e24d69e5bd576e1636217b583988a3d2fd5cbe5e82ac6827c817",
+    "tb_sram_write_poison.sv": "5beae49277594ba2ae94c35c5d0b0848dbb6dcf9d2d70e8357342c8bf0a77ea5",
+    "tb_winograd_task8.sv": "75ea9ef43b5dd95b6c3854e55348f35c1a9be5e15c0a52865a3f6b550638b1e0",
+    "VALIDATED_CONTRACT.json": "04314b5103b16424724664de438f1c97a3762b594b68082e9bb86c18e516eece",
+    "VALIDATION.json": "08678f86d6ada9ba368fa658ba90248ef84fe3561c427ec6b27e6d6a5e2dcbf7",
+    "winograd_int8_task8.sv": "4d4eb4433f43079790e438d53ab57b631cdc1f93e9fd3dfa5774a855c7826a5e"
+  },
+  "external_dependencies": {
+    "experiments/arithmetic/winograd_array8/winograd_int8_pair_acc32.sv": "e117a74f05340c29111d3ddc845de084c7ca87eb7d9038d9c361968131942f44",
+    "rtl/qingyu_sram16.sv": "d3d35a1e99e07c75fac13e450c87685e773dc4953ab5a7752dd0ba0622943b18",
+    "experiments/arithmetic/winograd_array8/SOURCE_SHA256.json": "9bddf3da4af9036b4bee373c34b833fe5a8899f8581a5f076f07421e7fdaceaa",
+    "experiments/arithmetic/winograd_task8_overlap/SOURCE_SHA256.json": "2a94f2369b24e3b8b0f3181e0f65f49d19a4e47b73449ad1a6457909899c85c3"
+  },
+  "validation_result": "build/winograd_task8_prefetch/20261111T172625810973Z/result.json",
+  "validation_result_sha256": "d77a50b4e2936233541c2cc3b98a6f8db749c93068252d22b171d4fdf566c691",
+  "vector_manifest": "build/winograd_task8_vectors_20261112/manifest.json",
+  "vector_manifest_sha256": "a27c88cc5bcc74c6fdf3e78af4630d7e878b28a7121190cef36f3014e8b8b529",
+  "status": "concurrent_private_loader_compute_verified_not_SoC_or_PPA"
+}

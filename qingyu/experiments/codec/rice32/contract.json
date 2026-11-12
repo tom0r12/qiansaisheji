@@ -1,0 +1,19 @@
+{
+  "schema": "qingyu-rice32-stream-prototype-v1",
+  "scope": "Independent lossless byte encoder/decoder, not a production SoC",
+  "frozen_format": "build/global_codec_budget_20261112/frozen_global_codecs.json",
+  "frozen_format_sha256": "e5e2618ef86c7cf237fde66785b5981c0245c55ecd6cb262031405f620ba0d28",
+  "lanes": "parameter LANES=4, optional 2; each nonfinal symbol beat contains exactly LANES bytes",
+  "symbol_bus": "32-bit little-endian consecutive bytes, count=1..LANES, last only at declared symbol count",
+  "bit_bus": "32-bit little-endian stream bytes; first byte is data[7:0], each byte MSB first; final valid_bits=1..32, nonfinal valid_bits=32, unused padding bits zero",
+  "configuration": "START ready/valid captures symbols 1..65535, k 0..7, delta flag, row_bytes 16, 64 or 256 when delta; decoder also captures exact encoded bit count",
+  "format": "32 transformed signed8 zigzag symbols per block, or final tail; one flag (1 raw, 0 Rice), raw chosen iff Rice payload bits >= 8*block_symbols; Rice unary ones then zero then k-bit remainder MSB first",
+  "delta": "mod256 preceding-row difference, first row unchanged; inverse adds prior decoded row; every START resets epoch, never reads an uninitialized previous-row location",
+  "encoder": "two 32-byte blocks, decision after complete block; up to LANES codes appended per cycle to 512-bit reservoir; full output beat retained until final status is known",
+  "decoder": "512-bit reservoir, parses at most LANES symbols per cycle only when enough bits and output space; actual stalls count; no promise of constant four-symbol throughput",
+  "state_cost": "Each delta stage has 256x8 history state; encoder additionally has 2x32x8 block data, 512-bit reservoir and output hold; decoder has 512-bit reservoir and output hold; logic/ports and physical area unmeasured",
+  "errors": "Invalid configuration or explicit length/count/unary/padding mismatch sets sticky error; accepted held output remains stable; discard remaining input through explicit last before done. Absent last/absent data is a stalled producer, not a proven truncation; reset can abort it.",
+  "reset": "Synchronous active-low reset drops codec transaction state and output valid; memory history is not cleared but is never used before first-row replacement",
+  "cycle_window": "Inclusive accepted START through final output ACK or completed error drain; block flags, tail flush, row transformation and backpressure included. START is a local configuration handshake; external packet-header/fabric traffic remains a separate integration cost.",
+  "limits": ["No changed numerical config", "No matrix or factor computation in codec", "Original matrix-row-major byte order, not array8 tile layout", "No RTL-to-PPA, STA or official-score claim"]
+}

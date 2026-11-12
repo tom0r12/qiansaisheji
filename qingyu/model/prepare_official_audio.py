@@ -46,7 +46,10 @@ def main() -> None:
     for name, value in json.loads((model_dir / "flags.json").read_text(encoding="utf-8")).items():
         setattr(flags, name, value)
     flags.data_url = ""  # explicitly prohibit implicit 2+GB download/extraction
-    flags.data_dir = str(args.data_dir.resolve())
+    # Keep the setup script's ASCII junction intact for TensorFlow on Windows.
+    # This changes only the filesystem path, never the pinned data-loader rules.
+    data_root = args.data_dir.absolute()
+    flags.data_dir = str(data_root)
     flags.batch_size = 1
     flags.training = False
     flags.train = 0
@@ -78,7 +81,7 @@ def main() -> None:
         actual_split = input_data.which_set(str(path), flags.validation_percentage, flags.testing_percentage)
         if sample["label"] != input_data.SILENCE_LABEL and actual_split != args.split:
             raise ValueError("loader sample differs from pinned hash partition")
-        relative = str(path.relative_to(args.data_dir.resolve()))
+        relative = str(path.relative_to(data_root))
         identifier = f"{args.split}:generated-silence:{index}" if sample["label"] == input_data.SILENCE_LABEL else f"wav:{relative}"
         record = {"partition_index": index, "sample_id": identifier, "label": sample["label"],
                   "file": relative,

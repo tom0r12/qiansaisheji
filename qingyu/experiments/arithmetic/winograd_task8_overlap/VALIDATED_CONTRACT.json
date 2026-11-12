@@ -1,0 +1,25 @@
+{
+  "schema":"qingyu-winograd-task8-overlap-contract-v1",
+  "status":"implementation in progress; no measured overlap performance yet",
+  "module":"winograd_int8_task8",
+  "base_contract":"../winograd_task8/contract.json",
+  "base_source_manifest_sha256":"48b0f3e70b4ab0fd18b45d28b497cedf9ac7d7da6fab71b23b7dd90a1cf34ece",
+  "public_interface":"Byte-for-byte identical ports and numeric/load/output mapping to frozen serial task8. Compile this implementation OR the serial implementation, never both modules in one filelist.",
+  "numeric_format":"Unchanged frozen INT8 X/W, INT16 bias, shift0..47, direct-dot equivalent before RNE/signed8 saturation. No numerical or codec fitting.",
+  "scope":"Independent full-task private compute core; not shared SystemBus/codec/CPU timing or PPA evidence",
+  "snapshot":{
+    "raw_bits":2944,
+    "row_factor_bits":168,
+    "context_bits":9,
+    "additional_retained_bits":3121,
+    "details":"128x23 raw sums,8x21 R,4bit row-group,4bit tile,valid1. Existing store-row/word controls are reused. Snapshot changes only when empty or its final word ACKs; capture consumes all active raw PE results together.",
+    "bounded_pipeline":"One output snapshot and one PE accumulation context; an indefinitely stalled snapshot can coexist with at most one completed next group. Compute then waits without losing either context."
+  },
+  "factor_schedule":"The R cache reads CURRENT group during its first8 (tail3) DOT issue cycles using its independent physical macro port. ActiveR is overwritten only after the preceding group's factors have entered the snapshot. This removes the separate R_READ/R_WAIT phase without a third factor buffer.",
+  "metadata_epoch":"C/bias/shift remains stable for the entire16-column tile until its final output snapshot ACK. Only then can next tile metadata replace active registers. No second720bit metadata context is hidden.",
+  "single_port_storage":"Same8x1024x16+21x128x16=174080bits. W load never overlaps DOT reads on its16 single-port macros. Four W slots are address capacity, not ports. No new SRAM or full Y buffer.",
+  "phase_counters":"Exclusive phases still sum to total_cycles. compute_cycles includes DOT and any wait for a full snapshot; store_cycles counts final tile drain only. Concurrent snapshot output and R-prefetch activity are additionally counted in internal verification counters, not added again to total_cycles.",
+  "complete_window":"BEGIN acceptance excluded as time origin; total_cycles equals final core-to-encoder output ACK minus BEGIN edge. Enclosing integration must use its own first-parameter/read to final shared ACK window.",
+  "analytical_no_stall_budget":{"load":5888,"factor_metadata_commit":259,"metadata_reads":272,"paired_compute":7280,"tail_store":192,"total":13891,"status":"estimate before implementation measurement; not a full-system target result"},
+  "verification":"Reuse serial whole-task direct64 golden/RNE/private/cache scoreboard,12 complete real layers+10 synthetic tasks,3 simulator seeds,7 resets+2 metadata faults, extended held-output full-snapshot/next-PE test, explicit R-read and snapshot capture/retirement counts; strict RTL lint and actual macro count."
+}

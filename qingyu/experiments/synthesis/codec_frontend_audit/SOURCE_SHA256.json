@@ -1,0 +1,18 @@
+{
+  "schema": "qingyu-codec-frontend-audit-freeze-v1",
+  "files": {
+    "README.md": "6bb5c41254e66ffaeeaf96cb3f57523c72c6ada4a277d83f20d3515182299951",
+    "VALIDATION.json": "1ec00846ecfbe30bea056a98ca73bafb8d8edfa8e4abb7bd1766c663f1418177",
+    "run_audit.py": "501693167951c7cf3a60c8d30d63088b74fc8ddaa9e0d74d4f5b2f64e329a918",
+    "run_repro.py": "4db0d833432a80760802d39b07997d84273daf3507698535ebbaec42a8e51f77",
+    "tb_encoder_miter.sv": "0deff6a3db1f96b574c7dbec1701b1b3993124138376342090e5d1fb21b68d99",
+    "task_inout_repro.v": "d297a5fb9ee7e51eedebd9adf82b77e5082501d8b7a1d01e9940fd7203ba1965",
+    "tb_task_inout_repro.sv": "82a06c61eeb230dfdb25cdf99d46df0186d2426c84aedba5a9530d313d1ad929"
+  },
+  "diagnostic_results_sha256": {
+    "runs/20261111T180912837805Z/result.json": "a7830980ba07c54445e689884273295adfde766b530bc2bab4b479235c1e483c",
+    "runs/20261111T181239982447Z/result.json": "ce45adbebab56829b0073eb93e3579c898da019297542e9b403466a669a6d082",
+    "runs/repro_20261111T181121454965Z/result.json": "d0ad715fa4f90a662339da706a304baf0ca58617345d78078abf524464ab26e9"
+  },
+  "accepted_netlist": false
+}

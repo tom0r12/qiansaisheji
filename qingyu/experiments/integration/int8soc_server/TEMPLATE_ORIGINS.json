@@ -1,0 +1,14 @@
+{
+  "source": "scripts/server_bus_bundle",
+  "files_sha256": {
+    "library_identity.example.tcl": "0cacd52d65dc48ad827fa4d535f7dba11490d796c2a177aa623d0d43525783b6",
+    "macro_models.example.json": "786429dd61ce390494e68d7772f74d31d2a07fd770ee5c759c9e6448dff3eb3a",
+    "platform_config.example.tcl": "e020087f57382bed8ce54ae54d3eac290ce3af1fb51c2bf9e7fc5b3605dfbe20",
+    "assessment/common.tcl": "8b94dff4ce8c5607d60c455b9bcd9e59a470a8fe3bd1f88165dbe3bd6878ba04",
+    "assessment/synth.tcl": "236681a2272a117c027713211128f979a9b7c5c9a24e0df8602c881d96c970c1",
+    "assessment/formal.tcl": "67095706fc3a8ff0be8d29c9b9f873f555bfe16c240326c9be922a482651cac1",
+    "assessment/sta_power.tcl": "5aa06efa62798bd7083cdd712b7a6efd9bdb4dce5e1699dba6be88b63c053248",
+    "run_bus_server.py": "26147fa3f05967795c994ee0f480f4410cab421d8fb71f3fd78ff4843cb842ee"
+  },
+  "scope": "Copied fail-closed gates; INT8-specific metrics, accounting, source lists and fixture are independent"
+}

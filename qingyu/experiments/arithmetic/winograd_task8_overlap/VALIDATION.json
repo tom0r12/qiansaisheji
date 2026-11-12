@@ -1,0 +1,53 @@
+{
+  "schema": "qingyu-task8-overlap-validation-v1",
+  "result": "build/winograd_task8_overlap/20261111T170956926062Z/result.json",
+  "result_sha256": "58ab63d20042bc87ef6374008d9a63b3edbb5d2e4495fb0d385cc34b0de9ea66",
+  "completed": true,
+  "compiled_rtl_tb_unchanged": true,
+  "post_validation_change": "contract status metadata only; VALIDATED_CONTRACT.json preserves original; README and validation/source manifests added",
+  "unique_real_tasks": 12,
+  "unique_real_output_elements": 304128,
+  "real_validation_sample": "sample9 generated silence; no official600 claim",
+  "seeds": [
+    2371,
+    2477,
+    2551
+  ],
+  "per_seed_accumulator_checks": 861696,
+  "per_seed_successful_tasks": 33,
+  "per_seed_resets": 8,
+  "per_seed_aborts": 7,
+  "per_seed_expected_errors": 2,
+  "snapshot_same_cycle_replacements": [
+    382,
+    383,
+    382
+  ],
+  "fast_cycles": 13891,
+  "serial_fast_cycles": 21827,
+  "phases": {
+    "load": 5888,
+    "factor_cache_commit": 259,
+    "metadata_read": 272,
+    "compute": 7280,
+    "final_tile_store": 192
+  },
+  "per_task_overlapped_R_reads": 1584,
+  "per_task_snapshots": 208,
+  "per_task_no_stall_concurrent_output_words": 6144,
+  "physical_sram_bits": 174080,
+  "raw_pair_lanes": 128,
+  "load_factor_multipliers": 2,
+  "additional_snapshot_state_bits": 3121,
+  "strict_rtl_lint": "zero warnings",
+  "testbench_compile_diagnostics": "zero Verilator warnings",
+  "four_state_smoke": {
+    "log": "build/winograd_task8_overlap_four_state_smoke/sim.log",
+    "sha256": "beef8fc9871cadceb2b885d89c434425ff2261e6072921181035559928588037",
+    "scope": "one complete frozen real layer; same full scoreboard; TB build derivative stops after initial loop",
+    "derived_tb_sha256": "6ba79f8455d74163a169f0ebfa2760dbce276d2b82e3738e93906b5071218fef"
+  },
+  "full_soc_tested": false,
+  "sta_passed": false,
+  "ppa_measured": false
+}

@@ -1,0 +1,43 @@
+{
+  "schema": "qingyu-int8stream-integration-v1",
+  "status": "interface and artifact definition; no integrated RTL performance yet",
+  "scope": "One cold 99x64 by 64x256 linear task, frozen x8_w8_y8_h0, original official fabric and shared SRAM port",
+  "format": "Rice32 with existing frozen X k2/delta64, W k5/raw transform, Y k3/delta16; no numerical changes",
+  "input_packet": {
+    "word0": "0x31523851 (little-endian ASCII Q8R1)",
+    "word1": "X encoded valid bit count",
+    "word2_to9": "W group0..7 encoded valid bit counts",
+    "word10_to137": "256 signed16 biases, lower channel in low half",
+    "word138_to201": "256 unsigned8 shifts, lower channel in low byte; accepted values0..47",
+    "word202_onward": "X encoded words then W group0..7 encoded words, each stream independently zero-padded to32bits",
+    "X": "99x64 row-major, only6336 actual bytes; adapter generates padded row99 locally",
+    "W_group": "64x32 K-row-major for columns32g..32g+31; bounded row-pair adapter transforms into task8 private writes"
+  },
+  "output_packet": {
+    "word0": "After header/range/disjointness validation, write0 and wait for its real ACK before decoding X. Write0x31593851 (little-endian ASCII Q8Y1) last, only after all sixteen payloads and length writes are acknowledged. Reusing an output address therefore invalidates the prior successful marker. Invalid descriptors leave output unchanged; callers must use this task completion/error status, never a preexisting marker alone.",
+    "word1_to16": "Y tile0..15 encoded valid bit counts",
+    "slot_first_word": "17 + 398*tile",
+    "slot_capacity_words": 398,
+    "allocation_words": 6385,
+    "payload": "Each tile99x16 row-major, independently encoded and padded. Only ceil(valid_bits/32) words written; unused slot words stay untouched.",
+    "capacity_proof": "1584*8 + ceil(1584/32) =12722 worst-case bits, ceil(/32)=398 words. Raw escape prevents larger valid streams.",
+    "timing_end": "The final originating bus ACK of word0 completion marker; never core done or encoder last alone"
+  },
+  "dataflow": [
+    "E203 submits source/output pointers and START; hardware checks alignment, full input/output bounds, format, lengths and disjoint ranges.",
+    "BEGIN invalidates private X/R/W/C epochs; shared read cache explicitly clears before first task header request.",
+    "Read input header through the original bus, then decode X and reorder into1600 real private X words; no source-to-live SRAM copy.",
+    "For each of eight groups read/decode/reorder512 W words, then read16 bias words and8 shift words from input metadata into task core.",
+    "Encode each of sixteen Y tiles as its words emerge; stream accepted compressed words to that tile's fixed output slot and store its actual valid-bit count.",
+    "Transport must support finite write-prefix completion because compressed output word count is not known until encoder last; integration cannot guess a descriptor count or write unused slot padding.",
+    "All offered/accepted shared-bus commands drain on errors. Internal codec/core resets may discard private state only after both ends of their stream are explicitly reset and shared responses are safely drained."
+  ],
+  "open_implementation_items": [
+    "Frozen icb_stream_prefix implements bounded last-terminated write descriptors. Output writes include18 header operations (one invalidation,16 lengths,one final marker); the earlier17-header analytical budget excludes the new invalidation transaction and is lower by one bus write plus its scheduling overhead.",
+    "Complete-task core first revision is sequential and fails the cycle target; compute/store overlap and W-bank scheduling must be implemented and measured.",
+    "External official loader start event remains unresolved; publish preloaded-source engineering window and strict initial-write window separately.",
+    "Every extra cache, FIFO, macro, register, speculative read and codec logic counts in area/whole-SoC power;150MHz requires actual STA."
+  ],
+  "reference_addresses": {"source": "0xa0040000", "output": "0xa0000000"},
+  "acceptance": "Same candidate >10450 tasks/s, incremental area<=0.5mm2, whole-SoC energy<=6.3uJ, correct complete-task results and official timing/precision scope; all unproven"
+}

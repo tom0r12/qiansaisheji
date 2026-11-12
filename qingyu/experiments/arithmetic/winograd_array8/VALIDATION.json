@@ -1,0 +1,55 @@
+{
+  "status": "unit_RTL_and_192_real_tiles_plus_22_boundary_tiles_passed",
+  "result": "build/winograd_array8/20261111T162026965076Z/result.json",
+  "result_sha256": "e2393765def5aea37098b11f0be66925c7823682fcbf0766db5d9354280ef1d4",
+  "raw_lane_result": "build/winograd_array_lane/20261111T160002412063Z/result.json",
+  "raw_lane_result_sha256": "d1625bdb01e06fbd9b259616d06d9c6967344512d224e56b676b55b59307cb67",
+  "unique_real_tiles": 192,
+  "unique_real_output_elements": 304128,
+  "validation_utterances": 1,
+  "validation_layer_tasks": 12,
+  "sample_index": 9,
+  "distinct_random_protocol_seeds": [
+    2039,
+    2213,
+    2347
+  ],
+  "fast_tile_cycles": {
+    "total": 3210,
+    "load": 1869,
+    "cold_factors": 490,
+    "compute": 455,
+    "store": 396
+  },
+  "structure": {
+    "sram_depth_counts": {
+      "1024": 8,
+      "128": 16
+    },
+    "sram_word_bits": 16,
+    "allocated_sram_bits": 163840,
+    "raw_pair_lanes": 128,
+    "hardware_factor_units": 24,
+    "additional_factor_shadow_arrays": 0,
+    "xml_sha256": "0b4797156946cecb4f3e218084505071499ee34a66865b1c47885c2f7bc9bb75"
+  },
+  "strict_RTL_lint": {
+    "warnings": 0,
+    "errors": 0
+  },
+  "testbench_warning_review": {
+    "log": "build/winograd_array8/20261111T161516469081Z/compile.log",
+    "log_sha256": "918c03847271dad653df6299cd1593bd058f967c27c1e29afcd0597613073ce8",
+    "counts": {
+      "WIDTHTRUNC": 10,
+      "WIDTHEXPAND": 1
+    },
+    "scope": "Testbench only; integer flags assigned0/1 used as logical values, and intentional signed24 to signed32 scoreboard extension. No RTL width waivers."
+  },
+  "history": [
+    "Initial report parser lost first TASK line due WSL NUL prefix; raw simulation PASS retained in20261111T161006720753Z.",
+    "Removed global R/C shadow registers and passed full regression in20261111T161516469081Z; SV-only seeds yielded duplicate randomness.",
+    "Final run explicitly sets+verilator+seed+N and verifies three distinct stall/cycle signatures, reusing byte-identical RTL/TB compilation."
+  ],
+  "no_SoC_no_PPA_no_official600_claim": true
+}

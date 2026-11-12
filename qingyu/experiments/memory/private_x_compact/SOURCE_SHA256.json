@@ -1,0 +1,19 @@
+{
+  "schema": "qingyu-private-x-compact-source-v1",
+  "files": {
+    "README.md": "b04fa0811f409883e77ee224ac1a283fff3019561ded0ad9001364c3035fe9d6",
+    "contract.json": "048c0df9ad0ae4d8aaacd113dd5d423044f008ed082125e97363fa33af39c67f",
+    "VALIDATED_CONTRACT.json": "a174327d936ec8b4d5aa7dcbec83d7b3fa979e26a085248640523b34b6d2c48b",
+    "VALIDATION.json": "59de24cbe83302f21e42722f3a4589fccd300edfda41cfa972589e448f6386b8",
+    "qingyu_sram16.sv": "0e7485342b9540c2e6e43cf7e6ae5eed8ca707c856d3895c7abbb41b75ce879e",
+    "tb_private_x_compact.sv": "571685c71a35353139bdf5dd680d4c39b759e2176cd18542d52bde263fd6ac38",
+    "compact_core_monitor.sv": "20990aa3bfa5d83cabda62652632fb15e88d70800ac85dee5264e6c233676f80",
+    "run_checks.py": "f25f2a97c5765f21aff98acc0a321467190130144801ec78eff7d585178f546e"
+  },
+  "external_dependencies": {
+    "experiments/arithmetic/winograd_task9/SOURCE_SHA256.json": "27d01b946df9f130509e9a8146425116d35c8aa4c030b22c5ed00e152837f919",
+    "experiments/arithmetic/winograd_task8_prefetch/SOURCE_SHA256.json": "1ccc2d189323d682a816a10fc230f7ebf34c18aa0c74bebeffcc4a0428be771d",
+    "experiments/arithmetic/winograd_array8/winograd_int8_pair_acc32.sv": "e117a74f05340c29111d3ddc845de084c7ca87eb7d9038d9c361968131942f44",
+    "rtl/asic/qingyu_sram16.sv": "497a1e9e59e65b2c1f301ed72989e2df059a9fcb5b7c3f5d03f4f1aa881bc2cc"
+  }
+}

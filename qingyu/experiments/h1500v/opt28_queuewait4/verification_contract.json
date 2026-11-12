@@ -1,0 +1,31 @@
+{
+  "schema": "qingyu-fused-load-contract-v1",
+  "candidate": "opt28_queuewait4",
+  "base_candidate": "opt26_fusedqueue",
+  "live_read_words": 576,
+  "source_load_words": 11936,
+  "live_write_words": 11936,
+  "private_input_words": 3168,
+  "private_weight_words": 8192,
+  "output_write_words": 12672,
+  "flow": "X and W: source read, real live write, successful write response, then private commit. Metadata retains source-to-live copy and 576 live reads. Initial parameter validation remains inside the complete task window and is counted separately from source_load_words.",
+  "constraints": [
+    "Use opt26 queued DMA/CPU arbitration through the unchanged official E203 memory fabric and single 32-bit shared SRAM port. Official vendor OUTS_NUM=1 remains unchanged.",
+    "Every source payload word is copied once to its configured live address; source storage is immutable.",
+    "Private X and W words must match source values and addresses, not only aggregate counts.",
+    "No private commit on failed source read, failed live write, or aborted descriptor.",
+    "No START before full descriptor completion; W targets only the inactive tile bank.",
+    "Do not replace official initial loading with testbench preloading outside the measured window.",
+    "This contract is an engineering validation expectation, not official compliance or signoff.",
+    "WAIT preserves every original source/live/private transaction; timeout releases control only and never cancels an offered DMA request.",
+    "Hardware wait bound is in bus clocks and is not the software device.poll_limit iteration count.",
+    "WAIT observes the complete transport busy/drain state. CONTROL RESET bypasses all DMA busy gates without discarding offered or accepted requests.",
+    "A permanently unresponsive memory slave can cause repeated bounded control timeouts; it cannot be declared drained or permit descriptor restart."
+  ],
+  "fused_interface_id": "0x51462202",
+  "wait_csr": "0xe0",
+  "wait_timeout_cycles": 1000000,
+  "wait_timeout_code": "0x80",
+  "arithmetic_source": "opt25_fused4",
+  "wait_interface_source": "opt27_fusedwait"
+}

@@ -1,0 +1,784 @@
+{
+  "schema_version": 1,
+  "captured_utc": "2026-11-11T13:02:29.291206+00:00",
+  "path_base": "qingyu/; original paths are project-relative",
+  "purpose": "Versionable evidence summary; original build/ and reports/ artifacts remain local and are not copied here",
+  "official_600_sample_evaluation": false,
+  "model_summary": {
+    "path": "docs/evidence/20261111_model_calibration_validation.json",
+    "sha256": "9026c4b8c9b53dfe7551e9f4f14c22829dc38b6d72a6160de683cdaa01f0b5b9"
+  },
+  "real_soc_comparisons": {
+    "out16_baseline": {
+      "source_summary": {
+        "path": "reports/opt13_opt15_real_comparison.json",
+        "sha256": "4ca544063a9989f11d806fd4f384a6bcdae69cda44bca7cb1615dcff3bc0b963"
+      },
+      "data_kind": "KWT_VALIDATION",
+      "official_600_sample_evaluation": false,
+      "passed": true,
+      "same_input_and_expected_hashes": true,
+      "tasks_each": 12,
+      "outputs_each": 304128,
+      "baseline": {
+        "candidate": "opt13_row8",
+        "result": "build/soc_opt13_row8_20261111_122505_272699/result.json",
+        "result_sha256": "b099928b176c70e1163f17d7bf8166a34a926c938ab1462674fbd4248382763f",
+        "mean_complete_cycles": 24432.75,
+        "simulator_sha256": "e6461f3bc669eb63cf9c8c8551d39986800da9a012e17ee2e1d735c705bdaa4b",
+        "firmware_sha256": {
+          "soc_perf_main.c": "3a107e21b2017056ebcfd5317049d91a98e06e944e3bb77e3029ed9b9632803b",
+          "qingyu_accel.c": "6a631d714833b305244b8eed2cbdb4418242d849e21b11bd36f4c8b34854ae25",
+          "qingyu_accel.h": "fd29f78d169ef2fd57042ed3a5f9a65f0d6f623b3c15978ce2d6681843280076"
+        },
+        "compiled_sources_manifest_canonical_json_sha256": "d2f5713014b349f1260f82ecbc8aecbaeba903c2a78124c80a026b212347ad7e",
+        "candidate_rtl_sha256": {
+          "experiments/h1500v/opt13_row8/rtl/qingyu_e203_soc_top.v": "1962097bfaed4762b15b5f6fe4a3aedd0f19ae09a67f162111a360ade36cf773",
+          "experiments/h1500v/opt13_row8/rtl/qingyu_accel.sv": "419392c593a497cdcc2cd213cd78443505ad22f55f094e110d19d4cfb5873db6",
+          "experiments/h1500v/opt13_row8/rtl/qingyu_fio.sv": "d4392680a2252d02c2a6c692ce2b6a2885fba3d31ea187c618ba53f0b735cc95",
+          "experiments/h1500v/opt13_row8/rtl/qingyu_shared_sram_mp.sv": "c688690a5ef26d59edc95e3ee3f2dcefa4c1582d3c887521c66d9780650e8257"
+        },
+        "images_manifest_sha256_recorded_at_run": null,
+        "images_manifest_verified_at_archive": {
+          "path": "build/model_reference_20261111_201956_613/soc_images_out16/images_manifest.json",
+          "sha256": "589ac306074f1398f62724aaa8e2e9574279deaf7a556893d28d77c55011a1cd"
+        }
+      },
+      "candidate": {
+        "candidate": "opt15_validate4",
+        "result": "build/soc_opt15_validate4_20261111_122515_245843/result.json",
+        "result_sha256": "d935e352c5e8ec47d72ba6f01a430b03c6372e0b69f8c5c2b70b2568ef729033",
+        "mean_complete_cycles": 21680.75,
+        "simulator_sha256": "04d63d92f11c5528135449cd1d92501b8d84bcb15ae867d1dcb7ecdddb360504",
+        "firmware_sha256": {
+          "soc_perf_main.c": "3a107e21b2017056ebcfd5317049d91a98e06e944e3bb77e3029ed9b9632803b",
+          "qingyu_accel.c": "2e5cefaa8d988c258f244e28806cd5a24a5ea7ca343af0df4ed45f7995bae45f",
+          "qingyu_accel.h": "fd29f78d169ef2fd57042ed3a5f9a65f0d6f623b3c15978ce2d6681843280076"
+        },
+        "compiled_sources_manifest_canonical_json_sha256": "c3720b787a46227618eeaf24cae2244bb02f5326b149bc6bd84232612d8ebf44",
+        "candidate_rtl_sha256": {
+          "experiments/h1500v/opt15_validate4/rtl/qingyu_e203_soc_top.v": "1962097bfaed4762b15b5f6fe4a3aedd0f19ae09a67f162111a360ade36cf773",
+          "experiments/h1500v/opt15_validate4/rtl/qingyu_accel.sv": "2bc62a94efd26cab9bb572e536d93911a93420f3710a133b7485b4c38a5cbec3",
+          "experiments/h1500v/opt15_validate4/rtl/qingyu_fio.sv": "d4392680a2252d02c2a6c692ce2b6a2885fba3d31ea187c618ba53f0b735cc95",
+          "experiments/h1500v/opt15_validate4/rtl/qingyu_shared_sram_mp.sv": "c688690a5ef26d59edc95e3ee3f2dcefa4c1582d3c887521c66d9780650e8257"
+        },
+        "images_manifest_sha256_recorded_at_run": null,
+        "images_manifest_verified_at_archive": {
+          "path": "build/model_reference_20261111_201956_613/soc_images_out16/images_manifest.json",
+          "sha256": "589ac306074f1398f62724aaa8e2e9574279deaf7a556893d28d77c55011a1cd"
+        }
+      },
+      "mean_cycles_saved": 2752.0,
+      "cycle_reduction_percent": 11.26357041266333,
+      "throughput_increase_percent_same_clock": 12.69328782445256,
+      "clock_hz_assumed": 150000000,
+      "baseline_tasks_per_second_at_assumed_clock": 6139.300733646438,
+      "candidate_tasks_per_second_at_assumed_clock": 6918.579846176908,
+      "window": "first parameter-source read request through final output write response; includes validation and setup",
+      "limits": [
+        "behavioral SRAM",
+        "same-clock throughput ratio; 150 MHz is assumed, not STA-verified",
+        "no new official area/power/energy result"
+      ],
+      "layers": [
+        {
+          "layer": 0,
+          "baseline_complete_cycles": 24474,
+          "candidate_complete_cycles": 21667,
+          "outputs_each": 25344,
+          "shared_sha256": "43ab0c55f359613ab880bb2ad28923196bbc47046105db3c4218fc43bd68a1a6",
+          "expected_sha256": "faa39592ad556fbe0bc13396af17cf303e07105415d6137b475d95cc8a630dc2"
+        },
+        {
+          "layer": 1,
+          "baseline_complete_cycles": 24429,
+          "candidate_complete_cycles": 21682,
+          "outputs_each": 25344,
+          "shared_sha256": "285a75d1ff436a1884e6803a319272b475788ad451ce38bd9aaf750c9b888564",
+          "expected_sha256": "f824c1f2bcef0e05ad47e04f3e91e2608982289fe6f5fcd4cd9cb06959c9df20"
+        },
+        {
+          "layer": 2,
+          "baseline_complete_cycles": 24429,
+          "candidate_complete_cycles": 21682,
+          "outputs_each": 25344,
+          "shared_sha256": "d70cfb65f780bba5ea5da970634220bf76ddb99c8ba851a13f2cd7cbf373ffa7",
+          "expected_sha256": "83d5ed9f571d42ca2620a2a6dd0365853f350e71e050ad106a602a817e9c1924"
+        },
+        {
+          "layer": 3,
+          "baseline_complete_cycles": 24429,
+          "candidate_complete_cycles": 21682,
+          "outputs_each": 25344,
+          "shared_sha256": "072975bec6557444c39ed7afdc0cbf274d0ec28c8253e41b08686e088ae15e2c",
+          "expected_sha256": "2e763859dbe73d903813814d4ef2f154c778e9ee5548341ab77a5393b425cb4e"
+        },
+        {
+          "layer": 4,
+          "baseline_complete_cycles": 24429,
+          "candidate_complete_cycles": 21682,
+          "outputs_each": 25344,
+          "shared_sha256": "f64b2ebcec2fc9cf30a89df4464ca785230ea54c9dcf69de00fbb6f0d69973d4",
+          "expected_sha256": "c1d1b9930295f4995938c4487d8a40342615d84b2c12a4001aa709d217e81de3"
+        },
+        {
+          "layer": 5,
+          "baseline_complete_cycles": 24429,
+          "candidate_complete_cycles": 21682,
+          "outputs_each": 25344,
+          "shared_sha256": "64eb406f161439003886e696a2e00f3e88f28fcbd9ea8b10d8593215b1914b80",
+          "expected_sha256": "3f24d16c65243193c1ef44b116d0696fe3918ccfda6668bc2233e36fdefa7d52"
+        },
+        {
+          "layer": 6,
+          "baseline_complete_cycles": 24429,
+          "candidate_complete_cycles": 21682,
+          "outputs_each": 25344,
+          "shared_sha256": "6d63988c0c6f1447894f4a24d18b383d59cb6f1585ba4d0c53f75d20d126c546",
+          "expected_sha256": "d35c7e87f75eb11cfd1364faba83064028a8ddbc449238435a0b667e1514d28c"
+        },
+        {
+          "layer": 7,
+          "baseline_complete_cycles": 24429,
+          "candidate_complete_cycles": 21682,
+          "outputs_each": 25344,
+          "shared_sha256": "3ab242c13463a664ec009092755b15ab7de5480909c87b89f72285a5081d15dc",
+          "expected_sha256": "d2c062c8e363b6f8c85f360eed79275b4f4e4f6073d4189f122a34aea4dd6176"
+        },
+        {
+          "layer": 8,
+          "baseline_complete_cycles": 24429,
+          "candidate_complete_cycles": 21682,
+          "outputs_each": 25344,
+          "shared_sha256": "035565ca83ad897f3976a237f1e3a2feaa102a8289b5112a6b0f7cbeaf8eec00",
+          "expected_sha256": "4cd015efede8733f582f001a6262b0115bfdbc6f80203cee339d507b8745b8b4"
+        },
+        {
+          "layer": 9,
+          "baseline_complete_cycles": 24429,
+          "candidate_complete_cycles": 21682,
+          "outputs_each": 25344,
+          "shared_sha256": "2175a94389b19853df146f6e17a780d990930a044e5ad97d4e8d55a86d70abd0",
+          "expected_sha256": "9302af5ecdc2e03ed8470c0bd736fc3098bb3c6829b0b3b6c3667bfdaf4ddfae"
+        },
+        {
+          "layer": 10,
+          "baseline_complete_cycles": 24429,
+          "candidate_complete_cycles": 21682,
+          "outputs_each": 25344,
+          "shared_sha256": "ebf8ea5e3d39e0794113b94a143210919cbf89c99b702f0379bb2004d001e41c",
+          "expected_sha256": "fb236c3913486a6210d25be2ceb107ae7d6453089769db70998abe070bf41394"
+        },
+        {
+          "layer": 11,
+          "baseline_complete_cycles": 24429,
+          "candidate_complete_cycles": 21682,
+          "outputs_each": 25344,
+          "shared_sha256": "86181fa1364646664f8da34c217d144aee1f845d642ebe560bd69f3dd0c35de1",
+          "expected_sha256": "33064a307c79fd7a8d0ec4240a819be61fcb8b7eeb451d4c3cc04fb12f4ce360"
+        }
+      ]
+    },
+    "out16_headroom1": {
+      "source_summary": {
+        "path": "reports/opt13_opt15_headroom1_real_comparison.json",
+        "sha256": "037f3ec3be90ac23cda7a6b3ced9e1b9e4471f920bc6b070818e624e67ea5049"
+      },
+      "data_kind": "KWT_VALIDATION",
+      "output_bits": 16,
+      "output_headroom_bits": 1,
+      "quantization_policy": "all 3072 channels in all 12 layers receive exactly one additional output shift bit relative to the training-fitted baseline",
+      "parameter_fit_split": "training",
+      "validation_parameter_search": false,
+      "official_600_sample_evaluation": false,
+      "passed": true,
+      "same_input_and_expected_hashes": true,
+      "tasks_each": 12,
+      "outputs_each": 304128,
+      "baseline": {
+        "candidate": "opt13_row8",
+        "result": "build/soc_opt13_row8_20261111_123231_999782/result.json",
+        "result_sha256": "841f7a437a09025fb8bd5fd19711e0af66156d0cc55bf56e9ede9b2212138882",
+        "mean_complete_cycles": 24432.75,
+        "simulator_sha256": "e6461f3bc669eb63cf9c8c8551d39986800da9a012e17ee2e1d735c705bdaa4b",
+        "firmware_sha256": {
+          "soc_perf_main.c": "3a107e21b2017056ebcfd5317049d91a98e06e944e3bb77e3029ed9b9632803b",
+          "qingyu_accel.c": "6a631d714833b305244b8eed2cbdb4418242d849e21b11bd36f4c8b34854ae25",
+          "qingyu_accel.h": "fd29f78d169ef2fd57042ed3a5f9a65f0d6f623b3c15978ce2d6681843280076"
+        },
+        "compiled_sources_manifest_canonical_json_sha256": "1ef3ad6c240d176385a3273c96eabfa95161e8f8b5a67f27995ccfabc1976955",
+        "candidate_rtl_sha256": {
+          "experiments/h1500v/opt13_row8/rtl/qingyu_e203_soc_top.v": "1962097bfaed4762b15b5f6fe4a3aedd0f19ae09a67f162111a360ade36cf773",
+          "experiments/h1500v/opt13_row8/rtl/qingyu_accel.sv": "419392c593a497cdcc2cd213cd78443505ad22f55f094e110d19d4cfb5873db6",
+          "experiments/h1500v/opt13_row8/rtl/qingyu_fio.sv": "d4392680a2252d02c2a6c692ce2b6a2885fba3d31ea187c618ba53f0b735cc95",
+          "experiments/h1500v/opt13_row8/rtl/qingyu_shared_sram_mp.sv": "c688690a5ef26d59edc95e3ee3f2dcefa4c1582d3c887521c66d9780650e8257"
+        },
+        "images_manifest_sha256_recorded_at_run": "afffd63fc5326dd9cb1c040c8e155b7c92feee127a5fa44977374e01a5103179",
+        "images_manifest_verified_at_archive": {
+          "path": "build/model_headroom1_20261111/soc_images_out16/images_manifest.json",
+          "sha256": "afffd63fc5326dd9cb1c040c8e155b7c92feee127a5fa44977374e01a5103179"
+        }
+      },
+      "candidate": {
+        "candidate": "opt15_validate4",
+        "result": "build/soc_opt15_validate4_20261111_123232_000196/result.json",
+        "result_sha256": "906f774ead8a8dbb47f1a78f7e33de61412c41a4dbaab8dcf756a5a4d008e940",
+        "mean_complete_cycles": 21680.75,
+        "simulator_sha256": "04d63d92f11c5528135449cd1d92501b8d84bcb15ae867d1dcb7ecdddb360504",
+        "firmware_sha256": {
+          "soc_perf_main.c": "3a107e21b2017056ebcfd5317049d91a98e06e944e3bb77e3029ed9b9632803b",
+          "qingyu_accel.c": "2e5cefaa8d988c258f244e28806cd5a24a5ea7ca343af0df4ed45f7995bae45f",
+          "qingyu_accel.h": "fd29f78d169ef2fd57042ed3a5f9a65f0d6f623b3c15978ce2d6681843280076"
+        },
+        "compiled_sources_manifest_canonical_json_sha256": "a1d2eb23cbb452246c44371c5f77d4dd419864dbbd3cdb09c638b791761619b6",
+        "candidate_rtl_sha256": {
+          "experiments/h1500v/opt15_validate4/rtl/qingyu_e203_soc_top.v": "1962097bfaed4762b15b5f6fe4a3aedd0f19ae09a67f162111a360ade36cf773",
+          "experiments/h1500v/opt15_validate4/rtl/qingyu_accel.sv": "2bc62a94efd26cab9bb572e536d93911a93420f3710a133b7485b4c38a5cbec3",
+          "experiments/h1500v/opt15_validate4/rtl/qingyu_fio.sv": "d4392680a2252d02c2a6c692ce2b6a2885fba3d31ea187c618ba53f0b735cc95",
+          "experiments/h1500v/opt15_validate4/rtl/qingyu_shared_sram_mp.sv": "c688690a5ef26d59edc95e3ee3f2dcefa4c1582d3c887521c66d9780650e8257"
+        },
+        "images_manifest_sha256_recorded_at_run": "afffd63fc5326dd9cb1c040c8e155b7c92feee127a5fa44977374e01a5103179",
+        "images_manifest_verified_at_archive": {
+          "path": "build/model_headroom1_20261111/soc_images_out16/images_manifest.json",
+          "sha256": "afffd63fc5326dd9cb1c040c8e155b7c92feee127a5fa44977374e01a5103179"
+        }
+      },
+      "images_manifest": "build/model_headroom1_20261111/soc_images_out16/images_manifest.json",
+      "images_manifest_sha256": "afffd63fc5326dd9cb1c040c8e155b7c92feee127a5fa44977374e01a5103179",
+      "validation_report": "build/model_headroom1_20261111/validation_vectors_out16/validation_report.json",
+      "validation_report_sha256": "366ae4838bb3ce8f2828bc4453bd5590b8f530af85715fd71916115924327ba9",
+      "headroom_comparison": "build/model_headroom1_20261111/headroom_comparison.json",
+      "headroom_comparison_sha256": "b721e52aa4ff296a3c2350a16b130a1c77911dc0190037772d75ae3cf8b4f529",
+      "training_samples": 256,
+      "validation_samples": 256,
+      "validation_max_layer_nrmse_percent": 0.010603806070545627,
+      "mean_cycles_saved": 2752.0,
+      "cycle_reduction_percent": 11.263570412663327,
+      "throughput_increase_percent_same_clock": 12.69328782445256,
+      "clock_hz_assumed": 150000000,
+      "baseline_tasks_per_second_at_assumed_clock": 6139.300733646438,
+      "candidate_tasks_per_second_at_assumed_clock": 6918.579846176908,
+      "window": "first parameter-source read request through final output write response; includes validation and setup",
+      "earlier_output_headroom_0_comparison": "reports/opt13_opt15_real_comparison.json",
+      "limits": [
+        "behavioral SRAM",
+        "same-clock throughput ratio; 150 MHz is assumed, not STA-verified",
+        "no new official area/power/energy result",
+        "selected 12 hardware tasks do not exhaust all 256 validation samples"
+      ],
+      "layers": [
+        {
+          "layer": 0,
+          "baseline_complete_cycles": 24474,
+          "candidate_complete_cycles": 21667,
+          "outputs_each": 25344,
+          "shared_sha256": "f137d54f6409a71a8884ef0cdfddf20883e367c85e913aea2f6c04340bdf7f2b",
+          "expected_sha256": "58430edf218e83e88b6c2a63835aafbe618d219abfa865e985efa7b40cc90dc3"
+        },
+        {
+          "layer": 1,
+          "baseline_complete_cycles": 24429,
+          "candidate_complete_cycles": 21682,
+          "outputs_each": 25344,
+          "shared_sha256": "3bcb271e5ab0f190f0e7028248390d8e7a4923ff9b8876536a9869abbc158a97",
+          "expected_sha256": "1e0c5e4f5b705fdf46deee3b84ef6c141598f4da7defe80ddc768512de2e3f5f"
+        },
+        {
+          "layer": 2,
+          "baseline_complete_cycles": 24429,
+          "candidate_complete_cycles": 21682,
+          "outputs_each": 25344,
+          "shared_sha256": "81f87cda4f1ad8f780791fcf82c6b8f4a74fbb7a375747134a4c1bfb4cfa3815",
+          "expected_sha256": "d6b0bc22138f97b43724e5c66e11148e8a6222a10d38662cc6a475ee2c285c68"
+        },
+        {
+          "layer": 3,
+          "baseline_complete_cycles": 24429,
+          "candidate_complete_cycles": 21682,
+          "outputs_each": 25344,
+          "shared_sha256": "5bdf8a45c44fffd966fc668c25509f5741dc1883040eef297a5b07a5385c25bc",
+          "expected_sha256": "88accaebca4d78046ce4a2657d0580bc707ee93693b79a59a1bd7cea6a611e9d"
+        },
+        {
+          "layer": 4,
+          "baseline_complete_cycles": 24429,
+          "candidate_complete_cycles": 21682,
+          "outputs_each": 25344,
+          "shared_sha256": "98e6de2a91d392969b3dbd57ebac9eb4c204b5fd937ee11bcb2c58ce0001c41c",
+          "expected_sha256": "b38407f279ffca280c2b6b54236d35fc6aabd520faf0eb6d32592347f6d4a857"
+        },
+        {
+          "layer": 5,
+          "baseline_complete_cycles": 24429,
+          "candidate_complete_cycles": 21682,
+          "outputs_each": 25344,
+          "shared_sha256": "318f994beaa347d33e5c68c75f7b1b3965c132de623a7dd943d4f99afe0d2c9f",
+          "expected_sha256": "cf42fd2ec8ac4a67eed9793ea99610379f5c2c9322f609a86c45a66f8a63469c"
+        },
+        {
+          "layer": 6,
+          "baseline_complete_cycles": 24429,
+          "candidate_complete_cycles": 21682,
+          "outputs_each": 25344,
+          "shared_sha256": "016355055b24d6a27b45788a004963ba6fb4ff1a31240bbd3f0cec46b38d547d",
+          "expected_sha256": "079810515ee56ef15e611fdecce3d6f30d1c472e4c8af6b96096d22c08919d17"
+        },
+        {
+          "layer": 7,
+          "baseline_complete_cycles": 24429,
+          "candidate_complete_cycles": 21682,
+          "outputs_each": 25344,
+          "shared_sha256": "1d416963e443db9893c666e1e06c5b62f79ca2ab21097bcfe508ca21962cb583",
+          "expected_sha256": "6ea886e43cf7ec6fd5b574d6e02a29ae7fffdc227ad22bd48cf65a6090496e8b"
+        },
+        {
+          "layer": 8,
+          "baseline_complete_cycles": 24429,
+          "candidate_complete_cycles": 21682,
+          "outputs_each": 25344,
+          "shared_sha256": "3d2add7fd89c920eceab42f0467998e724283544127627460c961ad6be9747f2",
+          "expected_sha256": "29c04cb5f4c003b8485a848fe92713c57c0778eddb74df0bf28bcdb12d3a313f"
+        },
+        {
+          "layer": 9,
+          "baseline_complete_cycles": 24429,
+          "candidate_complete_cycles": 21682,
+          "outputs_each": 25344,
+          "shared_sha256": "8b32a0c42fadef8e4dade0fd2858b82dc3d355e488d2aa307d5b41171f977fb0",
+          "expected_sha256": "3f35fa0ec941b4e7520795bc7f2545fc2eb4dead94a8e02156634818f913efa4"
+        },
+        {
+          "layer": 10,
+          "baseline_complete_cycles": 24429,
+          "candidate_complete_cycles": 21682,
+          "outputs_each": 25344,
+          "shared_sha256": "42e6b739b3256b06139459db7e060abb34fe05e01da153452c373258c80c37ca",
+          "expected_sha256": "57a88c12cb2d3c0f83aca62d3299ab39366ef25e9a825fb386a6769672f5ac90"
+        },
+        {
+          "layer": 11,
+          "baseline_complete_cycles": 24429,
+          "candidate_complete_cycles": 21682,
+          "outputs_each": 25344,
+          "shared_sha256": "08e3224633666c25e225f5475a20e87b555047f00ccacb852d1d399cf97dcc9c",
+          "expected_sha256": "4c867f3e293d08aea206cc1798211a4aea8540e82e75a838a9457dc4a430987c"
+        }
+      ]
+    }
+  },
+  "component_regressions": [
+    {
+      "source": {
+        "path": "build/candidate_checks/20261111T115954441844Z/result.json",
+        "sha256": "ea2851d16da28736af159d50a72571e0f23385a095cf1fbe001d1c016378ac5e"
+      },
+      "scope": "accelerator-only functional regression with behavioral synchronous SRAM",
+      "data_kind": "SYNTHETIC engineering vectors; not KWT/official precision evidence",
+      "seed": 20261112,
+      "random_cases": 12,
+      "shape": [
+        99,
+        64,
+        16
+      ],
+      "consumer_mode": "random backpressure and indexed MMIO probes",
+      "runner_sha256_at_run": "0b2906bf0f0032a25378e982d0293cdf50524df25b476fb9a5632ae51be69883",
+      "vector_hash_manifest_canonical_json_sha256": "d224c5e2f0f3240d70b6f881c72983bd0f3053f873f5972183a4d4425c436181",
+      "python_version": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
+      "iverilog_version": "Icarus Verilog version 12.0 (devel) (s20150603-1539-g2693dd32b)",
+      "runs": [
+        {
+          "candidate": "experiments/h1500v/opt12_wait/rtl/qingyu_accel.sv",
+          "passed": true,
+          "outputs_checked": 20592,
+          "case_compute_cycles": [
+            3762,
+            3613,
+            3786,
+            3636,
+            3814,
+            3663,
+            3747,
+            3685,
+            3708,
+            3646,
+            3837,
+            3734,
+            3680
+          ],
+          "store_stream_overlap_cycles": 0,
+          "source_sha256": {
+            "rtl/qingyu_sram16.sv": "d3d35a1e99e07c75fac13e450c87685e773dc4953ab5a7752dd0ba0622943b18",
+            "experiments/h1500v/opt12_wait/rtl/qingyu_accel.sv": "a5b7898d19322b4cad38ce682b3ae727fd19c3a92e3a3eb1f3f747eae5c52b4a",
+            "tb/tb_candidate_stream.sv": "2d52d6ba7130d0f68fc41cb49b8a2ecd7811f91ea39e440b7bebb542e85ef374"
+          }
+        },
+        {
+          "candidate": "experiments/h1500v/opt13_row8/rtl/qingyu_accel.sv",
+          "passed": true,
+          "outputs_checked": 20592,
+          "case_compute_cycles": [
+            3746,
+            3579,
+            3762,
+            3618,
+            3788,
+            3640,
+            3728,
+            3663,
+            3678,
+            3620,
+            3806,
+            3713,
+            3658
+          ],
+          "store_stream_overlap_cycles": 0,
+          "source_sha256": {
+            "rtl/qingyu_sram16.sv": "d3d35a1e99e07c75fac13e450c87685e773dc4953ab5a7752dd0ba0622943b18",
+            "experiments/h1500v/opt13_row8/rtl/qingyu_accel.sv": "419392c593a497cdcc2cd213cd78443505ad22f55f094e110d19d4cfb5873db6",
+            "tb/tb_candidate_stream.sv": "2d52d6ba7130d0f68fc41cb49b8a2ecd7811f91ea39e440b7bebb542e85ef374"
+          }
+        },
+        {
+          "candidate": "experiments/h1500v/opt14_ybank2/rtl/qingyu_accel.sv",
+          "passed": true,
+          "outputs_checked": 20592,
+          "case_compute_cycles": [
+            3636,
+            3478,
+            3659,
+            3512,
+            3683,
+            3537,
+            3624,
+            3556,
+            3580,
+            3517,
+            3705,
+            3607,
+            3556
+          ],
+          "store_stream_overlap_cycles": 1673,
+          "source_sha256": {
+            "rtl/qingyu_sram16.sv": "d3d35a1e99e07c75fac13e450c87685e773dc4953ab5a7752dd0ba0622943b18",
+            "experiments/h1500v/opt14_ybank2/rtl/qingyu_accel.sv": "2bc62a94efd26cab9bb572e536d93911a93420f3710a133b7485b4c38a5cbec3",
+            "tb/tb_candidate_stream.sv": "2d52d6ba7130d0f68fc41cb49b8a2ecd7811f91ea39e440b7bebb542e85ef374"
+          }
+        }
+      ],
+      "limits": [
+        "E203 end-to-end performance",
+        "official 600-sample accuracy",
+        "foundry SRAM timing",
+        "synthesis/STA/power/area"
+      ]
+    },
+    {
+      "source": {
+        "path": "build/candidate_checks/20261111T120036411359Z/result.json",
+        "sha256": "301a1d6d18349a6c17feb0a7a35316e3b1d48d151d6861a50a9feaa73e3cafaa"
+      },
+      "scope": "accelerator-only functional regression with behavioral synchronous SRAM",
+      "data_kind": "SYNTHETIC engineering vectors; not KWT/official precision evidence",
+      "seed": 20261112,
+      "random_cases": 12,
+      "shape": [
+        99,
+        64,
+        16
+      ],
+      "consumer_mode": "no artificial stalls",
+      "runner_sha256_at_run": "0b2906bf0f0032a25378e982d0293cdf50524df25b476fb9a5632ae51be69883",
+      "vector_hash_manifest_canonical_json_sha256": "d224c5e2f0f3240d70b6f881c72983bd0f3053f873f5972183a4d4425c436181",
+      "python_version": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
+      "iverilog_version": "Icarus Verilog version 12.0 (devel) (s20150603-1539-g2693dd32b)",
+      "runs": [
+        {
+          "candidate": "experiments/h1500v/opt12_wait/rtl/qingyu_accel.sv",
+          "passed": true,
+          "outputs_checked": 20592,
+          "case_compute_cycles": [
+            1683,
+            1683,
+            1683,
+            1683,
+            1683,
+            1683,
+            1683,
+            1683,
+            1683,
+            1683,
+            1683,
+            1683,
+            1683
+          ],
+          "store_stream_overlap_cycles": 0,
+          "source_sha256": {
+            "rtl/qingyu_sram16.sv": "d3d35a1e99e07c75fac13e450c87685e773dc4953ab5a7752dd0ba0622943b18",
+            "experiments/h1500v/opt12_wait/rtl/qingyu_accel.sv": "a5b7898d19322b4cad38ce682b3ae727fd19c3a92e3a3eb1f3f747eae5c52b4a",
+            "tb/tb_candidate_stream.sv": "2d52d6ba7130d0f68fc41cb49b8a2ecd7811f91ea39e440b7bebb542e85ef374"
+          }
+        },
+        {
+          "candidate": "experiments/h1500v/opt13_row8/rtl/qingyu_accel.sv",
+          "passed": true,
+          "outputs_checked": 20592,
+          "case_compute_cycles": [
+            1037,
+            1037,
+            1037,
+            1037,
+            1037,
+            1037,
+            1037,
+            1037,
+            1037,
+            1037,
+            1037,
+            1037,
+            1037
+          ],
+          "store_stream_overlap_cycles": 0,
+          "source_sha256": {
+            "rtl/qingyu_sram16.sv": "d3d35a1e99e07c75fac13e450c87685e773dc4953ab5a7752dd0ba0622943b18",
+            "experiments/h1500v/opt13_row8/rtl/qingyu_accel.sv": "419392c593a497cdcc2cd213cd78443505ad22f55f094e110d19d4cfb5873db6",
+            "tb/tb_candidate_stream.sv": "2d52d6ba7130d0f68fc41cb49b8a2ecd7811f91ea39e440b7bebb542e85ef374"
+          }
+        },
+        {
+          "candidate": "experiments/h1500v/opt14_ybank2/rtl/qingyu_accel.sv",
+          "passed": true,
+          "outputs_checked": 20592,
+          "case_compute_cycles": [
+            927,
+            927,
+            927,
+            927,
+            927,
+            927,
+            927,
+            927,
+            927,
+            927,
+            927,
+            927,
+            927
+          ],
+          "store_stream_overlap_cycles": 9425,
+          "source_sha256": {
+            "rtl/qingyu_sram16.sv": "d3d35a1e99e07c75fac13e450c87685e773dc4953ab5a7752dd0ba0622943b18",
+            "experiments/h1500v/opt14_ybank2/rtl/qingyu_accel.sv": "2bc62a94efd26cab9bb572e536d93911a93420f3710a133b7485b4c38a5cbec3",
+            "tb/tb_candidate_stream.sv": "2d52d6ba7130d0f68fc41cb49b8a2ecd7811f91ea39e440b7bebb542e85ef374"
+          }
+        }
+      ],
+      "limits": [
+        "E203 end-to-end performance",
+        "official 600-sample accuracy",
+        "foundry SRAM timing",
+        "synthesis/STA/power/area"
+      ]
+    }
+  ],
+  "host_driver_checks": [
+    {
+      "source": {
+        "path": "build/validate4_checks/20261111T120848789122Z/result.json",
+        "sha256": "905fc9cfa42ba6e87e3c3e9821c98feb4a39e580b9251f5a241ae36275ca7be7"
+      },
+      "passed": true,
+      "scope": "host validation API and error-code equivalence",
+      "flags": [
+        "-std=c11",
+        "-D_DEFAULT_SOURCE",
+        "-O3",
+        "-funroll-loops",
+        "-fstrict-aliasing",
+        "-Wall",
+        "-Wextra",
+        "-Werror",
+        "-DQINGYU_OUT16",
+        "-DQINGYU_FAST_TASK",
+        "-DQINGYU_BLOCK_COPY",
+        "-DQINGYU_DOUBLE_BUFFER",
+        "-DQINGYU_READ_AHEAD"
+      ],
+      "sources_sha256": {
+        "experiments/h1500v/opt14_ybank2/rtl/qingyu_accel.c": "6a631d714833b305244b8eed2cbdb4418242d849e21b11bd36f4c8b34854ae25",
+        "experiments/h1500v/opt14_ybank2/rtl/qingyu_accel.h": "fd29f78d169ef2fd57042ed3a5f9a65f0d6f623b3c15978ce2d6681843280076",
+        "experiments/h1500v/opt15_validate4/rtl/qingyu_accel.c": "2e5cefaa8d988c258f244e28806cd5a24a5ea7ca343af0df4ed45f7995bae45f",
+        "experiments/h1500v/opt15_validate4/rtl/qingyu_accel.h": "fd29f78d169ef2fd57042ed3a5f9a65f0d6f623b3c15978ce2d6681843280076",
+        "tb/test_validate4.c": "2dc40bf217e47d42271f4225bae1860d7c3ded564f570f4906abc66690ba08d7"
+      },
+      "compiler_version": "gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0",
+      "checks": 283446,
+      "baseline_equivalent": true,
+      "sanitizer_enabled": false,
+      "tests": [
+        "all 256 shift byte values in all 256 columns and four alignments",
+        "signed 48-bit bias boundaries in every column",
+        "10000 mixed parameter sets",
+        "all structural error codes and precedence over malformed data",
+        "guard pages and no MMIO during validation"
+      ]
+    },
+    {
+      "source": {
+        "path": "build/validate4_checks/20261111T120858928186Z/result.json",
+        "sha256": "e6f40dcd5dcf683fef617ac243be291a1a8a0cdeec98eaec0f1442eb29b884d5"
+      },
+      "passed": true,
+      "scope": "host validation API and error-code equivalence",
+      "flags": [
+        "-std=c11",
+        "-D_DEFAULT_SOURCE",
+        "-O3",
+        "-funroll-loops",
+        "-fstrict-aliasing",
+        "-Wall",
+        "-Wextra",
+        "-Werror",
+        "-DQINGYU_OUT16",
+        "-DQINGYU_FAST_TASK",
+        "-DQINGYU_BLOCK_COPY",
+        "-DQINGYU_DOUBLE_BUFFER",
+        "-DQINGYU_READ_AHEAD",
+        "-fsanitize=address,undefined",
+        "-fno-omit-frame-pointer",
+        "-g"
+      ],
+      "sources_sha256": {
+        "experiments/h1500v/opt14_ybank2/rtl/qingyu_accel.c": "6a631d714833b305244b8eed2cbdb4418242d849e21b11bd36f4c8b34854ae25",
+        "experiments/h1500v/opt14_ybank2/rtl/qingyu_accel.h": "fd29f78d169ef2fd57042ed3a5f9a65f0d6f623b3c15978ce2d6681843280076",
+        "experiments/h1500v/opt15_validate4/rtl/qingyu_accel.c": "2e5cefaa8d988c258f244e28806cd5a24a5ea7ca343af0df4ed45f7995bae45f",
+        "experiments/h1500v/opt15_validate4/rtl/qingyu_accel.h": "fd29f78d169ef2fd57042ed3a5f9a65f0d6f623b3c15978ce2d6681843280076",
+        "tb/test_validate4.c": "2dc40bf217e47d42271f4225bae1860d7c3ded564f570f4906abc66690ba08d7"
+      },
+      "compiler_version": "gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0",
+      "checks": 283446,
+      "baseline_equivalent": true,
+      "sanitizer_enabled": true,
+      "tests": [
+        "all 256 shift byte values in all 256 columns and four alignments",
+        "signed 48-bit bias boundaries in every column",
+        "10000 mixed parameter sets",
+        "all structural error codes and precedence over malformed data",
+        "guard pages and no MMIO during validation"
+      ]
+    }
+  ],
+  "environment": {
+    "source": {
+      "path": "reports/environment.json",
+      "sha256": "c2ca866426fbcf4ae8c0e016f665bf6656cf1d5415780e847dfbc903d8bf74db"
+    },
+    "ready": true,
+    "wsl_tool_versions": {
+      "python3": "Python 3.12.3",
+      "git": "git version 2.43.0",
+      "verilator": "Verilator 5.020 2024-01-01 rev (Debian 5.020-1)",
+      "iverilog": "Icarus Verilog version 12.0 (stable) ()",
+      "vvp": "Icarus Verilog runtime version 12.0 (stable) ()",
+      "g++": "g++ (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0",
+      "make": "GNU Make 4.3",
+      "riscv64-unknown-elf-gcc": "riscv64-unknown-elf-gcc (13.2.0-11ubuntu1+12) 13.2.0",
+      "riscv64-unknown-elf-objcopy": "GNU objcopy (2.42-1ubuntu1+6) 2.42"
+    },
+    "numpy": "1.26.4",
+    "e203_commit": "9f3e34f337f5d0a1236a285871ffa2032491617a",
+    "e203_source_manifest": {
+      "path": "reports/e203-source-manifest.json",
+      "sha256": "257a3f5028457f0901280d6ea365d552983f5eba2b121b7d983f6b1d4b7a7774"
+    },
+    "model_lock": {
+      "path": "model/requirements-model-win-py311.resolved.lock.txt",
+      "sha256": "b19fd0078dd7097b902fe5c2a65d6b93bcd8a5bbeed82f6a462745b3c9547c2f"
+    }
+  },
+  "production_lint": {
+    "source": {
+      "path": "reports/local_lint_review.json",
+      "sha256": "31a6447a212575c5f937c4bbb2631a1c3c542035c26cdeee52a070ff9839ce1c"
+    },
+    "tool": "Verilator 5.020 2024-01-01 rev (Debian 5.020-1)",
+    "scope": "production FIO/accelerator and shared SRAM wrappers; CPU excluded; macro models are stand-ins, not foundry timing models",
+    "runs": 12,
+    "nonzero_return_codes": 0,
+    "LATCH": 0,
+    "MULTIDRIVEN": 0,
+    "UNOPTFLAT": 6,
+    "interpretation": "Inherited shared-wrapper cmd_ready warnings reviewed as priority DAG; no demonstrated new high-risk production arithmetic truncation; not signoff"
+  },
+  "runner_reuse_review": {
+    "source": {
+      "path": "reports/reuse_build_fingerprint_review.json",
+      "sha256": "2914e9ef9ecee2759a592849e9d4b6a8f25a52bbcaf78f5ee33aa5b5d3b293ca"
+    },
+    "passed": true,
+    "runner_sha256_after_fix": "a0f715d99dff05aa126fc0f9f9e40d3924e9a3206f863c09d507948eb19c129f",
+    "checks": [
+      {
+        "result": "build/soc_opt13_row8_20261111_123231_999782/result.json",
+        "result_unchanged_sha256": "841f7a437a09025fb8bd5fd19711e0af66156d0cc55bf56e9ede9b2212138882",
+        "legacy_command_migration_passed": true,
+        "changed_timescale_rejected": "Simulator build arguments changed; rebuild required"
+      },
+      {
+        "result": "build/soc_opt15_validate4_20261111_123232_000196/result.json",
+        "result_unchanged_sha256": "906f774ead8a8dbb47f1a78f7e33de61412c41a4dbaab8dcf756a5a4d008e940",
+        "legacy_command_migration_passed": true,
+        "changed_timescale_rejected": "Simulator build arguments changed; rebuild required"
+      }
+    ],
+    "normalized_build_arguments": [
+      "--binary",
+      "--timing",
+      "--autoflush",
+      "--timescale-override",
+      "1ns/1ps",
+      "--top-module",
+      "tb_qingyu_soc_performance",
+      "--prefix",
+      "Vcandidate",
+      "--Mdir",
+      "<run>/obj",
+      "-Wno-fatal",
+      "-DDISABLE_SV_ASSERTION=1",
+      "-CFLAGS",
+      "-O1",
+      "-f",
+      "<run>/sources.f",
+      "-Ivendor/e203_hbirdv2/rtl/e203/core",
+      "-Ivendor/e203_hbirdv2/rtl/e203/perips",
+      "-Ivendor/e203_hbirdv2/rtl/e203/perips/apb_i2c"
+    ],
+    "scope": "Existing opt13 and opt15 build command migration, changed timescale rejection, original result hashes unchanged; no RTL simulation rerun"
+  },
+  "server_handoff": {
+    "bundle": {
+      "path": "build/server_bundles/20261111T124424577434Z/qingyu_server_bundle.zip",
+      "sha256": "6663ac78d78d0a5160600e31af516681fd29bec281d96391dbd29edf2b091ffe"
+    },
+    "size_bytes": 2283658,
+    "manifest": {
+      "path": "build/server_bundles/20261111T124424577434Z/qingyu_server_bundle/manifest.json",
+      "sha256": "7ace7b53224f200e9eae78291e6bc37e09bbe9cadeda227128abf7a7c44e8443"
+    },
+    "remote_bundle_name": "qingyu_validation_20261111.zip",
+    "remote_launcher": "qy",
+    "runtime_directory_prefix": "qingyu_verify_",
+    "status": "Uploaded; launcher not executed; no new-candidate VCS or PPA run",
+    "prior_probe": "VNC login and remote tools/SRAM directory probe completed",
+    "temporary_remote_files_cleanup": "Completed and FTP listing rechecked; old temporary probe/upload files absent"
+  },
+  "known_limits": [
+    "Original full reports, input vectors, logs and tool objects are local generated artifacts; restore or regenerate them to reproduce or independently audit their contents",
+    "Real local 256/256 subset is not organizer frozen 600-sample evaluation",
+    "Synthetic component and host-driver checks establish engineering behavior, not KWT precision",
+    "Component cycles describe 99x64x16; complete E203 task cycles describe 99x64x256",
+    "Behavioral SRAM and stand-in macro lint do not establish foundry timing or SRAM power",
+    "150 MHz is an assumed conversion clock; new candidates lack official synthesis, Formality, multicorner STA, area, power and energy results",
+    "Historical server PPA uses a different measurement window and cannot be combined with current complete-window cycles",
+    "A hash records artifact identity; this compact summary does not contain the full original artifact"
+  ]
+}

@@ -1,0 +1,70 @@
+{
+  "schema": "qingyu-task8-prefetch-validation-v1",
+  "result": "build/winograd_task8_prefetch/20261111T172625810973Z/result.json",
+  "result_sha256": "d77a50b4e2936233541c2cc3b98a6f8db749c93068252d22b171d4fdf566c691",
+  "completed": true,
+  "compiled_rtl_tb_unchanged": true,
+  "post_validation_change": "contract status metadata only; VALIDATED_CONTRACT.json preserves original; README and validation/source manifests added",
+  "unique_real_tasks": 12,
+  "unique_real_output_elements": 304128,
+  "real_validation_sample": "sample9 generated silence; no official600 claim",
+  "seeds": [
+    2371,
+    2477,
+    2551
+  ],
+  "per_seed_accumulator_checks": 857840,
+  "per_seed_successful_tasks": 33,
+  "per_seed_resets": 8,
+  "per_seed_aborts": 7,
+  "per_seed_expected_errors": 2,
+  "snapshot_same_cycle_replacements": [
+    384,
+    380,
+    383
+  ],
+  "per_seed_metadata_fault_with_published_snapshot": [
+    1,
+    1,
+    1
+  ],
+  "fast_cycles": 9931,
+  "overlap_base_fast_cycles": 13891,
+  "phases": {
+    "exclusive_load_wait": 2152,
+    "factor_cache_commit": 35,
+    "metadata_read": 272,
+    "compute": 7280,
+    "final_tile_store": 192
+  },
+  "actual_input_words": 5888,
+  "actual_output_words": 6336,
+  "per_task_W_macro_write_edges": 512,
+  "per_task_fast_W_input_words_during_DOT": 3256,
+  "per_task_fast_metadata_writes_during_DOT": 224,
+  "physical_sram_bits": 174080,
+  "raw_pair_lanes": 128,
+  "load_factor_multipliers": 2,
+  "snapshot_state_bits": 3121,
+  "W_burst_data_address_bits": 789,
+  "W_queue_control_bits_additional": true,
+  "strict_rtl_lint": "zero warnings",
+  "testbench_compile_diagnostics": "zero Verilator warnings",
+  "four_state_protocol": {
+    "log": "build/winograd_task8_prefetch_four_state_protocol/sim.log",
+    "sha256": "72b015edac6bd49bcb6ab4bd10ce9f3fec56006f23e6873e72af4d2234dcf639",
+    "scope": "one unique real task,12 full success including recovery/stalls;7abort,2fault,8reset;325616direct accumulator checks",
+    "write_Q_poison": true,
+    "model_source": "experiments/arithmetic/winograd_task8_prefetch/tb_sram_write_poison.sv",
+    "model_sha256": "5beae49277594ba2ae94c35c5d0b0848dbb6dcf9d2d70e8357342c8bf0a77ea5",
+    "foundry_model": false
+  },
+  "preserved_failure": {
+    "report": "build/winograd_task8_prefetch_smoke2/failure_analysis.json",
+    "sha256": "fe05a0f215c1a76a29abdff82583283cbbb7421a06825232b1cd9d8d957d3608",
+    "status": "two-buffer version failed required metadata-overlap coverage; replaced by three contexts"
+  },
+  "full_soc_tested": false,
+  "sta_passed": false,
+  "ppa_measured": false
+}

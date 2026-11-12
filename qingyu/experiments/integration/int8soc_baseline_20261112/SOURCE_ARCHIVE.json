@@ -1,0 +1,56 @@
+{
+  "schema": "qingyu-initial-int8-soc-source-archive-v1",
+  "created_utc": "2026-11-11T17:31:37.977499+00:00",
+  "scope": "Exact source archive of the first real E203 packet integration, with original tested-source path mapping. All original data and results retained; this does not promote current_candidate or prove official loader/PPA.",
+  "original_source_sha256": {
+    "experiments/integration/int8soc/qingyu_int8stream_fio.sv": "9a10d1474981537c8f288be12d47e90068acb7860244369698792d5fc83dd8ea",
+    "experiments/integration/int8soc/qingyu_e203_soc_top.v": "9b82a963d9a8fff34ba4b02067d70805d4b440989842bbfbcd6980ff611cc7d4",
+    "experiments/integration/int8soc/soc_main.c": "1227d36368f24476186527ed30b71445c807819bd2c77b88308b5dc613482292",
+    "experiments/integration/int8soc/tb_int8soc.sv": "90236f84df8a11ce735dfcd9775aeb0aac12110d1402ea8dce77670221245cab",
+    "experiments/integration/int8soc/run_soc.py": "62e372c69f618687efc781dfaf29d6beefe40574f42fac9e486f402549fbaa63",
+    "experiments/integration/int8soc/run_corpus_soc.py": "101c60fe1c62a52995fec6923b73ccaeb1a9ba054bedb383db8dc05010c79323",
+    "experiments/integration/int8soc/prepare_top.py": "e93c3ced82986b5bbfd2da341a2bde53027328fa78e4cb5de052d5e4cf7ebcff",
+    "experiments/integration/int8soc/contract.json": "9f01ed3aeb8ace756b0e8acc4188cff8cf3e4ec6ad73ceee2075430cb19e99c8",
+    "experiments/integration/int8soc/tb_int8stream_fio.sv": "839781c10cc95a05b7b056c7fae5250f4713c63f1cff6a0c5a83c0c8578369d2",
+    "experiments/integration/int8soc/run_mmio_checks.py": "0ce180ff200f0e2d19662024de45245250f9b85a77591728179efc4dcb32019f",
+    "experiments/integration/int8soc/MMIO_TEST_SOURCE_SHA256.json": "afb5b7f2249cfc992e5cd32007e34370f275870163028e7b1fecd074b4e27e29"
+  },
+  "files": {
+    "qingyu_int8stream_fio.sv": "9a10d1474981537c8f288be12d47e90068acb7860244369698792d5fc83dd8ea",
+    "qingyu_e203_soc_top.v": "9b82a963d9a8fff34ba4b02067d70805d4b440989842bbfbcd6980ff611cc7d4",
+    "soc_main.c": "1227d36368f24476186527ed30b71445c807819bd2c77b88308b5dc613482292",
+    "tb_int8soc.sv": "90236f84df8a11ce735dfcd9775aeb0aac12110d1402ea8dce77670221245cab",
+    "run_soc.py": "62e372c69f618687efc781dfaf29d6beefe40574f42fac9e486f402549fbaa63",
+    "run_corpus_soc.py": "101c60fe1c62a52995fec6923b73ccaeb1a9ba054bedb383db8dc05010c79323",
+    "prepare_top.py": "e93c3ced82986b5bbfd2da341a2bde53027328fa78e4cb5de052d5e4cf7ebcff",
+    "contract.json": "9f01ed3aeb8ace756b0e8acc4188cff8cf3e4ec6ad73ceee2075430cb19e99c8",
+    "tb_int8stream_fio.sv": "839781c10cc95a05b7b056c7fae5250f4713c63f1cff6a0c5a83c0c8578369d2",
+    "run_mmio_checks.py": "0ce180ff200f0e2d19662024de45245250f9b85a77591728179efc4dcb32019f",
+    "MMIO_TEST_SOURCE_SHA256.json": "afb5b7f2249cfc992e5cd32007e34370f275870163028e7b1fecd074b4e27e29"
+  },
+  "reports": {
+    "build/int8soc_corpus/20261111T172044938227Z/result.json": "6f0b47ca4420006603cd6deb9885a011ec6fb035a68104d74b04c75ee05675a5",
+    "build/int8soc/20261111T171723244199Z/result.json": "fc2552ff758c8b132730a7ce3a2ded3e7f87f14d3bb6108ccc2f1466a33265fb",
+    "build/int8soc/20261111T171723243779Z/result.json": "d5dfa640f4a2ab39ecfb636f516396f3b6e9d5f1033dcb20af1562b29e2aedd9",
+    "build/int8stream_mmio/20261111T171826155350Z/result.json": "c5960f73be88be9dc601c3d8226f81bbfae1b36f0c10905133942a9b4850323c",
+    "build/int8soc/20261111T172046042254Z/result.json": "e7bf9dcb3734707008c62643045471289d253e4d9db28f874056c5b2d7e073c0",
+    "build/int8soc/20261111T172211895868Z/result.json": "8e5b043d8b5601c7b70d27ed3837b05c91049c95581897d2ce85e9029ad8b753",
+    "build/int8soc/20261111T172340128707Z/result.json": "0ff966f088efc55f2583155655fbc81b3321f8469c29bf08dd6d805026f83ea9",
+    "build/int8soc/20261111T172507097680Z/result.json": "d1a98becfb81d19efd3a9087c19e3486445fafa2dd92c5b07db5e4c71a45e0b7",
+    "build/int8soc/20261111T172642562761Z/result.json": "7e99bcd05467541b3ca9b0d32b9d7b244a87a25a0a9cdb02188ce40656f4276c",
+    "build/int8soc/20261111T172822107476Z/result.json": "201533bcf197c418e58d02a2844dd34d2cda2d906eadd354093a0123460890e3"
+  },
+  "corpus_statistics": {
+    "tasks": 72,
+    "min_cpu_setup_to_ack": 14466,
+    "max_cpu_setup_to_ack": 14474,
+    "diagnostic_mean_cpu_setup_to_ack": 14469.777777777777,
+    "complete_task_output_elements": 1824768
+  },
+  "external_rtl": "Exact external dependencies are identified by each SoC report sources_sha256 and the existing frozen engine/core/codec/transport manifests.",
+  "notes": [
+    "The archived contract records its original pending-stage wording; passing stages are documented by these later hashed reports.",
+    "Source initializer outside the task window; generated silence and traffic-extreme samples are explicitly selected diagnostics, not an unbiased population mean.",
+    "Actual manufacturer macros/150MHz STA/area/whole-SoC energy/official600 evaluation remain unproven."
+  ]
+}

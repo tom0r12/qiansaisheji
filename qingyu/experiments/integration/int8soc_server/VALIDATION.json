@@ -1,0 +1,157 @@
+{
+  "schema": "qingyu-int8soc-server-validation-v1",
+  "passed": true,
+  "scope": "Local physical-interface functional verification and server package preparation",
+  "manufacturer_models_executed": false,
+  "formal_ppa_measured": false,
+  "official_loader_included": false,
+  "local_model_sha256": "cd78caa3d3484f22d397b173e9c6a610c76939f53b7ff332a0dd55354bae9a33",
+  "local_model_kind": "external functional stand-in; write Q poisoned; never copied into bundle",
+  "variants": {
+    "prefetch8": {
+      "package": {
+        "bundle": "build/int8soc_server_bundles/20261111T180240444050Z/qingyu_int8soc_bundle",
+        "zip": "build/int8soc_server_bundles/20261111T180240444050Z/qingyu_int8soc_validation.zip",
+        "zip_sha256": "aee8959cbaedab07de2b0bc8aacfcd5027ca48b66013d0a014d58970d07804d4",
+        "zip_bytes": 4200926,
+        "launcher_sha256": "1f5ec6559051688826e7f87afb46441bf3b660f11c781fd9a95823c859eb0e10",
+        "tasks": 72,
+        "uploaded": false
+      },
+      "package_result_sha256": "c8fb74b7f24e46a078162a52758ef17ff06e826ce32a3e9b8f3a50d37384e0a4",
+      "package_checks": {
+        "path": "build/int8soc_server_bundles/20261111T180240444050Z/local_package_checks.json",
+        "sha256": "f98987e9f4b942d83599a632550d7ed8fd5439df2f3fd683ff4a52ef3f8b15da"
+      },
+      "negative_model_activity_gates": {
+        "path": "build/int8soc_server_bundles/20261111T180240444050Z/local_model_gate_checks.json",
+        "sha256": "5a3e9aae0497af811127a19d144d09fd5ec1eb93b435fbfcf2bbe4fea2d5f305"
+      },
+      "physical_fixture": {
+        "path": "build/int8soc_physical_fixture/20261111T174803874627Z/result.json",
+        "sha256": "7bf9d03ddae5700396e484405a765b419b1e48eeffd35f7f101dd5dde11b0eb7"
+      },
+      "physical_metrics": {
+        "layer": 0,
+        "cpu_setup_to_ack": 10086,
+        "start_to_ack": 10074,
+        "first_read_to_ack": 10071,
+        "done_delay": 2,
+        "engine_counter": 10076,
+        "reads": 4522,
+        "writes": 3357,
+        "commands": 7879,
+        "responses": 7879,
+        "peak_pending": 3,
+        "macro_reads": 4547,
+        "macro_writes": 3357,
+        "core": 10043,
+        "load": 2264,
+        "factor": 35,
+        "cache": 272,
+        "compute": 7280,
+        "store": 192,
+        "firmware_cycles": 10101
+      },
+      "shared_words_read_back": 131072,
+      "physical_metrics_identical_to_behavioral": true,
+      "actual_macros": {
+        "private128": 21,
+        "private1024": 8,
+        "shared4096": 64,
+        "cpu4096": 16
+      },
+      "real_cpu_72_task_corpus": {
+        "path": "build/int8soc_corpus/20261111T174454919053Z/result.json",
+        "sha256": "3e647328ebbe1b9c4b3d96503e5446bcbdbba46125397583db64359cb0fa4bde"
+      },
+      "cpu_setup_range": [
+        10084,
+        11875
+      ],
+      "diagnostic_mean_cpu_cycles": 10732.666666666666
+    },
+    "task9": {
+      "package": {
+        "bundle": "build/int8soc_server_bundles/20261111T180709439563Z/qingyu_int8soc_bundle",
+        "zip": "build/int8soc_server_bundles/20261111T180709439563Z/qingyu_int8soc_validation.zip",
+        "zip_sha256": "d2990341cfd67e7a6c4aa9dc05f0799d1fa15035ebd02e1ee7bbfcdb382af313",
+        "zip_bytes": 4202044,
+        "launcher_sha256": "acb83785af95b7fae5fdbdca63ae7354335d8039d4df01b13415733a3c44275f",
+        "tasks": 72,
+        "uploaded": false
+      },
+      "package_result_sha256": "0ffa858d34ec63efe1b85a6a718a8c7a5a6ff5e48f46ada6e9228b76b740ae7e",
+      "package_checks": {
+        "path": "build/int8soc_server_bundles/20261111T180709439563Z/local_package_checks.json",
+        "sha256": "152d91eb3def95210f46bdc2a9e7461883b9e302fab56ff7e117813bfc4e8e70"
+      },
+      "negative_model_activity_gates": {
+        "path": "build/int8soc_server_bundles/20261111T180709439563Z/local_model_gate_checks.json",
+        "sha256": "e6befc58c6125785cd75a97bc7c54edccfc0460679d1a6dc26bb5654e3e5d39a"
+      },
+      "physical_fixture": {
+        "path": "build/int8soc_physical_fixture/20261111T175811744904Z/result.json",
+        "sha256": "0f6bccd693e9cabec8228a2f6c8198114d808090cbc1f71d4083dcde74b3b2b1"
+      },
+      "physical_metrics": {
+        "layer": 0,
+        "cpu_setup_to_ack": 9616,
+        "start_to_ack": 9604,
+        "first_read_to_ack": 9601,
+        "done_delay": 2,
+        "engine_counter": 9606,
+        "reads": 4522,
+        "writes": 3357,
+        "commands": 7879,
+        "responses": 7879,
+        "peak_pending": 3,
+        "macro_reads": 4547,
+        "macro_writes": 3357,
+        "core": 9573,
+        "load": 2264,
+        "factor": 141,
+        "cache": 272,
+        "compute": 6320,
+        "store": 576,
+        "firmware_cycles": 9631
+      },
+      "shared_words_read_back": 131072,
+      "physical_metrics_identical_to_behavioral": true,
+      "actual_macros": {
+        "private128": 21,
+        "private1024": 9,
+        "shared4096": 64,
+        "cpu4096": 16
+      },
+      "real_cpu_72_task_corpus": {
+        "path": "build/int8soc_corpus/20261111T175642268453Z/result.json",
+        "sha256": "e16df8dc4b12b6dcac3357150ce6fd33300f87118cb0595e1d7da15bda9a3ce5"
+      },
+      "cpu_setup_range": [
+        9531,
+        11674
+      ],
+      "diagnostic_mean_cpu_cycles": 10541.972222222223
+    }
+  },
+  "review_fixes": [
+    "Power artifact hash must agree with actual file, reviewed identity and passed simulation row",
+    "Explicit vendor include hashes in Tcl, plus whole copied manifest checked after assessment"
+  ],
+  "limitations": [
+    "Shared/TCM preload excluded; official loader boundary OPEN",
+    "No manufacturer timing model or official-library EDA execution",
+    "No new area, STA, energy or official600 accuracy claim",
+    "Upload/remote execution is managed separately by the main workflow"
+  ],
+  "superseded_package": {
+    "path": "build/int8soc_server_bundles/20261111T175542803501Z/qingyu_int8soc_validation.zip",
+    "sha256": "851075f701566b85b1be901649c8bd50913f64937930849043fb29ceb15a006f",
+    "reason": "R2 strengthens activity/assessment source binding; old artifact retained, not the current power entry"
+  },
+  "retained_failed_fixture": {
+    "path": "build/int8soc_physical_fixture/20261111T174625832811Z/result.json",
+    "reason": "Icarus rejected non-ASCII absolute readmemh paths; inputs are now copied and referenced by relative filenames"
+  }
+}

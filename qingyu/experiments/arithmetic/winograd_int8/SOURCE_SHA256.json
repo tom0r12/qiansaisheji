@@ -1,0 +1,15 @@
+{
+  "schema": "qingyu-frozen-arithmetic-source-v1",
+  "frozen_utc": "2026-11-11T15:48:58.687622+00:00",
+  "files": {
+    "contract.json": "39f4ed21b5a99cd8e76a37d08539f8de55547ed4d9edba40164340f49ee94807",
+    "README.md": "a9063d05006dff040a2bb51fec7dcd6d1564b0d73059c82d27ec871eb3da4f47",
+    "run_checks.py": "b7d09e4d57ec3cea58c0a4835bb034e4df59d6a830530e34fa15d1352e116da3",
+    "tb_winograd_int8.sv": "7344e8c92f4ed41679a52571e627a0f7834bd7d9b2bb1f66071ab25f8bbbfa21",
+    "winograd_int8_dot64.sv": "9badbb7615c79b5b84c7cc7f9054e528ed847f2c40a689123947367bcdaaf21e",
+    "winograd_int8_factor32.sv": "c525f65fe0284137f45cb32aa400c9b78b7370d4bb73a43f7b949cc9aac20927"
+  },
+  "validation_result": "build/winograd_int8/20261111T154720938878Z/result.json",
+  "validation_result_sha256": "9da59ef1b8fe81abea827f3164d1749ff5b53fde6800b5a0a41cad4caea878e2",
+  "status": "unit_simulation_and_lint_passed; no_SoC_or_PPA_claim"
+}

@@ -1,0 +1,46 @@
+{
+  "schema": "qingyu-int8-full-validation-soc-summary-v1",
+  "passed": true,
+  "date": "2026-11-12",
+  "population": {
+    "validation_records": 256,
+    "layers_per_record": 12,
+    "tasks": 3072,
+    "official_600_evaluation": false
+  },
+  "design": {
+    "core": "experiments/arithmetic/winograd_task8_prefetch",
+    "engine": "experiments/integration/int8stream_dual",
+    "codec": "experiments/codec/rice32_bounded",
+    "shared_memory_path": "unchanged E203 platform memory fabric",
+    "output_elements_checked": 77856768
+  },
+  "measurement": {
+    "window": "first accepted CPU configuration write through final output-marker write ACK",
+    "initial_source_preload_included": false,
+    "mean_cycles": 10557.794270833334,
+    "minimum_cycles": 10084,
+    "maximum_cycles": 11875,
+    "ideal_serialized_loader_plus_cpu_mean_cycles": 15356.773763020834,
+    "assumed_clock_hz": 150000000,
+    "throughput_inside_measured_window_at_assumed_clock_tasks_per_second": 14207.513061,
+    "throughput_with_ideal_serialized_loader_at_assumed_clock_tasks_per_second": 9767.676617,
+    "clock_signed_off": false,
+    "official_loader_boundary_confirmed": false
+  },
+  "provenance": {
+    "full_soc_report_sha256": "f90856eae6b7ba06f488d12a56f57a6d2ea7025c1c1782b88515cf736372778c",
+    "packet_corpus_report_sha256": "7073010c24b7c9a8b75802e3cef2f3912db62fc886ad3893a3b495d51e25ddcf",
+    "full_run_script_sha256": "9b9e738a9657bbf62f98604b8b9f117943695bf95271b52620f5c0d55c30939b",
+    "soc_runner_sha256": "7d4a5bb7d84c9bb5bce6f8f8f3f01d32eb0d07c0c7b717bf4b2c7fef3bfb143f",
+    "preregistration_sha256": "0c6bf1b89b6bccdf4a28f75ce3497148e013df8246df8d7e9c52da0c82634397",
+    "executed_samples": 255,
+    "inherited_hash_verified_sample_results": 1
+  },
+  "limits": [
+    "The result covers the frozen 256-record validation set, not the official 600-record evaluation.",
+    "Initial source preload is outside the measured CPU window; the serialized-loader value is an ideal estimate, not a real loader measurement.",
+    "150 MHz is an assumption; no same-candidate area, STA, or whole-SoC energy result is included.",
+    "The full raw report is retained locally and excluded from Git; its SHA-256 is recorded above."
+  ]
+}

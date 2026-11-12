@@ -1,0 +1,29 @@
+{
+  "schema": "qingyu-int8soc-server-source-v1",
+  "frozen_utc": "2026-11-11T18:09:00.568249+00:00",
+  "files": {
+    "check_bundle.py": "c8d626bff4bdccb4e97e865bf690796f4d86bd6aa080cc7571cf594d8921a228",
+    "check_model_gates.py": "6f7aecd70475fb9c7be368dc485ac28fe35aeb5abb15136b55b8b056ccf85bea",
+    "freeze_evidence.py": "59c51fd9fb38d5318f10b4bc04b912aa79797c44ad791c3ec1707bfd97afe13a",
+    "local_fixture_check.py": "41e9d8a0001819ed5e246da983635b5f1d341a9511334b19e106ad35cb47b281",
+    "prepare_bundle.py": "86153fc17d33e9fcf6792544d1db6c257fe0a3b30bdf2eb4af05293c5ab2769f",
+    "prepare_fixture.py": "f879b8a0d01c3af0fe5dd5f438457391db2c8f5c79c76ab622504c020f584ee3",
+    "prepare_templates.py": "5fa6174f1dabd4de3f3718a924360fc3d5f3d87cbb83b0ea8f6baa9b89d412c1",
+    "README.md": "530bb20b2a0c807c17dcd95bc8219afb4cb2a2555c88094ae54f3f7e8692c9db",
+    "SERVER_README.md": "0374e41082a8bd61c133cfd7c9529cc01e2226235f27c7031a586ebebeddc9da",
+    "tb_int8soc_behavior.sv": "75eba3928ca27d3a70b63bdc0603e69648b94fe021b5825892a491eb4abc1ff9",
+    "tb_int8soc_macro.sv": "8701f5ac0e842a911ec2a870a0c082bc4f5fd79b1e499997ba5d837349593a63",
+    "TEMPLATE_ORIGINS.json": "f71544f2739def8fbaac72020635d3a9b91504b57ad51afaeb976b94c8f4ef9a",
+    "templates/assessment/common.tcl": "8ed6c00373cef7efc5871d68dd1d147c634c41129ad78ae3f126a56598a45301",
+    "templates/assessment/formal.tcl": "67095706fc3a8ff0be8d29c9b9f873f555bfe16c240326c9be922a482651cac1",
+    "templates/assessment/sta_power.tcl": "030cf8f049adf53f7778bd1e062a49d91ba5bafc18f793b32c5aa131cd8ec1b8",
+    "templates/assessment/synth.tcl": "de4354cf71ed3f3c146e165f79c77e72ba3ee0111d93c861a14c12dc5805d757",
+    "templates/library_identity.example.tcl": "0cacd52d65dc48ad827fa4d535f7dba11490d796c2a177aa623d0d43525783b6",
+    "templates/macro_models.example.json": "786429dd61ce390494e68d7772f74d31d2a07fd770ee5c759c9e6448dff3eb3a",
+    "templates/platform_config.example.tcl": "e020087f57382bed8ce54ae54d3eac290ce3af1fb51c2bf9e7fc5b3605dfbe20",
+    "templates/run_int8_server.py": "a19f62195392b1521923e16f4c79c638330c78b5d2a08a71fa19ad86c415d191",
+    "VALIDATION.json": "ea6b16e642a1af2fe6f1799c8f8465e2ef599ba9ab10fba3b72b14bbf1e97fca"
+  },
+  "source_boundary": "Only this independent fixture/packaging directory. Candidate/source identities are separately bound by each immutable package.",
+  "external_dependencies": {}
+}

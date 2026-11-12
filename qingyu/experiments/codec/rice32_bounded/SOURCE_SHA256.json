@@ -1,0 +1,16 @@
+{
+  "schema": "qingyu-rice32-bounded-source-freeze-v1",
+  "files": {
+    "rice32_encoder.sv": "2c83bf08909654863be37a5c59a1576763463703cfd3e4a3deb7facd59678913",
+    "rice32_decoder.sv": "8abb1c8d81a62b6b42f3736b788abe60889d6c70782edacfc34345a6742a8163",
+    "tb_rice32_bounded.sv": "65a4c9360517b8ef7776891a520a7371dfaecef185c6f3bb232e83fa6fcac443",
+    "run_checks.py": "c88b883f0a9a795a09a773741a45525296ec96852118ebcec2794a4e63e51492",
+    "contract.json": "111f34a887ab81eb9fd7f01d99b19964bd2a50c4ed34f56ecdacd4ea0b8b322a",
+    "README.md": "268267373d377d3364503b029856cd868d3c6cf04d6ffc78d1d3941eb280a294"
+  },
+  "final_regression": "runs/20261111T173120676870Z/result.json",
+  "final_regression_sha256": "9e2a3d8512546aadedba272fe0b3f37e6e0b73a0ecdc46ff4e8a86d23294f710",
+  "alternative_simulator": "runs/20261111T173017289899Z/result.json",
+  "alternative_simulator_sha256": "b2f51ba9a88c3d3b94cdcd8fe54dca8f5c85cb831857173cd829aee33544b1c1",
+  "original_source_manifest_sha256": "d3398aec80ffa79b58609997c387f41e8225491661807dd1faa8550b13f9443b"
+}

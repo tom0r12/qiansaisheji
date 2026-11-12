@@ -1,0 +1,19 @@
+{
+ "schema": "qingyu-int8soc-mmio-v1",
+ "status": "Experimental; not yet SoC simulated or PPA signed off",
+ "bus": "Original official 32-bit memory fabric unchanged. Existing CPU/DMA merger uses OUTSTANDING4 and ONE_PER_PORT01. One new engine DMA master; shared SRAM single sysmem ingress. Legacy six-master arbitration is unnecessary for this engine and is removed only from the derived local top.",
+ "registers": {
+  "0xf0000000": "Read ID 0x51385231",
+  "0xf0000004": "Full-mask write1 starts only when engine ready; write2 clears completed/error only while idle; all other values or busy writes error. No asynchronous software abort.",
+  "0xf0000008": "Read/write source pointer; write only idle, full mask",
+  "0xf000000c": "Read/write output pointer; write only idle, full mask",
+  "0xf0000010": "Read status bit0 busy, bit1 completed, bit2 error, bit3 ready, bits15:8 error code",
+  "0xf0000014": "Blocking status read waits for success and real DMA drain, or returns busy+error on an active fault/timeout while external transactions keep draining. It never declares done merely because a slave is missing. Accepted response payload remains stable while CPU is backpressured.",
+  "0xf0000018_to30": "Read task/core/load/factor/cache/compute/store cycle counters in that order",
+  "0xf0010000": "Full-mask host notification write for the engineering harness"
+ },
+ "response": "One outstanding MMIO command. Invalid address, operation, partial write or write while busy receives error without changing configuration. Inputs and output disjointness are checked by the engine before any output mutation.",
+ "completion": "Engine output marker ACK precedes completion status. Whole-task scoreboard separately records first CPU pointer write, accepted START, first source read, final originating marker ACK, and firmware elapsed cycles. Preloaded source initialization remains explicitly outside this engineering task window; no official-loader claim.",
+ "cache": "Every accepted engine START clears speculative shared read cache; private cold-task epochs are reinitialized by BEGIN. Never preserve prior-task X/W/factors as a performance shortcut.",
+ "validation_pending": ["MMIO held-response and invalid operations", "Real E203 cold task and output/source checks", "Twelve layers", "Factory SRAM timing and process synthesis/STA/power"]
+}

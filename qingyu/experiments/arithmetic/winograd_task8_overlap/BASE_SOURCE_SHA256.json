@@ -1,0 +1,24 @@
+{
+  "schema": "qingyu-frozen-task8-source-v1",
+  "frozen_utc": "2026-11-11T17:06:42.674349+00:00",
+  "files": {
+    "contract.json": "f38aa77aba4f8442fc004bbfc4075945227aceda10f75a3d2c16c96778751b9c",
+    "export_vectors.py": "1637cb676f71268f0fb57a514ce5551c827e3bb74a778fd03239b7e5094cde1c",
+    "README.md": "e24b1e7e5dec939155e550d7f9e77ecf42c5a3896ba7127a3088a9b0a1aa217d",
+    "run_checks.py": "26021174551938481c3f111bde06349f558e6ca08a32b4e22f562881349e8060",
+    "tb_winograd_task8.sv": "1106022e7f861bc73165351b5fa89af051981e1a6d89b7e0204339207554068e",
+    "VALIDATED_CONTRACT.json": "9cb93b872bfa41f02338e32f365bbd2c24b73c12345109f6e08d302c69cbe389",
+    "VALIDATION.json": "2633d3125e89da5b7a3348c1a0cb5ceb7489d3ebc5fd77f0865fb9bf01edb538",
+    "winograd_int8_task8.sv": "b94868d460ef57ed4f878b2e6c683f01430298485fc981c4b6d337f86a268ac3"
+  },
+  "external_dependencies": {
+    "experiments/arithmetic/winograd_array8/winograd_int8_pair_acc32.sv": "e117a74f05340c29111d3ddc845de084c7ca87eb7d9038d9c361968131942f44",
+    "rtl/qingyu_sram16.sv": "d3d35a1e99e07c75fac13e450c87685e773dc4953ab5a7752dd0ba0622943b18",
+    "experiments/arithmetic/winograd_array8/SOURCE_SHA256.json": "9bddf3da4af9036b4bee373c34b833fe5a8899f8581a5f076f07421e7fdaceaa"
+  },
+  "validation_result": "build/winograd_task8/20261111T170054752807Z/result.json",
+  "validation_result_sha256": "3f7d4521b53b00797e56b7629efbfa64bba238290e1007869fc44bb4dc14570b",
+  "vector_manifest": "build/winograd_task8_vectors_20261112/manifest.json",
+  "vector_manifest_sha256": "a27c88cc5bcc74c6fdf3e78af4630d7e878b28a7121190cef36f3014e8b8b529",
+  "status": "serial_compute_block_verified_not_SoC_or_PPA"
+}

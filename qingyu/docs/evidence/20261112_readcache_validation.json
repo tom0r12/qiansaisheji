@@ -1,0 +1,85 @@
+{
+  "schema": "qingyu-readcache-local-validation-v1",
+  "candidate": "opt33_readcache",
+  "passed": true,
+  "selected_candidate_changed": false,
+  "evidence": {
+    "soc33": {
+      "path": "build/bus_readcache_soc_opt33_readcache_20261111_161154_758979/result.json",
+      "sha256": "5da5d1095324a9ea5f1443d19cd38c6d9961f8c7f05831d1975b048cb1f60de5"
+    },
+    "first_layer": {
+      "path": "build/bus_readcache_soc_opt33_readcache_20261111_160451_665443/result.json",
+      "sha256": "e0af932a265916d411694f8f91f20b40577b7a828bc8b6a39a55e4da949d8ed8"
+    },
+    "soc32": {
+      "path": "build/bus_outputqueue_soc_opt32_outputqueue_20261111_155714_729566/result.json",
+      "sha256": "e76b7aa8a3399813f54e52792ffaf014d0d34cfe839911a33a3f41d363533afa"
+    },
+    "standalone": {
+      "path": "experiments/memory/read_ahead/runs/20261111T160015834129Z/result.json",
+      "sha256": "e9f7cb82faad3217ccc79092f1c11b39266e47763c09b888231d4e017291add5"
+    },
+    "wrapper": {
+      "path": "build/shared_readcache_checks/20261111T161614331493Z/result.json",
+      "sha256": "c72564fb0beb4e6f1be2f7a9b3b260e807556d3ed15709cacb27756e96a4599e"
+    },
+    "source_manifest": {
+      "path": "experiments/h1500v/opt33_readcache/SOURCE_SHA256.json",
+      "sha256": "c889fef53c251112087988c9a0bad28b400de71da57d016ad9a9d4d74af77ba2"
+    }
+  },
+  "controller_embedded_text_identical": true,
+  "same_shared_expected_inputs_as_opt32": true,
+  "firmware_change": "Explicit qingyu_reset before initial staged-source validation; normal per-task reset remains included",
+  "real_model_comparison": {
+    "layers": 12,
+    "outputs": 304128,
+    "cycles": [
+      55565,
+      55597,
+      55597,
+      55597,
+      55597,
+      55597,
+      55597,
+      55597,
+      55597,
+      55597,
+      55597,
+      55597
+    ],
+    "mean_engineering_cycles": 55594.333333333336,
+    "tasks_per_second_at_assumed_150mhz": 2698.1167145332556,
+    "opt32_mean_cycles": 66093.75,
+    "cycle_reduction_percent": 15.885642237982655,
+    "throughput_increase_percent": 18.885767734121583,
+    "shared_commands_and_responses_per_task": 37440
+  },
+  "memory_activity": {
+    "accepted_shared_reads_per_task": 12832,
+    "mean_actual_macro_reads_per_task": 14965.25,
+    "actual_macro_read_increase_percent": 16.62445448877805,
+    "actual_macro_writes_per_task": 24608,
+    "prefetch_macro_reads_per_task": 12832,
+    "clears_per_task": 2
+  },
+  "protocol": {
+    "standalone_seeds": 10,
+    "wrapper_modes": 2,
+    "wrapper_seeds_per_mode": 3,
+    "physical_macro_count": 64,
+    "byte_offset_aliases": 4,
+    "write_masks": 16,
+    "banks": 32,
+    "readback": "All touched words initialized and read back through accepted bus commands; Q poisoned on writes"
+  },
+  "limits": [
+    "150 MHz is an assumption, no STA/PPA or official 600-sample evaluation",
+    "Source preload remains outside engineering task window; official loader boundary unresolved",
+    "Same-cycle hit response adds macro-Q/bank/cache/fabric timing path; must verify real macro timing",
+    "Additional speculative reads consume energy; no net energy benefit claimed",
+    "No official bus RTL or parameters changed; no shared SRAM bypass",
+    "Functional macro stand-in is not manufacturer timing/power evidence"
+  ]
+}

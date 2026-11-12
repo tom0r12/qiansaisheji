@@ -1,0 +1,37 @@
+"""Create this experiment's independent runner from the frozen harness pattern."""
+from pathlib import Path
+HERE=Path(__file__).resolve().parent
+ROOT=HERE.parents[3]
+def once(text,old,new):
+ if text.count(old)!=1:raise ValueError('Runner anchor differs: '+old)
+ return text.replace(old,new)
+def main():
+ text=(ROOT/'experiments/integration/int8stream_dual/run_checks.py').read_text()
+ text=once(text,'Real twelve-layer packet integration through the unchanged official memory fabric.','Conditional real-loader-write packet integration through the unchanged official memory fabric.')
+ text=once(text,'Run with Python in WSL. This is an engine integration fixture, without CPU or\nofficial initial loader. Source preload is outside the measured window.','Run with Python in WSL. A bounded same-clock model occupies the existing CPU-side\nmerger port. Initial writes are real and measured, but this is not an actual\nE203 CPU or an identified official platform loader.')
+ text=text.replace("ROOT/'build/int8_packets_20261112'","ROOT/'build/int8_packet_corpus_20261112/sample009'")
+ text=text.replace("ROOT/'build/int8stream_dual'","ROOT/'build/streaming_loader_study'")
+ text=text.replace("'experiments/codec/rice32','experiments/transport/rowpair_pack'","'experiments/codec/rice32_bounded','experiments/transport/rowpair_pack'")
+ text=text.replace("HERE/'qingyu_int8stream_engine.sv'","HERE/'engine/qingyu_int8stream_engine.sv'")
+ text=text.replace("ROOT/'experiments/codec/rice32/rice32_decoder.sv'","ROOT/'experiments/codec/rice32_bounded/rice32_decoder.sv'")
+ text=text.replace("ROOT/'experiments/codec/rice32/rice32_encoder.sv'","ROOT/'experiments/codec/rice32_bounded/rice32_encoder.sv'")
+ text=once(text,"tb=HERE/'tb_int8stream_engine.sv';compiled=vendor_files+headers+rtl+[tb]","rtl.append(ROOT/'experiments/h1500v/opt33_readcache/rtl/qingyu_icb_merge.sv')\n tb=HERE/'test/tb_streaming_loader.sv';compiled=vendor_files+headers+rtl+[tb]")
+ text=text.replace("schema='qingyu-int8stream-engine-checks-v1'","schema='qingyu-conditional-streaming-loader-checks-v1'")
+ text=text.replace("start='accepted START'","start='first real producer write offer; also first accept and originating ACK'")
+ text=text.replace("excluded='testbench shared-memory packet preload; no CPU integration or official loader'","excluded='actual E203 and official-loader implementation overhead; source initialization is not preloaded'")
+ text=text.replace("'No full-SoC CPU scheduling'","'Conditional same-clock producer, not actual CPU or official loader'")
+ text=text.replace("'tb_int8stream_engine'","'tb_streaming_loader'").replace("'Vint8stream'","'Vloader'")
+ text=text.replace('qingyu_int8stream_dual_build_','qingyu_loader_build_')
+ text=text.replace('NEXT_WRITTEN_WORDS','NEXT_OUTPUT_WORDS').replace('WRITTEN_WORDS','OUTPUT_WORDS')
+ text=text.replace(r'^PASS int8stream (.*)$',r'^PASS conditional_loader (.*)$')
+ text=text.replace("line.startswith('ENGINE_CASE ')","line.startswith('LOADER_CASE ')")
+ text=text.replace("(18 if a.fault_checks and layer==0 else 2)","(15 if a.fault_checks and layer==0 else 4)")
+ text=once(text,"   concurrency=[{k:int(v) for k,v in re.findall(r'(\\w+)=(-?\\d+)',line)} for line in text.splitlines() if line.startswith('ENGINE_CONCURRENCY ')]\n   if len(concurrency)!=len(cases):raise ValueError('Incomplete read/write concurrency evidence')\n",'')
+ text=text.replace("c['fault']","c['mode']").replace("case['fault']","case['mode']")
+ text=text.replace("if case['mode']==0:","if case['mode']<=2:")
+ text=text.replace("cases=cases,concurrency=concurrency,","cases=cases,serial=cases[2],serial_back_to_back=cases[3],")
+ text=text.replace('start_to_magic_ack','offer_to_final')
+ text=once(text,"   primary=cases[0];secondary=cases[1]","   primary=cases[0];secondary=cases[1]\n   if [c['serial'] for c in cases[:4]]!=[0,0,1,1]:raise ValueError('Serial/streaming control cases incomplete')\n   if any(c['offer_to_final']<c['commands'] for c in cases[:4]):raise ValueError('Initial-load window violates single-bus service floor')")
+ (HERE.parent/'run_checks.py').write_text(text,newline='\n')
+ print('Created independent loader runner')
+if __name__=='__main__':main()

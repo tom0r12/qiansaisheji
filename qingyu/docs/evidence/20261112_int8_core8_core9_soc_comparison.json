@@ -1,0 +1,183 @@
+{
+  "schema": "qingyu-int8-real-soc-core-comparison-v1",
+  "passed": true,
+  "reports": {
+    "build/int8soc_corpus/20261111T174454919053Z/result.json": "3e647328ebbe1b9c4b3d96503e5446bcbdbba46125397583db64359cb0fa4bde",
+    "build/int8soc_corpus/20261111T175642268453Z/result.json": "e16df8dc4b12b6dcac3357150ce6fd33300f87118cb0595e1d7da15bda9a3ce5"
+  },
+  "comparison_script_sha256": "6097fe42b38db9d6814e4c742bde3560fd526e917eb338ae9efc8a1698d1c43b",
+  "core8": "experiments/arithmetic/winograd_task8_prefetch",
+  "core9": "experiments/arithmetic/winograd_task9",
+  "common_engine": "experiments/integration/int8stream_dual",
+  "common_codec": "experiments/codec/rice32_bounded",
+  "tasks_per_candidate": 72,
+  "samples": [
+    {
+      "sample_index": 0,
+      "core8_mean_cpu_cycles": 10574.916666666666,
+      "core9_mean_cpu_cycles": 10477.25,
+      "mean_cycles_saved": 97.66666666666606,
+      "cycle_reduction_percent": 0.9235691376606536,
+      "paired_saved_cycles": [
+        111,
+        99,
+        91,
+        99,
+        104,
+        105,
+        86,
+        100,
+        102,
+        93,
+        89,
+        93
+      ],
+      "core8_serialized_ideal_loader_plus_cpu_mean": 15390.916666666666,
+      "core9_serialized_ideal_loader_plus_cpu_mean": 15293.25
+    },
+    {
+      "sample_index": 9,
+      "core8_mean_cpu_cycles": 10084.75,
+      "core9_mean_cpu_cycles": 9613.333333333334,
+      "mean_cycles_saved": 471.41666666666606,
+      "cycle_reduction_percent": 4.674549856631707,
+      "paired_saved_cycles": [
+        470,
+        426,
+        440,
+        482,
+        485,
+        553,
+        467,
+        488,
+        428,
+        499,
+        455,
+        464
+      ],
+      "core8_serialized_ideal_loader_plus_cpu_mean": 14632.583333333334,
+      "core9_serialized_ideal_loader_plus_cpu_mean": 14161.166666666666
+    },
+    {
+      "sample_index": 31,
+      "core8_mean_cpu_cycles": 10558.166666666666,
+      "core9_mean_cpu_cycles": 10434.75,
+      "mean_cycles_saved": 123.41666666666606,
+      "cycle_reduction_percent": 1.1689213720816374,
+      "paired_saved_cycles": [
+        117,
+        102,
+        110,
+        119,
+        127,
+        114,
+        125,
+        106,
+        103,
+        150,
+        136,
+        172
+      ],
+      "core8_serialized_ideal_loader_plus_cpu_mean": 15366.583333333334,
+      "core9_serialized_ideal_loader_plus_cpu_mean": 15243.166666666666
+    },
+    {
+      "sample_index": 127,
+      "core8_mean_cpu_cycles": 11037.416666666666,
+      "core9_mean_cpu_cycles": 10906.416666666666,
+      "mean_cycles_saved": 131.0,
+      "cycle_reduction_percent": 1.186871928062877,
+      "paired_saved_cycles": [
+        118,
+        119,
+        119,
+        138,
+        144,
+        148,
+        136,
+        136,
+        140,
+        127,
+        129,
+        118
+      ],
+      "core8_serialized_ideal_loader_plus_cpu_mean": 15938.75,
+      "core9_serialized_ideal_loader_plus_cpu_mean": 15807.75
+    },
+    {
+      "sample_index": 202,
+      "core8_mean_cpu_cycles": 11625.666666666666,
+      "core9_mean_cpu_cycles": 11443.166666666666,
+      "mean_cycles_saved": 182.5,
+      "cycle_reduction_percent": 1.569802448605098,
+      "paired_saved_cycles": [
+        188,
+        184,
+        186,
+        201,
+        175,
+        204,
+        179,
+        185,
+        186,
+        164,
+        182,
+        156
+      ],
+      "core8_serialized_ideal_loader_plus_cpu_mean": 16747.666666666668,
+      "core9_serialized_ideal_loader_plus_cpu_mean": 16565.166666666668
+    },
+    {
+      "sample_index": 255,
+      "core8_mean_cpu_cycles": 10515.083333333334,
+      "core9_mean_cpu_cycles": 10376.916666666666,
+      "mean_cycles_saved": 138.16666666666788,
+      "cycle_reduction_percent": 1.3139854653236338,
+      "paired_saved_cycles": [
+        114,
+        133,
+        113,
+        131,
+        113,
+        139,
+        150,
+        128,
+        114,
+        167,
+        175,
+        181
+      ],
+      "core8_serialized_ideal_loader_plus_cpu_mean": 15294.916666666666,
+      "core9_serialized_ideal_loader_plus_cpu_mean": 15156.75
+    }
+  ],
+  "limits": [
+    "Source preload excluded; real CPU setup through final output-marker ACK only.",
+    "Diagnostic selection includes generated silence and traffic extreme, not an unbiased population mean.",
+    "150MHz remains unqualified by process STA; no measured new area/energy.",
+    "Ideal serialized loader bounds add at least one cycle per source word; actual loader overhead can be greater."
+  ],
+  "acceptance": {
+    "throughput_tasks_s_min_exclusive": 10450,
+    "area_mm2_max": 0.5,
+    "energy_uj_max": 6.3,
+    "official_loader_measured": false,
+    "physical_area_measured": false,
+    "whole_soc_energy_measured": false,
+    "satisfied": false
+  },
+  "diagnostic_summary": {
+    "core8_mean_cpu_cycles": 10732.666666666666,
+    "core9_mean_cpu_cycles": 10541.972222222223,
+    "mean_cycles_saved": 190.69444444444343,
+    "cycle_reduction_percent": 1.7767666728782232,
+    "conditional_same_clock_throughput_gain_percent": 1.8089067247062607
+  },
+  "posthoc_non_generated_silence_description": {
+    "selection": "Exclude the preregistered generated silence control sample9 only; descriptive, no design fitting",
+    "core8_mean_cpu_cycles": 10862.25,
+    "core9_mean_cpu_cycles": 10727.7,
+    "mean_cycles_saved": 134.54999999999927,
+    "cycle_reduction_percent": 1.2386936408202653
+  }
+}

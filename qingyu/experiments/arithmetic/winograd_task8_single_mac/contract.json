@@ -1,0 +1,15 @@
+{
+  "schema": "qingyu-winograd-task8-single-stage-mac-experiment-v1",
+  "status": "Unverified experiment; do not select before correctness and actual150MHz STA",
+  "derived_core": "experiments/arithmetic/winograd_task8_prefetch/winograd_int8_task8.sv",
+  "derived_core_sha256": "4d4eb4433f43079790e438d53ab57b631cdc1f93e9fd3dfa5774a855c7826a5e",
+  "change": "Same core cache/quantization; replace128 raw-pair lanes with a single-cycle operand-sum/multiply/accumulate path. No registered product stage. Central one-bit completion delay retains the original DOT-WAIT schedule and W-prefetch write opportunities.",
+  "numeric": "Signed9x9 product18, sign-extension to23-bit accumulator, clear accumulation only on accepted first marker, output after accepted last marker. Original four-lane correction/RNE/saturation remains unchanged.",
+  "protocol": "Hold completed accumulator and valid under output backpressure. Accept input only when no output held or that output handshakes at the same edge. Synchronous reset invalidates accumulator and output.",
+  "resource": "Declared lane retained state45->24bits,128 lanes, plus1 central completion-delay bit; raw difference2687bits is not mapped FF savings or area. SRAM geometry/count unchanged.",
+  "timing_risk": "The new combinational path includes two9-bit operand adders, a9x9 multiplier and23-bit accumulate. No claim that it meets6.667ns in the competition library; original pipelined lane remains frozen.",
+  "verification": "Reuse original independent core task stimulus/checker with12 real and synthetic bounds, accumulator/output comparison, stalls, fault drain and resets. Compare observed complete private and realE203 cycles; earlier output can affect W-prefetch scheduling.",
+  "lint_waiver": "DECLFILENAME only for the second module deliberately kept inside the same hashed core compilation unit; no logic/timing warning is waived.",
+  "prior_failure": "First version let early result advance the controller, leaving only two W burst-write slots and zero metadata overlap. Original checker rejected it; result retained at build/winograd_task8_single_mac/20261111T183030709943Z. Checker is unchanged.",
+  "limits": "Not a final architecture, no PPA/STA/signoff claim. No vendor/shared-bus or number-format change."
+}

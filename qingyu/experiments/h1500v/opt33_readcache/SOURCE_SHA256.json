@@ -1,0 +1,22 @@
+{
+  "schema": "qingyu-candidate-source-sha256-v1",
+  "candidate": "opt33_readcache",
+  "parent": "opt32_outputqueue",
+  "frozen_utc": "2026-11-11T16:04:50.848639+00:00",
+  "files": {
+    "BASE_SOURCE_SHA256.json": "5d6af12910b277419c4c15a98e79bc64c67ab768059e39f615e692818ab9dad1",
+    "README.md": "f1db05f7c6b1ece8ac4735012afa7d754d8e21366a663bb2f21b90ad25082971",
+    "rtl/asic/qingyu_shared_sram.sv": "dce0972283db3fe95e39434c58a38b5c27cd696df323b0f42afe907a25aa4421",
+    "rtl/qingyu_accel.c": "d2d3937b66e11697ca4d94b9f717d8530a7069f5bf7613d323c39d4918d24888",
+    "rtl/qingyu_accel.h": "7af25bd86011eb2862864e7a3ad7ff6f382855950e5e1fdb183740074a260ea1",
+    "rtl/qingyu_accel.sv": "a5b7898d19322b4cad38ce682b3ae727fd19c3a92e3a3eb1f3f747eae5c52b4a",
+    "rtl/qingyu_e203_soc_top.v": "09b957ab783abe76a9cbd4d06d63763b6cf300ffe876a649dad751b2e382eece",
+    "rtl/qingyu_e203_subsys_main.v": "afe0867d9cadea6009e7d011a8c04477b02c4e8746a4c5f1c49f3d9b0923e968",
+    "rtl/qingyu_e203_subsys_top.v": "d3a9974a4030b04171ceebe9f11f6faebeaf4ade77044df6356b490eb5ea6a63",
+    "rtl/qingyu_fio.sv": "37c11630f461d4d85871fe59b1cd09944fd3c3efc135ab875a0de3322695dbba",
+    "rtl/qingyu_icb_merge.sv": "944ac235bc529bc83bbded7ccd89f4f0dfa0e64de8b08bd4b2f703492768ae23",
+    "rtl/qingyu_shared_sram.sv": "11fcbe1fc390917daa921e268416d6e04743c866b87b7b16317c389f0bd7e0f7",
+    "rtl/soc_perf_main.c": "39188e7ef8d86cbeb220a99f852413f45aae86b7d0fc289f8511b1ac85280f29",
+    "verification_contract.json": "397df98c1ec161a32e6db34068e826560226fb97285b21f67885ca1333b63745"
+  }
+}

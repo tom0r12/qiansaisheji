@@ -6,6 +6,7 @@ coverage must be supplied through manifests and must be assessed separately.
 """
 
 import argparse
+import hashlib
 import json
 from pathlib import Path
 import numpy as np
@@ -34,6 +35,10 @@ def main():
     parser.add_argument("--scope", required=True, help="human-readable dataset/class-coverage limitation")
     parser.add_argument("--choose-by-layer-label", action="store_true",
                         help="export one validation task per layer, selecting label=layer")
+    parser.add_argument("--output-bits", type=int, choices=[16, 32], default=32)
+    parser.add_argument("--output-headroom-bits", type=int, default=0,
+                        help="one globally fixed extra shift, calibrated from training only")
+    parser.add_argument("--lanes", type=int, default=4)
     args = parser.parse_args()
     if args.export_samples < 0:
         parser.error("export-samples cannot be negative")
@@ -57,12 +62,14 @@ def main():
         validation_labels = np.asarray(validation.get("labels", []), dtype=np.int32)
         if args.choose_by_layer_label and (set(training_labels.tolist()) != set(range(12)) or set(validation_labels.tolist()) != set(range(12))):
             raise ValueError("all12 labels must be present in training and validation for the selected tasks")
-        config = calibrate_layer(training["X"], training["W"], training["b"], layer, role="training")
+        config = calibrate_layer(training["X"], training["W"], training["b"], layer,
+                                 role="training", output_bits=args.output_bits,
+                                 output_headroom_bits=args.output_headroom_bits)
         directory = args.output / f"layer{layer:02d}"
         directory.mkdir(parents=True, exist_ok=True)
         (directory / "frozen_training_config.json").write_text(json.dumps(config.as_dict(), indent=2) + "\n", encoding="utf-8")
         qx, qw, qb, shifts = encode_layer(validation["X"], validation["W"], validation["b"], config)
-        result = qlinear_int(qx, qw, qb, shifts)
+        result = qlinear_int(qx, qw, qb, shifts, output_bits=config.output_bits)
         decoded = decode_layer(result.output, config)
         metric.update(layer, validation["Y"], decoded)
         clipping = int(np.count_nonzero(np.abs(np.rint(validation["X"] / (2.0 ** config.x_exponent))) > 32767))
@@ -71,18 +78,23 @@ def main():
         chosen_tasks = []
         for sample in selected:
             target = directory if count == 1 else directory / f"sample{sample:04d}"
-            export_layer_vectors(target, qx[sample], qw, qb, shifts, result.output[sample])
+            export_layer_vectors(target, qx[sample], qw, qb, shifts, result.output[sample],
+                                 lanes=args.lanes, output_bits=config.output_bits)
             sample_ref, sample_got = validation["Y"][sample], decoded[sample]
             task_nrmse = float(np.sqrt(np.mean((sample_got - sample_ref) ** 2)) /
                                max(np.sqrt(np.mean(sample_ref ** 2)), 1e-8))
             chosen_tasks.append({"sample_index": sample, "sample_id": str(validation["sample_ids"][sample]),
                                  "label": int(validation_labels[sample]) if validation_labels.size else None,
-                                 "nrmse": task_nrmse})
+                                 "nrmse": task_nrmse,
+                                 "integer_case_sha256": hashlib.sha256((target / "integer_case.npz").read_bytes()).hexdigest()})
         records.append({"layer": layer, "input_clipping_count": clipping,
+                        "config_sha256": hashlib.sha256((directory / "frozen_training_config.json").read_bytes()).hexdigest(),
                         "output_saturation_count": result.saturation_count,
                         "exported_validation_samples": count, "chosen_tasks": chosen_tasks})
         print(f"validated layer {layer}", flush=True)
     report = {"kind": "FROZEN_TRAINING_DISJOINT_VALIDATION_SUBSET",
+              "output_bits": args.output_bits, "lanes": args.lanes,
+              "output_headroom_bits": args.output_headroom_bits,
               "scope": args.scope, "official_600_sample_evaluation": False,
               "source_commit": str(training["source_commit"].item()),
               "training_sample_ids": sorted(train_ids), "validation_sample_ids": sorted(val_ids),

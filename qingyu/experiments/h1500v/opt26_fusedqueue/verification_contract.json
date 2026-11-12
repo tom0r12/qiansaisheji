@@ -1,0 +1,22 @@
+{
+  "schema": "qingyu-fused-load-contract-v1",
+  "candidate": "opt26_fusedqueue",
+  "base_candidate": "opt22_fused",
+  "live_read_words": 576,
+  "source_load_words": 11936,
+  "live_write_words": 11936,
+  "private_input_words": 3168,
+  "private_weight_words": 8192,
+  "output_write_words": 12672,
+  "flow": "X and W: source read, real live write, successful write response, then private commit. Metadata retains source-to-live copy and 576 live reads. Initial parameter validation remains inside the complete task window and is counted separately from source_load_words.",
+  "constraints": [
+    "Use the unchanged opt20 single 32-bit system bus and shared SRAM interface.",
+    "Every source payload word is copied once to its configured live address; source storage is immutable.",
+    "Private X and W words must match source values and addresses, not only aggregate counts.",
+    "No private commit on failed source read, failed live write, or aborted descriptor.",
+    "No START before full descriptor completion; W targets only the inactive tile bank.",
+    "Do not replace official initial loading with testbench preloading outside the measured window.",
+    "This contract is an engineering validation expectation, not official compliance or signoff."
+  ],
+  "queue_base_candidate": "opt24_busqueue"
+}

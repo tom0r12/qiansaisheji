@@ -1,0 +1,27 @@
+{
+  "schema": "qingyu-conditional-streaming-descriptor-gate-v1",
+  "status": "Experimental, lint passed; integration and fault validation pending",
+  "derived_from": "experiments/integration/int8stream_dual/qingyu_int8stream_engine.sv",
+  "original_sha256": "52ddc92cffca6c35c4a2f2c675103b6819dcc1af4f2bb1316d3079d4f8754fe8",
+  "new_ports": {
+    "loader_committed_end": "32-bit exclusive byte end of contiguous, successfully acknowledged source writes in the current task, synchronous to clk",
+    "loader_fault": "Producer-detected failed write or abort; while busy it enters the existing real response drain path with error code 0x1b (transport errors retain priority)"
+  },
+  "producer_requirements": [
+    "Initialize the shared source to poison; every task's source word is written through the same original official bus path before it can be consumed.",
+    "Advance committed_end only after originating successful write ACK. Keep it aligned, monotonic, within the task's source allocation, and stable during any failure drain.",
+    "Do not rewrite a committed source word. All writes for this epoch are ordered contiguous full-word writes.",
+    "Establish a fresh producer epoch before START. The conditional benchmark starts only after all 202 header/metadata words have received successful ACKs.",
+    "On a write failure, do not publish the failed word or later words as committed; assert loader_fault and drain accepted producer traffic.",
+    "Do not use a blocking CPU WAIT before finishing production when the same CPU performs the source stores."
+  ],
+  "consumer": "Both descriptor valid and ready are gated until nonzero count, source-relative base and full 35-bit base+4*count range are committed. An accepted descriptor is never gated retroactively. No offered bus command or originating response is modified by the watermark.",
+  "measurement": "Conditional BFM loader at the existing CPU port of the same CPU/DMA merge, unchanged OUTSTANDING4/ONE_PER_PORT01 and original official fabric; first producer offer and first accepted source write to final originating output-marker ACK are both recorded. No source initialization is omitted from these windows.",
+  "limits": [
+    "No actual E203 CPU executes in this conditional producer benchmark.",
+    "The official platform loader interface, rate and timing boundary remain unresolved; this model does not prove that the official loader can provide these acknowledgments or overlap behavior.",
+    "No vendor fabric change, third master or shared SRAM bypass is authorized by this experiment.",
+    "All producer invariants need executable verification; lint alone proves neither protocol correctness nor performance.",
+    "No manufacturer, physical area, STA, whole-SoC energy or official600 acceptance claim."
+  ]
+}

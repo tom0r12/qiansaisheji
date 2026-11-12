@@ -1,0 +1,52 @@
+{
+  "schema": "qingyu-private-x-compact-v1",
+  "status": "local wrapper and frozen-core four-state checks passed; optional physical mapping, official macro/PPA/STA pending",
+  "replacement_module": "qingyu_sram16; compile exactly one wrapper implementation",
+  "original_interface_preserved": [
+    "DEPTH",
+    "ADDR_W",
+    "clk",
+    "en",
+    "we",
+    "addr",
+    "wdata",
+    "rdata"
+  ],
+  "additional_parameter": "X_VALID_WORDS defaults to compile-time QINGYU_X_VALID_WORDS, or352; used only for DEPTH1024/ADDR_W10",
+  "configs": {
+    "winograd_task9": {
+      "logical_x_banks": 9,
+      "valid_words_per_bank": 352,
+      "small_macros_per_bank": 3,
+      "other_small_macros": 21,
+      "total_private_128x16_macros": 48,
+      "total_private_storage_bits": 98304,
+      "selector_bits": 27
+    },
+    "winograd_task8_prefetch": {
+      "logical_x_banks": 8,
+      "valid_words_per_bank": 416,
+      "small_macros_per_bank": 4,
+      "other_small_macros": 21,
+      "total_private_128x16_macros": 53,
+      "total_private_storage_bits": 108544,
+      "selector_bits": 24
+    }
+  },
+  "address": "For legal X address addr<X_VALID_WORDS, page=addr[9:7], local=addr[6:0]. Instantiate exactly ceil(X_VALID_WORDS/128) real RAMSP128X16 cells. Only the selected page receives active CEN; never read and write concurrently.",
+  "read_latency": "The selected macro reads synchronously at the en&&!we edge. Register page on the same edge; the combinational16bit output mux shows that macro's post-edge Q. Downstream continues to sample at its next clock edge, with no extra stage.",
+  "write": "Legal en&&we commits to exactly one selected macro; write-data Q is whatever the actual macro specifies. The functional stand-in drives Q=X after1ns. The wrapper does not promise write-through, read-old, or a stable read result across a write.",
+  "idle": "en=0 disables every macro and holds selector; no data movement or initialization.",
+  "reset": "The original wrapper has no reset port. Do not add one, clear SRAM, or initialize the selector. Output is unspecified before first enabled access. Global/core reset retains storage; task epochs in the unchanged core prevent stale data use.",
+  "invalid_address": "For enabled1024-wrapper access outside the configured valid word range, no macro is activated, no alias write occurs, and selector takes a reserved invalid code giving rdata0. This is defensive behavior, not an allowed core access. Full-core checker must assert every X en address is within range.",
+  "supported_parameters": "DEPTH128/ADDR_W7 and DEPTH4096/ADDR_W12 retain original direct macro instances. DEPTH1024/ADDR_W10 supports exactly X_VALID_WORDS352 or416. Unsupported combinations fail elaboration.",
+  "logic_cost": "3 selector FF per logical X bank including invalid sentinel, one constant address validity decode, one-of3/4 CEN decoder and a16bit3/4-input combinational mux; no data FF array. Mux and macro clock/enable fanout must pass actual150MHz STA.",
+  "area_decision": "Task9 replacement saves area only if27*A128 + added_mux_decode_FF_area <9*A1024. Prefetch8 only if32*A128 + added_logic_area <8*A1024. No bit-proportional area assumption. W/R/M's21 small macros cancel in comparisons.",
+  "verification": [
+    "Four-state standalone test of both configured depths and unchanged128 mapping, every valid address, page boundaries, randomized read/write/idle, writeQ poison, illegal-address no-alias and output selection stability.",
+    "Same frozen task9/prefetch8 core and original TB using actual ASIC RAMSP interface with explicitly local functional Q-poison stand-ins; all12 frozen real tasks plus original reset/stall/fault recovery scenarios.",
+    "Count elaborated actual macro instances and ensure no RAMSP1024 remains in compact core builds; only128 macro storage carries task data.",
+    "Verify original core source/vectors/stand-in hashes before and after; retain commands/logs, never edit original runner or frozen core.",
+    "Manufacturer macro execution, library area,150MHz timing and whole-SoC energy remain separate pending validations."
+  ]
+}

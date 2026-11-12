@@ -1,0 +1,371 @@
+{
+  "schema": "qingyu-fixed-icb-stream-validation-v1",
+  "passed": true,
+  "created_utc": "2026-11-11T16:47:07.540074+00:00",
+  "result": "build/icb_stream/20261111T164456740217Z/result.json",
+  "result_sha256": "fa3df96f076a979d65cb915d94c9ab613f5d03bc01c491ab2b25d4c5a00fa34c",
+  "rtl_sha256": "13359697ff682dcaf71f4983d07453a042a60fe75b87d58b4b392214c2b1e07d",
+  "tools": {
+    "iverilog": {
+      "path": "/usr/bin/iverilog",
+      "version": "Icarus Verilog version 12.0 (stable) ()"
+    },
+    "vvp": {
+      "path": "/usr/bin/vvp",
+      "version": "Icarus Verilog runtime version 12.0 (stable) ()"
+    },
+    "verilator": {
+      "path": "/usr/bin/verilator",
+      "version": "Verilator 5.020 2024-01-01 rev (Debian 5.020-1)"
+    }
+  },
+  "total_scenarios": 444,
+  "runs": [
+    {
+      "outstanding": 4,
+      "seed": 17,
+      "response_queue": 0,
+      "bandwidth_eligible": true,
+      "summary": {
+        "outstanding": 4,
+        "seed": 17,
+        "response_queue": 0,
+        "cases": 37,
+        "maximum_credit_seen": 4,
+        "full_replacements": 26,
+        "abort_events": 3,
+        "error_events": 7,
+        "fault_with_held_command": 3,
+        "fault_with_held_read_output": 3,
+        "hard_reset_events": 1
+      },
+      "log": "build/icb_stream/20261111T164456740217Z/depth4_queue0_seed17.log",
+      "log_sha256": "06bb7f9cea6667ae52dad69d85141fcf356dfe3e90df554c8b5a22f81449d5d0"
+    },
+    {
+      "outstanding": 4,
+      "seed": 271,
+      "response_queue": 0,
+      "bandwidth_eligible": true,
+      "summary": {
+        "outstanding": 4,
+        "seed": 271,
+        "response_queue": 0,
+        "cases": 37,
+        "maximum_credit_seen": 4,
+        "full_replacements": 21,
+        "abort_events": 3,
+        "error_events": 7,
+        "fault_with_held_command": 1,
+        "fault_with_held_read_output": 3,
+        "hard_reset_events": 1
+      },
+      "log": "build/icb_stream/20261111T164456740217Z/depth4_queue0_seed271.log",
+      "log_sha256": "d7f4e2c6941f9d6bd06d1aab0be96d955a7fa12f80c8042b0a68747d59b5593e"
+    },
+    {
+      "outstanding": 4,
+      "seed": 818,
+      "response_queue": 0,
+      "bandwidth_eligible": true,
+      "summary": {
+        "outstanding": 4,
+        "seed": 818,
+        "response_queue": 0,
+        "cases": 37,
+        "maximum_credit_seen": 4,
+        "full_replacements": 18,
+        "abort_events": 3,
+        "error_events": 7,
+        "fault_with_held_command": 2,
+        "fault_with_held_read_output": 4,
+        "hard_reset_events": 1
+      },
+      "log": "build/icb_stream/20261111T164456740217Z/depth4_queue0_seed818.log",
+      "log_sha256": "98cf02262daf11473dae6210e0fbfad87def96bca272446abbeb60695e1df157"
+    },
+    {
+      "outstanding": 4,
+      "seed": 17,
+      "response_queue": 1,
+      "bandwidth_eligible": false,
+      "summary": {
+        "outstanding": 4,
+        "seed": 17,
+        "response_queue": 1,
+        "cases": 37,
+        "maximum_credit_seen": 4,
+        "full_replacements": 402,
+        "abort_events": 3,
+        "error_events": 7,
+        "fault_with_held_command": 1,
+        "fault_with_held_read_output": 3,
+        "hard_reset_events": 1
+      },
+      "log": "build/icb_stream/20261111T164456740217Z/depth4_queue1_seed17.log",
+      "log_sha256": "7d6863a73dc43077c8280a0c47f485d0c84d910f37e3d5ebb44d881d97e8fd78"
+    },
+    {
+      "outstanding": 4,
+      "seed": 271,
+      "response_queue": 1,
+      "bandwidth_eligible": false,
+      "summary": {
+        "outstanding": 4,
+        "seed": 271,
+        "response_queue": 1,
+        "cases": 37,
+        "maximum_credit_seen": 4,
+        "full_replacements": 422,
+        "abort_events": 3,
+        "error_events": 7,
+        "fault_with_held_command": 0,
+        "fault_with_held_read_output": 3,
+        "hard_reset_events": 1
+      },
+      "log": "build/icb_stream/20261111T164456740217Z/depth4_queue1_seed271.log",
+      "log_sha256": "216eec674f50266da954bc6c06e34e0a0d171f210a87f14d5c6a009d790b3f0c"
+    },
+    {
+      "outstanding": 4,
+      "seed": 818,
+      "response_queue": 1,
+      "bandwidth_eligible": false,
+      "summary": {
+        "outstanding": 4,
+        "seed": 818,
+        "response_queue": 1,
+        "cases": 37,
+        "maximum_credit_seen": 4,
+        "full_replacements": 410,
+        "abort_events": 3,
+        "error_events": 7,
+        "fault_with_held_command": 0,
+        "fault_with_held_read_output": 4,
+        "hard_reset_events": 1
+      },
+      "log": "build/icb_stream/20261111T164456740217Z/depth4_queue1_seed818.log",
+      "log_sha256": "6e443c65b257eea7d9f6319d29608578263f5228d3dcb4b6771ece0082adf195"
+    },
+    {
+      "outstanding": 8,
+      "seed": 17,
+      "response_queue": 0,
+      "bandwidth_eligible": true,
+      "summary": {
+        "outstanding": 8,
+        "seed": 17,
+        "response_queue": 0,
+        "cases": 37,
+        "maximum_credit_seen": 5,
+        "full_replacements": 0,
+        "abort_events": 3,
+        "error_events": 7,
+        "fault_with_held_command": 4,
+        "fault_with_held_read_output": 5,
+        "hard_reset_events": 1
+      },
+      "log": "build/icb_stream/20261111T164456740217Z/depth8_queue0_seed17.log",
+      "log_sha256": "c6b72122016280ffab2bb414ed708a6e1716262aac0ceb08e606736249a77faf"
+    },
+    {
+      "outstanding": 8,
+      "seed": 271,
+      "response_queue": 0,
+      "bandwidth_eligible": true,
+      "summary": {
+        "outstanding": 8,
+        "seed": 271,
+        "response_queue": 0,
+        "cases": 37,
+        "maximum_credit_seen": 5,
+        "full_replacements": 0,
+        "abort_events": 3,
+        "error_events": 7,
+        "fault_with_held_command": 3,
+        "fault_with_held_read_output": 4,
+        "hard_reset_events": 1
+      },
+      "log": "build/icb_stream/20261111T164456740217Z/depth8_queue0_seed271.log",
+      "log_sha256": "a4cc6effc8828d6b56e8f438889d22f0ecd52cc0e7d2a8b713992d533b081a36"
+    },
+    {
+      "outstanding": 8,
+      "seed": 818,
+      "response_queue": 0,
+      "bandwidth_eligible": true,
+      "summary": {
+        "outstanding": 8,
+        "seed": 818,
+        "response_queue": 0,
+        "cases": 37,
+        "maximum_credit_seen": 5,
+        "full_replacements": 0,
+        "abort_events": 3,
+        "error_events": 7,
+        "fault_with_held_command": 4,
+        "fault_with_held_read_output": 4,
+        "hard_reset_events": 1
+      },
+      "log": "build/icb_stream/20261111T164456740217Z/depth8_queue0_seed818.log",
+      "log_sha256": "dbaa16ea750416cf7d026459f0733d2eec021ed6e960339ae8b0b0c0c1076625"
+    },
+    {
+      "outstanding": 8,
+      "seed": 17,
+      "response_queue": 1,
+      "bandwidth_eligible": false,
+      "summary": {
+        "outstanding": 8,
+        "seed": 17,
+        "response_queue": 1,
+        "cases": 37,
+        "maximum_credit_seen": 8,
+        "full_replacements": 246,
+        "abort_events": 3,
+        "error_events": 7,
+        "fault_with_held_command": 1,
+        "fault_with_held_read_output": 3,
+        "hard_reset_events": 1
+      },
+      "log": "build/icb_stream/20261111T164456740217Z/depth8_queue1_seed17.log",
+      "log_sha256": "c3f9ef9895eb0795e981e07d5862ea244a7a5916d668243db925b7fffadd5674"
+    },
+    {
+      "outstanding": 8,
+      "seed": 271,
+      "response_queue": 1,
+      "bandwidth_eligible": false,
+      "summary": {
+        "outstanding": 8,
+        "seed": 271,
+        "response_queue": 1,
+        "cases": 37,
+        "maximum_credit_seen": 8,
+        "full_replacements": 300,
+        "abort_events": 3,
+        "error_events": 7,
+        "fault_with_held_command": 0,
+        "fault_with_held_read_output": 4,
+        "hard_reset_events": 1
+      },
+      "log": "build/icb_stream/20261111T164456740217Z/depth8_queue1_seed271.log",
+      "log_sha256": "b51501854ede6249004987936b0fba187d370fdc2031f9c005dd22600660cb67"
+    },
+    {
+      "outstanding": 8,
+      "seed": 818,
+      "response_queue": 1,
+      "bandwidth_eligible": false,
+      "summary": {
+        "outstanding": 8,
+        "seed": 818,
+        "response_queue": 1,
+        "cases": 37,
+        "maximum_credit_seen": 8,
+        "full_replacements": 295,
+        "abort_events": 3,
+        "error_events": 7,
+        "fault_with_held_command": 0,
+        "fault_with_held_read_output": 5,
+        "hard_reset_events": 1
+      },
+      "log": "build/icb_stream/20261111T164456740217Z/depth8_queue1_seed818.log",
+      "log_sha256": "5355c272f392951ce9ddd3110e2b020f965f38bd8289f38f64be874d52ba4b26"
+    }
+  ],
+  "native_bandwidth_cases": [
+    {
+      "id": 1,
+      "reads": 1024,
+      "writes": 0,
+      "random": 0,
+      "fault": -1,
+      "abort": -1,
+      "held_abort": 0,
+      "bad_last": 0,
+      "hard_reset": 0,
+      "cycles": 1031,
+      "commands": 1024,
+      "responses": 1024,
+      "peak": 3,
+      "read_fifo_peak": 1,
+      "shared_span": 1024,
+      "min_gap": 1,
+      "max_gap": 2,
+      "cmd_wait": 1,
+      "rsp_wait": 0,
+      "held_checks": 1,
+      "measured_shared_ii": 1.0009775171065494
+    },
+    {
+      "id": 2,
+      "reads": 0,
+      "writes": 1024,
+      "random": 0,
+      "fault": -1,
+      "abort": -1,
+      "held_abort": 0,
+      "bad_last": 0,
+      "hard_reset": 0,
+      "cycles": 1030,
+      "commands": 1024,
+      "responses": 1024,
+      "peak": 2,
+      "read_fifo_peak": 0,
+      "shared_span": 1023,
+      "min_gap": 1,
+      "max_gap": 1,
+      "cmd_wait": 0,
+      "rsp_wait": 0,
+      "held_checks": 0,
+      "measured_shared_ii": 1.0
+    },
+    {
+      "id": 3,
+      "reads": 1024,
+      "writes": 1024,
+      "random": 0,
+      "fault": -1,
+      "abort": -1,
+      "held_abort": 0,
+      "bad_last": 0,
+      "hard_reset": 0,
+      "cycles": 2054,
+      "commands": 2048,
+      "responses": 2048,
+      "peak": 3,
+      "read_fifo_peak": 1,
+      "shared_span": 2048,
+      "min_gap": 1,
+      "max_gap": 2,
+      "cmd_wait": 1,
+      "rsp_wait": 0,
+      "held_checks": 1,
+      "measured_shared_ii": 1.0004885197850513
+    }
+  ],
+  "vendor_manifest_sha256": "257a3f5028457f0901280d6ea365d552983f5eba2b121b7d983f6b1d4b7a7774",
+  "slave_manifest_sha256": "c889fef53c251112087988c9a0bad28b400de71da57d016ad9a9d4d74af77ba2",
+  "slave_sha256": "11fcbe1fc390917daa921e268416d6e04743c866b87b7b16317c389f0bd7e0f7",
+  "lint": {
+    "4": {
+      "warnings": 0,
+      "errors": 0,
+      "log": "build/icb_stream/20261111T164456740217Z/lint_4.log",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "8": {
+      "warnings": 0,
+      "errors": 0,
+      "log": "build/icb_stream/20261111T164456740217Z/lint_8.log",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "limits": [
+    "synthetic standalone transport only",
+    "no full-task or official loader result",
+    "no manufacturer SRAM/PPA/STA proof",
+    "native maximum observed in-flight count is 5 with 8 credits; full8 uses a testbench-only return delay FIFO"
+  ]
+}

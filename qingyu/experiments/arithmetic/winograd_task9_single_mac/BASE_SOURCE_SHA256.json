@@ -1,0 +1,28 @@
+{
+  "schema": "qingyu-frozen-task9-source-v1",
+  "frozen_utc": "2026-11-11T17:49:45.164910+00:00",
+  "files": {
+    "BASE_SOURCE_SHA256.json": "1ccc2d189323d682a816a10fc230f7ebf34c18aa0c74bebeffcc4a0428be771d",
+    "contract.json": "8e349f106ae3befca8d0cdd703de1e7a32d24fd3c3a12a9cb9ef753e98fbf675",
+    "export_vectors.py": "1637cb676f71268f0fb57a514ce5551c827e3bb74a778fd03239b7e5094cde1c",
+    "README.md": "8ee9743f93afd827e85b945f1270cb4d3461d05cd387bb84389884a5fb019278",
+    "run_checks.py": "6c5c7e83d449f2ebf374c644e1db06e33d590fa2500bb673e79889dabaf35204",
+    "run_fault_hold.py": "55a9c04e1a8028f79d4259c0a9658e389b93086795c8b0e59b73ce663970d5ed",
+    "tb_sram_write_poison.sv": "5beae49277594ba2ae94c35c5d0b0848dbb6dcf9d2d70e8357342c8bf0a77ea5",
+    "tb_winograd_task8.sv": "6fea1a8aca7c2e155bc9e83835c30a586b7b269e0574f412551a289dd077b580",
+    "VALIDATED_CONTRACT.json": "a3861e4c2b46d97b27798f23f9f7e5bae59b3ce3128c8672de198c102ac6b383",
+    "VALIDATION.json": "d75277fe55d96a46d56486f1f0ba160ff80fd9bf52c87cad1284f389e13e8bb8",
+    "winograd_int8_task8.sv": "c91ca9149869d48ba239cd1f8693f9806e01d6f7ed04ba54c97594cb43c1dca1"
+  },
+  "external_dependencies": {
+    "experiments/arithmetic/winograd_array8/winograd_int8_pair_acc32.sv": "e117a74f05340c29111d3ddc845de084c7ca87eb7d9038d9c361968131942f44",
+    "rtl/qingyu_sram16.sv": "d3d35a1e99e07c75fac13e450c87685e773dc4953ab5a7752dd0ba0622943b18",
+    "experiments/arithmetic/winograd_array8/SOURCE_SHA256.json": "9bddf3da4af9036b4bee373c34b833fe5a8899f8581a5f076f07421e7fdaceaa",
+    "experiments/arithmetic/winograd_task8_prefetch/SOURCE_SHA256.json": "1ccc2d189323d682a816a10fc230f7ebf34c18aa0c74bebeffcc4a0428be771d"
+  },
+  "validation_result": "build/winograd_task9/20261111T173951031071Z/result.json",
+  "validation_result_sha256": "08a638379e08b611f709b52e464d2bf25b61ed2fce050cdc1445e4e95cee7c02",
+  "vector_manifest": "build/winograd_task8_vectors_20261112/manifest.json",
+  "vector_manifest_sha256": "a27c88cc5bcc74c6fdf3e78af4630d7e878b28a7121190cef36f3014e8b8b529",
+  "status": "9row_private_compute_verified_not_SoC_or_PPA"
+}

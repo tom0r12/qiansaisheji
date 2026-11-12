@@ -1,0 +1,15 @@
+{
+  "conditional_bus_functional_passed": true,
+  "official_loader_accepted": false,
+  "actual_e203_streaming_loader_tested": false,
+  "source_manifest_sha256": "9ee7c3cab9d2e691c65709d83713cc814ccd12a5ffa127a35c3684d731ae71ba",
+  "reports": {
+    "experiments\\integration\\streaming_loader_study\\test\\VALIDATION.json": "466ab15782be6f551eecfc370f657946a39a1b8fa6e19accedad46950b258209",
+    "experiments\\integration\\streaming_loader_study\\test\\SOURCE_SHA256.json": "bb9c2a87fa7677f3ac3f0fdcaa3b131c8f01ff60c2219b32c1e1cd2a94c770ef",
+    "experiments\\integration\\streaming_loader_study\\test\\PROFILE_VALIDATION.json": "90e2c83452103c001cc0df279458d19c4f629d315c7e843be2cce9780a446082",
+    "experiments\\integration\\streaming_loader_study\\test\\PROFILE_SOURCE_SHA256.json": "bb82e589920fdeeb2d706b4005c1d21dc63081caae7facc46d30250e3e231739"
+  },
+  "primary_scope": "72 individually reset-cold task cases with original ONE_PER_PORT01; no-reset comparisons classified recovery only",
+  "queue00_scope": "Separate conditional producer ability test, not current CPU capability",
+  "ppa_measured": false
+}

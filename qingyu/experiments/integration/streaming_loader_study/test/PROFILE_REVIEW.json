@@ -1,0 +1,17 @@
+{
+  "schema": "qingyu-read-only-profile-review-v1",
+  "reviewer": "score_and_constraints",
+  "profile_source_manifest_sha256": "bb82e589920fdeeb2d706b4005c1d21dc63081caae7facc46d30250e3e231739",
+  "profile_validation_sha256": "90e2c83452103c001cc0df279458d19c4f629d315c7e843be2cce9780a446082",
+  "blocking_findings": [],
+  "checked": [
+    "Primary is reset-cold case id1 with inclusive first real source offer to final originating magic ACK",
+    "Producer writes every source word through the bus; complete source/output/guard reference comparison is independent",
+    "Final marker requires all source successful ACKs and engine read ACKs",
+    "Profile source hashes match per pair and only the LOADER_ONE_PER_PORT compile macro differs",
+    "All first four case metrics of each 01 control equal the frozen original",
+    "00 capability hypothesis, two layer0 diagnostic tasks, no actual CPU/official-loader claim, and producer-observed error injection limits are explicit",
+    "Isolated producer service and overlapping stalls are not substituted for the complete cold window"
+  ],
+  "limits": "Read-only review, not additional simulation, formal verification, STA or PPA"
+}

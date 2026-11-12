@@ -1,0 +1,25 @@
+{
+  "schema":"qingyu-winograd-task9-contract-v1",
+  "status":"implementation planned; no task9 measured performance",
+  "module":"winograd_int8_task8",
+  "module_name_note":"The legacy module/file name is retained only for drop-in engine filelist selection; this implementation has9rows and144 paired lanes. Compile exactly one implementation.",
+  "base":"Frozen winograd_task8_prefetch, SOURCE_SHA256 1ccc2d189323d682a816a10fc230f7ebf34c18aa0c74bebeffcc4a0428be771d",
+  "public_interface":"Same ports and32bit streams as prefetch8. pair_group is LOAD target; pair_loaded pulse retains the committed group for one cycle then advances. out_tile and pair_done_index are independent COMPUTE/output identities.",
+  "numeric":"Unchanged signed INT8 X/W,INT16 bias,per-channel0..47 shift,RNE ties-even and signed8 saturation. All R/C factors computed in hardware on accepted loads and invalidated at BEGIN. No fitting or software factor inputs.",
+  "X_stream":{
+    "accepted_words":1600,
+    "mapping":"Exactly the original rowpair adapter layout: wordi,rp=i/32,kp=i%32,bytes X[2rp,2kp],X[2rp,2kp+1],X[2rp+1,2kp],X[2rp+1,2kp+1].",
+    "last_dummy_row":"Words1568..1599 still handshake, but contain only row98 in their low half. The high half is the adapter-generated dummy row99 and must be zero in a canonical stream. It never writes an X bank, creates an R factor, or participates in compute. This core still consumes all1600 words, not a shortened1584-word stream.",
+    "physical_mapping":"bank=row mod9, address=floor(row/9)*32+kp. Each of9banks stores11rows=352words at0..351 in a1024x16 macro.",
+    "hardware_addressing":"A low-row bank counter0..8 and group counter advance by2 rows after each32word rowpair: ifbank>=7 subtract7 and incrementgroup, else add2. High row uses nextbank, with bank8 wrapping tobank0/group+1. No divider/modulo9 datapath is required.",
+    "verification":"Independent TB uses integer division/modulo of the logical row to check every actual macro write, including lowbank8/highbank0 cross-group wrapping and all32 ignored dummy high halves."
+  },
+  "compute":"99rows=11groups of9 exactly. Each group issues32Kpairs to144 paired lanes. All9R values read through the independent R macros during the first9DOT issue cycles. No padded compute rows exist.",
+  "output":"Unchanged16tile-major Y streams,396words/tile. Each9row group outputs36words; output index=group*36+localrow*4+word. Hardware constant36 is shifts/adds. Snapshot context remains immutable until the final raw-output ACK.",
+  "W_and_metadata":"Unchanged16W128x16 banks/four slots,3x256bit burst contexts with21address bits,only non-DOT write grants,real metadata-cache read/write arbitration,slot release only at tile's final output ACK.",
+  "physical_storage":{"RAMSP1024X16":9,"RAMSP128X16":21,"allocated_bits":190464,"allocated_KiB":23.25,"delta_from_prefetch8_bits":16384},
+  "logic_state":{"paired_lanes":144,"additional_lanes_from_prefetch8":16,"raw_lane_state_bits":6480,"snapshot_raw_bits":3312,"snapshot_R_bits":189,"snapshot_context_bits":9,"snapshot_total_bits":3510,"snapshot_delta_bits":389,"W_burst_data_address_bits":789,"new_control":"Wider local-row/R index plus bounded modulo9 X bank/group counters; additional control/mux cost is not free."},
+  "why9_not16":"With4-byte output,9row36-cycle store already exceeds35-cycle paired compute. Both9row and16row can approach first35+396=431cycles/tile;16row would add substantially more PE/SRAM for no better interface-limited bound. Actual W grants,metadata deadlines and backpressure must still be measured.",
+  "analytical_private_budget":{"base_prefetch8_cycles":9931,"ideal_tile_saving":36,"tiles":16,"estimate":9355,"status":"Before implementation measurement; not complete SystemBus/CPU/loader throughput or PPA. Output waits are real and may provide W-write slots, not free cycles."},
+  "verification":"Reuse frozen whole-task direct64/RNE goldens for12 real layers+10 synthetic tasks. Independently verify all9-bank mappings,144lane full-signed arithmetic,176snapshots/1584Rreads,slot/burst/metadata protocol,all output addresses,reset/backpressure/errors,and four-state SRAM write-Q poison. No old8row timing or area is silently reused."
+}

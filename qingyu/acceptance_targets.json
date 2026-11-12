@@ -1,0 +1,29 @@
+{
+  "schema": "qingyu-acceptance-targets-v1",
+  "source": "User explicitly reconfirmed the image benchmark as the minimum on 2026-11-11; prior request requires outperforming it with shared SRAM behind the official bus.",
+  "metrics": {
+    "throughput_tasks_per_second": {"operator": ">", "value": 10450},
+    "incremental_area_mm2": {"operator": "<=", "value": 0.5},
+    "full_soc_energy_microjoules_per_task": {"operator": "<=", "value": 6.3}
+  },
+  "all_metrics_same_candidate": true,
+  "unmeasured_is_pass": false,
+  "estimated_is_measured": false,
+  "shared_sram_must_use_official_bus": true,
+  "preserve_official_fabric_source_and_parameters_unless_formal_evidence_allows_change": true,
+  "clock_hz": 150000000,
+  "clock_requires_actual_timing_validation": true,
+  "task_shape": {"rows": 99, "inner": 64, "columns": 256},
+  "maximum_nrmse_percent_each_evaluated_task": 3,
+  "cold_task_and_complete_output_writeback_required": true,
+  "official_loader_timing_boundary": "OPEN; record all measured windows explicitly, never mix incompatible windows",
+  "completion_requires": [
+    "functional_and_bus_protocol_validation",
+    "official_numerical_evaluation",
+    "complete_task_throughput_in_the_accepted_official_window",
+    "specified_library_area_accounting",
+    "timing_closure_at_the_required_clock",
+    "full_soc_power_in_the_same_activity_window_with_sram_power_models",
+    "matching_candidate_source_netlist_activity_and_result_provenance"
+  ]
+}

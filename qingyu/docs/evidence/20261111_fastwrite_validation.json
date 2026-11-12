@@ -1,0 +1,70 @@
+{
+  "created_utc": "2026-11-11T15:45:43.952832+00:00",
+  "status": "local_functional_improvement_not_formal_acceptance",
+  "candidate": "opt31_fastwrite",
+  "selected_candidate_unchanged": "opt30_fusedpipe4",
+  "metrics": {
+    "mean_engineering_cycles": 75061.16666666667,
+    "tasks_per_second_at_assumed_150mhz": 1998.370218066599,
+    "throughput_improvement_percent_vs_opt30": 23.063190686706612,
+    "cycle_reduction_percent_vs_opt30": 18.740933465166464,
+    "verified_tasks": 12,
+    "verified_outputs": 304128,
+    "shared_commands_per_task": 37440
+  },
+  "baseline_control_all_metrics_identical": true,
+  "all_original_inputs_outputs_firmware_identical": true,
+  "official_fabric_hashes_identical": true,
+  "changed_rtl": [
+    "rtl/qingyu_shared_sram.sv",
+    "rtl/asic/qingyu_shared_sram.sv"
+  ],
+  "source_and_evidence": {
+    "baseline": {
+      "path": "build/bus_queue_soc_opt30_fusedpipe4_20261111_142724_610244/result.json",
+      "sha256": "a5a37e149f1249529bb2c76f4003a68ff5b96fef47b8603917217c7440f1caae"
+    },
+    "baseline_control": {
+      "path": "build/bus_zeroack_soc_opt30_fusedpipe4_20261111_153913_012764/result.json",
+      "sha256": "10f93fe44dde408b3f3e48036129c3ab75c15a42bbb7f69a11ba56782949d5ac"
+    },
+    "candidate": {
+      "path": "build/bus_zeroack_soc_opt31_fastwrite_20261111_153843_110596/result.json",
+      "sha256": "c1425590c1f124f71d6f6926e990fe1d8ea6e766c62f0218787c438cd11b10b0"
+    },
+    "shared_protocol": {
+      "path": "build/shared_fastwrite_checks/20261111T153221951119Z/result.json",
+      "sha256": "650244ac89adef11d43ad2f93c769c70d51da9262aa1efacf67c5ee80330fb6c"
+    },
+    "fabric_bandwidth": {
+      "path": "build/memfab_bandwidth/20261111T153331030931Z/result.json",
+      "sha256": "9ba6fabe74f237928574056504557db1df8e23204bf86102d95d9ead11c56d8b"
+    },
+    "task_precision": {
+      "path": "build/precision_tasks_20261111_r1/result.json",
+      "sha256": "0042578e532ab763525cdd4b2624fc83af9ff1b605a8483dd041ca83d372b2db"
+    },
+    "centered_precision": {
+      "path": "build/centered_precision_20261111/result.json",
+      "sha256": "f3f5f430dbf6087d34a1bb4552eb3bc6687a8b16d14a6b35fc76a7a9d1522202"
+    },
+    "candidate_manifest": {
+      "path": "experiments/h1500v/opt31_fastwrite/SOURCE_SHA256.json",
+      "sha256": "0c52ae46e08deb4480e91b822c974635cc5c5b79e61665e7a7f9c90e1941c236"
+    },
+    "acceptance_targets": {
+      "path": "acceptance_targets.json",
+      "sha256": "7425e4f840c95ca1a4b003a6e968eafdc9f5ed742c3d5ebada1677a8bd4b178d"
+    }
+  },
+  "failed_first_integration": {
+    "path": "build/bus_queue_soc_opt31_fastwrite_20261111_153231_967349/result.json",
+    "reason": "Original SRAM scoreboard processes response before same-edge command; retained failed result, independent new monitor preserves all checks and validates same-edge ordering."
+  },
+  "limits": [
+    "Engineering cold-copy window excludes external source preload; official loader boundary remains OPEN",
+    "150 MHz is assumed, not STA-proven",
+    "No actual manufacturer macro model, specified-library PPA or official 600-sample result",
+    "Target throughput >10450, area <=0.5 mm2, energy <=6.3 microjoules has not been met"
+  ]
+}

@@ -1,0 +1,92 @@
+--- opt26/rtl/qingyu_fio.sv
++++ opt28/rtl/qingyu_fio.sv
+@@ -1,5 +1,7 @@
+ // System-bus endpoint. One outstanding response, including host notification.
+-module qingyu_fio (
++module qingyu_fio #(
++ parameter integer FUSED_WAIT_TIMEOUT_CYCLES = 1000000
++) (
+  input wire clk, input wire rst_n,
+ `ifdef QINGYU_BLOCK_COPY
+  input wire cpu_cmd_valid, cpu_cmd_read, cpu_rsp_ready,
+@@ -251,12 +253,13 @@
+     (pre_base < meta_shift_base + 32'h100 && meta_shift_base < pre_end_addr));
+  wire aw_cmd=icb_cmd_addr==32'hf00000c0;
+  wire aw_wait_cmd=icb_cmd_addr==32'hf00000c4;
+- // opt22 explicit interface, version 1. Legacy 0x80/0x90 retain live reads.
++ // Interface v2: bounded WAIT_FUSED remains exclusively on sysfio.
+  wire fused_cap_cmd=icb_cmd_addr==32'hf00000d0;
+  wire fused_x_cmd=icb_cmd_addr==32'hf00000d4;
+  wire fused_w_cmd=icb_cmd_addr==32'hf00000d8;
+  wire fused_status_cmd=icb_cmd_addr==32'hf00000dc;
+- wire fused_csr=fused_cap_cmd || fused_x_cmd || fused_w_cmd || fused_status_cmd;
++ wire fused_wait_cmd=icb_cmd_addr==32'hf00000e0;
++ wire fused_csr=fused_cap_cmd || fused_x_cmd || fused_w_cmd || fused_status_cmd || fused_wait_cmd;
+  wire fused_begin=fused_x_cmd || fused_w_cmd;
+  localparam [2:0] F_IDLE=0, F_READ_CMD=1, F_READ_RSP=2, F_WRITE_CMD=3, F_WRITE_RSP=4;
+  reg [2:0] fused_state;
+@@ -273,6 +276,11 @@
+  // Status busy includes transport drain: F_IDLE alone does not mean that an
+  // offered command or an accepted response has left the shared bus.
+  wire fused_transport_busy=fused_busy || dma_draining || dma_fault_now || (dma_failed && !dma_quiet);
++ localparam integer WAIT_COUNT_W=FUSED_WAIT_TIMEOUT_CYCLES>1 ? $clog2(FUSED_WAIT_TIMEOUT_CYCLES+1) : 1;
++ reg [WAIT_COUNT_W-1:0] fused_wait_count;
++ wire fused_wait_attempt=icb_cmd_valid && icb_cmd_read && fused_wait_cmd && !pending;
++ wire fused_wait_timeout=fused_wait_attempt && fused_transport_busy &&
++                         fused_wait_count==WAIT_COUNT_W'(FUSED_WAIT_TIMEOUT_CYCLES-1);
+  wire [31:0] fused_status={16'b0,load_error_code,4'b0,fused_weight,fused_done,operation_error,fused_transport_busy};
+  wire blocked_start=acc_selected && start_cmd && !icb_cmd_read &&
+                     icb_cmd_wdata[0] && !icb_cmd_wdata[2] && operation_error;
+@@ -310,7 +318,7 @@
+     meta_shift_base>=32'ha0000000 && meta_shift_base<=32'ha007ff00) :
+    (icb_cmd_wdata>=32'ha0000000 && icb_cmd_wdata<=32'ha007ffc0 &&
+     (meta_shift_cmd ? icb_cmd_wdata[1:0]==0 : icb_cmd_wdata[2:0]==0));
+- wire legal_block_args=(fused_cap_cmd || fused_status_cmd) ? icb_cmd_read :
++ wire legal_block_args=(fused_cap_cmd || fused_status_cmd || fused_wait_cmd) ? icb_cmd_read :
+    !icb_cmd_read && icb_cmd_wmask==4'hf &&
+    (fused_x_cmd ? icb_cmd_wdata[5:0]==0 && !accel_busy &&
+                  icb_cmd_wdata>=32'ha0000000 && icb_cmd_wdata<=32'ha003ce80 :
+@@ -334,7 +342,7 @@
+     dest_ok && (loading ? (!stage256_cmd || icb_cmd_wdata<=32'ha003fc00) :
+      block_has_row && block_slot==(batch_cmd ? icb_cmd_addr==32'hf0000040 : icb_cmd_addr[2]) &&
+      (!batch_cmd || (batch_row_multiple && block_remaining!=0 && batch_last<33'h0a0080000))));
+- wire legal_block=legal_block_args && (!operation_error || wait_cmd || aw_wait_cmd || fused_cap_cmd || fused_status_cmd);
++ wire legal_block=legal_block_args && (!operation_error || wait_cmd || aw_wait_cmd || fused_cap_cmd || fused_status_cmd || fused_wait_cmd);
+  wire request_block=icb_cmd_valid && block_cmd && !pending;
+  wire take_block=request_block && !cpu_outstanding;
+  wire passthru=(phase==IDLE);
+@@ -352,6 +360,7 @@
+                 cpa_cnt_cmd || wait_cmd || (XPAIR && input_cmd) || fused_csr;
+  wire imm_cmd = ctl_cmd || cpa_cmd;
+  assign icb_cmd_ready=!pending && (block_cmd ? (!cpu_outstanding && (!weight_cmd || (!wl_busy && !st_hold_weight)) &&
++                                                (!fused_wait_cmd || !icb_cmd_read || !fused_transport_busy || fused_wait_timeout) &&
+                                                 (!(fused_begin || weight_cmd || input_cmd || cpa_cmd || loading) || !fused_busy) &&
+                                                 (!fused_begin || (!il_busy && !wl_busy && phase==IDLE)) &&
+                                                 (!meta_cmd || (!meta_busy && !(meta_blk_cmd && meta_pre_overlap))) &&
+@@ -506,6 +515,13 @@
+                        !(in_rsp_valid && in_rsp_err) && !il_hold;
+  assign raw_in_addr = fused_busy ? fused_addr+32'h40000 : il_issue_addr;
+  wire il_wr = rst_n && !dma_stop && il_busy && in_rsp_valid && !in_rsp_err;
++ // A timeout releases control only. Offered/accepted DMA transactions remain
++ // held until the real fabric accepts/responds, including after soft reset.
++ always @(posedge clk) begin
++  if (!rst_n) fused_wait_count<=0;
++  else if (!fused_wait_attempt || !fused_transport_busy || icb_cmd_ready) fused_wait_count<=0;
++  else if (!fused_wait_timeout) fused_wait_count<=fused_wait_count+1'b1;
++ end
+  always @(posedge clk) begin
+   if (!rst_n) copy_error<=0;
+   else if (dma_clear) copy_error<=0;
+@@ -843,8 +859,10 @@
+     local_error<=!select_host || (icb_cmd_addr[1:0]!=0) ||
+                  (!icb_cmd_read && icb_cmd_wmask!=4'hf);
+     local_data<=host_code;
+-    if (fused_cap_cmd) local_data<=32'h51462201;
+-    if (fused_status_cmd) local_data<=fused_status;
++    if (fused_cap_cmd) local_data<=32'h51462202;
++    // Command-handshake snapshot, stable until the response is consumed.
++    if (fused_status_cmd || fused_wait_cmd)
++     local_data<=fused_wait_timeout ? {16'b0,8'h80,4'b0,fused_weight,1'b0,1'b1,1'b1} : fused_status;
+     if (select_host && !icb_cmd_read && icb_cmd_wmask==4'hf) begin
+      host_code<=icb_cmd_wdata; host_valid<=1;
+     end

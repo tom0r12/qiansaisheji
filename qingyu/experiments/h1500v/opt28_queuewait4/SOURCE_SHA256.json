@@ -1,0 +1,30 @@
+{
+  "schema": "qingyu-candidate-source-sha256-v1",
+  "candidate": "opt28_queuewait4",
+  "frozen_utc": "2026-11-11T14:26:50.498539+00:00",
+  "files": {
+    "BASE_SOURCE_SHA256.json": "157d10f3dcd0b0669ffa491ae8509b255eafcec0e1bc276e5f1c04cce4399cf3",
+    "README.md": "faaf1418004e244daa47b5ca2f245a0765aa4175790e654573d9d2d2cfbfb09b",
+    "rtl/asic/qingyu_shared_sram.sv": "cea7d50d80930e5d40d73a7d9029a4d65e3e7c9f4673b9fdf266bcb1157c8dee",
+    "rtl/qingyu_accel.c": "d2d3937b66e11697ca4d94b9f717d8530a7069f5bf7613d323c39d4918d24888",
+    "rtl/qingyu_accel.h": "7af25bd86011eb2862864e7a3ad7ff6f382855950e5e1fdb183740074a260ea1",
+    "rtl/qingyu_accel.sv": "a5b7898d19322b4cad38ce682b3ae727fd19c3a92e3a3eb1f3f747eae5c52b4a",
+    "rtl/qingyu_e203_soc_top.v": "e0093f2dd18edbd4c40af7b9bb782c71725f15b015972debf605584fe89954ab",
+    "rtl/qingyu_e203_subsys_main.v": "afe0867d9cadea6009e7d011a8c04477b02c4e8746a4c5f1c49f3d9b0923e968",
+    "rtl/qingyu_e203_subsys_top.v": "d3a9974a4030b04171ceebe9f11f6faebeaf4ade77044df6356b490eb5ea6a63",
+    "rtl/qingyu_fio.sv": "d66e432f3b8e0445206ce7afb3f83123bc3b735fbe2062c3cd154c5235f20d53",
+    "rtl/qingyu_icb_merge.sv": "944ac235bc529bc83bbded7ccd89f4f0dfa0e64de8b08bd4b2f703492768ae23",
+    "rtl/qingyu_shared_sram.sv": "983a3f6f22205eaaf9c7cb4da56eb390f2a007bc6fe696f96ac98213ec98ae84",
+    "rtl/soc_perf_main.c": "f4d4c1a82cb5c1224cea67018ab3c2cc434b7deb144c17ff76a44d17e4f35fa3",
+    "verification_contract.json": "50a96ca30eeb15ab7421d8df508e7172978b0af5f44f70da511923878c76bc74",
+    "WAIT_FROM_OPT26.patch": "f40d7f3ce5b61525cd77ede42e98c8fcf512e13d85fcb947f39d868c734bbede"
+  },
+  "tests_sha256": {
+    "tb/tb_fused_wait_queue.sv": "0f0c8221a9ae5a6c83ed6cad3e59006acf3af79e6c26fdfc4aa2587102c6a81a",
+    "scripts/run_fused_wait_checks.py": "a6471b1b733038b9ea1316e44804a3c0d1a5031473a6e31b1948d22ee8b5efbc",
+    "tb/tb_fio_faults.sv": "b94115b2127b57f9d4801152b06b2f9d1305583b9956b17e827893c3836cd34a",
+    "scripts/run_fio_fault_checks.py": "54958c22d73ad07bef959998d0990af73f458e70bae4700682fe24511b2eb1c3",
+    "tb/tb_fio_queue_faults.sv": "9d0a74f310c8ce8847ed6c56a1cc3aba27588de44eca232b08d3d94fa1d0420b",
+    "scripts/run_fio_queue_fault_checks.py": "8222f933c31f164862476c39f34948c7b85ac5215adc146491e983566614ad54"
+  }
+}

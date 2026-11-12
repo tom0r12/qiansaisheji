@@ -1,0 +1,22 @@
+{
+  "source": "experiments/integration/int8soc_server",
+  "source_manifest_sha256": "a10ddbc2440feb7e74f2f1e784edb729c6536909e8e03c780c5f1089d2221852",
+  "copied_original_files": {
+    "check_bundle.py": "c8d626bff4bdccb4e97e865bf690796f4d86bd6aa080cc7571cf594d8921a228",
+    "check_model_gates.py": "6f7aecd70475fb9c7be368dc485ac28fe35aeb5abb15136b55b8b056ccf85bea",
+    "local_fixture_check.py": "41e9d8a0001819ed5e246da983635b5f1d341a9511334b19e106ad35cb47b281",
+    "prepare_bundle.py": "86153fc17d33e9fcf6792544d1db6c257fe0a3b30bdf2eb4af05293c5ab2769f",
+    "SERVER_README.md": "0374e41082a8bd61c133cfd7c9529cc01e2226235f27c7031a586ebebeddc9da",
+    "tb_int8soc_behavior.sv": "75eba3928ca27d3a70b63bdc0603e69648b94fe021b5825892a491eb4abc1ff9",
+    "tb_int8soc_macro.sv": "8701f5ac0e842a911ec2a870a0c082bc4f5fd79b1e499997ba5d837349593a63",
+    "templates/assessment/common.tcl": "8ed6c00373cef7efc5871d68dd1d147c634c41129ad78ae3f126a56598a45301",
+    "templates/assessment/formal.tcl": "67095706fc3a8ff0be8d29c9b9f873f555bfe16c240326c9be922a482651cac1",
+    "templates/assessment/sta_power.tcl": "030cf8f049adf53f7778bd1e062a49d91ba5bafc18f793b32c5aa131cd8ec1b8",
+    "templates/assessment/synth.tcl": "de4354cf71ed3f3c146e165f79c77e72ba3ee0111d93c861a14c12dc5805d757",
+    "templates/library_identity.example.tcl": "0cacd52d65dc48ad827fa4d535f7dba11490d796c2a177aa623d0d43525783b6",
+    "templates/macro_models.example.json": "786429dd61ce390494e68d7772f74d31d2a07fd770ee5c759c9e6448dff3eb3a",
+    "templates/platform_config.example.tcl": "e020087f57382bed8ce54ae54d3eac290ce3af1fb51c2bf9e7fc5b3605dfbe20",
+    "templates/run_int8_server.py": "a19f62195392b1521923e16f4c79c638330c78b5d2a08a71fa19ad86c415d191"
+  },
+  "scope": "Independent compact-private mapping; original frozen server directory unchanged"
+}

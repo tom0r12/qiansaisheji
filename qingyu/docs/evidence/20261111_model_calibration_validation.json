@@ -1,0 +1,981 @@
+{
+  "schema_version": 1,
+  "captured_utc": "2026-11-11T13:02:29.268990+00:00",
+  "path_base": "qingyu/; all original paths are project-relative",
+  "kind": "frozen training calibration and disjoint local validation summary",
+  "official_600_sample_evaluation": false,
+  "source_commit": "237e4097afd4f6851e0b82f0a8d65c2dfe8eae30",
+  "model_environment": {
+    "python": "3.11.15",
+    "tensorflow": "2.14.1",
+    "tensorflow_addons": "0.22.0",
+    "numpy": "1.26.4",
+    "lock": {
+      "path": "model/requirements-model-win-py311.resolved.lock.txt",
+      "sha256": "b19fd0078dd7097b902fe5c2a65d6b93bcd8a5bbeed82f6a462745b3c9547c2f"
+    },
+    "upstream_runtime_difference": "Python 3.11 / TF 2.14 reproduction; original upstream runtime used TF 2.4.0rc1."
+  },
+  "headroom_policy": "Every channel of every layer gets exactly one extra output shift bit",
+  "parameter_fit_split": "training",
+  "validation_parameter_search": false,
+  "headroom_comparison": {
+    "path": "build/model_headroom1_20261111/headroom_comparison.json",
+    "sha256": "b721e52aa4ff296a3c2350a16b130a1c77911dc0190037772d75ae3cf8b4f529"
+  },
+  "extraction": {
+    "training": {
+      "source": {
+        "path": "build/model_reference_20261111_201956_613/float_training/extraction_manifest.json",
+        "sha256": "bcd509fbf991a5f0462e7420fe13a40e0a14f04bd9863a88f34cb6a6c6c8bb4b"
+      },
+      "source_commit": "237e4097afd4f6851e0b82f0a8d65c2dfe8eae30",
+      "samples": 256,
+      "audio_npz_sha256": "e949735dd63b19aeaa3719c296a020489d85456609a864aa8bebd91b7e1ef256",
+      "synthetic_audio": false,
+      "label_counts": {
+        "0": 27,
+        "1": 23,
+        "2": 26,
+        "3": 12,
+        "4": 18,
+        "5": 17,
+        "6": 18,
+        "7": 19,
+        "8": 27,
+        "9": 22,
+        "10": 28,
+        "11": 19
+      },
+      "checkpoint": {
+        "best_weights.index": "5a60a0fa78a1855572084a42669768e2998d37e7d93c833962960fdb0db70fbc",
+        "best_weights.data-00000-of-00001": "ae993f6ed995938c1ab584b0857b35ca18f31f88001c7e17c7d7c3868bd33ad3"
+      },
+      "tensorflow": "2.14.1",
+      "tensorflow_addons": "0.22.0",
+      "max_dense_check_absolute_difference": 2.384185791015625e-06,
+      "sample_ids_canonical_json_sha256": "af654b1379b737f59d5b19dd240053f16aa2623dbcdfdab99a6534ca98868767"
+    },
+    "validation": {
+      "source": {
+        "path": "build/model_reference_20261111_201956_613/float_validation/extraction_manifest.json",
+        "sha256": "a27e85bc57add22ac5034bc121b09eba7eca3ca209335b6d3e7e93dee40d30e0"
+      },
+      "source_commit": "237e4097afd4f6851e0b82f0a8d65c2dfe8eae30",
+      "samples": 256,
+      "audio_npz_sha256": "55b76f5ae9600341b47918b684336ea4b7636b9888bd8561c78c1344d704bcf7",
+      "synthetic_audio": false,
+      "label_counts": {
+        "0": 22,
+        "1": 30,
+        "2": 26,
+        "3": 26,
+        "4": 22,
+        "5": 18,
+        "6": 18,
+        "7": 16,
+        "8": 27,
+        "9": 20,
+        "10": 16,
+        "11": 15
+      },
+      "checkpoint": {
+        "best_weights.index": "5a60a0fa78a1855572084a42669768e2998d37e7d93c833962960fdb0db70fbc",
+        "best_weights.data-00000-of-00001": "ae993f6ed995938c1ab584b0857b35ca18f31f88001c7e17c7d7c3868bd33ad3"
+      },
+      "tensorflow": "2.14.1",
+      "tensorflow_addons": "0.22.0",
+      "max_dense_check_absolute_difference": 2.384185791015625e-06,
+      "sample_ids_canonical_json_sha256": "a472b73f91f029ff870ddf8aaa02559d1718e80b7b85d5815c4bed8abd813b5f"
+    }
+  },
+  "configurations": {
+    "out16_baseline": {
+      "validation_report": {
+        "path": "build/model_reference_20261111_201956_613/validation_vectors_out16/validation_report.json",
+        "sha256": "65f74a513cd0156320ab38c20de942f38fa8132640359c29337f6f696cb77170"
+      },
+      "images_manifest": {
+        "path": "build/model_reference_20261111_201956_613/soc_images_out16/images_manifest.json",
+        "sha256": "589ac306074f1398f62724aaa8e2e9574279deaf7a556893d28d77c55011a1cd"
+      },
+      "output_bits": 16,
+      "output_headroom_bits": 0,
+      "lanes": 16,
+      "training_samples": 256,
+      "validation_samples": 256,
+      "training_label_counts": {
+        "0": 27,
+        "1": 23,
+        "2": 26,
+        "3": 12,
+        "4": 18,
+        "5": 17,
+        "6": 18,
+        "7": 19,
+        "8": 27,
+        "9": 22,
+        "10": 28,
+        "11": 19
+      },
+      "validation_label_counts": {
+        "0": 22,
+        "1": 30,
+        "2": 26,
+        "3": 26,
+        "4": 22,
+        "5": 18,
+        "6": 18,
+        "7": 16,
+        "8": 27,
+        "9": 20,
+        "10": 16,
+        "11": 15
+      },
+      "sample_sets_disjoint": true,
+      "training_sample_ids_canonical_json_sha256": "8fbade33aec14b2f89ce23b55f95306f09a5e7312433af6b18beaa754c3afd02",
+      "validation_sample_ids_canonical_json_sha256": "451043ce521f90a00e70cbe7413b2810396a227a580d864f868661c6d00e36e6",
+      "numerical_configuration_fit_role": "training",
+      "max_training_nrmse_percent": 0.007540048229779209,
+      "training_output_saturation_count": 0,
+      "max_validation_nrmse_percent": 0.06216915505506699,
+      "input_clipping_count": 0,
+      "output_saturation_count": 488,
+      "validation_elements": 77856768,
+      "max_selected_task_nrmse_percent": 0.007991916216088114,
+      "layers": [
+        {
+          "layer": 0,
+          "frozen_training_config": {
+            "path": "build/model_reference_20261111_201956_613/validation_vectors_out16/layer00/frozen_training_config.json",
+            "sha256": "0b861021427332290c48b1a85bc1894afd71a7d4ce233d7da4e69bc864cbf13e"
+          },
+          "format_version": "qingyu-fixed-v2",
+          "calibration_role": "training",
+          "weights_sha256": "ab3ea2eccf2979f9ade28fb6205f9943b725c5f23b8a86b406be97046323717c",
+          "x_exponent": -12,
+          "w_exponent_min_max": [
+            -21,
+            -16
+          ],
+          "shift_min_max": [
+            12,
+            17
+          ],
+          "channels": 256,
+          "training_nrmse_percent": 0.0064353906733920115,
+          "validation_nrmse_percent": 0.02559127926165816,
+          "input_clipping_count": 0,
+          "output_saturation_count": 44,
+          "selected_tasks": [
+            {
+              "sample_index": 9,
+              "label": 0,
+              "nrmse": 7.461679583055265e-05,
+              "integer_case_sha256": "619e916b640298bcf245d053b0cf55f61bd7559c22f3e233ec9749be5bfc4855"
+            }
+          ]
+        },
+        {
+          "layer": 1,
+          "frozen_training_config": {
+            "path": "build/model_reference_20261111_201956_613/validation_vectors_out16/layer01/frozen_training_config.json",
+            "sha256": "862c401107179d4440c01dfea319dd2b2d33e8012bf6e3e228724635f3e95f58"
+          },
+          "format_version": "qingyu-fixed-v2",
+          "calibration_role": "training",
+          "weights_sha256": "b6584f69c6e07c5403309ad203c73850ef1b1b1c18a57ba7d65a4e7537783139",
+          "x_exponent": -12,
+          "w_exponent_min_max": [
+            -21,
+            -16
+          ],
+          "shift_min_max": [
+            13,
+            17
+          ],
+          "channels": 256,
+          "training_nrmse_percent": 0.006298602207989205,
+          "validation_nrmse_percent": 0.06216915505506699,
+          "input_clipping_count": 0,
+          "output_saturation_count": 118,
+          "selected_tasks": [
+            {
+              "sample_index": 0,
+              "label": 1,
+              "nrmse": 5.9432391213038137e-05,
+              "integer_case_sha256": "efa222fd565849b5c6b782e3fc0d9e10e20f62a3ed7152d0314f45c35c719274"
+            }
+          ]
+        },
+        {
+          "layer": 2,
+          "frozen_training_config": {
+            "path": "build/model_reference_20261111_201956_613/validation_vectors_out16/layer02/frozen_training_config.json",
+            "sha256": "048658466282120d625fa5ffc8566b9885b5e3aa5c6dd726890dbe65bbc1025d"
+          },
+          "format_version": "qingyu-fixed-v2",
+          "calibration_role": "training",
+          "weights_sha256": "f7d9ea9c7b99276ce68e40f138fbdeeede76dee5d9c41e3f61e2b86972edddc0",
+          "x_exponent": -12,
+          "w_exponent_min_max": [
+            -22,
+            -16
+          ],
+          "shift_min_max": [
+            14,
+            17
+          ],
+          "channels": 256,
+          "training_nrmse_percent": 0.006754175516114466,
+          "validation_nrmse_percent": 0.00693901040224388,
+          "input_clipping_count": 0,
+          "output_saturation_count": 28,
+          "selected_tasks": [
+            {
+              "sample_index": 19,
+              "label": 2,
+              "nrmse": 6.314232091795246e-05,
+              "integer_case_sha256": "e629e293e79a2f2c7a66cad4d1b6a1dfe5bbc494ad74d0439fc6032762debd56"
+            }
+          ]
+        },
+        {
+          "layer": 3,
+          "frozen_training_config": {
+            "path": "build/model_reference_20261111_201956_613/validation_vectors_out16/layer03/frozen_training_config.json",
+            "sha256": "8ba69782669393d33ba41b8b9a2d8d9db828877fef2da251a9ad1d2689732cfd"
+          },
+          "format_version": "qingyu-fixed-v2",
+          "calibration_role": "training",
+          "weights_sha256": "60da448a21fbdf939547dcbfef31ca9008dced78bd9208b61fe43603f6fc428b",
+          "x_exponent": -12,
+          "w_exponent_min_max": [
+            -22,
+            -16
+          ],
+          "shift_min_max": [
+            14,
+            17
+          ],
+          "channels": 256,
+          "training_nrmse_percent": 0.007164380767915872,
+          "validation_nrmse_percent": 0.008417687946027246,
+          "input_clipping_count": 0,
+          "output_saturation_count": 72,
+          "selected_tasks": [
+            {
+              "sample_index": 18,
+              "label": 3,
+              "nrmse": 7.078817703565525e-05,
+              "integer_case_sha256": "97d58790e11baa13e31c63ec55b1fcb11f809cc5cc2ff0fb2130e8cee7ea8622"
+            }
+          ]
+        },
+        {
+          "layer": 4,
+          "frozen_training_config": {
+            "path": "build/model_reference_20261111_201956_613/validation_vectors_out16/layer04/frozen_training_config.json",
+            "sha256": "87d65c7f147e5ca66c9febb9d5e01f682fd23777eb192528bb91cefbbd85a518"
+          },
+          "format_version": "qingyu-fixed-v2",
+          "calibration_role": "training",
+          "weights_sha256": "82ba90e56d70c380dacb6d3b9b271b338dd56ab2f04900068ea21271b0dd9e6b",
+          "x_exponent": -12,
+          "w_exponent_min_max": [
+            -22,
+            -16
+          ],
+          "shift_min_max": [
+            14,
+            17
+          ],
+          "channels": 256,
+          "training_nrmse_percent": 0.007005112701548242,
+          "validation_nrmse_percent": 0.008646007234115242,
+          "input_clipping_count": 0,
+          "output_saturation_count": 21,
+          "selected_tasks": [
+            {
+              "sample_index": 2,
+              "label": 4,
+              "nrmse": 7.322243980386272e-05,
+              "integer_case_sha256": "6f489073d32e817dfa53dbc788d1fbb2261aa512c0c87d69bcba70b7c28f0c3d"
+            }
+          ]
+        },
+        {
+          "layer": 5,
+          "frozen_training_config": {
+            "path": "build/model_reference_20261111_201956_613/validation_vectors_out16/layer05/frozen_training_config.json",
+            "sha256": "c03c00c6f4c0625ebef74f3e8d48a992ed4ad4dd1a0ef12a62623f1cb0fdd7f0"
+          },
+          "format_version": "qingyu-fixed-v2",
+          "calibration_role": "training",
+          "weights_sha256": "8c4a0d6d164f31ffa0e931ab683eb35938b09cb6ac42630ed0b66b85a6a57f38",
+          "x_exponent": -12,
+          "w_exponent_min_max": [
+            -22,
+            -16
+          ],
+          "shift_min_max": [
+            14,
+            16
+          ],
+          "channels": 256,
+          "training_nrmse_percent": 0.006357074939647956,
+          "validation_nrmse_percent": 0.006471672049857696,
+          "input_clipping_count": 0,
+          "output_saturation_count": 22,
+          "selected_tasks": [
+            {
+              "sample_index": 7,
+              "label": 5,
+              "nrmse": 6.608476491379894e-05,
+              "integer_case_sha256": "a56d57ea36acb3097a4df2b63d168c808eca77e8701a97c3b99096c17b0c465d"
+            }
+          ]
+        },
+        {
+          "layer": 6,
+          "frozen_training_config": {
+            "path": "build/model_reference_20261111_201956_613/validation_vectors_out16/layer06/frozen_training_config.json",
+            "sha256": "329f043bff40f196404149f2caffe6e5f2f36dc9f92bd19c890392c3f853751e"
+          },
+          "format_version": "qingyu-fixed-v2",
+          "calibration_role": "training",
+          "weights_sha256": "402eae14f7ed0b596c5836d6c5d3c69dcc16c1b570099eb0458f29ed6fbf5e29",
+          "x_exponent": -12,
+          "w_exponent_min_max": [
+            -22,
+            -16
+          ],
+          "shift_min_max": [
+            14,
+            16
+          ],
+          "channels": 256,
+          "training_nrmse_percent": 0.006130870085637805,
+          "validation_nrmse_percent": 0.008442225692059326,
+          "input_clipping_count": 0,
+          "output_saturation_count": 56,
+          "selected_tasks": [
+            {
+              "sample_index": 4,
+              "label": 6,
+              "nrmse": 6.22603321013235e-05,
+              "integer_case_sha256": "734fb4a84c349a874f76e6f8511ec6f1db272beea2d4c729823043d60925ef93"
+            }
+          ]
+        },
+        {
+          "layer": 7,
+          "frozen_training_config": {
+            "path": "build/model_reference_20261111_201956_613/validation_vectors_out16/layer07/frozen_training_config.json",
+            "sha256": "65b1988f646cb39fd75b942a24ea1fbb89ff047c8120df03a6f4888a3edf8318"
+          },
+          "format_version": "qingyu-fixed-v2",
+          "calibration_role": "training",
+          "weights_sha256": "7761d022cb73a6f9c9817bd7e7f31e08d5ec578b643f3ae3806ed770eae52d71",
+          "x_exponent": -12,
+          "w_exponent_min_max": [
+            -22,
+            -16
+          ],
+          "shift_min_max": [
+            14,
+            17
+          ],
+          "channels": 256,
+          "training_nrmse_percent": 0.006372140784772451,
+          "validation_nrmse_percent": 0.013596115708600448,
+          "input_clipping_count": 0,
+          "output_saturation_count": 36,
+          "selected_tasks": [
+            {
+              "sample_index": 36,
+              "label": 7,
+              "nrmse": 6.706398687018447e-05,
+              "integer_case_sha256": "d25a4137f76293a888a1bc05cc92694685dcbbb5f0c78b06c91cc898f060f30d"
+            }
+          ]
+        },
+        {
+          "layer": 8,
+          "frozen_training_config": {
+            "path": "build/model_reference_20261111_201956_613/validation_vectors_out16/layer08/frozen_training_config.json",
+            "sha256": "594efa71da4abcf59b392e3bee8d232fa4e5be19c8ca1432e5532cd6c2756c81"
+          },
+          "format_version": "qingyu-fixed-v2",
+          "calibration_role": "training",
+          "weights_sha256": "ad744fe32fcce472ce598aca190135caf7a3b8f28353400e67cd0cec87f924fa",
+          "x_exponent": -12,
+          "w_exponent_min_max": [
+            -23,
+            -16
+          ],
+          "shift_min_max": [
+            14,
+            17
+          ],
+          "channels": 256,
+          "training_nrmse_percent": 0.006776010790757991,
+          "validation_nrmse_percent": 0.007384445048681063,
+          "input_clipping_count": 0,
+          "output_saturation_count": 49,
+          "selected_tasks": [
+            {
+              "sample_index": 13,
+              "label": 8,
+              "nrmse": 5.897406401587865e-05,
+              "integer_case_sha256": "190e537eb0883b982370319122b325753b74ec82ac51b67241b02e150d5efd29"
+            }
+          ]
+        },
+        {
+          "layer": 9,
+          "frozen_training_config": {
+            "path": "build/model_reference_20261111_201956_613/validation_vectors_out16/layer09/frozen_training_config.json",
+            "sha256": "6759386df17864fd8c3d1aabebe869b8444728a46ebf21815f328f60a1b89703"
+          },
+          "format_version": "qingyu-fixed-v2",
+          "calibration_role": "training",
+          "weights_sha256": "15b600352e50f5e0a364d008df34d41169e886dfff25201e5a3249db8ac22d42",
+          "x_exponent": -12,
+          "w_exponent_min_max": [
+            -22,
+            -16
+          ],
+          "shift_min_max": [
+            14,
+            16
+          ],
+          "channels": 256,
+          "training_nrmse_percent": 0.007035475242651854,
+          "validation_nrmse_percent": 0.0074797462991516754,
+          "input_clipping_count": 0,
+          "output_saturation_count": 17,
+          "selected_tasks": [
+            {
+              "sample_index": 10,
+              "label": 9,
+              "nrmse": 6.813331326936129e-05,
+              "integer_case_sha256": "90cadca42cfe67d67085b32fa7881b71520f547869fcb06cff597e48f8daa00a"
+            }
+          ]
+        },
+        {
+          "layer": 10,
+          "frozen_training_config": {
+            "path": "build/model_reference_20261111_201956_613/validation_vectors_out16/layer10/frozen_training_config.json",
+            "sha256": "9086d489599b2b6e761345b619a57dc363b1b2824c0c235e79aef3490186ea21"
+          },
+          "format_version": "qingyu-fixed-v2",
+          "calibration_role": "training",
+          "weights_sha256": "b2dd828d13fd265efc9c6dfe2d7472639143959f7cd2036d9260ffe043e729bd",
+          "x_exponent": -12,
+          "w_exponent_min_max": [
+            -21,
+            -16
+          ],
+          "shift_min_max": [
+            14,
+            16
+          ],
+          "channels": 256,
+          "training_nrmse_percent": 0.007409491955630064,
+          "validation_nrmse_percent": 0.007517168695665417,
+          "input_clipping_count": 0,
+          "output_saturation_count": 11,
+          "selected_tasks": [
+            {
+              "sample_index": 27,
+              "label": 10,
+              "nrmse": 6.892300601517428e-05,
+              "integer_case_sha256": "aadb072cdf8f65aadb0bfee01916f5aa20d9240ff0aa64bad2765bede40d5c47"
+            }
+          ]
+        },
+        {
+          "layer": 11,
+          "frozen_training_config": {
+            "path": "build/model_reference_20261111_201956_613/validation_vectors_out16/layer11/frozen_training_config.json",
+            "sha256": "ce6c0e4213109d6455f89d90121e761b1060177da595a2dbfaedfb7d35a9f432"
+          },
+          "format_version": "qingyu-fixed-v2",
+          "calibration_role": "training",
+          "weights_sha256": "06fad37f9744249d6f158a538ed5b35e293b76779b8187e55f6411fc06d6c094",
+          "x_exponent": -12,
+          "w_exponent_min_max": [
+            -18,
+            -16
+          ],
+          "shift_min_max": [
+            15,
+            17
+          ],
+          "channels": 256,
+          "training_nrmse_percent": 0.007540048229779209,
+          "validation_nrmse_percent": 0.030373229546228245,
+          "input_clipping_count": 0,
+          "output_saturation_count": 14,
+          "selected_tasks": [
+            {
+              "sample_index": 5,
+              "label": 11,
+              "nrmse": 7.991916216088114e-05,
+              "integer_case_sha256": "4c034d2b4be0d068197185d5c6d7381d358928750c9e7148cc960eb39e542bf9"
+            }
+          ]
+        }
+      ]
+    },
+    "out16_headroom1": {
+      "validation_report": {
+        "path": "build/model_headroom1_20261111/validation_vectors_out16/validation_report.json",
+        "sha256": "366ae4838bb3ce8f2828bc4453bd5590b8f530af85715fd71916115924327ba9"
+      },
+      "images_manifest": {
+        "path": "build/model_headroom1_20261111/soc_images_out16/images_manifest.json",
+        "sha256": "afffd63fc5326dd9cb1c040c8e155b7c92feee127a5fa44977374e01a5103179"
+      },
+      "output_bits": 16,
+      "output_headroom_bits": 1,
+      "lanes": 16,
+      "training_samples": 256,
+      "validation_samples": 256,
+      "training_label_counts": {
+        "0": 27,
+        "1": 23,
+        "2": 26,
+        "3": 12,
+        "4": 18,
+        "5": 17,
+        "6": 18,
+        "7": 19,
+        "8": 27,
+        "9": 22,
+        "10": 28,
+        "11": 19
+      },
+      "validation_label_counts": {
+        "0": 22,
+        "1": 30,
+        "2": 26,
+        "3": 26,
+        "4": 22,
+        "5": 18,
+        "6": 18,
+        "7": 16,
+        "8": 27,
+        "9": 20,
+        "10": 16,
+        "11": 15
+      },
+      "sample_sets_disjoint": true,
+      "training_sample_ids_canonical_json_sha256": "8fbade33aec14b2f89ce23b55f95306f09a5e7312433af6b18beaa754c3afd02",
+      "validation_sample_ids_canonical_json_sha256": "451043ce521f90a00e70cbe7413b2810396a227a580d864f868661c6d00e36e6",
+      "numerical_configuration_fit_role": "training",
+      "max_training_nrmse_percent": 0.010650772995992042,
+      "training_output_saturation_count": 0,
+      "max_validation_nrmse_percent": 0.010603806070545627,
+      "input_clipping_count": 0,
+      "output_saturation_count": 0,
+      "validation_elements": 77856768,
+      "max_selected_task_nrmse_percent": 0.01132117331961748,
+      "layers": [
+        {
+          "layer": 0,
+          "frozen_training_config": {
+            "path": "build/model_headroom1_20261111/validation_vectors_out16/layer00/frozen_training_config.json",
+            "sha256": "826f2a4271efdb08a9ebcc431640bfcd900b1865206712af2cd199ed234bd8e9"
+          },
+          "format_version": "qingyu-fixed-v2",
+          "calibration_role": "training",
+          "weights_sha256": "ab3ea2eccf2979f9ade28fb6205f9943b725c5f23b8a86b406be97046323717c",
+          "x_exponent": -12,
+          "w_exponent_min_max": [
+            -21,
+            -16
+          ],
+          "shift_min_max": [
+            13,
+            18
+          ],
+          "channels": 256,
+          "training_nrmse_percent": 0.009442206672641727,
+          "validation_nrmse_percent": 0.009473199373607048,
+          "input_clipping_count": 0,
+          "output_saturation_count": 0,
+          "selected_tasks": [
+            {
+              "sample_index": 9,
+              "label": 0,
+              "nrmse": 0.00010877137430525391,
+              "integer_case_sha256": "ed67551ad9eda4a7efdf8039f514076f0b479cd2a6d6f77b7d34a758b0e6d642"
+            }
+          ]
+        },
+        {
+          "layer": 1,
+          "frozen_training_config": {
+            "path": "build/model_headroom1_20261111/validation_vectors_out16/layer01/frozen_training_config.json",
+            "sha256": "d662fa9e33e55b9335cf7d152fa461c359d8b7df387aaa135888a66306e245ec"
+          },
+          "format_version": "qingyu-fixed-v2",
+          "calibration_role": "training",
+          "weights_sha256": "b6584f69c6e07c5403309ad203c73850ef1b1b1c18a57ba7d65a4e7537783139",
+          "x_exponent": -12,
+          "w_exponent_min_max": [
+            -21,
+            -16
+          ],
+          "shift_min_max": [
+            14,
+            18
+          ],
+          "channels": 256,
+          "training_nrmse_percent": 0.009092973140549935,
+          "validation_nrmse_percent": 0.008981856146041163,
+          "input_clipping_count": 0,
+          "output_saturation_count": 0,
+          "selected_tasks": [
+            {
+              "sample_index": 0,
+              "label": 1,
+              "nrmse": 8.706898109837046e-05,
+              "integer_case_sha256": "2bb25423edc719bd3e35764ca5ed8aea133bd29af0217677c3214f81c6572714"
+            }
+          ]
+        },
+        {
+          "layer": 2,
+          "frozen_training_config": {
+            "path": "build/model_headroom1_20261111/validation_vectors_out16/layer02/frozen_training_config.json",
+            "sha256": "593b2c2aed5e9a6e00a7dbe6d964c066c71e015448140d6edd1e59028e738858"
+          },
+          "format_version": "qingyu-fixed-v2",
+          "calibration_role": "training",
+          "weights_sha256": "f7d9ea9c7b99276ce68e40f138fbdeeede76dee5d9c41e3f61e2b86972edddc0",
+          "x_exponent": -12,
+          "w_exponent_min_max": [
+            -22,
+            -16
+          ],
+          "shift_min_max": [
+            15,
+            18
+          ],
+          "channels": 256,
+          "training_nrmse_percent": 0.009787173381021306,
+          "validation_nrmse_percent": 0.009780317924094903,
+          "input_clipping_count": 0,
+          "output_saturation_count": 0,
+          "selected_tasks": [
+            {
+              "sample_index": 19,
+              "label": 2,
+              "nrmse": 9.265703184550955e-05,
+              "integer_case_sha256": "c4851c4bcdde8502fa28f9e1397081ce30fbc10985e0ab52a8510e97adeb72a0"
+            }
+          ]
+        },
+        {
+          "layer": 3,
+          "frozen_training_config": {
+            "path": "build/model_headroom1_20261111/validation_vectors_out16/layer03/frozen_training_config.json",
+            "sha256": "dbfd5e4b4fd870fd3cf3e9faf387cad6d06eab4ef5c25111eb0b560b46e28c07"
+          },
+          "format_version": "qingyu-fixed-v2",
+          "calibration_role": "training",
+          "weights_sha256": "60da448a21fbdf939547dcbfef31ca9008dced78bd9208b61fe43603f6fc428b",
+          "x_exponent": -12,
+          "w_exponent_min_max": [
+            -22,
+            -16
+          ],
+          "shift_min_max": [
+            15,
+            18
+          ],
+          "channels": 256,
+          "training_nrmse_percent": 0.010338831082964954,
+          "validation_nrmse_percent": 0.01026780253675777,
+          "input_clipping_count": 0,
+          "output_saturation_count": 0,
+          "selected_tasks": [
+            {
+              "sample_index": 18,
+              "label": 3,
+              "nrmse": 0.00010125009933572596,
+              "integer_case_sha256": "3a678c9c259983da84cf1601b6b61206b289316de97da9b17a4911e5f5825366"
+            }
+          ]
+        },
+        {
+          "layer": 4,
+          "frozen_training_config": {
+            "path": "build/model_headroom1_20261111/validation_vectors_out16/layer04/frozen_training_config.json",
+            "sha256": "d2053d8b0c9d73331e30a270ea7e4e32a0bb293dc08836b47516c1da3c65fd2d"
+          },
+          "format_version": "qingyu-fixed-v2",
+          "calibration_role": "training",
+          "weights_sha256": "82ba90e56d70c380dacb6d3b9b271b338dd56ab2f04900068ea21271b0dd9e6b",
+          "x_exponent": -12,
+          "w_exponent_min_max": [
+            -22,
+            -16
+          ],
+          "shift_min_max": [
+            15,
+            18
+          ],
+          "channels": 256,
+          "training_nrmse_percent": 0.010050496145632271,
+          "validation_nrmse_percent": 0.010050976784760244,
+          "input_clipping_count": 0,
+          "output_saturation_count": 0,
+          "selected_tasks": [
+            {
+              "sample_index": 2,
+              "label": 4,
+              "nrmse": 0.00010629652618736568,
+              "integer_case_sha256": "238b9d704b20b98649d9a33403f03b0e79d24082c5cecd3c7754c4d3fd1ae60a"
+            }
+          ]
+        },
+        {
+          "layer": 5,
+          "frozen_training_config": {
+            "path": "build/model_headroom1_20261111/validation_vectors_out16/layer05/frozen_training_config.json",
+            "sha256": "9a0cb02329bd613cab31616858bbc56a2ad793228df16736ef37c419a36a249a"
+          },
+          "format_version": "qingyu-fixed-v2",
+          "calibration_role": "training",
+          "weights_sha256": "8c4a0d6d164f31ffa0e931ab683eb35938b09cb6ac42630ed0b66b85a6a57f38",
+          "x_exponent": -12,
+          "w_exponent_min_max": [
+            -22,
+            -16
+          ],
+          "shift_min_max": [
+            15,
+            17
+          ],
+          "channels": 256,
+          "training_nrmse_percent": 0.00891020115429811,
+          "validation_nrmse_percent": 0.008760691713493201,
+          "input_clipping_count": 0,
+          "output_saturation_count": 0,
+          "selected_tasks": [
+            {
+              "sample_index": 7,
+              "label": 5,
+              "nrmse": 8.8848230002858e-05,
+              "integer_case_sha256": "b603a770ecfec71d55fc5ad54db6743591a8b3a9e555c0d0b5a8fda7b1d8d434"
+            }
+          ]
+        },
+        {
+          "layer": 6,
+          "frozen_training_config": {
+            "path": "build/model_headroom1_20261111/validation_vectors_out16/layer06/frozen_training_config.json",
+            "sha256": "65d02f6b75f4867bcf3d65f334bb6a73b22ea8fe5aeb58ddfab6cfeec1bab970"
+          },
+          "format_version": "qingyu-fixed-v2",
+          "calibration_role": "training",
+          "weights_sha256": "402eae14f7ed0b596c5836d6c5d3c69dcc16c1b570099eb0458f29ed6fbf5e29",
+          "x_exponent": -12,
+          "w_exponent_min_max": [
+            -22,
+            -16
+          ],
+          "shift_min_max": [
+            15,
+            17
+          ],
+          "channels": 256,
+          "training_nrmse_percent": 0.008477004640836727,
+          "validation_nrmse_percent": 0.00844241072611415,
+          "input_clipping_count": 0,
+          "output_saturation_count": 0,
+          "selected_tasks": [
+            {
+              "sample_index": 4,
+              "label": 6,
+              "nrmse": 8.727040243503158e-05,
+              "integer_case_sha256": "fa4cc18ffc076e31523368ea35b73645bd3e85f963da8d564d38d74569047b5d"
+            }
+          ]
+        },
+        {
+          "layer": 7,
+          "frozen_training_config": {
+            "path": "build/model_headroom1_20261111/validation_vectors_out16/layer07/frozen_training_config.json",
+            "sha256": "3d486f3dee15eaf14cb74fc96e7cd185ff8804e9a47c960868178aa2dbc0af09"
+          },
+          "format_version": "qingyu-fixed-v2",
+          "calibration_role": "training",
+          "weights_sha256": "7761d022cb73a6f9c9817bd7e7f31e08d5ec578b643f3ae3806ed770eae52d71",
+          "x_exponent": -12,
+          "w_exponent_min_max": [
+            -22,
+            -16
+          ],
+          "shift_min_max": [
+            15,
+            18
+          ],
+          "channels": 256,
+          "training_nrmse_percent": 0.009149609827684441,
+          "validation_nrmse_percent": 0.009151025558335612,
+          "input_clipping_count": 0,
+          "output_saturation_count": 0,
+          "selected_tasks": [
+            {
+              "sample_index": 36,
+              "label": 7,
+              "nrmse": 9.505055266374466e-05,
+              "integer_case_sha256": "a6237762879a841c9498f43010117cc08f33b81348958824d710d296cba564fe"
+            }
+          ]
+        },
+        {
+          "layer": 8,
+          "frozen_training_config": {
+            "path": "build/model_headroom1_20261111/validation_vectors_out16/layer08/frozen_training_config.json",
+            "sha256": "4255a0c88b91b4273dd237b7b446bd065fb63a277e15277dbf6b41e03113745d"
+          },
+          "format_version": "qingyu-fixed-v2",
+          "calibration_role": "training",
+          "weights_sha256": "ad744fe32fcce472ce598aca190135caf7a3b8f28353400e67cd0cec87f924fa",
+          "x_exponent": -12,
+          "w_exponent_min_max": [
+            -23,
+            -16
+          ],
+          "shift_min_max": [
+            15,
+            18
+          ],
+          "channels": 256,
+          "training_nrmse_percent": 0.009627600941955776,
+          "validation_nrmse_percent": 0.0095716892771905,
+          "input_clipping_count": 0,
+          "output_saturation_count": 0,
+          "selected_tasks": [
+            {
+              "sample_index": 13,
+              "label": 8,
+              "nrmse": 8.492976475182442e-05,
+              "integer_case_sha256": "42bd5d806520792ccd11b78bf985d163d7d3c4479882e11e107818688a7ff9ef"
+            }
+          ]
+        },
+        {
+          "layer": 9,
+          "frozen_training_config": {
+            "path": "build/model_headroom1_20261111/validation_vectors_out16/layer09/frozen_training_config.json",
+            "sha256": "fa9c9ae20dc566675b533c3bdfe92701a4ed4d3cb68c1b773bda48dc5cbb6257"
+          },
+          "format_version": "qingyu-fixed-v2",
+          "calibration_role": "training",
+          "weights_sha256": "15b600352e50f5e0a364d008df34d41169e886dfff25201e5a3249db8ac22d42",
+          "x_exponent": -12,
+          "w_exponent_min_max": [
+            -22,
+            -16
+          ],
+          "shift_min_max": [
+            15,
+            17
+          ],
+          "channels": 256,
+          "training_nrmse_percent": 0.009874903769301297,
+          "validation_nrmse_percent": 0.00986679474023606,
+          "input_clipping_count": 0,
+          "output_saturation_count": 0,
+          "selected_tasks": [
+            {
+              "sample_index": 10,
+              "label": 9,
+              "nrmse": 9.549179881127342e-05,
+              "integer_case_sha256": "2b11b6bfd44e8b30edaddea13094f67b8bd1128fcce63e1b6d8a8fe30eb19599"
+            }
+          ]
+        },
+        {
+          "layer": 10,
+          "frozen_training_config": {
+            "path": "build/model_headroom1_20261111/validation_vectors_out16/layer10/frozen_training_config.json",
+            "sha256": "81fee6c67852af7682fe271f143f4fdbf918f3c0c8258bad899def70be000139"
+          },
+          "format_version": "qingyu-fixed-v2",
+          "calibration_role": "training",
+          "weights_sha256": "b2dd828d13fd265efc9c6dfe2d7472639143959f7cd2036d9260ffe043e729bd",
+          "x_exponent": -12,
+          "w_exponent_min_max": [
+            -21,
+            -16
+          ],
+          "shift_min_max": [
+            15,
+            17
+          ],
+          "channels": 256,
+          "training_nrmse_percent": 0.010259387598740894,
+          "validation_nrmse_percent": 0.010241375606998929,
+          "input_clipping_count": 0,
+          "output_saturation_count": 0,
+          "selected_tasks": [
+            {
+              "sample_index": 27,
+              "label": 10,
+              "nrmse": 9.48493570390215e-05,
+              "integer_case_sha256": "7a1e63a83c8a48fb8dec9c5bb873d821695e8c0a8bfa136ba70e5adb219b91eb"
+            }
+          ]
+        },
+        {
+          "layer": 11,
+          "frozen_training_config": {
+            "path": "build/model_headroom1_20261111/validation_vectors_out16/layer11/frozen_training_config.json",
+            "sha256": "95fdce4404e21056205d347d95dd0f628f46eac8f6e4b3f13a2ff9395b0f789a"
+          },
+          "format_version": "qingyu-fixed-v2",
+          "calibration_role": "training",
+          "weights_sha256": "06fad37f9744249d6f158a538ed5b35e293b76779b8187e55f6411fc06d6c094",
+          "x_exponent": -12,
+          "w_exponent_min_max": [
+            -18,
+            -16
+          ],
+          "shift_min_max": [
+            16,
+            18
+          ],
+          "channels": 256,
+          "training_nrmse_percent": 0.010650772995992042,
+          "validation_nrmse_percent": 0.010603806070545627,
+          "input_clipping_count": 0,
+          "output_saturation_count": 0,
+          "selected_tasks": [
+            {
+              "sample_index": 5,
+              "label": 11,
+              "nrmse": 0.0001132117331961748,
+              "integer_case_sha256": "36f5eda39d7f11ecb151691d35bf66ec651cec168984e2510c7be6a7d72f7c2e"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "limits": [
+    "Local 256/256 subset, not organizer frozen 600 samples",
+    "Hash-and-statistics summary, not a substitute for full frozen configurations or waveform/input artifacts",
+    "NRMSE percentages here equal dimensionless report NRMSE multiplied by 100",
+    "The twelve SoC tasks are selected from validation; not all 256 samples were simulated in RTL",
+    "No area, timing, power, energy or official score is established by numerical validation"
+  ]
+}

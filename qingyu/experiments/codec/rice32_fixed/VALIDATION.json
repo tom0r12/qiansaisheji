@@ -1,0 +1,93 @@
+{
+  "schema": "qingyu-fixed-codec-validation-v1",
+  "standalone_verified": true,
+  "whole_soc_verified": false,
+  "physical_signoff": false,
+  "source_sha256": {
+    "rice32_encoder.sv": "bcb80b1041e36464cffeab45df057820cbc8d0a81392989c4c9f2915cfc22077",
+    "rice32_decoder.sv": "a44b8cc2480a2776ccf1010bcc935fe042368921d0216a50a535adc1cf061fb8"
+  },
+  "evidence": {
+    "quick_four_state": {
+      "path": "runs/20261111T182159600355Z/result.json",
+      "sha256": "8b63a7b8527517900713a36e41bead3f916557ac6ab866abf5644a03c6269f12",
+      "passed": true
+    },
+    "real72_three_seed": {
+      "path": "runs/20261111T182215647548Z/result.json",
+      "sha256": "24578f3ab7a5c606fb0c90f8eea72df2f964ac03ecba000291d61adcd87959ba",
+      "passed": true
+    },
+    "frontend_three_stage": {
+      "path": "runs/frontend_20261111T182521567174Z/result.json",
+      "sha256": "931a5fe3c913e377dd46521d4156e5e32460ef7535f31be08949bf7bca91a161",
+      "passed": true
+    },
+    "canonical_ties_all_bytes": {
+      "path": "runs/boundary_20261111T182818758693Z/result.json",
+      "sha256": "bfad128cdcd5edf50d192330424382903435e12e36b7771ff3c7e6cfaacc64ce",
+      "passed": true
+    }
+  },
+  "reference": "Frozen rice32_bounded SOURCE e1774bf4beaadc71d2a332dea21fac27b30fc5fb0d3810f0f8ea42cf1bb8c22f; immutable72task corpus, original frozen scalar bit writer; no refit",
+  "functional": "Each seed1860 normal frames x no/randomstall,41 error cases and4 resets;1800 normal streams from72 actual tasks. Bit payload equal for all. Explicit canonical raw ties and all256 bytes additionally passed3seed four-state for fixed andreference.",
+  "cycle_comparison": {
+    "path": "runs/20261111T182215647548Z/cycle_comparison.json",
+    "sha256": "cc0d669531dd10cf92b5242261e21a9cb01eb92733933a18528a76383aaf0e5b",
+    "method": "Each case/direction seeds producer and sink schedule independently; ready pattern is same function of frame-relative elapsed cycle, not response count. Each RTL accepts its own handshake sequence.",
+    "real_stream_metrics": {
+      "encoder_stalls0": {
+        "pairs": 3456,
+        "changed_pairs": 0,
+        "mean_delta": 0,
+        "min_delta": 0,
+        "max_delta": 0,
+        "sum_delta": 0
+      },
+      "decoder_stalls0": {
+        "pairs": 1944,
+        "changed_pairs": 0,
+        "mean_delta": 0,
+        "min_delta": 0,
+        "max_delta": 0,
+        "sum_delta": 0
+      },
+      "encoder_stalls1": {
+        "pairs": 3456,
+        "changed_pairs": 3455,
+        "mean_delta": 47.245370370370374,
+        "min_delta": 0,
+        "max_delta": 127,
+        "sum_delta": 163280
+      },
+      "decoder_stalls1": {
+        "pairs": 1944,
+        "changed_pairs": 0,
+        "mean_delta": 0,
+        "min_delta": 0,
+        "max_delta": 0,
+        "sum_delta": 0
+      }
+    }
+  },
+  "retained_state_change": {
+    "history_delta": 0,
+    "reservoir_delta": -448,
+    "count_delta": -3,
+    "encoder_k_delta": -3,
+    "total_declared_delta": -454,
+    "not_area": true
+  },
+  "coverage": "Largest append141; all fullrun decoder peaks320. All-one prefixes,265bit group followed by canonical error, tail1bit, outputheld andinputdrain exercised.",
+  "prior_failure": {
+    "path": "runs/frontend_20261111T182332872083Z/result.json",
+    "sha256": "4ecac59321c9886e8c25da846938870908de907dc0744cf4fe69ef527d144c61",
+    "cause": "Generated netlist has no LANES parameter; initial testbench parameter overrides made elaboration fail, not a function mismatch. Final frontend TB removes only those two overrides."
+  },
+  "limits": [
+    "Finite frontend simulation is not fullLEC. Old generic Yosys task/inout miscompile remains rejected.",
+    "Narrowencoder changes backpressure absorption; actual engine/SoC must compare, and only fixeddecoder withboundedencoder is a separate possible configuration.",
+    "No manufacturer library/macro validation, STA, physical area or energy result.",
+    "No changed task, loader, official fabric or quantization."
+  ]
+}

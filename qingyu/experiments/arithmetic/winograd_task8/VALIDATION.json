@@ -1,0 +1,46 @@
+{
+  "schema": "qingyu-task8-validation-v1",
+  "result": "build/winograd_task8/20261111T170054752807Z/result.json",
+  "result_sha256": "3f7d4521b53b00797e56b7629efbfa64bba238290e1007869fc44bb4dc14570b",
+  "completed": true,
+  "compiled_rtl_tb_unchanged": true,
+  "post_validation_change": "contract status metadata only; VALIDATED_CONTRACT.json preserves original; README and validation/source manifests added",
+  "unique_real_tasks": 12,
+  "unique_real_output_elements": 304128,
+  "real_validation_sample": "sample9 generated silence; no official600 claim",
+  "seeds": [
+    2371,
+    2477,
+    2551
+  ],
+  "per_seed_accumulator_checks": 861696,
+  "per_seed_successful_tasks": 33,
+  "per_seed_resets": 8,
+  "per_seed_aborts": 7,
+  "per_seed_expected_errors": 2,
+  "fast_cycles": 21827,
+  "phases": {
+    "load": 5888,
+    "factor_cache_commit": 259,
+    "cache_read": 2064,
+    "compute": 7280,
+    "store": 6336
+  },
+  "physical_sram_bits": 174080,
+  "raw_pair_lanes": 128,
+  "load_factor_multipliers": 2,
+  "strict_rtl_lint": "zero warnings",
+  "four_state_smoke": {
+    "log": "build/winograd_task8_four_state_smoke/sim.log",
+    "sha256": "b276212358a63e7f17765dafe917038219a52c2ee0bab1901eec96928b8e3937",
+    "scope": "one complete frozen real layer; same full scoreboard; TB build derivative stops after initial loop",
+    "derived_tb_sha256": "d85051644323f14991c37dd210b4a8201abb6b057316f47c3cfd56ba366cdafd"
+  },
+  "full_soc_tested": false,
+  "sta_passed": false,
+  "ppa_measured": false,
+  "testbench_compile_diagnostics": {
+    "WIDTHTRUNC": 13,
+    "review": "Testbench integer flags active/random_stalls/force_output_stall are only assigned0 or1; logical use is intentional. Strict DUT-only lint has zero diagnostics."
+  }
+}

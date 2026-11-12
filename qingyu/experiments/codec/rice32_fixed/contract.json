@@ -1,0 +1,25 @@
+{
+  "schema": "qingyu-rice32-fixed-v1",
+  "scope": "New candidate only; frozen generic and bounded RTL unchanged",
+  "interface": "Original names/ports. LANES=4 only. Encoder HISTORY_BYTES=16, decoder64 only.",
+  "accepted": "Encoder k3 only, delta row16; decoder k2 or5 only, delta row16 or64; without delta row does not affect transform.",
+  "format": "Identical frozen canonical Rice32 flags/raw tie rule/MSB-first bits/little-endian byte words/zero last padding. First row bypasses old history every START.",
+  "encoder_bound": {
+    "code_bits": 64,
+    "reservoir_bits": 256,
+    "append_threshold_after_emit": 112,
+    "maximum_symbol": 35,
+    "maximum_four_symbol_append_including_flag": 141,
+    "maximum_used": 253
+  },
+  "decoder_bound": {
+    "reservoir_bits": 320,
+    "ingress_threshold_before_accept": 288,
+    "maximum_four_symbol_parse_including_flag": 265,
+    "scan_bits": 64,
+    "malformed": "64 consecutive unary ones exceeds max quotient63 at k2 (max7 at k5), raises error; no truncation."
+  },
+  "errors": "Configuration failure completes next cycle without accepting payload. Runtime malformed input drains through in_last and retains an offered output until ACK. Indefinitely missing input or output ACK requires external reset/watchdog; not falsely called bounded completion. Insufficient partial group does not commit parser/history.",
+  "verification": "Independent golden bit writer + immutable72task packets, accepted payload sequence not cycle-ready identity; directed all-ones/last1/cross-word/held errors/reset. Compare no-stall and seeded absolute-cycle sink schedules; counters include START/flush/finalACK.",
+  "limits": "No PPA/STA claim. Private state savings are not mm2/energy. Engine/SoC comparison required before choosing candidate."
+}

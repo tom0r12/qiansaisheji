@@ -1,0 +1,17 @@
+{
+  "schema": "qingyu-fixed-codec-source-v1",
+  "frozen_utc": "2026-11-11T18:30:18.722680+00:00",
+  "files": {
+    "contract.json": "edfd05dfd2a8baab2273fd4d6baba947c75c09db8b5840c89cabdf25a41d588d",
+    "README.md": "dccf2f476fc6ea437a9a0cb3460fe28b8e943c3ef8bc8c25f99b1dca9ce671ac",
+    "rice32_decoder.sv": "a44b8cc2480a2776ccf1010bcc935fe042368921d0216a50a535adc1cf061fb8",
+    "rice32_encoder.sv": "bcb80b1041e36464cffeab45df057820cbc8d0a81392989c4c9f2915cfc22077",
+    "run_boundary_checks.py": "43f6d11330c897456250b4394dd6431a4835cafcb2b283628806b4b08309fd62",
+    "run_checks.py": "edb4b97b98ad7bf09efde92ea25dedeb97e1c6985a65b14d66865ceabca5218c",
+    "run_frontend_checks.py": "3f95b47e10a643ad5e7fa15fddbfcc18f06e1ec97a65dd300025eef5b4c52b31",
+    "tb_rice32_fixed.sv": "2caa985fda6319d00062e155f4b10dfcba2bdd315f9393853bdbb7846f88d738",
+    "VALIDATION.json": "038a0e76a73844ca3109b506b880939e484183e08f0f41c9ff7dc82e376e985f"
+  },
+  "validation": "VALIDATION.json",
+  "limits": "Standalone candidate; no whole-system/PPA target claim"
+}

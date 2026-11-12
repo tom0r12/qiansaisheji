@@ -1,0 +1,31 @@
+{
+  "schema":"qingyu-winograd-task8-prefetch-contract-v1",
+  "module":"winograd_int8_task8",
+  "status":"implementation planned; no measured prefetch performance",
+  "base":"Frozen winograd_task8_overlap, SOURCE_SHA256 2a94f2369b24e3b8b0f3181e0f65f49d19a4e47b73449ad1a6457909899c85c3",
+  "ports":"Same names and widths as serial/overlap, with explicitly changed load scheduling below. Select exactly one same-named RTL implementation per filelist.",
+  "unchanged":"One BEGIN, X1600words once before W,8 ordered W512/meta24 groups,16 ordered Y396word tiles. Frozen signed8 X/W,signed16 bias,shift0..47/RNE/saturation. All factors generated in hardware, cleared per BEGIN.",
+  "load_target_semantics":{
+    "pair_group":"Current or next requested LOAD group0..7, independent of compute tile. pair_slot_base={pair_group[0],0}. It can advance before the preceding group outputs complete.",
+    "pair_loaded":"Pulse only after all512 accepted W words really commit to single-port W macros, all32 column factors complete, all24 metadata words arrive and all32 C/bias/shift cache entries commit. During the entire pulse cycle pair_group remains the committed group. On the next edge the pulse clears and pair_group advances to the next load target; after group7 it stays7.",
+    "pair_done":"Unchanged pulse after the second tile's final raw-output ACK; pair_done_index identifies that COMPUTE group independently of load_target.",
+    "preoffer":"W/meta producer can offer the next group before ready and must hold payload. No more than two committed/in-progress groups fit the four slots. Target pair must have both slots free before the next load starts."
+  },
+  "two_fsm":"Loader owns W word count,metadata word count,current load group and cache commits. Compute owns tile0..15,row group0..12,paired reads,snapshot and output. Compute waits for matching logical tile ID in a valid slot, never merely an old valid bit.",
+  "slot_ownership":"Each of4 W slots is reserved by the current loader or remains valid for its committed logical tile. A slot becomes free only on that tile's final raw output ACK. Both target slots must be free before a new pair loads. BEGIN/reset/error invalidate all slots and task epochs.",
+  "W_burst_staging":{
+    "data_bits":768,
+    "address_bits":21,
+    "description":"Three256bit buffers each collect8 accepted32bit W words, plus7bit macro address per buffer. One full buffer writes16 separate16bit W banks simultaneously on a real non-DOT-read edge. Three contexts match three DOT_WAIT edges; two contexts cannot refill8words before the third edge. Same32bit external interface; no shared-SRAM bypass or widened SystemBus.",
+    "ownership":"A completed buffer is immutable until its real SRAM write edge. Fill and drain never access the same occupied buffer. Last accepted source word is not considered committed until its buffered macro write occurs.",
+    "arbitration":"DOT_READ uses all16 single-port W banks and has priority. A ready burst writes only when no DOT read is issued. Existing DOT_WAIT bubbles can carry writes. Stalls are real and counted; no assumption that four addresses imply multiple ports."
+  },
+  "metadata_arbitration":"Current tile's16 C/bias/shift cache reads have priority over next group's32 cache writes. Each granted access uses the same three single-port macros. Active16lane metadata remains unchanged until current tile's final output ACK; no second720bit active context is added.",
+  "factors":"The existing2 signed8x8 load products run on accepted X/W words. Next group's32 C accumulators and bias/shift load registers are distinct from active compute metadata, so no extra factor array is required. R cache is read during current DOT as in the frozen overlap revision.",
+  "snapshot":"Unchanged3121 additional retained bits from overlap:128x23raw,8x21R,group4,tile4,valid1. Output contexts remain stable until ACK even while next-group loading occurs.",
+  "physical_storage":"Unchanged8x1024x16+21x128x16=174080bits. Extra W staging789data/address bits plus explicit fill/ready/counters/FSM controls; no full-layer W or Y register cache.",
+  "error":"Invalid shift consumes its full24-word metadata block, sets sticky error, prevents new compute/snapshot publication and invalidates slot/burst epochs. An already offered output snapshot is retained and drained before finite error done. Earlier prefix output may exist and the entire task is invalid. Permanent output stall requires enclosing watchdog/joint reset. Enclosing bus transport must drain accepted/offered bus commands separately.",
+  "complete_window":"BEGIN-to-final raw Y ACK counters include actual input/output stalls and arbitration. Exclusive counters partition state occupancy; overlapping loader/write/output operations are counted separately for verification but not double-added to time. Core done is still not final compressed/header/shared-bus ACK.",
+  "analytical_private_budget":{"expression":"X1600+Rdrain3+initialW/meta/cache568 +8*(pairedDOT910+metadataread34+tailstore24)","cycles":9915,"status":"Scheduling estimate only; requires actual burst/metadata arbitration and decoder availability. Not a SystemBus/CPU/strict-loader measurement."},
+  "verification":"Independent direct64 goldens for12 real complete tasks+10 synthetic; accepted W versus delayed actual macro commit counts, burst payload retention, all slot generations and releases, metadata cache arbitration, real concurrent loader/DOT activity, output stalls and full contexts, errors while output active, reset during fill/drain/compute. Include a four-state SRAM write-Q-poison model to expose illegal read/write response use."
+}

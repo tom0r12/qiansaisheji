@@ -1,0 +1,100 @@
+{
+  "schema": "qingyu-throughput-requirements-audit-v1",
+  "status": "analytical_bounds_not_implementation_or_signoff",
+  "date": "2026-11-11",
+  "target": {
+    "tasks_per_second_strictly_greater_than": 10450,
+    "incremental_area_mm2_max": 0.5,
+    "energy_uj_per_task_max": 6.3,
+    "clock_hz": 150000000
+  },
+  "current_format": {
+    "input_words32": 11936,
+    "output_words32": 12672,
+    "dense_macs_per_task": 1622016
+  },
+  "requirements": {
+    "cycles_per_task_strictly_less_than": 14354.066985645934,
+    "time_us_strictly_less_than": 95.69377990430623,
+    "effective_mac_per_clock_min_at_target": 113.000448,
+    "whole_soc_power_W_max_at_exact_target": 0.065835,
+    "minimum_bus_bits_at_one_transfer_per_clock_cold_write_output": 54.859434666666665,
+    "minimum_bus_bits_with_private_reread": 81.46875733333333
+  },
+  "bounds": [
+    {
+      "case": "int16_32bit_initial_write_and_output_only",
+      "ideal_cycles_lower_bound": 24608,
+      "tasks_per_second_upper_bound": 6095.578673602081
+    },
+    {
+      "case": "int16_32bit_initial_write_private_read_output",
+      "ideal_cycles_lower_bound": 36544,
+      "tasks_per_second_upper_bound": 4104.640980735551
+    },
+    {
+      "case": "opt30_engineering_payload",
+      "ideal_cycles_lower_bound": 37120,
+      "tasks_per_second_upper_bound": 4040.948275862069
+    },
+    {
+      "case": "opt30_including_observed_validation",
+      "ideal_cycles_lower_bound": 37440,
+      "tasks_per_second_upper_bound": 4006.4102564102564
+    },
+    {
+      "case": "int8_initial_write_and_output_only_illustrative",
+      "ideal_cycles_lower_bound": 12592,
+      "tasks_per_second_upper_bound": 11912.325285895808
+    },
+    {
+      "case": "int8_initial_write_private_read_output_illustrative",
+      "ideal_cycles_lower_bound": 18848,
+      "tasks_per_second_upper_bound": 7958.404074702887
+    },
+    {
+      "case": "int16_64bit_initial_write_and_output_only",
+      "ideal_cycles_lower_bound": 12304.0,
+      "tasks_per_second_upper_bound": 12191.157347204162
+    },
+    {
+      "case": "int16_64bit_with_private_read",
+      "ideal_cycles_lower_bound": 18272.0,
+      "tasks_per_second_upper_bound": 8209.281961471102
+    },
+    {
+      "case": "int16_128bit_with_private_read",
+      "ideal_cycles_lower_bound": 9136.0,
+      "tasks_per_second_upper_bound": 16418.563922942205
+    },
+    {
+      "case": "current64mac_compute_only",
+      "ideal_cycles_lower_bound": 25344.0,
+      "tasks_per_second_upper_bound": 5918.560606060606
+    },
+    {
+      "case": "128mac_compute_only",
+      "ideal_cycles_lower_bound": 12672.0,
+      "tasks_per_second_upper_bound": 11837.121212121212
+    },
+    {
+      "case": "128mac_8row_padding",
+      "ideal_cycles_lower_bound": 13312,
+      "tasks_per_second_upper_bound": 11268.028846153846
+    }
+  ],
+  "pdf_sha256": "b73a5414b4dcdb2cca337778a133be88705e207bec080687731d63b413ea927c",
+  "official_loading_start_status": "OPEN: PDF does not identify host/shared-write or shared-to-accelerator handshake; strict external-loading interpretation is not a confirmed signal boundary",
+  "bandwidth_proof_assumptions": [
+    "150 MHz",
+    "one shared 32-bit command acceptance per clock",
+    "current INT16 layout",
+    "same command port carries required input transfer and all output writes"
+  ],
+  "alternative_window_bound": {
+    "description": "If shared preload is permitted outside the official window, one complete input shared read plus all output writes still requires the same 24608 single-port 32-bit transfers. This is a different transaction set from initial-write plus output-write.",
+    "cycles_lower_bound": 24608,
+    "tasks_per_second_upper_bound": 6095.578673602081
+  },
+  "loader_cpu_copy_assumption": "Only if E203 must load and store every arbitrary 32-bit word: ordinary copy needs at least 23872 data-memory instructions; CPU initialization is not explicitly mandated by the PDF."
+}

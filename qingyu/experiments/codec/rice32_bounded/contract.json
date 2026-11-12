@@ -1,0 +1,11 @@
+{
+  "schema": "qingyu-rice32-bounded-history-v1",
+  "scope": "Independent format-specialized history storage; frozen rice32 source/format remains unchanged",
+  "interface": "Original rice32_encoder/rice32_decoder module names, all original ports and LANES=4 default. HISTORY_BYTES defaults to16 for encoder and64 for decoder; power-of-two16..256 only.",
+  "format": "Exact frozen Rice32 flags/canonical raw escape/unary/remainder/padding and ready-valid behavior, all k0..7. No new quantization, transform or corpus fitting.",
+  "capacity": "When delta is enabled, row_bytes must retain the original legal values16/64/256 AND be <=HISTORY_BYTES. Over-capacity START returns sticky configuration error/done without accessing history or awaiting missing input. When delta is disabled, W row_bytes32 remains legal.",
+  "physical_state": "Encoder history16x8=128bits; decoder64x8=512bits; total640 versus original4096. Every dynamic history index is HISTORY_ADDR_W=$clog2(HISTORY_BYTES) bits and validated configuration prevents wrapping legal row data. Other codec buffering/arithmetic unchanged.",
+  "epoch": "History data is not reset. Every accepted START resets decoded/received position; the first complete row bypasses old history reads and overwrites corresponding locations.",
+  "verification": "Actual pre-registered72task packet corpus, immutable stream bytes and independent decoder; every legal output compares bit-for-bit and cycle-for-cycle with frozen original RTL shadow. Encoder specializes Y delta16, decoder X delta64 and W non-delta32; Y also decodes for roundtrip. Short/tail/all-k/extreme/raw escape/error/reset/backpressure and explicit over-capacity configuration rejection.",
+  "limits": "Standalone codec only. No changed official bus, no PPA/STA or full-task target claim; state-bit reduction is not a measured mm2 or uJ saving. Valid codec cycles are expected to remain unchanged."
+}

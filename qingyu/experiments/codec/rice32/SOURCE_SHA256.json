@@ -1,0 +1,13 @@
+{
+  "schema": "qingyu-rice32-source-freeze-v1",
+  "files": {
+    "contract.json": "368ed22d8e6bc824f2cdb998d77f763744f4ff3b3b29a1166995a1f22d70f543",
+    "rice32_encoder.sv": "dc095e193b6666adee051353b8264b2e0e0b5a8700b4b60cc5ee72ed11f68280",
+    "rice32_decoder.sv": "51c6ab0851be0c31269e07f0b12682b052cc74db10c81fbb68ef04561b87ca1e",
+    "tb_rice32.sv": "a57a30a92025fd5e8d6bbf998ad53b9c5d30a72470023f2103378b360affc7a1",
+    "run_checks.py": "e3900a863a8e40e834c6f84b15ca0c6182ea345b115baf34eb0458c4704800c1",
+    "README.md": "467f66912f06fffe4b73ee15ac8c2cf8667ba3014d34c140ac8832cbe2b0b786"
+  },
+  "final_regression": "runs/20261111T163558870629Z/result.json",
+  "final_regression_sha256": "b05ff6a9cb7f4e24e85015637fef0714b2de8c37d75cef3776aeae93e3337738"
+}

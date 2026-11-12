@@ -1,0 +1,17 @@
+{
+  "schema": "qingyu-streaming-loader-study-freeze-v1",
+  "scope": "Study top-level files only; excludes root-owned engine and verification-owned test/runner",
+  "files": {
+    "analyze.py": "06428b9e6e1512963c979f60ec6ce41f003f3ccfeb5fe04414e4b4fa5e1745ac",
+    "budget.json": "17983b548f1f2dd523a1cb5b97dfec5877a1e3e8a88fe752939a90b221b2d3da",
+    "contract.json": "a3d2ca221c82350d5670b1145712e0df430b6d6f492b1de83a8c32417ede0f29",
+    "evidence.json": "b24cee1bd35af6463e19fce9e9d119103e402b62d91d08a09f1cb48d57ee53bc",
+    "original_physical_page_12.png": "ae7ee1882602b95e0e3191bcedb49d0e7787793ace96a10118430496e594ab40",
+    "original_physical_page_12.txt": "4ef0c34e55a87ade2f9a26460a0ab0c0a25ff05653ffd6c542610501b6346bcf",
+    "original_physical_page_3.png": "5c4d96e9ac0e02be05683b57f306a5b3dcf6d45cc5d69975a4ba635ef7358f9b",
+    "original_physical_page_3.txt": "472aebc1873b08658a29002fd88f280346f9fe82d923bea1fc789e94efd56486",
+    "original_physical_page_4.png": "4fb1a8ad69b6c5b63bfed98db83dea77b8ddee0c26b1f82e00591a328b6729fa",
+    "original_physical_page_4.txt": "9b6fdfa7ddebde16a3501bebbb7103c557242ce2e65ae351fdc799affff3d499",
+    "README.md": "cfc61f23e239ba164ad7da3a00a58ed88e201b6d0ac47b6d8c04175644b8b636"
+  }
+}

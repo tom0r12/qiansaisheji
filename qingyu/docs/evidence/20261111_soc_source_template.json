@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "tracked_template": "scripts/fixtures/e203_soc_sources.f",
+  "sha256": "0a5df42ba90613c517cd49ed7a585710ffb22468cccae07f75fb05075a5265cb",
+  "historical_template": "build/dual_row_study/sources.f",
+  "historical_sha256": "0a5df42ba90613c517cd49ed7a585710ffb22468cccae07f75fb05075a5265cb",
+  "byte_identical": true,
+  "ordered_entries": 147,
+  "note": "Historical build-path entries are replacement keys only; selected config is created under the new run and selected accelerator/adapters/testbenches are candidate or tracked files. No build/dual_row_study artifact is read by the new bus runners.",
+  "representative_previous_builds": [
+    {
+      "result_path": "build/bus_soc_opt27_fusedwait_20261111_141331_426375/result.json",
+      "result_sha256": "634f9f41b98a9db4801704555ad12891d6c14933037a8b9c5a70a8eb889ad9e0"
+    },
+    {
+      "result_path": "build/bus_queue_soc_opt29_fusedqueue4_20261111_141855_742136/result.json",
+      "result_sha256": "eb932ec2d48294d569bc4365ffe4aa9c911b9f2326bcd08548d3bba500a91044"
+    }
+  ],
+  "migration_checks": [
+    {
+      "path": "build/bus_soc_opt27_fusedwait_20261111_142818_784757/result.json",
+      "sha256": "231e5e52fefcfdce75bf6a1575099dff4c074e05b70e49af59363e38969de600",
+      "candidate": "opt27_fusedwait",
+      "outputs": 25344,
+      "complete_task_cycles": 126796,
+      "simulator_sha256": "1899560c1e1af5772405248d985c7c5e56b8a896dacdb5716e80f920acbcd397",
+      "source_template_sha256": "0a5df42ba90613c517cd49ed7a585710ffb22468cccae07f75fb05075a5265cb"
+    },
+    {
+      "path": "build/bus_queue_soc_opt29_fusedqueue4_20261111_142829_249122/result.json",
+      "sha256": "0a040448d8ec5949d61ed4b5d43332f083f0ff23c89ddec72d14f085ddc28a70",
+      "candidate": "opt29_fusedqueue4",
+      "outputs": 25344,
+      "complete_task_cycles": 102164,
+      "simulator_sha256": "cc5344aacfb150206ab880d08eb424014402b913002fb75563dc18d3f24c445b",
+      "source_template_sha256": "0a5df42ba90613c517cd49ed7a585710ffb22468cccae07f75fb05075a5265cb"
+    }
+  ]
+}

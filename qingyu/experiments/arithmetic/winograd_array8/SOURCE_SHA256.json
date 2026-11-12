@@ -1,0 +1,29 @@
+{
+  "schema": "qingyu-frozen-array8-source-v1",
+  "frozen_utc": "2026-11-11T16:26:25.855786+00:00",
+  "files": {
+    "contract.json": "2c53dbf57e9470237689c4b3b516567c6c9b300abbc2669662d64baacdadd77f",
+    "export_vectors.py": "99ecd1bcc35e53bd1abe93fdf7be43a59636ed01fba453b2b26d9a5bc8f09c23",
+    "README.md": "38efec147df7710869c0fc199f3e7ae0c8a759e3cac1c45f116f6ab05c04531c",
+    "run_array_checks.py": "48d8b769fc4cd1ba83f2614f0ebcecbc7bd9006e5ca742938d7962c771ebd1f3",
+    "run_lane_equivalence.py": "6f80b0b4ea5e17739cf14567b94645ab5555bfebbba13ad36be3a5edc63f783e",
+    "tb_winograd_array8.sv": "23bcbec8afdfbe0954c0489e0bd53d6c19d89e954f4043b487c5973d023d86ec",
+    "VALIDATION.json": "07b1788947e4d9466affbf3036af16818b5727f7400a6419628a2b460c7cd215",
+    "winograd_array8.sv": "a97c7ee070674f34e425fdfc0cd96747939c120818d96ff724947dbf9b54d34a",
+    "winograd_int8_pair_acc32.sv": "e117a74f05340c29111d3ddc845de084c7ca87eb7d9038d9c361968131942f44"
+  },
+  "external_dependencies": {
+    "experiments/arithmetic/winograd_int8/winograd_int8_factor32.sv": "c525f65fe0284137f45cb32aa400c9b78b7370d4bb73a43f7b949cc9aac20927",
+    "experiments/arithmetic/winograd_int8/winograd_int8_dot64.sv": "9badbb7615c79b5b84c7cc7f9054e528ed847f2c40a689123947367bcdaaf21e",
+    "experiments/arithmetic/winograd_int8/SOURCE_SHA256.json": "059476f6bf8ac492f43a6b4035730ed8db3455cfd68c1d2484e1e8c61e13fb5c",
+    "rtl/qingyu_sram16.sv": "d3d35a1e99e07c75fac13e450c87685e773dc4953ab5a7752dd0ba0622943b18",
+    "rtl/asic/qingyu_sram16.sv": "497a1e9e59e65b2c1f301ed72989e2df059a9fcb5b7c3f5d03f4f1aa881bc2cc",
+    "model/reference.py": "e9ada789d4452746dfa2c2847e6e014b58b8c29b75431cef2014e7c9da4f2da0",
+    "model/study_precision_bandwidth.py": "f3c7472063e0ac99ae83172012b9707e1268de76799224203761f733a60ebff4"
+  },
+  "validation_result": "build/winograd_array8/20261111T162026965076Z/result.json",
+  "validation_result_sha256": "e2393765def5aea37098b11f0be66925c7823682fcbf0766db5d9354280ef1d4",
+  "vector_manifest": "build/winograd_array8_vectors_20261112/manifest.json",
+  "vector_manifest_sha256": "baecb8148cd4af157be481f3b6ed9a41db4966a319df390934347bcd70c161a1",
+  "status": "compute_block_verified_not_SoC_or_PPA"
+}

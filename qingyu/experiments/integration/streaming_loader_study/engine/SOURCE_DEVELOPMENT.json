@@ -1,0 +1,10 @@
+{
+  "schema": "qingyu-streaming-engine-development-source-v1",
+  "frozen": false,
+  "verification": "strict Verilator -Wall lint passed; behavioral and fault verification pending",
+  "derived_source_sha256": "52ddc92cffca6c35c4a2f2c675103b6819dcc1af4f2bb1316d3079d4f8754fe8",
+  "files": {
+    "qingyu_int8stream_engine.sv": "df983bf956b5d0f50e9b41032879254ac32c36a1757e0a112383375b9a9c60fb",
+    "contract.json": "1eb34d8757d49575a3e157cf4d2c6db2bb6044f7a550881213876f68203c6ced"
+  }
+}

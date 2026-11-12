@@ -1,0 +1,15 @@
+{
+  "schema": "qingyu-rowpair-pack-contract-v1",
+  "scope": "Independent decoded-byte to task8 private-load layout adapter; no shared-memory bypass, no codec format change",
+  "clock_reset": "One clk, synchronous active-low rst_n. Reset discards offered output only when both attached internal-stream endpoints are also reset.",
+  "start": "start_valid/ready captures start_mode_w: 0=X99x64, 1=W64x32. Accepted only while idle. Every START invalidates both buffer slots and old epoch; data RAM is not reset.",
+  "input": "32-bit little-endian four-byte beats, in_count must equal 4. X exactly1584 beats, W exactly512. in_last true exactly at final beat. Producer must hold all fields stable until accepted.",
+  "X_output": "1600 words: for i, rp=i/32,kp=i%32, bytes low-to-high X[2rp,2kp],X[2rp,2kp+1],X[2rp+1,2kp],X[2rp+1,2kp+1]. Missing row99 is generated as zero locally. These extra16 output words still require real downstream ACKs.",
+  "W_output": "512 words: for i,kp=i/16,lp=i%16, bytes low-to-high W[2kp,2lp],W[2kp+1,2lp],W[2kp,2lp+1],W[2kp+1,2lp+1]. Each stream is one32-column group, covering two16-column compute tiles.",
+  "output_protocol": "out_valid,data,last,index remain stable under !out_ready, including input/upstream errors. Successful done is a one-cycle pulse following final output handshake, never input completion alone.",
+  "error_protocol": "Sticky error_code1=count,2=early last,3=missing last,4=upstream_error. On error no new output is offered, but a previously offered word is retained until ACK. Malformed input drains to last or upstream_error. Upstream_error declares producer has stopped generating new payload; any already offered beat is consumed/discarded in that error cycle. A permanent missing last without upstream_error, or permanent downstream stall, requires enclosing watchdog/reset and cannot be called drained. New START requires old busy to clear.",
+  "buffer": "64x32bit data registers=2048 data bits, two128-byte ping-pong slots. W uses first64bytes per slot. X tail uses first64bytes and literal zero upper halves. No additional data output register; offered output reads an immutable completed slot. Control/counters/mux area is additional.",
+  "performance": "Target one accepted input beat and one output word per cycle after fill. Report actual accepted START through final output ACK cycles including first fill, slot boundary bubbles, X padding, all stalls. No frequency/area/power claim.",
+  "integration_limits": "upstream_error must connect decoder error, not an unqualified shared global signal belonging to another epoch. START/reset coordination belongs to enclosing controller. This module does not own outstanding ICB commands and does not cancel or synthesize bus responses.",
+  "verification": "Independent Python direct-index golden, actual frozen INT8 validation sample9 all12 X plus8 W groups/layer, synthetic extremes/random, four-state uninitialized buffer, held interfaces, fill/output/reset epochs, malformed count/last/upstream error, complete cycles. No fitting of numerical/codec parameters."
+}

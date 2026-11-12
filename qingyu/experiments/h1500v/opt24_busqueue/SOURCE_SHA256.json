@@ -1,0 +1,25 @@
+{
+  "frozen_utc": "2026-11-11T13:54:07.540031+00:00",
+  "sources_sha256": {
+    "asic/qingyu_shared_sram.sv": "cea7d50d80930e5d40d73a7d9029a4d65e3e7c9f4673b9fdf266bcb1157c8dee",
+    "qingyu_accel.c": "2e5cefaa8d988c258f244e28806cd5a24a5ea7ca343af0df4ed45f7995bae45f",
+    "qingyu_accel.h": "fd29f78d169ef2fd57042ed3a5f9a65f0d6f623b3c15978ce2d6681843280076",
+    "qingyu_accel.sv": "2bc62a94efd26cab9bb572e536d93911a93420f3710a133b7485b4c38a5cbec3",
+    "qingyu_e203_soc_top.v": "e0093f2dd18edbd4c40af7b9bb782c71725f15b015972debf605584fe89954ab",
+    "qingyu_e203_subsys_main.v": "afe0867d9cadea6009e7d011a8c04477b02c4e8746a4c5f1c49f3d9b0923e968",
+    "qingyu_e203_subsys_top.v": "d3a9974a4030b04171ceebe9f11f6faebeaf4ade77044df6356b490eb5ea6a63",
+    "qingyu_fio.sv": "844407988282fc0ea60f3cd4f489d14b69d656d67217ef8a618a7405b897ec4c",
+    "qingyu_icb_merge.sv": "944ac235bc529bc83bbded7ccd89f4f0dfa0e64de8b08bd4b2f703492768ae23",
+    "qingyu_shared_sram.sv": "983a3f6f22205eaaf9c7cb4da56eb390f2a007bc6fe696f96ac98213ec98ae84",
+    "soc_perf_main.c": "3a107e21b2017056ebcfd5317049d91a98e06e944e3bb77e3029ed9b9632803b"
+  },
+  "changes_from_opt20": [
+    "qingyu_e203_soc_top.v",
+    "qingyu_e203_subsys_main.v",
+    "qingyu_fio.sv",
+    "qingyu_icb_merge.sv"
+  ],
+  "unit_test": "build/icb_queue_checks/20261111T135057879708Z/result.json",
+  "lint": "build/opt24_initial/lint.log; Verilator --lint-only --timing exit 0",
+  "scope": "Owner queue/per-source credit performance experiment; original staging retained. Full SoC and FIO fault acceptance pending. Does not include opt22 meta_error/blocked_START fixes."
+}

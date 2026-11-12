@@ -1,0 +1,25 @@
+{
+  "schema": "qingyu-candidate-source-sha256-v1",
+  "candidate": "opt26_fusedqueue",
+  "frozen_utc": "2026-11-11T14:11:05.964692+00:00",
+  "files": {
+    "BASE_SOURCE_SHA256.json": "829a9e59c2129654146f79cd8fc7d6d6838b53e5dd2790751ec5f964fdd58674",
+    "README.md": "bdf3a3b2b93a040cd2111291b53a1cbe2d12ef23ff45b8dbd1f8721c981e3887",
+    "rtl/asic/qingyu_shared_sram.sv": "cea7d50d80930e5d40d73a7d9029a4d65e3e7c9f4673b9fdf266bcb1157c8dee",
+    "rtl/qingyu_accel.c": "483e328dc9a080871798a66bab20055b97ee7044e9ee4a8ac01f5441f2cf8f96",
+    "rtl/qingyu_accel.h": "2b06463385f5b89daae7a8bc2d20f43958ed1b049fc8a46f36fae098b8461143",
+    "rtl/qingyu_accel.sv": "2bc62a94efd26cab9bb572e536d93911a93420f3710a133b7485b4c38a5cbec3",
+    "rtl/qingyu_e203_soc_top.v": "e0093f2dd18edbd4c40af7b9bb782c71725f15b015972debf605584fe89954ab",
+    "rtl/qingyu_e203_subsys_main.v": "afe0867d9cadea6009e7d011a8c04477b02c4e8746a4c5f1c49f3d9b0923e968",
+    "rtl/qingyu_e203_subsys_top.v": "d3a9974a4030b04171ceebe9f11f6faebeaf4ade77044df6356b490eb5ea6a63",
+    "rtl/qingyu_fio.sv": "2eda1dfb10e8ea311b6cbec44f51554d4faefb4c2de2c07abd23b49c765732ab",
+    "rtl/qingyu_icb_merge.sv": "944ac235bc529bc83bbded7ccd89f4f0dfa0e64de8b08bd4b2f703492768ae23",
+    "rtl/qingyu_shared_sram.sv": "983a3f6f22205eaaf9c7cb4da56eb390f2a007bc6fe696f96ac98213ec98ae84",
+    "rtl/soc_perf_main.c": "f4d4c1a82cb5c1224cea67018ab3c2cc434b7deb144c17ff76a44d17e4f35fa3",
+    "verification_contract.json": "4f76cff52002b5b7b7acf12f45f4127900f57a124fc185585a935f18e247976a"
+  },
+  "tests_sha256": {
+    "tb/tb_fio_queue_faults.sv": "9d0a74f310c8ce8847ed6c56a1cc3aba27588de44eca232b08d3d94fa1d0420b",
+    "scripts/run_fio_queue_fault_checks.py": "8222f933c31f164862476c39f34948c7b85ac5215adc146491e983566614ad54"
+  }
+}

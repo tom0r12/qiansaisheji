@@ -1,0 +1,91 @@
+{
+  "schema": "qingyu-task9-validation-v1",
+  "result": "build/winograd_task9/20261111T173951031071Z/result.json",
+  "result_sha256": "08a638379e08b611f709b52e464d2bf25b61ed2fce050cdc1445e4e95cee7c02",
+  "completed": true,
+  "compiled_rtl_tb_unchanged": true,
+  "post_validation_change": "contract status metadata only; VALIDATED_CONTRACT.json preserves original; README/validation/source manifests added; focused fault-hold runner does not modify RTL or original TB",
+  "unique_real_tasks": 12,
+  "unique_real_output_elements": 304128,
+  "real_validation_sample": "sample9 generated silence; no official600 claim",
+  "seeds": [
+    2371,
+    2477,
+    2551
+  ],
+  "per_seed_accumulator_checks": 857952,
+  "per_seed_successful_tasks": 33,
+  "per_seed_resets": 8,
+  "per_seed_aborts": 7,
+  "per_seed_expected_errors": 2,
+  "snapshot_same_cycle_replacements": [
+    5416,
+    5416,
+    5416
+  ],
+  "per_seed_metadata_fault_with_published_snapshot": [
+    1,
+    1,
+    1
+  ],
+  "fast_cycles": 9355,
+  "prefetch8_base_fast_cycles": 9931,
+  "phases": {
+    "exclusive_load_wait": 2152,
+    "factor_cache_commit": 35,
+    "metadata_read": 272,
+    "compute_including_snapshot_wait": 6320,
+    "final_tile_store": 576
+  },
+  "actual_input_words": 5888,
+  "actual_output_words": 6336,
+  "X_independent_mapping_coverage": {
+    "all9banks": true,
+    "accepted_dummy_high_half_words": 32,
+    "valid_bank8_to_bank0_word_wraps": 160,
+    "actual_real_X_halfword_writes": 3168,
+    "dummy_row99_stored_or_factored": false
+  },
+  "per_task_R_reads": 1584,
+  "per_task_snapshots": 176,
+  "per_task_fast_same_cycle_snapshot_replacements": 160,
+  "per_task_W_macro_write_edges": 512,
+  "per_task_fast_W_input_words_during_DOT": 3088,
+  "per_task_fast_metadata_writes_during_DOT": 224,
+  "physical_sram_bits": 190464,
+  "physical_macros": {
+    "1024x16": 9,
+    "128x16": 21
+  },
+  "raw_pair_lanes": 144,
+  "load_factor_multipliers": 2,
+  "snapshot_state_bits": 3510,
+  "W_burst_data_address_bits": 789,
+  "queue_and_mapping_control_bits_additional": true,
+  "strict_rtl_lint": "zero warnings",
+  "testbench_compile_diagnostics": "zero Verilator warnings",
+  "four_state_protocol": {
+    "log": "build/winograd_task9_four_state_protocol/sim.log",
+    "sha256": "f2df1dc455325d17c193f0f015a0f4f8ae28f89d697ba595f68a6e26c570f2f2",
+    "scope": "one unique real task,12 full success including recovery/stalls;7abort,2fault,8reset;325728direct accumulator checks",
+    "write_Q_poison": true,
+    "model_source": "experiments/arithmetic/winograd_task9/tb_sram_write_poison.sv",
+    "model_sha256": "5beae49277594ba2ae94c35c5d0b0848dbb6dcf9d2d70e8357342c8bf0a77ea5",
+    "foundry_model": false
+  },
+  "focused_backpressured_error": {
+    "result": "build/winograd_task9_fault_hold/20261111T174742574322Z/result.json",
+    "sha256": "91dd3229c3720caa5ad2d57d8f6673b2d92b12c0cd9e74aa0f256a2eeb0294da",
+    "output_stalled_cycles": 21,
+    "direct_accumulator_checks": 46944,
+    "fresh_full_task_recovery": true,
+    "compiled_RTL_unchanged": true
+  },
+  "preserved_helper_environment_failure": {
+    "directory": "build/winograd_task9_fault_hold/20261111T174725878813Z",
+    "cause": "Windows vvp readmemh cannot represent Chinese absolute vector path; changed helper to explicit rootcwd plus relativeASCII vector path. RTL unchanged."
+  },
+  "full_soc_tested": false,
+  "sta_passed": false,
+  "ppa_measured": false
+}

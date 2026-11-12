@@ -1,0 +1,15 @@
+{
+  "schema": "qingyu-streaming-engine-frozen-source-v1",
+  "files": {
+    "qingyu_int8stream_engine.sv": "df983bf956b5d0f50e9b41032879254ac32c36a1757e0a112383375b9a9c60fb",
+    "contract.json": "1eb34d8757d49575a3e157cf4d2c6db2bb6044f7a550881213876f68203c6ced"
+  },
+  "validation": {
+    "experiments\\integration\\streaming_loader_study\\test\\VALIDATION.json": "466ab15782be6f551eecfc370f657946a39a1b8fa6e19accedad46950b258209",
+    "experiments\\integration\\streaming_loader_study\\test\\SOURCE_SHA256.json": "bb9c2a87fa7677f3ac3f0fdcaa3b131c8f01ff60c2219b32c1e1cd2a94c770ef",
+    "experiments\\integration\\streaming_loader_study\\test\\PROFILE_VALIDATION.json": "90e2c83452103c001cc0df279458d19c4f629d315c7e843be2cce9780a446082",
+    "experiments\\integration\\streaming_loader_study\\test\\PROFILE_SOURCE_SHA256.json": "bb82e589920fdeeb2d706b4005c1d21dc63081caae7facc46d30250e3e231739"
+  },
+  "scope": "Conditional same-clock loader metadata; not an approved official loader or actual E203 integration",
+  "note": "Original development/pending-stage records retained; subsequent conditional correctness is bound by VALIDATION.json"
+}

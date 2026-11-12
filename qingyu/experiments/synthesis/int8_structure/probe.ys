@@ -1,0 +1,7 @@
+read_verilog -sv experiments/synthesis/int8_structure/sram_blackboxes.v rtl/asic/qingyu_sram16.sv experiments/arithmetic/winograd_array8/winograd_int8_pair_acc32.sv experiments/arithmetic/winograd_task9/winograd_int8_task8.sv
+hierarchy -check -top winograd_int8_task8
+proc
+opt
+memory_collect
+check
+stat -width

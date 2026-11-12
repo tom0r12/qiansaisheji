@@ -1,0 +1,14 @@
+{
+  "diagnostic_complete": true,
+  "original_sv_passed": true,
+  "sv2v_passed": true,
+  "yosys_encoder_equivalence_passed": false,
+  "rejected_inventory": "build/int8_structure/20261111T180353162824Z",
+  "results": {
+    "runs/20261111T180912837805Z/result.json": "a7830980ba07c54445e689884273295adfde766b530bc2bab4b479235c1e483c",
+    "runs/20261111T181239982447Z/result.json": "ce45adbebab56829b0073eb93e3579c898da019297542e9b403466a669a6d082",
+    "runs/repro_20261111T181121454965Z/result.json": "d0ad715fa4f90a662339da706a304baf0ca58617345d78078abf524464ab26e9"
+  },
+  "root_cause": "Automatic task inout copy-out side effects are lost in the audited Yosys0.33 read_verilog/proc path; minimum plain Verilog reproduces before later optimization/memory passes.",
+  "physical_area_or_resource_claim": false
+}

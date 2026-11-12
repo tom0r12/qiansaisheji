@@ -1,0 +1,85 @@
+{
+  "schema": "qingyu-streaming-loader-conditional-contract-v1",
+  "status": "research and implementation handoff; no RTL, loader simulation or PPA acceptance claimed",
+  "frozen_sources_unchanged": true,
+  "required_invariants": {
+    "official_fabric_source_and_parameters_unchanged": true,
+    "shared_capacity_bytes": 524288,
+    "shared_slave_ingresses": 1,
+    "bus_data_bits": 32,
+    "bus_masters_in_conditional_test": 2,
+    "source_write_goes_through_merge_fabric_and_shared_slave": true,
+    "source_read_goes_through_merge_fabric_and_shared_slave": true,
+    "output_write_goes_through_merge_fabric_and_shared_slave": true,
+    "no_data_snoop_to_private_cache": true,
+    "no_direct_shared_initialization_with_task_data": true,
+    "source_live_duplicate_copy": false,
+    "private_data_parameter_factor_epochs_cleared_each_task": true,
+    "all_x_row_and_w_column_factors_calculated_in_hardware": true,
+    "official_loader_identity_or_rate_claimed": false,
+    "actual_e203_execution_in_conditional_test": false
+  },
+  "ownership": {
+    "study_and_contract": "optimize_architecture; this directory only",
+    "new_engine_variant": "root; independent directory, same frozen core/codec/transport dependencies",
+    "conditional_loader_tb_and_runner": "portable_regression; independent directory and outputs",
+    "frozen_candidates": "Do not edit any existing engine/core/vendor/production source"
+  },
+  "topology": {
+    "port0": "Platform-loader model replaces the CPU at existing CPU/DMA merger port0; it is not an added third master.",
+    "port1": "One existing engine DMA master, including its input reads and output writes.",
+    "merger": "Exact frozen qingyu_icb_merge RTL, NP=2, OUTSTANDING=4, fair round robin; no vendor edits.",
+    "baseline_one_per_port": "2'b01: retains current integration's one outstanding CPU-side limit.",
+    "optional_queued_loader_one_per_port": "2'b00 only as a separately labelled conditional loader-source capability experiment; never report as current E203 behavior.",
+    "downstream": "Original e203_subsys_mems with FIFO_DP=2/CUT_READY=1/SPLT_OUTS=1/CUT_READY=1, then frozen opt33 shared wrapper.",
+    "warning": "The original bare dual-engine TB directly connects engine to memfab and has no existing unused CPU port; explicitly instantiate the frozen merger in the new fixture."
+  },
+  "proposed_engine_port_additions": {
+    "loader_committed_end": "input [31:0], aligned exclusive byte end of the contiguous source prefix whose producer-originating successful write responses have handshaken; starts at start_source, monotonically increases within this epoch.",
+    "loader_fault": "input, producer sticky error; when task is active (or accepted START with error already high), enter the existing finite error/transport-drain path and suppress successful completion. This input is metadata only, never input data."
+  },
+  "producer": {
+    "layout": "Existing frozen Q8R1 packet: 202-word fixed prefix, X encoded stream, W groups0..7 encoded streams; all word-aligned.",
+    "ordering": "Exactly increasing source word addresses, each exactly once with full4-byte mask. No source rewrites during the task, holes, or output writes by producer.",
+    "offer": "Supply next packet word whenever source credits permit, retain valid/address/data/mask while not ready; no programmed bubbles in ideal mode. 'One word per cycle offered' does not imply one word per cycle accepted.",
+    "commit": "Advance contiguous watermark only on a matching successful originating loader response. Command acceptance alone is insufficient. Track in-order owner/address even if commands are pipelined. On response error do not advance past the failed word.",
+    "early_start": "Accept engine START only after at least the first202 words have successful producer ACKs. Their prefix contains every bias/shift, so later metadata reads below the suffix watermark are safe.",
+    "fault": "Stop new producer work, retain any already offered command, drain all accepted responses; remain in failed epoch until both producer and consumer transports are quiescent.",
+    "end": "Producer is complete only after exact I successful source-word responses; success also requires all I engine source reads and final output marker ACK."
+  },
+  "descriptor_gate": {
+    "placement": "Between engine read-descriptor construction and qingyu_icb_stream_prefix descriptor acceptance; not at shared slave, not after memfab, not a mask over an already offered DMA command.",
+    "availability": "Use 35-bit extended end = zero_extend(rd_desc_base) + (zero_extend(rd_desc_count)<<2). Available iff base>=source_base and end<=zero_extend(loader_committed_end), with alignment/range validation retained.",
+    "handshake": "transport.rd_desc_valid = engine_raw_valid && available; engine.rd_desc_ready = transport_raw_ready && available. Read descriptor payload and identity remain stable while blocked. Write descriptors/words are completely independent of this gate.",
+    "accepted_descriptors": "Once accepted all its words were committed; never withdraw it because of later loader_fault. Existing transport abort preserves already offered commands and drains accepted responses.",
+    "unready": "Do not offer an uncommitted read to the merger/fabric; other producer writes and engine output writes can continue.",
+    "monotonicity": "Do not reset watermark or alter source/output identity while an old descriptor or bus command remains outstanding. Reset all task epochs only after joint drain."
+  },
+  "measurement": {
+    "primary_start": "First producer source-write offer in an empty epoch; includes initial producer backpressure and all subsequent loading, arbitration, core, codec and final drain.",
+    "also_report": ["first_source_write_accept_to_final_marker_originating_ACK", "first_source_write_originating_ACK_to_final_marker_originating_ACK", "START_to_final_marker_originating_ACK", "producer_first_offer_to_last_originating_ACK"],
+    "end": "Actual engine-originating successful completion-magic write response handshake; not SRAM acceptance, encoder last or core done.",
+    "additional_exact_counts": "I producer writes + I source reads + (O_unique+1) output writes; initial invalidation accounts for +1. Check equality at source, merge, official fabric, shared slave and response owners.",
+    "report_idle_and_stall": ["producer command stalls", "producer response stalls", "descriptor gate stalls by header/X/W/bias/shift", "merge per-source grant/credit stalls", "fabric command wait", "shared read misses/hits", "physical macro reads/writes", "decoder/core load waits", "metadata commit waits", "output backpressure", "final drain"],
+    "cpu_and_platform_overhead": "Excluded from this conditional two-model-master fixture. Must be added or measured in actual approved loader + E203 integration; never reuse this result as official throughput."
+  },
+  "required_tests": [
+    "Both frozen prefetch8 and task9 with identical input packets and source/RTL hashes, compare real full windows.",
+    "Representative original corpus sample0, sample9 generated silence, sample202 high traffic; at least first-layer smoke then all12 layers if stable.",
+    "Serial loader comparison: all I words ACKed before START, same real bus and producer rules; streaming comparison: START at202-word ACK boundary.",
+    "Originating loader response delayed after physical SRAM write: watermark must not move early and no dependent descriptor may pass.",
+    "Long pauses at201/202-word and each X/W last-word ACK boundary; producer must continue despite a blocked descriptor; no read goes beyond committed prefix.",
+    "Random source offers, command/response backpressure, simultaneous pop/push in merge FIFO, same-edge producer ACK and gated-descriptor availability.",
+    "Loader error before START, after START while gate waits, with engine output held, and with commands already offered/accepted; no new successful final marker and both ports drain before restart.",
+    "Future source word speculatively read then producer writes it: stale read-ahead data must be invalidated; compare every engine source response with immutable original packet.",
+    "Sequential distinct tasks without global reset, fresh producer/consumer epochs, different lengths; entire shared guard and unused output slots preserved.",
+    "Hard reset with loader/engine commands pending is tested only as coordinated bus-domain reset; soft abort never cancels external offered/accepted work."
+  ],
+  "open_items": [
+    "Actual organizer loader master interface, supported outstanding count, ordering, byte-mask contract and source rate are not in inspected local assets.",
+    "Whether initial loader and E203 can execute concurrently must be proven using the actual supplied platform.",
+    "If the same CPU supplies input stores, it must finish/advance production before issuing blocking WAIT; START then WAIT with incomplete input can deadlock logically.",
+    "Unknown producer clock domain: current conditional fixture is same-clock; a real CDC handshake must transfer committed metadata atomically if clocks differ.",
+    "150MHz STA, incremental area<=0.5mm2 and whole-window energy<=6.3uJ are not established."
+  ]
+}

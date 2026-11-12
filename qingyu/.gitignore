@@ -1,0 +1,7 @@
+/build/
+/reports/
+/tool-config.local.json
+/experiments/**/runs/
+/experiments/integration/streaming_loader_study/original_physical_page_*.png
+/experiments/integration/streaming_loader_study/original_physical_page_*.txt
+/**/__pycache__/

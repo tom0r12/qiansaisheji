@@ -1,0 +1,22 @@
+{
+  "schema": "qingyu-fused-load-contract-v1",
+  "candidate": "opt30_fusedpipe4",
+  "base_candidate": "opt26_fusedqueue",
+  "live_read_words": 576,
+  "source_load_words": 11936,
+  "live_write_words": 11936,
+  "private_input_words": 3168,
+  "private_weight_words": 8192,
+  "output_write_words": 12672,
+  "flow": "X/W: source read and real live write, two FIFO slots overlap independent read/write ports; private commit only on successful ordered live write response. Metadata retains cold copy and 576 live reads.",
+  "constraints": [
+    "Use the unchanged opt20 single 32-bit system bus and shared SRAM interface.",
+    "Every source payload word is copied once to its configured live address; source storage is immutable.",
+    "Private X and W words must match source values and addresses, not only aggregate counts.",
+    "No private commit on failed source read, failed live write, or aborted descriptor.",
+    "No START before full descriptor completion; W targets only the inactive tile bank.",
+    "Do not replace official initial loading with testbench preloading outside the measured window.",
+    "This contract is an engineering validation expectation, not official compliance or signoff."
+  ],
+  "implementation": "four-row datapath; queued official bus; two-entry fused FIFO; bounded WAIT_FUSED"
+}

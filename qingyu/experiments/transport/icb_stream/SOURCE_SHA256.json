@@ -1,0 +1,13 @@
+{
+  "schema": "qingyu-experiment-source-v1",
+  "experiment": "fixed-count ICB stream",
+  "frozen_utc": "2026-11-11T16:47:07.540074+00:00",
+  "files": {
+    "CONTRACT.md": "c8556dad1876f19d3f73a3752c2928546a49382c204cfa9c7179725bdc9abbee",
+    "qingyu_icb_stream.sv": "13359697ff682dcaf71f4983d07453a042a60fe75b87d58b4b392214c2b1e07d",
+    "README.md": "ea337d4b2c65edefaefb3c5b38550de1015642105346eab3355998b31bf9411c",
+    "run_checks.py": "87cd31fc42ab48416a759835a4f178d5798e7790ee0f53aa314d816db0a70b0e",
+    "tb_icb_stream.sv": "29cdb89a283572d9bc2ff243cd7345a7b452ad21450bdabd82e4596958a73246",
+    "VALIDATION.json": "437f7541ed3bf6c2a267fc0c4dd547ed74d84bc57cb973fad142c27d15a68e4b"
+  }
+}

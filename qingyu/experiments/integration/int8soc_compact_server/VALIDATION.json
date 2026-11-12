@@ -1,0 +1,150 @@
+{
+  "schema": "qingyu-int8soc-compact-server-validation-v1",
+  "passed": true,
+  "scope": "Local compact-private full-E203 physical-interface verification and server package preparation",
+  "manufacturer_models_executed": false,
+  "formal_ppa_measured": false,
+  "official_loader_included": false,
+  "uploaded": false,
+  "local_model_sha256": "cd78caa3d3484f22d397b173e9c6a610c76939f53b7ff332a0dd55354bae9a33",
+  "local_model_kind": "external functional stand-in; writes poison Q; not packaged",
+  "variants": {
+    "prefetch8": {
+      "package": {
+        "bundle": "build/int8soc_compact_server_bundles/20261111T184201356571Z/qingyu_int8soc_bundle",
+        "zip": "build/int8soc_compact_server_bundles/20261111T184201356571Z/qingyu_int8soc_compact_validation.zip",
+        "zip_sha256": "a66b63e7fad40e229f7cceb9c8c14377991bbe1b0b7bb50a417e17c0bd436033",
+        "zip_bytes": 4208445,
+        "launcher_sha256": "6f08fa4966447c2a2bff497b65871a72a8b3f6b3d05f21e49d2aaa254af1672f",
+        "tasks": 72,
+        "uploaded": false
+      },
+      "package_result_sha256": "8640958b5477f1952c66da47e8dda106c7386d9c929859f12840d2927be5c1c6",
+      "package_checks": {
+        "path": "build/int8soc_compact_server_bundles/20261111T184201356571Z/local_package_checks.json",
+        "sha256": "3321a4a37e37db34cbf3c5adbaaeedb0ed7903a810443043b0a9666f42c7e3d7"
+      },
+      "negative_model_activity_gates": {
+        "path": "build/int8soc_compact_server_bundles/20261111T184201356571Z/local_model_gate_checks.json",
+        "sha256": "f109d9546b42bedaa30deeb99d5f2ff15736dab6c30d24e6fb3bd77da93fdfe9"
+      },
+      "physical_fixture": {
+        "path": "build/int8soc_compact_physical_fixture/20261111T183709887253Z/result.json",
+        "sha256": "6a200ba00aaba966dfb5228d179c7e72ab4f87340630bf95640c795805131cea"
+      },
+      "physical_metrics": {
+        "layer": 0,
+        "cpu_setup_to_ack": 10086,
+        "start_to_ack": 10074,
+        "first_read_to_ack": 10071,
+        "done_delay": 2,
+        "engine_counter": 10076,
+        "reads": 4522,
+        "writes": 3357,
+        "commands": 7879,
+        "responses": 7879,
+        "peak_pending": 3,
+        "macro_reads": 4547,
+        "macro_writes": 3357,
+        "core": 10043,
+        "load": 2264,
+        "factor": 35,
+        "cache": 272,
+        "compute": 7280,
+        "store": 192,
+        "firmware_cycles": 10101
+      },
+      "physical_tasks": 1,
+      "shared_words_preloaded": 131072,
+      "shared_words_read_back": 131072,
+      "identical_baseline_metrics": true,
+      "actual_macros": {
+        "private128": 53,
+        "private1024": 0,
+        "shared4096": 64,
+        "cpu4096": 16
+      },
+      "x_valid_words": 416,
+      "baseline_behavioral_corpus": {
+        "path": "build/int8soc_corpus/20261111T174454919053Z/result.json",
+        "sha256": "3e647328ebbe1b9c4b3d96503e5446bcbdbba46125397583db64359cb0fa4bde"
+      },
+      "baseline_behavioral_tasks": 72,
+      "launcher_shell_check": {
+        "exit_code": 0,
+        "log_sha256": "b280c454d6f559e56eb3f5ed39f3ba084b8d1744a3ff7fe016b21ff86dea1aca"
+      }
+    },
+    "task9": {
+      "package": {
+        "bundle": "build/int8soc_compact_server_bundles/20261111T184212287047Z/qingyu_int8soc_bundle",
+        "zip": "build/int8soc_compact_server_bundles/20261111T184212287047Z/qingyu_int8soc_compact_validation.zip",
+        "zip_sha256": "81377bb70f72f2d9ad3fe3708e4a7ceb78a5b468b3eeab96133357265ef9f772",
+        "zip_bytes": 4209507,
+        "launcher_sha256": "ed1617e5caeaea3218346ea54f8dcc09ae801112bf27005659111232c33594c4",
+        "tasks": 72,
+        "uploaded": false
+      },
+      "package_result_sha256": "08d6f4bd64abd1c3656b50c33cf0ea7a040e7fb0cafcec764ee1ea5e7fbf3792",
+      "package_checks": {
+        "path": "build/int8soc_compact_server_bundles/20261111T184212287047Z/local_package_checks.json",
+        "sha256": "ff09b1fc0c1b6d0e9ca3d730e1aa6019494f46261eba75b50bfaa5a9812ad756"
+      },
+      "negative_model_activity_gates": {
+        "path": "build/int8soc_compact_server_bundles/20261111T184212287047Z/local_model_gate_checks.json",
+        "sha256": "1c334759e7828f16931ed52c474746b2bcc90152c6801e3034718dcc91b68814"
+      },
+      "physical_fixture": {
+        "path": "build/int8soc_compact_physical_fixture/20261111T183727570930Z/result.json",
+        "sha256": "99355c22d31d3abb94dff954fb64d85af970ee250acce041abd8a482552c61d8"
+      },
+      "physical_metrics": {
+        "layer": 0,
+        "cpu_setup_to_ack": 9616,
+        "start_to_ack": 9604,
+        "first_read_to_ack": 9601,
+        "done_delay": 2,
+        "engine_counter": 9606,
+        "reads": 4522,
+        "writes": 3357,
+        "commands": 7879,
+        "responses": 7879,
+        "peak_pending": 3,
+        "macro_reads": 4547,
+        "macro_writes": 3357,
+        "core": 9573,
+        "load": 2264,
+        "factor": 141,
+        "cache": 272,
+        "compute": 6320,
+        "store": 576,
+        "firmware_cycles": 9631
+      },
+      "physical_tasks": 1,
+      "shared_words_preloaded": 131072,
+      "shared_words_read_back": 131072,
+      "identical_baseline_metrics": true,
+      "actual_macros": {
+        "private128": 48,
+        "private1024": 0,
+        "shared4096": 64,
+        "cpu4096": 16
+      },
+      "x_valid_words": 352,
+      "baseline_behavioral_corpus": {
+        "path": "build/int8soc_corpus/20261111T175642268453Z/result.json",
+        "sha256": "e16df8dc4b12b6dcac3357150ce6fd33300f87118cb0595e1d7da15bda9a3ce5"
+      },
+      "baseline_behavioral_tasks": 72,
+      "launcher_shell_check": {
+        "exit_code": 0,
+        "log_sha256": "b280c454d6f559e56eb3f5ed39f3ba084b8d1744a3ff7fe016b21ff86dea1aca"
+      }
+    }
+  },
+  "limits": [
+    "One physical full-SoC task per core; original behavioral 72-task corpus is packaged for subsequent manufacturer regression",
+    "Source/TCM preload and pre-parameter boot excluded; official loader boundary OPEN",
+    "No official library/macro timing, area, energy, formal or official600 accuracy acceptance"
+  ]
+}

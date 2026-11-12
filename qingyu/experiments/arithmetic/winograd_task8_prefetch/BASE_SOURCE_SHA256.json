@@ -1,0 +1,26 @@
+{
+  "schema": "qingyu-frozen-task8-overlap-source-v1",
+  "frozen_utc": "2026-11-11T17:15:46.063657+00:00",
+  "files": {
+    "BASE_SOURCE_SHA256.json": "48b0f3e70b4ab0fd18b45d28b497cedf9ac7d7da6fab71b23b7dd90a1cf34ece",
+    "contract.json": "8e513d6bf07276536ec1f7768519513ddaa4a3b467b6bf8c5d40acd66c03e28a",
+    "export_vectors.py": "1637cb676f71268f0fb57a514ce5551c827e3bb74a778fd03239b7e5094cde1c",
+    "README.md": "e4af3add5b5fdab909bb6d3197c9c245ce2ea9ca92884819ec8c4e81890fabfd",
+    "run_checks.py": "ed9f1e360ea388e0b6847e8dfad22a2a2bf49f196bbc362a5e660185fab2603e",
+    "tb_winograd_task8.sv": "0a2a9b537f7e455c8eb2e558ab91b99747b1701f0a1100bd594257c01423175a",
+    "VALIDATED_CONTRACT.json": "aeaaca766b05538d581d37a769a20e8789690590577e52cc3edb65dab8c6dc5b",
+    "VALIDATION.json": "50e740eb88a4b3eacc045d0a1c72bdcc01ae3e94da47d1fad4bb30a0c6dbb4a3",
+    "winograd_int8_task8.sv": "59bd683bf3641b080a5c4752314435852b1ae3fce6bde7615d491ce7a14a6644"
+  },
+  "external_dependencies": {
+    "experiments/arithmetic/winograd_array8/winograd_int8_pair_acc32.sv": "e117a74f05340c29111d3ddc845de084c7ca87eb7d9038d9c361968131942f44",
+    "rtl/qingyu_sram16.sv": "d3d35a1e99e07c75fac13e450c87685e773dc4953ab5a7752dd0ba0622943b18",
+    "experiments/arithmetic/winograd_array8/SOURCE_SHA256.json": "9bddf3da4af9036b4bee373c34b833fe5a8899f8581a5f076f07421e7fdaceaa",
+    "experiments/arithmetic/winograd_task8/SOURCE_SHA256.json": "48b0f3e70b4ab0fd18b45d28b497cedf9ac7d7da6fab71b23b7dd90a1cf34ece"
+  },
+  "validation_result": "build/winograd_task8_overlap/20261111T170956926062Z/result.json",
+  "validation_result_sha256": "58ab63d20042bc87ef6374008d9a63b3edbb5d2e4495fb0d385cc34b0de9ea66",
+  "vector_manifest": "build/winograd_task8_vectors_20261112/manifest.json",
+  "vector_manifest_sha256": "a27c88cc5bcc74c6fdf3e78af4630d7e878b28a7121190cef36f3014e8b8b529",
+  "status": "compute_overlap_verified_not_SoC_or_PPA"
+}

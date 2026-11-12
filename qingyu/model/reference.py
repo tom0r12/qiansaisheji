@@ -19,6 +19,18 @@ I32_MIN, I32_MAX = -(1 << 31), (1 << 31) - 1
 Q16_MAX = (1 << 15) - 1
 
 
+def output_format(output_bits: int) -> tuple[int, int, type]:
+    """The output width is part of the frozen format, not a transport hint."""
+    if isinstance(output_bits, bool) or not isinstance(output_bits, (int, np.integer)) or output_bits not in (16, 32):
+        raise ValueError("output_bits must be 16 or 32")
+    return -(1 << (output_bits - 1)), (1 << (output_bits - 1)) - 1, np.int16 if output_bits == 16 else np.int32
+
+
+def _check_headroom(bits: int) -> None:
+    if isinstance(bits, bool) or not isinstance(bits, (int, np.integer)) or not 0 <= bits <= 47:
+        raise ValueError("output_headroom_bits must be an integer in 0..47")
+
+
 def _integers(value: Any, name: str) -> np.ndarray:
     a = np.asarray(value)
     if a.dtype.kind not in "iu":
@@ -52,7 +64,8 @@ def round_shift_rne(value: int, shift: int) -> int:
     return -quotient if value < 0 else quotient
 
 
-def requantize(accumulators: Any, shifts: Any) -> tuple[np.ndarray, int]:
+def requantize(accumulators: Any, shifts: Any, *, output_bits: int = 32) -> tuple[np.ndarray, int]:
+    lower, upper, dtype = output_format(output_bits)
     a = _integers(accumulators, "accumulators")
     r = _integers(shifts, "shifts")
     if a.ndim < 1 or r.shape != (a.shape[-1],):
@@ -61,7 +74,7 @@ def requantize(accumulators: Any, shifts: Any) -> tuple[np.ndarray, int]:
         raise OverflowError("accumulator is outside signed 48-bit range")
     if np.any((r < 0) | (r > 47)):
         raise ValueError("right shifts must be in 0..47")
-    result = np.empty(a.shape, dtype=np.int32)
+    result = np.empty(a.shape, dtype=dtype)
     saturated = 0
     # Vectorize over rows; the last-axis loop permits different channel shifts.
     for j, shift in enumerate(r):
@@ -77,8 +90,8 @@ def requantize(accumulators: Any, shifts: Any) -> tuple[np.ndarray, int]:
         else:
             rounded = magnitude
         rounded = np.where(column < 0, -rounded, rounded)
-        saturated += int(np.count_nonzero((rounded < I32_MIN) | (rounded > I32_MAX)))
-        result[..., j] = np.clip(rounded, I32_MIN, I32_MAX).astype(np.int32)
+        saturated += int(np.count_nonzero((rounded < lower) | (rounded > upper)))
+        result[..., j] = np.clip(rounded, lower, upper).astype(dtype)
     return result, saturated
 
 
@@ -110,9 +123,9 @@ class LinearResult:
     saturation_count: int
 
 
-def qlinear_int(qx: Any, qw: Any, qb: Any, shifts: Any) -> LinearResult:
+def qlinear_int(qx: Any, qw: Any, qb: Any, shifts: Any, *, output_bits: int = 32) -> LinearResult:
     a = accumulate(qx, qw, qb)
-    y, count = requantize(a, shifts)
+    y, count = requantize(a, shifts, output_bits=output_bits)
     return LinearResult(y, a, count)
 
 
@@ -170,6 +183,8 @@ class LayerConfig:
     weights_sha256: str
     calibration_role: str = "training"
     format_version: str = "qingyu-fixed-v1"
+    output_bits: int = 32
+    output_headroom_bits: int = 0
 
     def as_dict(self) -> dict[str, Any]:
         return asdict(self)
@@ -177,8 +192,12 @@ class LayerConfig:
     @classmethod
     def from_dict(cls, source: dict[str, Any]) -> "LayerConfig":
         config = cls(**source)
-        if config.format_version != "qingyu-fixed-v1" or config.calibration_role != "training":
+        if config.format_version not in ("qingyu-fixed-v1", "qingyu-fixed-v2") or config.calibration_role != "training":
             raise ValueError("unsupported format or non-training calibration")
+        output_format(config.output_bits)
+        _check_headroom(config.output_headroom_bits)
+        if config.format_version == "qingyu-fixed-v1" and (config.output_bits != 32 or config.output_headroom_bits):
+            raise ValueError("legacy v1 configurations require INT32 output without extra headroom")
         if not 0 <= config.layer <= 11:
             raise ValueError("layer index must be 0..11")
         _scale(config.x_exponent)
@@ -195,6 +214,7 @@ class LayerConfig:
 
 
 def encode_layer(x: Any, w: Any, b: Any, config: LayerConfig) -> tuple[np.ndarray, ...]:
+    output_format(config.output_bits)
     x, w, b = (_finite(v, n) for v, n in ((x, "X"), (w, "W"), (b, "b")))
     if x.ndim < 2 or w.ndim != 2 or x.shape[-1] != w.shape[0] or b.shape != (w.shape[1],):
         raise ValueError("expected X[...,K], W[K,N], b[N]")
@@ -215,7 +235,10 @@ def encode_layer(x: Any, w: Any, b: Any, config: LayerConfig) -> tuple[np.ndarra
     return qx, qw, qb, np.asarray(config.shifts, dtype=np.int64)
 
 
-def calibrate_layer(x: Any, w: Any, b: Any, layer: int, *, role: str) -> LayerConfig:
+def calibrate_layer(x: Any, w: Any, b: Any, layer: int, *, role: str,
+                    output_bits: int = 32, output_headroom_bits: int = 0) -> LayerConfig:
+    output_format(output_bits)
+    _check_headroom(output_headroom_bits)
     if role != "training":
         raise ValueError("only training data may be used for calibration")
     if not 0 <= layer <= 11:
@@ -227,7 +250,9 @@ def calibrate_layer(x: Any, w: Any, b: Any, layer: int, *, role: str) -> LayerCo
         raise ValueError("calibration data cannot be empty")
     config = LayerConfig(layer, power2_scale_exponent(float(np.max(np.abs(x)))),
                          [power2_scale_exponent(float(v)) for v in np.max(np.abs(w), axis=0)],
-                         [0] * w.shape[1], weight_digest(w, b))
+                         [0] * w.shape[1], weight_digest(w, b),
+                         format_version="qingyu-fixed-v2" if output_bits == 16 or output_headroom_bits else "qingyu-fixed-v1",
+                         output_bits=output_bits, output_headroom_bits=output_headroom_bits)
     qx, qw, qb, _ = encode_layer(x, w, b, config)
     # Bound applies to arbitrary valid symmetric INT16 operands, including
     # validation inputs whose values saturate at the quantizer limits.
@@ -239,22 +264,28 @@ def calibrate_layer(x: Any, w: Any, b: Any, layer: int, *, role: str) -> LayerCo
     for j in range(w.shape[1]):
         column = a[..., j]
         for shift in range(48):
-            _, count = requantize(column[..., None], np.array([shift]))
+            _, count = requantize(column[..., None], np.array([shift]), output_bits=output_bits)
             if count == 0:
-                shifts.append(shift)
+                # A single declared policy is applied to every channel/layer.
+                # It trades resolution for range using training data only.
+                if shift + output_headroom_bits > 47:
+                    raise OverflowError("requested output headroom exceeds the hardware shift range")
+                shifts.append(shift + output_headroom_bits)
                 break
         else:
             raise OverflowError("no supported output shift can represent training output")
     return LayerConfig(config.layer, config.x_exponent, config.w_exponents,
-                       shifts, config.weights_sha256)
+                       shifts, config.weights_sha256, format_version=config.format_version,
+                       output_bits=output_bits, output_headroom_bits=output_headroom_bits)
 
 
 def decode_layer(qy: Any, config: LayerConfig) -> np.ndarray:
+    lower, upper, _ = output_format(config.output_bits)
     y = _integers(qy, "qy")
     if y.ndim < 1 or y.shape[-1] != len(config.w_exponents):
         raise ValueError("output channel count differs from configuration")
-    if np.any((y < I32_MIN) | (y > I32_MAX)):
-        raise OverflowError("output must fit signed32")
+    if np.any((y < lower) | (y > upper)):
+        raise OverflowError(f"output must fit signed{config.output_bits}")
     factors = np.array([_scale(config.x_exponent + e + r)
                         for e, r in zip(config.w_exponents, config.shifts)])
     result = y.astype(np.float64) * factors
@@ -347,10 +378,13 @@ def unpack_meta_words(words: Any) -> tuple[np.ndarray, np.ndarray]:
     return bias, shifts
 
 
-def output_words(value: Any) -> np.ndarray:
+def output_words(value: Any, *, output_bits: int = 32) -> np.ndarray:
+    lower, upper, _ = output_format(output_bits)
     a = _integers(value, "output").reshape(-1)
-    if np.any((a < I32_MIN) | (a > I32_MAX)):
-        raise OverflowError("output does not fit signed32")
+    if np.any((a < lower) | (a > upper)):
+        raise OverflowError(f"output does not fit signed{output_bits}")
+    if output_bits == 16:
+        return pack_int16_words(a)
     return (a & 0xFFFFFFFF).astype(np.uint32)
 
 
@@ -372,7 +406,9 @@ def read_hex_words(path: str | Path) -> np.ndarray:
 
 
 def export_layer_vectors(directory: str | Path, qx: Any, qw: Any, qb: Any,
-                         shifts: Any, qy: Any, *, lanes: int = 4) -> dict[str, Any]:
+                         shifts: Any, qy: Any, *, lanes: int = 4,
+                         output_bits: int = 32) -> dict[str, Any]:
+    _, _, output_dtype = output_format(output_bits)
     x, w, b, y = (_integers(v, n) for v, n in
                   ((qx, "qx"), (qw, "qw"), (qb, "qb"), (qy, "qy")))
     r = _integers(shifts, "shifts")
@@ -382,6 +418,8 @@ def export_layer_vectors(directory: str | Path, qx: Any, qw: Any, qb: Any,
         raise ValueError("vector dimensions do not match")
     if lanes <= 0 or w.shape[1] % lanes or (w.shape[0] * lanes) % 2:
         raise ValueError("output count must divide LANES and tile packing must have even size")
+    if output_bits == 16 and lanes % 2:
+        raise ValueError("INT16 output tiles require an even lane count")
     target = Path(directory)
     target.mkdir(parents=True, exist_ok=True)
     tiles = w.shape[1] // lanes
@@ -390,17 +428,17 @@ def export_layer_vectors(directory: str | Path, qx: Any, qw: Any, qb: Any,
     files = {"x_words.hex": pack_int16_words(x),
              "w_tile_words.hex": pack_int16_words(tile_w),
              "meta_words.hex": pack_meta_words(b, r),
-             "y_row_words.hex": output_words(y),
-             "y_tile_words.hex": output_words(tile_y)}
+             "y_row_words.hex": output_words(y, output_bits=output_bits),
+             "y_tile_words.hex": output_words(tile_y, output_bits=output_bits)}
     for name, words in files.items():
         write_hex_words(target / name, words)
     np.savez_compressed(target / "integer_case.npz", qx=x.astype(np.int16),
                         qw=w.astype(np.int16), qb=b, shifts=r.astype(np.uint8),
-                        qy=y.astype(np.int32))
+                        qy=y.astype(output_dtype), output_bits=np.int64(output_bits))
     return {"rows": x.shape[0], "k": x.shape[1], "outputs": w.shape[1],
             "lanes": lanes, "tiles": tiles, "x_words": len(files["x_words.hex"]),
             "weight_words_per_tile": w.shape[0] * lanes // 2,
             "meta_words_per_tile": lanes * 2,
-            "output_words_per_tile": x.shape[0] * lanes,
+            "output_bits": output_bits, "output_words_per_tile": x.shape[0] * lanes * output_bits // 32,
             "files": {name: {"words": len(words), "sha256": hashlib.sha256((target / name).read_bytes()).hexdigest()}
                       for name, words in files.items()}}

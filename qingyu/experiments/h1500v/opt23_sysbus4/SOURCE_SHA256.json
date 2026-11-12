@@ -1,0 +1,17 @@
+{
+  "frozen_utc": "2026-11-11T13:43:45.441534+00:00",
+  "parent": "opt20_sysbus",
+  "sources_sha256": {
+    "asic/qingyu_shared_sram.sv": "cea7d50d80930e5d40d73a7d9029a4d65e3e7c9f4673b9fdf266bcb1157c8dee",
+    "qingyu_accel.c": "2e5cefaa8d988c258f244e28806cd5a24a5ea7ca343af0df4ed45f7995bae45f",
+    "qingyu_accel.h": "fd29f78d169ef2fd57042ed3a5f9a65f0d6f623b3c15978ce2d6681843280076",
+    "qingyu_accel.sv": "a5b7898d19322b4cad38ce682b3ae727fd19c3a92e3a3eb1f3f747eae5c52b4a",
+    "qingyu_e203_soc_top.v": "bace66608d9118ae2203e3faa4fe458d8c657c9dc861b0f320b3185992d490fc",
+    "qingyu_e203_subsys_main.v": "87d0b044aea1d223c6600e755b80e2b884415c7965c24210061d267c39737650",
+    "qingyu_e203_subsys_top.v": "d3a9974a4030b04171ceebe9f11f6faebeaf4ade77044df6356b490eb5ea6a63",
+    "qingyu_fio.sv": "ab801017058866bf50a8d3fffb20de3951c8150748dc4c6d99945fd8e3aec384",
+    "qingyu_icb_merge.sv": "ba4a8c37c895a83a24fdb6b4dd4b9097cbe86c56aa0e8f2735c14eae66b2aa7e",
+    "qingyu_shared_sram.sv": "983a3f6f22205eaaf9c7cb4da56eb390f2a007bc6fe696f96ac98213ec98ae84",
+    "soc_perf_main.c": "3a107e21b2017056ebcfd5317049d91a98e06e944e3bb77e3029ed9b9632803b"
+  }
+}

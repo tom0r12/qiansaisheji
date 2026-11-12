@@ -1,0 +1,3694 @@
+{
+  "schema_version": 1,
+  "generated_utc": "2026-11-11T14:37:07.404832+00:00",
+  "scope": "Local production-define RTL plus real E203 firmware and unmodified official memory fabric, behavioral SRAM",
+  "official_ppa_or_score": false,
+  "verification_scope": "SoC passed means numerical correctness and routing on normal memory responses; fault readiness is stated separately per candidate",
+  "measurement": {
+    "start": "first attempted source validation read at CPU/DMA merger input",
+    "end": "final output write response handshake at originating DMA port 2",
+    "includes": [
+      "parameter validation",
+      "CPU control and configuration",
+      "source staging reads",
+      "live writes",
+      "private input and weight transfer",
+      "compute",
+      "output writes and full fabric return"
+    ],
+    "excludes": [
+      "testbench source image initialization before reset",
+      "external initial loading into source staging region"
+    ]
+  },
+  "limits": [
+    "Not organizer 600-sample evaluation",
+    "External initial loading required by scoring is excluded; these rates are not compliant end-to-end task throughput claims",
+    "Behavioral SRAM; no new synthesis, STA, power, area or physical signoff",
+    "150 MHz is a calculation assumption, not a measured or signed-off frequency",
+    "Single-port and queue runners share measurement boundaries; historical bypass runner used different boundaries",
+    "Zero valid-and-not-ready cycles in single-outstanding designs do not establish an unconstrained bus"
+  ],
+  "images": {
+    "path": "build/model_headroom1_20261111/soc_images_out16/images_manifest.json",
+    "sha256": "afffd63fc5326dd9cb1c040c8e155b7c92feee127a5fa44977374e01a5103179",
+    "data_kind": "KWT_VALIDATION",
+    "source_commit": "237e4097afd4f6851e0b82f0a8d65c2dfe8eae30",
+    "output_bits": 16,
+    "output_headroom_bits": 1,
+    "training_samples": 256,
+    "validation_samples": 256,
+    "official_600_sample_evaluation": false,
+    "layer_input_sha256": [
+      {
+        "shared.hex": "f137d54f6409a71a8884ef0cdfddf20883e367c85e913aea2f6c04340bdf7f2b",
+        "expected.hex": "58430edf218e83e88b6c2a63835aafbe618d219abfa865e985efa7b40cc90dc3"
+      },
+      {
+        "shared.hex": "3bcb271e5ab0f190f0e7028248390d8e7a4923ff9b8876536a9869abbc158a97",
+        "expected.hex": "1e0c5e4f5b705fdf46deee3b84ef6c141598f4da7defe80ddc768512de2e3f5f"
+      },
+      {
+        "shared.hex": "81f87cda4f1ad8f780791fcf82c6b8f4a74fbb7a375747134a4c1bfb4cfa3815",
+        "expected.hex": "d6b0bc22138f97b43724e5c66e11148e8a6222a10d38662cc6a475ee2c285c68"
+      },
+      {
+        "shared.hex": "5bdf8a45c44fffd966fc668c25509f5741dc1883040eef297a5b07a5385c25bc",
+        "expected.hex": "88accaebca4d78046ce4a2657d0580bc707ee93693b79a59a1bd7cea6a611e9d"
+      },
+      {
+        "shared.hex": "98e6de2a91d392969b3dbd57ebac9eb4c204b5fd937ee11bcb2c58ce0001c41c",
+        "expected.hex": "b38407f279ffca280c2b6b54236d35fc6aabd520faf0eb6d32592347f6d4a857"
+      },
+      {
+        "shared.hex": "318f994beaa347d33e5c68c75f7b1b3965c132de623a7dd943d4f99afe0d2c9f",
+        "expected.hex": "cf42fd2ec8ac4a67eed9793ea99610379f5c2c9322f609a86c45a66f8a63469c"
+      },
+      {
+        "shared.hex": "016355055b24d6a27b45788a004963ba6fb4ff1a31240bbd3f0cec46b38d547d",
+        "expected.hex": "079810515ee56ef15e611fdecce3d6f30d1c472e4c8af6b96096d22c08919d17"
+      },
+      {
+        "shared.hex": "1d416963e443db9893c666e1e06c5b62f79ca2ab21097bcfe508ca21962cb583",
+        "expected.hex": "6ea886e43cf7ec6fd5b574d6e02a29ae7fffdc227ad22bd48cf65a6090496e8b"
+      },
+      {
+        "shared.hex": "3d2add7fd89c920eceab42f0467998e724283544127627460c961ad6be9747f2",
+        "expected.hex": "29c04cb5f4c003b8485a848fe92713c57c0778eddb74df0bf28bcdb12d3a313f"
+      },
+      {
+        "shared.hex": "8b32a0c42fadef8e4dade0fd2858b82dc3d355e488d2aa307d5b41171f977fb0",
+        "expected.hex": "3f35fa0ec941b4e7520795bc7f2545fc2eb4dead94a8e02156634818f913efa4"
+      },
+      {
+        "shared.hex": "42e6b739b3256b06139459db7e060abb34fe05e01da153452c373258c80c37ca",
+        "expected.hex": "57a88c12cb2d3c0f83aca62d3299ab39366ef25e9a825fb386a6769672f5ac90"
+      },
+      {
+        "shared.hex": "08e3224633666c25e225f5475a20e87b555047f00ccacb852d1d399cf97dcc9c",
+        "expected.hex": "4c867f3e293d08aea206cc1798211a4aea8540e82e75a838a9457dc4a430987c"
+      }
+    ]
+  },
+  "pinned_official_sources": {
+    "commit": "9f3e34f337f5d0a1236a285871ffa2032491617a",
+    "manifest_sha256": "257a3f5028457f0901280d6ea365d552983f5eba2b121b7d983f6b1d4b7a7774",
+    "selected_source_sha256": {
+      "rtl/e203/core/config.v": "5368196d6920b61f4faeed483ebfffd29067e976e32cc685d8eb473a5000b103",
+      "rtl/e203/core/e203_biu.v": "1d5f0ff812444f5bbc977a6adbe40dcfb6ef3b1fb23676377b37cfa481e82f5f",
+      "rtl/e203/core/e203_clk_ctrl.v": "29abfadf3f5be3afd5f182eebc861889de2ed1df6bcbc04ea1166877f18cbfb4",
+      "rtl/e203/core/e203_clkgate.v": "2e2d7756b3cb941f635a5799a5b794e00423ca462591004df68daabdfd5104db",
+      "rtl/e203/core/e203_core.v": "fde90d3d1d44648d954bfaa929010601ad3ec8b6d149bdb4358fc3dbac24a659",
+      "rtl/e203/core/e203_cpu.v": "0d59e06a948e2d1f57abd29c06e93b77fe3a52d18ba6afbedac6b1c41321e255",
+      "rtl/e203/core/e203_cpu_top.v": "3b7ef0edbe963829f709f4ddadfcaec91d4f58af661514868de1ccb430f50a3b",
+      "rtl/e203/core/e203_defines.v": "a5991a0ef07a78b413e35bcadaf8b1e78d732db43df86cad4bee2cafb2cfd546",
+      "rtl/e203/core/e203_dtcm_ctrl.v": "389701690ca061953e0e4ba0e00eb115e0146e4f38bc8b739d3dc3cdde53e65b",
+      "rtl/e203/core/e203_dtcm_ram.v": "aa98065e29850a50790b9a84f1564a72fadb4bc39afb142f8fc717801467823b",
+      "rtl/e203/core/e203_extend_csr.v": "59a9dd2cb96c4f5ce206b8fdd98f4728b31c718a3933dd2c40b26f49f48b51f8",
+      "rtl/e203/core/e203_exu.v": "a8aa98b564d8d297901d6889728b12bd060da15406992624d66cfc94e1b83123",
+      "rtl/e203/core/e203_exu_alu.v": "e92d74694ec79c526d54383f8850e718ea016c59f45315762b13523552f7a081",
+      "rtl/e203/core/e203_exu_alu_bjp.v": "ec4e99dfb6d99a5d72d744b2f5f246a60d0242e7e2fbd813a7399547514f7de2",
+      "rtl/e203/core/e203_exu_alu_csrctrl.v": "aa727c691e1db07de81d68e201e447a793cac9c608d63931558bc48dcd3fe4f4",
+      "rtl/e203/core/e203_exu_alu_dpath.v": "e366524d1140d96a274cd608f1cc992b220c6f16db8dc6d656b61cfdc4455c21",
+      "rtl/e203/core/e203_exu_alu_lsuagu.v": "d39cc87a4d1d8c9c509f7a07820c3c8b59a5148c84fbf2f16e21dd6f1fd9699d",
+      "rtl/e203/core/e203_exu_alu_muldiv.v": "1f532616f47c28ced4c522933318303bd561dedcfae9e65fdb44dda05b1832f2",
+      "rtl/e203/core/e203_exu_alu_rglr.v": "0827068cb5637db8ca85739cd89a6312d260c5c21b75ab72c5b6f46dd2897d06",
+      "rtl/e203/core/e203_exu_branchslv.v": "ba4bd4dcce2cce3c90d1d2697b9717ba6d827963e63fd6495c9c56f9023820a7",
+      "rtl/e203/core/e203_exu_commit.v": "d79cd32394282fb51c3a3f1fc3b1de3d97bba41da33e7359dd51b41303c8c24c",
+      "rtl/e203/core/e203_exu_csr.v": "9d6d7fb4e666b66a438327711f650344aaaf087544739887d7824c7b0d9808ec",
+      "rtl/e203/core/e203_exu_decode.v": "94d911dbef9ef91f20693b7b7514b7cff06b49d93ea4313034a82655df384950",
+      "rtl/e203/core/e203_exu_disp.v": "c20cab2fc72d81bf30d6c7591a2664b38cff39a2999a8af803c7b9eaad911168",
+      "rtl/e203/core/e203_exu_excp.v": "17051365956f4ba776b69bbbb8a72b79f1396d78e0ac6fe8c6345bf12fb5ca8b",
+      "rtl/e203/core/e203_exu_longpwbck.v": "e34240e8fa2df702234f4129169d58dbb97231e0441206da1127d399a691901f",
+      "rtl/e203/core/e203_exu_nice.v": "7961e12ab97dd466c7fd4801878ea23da2a1c4d06734d0a425be60c6871c71d2",
+      "rtl/e203/core/e203_exu_oitf.v": "707f2d47ffda18c287eb4768b9766fc74d14b170715918ac89345ad45e993a0a",
+      "rtl/e203/core/e203_exu_regfile.v": "bb211ae05e501e2f1d6e69ca9b48f33d6e47c44d48a12039efb300063d336247",
+      "rtl/e203/core/e203_exu_wbck.v": "510907039b5879d6e56bd347eb1099503c646ff2ee704ac33c7ad691a8767645",
+      "rtl/e203/core/e203_ifu.v": "fd87c4143171492fec01c09c8ddfb693730d0611a89389c60118a9bf937b6569",
+      "rtl/e203/core/e203_ifu_ifetch.v": "3ece332704cccd682e672d9c7c9258018f42fbc8675675def386d4f2b4be7127",
+      "rtl/e203/core/e203_ifu_ift2icb.v": "5ec1f793157f6566114b55a20008bafa8c144f08b3b9b8efdbda85c926e99340",
+      "rtl/e203/core/e203_ifu_litebpu.v": "55ce961e3469cb4905ce0da7f735d7121c1ab000e8645ce554369d70d2ab2e60",
+      "rtl/e203/core/e203_ifu_minidec.v": "3518b1ecc6f4b660d03830761a4f159636910f34fa3e96c6f6e1e6170a2a2944",
+      "rtl/e203/core/e203_irq_sync.v": "47b5532102bc7c45da38d93bdbfa28df778898e2337742e02919a5ee67dd4711",
+      "rtl/e203/core/e203_itcm_ctrl.v": "d945c9b6af03c59a7189915989006f2dfe8a15cfb2a2e97c035d2e428b45b161",
+      "rtl/e203/core/e203_itcm_ram.v": "075d2968751a5f75fbe2e58a9e0658dcab178377d74c6fee5b32939c70eb9d80",
+      "rtl/e203/core/e203_lsu.v": "26b5e64c70294cf961b3716015b9526fc62f8735dd87b22f0a02d1a8f8d90a81",
+      "rtl/e203/core/e203_lsu_ctrl.v": "e7118ee9cc335cef3ebbf22e6853fc33f42af9cbcf127eaa577615b0a5043477",
+      "rtl/e203/core/e203_reset_ctrl.v": "40b12ecb946c52a8928d4b195fa9641d2edb3b7e72f4e379c274dfe92ee21183",
+      "rtl/e203/core/e203_srams.v": "fbd09d30850d32cffe3d05d7ee60a4472b79bf0d9fcd5b6a7d73d1ad7955e334",
+      "rtl/e203/debug/sirv_debug_csr.v": "6e46ee8c45dce8f9bae67a45ce12bf0b2217078ca9207e6151081ac8d3698a86",
+      "rtl/e203/debug/sirv_debug_module.v": "8c1bea0c1d8291d40847269d69b693b9d5ddc6a3f43fbed4c024ab333317f6db",
+      "rtl/e203/debug/sirv_debug_ram.v": "edc273d7af1fe72378e6104e10d705002ccc6d78e778d23d2cbaade80df89aa5",
+      "rtl/e203/debug/sirv_debug_rom.v": "46800d7cabc931cc081637a88935bdcb420a68bffacb7b418f27515af8bb300d",
+      "rtl/e203/debug/sirv_jtag_dtm.v": "7f6d4e8cba4411c6701e2e6ba2de98adf6ea675d34218419c6115a9abb3166b9",
+      "rtl/e203/fab/sirv_icb1to16_bus.v": "8150fc0bc439d430ca89dcedaa3d7ed422113a751e956b1df0ab3c185ddcb229",
+      "rtl/e203/fab/sirv_icb1to2_bus.v": "03599e2948822f6bd162035f56d4a853e639bb6625067cfbf87ade4760cdba0d",
+      "rtl/e203/fab/sirv_icb1to8_bus.v": "52f421d1f3c03e288db9807ed647d9954b5d11ed1fe4002fb3ec3577595ea34e",
+      "rtl/e203/general/sirv_1cyc_sram_ctrl.v": "bffee088ed8640300c9a1c703657e564e897a98732570a7a1693940cd2cb76f9",
+      "rtl/e203/general/sirv_gnrl_bufs.v": "0f6bc366d3374766500fbaec012d4a12e7e44939e33157c4dfb0ac11b538c957",
+      "rtl/e203/general/sirv_gnrl_dffs.v": "e452bc1e1ed88786344c42f2f4082db35c758ce3cf5e0a0a97854dd3265c0c3e",
+      "rtl/e203/general/sirv_gnrl_icbs.v": "49170969440b1aac835224188834e0b3408a2c2938cd0ae70354d5bca4da13ab",
+      "rtl/e203/general/sirv_gnrl_ram.v": "5108156857e24f4182050b11b888708e6258e6fc7304bee6a9be814b57fcb2a8",
+      "rtl/e203/general/sirv_gnrl_xchecker.v": "81781c78c44f91e60141e4e84fe4f69b17372007db6b59e5cf11a6835c36dc6d",
+      "rtl/e203/general/sirv_sim_ram.v": "a9e3555bf41b770aa0f6a5a92083e1ad50311b8250a62223c7551b47ae987f81",
+      "rtl/e203/general/sirv_sram_icb_ctrl.v": "c5313444528dbb2f79f3e3b836ed7f582a5aaf480741a6b3e6f8afd531b15e02",
+      "rtl/e203/mems/sirv_mrom.v": "70090a131b59738c599d4abf967eecbdc8df51f86feb9c1c274045805e200153",
+      "rtl/e203/mems/sirv_mrom_top.v": "071627620b1753e2a00e57f473db57f7a3fae9e4f53ae78283cca2edabbbccdb",
+      "rtl/e203/perips/apb_adv_timer/adv_timer_apb_if.v": "5d6c76e41e028686330041ddc9e26a4e884967eab14a1d6f289daf556cc4edc0",
+      "rtl/e203/perips/apb_adv_timer/apb_adv_timer.v": "152abfa79bbb39c6484742af6e43df05b338451ee8379a205856af82ad59237c",
+      "rtl/e203/perips/apb_adv_timer/comparator.v": "216b5f96f60ecc6f871024956c04767e7dd346168893289706185d9bb75ddaaa",
+      "rtl/e203/perips/apb_adv_timer/input_stage.v": "ae9ac1e48f65eb2e271d212dc6d5c4a6a8f6a8dc1daf433c3953fad51d251ec2",
+      "rtl/e203/perips/apb_adv_timer/prescaler.v": "bfd61531049892021144a351119655b7af6833cdaba60bf8df4299a09df26279",
+      "rtl/e203/perips/apb_adv_timer/timer_cntrl.v": "6491f5917bb30a52a565fd0b3268925cf656b879082c32aa58ae760c8f8d074f",
+      "rtl/e203/perips/apb_adv_timer/timer_module.v": "7d62d25dd9ca4311ccca93d749cb6895489ba66a1f43e526e85dfaf06aff3b4e",
+      "rtl/e203/perips/apb_adv_timer/up_down_counter.v": "360b2af2c0eaebe057cee21e49d71a75926a7a4216c9d641c284a27f19e251a5",
+      "rtl/e203/perips/apb_gpio/apb_gpio.v": "912ebb4b1bb7e096f2e2f44ca8e55a00852d8cce3777d4bff50ee83b06993154",
+      "rtl/e203/perips/apb_i2c/apb_i2c.v": "ac4c874e3c73cc20866ba80c9d64ab41205f30142032950c5671bdb29f3a8db5",
+      "rtl/e203/perips/apb_i2c/i2c_master_bit_ctrl.v": "2357457decd0fd70fa19aea01e0c4252c2db6d928928ceb8836d241f89ccbef6",
+      "rtl/e203/perips/apb_i2c/i2c_master_byte_ctrl.v": "f2a996ae8299f251c3eaea073e7db921318a70eb9ee44c8d91fbb026b10fa7e1",
+      "rtl/e203/perips/apb_i2c/i2c_master_defines.v": "6cf6f251d95f05929caa067d9d4eba350eaa58e0945127828eee1b53a5057e0a",
+      "rtl/e203/perips/apb_spi_master/apb_spi_master.v": "da9ba717e1ec328dd585380fe071f61506f761d59d03ac095af7261afc1353bf",
+      "rtl/e203/perips/apb_spi_master/spi_master_apb_if.v": "fb34fc25c0e3c573b83232b39dd2efb3d4c261548187b910d3134c79254b4ac7",
+      "rtl/e203/perips/apb_spi_master/spi_master_clkgen.v": "a551e90e775c19adc3495e373858459eebd7885195457ffa67a6152fe19b8c46",
+      "rtl/e203/perips/apb_spi_master/spi_master_controller.v": "5164576a782e110fc0607e55c806b2eeda8093ea29ae197eb1b536ee8b62ca8c",
+      "rtl/e203/perips/apb_spi_master/spi_master_fifo.v": "2e4e26260f3a4a374ef14a3d2ea2dcbde7ff5b35219953885f24923774a7d5e5",
+      "rtl/e203/perips/apb_spi_master/spi_master_rx.v": "03fc11afd4aaf815456592eae7b38c86bc71c1d7884a8d7880c9370761987d4b",
+      "rtl/e203/perips/apb_spi_master/spi_master_tx.v": "10126e54f243a8718e7d2e993b81ec828918dc8708d37a9badb40e600153bd6a",
+      "rtl/e203/perips/apb_uart/apb_uart.v": "97b54f130aad69101038396c61f82a15fad077c34c3985b84dc51f217bd84c7f",
+      "rtl/e203/perips/apb_uart/io_generic_fifo.v": "c83164705d7661cd6263350f034695c75289efa58a37c72c4ba2e3ffb384f7f7",
+      "rtl/e203/perips/apb_uart/uart_interrupt.v": "3d0fcb9398dde8a3525186e8f75c7944d0ee89d1fb2e1120c1939539bc2ede1f",
+      "rtl/e203/perips/apb_uart/uart_rx.v": "65571d544d221744fc32a4940005acc561d85499232c722c29a2aeea4107b9ae",
+      "rtl/e203/perips/apb_uart/uart_tx.v": "bde1879ee4ce1db8147b9510278c41789b861c0c0e969f81ba6f8351a7f640fa",
+      "rtl/e203/perips/sirv_aon.v": "b6cd62d56fde58c29193b3ab71b6cfebada0b82a116f768d49f9b1a256b5ed77",
+      "rtl/e203/perips/sirv_aon_lclkgen_regs.v": "15de277dcd32b40a29e4ee404b656485a031ca8ff0e5fda265aa46c855ed24d7",
+      "rtl/e203/perips/sirv_aon_porrst.v": "e62a5ee2ea6d16d80d58e199d0c4ff469dde78f5c3a224535f4f35a885686f01",
+      "rtl/e203/perips/sirv_aon_top.v": "bb92d75e05fe14eb72e58cbf73b5ccd4bfb24e3348278f7c98e6fe7eb7025ecc",
+      "rtl/e203/perips/sirv_aon_wrapper.v": "ce69f5c4ca81432319a3f34c3932084ac04011972ed9b7e5236c8de63053ea7f",
+      "rtl/e203/perips/sirv_AsyncResetReg.v": "30aeedd8ab690080a446e8c104d7ccd3acd6329fb2e3ef1b01574f36a57082b2",
+      "rtl/e203/perips/sirv_AsyncResetRegVec.v": "0b97095808a50c785b32c798d0b483c26eb27b1419279119def66a424e04c12b",
+      "rtl/e203/perips/sirv_AsyncResetRegVec_1.v": "319aea78aeaef43aee86cac74c3c85f1b32f7abee77eb58d80066427a12fcd06",
+      "rtl/e203/perips/sirv_AsyncResetRegVec_129.v": "db0424674ebf053d8c6634de2a3a2286b63cd18acf8e557e6636b4e22957001a",
+      "rtl/e203/perips/sirv_AsyncResetRegVec_36.v": "4a75cfb5f3a8c429a4be3195d7e0b7135c1f2a9d794e2827e28452e684c2f85a",
+      "rtl/e203/perips/sirv_clint.v": "ce16c7946b9d0c2f6c927d91b7d32c976efaa94dfea4c09189d8026519f5c947",
+      "rtl/e203/perips/sirv_clint_top.v": "df5c0946a7e3b6ecbe517070612696114891fba86ba623611848369fcfb41b6f",
+      "rtl/e203/perips/sirv_DeglitchShiftRegister.v": "0e4558db55b91bcbbc864579913a17f6caa5c1956c3ffb8fa92c734d364d4a32",
+      "rtl/e203/perips/sirv_expl_axi_slv.v": "a84bdf040d6e53dfd5e1af393e973e690e3a29ec1dc07905dc5ca75d092b5967",
+      "rtl/e203/perips/sirv_flash_qspi.v": "94d186303dc9ee043769f1dd05b73462c41a787717eebb96cf298791c9fee0b5",
+      "rtl/e203/perips/sirv_flash_qspi_top.v": "3281e87939e22a3f42d5e2cc7f3a1ce890cae06d9d79af7eee6cacf125b7e2aa",
+      "rtl/e203/perips/sirv_hclkgen_regs.v": "c2430bf68c99a0e977b35ac10f3f212eaca5e8cfd3c39c50ccc09bbbccd1c309",
+      "rtl/e203/perips/sirv_jtaggpioport.v": "4c3841c172f5242a54d162c46291ab8e8d440cbac122a4ab63b8854d4c6c41cc",
+      "rtl/e203/perips/sirv_LevelGateway.v": "cf21304414ab2a6ecbbced9938fbf7bf8afbca8cadc4d628f39440d3fde4bba1",
+      "rtl/e203/perips/sirv_plic_man.v": "288cff786231777d354913a9e832e46a0a9d8917e3069771863450aadbd0b7ce",
+      "rtl/e203/perips/sirv_plic_top.v": "aeac0da9cb7c60a1108db2325fd2ee6a79ed8e6d8eb5ca99294e60bea13ffc3e",
+      "rtl/e203/perips/sirv_pmu.v": "cc8d7f133217dc1d5ce01af8d92ead3b4262268cc0cce3565b6851dc70624b13",
+      "rtl/e203/perips/sirv_pmu_core.v": "47642620b17ccec69828de8ba2e697076b7ee1c29959c9537a92440ed3bc2af3",
+      "rtl/e203/perips/sirv_qspi_arbiter.v": "f7ead3362cc4b1b3ff1641facf630f330e812a51e191fc08599f74a82ce794e8",
+      "rtl/e203/perips/sirv_qspi_fifo.v": "662ca8b78692b795b21ed5221e536e28a8db7533b9d11a8aaa73be1371a97e33",
+      "rtl/e203/perips/sirv_qspi_media.v": "063393cff2228c1fbbd101b4d21e1f1dbcca840f0d48de939dc27bc672d16ca3",
+      "rtl/e203/perips/sirv_qspi_physical.v": "465122bb14a1636480db4b37bed2846e32a6cd9d442ec1364cda8b389d975222",
+      "rtl/e203/perips/sirv_queue.v": "2a2e8e9bb5f63977296986b72d8c67ce6216cf832185891d407b5da0d6afaaf2",
+      "rtl/e203/perips/sirv_queue_1.v": "90151b469400218e0e6a12ba4c1e462b01ea35f4a77470e4a5d46e083b7359a5",
+      "rtl/e203/perips/sirv_repeater_6.v": "78816f50da0d36c22263ead449cfbf7bb1176b313383b0ccd9b7cd894a1ea892",
+      "rtl/e203/perips/sirv_ResetCatchAndSync.v": "e854851f02d9c4a74133037e093b48a999df9903db86367835b15dc85fe5a150",
+      "rtl/e203/perips/sirv_ResetCatchAndSync_2.v": "e41295a8a9f9b53b728d491dd6dd3e16322107e8ec18fba36b4e5ea3904af5c6",
+      "rtl/e203/perips/sirv_rtc.v": "8e39e59fa73ae92e48c426b2c043d79fd66dec1dfe00340138ed13e203a8a4ca",
+      "rtl/e203/perips/sirv_spi_flashmap.v": "0a7c71dbf3d456b7c61d858da75b4e15ca6986cfcf209542c1c3b8f98690edec",
+      "rtl/e203/perips/sirv_tl_repeater_5.v": "72bbf598dadb78ef1b6ab1bd4a60d2776d38d818c2b8396325803d3b7daa225b",
+      "rtl/e203/perips/sirv_tlfragmenter_qspi_1.v": "351d52cb7221523cb1f94f0620152da5942452b1223593356dd138f627fab276",
+      "rtl/e203/perips/sirv_tlwidthwidget_qspi.v": "67f1264d10bbff4b2f1cca39430d7d1d94f71a7fa89671dd0dffbba078fab580",
+      "rtl/e203/perips/sirv_wdog.v": "c285077010526ca8fb0c3ba15c634513fa781f5d221ea5de2f80a4d2cb0813b1",
+      "rtl/e203/soc/e203_soc_top.v": "0d6050dde3058b6a2e93105f88c6857b2e3a6684bdfdf1840d2d0c386d09df98",
+      "rtl/e203/subsys/e203_subsys_clint.v": "496a7bf817a2718089242689d5ae86d9b3d6e9e0a57cfae847d0f0e26a834e17",
+      "rtl/e203/subsys/e203_subsys_gfcm.v": "8939d5173cdc4d294da97adebee353aea2516fca77c5c145de433d3bbaf741d4",
+      "rtl/e203/subsys/e203_subsys_hclkgen.v": "a5d78a97172f8acbf24d181d8796862961dab833751366a47150c5be606fe7cd",
+      "rtl/e203/subsys/e203_subsys_hclkgen_rstsync.v": "bd420f43777748d019220529549e50c662917327badd64d1fbd04a851d59b0eb",
+      "rtl/e203/subsys/e203_subsys_main.v": "de463142e464795425b489d1ee4378cfffee554e73f3ce65f7c283fb3ae94085",
+      "rtl/e203/subsys/e203_subsys_mems.v": "b44c5632e5c948c12d24f084505f1c74fd900d08cde022392166929a3d8bd063",
+      "rtl/e203/subsys/e203_subsys_nice_core.v": "9e760b81334ab530a06e2ae9c12403835d6ee9f2ce71515b090681db69c5f9d3",
+      "rtl/e203/subsys/e203_subsys_perips.v": "909cc8609c4ee88f7f049540e6dae9902c39c7392f7133627ee1e2b6eb425b94",
+      "rtl/e203/subsys/e203_subsys_plic.v": "51bcdaeec813bc53ee243ea4654a6a4f8412776c7d58fbaef52e861cfa63e47c",
+      "rtl/e203/subsys/e203_subsys_pll.v": "ba9b3ec427b7472bbf5ae15e5aaf559e789e871846090059be4d63db7d0fb23c",
+      "rtl/e203/subsys/e203_subsys_pllclkdiv.v": "d144b9d9d070c0090bf25aa62787ba7d89db4c2eec54b2f499e85cfe54ee82f7",
+      "rtl/e203/subsys/e203_subsys_top.v": "7f33f610a5d919dd870588adb771ce807c5ad209253a7b2c14ce1c48aa9816a6"
+    }
+  },
+  "candidates": [
+    {
+      "candidate": "opt20_sysbus",
+      "result": {
+        "path": "build/bus_soc_opt20_sysbus_20261111_134818_505660/result.json",
+        "sha256": "7ee277a5d3097820d7d98ff718272dc211d3bcb59901c71bfedcb6f58012bdfe"
+      },
+      "passed": true,
+      "layers": 12,
+      "outputs": 304128,
+      "runner_kind": "official_fabric_single_port",
+      "runner_sha256": "81d2e39ddd732437161e874b6ee8a94a0e2e2b68384709f5cf03a1597ba8ee33",
+      "helper_sha256": "a0f715d99dff05aa126fc0f9f9e40d3924e9a3206f863c09d507948eb19c129f",
+      "complete_task_cycles_by_layer": [
+        148541,
+        148539,
+        148539,
+        148539,
+        148539,
+        148539,
+        148539,
+        148539,
+        148539,
+        148539,
+        148539,
+        148539
+      ],
+      "mean_complete_cycles": 148539.16666666666,
+      "tasks_per_second_at_assumed_150mhz": 1009.8346676241396,
+      "compiled_source_sha256": {
+        "build/bus_soc_opt20_sysbus_20261111_134818_505660/config.v": "dacc96ddecd2a3ea88e93cc92fc4f49d774f5b564325e55e897d978aafa5e228",
+        "experiments/h1500v/opt20_sysbus/rtl/qingyu_e203_soc_top.v": "bace66608d9118ae2203e3faa4fe458d8c657c9dc861b0f320b3185992d490fc",
+        "experiments/h1500v/opt20_sysbus/rtl/qingyu_e203_subsys_main.v": "87d0b044aea1d223c6600e755b80e2b884415c7965c24210061d267c39737650",
+        "experiments/h1500v/opt20_sysbus/rtl/qingyu_e203_subsys_top.v": "d3a9974a4030b04171ceebe9f11f6faebeaf4ade77044df6356b490eb5ea6a63",
+        "experiments/h1500v/opt20_sysbus/rtl/qingyu_accel.sv": "2bc62a94efd26cab9bb572e536d93911a93420f3710a133b7485b4c38a5cbec3",
+        "experiments/h1500v/opt20_sysbus/rtl/qingyu_fio.sv": "ab801017058866bf50a8d3fffb20de3951c8150748dc4c6d99945fd8e3aec384",
+        "experiments/h1500v/opt20_sysbus/rtl/qingyu_shared_sram.sv": "983a3f6f22205eaaf9c7cb4da56eb390f2a007bc6fe696f96ac98213ec98ae84",
+        "rtl/qingyu_sram16.sv": "d3d35a1e99e07c75fac13e450c87685e773dc4953ab5a7752dd0ba0622943b18",
+        "tb/tb_qingyu_bus_soc.sv": "4355ba23da04179bac7561f378bb8ed7738d322f174fe8235e610d919455e6de",
+        "tb/tb_qingyu_bus_soc_performance.sv": "0d2e9970b5e9c89c8c6ad3e0dbbfa939072291c7f89f9601a39a3497a9e16cad",
+        "experiments/h1500v/opt20_sysbus/rtl/qingyu_icb_merge.sv": "ba4a8c37c895a83a24fdb6b4dd4b9097cbe86c56aa0e8f2735c14eae66b2aa7e"
+      },
+      "firmware_source_sha256": {
+        "experiments/h1500v/opt20_sysbus/rtl/soc_perf_main.c": "3a107e21b2017056ebcfd5317049d91a98e06e944e3bb77e3029ed9b9632803b",
+        "experiments/h1500v/opt20_sysbus/rtl/qingyu_accel.c": "2e5cefaa8d988c258f244e28806cd5a24a5ea7ca343af0df4ed45f7995bae45f",
+        "experiments/h1500v/opt20_sysbus/rtl/qingyu_accel.h": "fd29f78d169ef2fd57042ed3a5f9a65f0d6f623b3c15978ce2d6681843280076",
+        "sw/startup.S": "68e34b5e5084b2dac1d892450e9c9ff46bd1beac6e5977ec9cc97dcdc8ca5fac",
+        "sw/runtime.c": "729e3273c417aaf861a573d79f9d80658a9e21afb22287673f72b8f374700999",
+        "sw/linker.ld": "5b6c19d5ea24f5edffb6d40ed02386aef837effd1163837f889669709d2f3b55"
+      },
+      "firmware_image_sha256_by_layer": [
+        "125ad115f4124800fb75226bfe9670e71b7c3a168cc08267f30bbae0085df0e5",
+        "53b0aca96fba4eff64dada56ee369483ea7070b461549c4792fc4e7bc68f1c09",
+        "340cc98ae381067f5191f1ffaba543d4ebc68c976b2294dd280665c1501b7d0f",
+        "bb1dc2b4c144df861485f9ad0d65872248c3f1873158ff030aa685fa9b404ed6",
+        "56e5d74a6699e842f0e3805b931e388196b22b8fd5704637e62d483418543429",
+        "905934e1947bdd429ce6ffcb55c0f5874071fc8842c3dae6421e5eef130b1f7f",
+        "4f24aae3c119ec4f4b2d85f3b78d521fb3d42564dc50e1b44a8fcc3576451b93",
+        "7466ccdd6abe7cbc212cff5cfaf375e71969704a04817b262a2c39d843738a1f",
+        "8ac7dd1a2ece9e12229dd767af61449060dbc0202e68b053d98a77fe2b11affe",
+        "a245fb6df3dc1d9981ab8c080a865335df48cdebd0dcecae61f86e74085bbd08",
+        "67e737daf7dda4d5613f734594d440b507bae681fb5629db89fd496235152f18",
+        "282f84b8593b9982be3acc7c8ac89d8b0ec2fe338640349a7a45c3d6b2f09bff"
+      ],
+      "simulator_sha256": "a23c7c4441c7b001951d05c64f8ba41615669cd6fb81d3a2b1aff16988fd6200",
+      "simulator_build_arguments_sha256": "ada00e3872d2afaeffb620e9441e876296882bcdf3e18f9c15fdc763bd828ff9",
+      "verification_contract": {
+        "live_read_words": 11936,
+        "source_load_words": 11936,
+        "live_write_words": 11936,
+        "private_input_words": 3168,
+        "private_weight_words": 8192
+      },
+      "verification_contract_sha256": null,
+      "simulation_logs": [
+        {
+          "path": "build/bus_soc_opt20_sysbus_20261111_134818_505660/layer00/simulation.log",
+          "sha256": "3466e8a7ede5c317d894b4ed12d3f0effebde4a907dfccd2ec688f836283e207"
+        },
+        {
+          "path": "build/bus_soc_opt20_sysbus_20261111_134818_505660/layer01/simulation.log",
+          "sha256": "12c5d976b73b66072789e2732976d272560740fc3153bd82e3aeb94c7a481a3b"
+        },
+        {
+          "path": "build/bus_soc_opt20_sysbus_20261111_134818_505660/layer02/simulation.log",
+          "sha256": "12c5d976b73b66072789e2732976d272560740fc3153bd82e3aeb94c7a481a3b"
+        },
+        {
+          "path": "build/bus_soc_opt20_sysbus_20261111_134818_505660/layer03/simulation.log",
+          "sha256": "12c5d976b73b66072789e2732976d272560740fc3153bd82e3aeb94c7a481a3b"
+        },
+        {
+          "path": "build/bus_soc_opt20_sysbus_20261111_134818_505660/layer04/simulation.log",
+          "sha256": "12c5d976b73b66072789e2732976d272560740fc3153bd82e3aeb94c7a481a3b"
+        },
+        {
+          "path": "build/bus_soc_opt20_sysbus_20261111_134818_505660/layer05/simulation.log",
+          "sha256": "12c5d976b73b66072789e2732976d272560740fc3153bd82e3aeb94c7a481a3b"
+        },
+        {
+          "path": "build/bus_soc_opt20_sysbus_20261111_134818_505660/layer06/simulation.log",
+          "sha256": "12c5d976b73b66072789e2732976d272560740fc3153bd82e3aeb94c7a481a3b"
+        },
+        {
+          "path": "build/bus_soc_opt20_sysbus_20261111_134818_505660/layer07/simulation.log",
+          "sha256": "12c5d976b73b66072789e2732976d272560740fc3153bd82e3aeb94c7a481a3b"
+        },
+        {
+          "path": "build/bus_soc_opt20_sysbus_20261111_134818_505660/layer08/simulation.log",
+          "sha256": "12c5d976b73b66072789e2732976d272560740fc3153bd82e3aeb94c7a481a3b"
+        },
+        {
+          "path": "build/bus_soc_opt20_sysbus_20261111_134818_505660/layer09/simulation.log",
+          "sha256": "12c5d976b73b66072789e2732976d272560740fc3153bd82e3aeb94c7a481a3b"
+        },
+        {
+          "path": "build/bus_soc_opt20_sysbus_20261111_134818_505660/layer10/simulation.log",
+          "sha256": "12c5d976b73b66072789e2732976d272560740fc3153bd82e3aeb94c7a481a3b"
+        },
+        {
+          "path": "build/bus_soc_opt20_sysbus_20261111_134818_505660/layer11/simulation.log",
+          "sha256": "12c5d976b73b66072789e2732976d272560740fc3153bd82e3aeb94c7a481a3b"
+        }
+      ],
+      "metric_groups": [
+        {
+          "layers": [
+            0
+          ],
+          "metrics": {
+            "QINGYU_BUS_CLASSES": {
+              "live_reads": 11936,
+              "live_writes": 11936,
+              "load_reads": 11936,
+              "output_writes": 12672,
+              "private_inputs": 3168,
+              "private_weights": 8192,
+              "source_reads": 12256,
+              "validation_reads": 320
+            },
+            "QINGYU_BUS_COUNTS": {
+              "cpu_cmds": 320,
+              "dma_cmds": 48480,
+              "dma_rsps": 48480,
+              "dma_wait": 0,
+              "fabric_cmds": 48800,
+              "fabric_rsp_wait": 0,
+              "fabric_rsps": 48800,
+              "fabric_wait": 0,
+              "shared_cmds": 48800,
+              "shared_rsp_wait": 0,
+              "shared_rsps": 48800,
+              "shared_wait": 0
+            },
+            "QINGYU_BUS_DMA": {
+              "cw": 3168,
+              "in": 3168,
+              "ld": 8768,
+              "mem": 15840,
+              "sr": 8768,
+              "sw": 8768
+            },
+            "QINGYU_BUS_TASK": {
+              "busy_cycles": 95122,
+              "cycles": 148541,
+              "final_response_return_cycles": 1,
+              "first_busy": 52199,
+              "sram_complete_cycles": 148540,
+              "tail": 246,
+              "validation_and_setup_cycles": 2955
+            }
+          }
+        },
+        {
+          "layers": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11
+          ],
+          "metrics": {
+            "QINGYU_BUS_CLASSES": {
+              "live_reads": 11936,
+              "live_writes": 11936,
+              "load_reads": 11936,
+              "output_writes": 12672,
+              "private_inputs": 3168,
+              "private_weights": 8192,
+              "source_reads": 12256,
+              "validation_reads": 320
+            },
+            "QINGYU_BUS_COUNTS": {
+              "cpu_cmds": 320,
+              "dma_cmds": 48480,
+              "dma_rsps": 48480,
+              "dma_wait": 0,
+              "fabric_cmds": 48800,
+              "fabric_rsp_wait": 0,
+              "fabric_rsps": 48800,
+              "fabric_wait": 0,
+              "shared_cmds": 48800,
+              "shared_rsp_wait": 0,
+              "shared_rsps": 48800,
+              "shared_wait": 0
+            },
+            "QINGYU_BUS_DMA": {
+              "cw": 3168,
+              "in": 3168,
+              "ld": 8768,
+              "mem": 15840,
+              "sr": 8768,
+              "sw": 8768
+            },
+            "QINGYU_BUS_TASK": {
+              "busy_cycles": 95105,
+              "cycles": 148539,
+              "final_response_return_cycles": 1,
+              "first_busy": 52199,
+              "sram_complete_cycles": 148538,
+              "tail": 246,
+              "validation_and_setup_cycles": 2955
+            }
+          }
+        }
+      ],
+      "production_readiness": "performance_comparison_only",
+      "fault_validation": {
+        "expanded_error_barrier_complete": false,
+        "note": "Pre-fusion FIO error barriers are incomplete. opt20 failed the expanded failed-START suppression test; opt21/23 use byte-identical FIO, while opt24 has separate queued FIO and no equivalent expanded fault signoff."
+      },
+      "cycle_reduction_vs_opt20_percent": 0.0,
+      "throughput_increase_vs_opt20_percent": 0.0
+    },
+    {
+      "candidate": "opt21_xcompact",
+      "result": {
+        "path": "build/bus_soc_opt21_xcompact_20261111_134920_143482/result.json",
+        "sha256": "efc6f4cf7ea828fe2dddac55a1aaf26fe1f6bb409f8536d47699b883ab919fbf"
+      },
+      "passed": true,
+      "layers": 12,
+      "outputs": 304128,
+      "runner_kind": "official_fabric_single_port",
+      "runner_sha256": "81d2e39ddd732437161e874b6ee8a94a0e2e2b68384709f5cf03a1597ba8ee33",
+      "helper_sha256": "a0f715d99dff05aa126fc0f9f9e40d3924e9a3206f863c09d507948eb19c129f",
+      "complete_task_cycles_by_layer": [
+        148541,
+        148539,
+        148539,
+        148539,
+        148539,
+        148539,
+        148539,
+        148539,
+        148539,
+        148539,
+        148539,
+        148539
+      ],
+      "mean_complete_cycles": 148539.16666666666,
+      "tasks_per_second_at_assumed_150mhz": 1009.8346676241396,
+      "compiled_source_sha256": {
+        "build/bus_soc_opt21_xcompact_20261111_134920_143482/config.v": "dacc96ddecd2a3ea88e93cc92fc4f49d774f5b564325e55e897d978aafa5e228",
+        "experiments/h1500v/opt21_xcompact/rtl/qingyu_e203_soc_top.v": "bace66608d9118ae2203e3faa4fe458d8c657c9dc861b0f320b3185992d490fc",
+        "experiments/h1500v/opt21_xcompact/rtl/qingyu_e203_subsys_main.v": "87d0b044aea1d223c6600e755b80e2b884415c7965c24210061d267c39737650",
+        "experiments/h1500v/opt21_xcompact/rtl/qingyu_e203_subsys_top.v": "d3a9974a4030b04171ceebe9f11f6faebeaf4ade77044df6356b490eb5ea6a63",
+        "experiments/h1500v/opt21_xcompact/rtl/qingyu_accel.sv": "6a533e83c3a19eb82aa25a7c2051e07b30383bf6e260d49b548923a5b8b58ed6",
+        "experiments/h1500v/opt21_xcompact/rtl/qingyu_fio.sv": "ab801017058866bf50a8d3fffb20de3951c8150748dc4c6d99945fd8e3aec384",
+        "experiments/h1500v/opt21_xcompact/rtl/qingyu_shared_sram.sv": "983a3f6f22205eaaf9c7cb4da56eb390f2a007bc6fe696f96ac98213ec98ae84",
+        "rtl/qingyu_sram16.sv": "d3d35a1e99e07c75fac13e450c87685e773dc4953ab5a7752dd0ba0622943b18",
+        "tb/tb_qingyu_bus_soc.sv": "4355ba23da04179bac7561f378bb8ed7738d322f174fe8235e610d919455e6de",
+        "tb/tb_qingyu_bus_soc_performance.sv": "0d2e9970b5e9c89c8c6ad3e0dbbfa939072291c7f89f9601a39a3497a9e16cad",
+        "experiments/h1500v/opt21_xcompact/rtl/qingyu_icb_merge.sv": "ba4a8c37c895a83a24fdb6b4dd4b9097cbe86c56aa0e8f2735c14eae66b2aa7e"
+      },
+      "firmware_source_sha256": {
+        "experiments/h1500v/opt21_xcompact/rtl/soc_perf_main.c": "3a107e21b2017056ebcfd5317049d91a98e06e944e3bb77e3029ed9b9632803b",
+        "experiments/h1500v/opt21_xcompact/rtl/qingyu_accel.c": "2e5cefaa8d988c258f244e28806cd5a24a5ea7ca343af0df4ed45f7995bae45f",
+        "experiments/h1500v/opt21_xcompact/rtl/qingyu_accel.h": "fd29f78d169ef2fd57042ed3a5f9a65f0d6f623b3c15978ce2d6681843280076",
+        "sw/startup.S": "68e34b5e5084b2dac1d892450e9c9ff46bd1beac6e5977ec9cc97dcdc8ca5fac",
+        "sw/runtime.c": "729e3273c417aaf861a573d79f9d80658a9e21afb22287673f72b8f374700999",
+        "sw/linker.ld": "5b6c19d5ea24f5edffb6d40ed02386aef837effd1163837f889669709d2f3b55"
+      },
+      "firmware_image_sha256_by_layer": [
+        "125ad115f4124800fb75226bfe9670e71b7c3a168cc08267f30bbae0085df0e5",
+        "53b0aca96fba4eff64dada56ee369483ea7070b461549c4792fc4e7bc68f1c09",
+        "340cc98ae381067f5191f1ffaba543d4ebc68c976b2294dd280665c1501b7d0f",
+        "bb1dc2b4c144df861485f9ad0d65872248c3f1873158ff030aa685fa9b404ed6",
+        "56e5d74a6699e842f0e3805b931e388196b22b8fd5704637e62d483418543429",
+        "905934e1947bdd429ce6ffcb55c0f5874071fc8842c3dae6421e5eef130b1f7f",
+        "4f24aae3c119ec4f4b2d85f3b78d521fb3d42564dc50e1b44a8fcc3576451b93",
+        "7466ccdd6abe7cbc212cff5cfaf375e71969704a04817b262a2c39d843738a1f",
+        "8ac7dd1a2ece9e12229dd767af61449060dbc0202e68b053d98a77fe2b11affe",
+        "a245fb6df3dc1d9981ab8c080a865335df48cdebd0dcecae61f86e74085bbd08",
+        "67e737daf7dda4d5613f734594d440b507bae681fb5629db89fd496235152f18",
+        "282f84b8593b9982be3acc7c8ac89d8b0ec2fe338640349a7a45c3d6b2f09bff"
+      ],
+      "simulator_sha256": "18cbae5f1e55f3a5ef80853b908a7f3e327370f89ee8cb030876d27ebba5fdc3",
+      "simulator_build_arguments_sha256": "ada00e3872d2afaeffb620e9441e876296882bcdf3e18f9c15fdc763bd828ff9",
+      "verification_contract": {
+        "live_read_words": 11936,
+        "source_load_words": 11936,
+        "live_write_words": 11936,
+        "private_input_words": 3168,
+        "private_weight_words": 8192
+      },
+      "verification_contract_sha256": null,
+      "simulation_logs": [
+        {
+          "path": "build/bus_soc_opt21_xcompact_20261111_134920_143482/layer00/simulation.log",
+          "sha256": "3466e8a7ede5c317d894b4ed12d3f0effebde4a907dfccd2ec688f836283e207"
+        },
+        {
+          "path": "build/bus_soc_opt21_xcompact_20261111_134920_143482/layer01/simulation.log",
+          "sha256": "12c5d976b73b66072789e2732976d272560740fc3153bd82e3aeb94c7a481a3b"
+        },
+        {
+          "path": "build/bus_soc_opt21_xcompact_20261111_134920_143482/layer02/simulation.log",
+          "sha256": "12c5d976b73b66072789e2732976d272560740fc3153bd82e3aeb94c7a481a3b"
+        },
+        {
+          "path": "build/bus_soc_opt21_xcompact_20261111_134920_143482/layer03/simulation.log",
+          "sha256": "12c5d976b73b66072789e2732976d272560740fc3153bd82e3aeb94c7a481a3b"
+        },
+        {
+          "path": "build/bus_soc_opt21_xcompact_20261111_134920_143482/layer04/simulation.log",
+          "sha256": "12c5d976b73b66072789e2732976d272560740fc3153bd82e3aeb94c7a481a3b"
+        },
+        {
+          "path": "build/bus_soc_opt21_xcompact_20261111_134920_143482/layer05/simulation.log",
+          "sha256": "12c5d976b73b66072789e2732976d272560740fc3153bd82e3aeb94c7a481a3b"
+        },
+        {
+          "path": "build/bus_soc_opt21_xcompact_20261111_134920_143482/layer06/simulation.log",
+          "sha256": "12c5d976b73b66072789e2732976d272560740fc3153bd82e3aeb94c7a481a3b"
+        },
+        {
+          "path": "build/bus_soc_opt21_xcompact_20261111_134920_143482/layer07/simulation.log",
+          "sha256": "12c5d976b73b66072789e2732976d272560740fc3153bd82e3aeb94c7a481a3b"
+        },
+        {
+          "path": "build/bus_soc_opt21_xcompact_20261111_134920_143482/layer08/simulation.log",
+          "sha256": "12c5d976b73b66072789e2732976d272560740fc3153bd82e3aeb94c7a481a3b"
+        },
+        {
+          "path": "build/bus_soc_opt21_xcompact_20261111_134920_143482/layer09/simulation.log",
+          "sha256": "12c5d976b73b66072789e2732976d272560740fc3153bd82e3aeb94c7a481a3b"
+        },
+        {
+          "path": "build/bus_soc_opt21_xcompact_20261111_134920_143482/layer10/simulation.log",
+          "sha256": "12c5d976b73b66072789e2732976d272560740fc3153bd82e3aeb94c7a481a3b"
+        },
+        {
+          "path": "build/bus_soc_opt21_xcompact_20261111_134920_143482/layer11/simulation.log",
+          "sha256": "12c5d976b73b66072789e2732976d272560740fc3153bd82e3aeb94c7a481a3b"
+        }
+      ],
+      "metric_groups": [
+        {
+          "layers": [
+            0
+          ],
+          "metrics": {
+            "QINGYU_BUS_CLASSES": {
+              "live_reads": 11936,
+              "live_writes": 11936,
+              "load_reads": 11936,
+              "output_writes": 12672,
+              "private_inputs": 3168,
+              "private_weights": 8192,
+              "source_reads": 12256,
+              "validation_reads": 320
+            },
+            "QINGYU_BUS_COUNTS": {
+              "cpu_cmds": 320,
+              "dma_cmds": 48480,
+              "dma_rsps": 48480,
+              "dma_wait": 0,
+              "fabric_cmds": 48800,
+              "fabric_rsp_wait": 0,
+              "fabric_rsps": 48800,
+              "fabric_wait": 0,
+              "shared_cmds": 48800,
+              "shared_rsp_wait": 0,
+              "shared_rsps": 48800,
+              "shared_wait": 0
+            },
+            "QINGYU_BUS_DMA": {
+              "cw": 3168,
+              "in": 3168,
+              "ld": 8768,
+              "mem": 15840,
+              "sr": 8768,
+              "sw": 8768
+            },
+            "QINGYU_BUS_TASK": {
+              "busy_cycles": 95122,
+              "cycles": 148541,
+              "final_response_return_cycles": 1,
+              "first_busy": 52199,
+              "sram_complete_cycles": 148540,
+              "tail": 246,
+              "validation_and_setup_cycles": 2955
+            }
+          }
+        },
+        {
+          "layers": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11
+          ],
+          "metrics": {
+            "QINGYU_BUS_CLASSES": {
+              "live_reads": 11936,
+              "live_writes": 11936,
+              "load_reads": 11936,
+              "output_writes": 12672,
+              "private_inputs": 3168,
+              "private_weights": 8192,
+              "source_reads": 12256,
+              "validation_reads": 320
+            },
+            "QINGYU_BUS_COUNTS": {
+              "cpu_cmds": 320,
+              "dma_cmds": 48480,
+              "dma_rsps": 48480,
+              "dma_wait": 0,
+              "fabric_cmds": 48800,
+              "fabric_rsp_wait": 0,
+              "fabric_rsps": 48800,
+              "fabric_wait": 0,
+              "shared_cmds": 48800,
+              "shared_rsp_wait": 0,
+              "shared_rsps": 48800,
+              "shared_wait": 0
+            },
+            "QINGYU_BUS_DMA": {
+              "cw": 3168,
+              "in": 3168,
+              "ld": 8768,
+              "mem": 15840,
+              "sr": 8768,
+              "sw": 8768
+            },
+            "QINGYU_BUS_TASK": {
+              "busy_cycles": 95105,
+              "cycles": 148539,
+              "final_response_return_cycles": 1,
+              "first_busy": 52199,
+              "sram_complete_cycles": 148538,
+              "tail": 246,
+              "validation_and_setup_cycles": 2955
+            }
+          }
+        }
+      ],
+      "production_readiness": "performance_comparison_only",
+      "fault_validation": {
+        "expanded_error_barrier_complete": false,
+        "note": "Pre-fusion FIO error barriers are incomplete. opt20 failed the expanded failed-START suppression test; opt21/23 use byte-identical FIO, while opt24 has separate queued FIO and no equivalent expanded fault signoff."
+      },
+      "cycle_reduction_vs_opt20_percent": 0.0,
+      "throughput_increase_vs_opt20_percent": 0.0,
+      "controlled_cycle_comparison": {
+        "baseline": "opt20_sysbus",
+        "cycle_difference": 0.0,
+        "cycle_reduction_percent": 0.0,
+        "same_frequency_throughput_increase_percent": 0.0
+      }
+    },
+    {
+      "candidate": "opt22_fused",
+      "result": {
+        "path": "build/bus_soc_opt22_fused_20261111_140017_271620/result.json",
+        "sha256": "22f41eaacd71b14e2fb39bd972fe2592c89e2a3d06659ed0e2f1180df4e96555"
+      },
+      "passed": true,
+      "layers": 12,
+      "outputs": 304128,
+      "runner_kind": "official_fabric_single_port",
+      "runner_sha256": "81d2e39ddd732437161e874b6ee8a94a0e2e2b68384709f5cf03a1597ba8ee33",
+      "helper_sha256": "a0f715d99dff05aa126fc0f9f9e40d3924e9a3206f863c09d507948eb19c129f",
+      "complete_task_cycles_by_layer": [
+        126950,
+        126950,
+        126950,
+        126950,
+        126950,
+        126950,
+        126950,
+        126950,
+        126950,
+        126950,
+        126950,
+        126950
+      ],
+      "mean_complete_cycles": 126950.0,
+      "tasks_per_second_at_assumed_150mhz": 1181.5675462780623,
+      "compiled_source_sha256": {
+        "build/bus_soc_opt22_fused_20261111_140017_271620/config.v": "6653d64ac796e1205393600c71c997c2bea9d502bb14991f8102a26fcb7e0726",
+        "experiments/h1500v/opt22_fused/rtl/qingyu_e203_soc_top.v": "bace66608d9118ae2203e3faa4fe458d8c657c9dc861b0f320b3185992d490fc",
+        "experiments/h1500v/opt22_fused/rtl/qingyu_e203_subsys_main.v": "87d0b044aea1d223c6600e755b80e2b884415c7965c24210061d267c39737650",
+        "experiments/h1500v/opt22_fused/rtl/qingyu_e203_subsys_top.v": "d3a9974a4030b04171ceebe9f11f6faebeaf4ade77044df6356b490eb5ea6a63",
+        "experiments/h1500v/opt22_fused/rtl/qingyu_accel.sv": "2bc62a94efd26cab9bb572e536d93911a93420f3710a133b7485b4c38a5cbec3",
+        "experiments/h1500v/opt22_fused/rtl/qingyu_fio.sv": "8b9043d4a0db81c9c86a2cabf9fc5aacd61c5fb94db74080ce3a825aa5d633b0",
+        "experiments/h1500v/opt22_fused/rtl/qingyu_shared_sram.sv": "983a3f6f22205eaaf9c7cb4da56eb390f2a007bc6fe696f96ac98213ec98ae84",
+        "rtl/qingyu_sram16.sv": "d3d35a1e99e07c75fac13e450c87685e773dc4953ab5a7752dd0ba0622943b18",
+        "tb/tb_qingyu_bus_soc.sv": "4355ba23da04179bac7561f378bb8ed7738d322f174fe8235e610d919455e6de",
+        "tb/tb_qingyu_bus_soc_performance.sv": "0d2e9970b5e9c89c8c6ad3e0dbbfa939072291c7f89f9601a39a3497a9e16cad",
+        "experiments/h1500v/opt22_fused/rtl/qingyu_icb_merge.sv": "ba4a8c37c895a83a24fdb6b4dd4b9097cbe86c56aa0e8f2735c14eae66b2aa7e"
+      },
+      "firmware_source_sha256": {
+        "experiments/h1500v/opt22_fused/rtl/soc_perf_main.c": "f4d4c1a82cb5c1224cea67018ab3c2cc434b7deb144c17ff76a44d17e4f35fa3",
+        "experiments/h1500v/opt22_fused/rtl/qingyu_accel.c": "483e328dc9a080871798a66bab20055b97ee7044e9ee4a8ac01f5441f2cf8f96",
+        "experiments/h1500v/opt22_fused/rtl/qingyu_accel.h": "2b06463385f5b89daae7a8bc2d20f43958ed1b049fc8a46f36fae098b8461143",
+        "sw/startup.S": "68e34b5e5084b2dac1d892450e9c9ff46bd1beac6e5977ec9cc97dcdc8ca5fac",
+        "sw/runtime.c": "729e3273c417aaf861a573d79f9d80658a9e21afb22287673f72b8f374700999",
+        "sw/linker.ld": "5b6c19d5ea24f5edffb6d40ed02386aef837effd1163837f889669709d2f3b55"
+      },
+      "firmware_image_sha256_by_layer": [
+        "d8d3e71410b28d02e402d09850796af8467497040562360957bee5ef38a03733",
+        "e9c18714561cd8bf72149ecd6a1f975bc9538a6f0bb93c5d5912b429d3a483a3",
+        "63e2f1b077f3bb2331b102fe7301a93b819906d617a8e497c7129a6bc77539fc",
+        "757c8751c917a478b0f96e796f2c20f1f1ed77c8b558c6b706d9701c6b8473df",
+        "59ae9a26d60d113d5d4aec334a6ee33613bcf0f5270f5037b31d7bbe49acb64c",
+        "6faf3bdab9bfc5405b09ede255d58260d4b8938c49ae04d534485e44a30cd1e9",
+        "29fbe80e88e83a28c13aa42cb2736681a530f9cddc1d0aceedefebfdf7c063f5",
+        "b82574345c3bf31a1d6670df34451f1a0a16df3ebbab4516faf0603de5b5c3ec",
+        "b6a2978c9980bc85ecd60e14305f30871c687034dd5b97b681c3853774ac9bb1",
+        "f537d2c729f77ae42fc280e51588836736409b58c04086a959000e2239630925",
+        "b3621232a21e1adf1232f9d7a2e3296a61e0eb50e3ba230c5415f81c7b8a7f1b",
+        "d41f1946c57f6389ca28a60cf28f63e8d1b11a502dc6afa864ff48a6eb06af2b"
+      ],
+      "simulator_sha256": "1a432eec384449ed3c0095ad9ab055b0a947916221b54e4845a41109441f1978",
+      "simulator_build_arguments_sha256": "ada00e3872d2afaeffb620e9441e876296882bcdf3e18f9c15fdc763bd828ff9",
+      "verification_contract": {
+        "live_read_words": 576,
+        "source_load_words": 11936,
+        "live_write_words": 11936,
+        "private_input_words": 3168,
+        "private_weight_words": 8192,
+        "schema": "qingyu-fused-load-contract-v1",
+        "candidate": "opt22_fused",
+        "base_candidate": "opt20_sysbus",
+        "output_write_words": 12672,
+        "flow": "X and W: source read, real live write, successful write response, then private commit. Metadata retains source-to-live copy and 576 live reads. Initial parameter validation remains inside the complete task window and is counted separately from source_load_words.",
+        "constraints": [
+          "Use the unchanged opt20 single 32-bit system bus and shared SRAM interface.",
+          "Every source payload word is copied once to its configured live address; source storage is immutable.",
+          "Private X and W words must match source values and addresses, not only aggregate counts.",
+          "No private commit on failed source read, failed live write, or aborted descriptor.",
+          "No START before full descriptor completion; W targets only the inactive tile bank.",
+          "Do not replace official initial loading with testbench preloading outside the measured window.",
+          "This contract is an engineering validation expectation, not official compliance or signoff."
+        ]
+      },
+      "verification_contract_sha256": "4f76cff52002b5b7b7acf12f45f4127900f57a124fc185585a935f18e247976a",
+      "simulation_logs": [
+        {
+          "path": "build/bus_soc_opt22_fused_20261111_140017_271620/layer00/simulation.log",
+          "sha256": "b253f5add1aa350fab28b712208922a8b360126a1c591d6f837415a640105ec2"
+        },
+        {
+          "path": "build/bus_soc_opt22_fused_20261111_140017_271620/layer01/simulation.log",
+          "sha256": "91f2678bc423a303ed5c712974757d45ca84aaed3f862b4674cae80f6b246292"
+        },
+        {
+          "path": "build/bus_soc_opt22_fused_20261111_140017_271620/layer02/simulation.log",
+          "sha256": "91f2678bc423a303ed5c712974757d45ca84aaed3f862b4674cae80f6b246292"
+        },
+        {
+          "path": "build/bus_soc_opt22_fused_20261111_140017_271620/layer03/simulation.log",
+          "sha256": "91f2678bc423a303ed5c712974757d45ca84aaed3f862b4674cae80f6b246292"
+        },
+        {
+          "path": "build/bus_soc_opt22_fused_20261111_140017_271620/layer04/simulation.log",
+          "sha256": "91f2678bc423a303ed5c712974757d45ca84aaed3f862b4674cae80f6b246292"
+        },
+        {
+          "path": "build/bus_soc_opt22_fused_20261111_140017_271620/layer05/simulation.log",
+          "sha256": "91f2678bc423a303ed5c712974757d45ca84aaed3f862b4674cae80f6b246292"
+        },
+        {
+          "path": "build/bus_soc_opt22_fused_20261111_140017_271620/layer06/simulation.log",
+          "sha256": "91f2678bc423a303ed5c712974757d45ca84aaed3f862b4674cae80f6b246292"
+        },
+        {
+          "path": "build/bus_soc_opt22_fused_20261111_140017_271620/layer07/simulation.log",
+          "sha256": "91f2678bc423a303ed5c712974757d45ca84aaed3f862b4674cae80f6b246292"
+        },
+        {
+          "path": "build/bus_soc_opt22_fused_20261111_140017_271620/layer08/simulation.log",
+          "sha256": "91f2678bc423a303ed5c712974757d45ca84aaed3f862b4674cae80f6b246292"
+        },
+        {
+          "path": "build/bus_soc_opt22_fused_20261111_140017_271620/layer09/simulation.log",
+          "sha256": "91f2678bc423a303ed5c712974757d45ca84aaed3f862b4674cae80f6b246292"
+        },
+        {
+          "path": "build/bus_soc_opt22_fused_20261111_140017_271620/layer10/simulation.log",
+          "sha256": "91f2678bc423a303ed5c712974757d45ca84aaed3f862b4674cae80f6b246292"
+        },
+        {
+          "path": "build/bus_soc_opt22_fused_20261111_140017_271620/layer11/simulation.log",
+          "sha256": "91f2678bc423a303ed5c712974757d45ca84aaed3f862b4674cae80f6b246292"
+        }
+      ],
+      "metric_groups": [
+        {
+          "layers": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11
+          ],
+          "metrics": {
+            "QINGYU_BUS_CLASSES": {
+              "live_reads": 576,
+              "live_writes": 11936,
+              "load_reads": 11936,
+              "output_writes": 12672,
+              "private_inputs": 3168,
+              "private_weights": 8192,
+              "source_reads": 12256,
+              "validation_reads": 320
+            },
+            "QINGYU_BUS_COUNTS": {
+              "cpu_cmds": 320,
+              "dma_cmds": 37120,
+              "dma_rsps": 37120,
+              "dma_wait": 0,
+              "fabric_cmds": 37440,
+              "fabric_rsp_wait": 0,
+              "fabric_rsps": 37440,
+              "fabric_wait": 0,
+              "shared_cmds": 37440,
+              "shared_rsp_wait": 0,
+              "shared_rsps": 37440,
+              "shared_wait": 0
+            },
+            "QINGYU_BUS_DMA": {
+              "cw": 11936,
+              "in": 11360,
+              "ld": 576,
+              "mem": 13248,
+              "sr": 0,
+              "sw": 0
+            },
+            "QINGYU_BUS_TASK": {
+              "busy_cycles": 68827,
+              "cycles": 126950,
+              "final_response_return_cycles": 1,
+              "first_busy": 36203,
+              "sram_complete_cycles": 126949,
+              "tail": 246,
+              "validation_and_setup_cycles": 2892
+            }
+          }
+        }
+      ],
+      "production_readiness": "normal-traffic SoC and FIO fault evidence complete; no PPA signoff",
+      "fault_validation": {
+        "expanded_error_barrier_complete": true,
+        "directly_tested_candidate": "opt22_fused",
+        "fault_scenarios": 11,
+        "soft_abort_reload_cases": 2,
+        "reload_words_each": 3168,
+        "note": "opt25 FIO is byte-identical to the directly fault-tested opt22 FIO; opt25 has its own full 12-layer numerical/routing regression."
+      },
+      "cycle_reduction_vs_opt20_percent": 14.534325963410318,
+      "throughput_increase_vs_opt20_percent": 17.006039123014304,
+      "controlled_cycle_comparison": {
+        "baseline": "opt20_sysbus",
+        "cycle_difference": -21589.166666666657,
+        "cycle_reduction_percent": 14.534325963410318,
+        "same_frequency_throughput_increase_percent": 17.006039123014304
+      }
+    },
+    {
+      "candidate": "opt23_sysbus4",
+      "result": {
+        "path": "build/bus_soc_opt23_sysbus4_20261111_134920_142696/result.json",
+        "sha256": "af3411dfbda9673775b157d1ae60fc6ae5bb0208ee24b80847200c96bd53595a"
+      },
+      "passed": true,
+      "layers": 12,
+      "outputs": 304128,
+      "runner_kind": "official_fabric_single_port",
+      "runner_sha256": "81d2e39ddd732437161e874b6ee8a94a0e2e2b68384709f5cf03a1597ba8ee33",
+      "helper_sha256": "a0f715d99dff05aa126fc0f9f9e40d3924e9a3206f863c09d507948eb19c129f",
+      "complete_task_cycles_by_layer": [
+        149145,
+        149159,
+        149159,
+        149159,
+        149159,
+        149159,
+        149159,
+        149159,
+        149159,
+        149159,
+        149159,
+        149159
+      ],
+      "mean_complete_cycles": 149157.83333333334,
+      "tasks_per_second_at_assumed_150mhz": 1005.6461444085515,
+      "compiled_source_sha256": {
+        "build/bus_soc_opt23_sysbus4_20261111_134920_142696/config.v": "dacc96ddecd2a3ea88e93cc92fc4f49d774f5b564325e55e897d978aafa5e228",
+        "experiments/h1500v/opt23_sysbus4/rtl/qingyu_e203_soc_top.v": "bace66608d9118ae2203e3faa4fe458d8c657c9dc861b0f320b3185992d490fc",
+        "experiments/h1500v/opt23_sysbus4/rtl/qingyu_e203_subsys_main.v": "87d0b044aea1d223c6600e755b80e2b884415c7965c24210061d267c39737650",
+        "experiments/h1500v/opt23_sysbus4/rtl/qingyu_e203_subsys_top.v": "d3a9974a4030b04171ceebe9f11f6faebeaf4ade77044df6356b490eb5ea6a63",
+        "experiments/h1500v/opt23_sysbus4/rtl/qingyu_accel.sv": "a5b7898d19322b4cad38ce682b3ae727fd19c3a92e3a3eb1f3f747eae5c52b4a",
+        "experiments/h1500v/opt23_sysbus4/rtl/qingyu_fio.sv": "ab801017058866bf50a8d3fffb20de3951c8150748dc4c6d99945fd8e3aec384",
+        "experiments/h1500v/opt23_sysbus4/rtl/qingyu_shared_sram.sv": "983a3f6f22205eaaf9c7cb4da56eb390f2a007bc6fe696f96ac98213ec98ae84",
+        "rtl/qingyu_sram16.sv": "d3d35a1e99e07c75fac13e450c87685e773dc4953ab5a7752dd0ba0622943b18",
+        "tb/tb_qingyu_bus_soc.sv": "4355ba23da04179bac7561f378bb8ed7738d322f174fe8235e610d919455e6de",
+        "tb/tb_qingyu_bus_soc_performance.sv": "0d2e9970b5e9c89c8c6ad3e0dbbfa939072291c7f89f9601a39a3497a9e16cad",
+        "experiments/h1500v/opt23_sysbus4/rtl/qingyu_icb_merge.sv": "ba4a8c37c895a83a24fdb6b4dd4b9097cbe86c56aa0e8f2735c14eae66b2aa7e"
+      },
+      "firmware_source_sha256": {
+        "experiments/h1500v/opt23_sysbus4/rtl/soc_perf_main.c": "3a107e21b2017056ebcfd5317049d91a98e06e944e3bb77e3029ed9b9632803b",
+        "experiments/h1500v/opt23_sysbus4/rtl/qingyu_accel.c": "2e5cefaa8d988c258f244e28806cd5a24a5ea7ca343af0df4ed45f7995bae45f",
+        "experiments/h1500v/opt23_sysbus4/rtl/qingyu_accel.h": "fd29f78d169ef2fd57042ed3a5f9a65f0d6f623b3c15978ce2d6681843280076",
+        "sw/startup.S": "68e34b5e5084b2dac1d892450e9c9ff46bd1beac6e5977ec9cc97dcdc8ca5fac",
+        "sw/runtime.c": "729e3273c417aaf861a573d79f9d80658a9e21afb22287673f72b8f374700999",
+        "sw/linker.ld": "5b6c19d5ea24f5edffb6d40ed02386aef837effd1163837f889669709d2f3b55"
+      },
+      "firmware_image_sha256_by_layer": [
+        "125ad115f4124800fb75226bfe9670e71b7c3a168cc08267f30bbae0085df0e5",
+        "53b0aca96fba4eff64dada56ee369483ea7070b461549c4792fc4e7bc68f1c09",
+        "340cc98ae381067f5191f1ffaba543d4ebc68c976b2294dd280665c1501b7d0f",
+        "bb1dc2b4c144df861485f9ad0d65872248c3f1873158ff030aa685fa9b404ed6",
+        "56e5d74a6699e842f0e3805b931e388196b22b8fd5704637e62d483418543429",
+        "905934e1947bdd429ce6ffcb55c0f5874071fc8842c3dae6421e5eef130b1f7f",
+        "4f24aae3c119ec4f4b2d85f3b78d521fb3d42564dc50e1b44a8fcc3576451b93",
+        "7466ccdd6abe7cbc212cff5cfaf375e71969704a04817b262a2c39d843738a1f",
+        "8ac7dd1a2ece9e12229dd767af61449060dbc0202e68b053d98a77fe2b11affe",
+        "a245fb6df3dc1d9981ab8c080a865335df48cdebd0dcecae61f86e74085bbd08",
+        "67e737daf7dda4d5613f734594d440b507bae681fb5629db89fd496235152f18",
+        "282f84b8593b9982be3acc7c8ac89d8b0ec2fe338640349a7a45c3d6b2f09bff"
+      ],
+      "simulator_sha256": "28faa66dc01693753fe86bf9943c29a9ef1fdb383239632b3bd51e923d1778c9",
+      "simulator_build_arguments_sha256": "ada00e3872d2afaeffb620e9441e876296882bcdf3e18f9c15fdc763bd828ff9",
+      "verification_contract": {
+        "live_read_words": 11936,
+        "source_load_words": 11936,
+        "live_write_words": 11936,
+        "private_input_words": 3168,
+        "private_weight_words": 8192
+      },
+      "verification_contract_sha256": null,
+      "simulation_logs": [
+        {
+          "path": "build/bus_soc_opt23_sysbus4_20261111_134920_142696/layer00/simulation.log",
+          "sha256": "9222b86a9158d44ec19ca97ccb8a640dd8e519ca9d284d10df9017dc739a9664"
+        },
+        {
+          "path": "build/bus_soc_opt23_sysbus4_20261111_134920_142696/layer01/simulation.log",
+          "sha256": "5f9ff0960eb7cc93da9babad10eae9b5f7f3a378ddf338c2590e24da43eb731e"
+        },
+        {
+          "path": "build/bus_soc_opt23_sysbus4_20261111_134920_142696/layer02/simulation.log",
+          "sha256": "5f9ff0960eb7cc93da9babad10eae9b5f7f3a378ddf338c2590e24da43eb731e"
+        },
+        {
+          "path": "build/bus_soc_opt23_sysbus4_20261111_134920_142696/layer03/simulation.log",
+          "sha256": "5f9ff0960eb7cc93da9babad10eae9b5f7f3a378ddf338c2590e24da43eb731e"
+        },
+        {
+          "path": "build/bus_soc_opt23_sysbus4_20261111_134920_142696/layer04/simulation.log",
+          "sha256": "5f9ff0960eb7cc93da9babad10eae9b5f7f3a378ddf338c2590e24da43eb731e"
+        },
+        {
+          "path": "build/bus_soc_opt23_sysbus4_20261111_134920_142696/layer05/simulation.log",
+          "sha256": "5f9ff0960eb7cc93da9babad10eae9b5f7f3a378ddf338c2590e24da43eb731e"
+        },
+        {
+          "path": "build/bus_soc_opt23_sysbus4_20261111_134920_142696/layer06/simulation.log",
+          "sha256": "5f9ff0960eb7cc93da9babad10eae9b5f7f3a378ddf338c2590e24da43eb731e"
+        },
+        {
+          "path": "build/bus_soc_opt23_sysbus4_20261111_134920_142696/layer07/simulation.log",
+          "sha256": "5f9ff0960eb7cc93da9babad10eae9b5f7f3a378ddf338c2590e24da43eb731e"
+        },
+        {
+          "path": "build/bus_soc_opt23_sysbus4_20261111_134920_142696/layer08/simulation.log",
+          "sha256": "5f9ff0960eb7cc93da9babad10eae9b5f7f3a378ddf338c2590e24da43eb731e"
+        },
+        {
+          "path": "build/bus_soc_opt23_sysbus4_20261111_134920_142696/layer09/simulation.log",
+          "sha256": "5f9ff0960eb7cc93da9babad10eae9b5f7f3a378ddf338c2590e24da43eb731e"
+        },
+        {
+          "path": "build/bus_soc_opt23_sysbus4_20261111_134920_142696/layer10/simulation.log",
+          "sha256": "5f9ff0960eb7cc93da9babad10eae9b5f7f3a378ddf338c2590e24da43eb731e"
+        },
+        {
+          "path": "build/bus_soc_opt23_sysbus4_20261111_134920_142696/layer11/simulation.log",
+          "sha256": "5f9ff0960eb7cc93da9babad10eae9b5f7f3a378ddf338c2590e24da43eb731e"
+        }
+      ],
+      "metric_groups": [
+        {
+          "layers": [
+            0
+          ],
+          "metrics": {
+            "QINGYU_BUS_CLASSES": {
+              "live_reads": 11936,
+              "live_writes": 11936,
+              "load_reads": 11936,
+              "output_writes": 12672,
+              "private_inputs": 3168,
+              "private_weights": 8192,
+              "source_reads": 12256,
+              "validation_reads": 320
+            },
+            "QINGYU_BUS_COUNTS": {
+              "cpu_cmds": 320,
+              "dma_cmds": 48480,
+              "dma_rsps": 48480,
+              "dma_wait": 0,
+              "fabric_cmds": 48800,
+              "fabric_rsp_wait": 0,
+              "fabric_rsps": 48800,
+              "fabric_wait": 0,
+              "shared_cmds": 48800,
+              "shared_rsp_wait": 0,
+              "shared_rsps": 48800,
+              "shared_wait": 0
+            },
+            "QINGYU_BUS_DMA": {
+              "cw": 3168,
+              "in": 3168,
+              "ld": 8768,
+              "mem": 15840,
+              "sr": 8768,
+              "sw": 8768
+            },
+            "QINGYU_BUS_TASK": {
+              "busy_cycles": 95702,
+              "cycles": 149145,
+              "final_response_return_cycles": 1,
+              "first_busy": 52199,
+              "sram_complete_cycles": 149144,
+              "tail": 270,
+              "validation_and_setup_cycles": 2955
+            }
+          }
+        },
+        {
+          "layers": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11
+          ],
+          "metrics": {
+            "QINGYU_BUS_CLASSES": {
+              "live_reads": 11936,
+              "live_writes": 11936,
+              "load_reads": 11936,
+              "output_writes": 12672,
+              "private_inputs": 3168,
+              "private_weights": 8192,
+              "source_reads": 12256,
+              "validation_reads": 320
+            },
+            "QINGYU_BUS_COUNTS": {
+              "cpu_cmds": 320,
+              "dma_cmds": 48480,
+              "dma_rsps": 48480,
+              "dma_wait": 0,
+              "fabric_cmds": 48800,
+              "fabric_rsp_wait": 0,
+              "fabric_rsps": 48800,
+              "fabric_wait": 0,
+              "shared_cmds": 48800,
+              "shared_rsp_wait": 0,
+              "shared_rsps": 48800,
+              "shared_wait": 0
+            },
+            "QINGYU_BUS_DMA": {
+              "cw": 3168,
+              "in": 3168,
+              "ld": 8768,
+              "mem": 15840,
+              "sr": 8768,
+              "sw": 8768
+            },
+            "QINGYU_BUS_TASK": {
+              "busy_cycles": 95701,
+              "cycles": 149159,
+              "final_response_return_cycles": 1,
+              "first_busy": 52199,
+              "sram_complete_cycles": 149158,
+              "tail": 270,
+              "validation_and_setup_cycles": 2955
+            }
+          }
+        }
+      ],
+      "production_readiness": "performance_comparison_only",
+      "fault_validation": {
+        "expanded_error_barrier_complete": false,
+        "note": "Pre-fusion FIO error barriers are incomplete. opt20 failed the expanded failed-START suppression test; opt21/23 use byte-identical FIO, while opt24 has separate queued FIO and no equivalent expanded fault signoff."
+      },
+      "cycle_reduction_vs_opt20_percent": -0.4165006984689915,
+      "throughput_increase_vs_opt20_percent": -0.4147731653383002,
+      "controlled_cycle_comparison": {
+        "baseline": "opt20_sysbus",
+        "cycle_difference": 618.6666666666861,
+        "cycle_reduction_percent": -0.4165006984689915,
+        "same_frequency_throughput_increase_percent": -0.4147731653383002
+      }
+    },
+    {
+      "candidate": "opt24_busqueue",
+      "result": {
+        "path": "build/bus_queue_soc_opt24_busqueue_20261111_140405_835308/result.json",
+        "sha256": "b653a85acf11034b34f8209a0d534dc120b8ca9c9a5a99696edb6cebddeb3017"
+      },
+      "passed": true,
+      "layers": 12,
+      "outputs": 304128,
+      "runner_kind": "official_fabric_queued_single_port",
+      "runner_sha256": "8926f9e98e779705391314645dc61adf6fa04c6f8b3622e1818e0f939ecbaaf3",
+      "helper_sha256": "a0f715d99dff05aa126fc0f9f9e40d3924e9a3206f863c09d507948eb19c129f",
+      "complete_task_cycles_by_layer": [
+        101986,
+        101983,
+        101983,
+        101983,
+        101983,
+        101983,
+        101983,
+        101983,
+        101983,
+        101983,
+        101983,
+        101983
+      ],
+      "mean_complete_cycles": 101983.25,
+      "tasks_per_second_at_assumed_150mhz": 1470.8297686139636,
+      "compiled_source_sha256": {
+        "build/bus_queue_soc_opt24_busqueue_20261111_140405_835308/config.v": "dacc96ddecd2a3ea88e93cc92fc4f49d774f5b564325e55e897d978aafa5e228",
+        "experiments/h1500v/opt24_busqueue/rtl/qingyu_e203_soc_top.v": "e0093f2dd18edbd4c40af7b9bb782c71725f15b015972debf605584fe89954ab",
+        "experiments/h1500v/opt24_busqueue/rtl/qingyu_e203_subsys_main.v": "afe0867d9cadea6009e7d011a8c04477b02c4e8746a4c5f1c49f3d9b0923e968",
+        "experiments/h1500v/opt24_busqueue/rtl/qingyu_e203_subsys_top.v": "d3a9974a4030b04171ceebe9f11f6faebeaf4ade77044df6356b490eb5ea6a63",
+        "experiments/h1500v/opt24_busqueue/rtl/qingyu_accel.sv": "2bc62a94efd26cab9bb572e536d93911a93420f3710a133b7485b4c38a5cbec3",
+        "experiments/h1500v/opt24_busqueue/rtl/qingyu_fio.sv": "844407988282fc0ea60f3cd4f489d14b69d656d67217ef8a618a7405b897ec4c",
+        "experiments/h1500v/opt24_busqueue/rtl/qingyu_shared_sram.sv": "983a3f6f22205eaaf9c7cb4da56eb390f2a007bc6fe696f96ac98213ec98ae84",
+        "rtl/qingyu_sram16.sv": "d3d35a1e99e07c75fac13e450c87685e773dc4953ab5a7752dd0ba0622943b18",
+        "tb/tb_qingyu_bus_soc.sv": "4355ba23da04179bac7561f378bb8ed7738d322f174fe8235e610d919455e6de",
+        "tb/tb_qingyu_bus_queue_performance.sv": "a7d8cac9849b2674615f225a4f6b7bfeb4bab42c723f7be4ed884d717e032293",
+        "experiments/h1500v/opt24_busqueue/rtl/qingyu_icb_merge.sv": "944ac235bc529bc83bbded7ccd89f4f0dfa0e64de8b08bd4b2f703492768ae23"
+      },
+      "firmware_source_sha256": {
+        "experiments/h1500v/opt24_busqueue/rtl/soc_perf_main.c": "3a107e21b2017056ebcfd5317049d91a98e06e944e3bb77e3029ed9b9632803b",
+        "experiments/h1500v/opt24_busqueue/rtl/qingyu_accel.c": "2e5cefaa8d988c258f244e28806cd5a24a5ea7ca343af0df4ed45f7995bae45f",
+        "experiments/h1500v/opt24_busqueue/rtl/qingyu_accel.h": "fd29f78d169ef2fd57042ed3a5f9a65f0d6f623b3c15978ce2d6681843280076",
+        "sw/startup.S": "68e34b5e5084b2dac1d892450e9c9ff46bd1beac6e5977ec9cc97dcdc8ca5fac",
+        "sw/runtime.c": "729e3273c417aaf861a573d79f9d80658a9e21afb22287673f72b8f374700999",
+        "sw/linker.ld": "5b6c19d5ea24f5edffb6d40ed02386aef837effd1163837f889669709d2f3b55"
+      },
+      "firmware_image_sha256_by_layer": [
+        "125ad115f4124800fb75226bfe9670e71b7c3a168cc08267f30bbae0085df0e5",
+        "53b0aca96fba4eff64dada56ee369483ea7070b461549c4792fc4e7bc68f1c09",
+        "340cc98ae381067f5191f1ffaba543d4ebc68c976b2294dd280665c1501b7d0f",
+        "bb1dc2b4c144df861485f9ad0d65872248c3f1873158ff030aa685fa9b404ed6",
+        "56e5d74a6699e842f0e3805b931e388196b22b8fd5704637e62d483418543429",
+        "905934e1947bdd429ce6ffcb55c0f5874071fc8842c3dae6421e5eef130b1f7f",
+        "4f24aae3c119ec4f4b2d85f3b78d521fb3d42564dc50e1b44a8fcc3576451b93",
+        "7466ccdd6abe7cbc212cff5cfaf375e71969704a04817b262a2c39d843738a1f",
+        "8ac7dd1a2ece9e12229dd767af61449060dbc0202e68b053d98a77fe2b11affe",
+        "a245fb6df3dc1d9981ab8c080a865335df48cdebd0dcecae61f86e74085bbd08",
+        "67e737daf7dda4d5613f734594d440b507bae681fb5629db89fd496235152f18",
+        "282f84b8593b9982be3acc7c8ac89d8b0ec2fe338640349a7a45c3d6b2f09bff"
+      ],
+      "simulator_sha256": "a320ffee357ccf4511b9e1eb1898d12df91b88eccbe94de556a885861f9c7b13",
+      "simulator_build_arguments_sha256": "94384d4caeebbee3cd07b96993e1a40900a651e81f8112ec5b63b0620bb3f8d2",
+      "verification_contract": {
+        "live_read_words": 11936,
+        "source_load_words": 11936,
+        "live_write_words": 11936,
+        "private_input_words": 3168,
+        "private_weight_words": 8192
+      },
+      "verification_contract_sha256": null,
+      "simulation_logs": [
+        {
+          "path": "build/bus_queue_soc_opt24_busqueue_20261111_140405_835308/layer00/simulation.log",
+          "sha256": "6672dd00d76fe485e77cf7975ef141a61758091839720085ef03e643cc1e5763"
+        },
+        {
+          "path": "build/bus_queue_soc_opt24_busqueue_20261111_140405_835308/layer01/simulation.log",
+          "sha256": "373c831d5c94ee617a0f4ded20d0af3a8772e8177b01d699a304afc00daa0c40"
+        },
+        {
+          "path": "build/bus_queue_soc_opt24_busqueue_20261111_140405_835308/layer02/simulation.log",
+          "sha256": "373c831d5c94ee617a0f4ded20d0af3a8772e8177b01d699a304afc00daa0c40"
+        },
+        {
+          "path": "build/bus_queue_soc_opt24_busqueue_20261111_140405_835308/layer03/simulation.log",
+          "sha256": "373c831d5c94ee617a0f4ded20d0af3a8772e8177b01d699a304afc00daa0c40"
+        },
+        {
+          "path": "build/bus_queue_soc_opt24_busqueue_20261111_140405_835308/layer04/simulation.log",
+          "sha256": "373c831d5c94ee617a0f4ded20d0af3a8772e8177b01d699a304afc00daa0c40"
+        },
+        {
+          "path": "build/bus_queue_soc_opt24_busqueue_20261111_140405_835308/layer05/simulation.log",
+          "sha256": "373c831d5c94ee617a0f4ded20d0af3a8772e8177b01d699a304afc00daa0c40"
+        },
+        {
+          "path": "build/bus_queue_soc_opt24_busqueue_20261111_140405_835308/layer06/simulation.log",
+          "sha256": "373c831d5c94ee617a0f4ded20d0af3a8772e8177b01d699a304afc00daa0c40"
+        },
+        {
+          "path": "build/bus_queue_soc_opt24_busqueue_20261111_140405_835308/layer07/simulation.log",
+          "sha256": "373c831d5c94ee617a0f4ded20d0af3a8772e8177b01d699a304afc00daa0c40"
+        },
+        {
+          "path": "build/bus_queue_soc_opt24_busqueue_20261111_140405_835308/layer08/simulation.log",
+          "sha256": "373c831d5c94ee617a0f4ded20d0af3a8772e8177b01d699a304afc00daa0c40"
+        },
+        {
+          "path": "build/bus_queue_soc_opt24_busqueue_20261111_140405_835308/layer09/simulation.log",
+          "sha256": "373c831d5c94ee617a0f4ded20d0af3a8772e8177b01d699a304afc00daa0c40"
+        },
+        {
+          "path": "build/bus_queue_soc_opt24_busqueue_20261111_140405_835308/layer10/simulation.log",
+          "sha256": "373c831d5c94ee617a0f4ded20d0af3a8772e8177b01d699a304afc00daa0c40"
+        },
+        {
+          "path": "build/bus_queue_soc_opt24_busqueue_20261111_140405_835308/layer11/simulation.log",
+          "sha256": "373c831d5c94ee617a0f4ded20d0af3a8772e8177b01d699a304afc00daa0c40"
+        }
+      ],
+      "metric_groups": [
+        {
+          "layers": [
+            0
+          ],
+          "metrics": {
+            "QINGYU_BUS_CLASSES": {
+              "live_reads": 11936,
+              "live_writes": 11936,
+              "load_reads": 11936,
+              "output_writes": 12672,
+              "private_inputs": 3168,
+              "private_weights": 8192,
+              "source_reads": 12256,
+              "validation_reads": 320
+            },
+            "QINGYU_BUS_COUNTS": {
+              "cpu_cmds": 320,
+              "dma_cmds": 48480,
+              "dma_rsps": 48480,
+              "dma_wait": 37196,
+              "fabric_cmds": 48800,
+              "fabric_rsp_wait": 0,
+              "fabric_rsps": 48800,
+              "fabric_wait": 37196,
+              "shared_cmds": 48800,
+              "shared_rsp_wait": 0,
+              "shared_rsps": 48800,
+              "shared_wait": 0
+            },
+            "QINGYU_BUS_DMA": {
+              "cw": 3168,
+              "in": 3168,
+              "ld": 8768,
+              "mem": 15840,
+              "sr": 8768,
+              "sw": 8768
+            },
+            "QINGYU_BUS_QUEUE": {
+              "max_outstanding": 3,
+              "multiple_outstanding_cycles": 92889,
+              "outstanding_cycle_sum": 232721
+            },
+            "QINGYU_BUS_TASK": {
+              "busy_cycles": 66082,
+              "cycles": 101986,
+              "final_response_return_cycles": 1,
+              "first_busy": 34684,
+              "sram_complete_cycles": 101985,
+              "tail": 246,
+              "validation_and_setup_cycles": 2955
+            }
+          }
+        },
+        {
+          "layers": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11
+          ],
+          "metrics": {
+            "QINGYU_BUS_CLASSES": {
+              "live_reads": 11936,
+              "live_writes": 11936,
+              "load_reads": 11936,
+              "output_writes": 12672,
+              "private_inputs": 3168,
+              "private_weights": 8192,
+              "source_reads": 12256,
+              "validation_reads": 320
+            },
+            "QINGYU_BUS_COUNTS": {
+              "cpu_cmds": 320,
+              "dma_cmds": 48480,
+              "dma_rsps": 48480,
+              "dma_wait": 37196,
+              "fabric_cmds": 48800,
+              "fabric_rsp_wait": 0,
+              "fabric_rsps": 48800,
+              "fabric_wait": 37196,
+              "shared_cmds": 48800,
+              "shared_rsp_wait": 0,
+              "shared_rsps": 48800,
+              "shared_wait": 0
+            },
+            "QINGYU_BUS_DMA": {
+              "cw": 3168,
+              "in": 3168,
+              "ld": 8768,
+              "mem": 15840,
+              "sr": 8768,
+              "sw": 8768
+            },
+            "QINGYU_BUS_QUEUE": {
+              "max_outstanding": 3,
+              "multiple_outstanding_cycles": 92898,
+              "outstanding_cycle_sum": 232727
+            },
+            "QINGYU_BUS_TASK": {
+              "busy_cycles": 66064,
+              "cycles": 101983,
+              "final_response_return_cycles": 1,
+              "first_busy": 34684,
+              "sram_complete_cycles": 101982,
+              "tail": 246,
+              "validation_and_setup_cycles": 2955
+            }
+          }
+        }
+      ],
+      "production_readiness": "performance_comparison_only",
+      "fault_validation": {
+        "expanded_error_barrier_complete": false,
+        "note": "Pre-fusion FIO error barriers are incomplete. opt20 failed the expanded failed-START suppression test; opt21/23 use byte-identical FIO, while opt24 has separate queued FIO and no equivalent expanded fault signoff."
+      },
+      "cycle_reduction_vs_opt20_percent": 31.342519088680312,
+      "throughput_increase_vs_opt20_percent": 45.6505520922962,
+      "controlled_cycle_comparison": {
+        "baseline": "opt20_sysbus",
+        "cycle_difference": -46555.91666666666,
+        "cycle_reduction_percent": 31.342519088680312,
+        "same_frequency_throughput_increase_percent": 45.6505520922962
+      }
+    },
+    {
+      "candidate": "opt25_fused4",
+      "result": {
+        "path": "build/bus_soc_opt25_fused4_20261111_135602_476362/result.json",
+        "sha256": "5a19f2172ef358b5c8e5b092166e8f4a7441542626075d10fe14066d7cf5e9e1"
+      },
+      "passed": true,
+      "layers": 12,
+      "outputs": 304128,
+      "runner_kind": "official_fabric_single_port",
+      "runner_sha256": "81d2e39ddd732437161e874b6ee8a94a0e2e2b68384709f5cf03a1597ba8ee33",
+      "helper_sha256": "a0f715d99dff05aa126fc0f9f9e40d3924e9a3206f863c09d507948eb19c129f",
+      "complete_task_cycles_by_layer": [
+        127091,
+        127091,
+        127091,
+        127091,
+        127091,
+        127091,
+        127091,
+        127091,
+        127091,
+        127091,
+        127091,
+        127091
+      ],
+      "mean_complete_cycles": 127091.0,
+      "tasks_per_second_at_assumed_150mhz": 1180.2566664830713,
+      "compiled_source_sha256": {
+        "build/bus_soc_opt25_fused4_20261111_135602_476362/config.v": "6653d64ac796e1205393600c71c997c2bea9d502bb14991f8102a26fcb7e0726",
+        "experiments/h1500v/opt25_fused4/rtl/qingyu_e203_soc_top.v": "bace66608d9118ae2203e3faa4fe458d8c657c9dc861b0f320b3185992d490fc",
+        "experiments/h1500v/opt25_fused4/rtl/qingyu_e203_subsys_main.v": "87d0b044aea1d223c6600e755b80e2b884415c7965c24210061d267c39737650",
+        "experiments/h1500v/opt25_fused4/rtl/qingyu_e203_subsys_top.v": "d3a9974a4030b04171ceebe9f11f6faebeaf4ade77044df6356b490eb5ea6a63",
+        "experiments/h1500v/opt25_fused4/rtl/qingyu_accel.sv": "a5b7898d19322b4cad38ce682b3ae727fd19c3a92e3a3eb1f3f747eae5c52b4a",
+        "experiments/h1500v/opt25_fused4/rtl/qingyu_fio.sv": "8b9043d4a0db81c9c86a2cabf9fc5aacd61c5fb94db74080ce3a825aa5d633b0",
+        "experiments/h1500v/opt25_fused4/rtl/qingyu_shared_sram.sv": "983a3f6f22205eaaf9c7cb4da56eb390f2a007bc6fe696f96ac98213ec98ae84",
+        "rtl/qingyu_sram16.sv": "d3d35a1e99e07c75fac13e450c87685e773dc4953ab5a7752dd0ba0622943b18",
+        "tb/tb_qingyu_bus_soc.sv": "4355ba23da04179bac7561f378bb8ed7738d322f174fe8235e610d919455e6de",
+        "tb/tb_qingyu_bus_soc_performance.sv": "0d2e9970b5e9c89c8c6ad3e0dbbfa939072291c7f89f9601a39a3497a9e16cad",
+        "experiments/h1500v/opt25_fused4/rtl/qingyu_icb_merge.sv": "ba4a8c37c895a83a24fdb6b4dd4b9097cbe86c56aa0e8f2735c14eae66b2aa7e"
+      },
+      "firmware_source_sha256": {
+        "experiments/h1500v/opt25_fused4/rtl/soc_perf_main.c": "f4d4c1a82cb5c1224cea67018ab3c2cc434b7deb144c17ff76a44d17e4f35fa3",
+        "experiments/h1500v/opt25_fused4/rtl/qingyu_accel.c": "483e328dc9a080871798a66bab20055b97ee7044e9ee4a8ac01f5441f2cf8f96",
+        "experiments/h1500v/opt25_fused4/rtl/qingyu_accel.h": "2b06463385f5b89daae7a8bc2d20f43958ed1b049fc8a46f36fae098b8461143",
+        "sw/startup.S": "68e34b5e5084b2dac1d892450e9c9ff46bd1beac6e5977ec9cc97dcdc8ca5fac",
+        "sw/runtime.c": "729e3273c417aaf861a573d79f9d80658a9e21afb22287673f72b8f374700999",
+        "sw/linker.ld": "5b6c19d5ea24f5edffb6d40ed02386aef837effd1163837f889669709d2f3b55"
+      },
+      "firmware_image_sha256_by_layer": [
+        "d8d3e71410b28d02e402d09850796af8467497040562360957bee5ef38a03733",
+        "e9c18714561cd8bf72149ecd6a1f975bc9538a6f0bb93c5d5912b429d3a483a3",
+        "63e2f1b077f3bb2331b102fe7301a93b819906d617a8e497c7129a6bc77539fc",
+        "757c8751c917a478b0f96e796f2c20f1f1ed77c8b558c6b706d9701c6b8473df",
+        "59ae9a26d60d113d5d4aec334a6ee33613bcf0f5270f5037b31d7bbe49acb64c",
+        "6faf3bdab9bfc5405b09ede255d58260d4b8938c49ae04d534485e44a30cd1e9",
+        "29fbe80e88e83a28c13aa42cb2736681a530f9cddc1d0aceedefebfdf7c063f5",
+        "b82574345c3bf31a1d6670df34451f1a0a16df3ebbab4516faf0603de5b5c3ec",
+        "b6a2978c9980bc85ecd60e14305f30871c687034dd5b97b681c3853774ac9bb1",
+        "f537d2c729f77ae42fc280e51588836736409b58c04086a959000e2239630925",
+        "b3621232a21e1adf1232f9d7a2e3296a61e0eb50e3ba230c5415f81c7b8a7f1b",
+        "d41f1946c57f6389ca28a60cf28f63e8d1b11a502dc6afa864ff48a6eb06af2b"
+      ],
+      "simulator_sha256": "71e74611cec8217ba95d2ac5ceb2ba9ffa2178d26af658182893d269afc8b413",
+      "simulator_build_arguments_sha256": "ada00e3872d2afaeffb620e9441e876296882bcdf3e18f9c15fdc763bd828ff9",
+      "verification_contract": {
+        "live_read_words": 576,
+        "source_load_words": 11936,
+        "live_write_words": 11936,
+        "private_input_words": 3168,
+        "private_weight_words": 8192,
+        "schema": "qingyu-fused-load-contract-v1",
+        "candidate": "opt25_fused4",
+        "base_candidate": "opt22_fused",
+        "output_write_words": 12672,
+        "flow": "X and W: source read, real live write, successful write response, then private commit. Metadata retains source-to-live copy and 576 live reads. Initial parameter validation remains inside the complete task window and is counted separately from source_load_words.",
+        "constraints": [
+          "Use the unchanged opt20 single 32-bit system bus and shared SRAM interface.",
+          "Every source payload word is copied once to its configured live address; source storage is immutable.",
+          "Private X and W words must match source values and addresses, not only aggregate counts.",
+          "No private commit on failed source read, failed live write, or aborted descriptor.",
+          "No START before full descriptor completion; W targets only the inactive tile bank.",
+          "Do not replace official initial loading with testbench preloading outside the measured window.",
+          "This contract is an engineering validation expectation, not official compliance or signoff."
+        ]
+      },
+      "verification_contract_sha256": "eb184a88cb0aba2e78338ad9bd056bde085c8fe73155105f05cb0a6dee9a84c4",
+      "simulation_logs": [
+        {
+          "path": "build/bus_soc_opt25_fused4_20261111_135602_476362/layer00/simulation.log",
+          "sha256": "4a9d9ed8db694e4e54a49a3e0e6f2f272fca0a0f5f1b35d8e6c0b5578674e9af"
+        },
+        {
+          "path": "build/bus_soc_opt25_fused4_20261111_135602_476362/layer01/simulation.log",
+          "sha256": "232bd8916e85214d98d8a47f416d62fe249b6f1a22ae74bd268af7bded6d1c5f"
+        },
+        {
+          "path": "build/bus_soc_opt25_fused4_20261111_135602_476362/layer02/simulation.log",
+          "sha256": "232bd8916e85214d98d8a47f416d62fe249b6f1a22ae74bd268af7bded6d1c5f"
+        },
+        {
+          "path": "build/bus_soc_opt25_fused4_20261111_135602_476362/layer03/simulation.log",
+          "sha256": "232bd8916e85214d98d8a47f416d62fe249b6f1a22ae74bd268af7bded6d1c5f"
+        },
+        {
+          "path": "build/bus_soc_opt25_fused4_20261111_135602_476362/layer04/simulation.log",
+          "sha256": "232bd8916e85214d98d8a47f416d62fe249b6f1a22ae74bd268af7bded6d1c5f"
+        },
+        {
+          "path": "build/bus_soc_opt25_fused4_20261111_135602_476362/layer05/simulation.log",
+          "sha256": "232bd8916e85214d98d8a47f416d62fe249b6f1a22ae74bd268af7bded6d1c5f"
+        },
+        {
+          "path": "build/bus_soc_opt25_fused4_20261111_135602_476362/layer06/simulation.log",
+          "sha256": "232bd8916e85214d98d8a47f416d62fe249b6f1a22ae74bd268af7bded6d1c5f"
+        },
+        {
+          "path": "build/bus_soc_opt25_fused4_20261111_135602_476362/layer07/simulation.log",
+          "sha256": "232bd8916e85214d98d8a47f416d62fe249b6f1a22ae74bd268af7bded6d1c5f"
+        },
+        {
+          "path": "build/bus_soc_opt25_fused4_20261111_135602_476362/layer08/simulation.log",
+          "sha256": "232bd8916e85214d98d8a47f416d62fe249b6f1a22ae74bd268af7bded6d1c5f"
+        },
+        {
+          "path": "build/bus_soc_opt25_fused4_20261111_135602_476362/layer09/simulation.log",
+          "sha256": "232bd8916e85214d98d8a47f416d62fe249b6f1a22ae74bd268af7bded6d1c5f"
+        },
+        {
+          "path": "build/bus_soc_opt25_fused4_20261111_135602_476362/layer10/simulation.log",
+          "sha256": "232bd8916e85214d98d8a47f416d62fe249b6f1a22ae74bd268af7bded6d1c5f"
+        },
+        {
+          "path": "build/bus_soc_opt25_fused4_20261111_135602_476362/layer11/simulation.log",
+          "sha256": "232bd8916e85214d98d8a47f416d62fe249b6f1a22ae74bd268af7bded6d1c5f"
+        }
+      ],
+      "metric_groups": [
+        {
+          "layers": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11
+          ],
+          "metrics": {
+            "QINGYU_BUS_CLASSES": {
+              "live_reads": 576,
+              "live_writes": 11936,
+              "load_reads": 11936,
+              "output_writes": 12672,
+              "private_inputs": 3168,
+              "private_weights": 8192,
+              "source_reads": 12256,
+              "validation_reads": 320
+            },
+            "QINGYU_BUS_COUNTS": {
+              "cpu_cmds": 320,
+              "dma_cmds": 37120,
+              "dma_rsps": 37120,
+              "dma_wait": 0,
+              "fabric_cmds": 37440,
+              "fabric_rsp_wait": 0,
+              "fabric_rsps": 37440,
+              "fabric_wait": 0,
+              "shared_cmds": 37440,
+              "shared_rsp_wait": 0,
+              "shared_rsps": 37440,
+              "shared_wait": 0
+            },
+            "QINGYU_BUS_DMA": {
+              "cw": 11936,
+              "in": 11360,
+              "ld": 576,
+              "mem": 13248,
+              "sr": 0,
+              "sw": 0
+            },
+            "QINGYU_BUS_TASK": {
+              "busy_cycles": 70594,
+              "cycles": 127091,
+              "final_response_return_cycles": 1,
+              "first_busy": 36203,
+              "sram_complete_cycles": 127090,
+              "tail": 270,
+              "validation_and_setup_cycles": 2892
+            }
+          }
+        }
+      ],
+      "production_readiness": "normal-traffic SoC and FIO fault evidence complete; no PPA signoff",
+      "fault_validation": {
+        "expanded_error_barrier_complete": true,
+        "directly_tested_candidate": "opt22_fused",
+        "fault_scenarios": 11,
+        "soft_abort_reload_cases": 2,
+        "reload_words_each": 3168,
+        "note": "opt25 FIO is byte-identical to the directly fault-tested opt22 FIO; opt25 has its own full 12-layer numerical/routing regression."
+      },
+      "cycle_reduction_vs_opt20_percent": 14.439401504653649,
+      "throughput_increase_vs_opt20_percent": 16.876227794782217,
+      "controlled_cycle_comparison": {
+        "baseline": "opt22_fused",
+        "cycle_difference": 141.0,
+        "cycle_reduction_percent": -0.11106734935013785,
+        "same_frequency_throughput_increase_percent": -0.11094412664940378
+      }
+    },
+    {
+      "candidate": "opt26_fusedqueue",
+      "result": {
+        "path": "build/bus_queue_soc_opt26_fusedqueue_20261111_141620_604247/result.json",
+        "sha256": "f15fa3705e73a360caf936ff3535d678248999a1db4dbf53ec9faef1c0f1be26"
+      },
+      "passed": true,
+      "layers": 12,
+      "outputs": 304128,
+      "runner_kind": "official_fabric_queued_single_port",
+      "runner_sha256": "8926f9e98e779705391314645dc61adf6fa04c6f8b3622e1818e0f939ecbaaf3",
+      "helper_sha256": "a0f715d99dff05aa126fc0f9f9e40d3924e9a3206f863c09d507948eb19c129f",
+      "complete_task_cycles_by_layer": [
+        102383,
+        102383,
+        102383,
+        102383,
+        102383,
+        102383,
+        102383,
+        102383,
+        102383,
+        102383,
+        102383,
+        102383
+      ],
+      "mean_complete_cycles": 102383.0,
+      "tasks_per_second_at_assumed_150mhz": 1465.0869773302209,
+      "compiled_source_sha256": {
+        "build/bus_queue_soc_opt26_fusedqueue_20261111_141620_604247/config.v": "6653d64ac796e1205393600c71c997c2bea9d502bb14991f8102a26fcb7e0726",
+        "experiments/h1500v/opt26_fusedqueue/rtl/qingyu_e203_soc_top.v": "e0093f2dd18edbd4c40af7b9bb782c71725f15b015972debf605584fe89954ab",
+        "experiments/h1500v/opt26_fusedqueue/rtl/qingyu_e203_subsys_main.v": "afe0867d9cadea6009e7d011a8c04477b02c4e8746a4c5f1c49f3d9b0923e968",
+        "experiments/h1500v/opt26_fusedqueue/rtl/qingyu_e203_subsys_top.v": "d3a9974a4030b04171ceebe9f11f6faebeaf4ade77044df6356b490eb5ea6a63",
+        "experiments/h1500v/opt26_fusedqueue/rtl/qingyu_accel.sv": "2bc62a94efd26cab9bb572e536d93911a93420f3710a133b7485b4c38a5cbec3",
+        "experiments/h1500v/opt26_fusedqueue/rtl/qingyu_fio.sv": "2eda1dfb10e8ea311b6cbec44f51554d4faefb4c2de2c07abd23b49c765732ab",
+        "experiments/h1500v/opt26_fusedqueue/rtl/qingyu_shared_sram.sv": "983a3f6f22205eaaf9c7cb4da56eb390f2a007bc6fe696f96ac98213ec98ae84",
+        "rtl/qingyu_sram16.sv": "d3d35a1e99e07c75fac13e450c87685e773dc4953ab5a7752dd0ba0622943b18",
+        "tb/tb_qingyu_bus_soc.sv": "4355ba23da04179bac7561f378bb8ed7738d322f174fe8235e610d919455e6de",
+        "tb/tb_qingyu_bus_queue_performance.sv": "a7d8cac9849b2674615f225a4f6b7bfeb4bab42c723f7be4ed884d717e032293",
+        "experiments/h1500v/opt26_fusedqueue/rtl/qingyu_icb_merge.sv": "944ac235bc529bc83bbded7ccd89f4f0dfa0e64de8b08bd4b2f703492768ae23"
+      },
+      "firmware_source_sha256": {
+        "experiments/h1500v/opt26_fusedqueue/rtl/soc_perf_main.c": "f4d4c1a82cb5c1224cea67018ab3c2cc434b7deb144c17ff76a44d17e4f35fa3",
+        "experiments/h1500v/opt26_fusedqueue/rtl/qingyu_accel.c": "483e328dc9a080871798a66bab20055b97ee7044e9ee4a8ac01f5441f2cf8f96",
+        "experiments/h1500v/opt26_fusedqueue/rtl/qingyu_accel.h": "2b06463385f5b89daae7a8bc2d20f43958ed1b049fc8a46f36fae098b8461143",
+        "sw/startup.S": "68e34b5e5084b2dac1d892450e9c9ff46bd1beac6e5977ec9cc97dcdc8ca5fac",
+        "sw/runtime.c": "729e3273c417aaf861a573d79f9d80658a9e21afb22287673f72b8f374700999",
+        "sw/linker.ld": "5b6c19d5ea24f5edffb6d40ed02386aef837effd1163837f889669709d2f3b55"
+      },
+      "firmware_image_sha256_by_layer": [
+        "d8d3e71410b28d02e402d09850796af8467497040562360957bee5ef38a03733",
+        "e9c18714561cd8bf72149ecd6a1f975bc9538a6f0bb93c5d5912b429d3a483a3",
+        "63e2f1b077f3bb2331b102fe7301a93b819906d617a8e497c7129a6bc77539fc",
+        "757c8751c917a478b0f96e796f2c20f1f1ed77c8b558c6b706d9701c6b8473df",
+        "59ae9a26d60d113d5d4aec334a6ee33613bcf0f5270f5037b31d7bbe49acb64c",
+        "6faf3bdab9bfc5405b09ede255d58260d4b8938c49ae04d534485e44a30cd1e9",
+        "29fbe80e88e83a28c13aa42cb2736681a530f9cddc1d0aceedefebfdf7c063f5",
+        "b82574345c3bf31a1d6670df34451f1a0a16df3ebbab4516faf0603de5b5c3ec",
+        "b6a2978c9980bc85ecd60e14305f30871c687034dd5b97b681c3853774ac9bb1",
+        "f537d2c729f77ae42fc280e51588836736409b58c04086a959000e2239630925",
+        "b3621232a21e1adf1232f9d7a2e3296a61e0eb50e3ba230c5415f81c7b8a7f1b",
+        "d41f1946c57f6389ca28a60cf28f63e8d1b11a502dc6afa864ff48a6eb06af2b"
+      ],
+      "simulator_sha256": "a785423c942ade9db968e6a863d0e604a84d3183c1803d673ee76f744f366bea",
+      "simulator_build_arguments_sha256": "94384d4caeebbee3cd07b96993e1a40900a651e81f8112ec5b63b0620bb3f8d2",
+      "verification_contract": {
+        "live_read_words": 576,
+        "source_load_words": 11936,
+        "live_write_words": 11936,
+        "private_input_words": 3168,
+        "private_weight_words": 8192,
+        "schema": "qingyu-fused-load-contract-v1",
+        "candidate": "opt22_fused",
+        "base_candidate": "opt20_sysbus",
+        "output_write_words": 12672,
+        "flow": "X and W: source read, real live write, successful write response, then private commit. Metadata retains source-to-live copy and 576 live reads. Initial parameter validation remains inside the complete task window and is counted separately from source_load_words.",
+        "constraints": [
+          "Use the unchanged opt20 single 32-bit system bus and shared SRAM interface.",
+          "Every source payload word is copied once to its configured live address; source storage is immutable.",
+          "Private X and W words must match source values and addresses, not only aggregate counts.",
+          "No private commit on failed source read, failed live write, or aborted descriptor.",
+          "No START before full descriptor completion; W targets only the inactive tile bank.",
+          "Do not replace official initial loading with testbench preloading outside the measured window.",
+          "This contract is an engineering validation expectation, not official compliance or signoff."
+        ]
+      },
+      "verification_contract_sha256": "4f76cff52002b5b7b7acf12f45f4127900f57a124fc185585a935f18e247976a",
+      "simulation_logs": [
+        {
+          "path": "build/bus_queue_soc_opt26_fusedqueue_20261111_141620_604247/layer00/simulation.log",
+          "sha256": "90043c39eb57686b36701de96b869be36a75e051a527307246cb73bf21d3412c"
+        },
+        {
+          "path": "build/bus_queue_soc_opt26_fusedqueue_20261111_141620_604247/layer01/simulation.log",
+          "sha256": "ceaf3b9311692f823eb066d5ccaf2164d6cbf392e7c993d7ca63be0d1a13a7ce"
+        },
+        {
+          "path": "build/bus_queue_soc_opt26_fusedqueue_20261111_141620_604247/layer02/simulation.log",
+          "sha256": "ceaf3b9311692f823eb066d5ccaf2164d6cbf392e7c993d7ca63be0d1a13a7ce"
+        },
+        {
+          "path": "build/bus_queue_soc_opt26_fusedqueue_20261111_141620_604247/layer03/simulation.log",
+          "sha256": "ceaf3b9311692f823eb066d5ccaf2164d6cbf392e7c993d7ca63be0d1a13a7ce"
+        },
+        {
+          "path": "build/bus_queue_soc_opt26_fusedqueue_20261111_141620_604247/layer04/simulation.log",
+          "sha256": "ceaf3b9311692f823eb066d5ccaf2164d6cbf392e7c993d7ca63be0d1a13a7ce"
+        },
+        {
+          "path": "build/bus_queue_soc_opt26_fusedqueue_20261111_141620_604247/layer05/simulation.log",
+          "sha256": "ceaf3b9311692f823eb066d5ccaf2164d6cbf392e7c993d7ca63be0d1a13a7ce"
+        },
+        {
+          "path": "build/bus_queue_soc_opt26_fusedqueue_20261111_141620_604247/layer06/simulation.log",
+          "sha256": "ceaf3b9311692f823eb066d5ccaf2164d6cbf392e7c993d7ca63be0d1a13a7ce"
+        },
+        {
+          "path": "build/bus_queue_soc_opt26_fusedqueue_20261111_141620_604247/layer07/simulation.log",
+          "sha256": "ceaf3b9311692f823eb066d5ccaf2164d6cbf392e7c993d7ca63be0d1a13a7ce"
+        },
+        {
+          "path": "build/bus_queue_soc_opt26_fusedqueue_20261111_141620_604247/layer08/simulation.log",
+          "sha256": "ceaf3b9311692f823eb066d5ccaf2164d6cbf392e7c993d7ca63be0d1a13a7ce"
+        },
+        {
+          "path": "build/bus_queue_soc_opt26_fusedqueue_20261111_141620_604247/layer09/simulation.log",
+          "sha256": "ceaf3b9311692f823eb066d5ccaf2164d6cbf392e7c993d7ca63be0d1a13a7ce"
+        },
+        {
+          "path": "build/bus_queue_soc_opt26_fusedqueue_20261111_141620_604247/layer10/simulation.log",
+          "sha256": "ceaf3b9311692f823eb066d5ccaf2164d6cbf392e7c993d7ca63be0d1a13a7ce"
+        },
+        {
+          "path": "build/bus_queue_soc_opt26_fusedqueue_20261111_141620_604247/layer11/simulation.log",
+          "sha256": "ceaf3b9311692f823eb066d5ccaf2164d6cbf392e7c993d7ca63be0d1a13a7ce"
+        }
+      ],
+      "metric_groups": [
+        {
+          "layers": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11
+          ],
+          "metrics": {
+            "QINGYU_BUS_CLASSES": {
+              "live_reads": 576,
+              "live_writes": 11936,
+              "load_reads": 11936,
+              "output_writes": 12672,
+              "private_inputs": 3168,
+              "private_weights": 8192,
+              "source_reads": 12256,
+              "validation_reads": 320
+            },
+            "QINGYU_BUS_COUNTS": {
+              "cpu_cmds": 320,
+              "dma_cmds": 37120,
+              "dma_rsps": 37120,
+              "dma_wait": 225,
+              "fabric_cmds": 37440,
+              "fabric_rsp_wait": 0,
+              "fabric_rsps": 37440,
+              "fabric_wait": 225,
+              "shared_cmds": 37440,
+              "shared_rsp_wait": 0,
+              "shared_rsps": 37440,
+              "shared_wait": 0
+            },
+            "QINGYU_BUS_DMA": {
+              "cw": 11936,
+              "in": 11360,
+              "ld": 576,
+              "mem": 13248,
+              "sr": 0,
+              "sw": 0
+            },
+            "QINGYU_BUS_QUEUE": {
+              "max_outstanding": 3,
+              "multiple_outstanding_cycles": 37618,
+              "outstanding_cycle_sum": 125911
+            },
+            "QINGYU_BUS_TASK": {
+              "busy_cycles": 47677,
+              "cycles": 102383,
+              "final_response_return_cycles": 1,
+              "first_busy": 35561,
+              "sram_complete_cycles": 102382,
+              "tail": 246,
+              "validation_and_setup_cycles": 2892
+            }
+          }
+        }
+      ],
+      "production_readiness": "normal-traffic SoC and expanded concurrent FIO fault evidence complete; no PPA signoff",
+      "metadata_only_identity_correction": {
+        "validated_contract_snapshot": {
+          "path": "experiments/h1500v/opt26_fusedqueue/VALIDATED_VERIFICATION_CONTRACT.json",
+          "sha256": "4f76cff52002b5b7b7acf12f45f4127900f57a124fc185585a935f18e247976a"
+        },
+        "current_contract": {
+          "path": "experiments/h1500v/opt26_fusedqueue/verification_contract.json",
+          "sha256": "cacd943b9ce0e57d638d4b85f2a32a1ab31918004a654c639875dfc1446cee82"
+        },
+        "note": "candidate/base metadata corrected only after the full run; all compiled RTL and firmware hashes remain unchanged; original result retained."
+      },
+      "fault_validation": {
+        "expanded_error_barrier_complete": true,
+        "directly_tested_candidate": "opt26_fusedqueue",
+        "fault_scenarios": 11,
+        "soft_abort_reload_cases": 2,
+        "reload_words_each": 3168,
+        "concurrent_port_error_reset_cases": 12,
+        "held_metadata_to_weight_priority_transactions": 548
+      },
+      "cycle_reduction_vs_opt20_percent": 31.07339814975848,
+      "throughput_increase_vs_opt20_percent": 45.081865804544364,
+      "controlled_cycle_comparison": {
+        "baseline": "opt22_fused",
+        "cycle_difference": -24567.0,
+        "cycle_reduction_percent": 19.351713272942103,
+        "same_frequency_throughput_increase_percent": 23.995194514714346
+      }
+    },
+    {
+      "candidate": "opt27_fusedwait",
+      "result": {
+        "path": "build/bus_soc_opt27_fusedwait_20261111_141752_225940/result.json",
+        "sha256": "847aabfe36565638349fe4ce040bd2a395e9396ccb566dac206ac38d92be7ae5"
+      },
+      "passed": true,
+      "layers": 12,
+      "outputs": 304128,
+      "runner_kind": "official_fabric_single_port",
+      "runner_sha256": "81d2e39ddd732437161e874b6ee8a94a0e2e2b68384709f5cf03a1597ba8ee33",
+      "helper_sha256": "a0f715d99dff05aa126fc0f9f9e40d3924e9a3206f863c09d507948eb19c129f",
+      "complete_task_cycles_by_layer": [
+        126796,
+        126826,
+        126826,
+        126826,
+        126826,
+        126826,
+        126826,
+        126826,
+        126826,
+        126826,
+        126826,
+        126826
+      ],
+      "mean_complete_cycles": 126823.5,
+      "tasks_per_second_at_assumed_150mhz": 1182.7460998947356,
+      "compiled_source_sha256": {
+        "build/bus_soc_opt27_fusedwait_20261111_141752_225940/config.v": "6653d64ac796e1205393600c71c997c2bea9d502bb14991f8102a26fcb7e0726",
+        "experiments/h1500v/opt27_fusedwait/rtl/qingyu_e203_soc_top.v": "bace66608d9118ae2203e3faa4fe458d8c657c9dc861b0f320b3185992d490fc",
+        "experiments/h1500v/opt27_fusedwait/rtl/qingyu_e203_subsys_main.v": "87d0b044aea1d223c6600e755b80e2b884415c7965c24210061d267c39737650",
+        "experiments/h1500v/opt27_fusedwait/rtl/qingyu_e203_subsys_top.v": "d3a9974a4030b04171ceebe9f11f6faebeaf4ade77044df6356b490eb5ea6a63",
+        "experiments/h1500v/opt27_fusedwait/rtl/qingyu_accel.sv": "a5b7898d19322b4cad38ce682b3ae727fd19c3a92e3a3eb1f3f747eae5c52b4a",
+        "experiments/h1500v/opt27_fusedwait/rtl/qingyu_fio.sv": "e0f45d92c122b98369727f0c22f72714070234aab395f0e7b7e9fdf7618b97a9",
+        "experiments/h1500v/opt27_fusedwait/rtl/qingyu_shared_sram.sv": "983a3f6f22205eaaf9c7cb4da56eb390f2a007bc6fe696f96ac98213ec98ae84",
+        "rtl/qingyu_sram16.sv": "d3d35a1e99e07c75fac13e450c87685e773dc4953ab5a7752dd0ba0622943b18",
+        "tb/tb_qingyu_bus_soc.sv": "4355ba23da04179bac7561f378bb8ed7738d322f174fe8235e610d919455e6de",
+        "tb/tb_qingyu_bus_soc_performance.sv": "0d2e9970b5e9c89c8c6ad3e0dbbfa939072291c7f89f9601a39a3497a9e16cad",
+        "experiments/h1500v/opt27_fusedwait/rtl/qingyu_icb_merge.sv": "ba4a8c37c895a83a24fdb6b4dd4b9097cbe86c56aa0e8f2735c14eae66b2aa7e"
+      },
+      "firmware_source_sha256": {
+        "experiments/h1500v/opt27_fusedwait/rtl/soc_perf_main.c": "f4d4c1a82cb5c1224cea67018ab3c2cc434b7deb144c17ff76a44d17e4f35fa3",
+        "experiments/h1500v/opt27_fusedwait/rtl/qingyu_accel.c": "d2d3937b66e11697ca4d94b9f717d8530a7069f5bf7613d323c39d4918d24888",
+        "experiments/h1500v/opt27_fusedwait/rtl/qingyu_accel.h": "7af25bd86011eb2862864e7a3ad7ff6f382855950e5e1fdb183740074a260ea1",
+        "sw/startup.S": "68e34b5e5084b2dac1d892450e9c9ff46bd1beac6e5977ec9cc97dcdc8ca5fac",
+        "sw/runtime.c": "729e3273c417aaf861a573d79f9d80658a9e21afb22287673f72b8f374700999",
+        "sw/linker.ld": "5b6c19d5ea24f5edffb6d40ed02386aef837effd1163837f889669709d2f3b55"
+      },
+      "firmware_image_sha256_by_layer": [
+        "187ec4debdb20e25eaebd772d6240fa00e324384f83259a2988e6ec7a37f1166",
+        "20ff4cf794b04b5ecc516172e584e517060e5fb7167bac1ec7cd124da8ff0f21",
+        "1ac4993dd740471cc34d8f8acef813cf92e39efcc496b3f330acebe65376db0b",
+        "3e7f3a08977003485c547ea27190c167adbe7de60b27adb98e1cdd5fc56d7c41",
+        "553caf42d44c123e7ee728afa5e0192737072b78f589cced5f47a4de613008c2",
+        "b1d64c1224f89d7797b9e75e303361d0b43355eb9ad66367d5aad75e6459d3fb",
+        "2bfb31a642f3ad908c04a1b1a8d4048ba9fdadf8919ccd463f930e41887f4d41",
+        "8eadf9e7624d1eda720615c83bd25bc69dae75e0e0e729a9bcfba3a7972013d9",
+        "f260391fd695969a4d498a8ac9712e14bcab081d8bf48e43531e7c71542d9ebd",
+        "71b3aa859619e166900905716488479d2507fd4d136f81de11632bd6c7c8e29c",
+        "948b212b9a99017bc7ffa097f12a9f00811a7ac5343470c4a75ddf9e186dfd41",
+        "b980c88d5c8d66c1d35f46246ca9cafc4b7f2528bdb5c8eb9de199bddfb8f9fb"
+      ],
+      "simulator_sha256": "1899560c1e1af5772405248d985c7c5e56b8a896dacdb5716e80f920acbcd397",
+      "simulator_build_arguments_sha256": "ada00e3872d2afaeffb620e9441e876296882bcdf3e18f9c15fdc763bd828ff9",
+      "verification_contract": {
+        "live_read_words": 576,
+        "source_load_words": 11936,
+        "live_write_words": 11936,
+        "private_input_words": 3168,
+        "private_weight_words": 8192,
+        "schema": "qingyu-fused-load-contract-v1",
+        "candidate": "opt27_fusedwait",
+        "base_candidate": "opt25_fused4",
+        "output_write_words": 12672,
+        "flow": "X and W: source read, real live write, successful write response, then private commit. Metadata retains source-to-live copy and 576 live reads. Initial parameter validation remains inside the complete task window and is counted separately from source_load_words.",
+        "constraints": [
+          "Use the unchanged opt20 single 32-bit system bus and shared SRAM interface.",
+          "Every source payload word is copied once to its configured live address; source storage is immutable.",
+          "Private X and W words must match source values and addresses, not only aggregate counts.",
+          "No private commit on failed source read, failed live write, or aborted descriptor.",
+          "No START before full descriptor completion; W targets only the inactive tile bank.",
+          "Do not replace official initial loading with testbench preloading outside the measured window.",
+          "This contract is an engineering validation expectation, not official compliance or signoff.",
+          "WAIT preserves every original source/live/private transaction; timeout releases control only and never cancels an offered DMA request.",
+          "Hardware wait bound is in bus clocks and is not the software device.poll_limit iteration count."
+        ],
+        "fused_interface_id": "0x51462202",
+        "wait_csr": "0xe0",
+        "wait_timeout_cycles": 1000000,
+        "wait_timeout_code": "0x80"
+      },
+      "verification_contract_sha256": "662c234db1aebd06a4fa540e7c295c460fd07ca0e7484cc6603699b80f04e3ef",
+      "simulation_logs": [
+        {
+          "path": "build/bus_soc_opt27_fusedwait_20261111_141752_225940/layer00/simulation.log",
+          "sha256": "8d7dc591b6ff731af3270e39ed7f9d3540d59548a82c095b451622b12007d16f"
+        },
+        {
+          "path": "build/bus_soc_opt27_fusedwait_20261111_141752_225940/layer01/simulation.log",
+          "sha256": "e7dc4fac6a937c0477ed6b803eae86b4c3ffaa1dcc8675a456b78249cd29abc9"
+        },
+        {
+          "path": "build/bus_soc_opt27_fusedwait_20261111_141752_225940/layer02/simulation.log",
+          "sha256": "e7dc4fac6a937c0477ed6b803eae86b4c3ffaa1dcc8675a456b78249cd29abc9"
+        },
+        {
+          "path": "build/bus_soc_opt27_fusedwait_20261111_141752_225940/layer03/simulation.log",
+          "sha256": "e7dc4fac6a937c0477ed6b803eae86b4c3ffaa1dcc8675a456b78249cd29abc9"
+        },
+        {
+          "path": "build/bus_soc_opt27_fusedwait_20261111_141752_225940/layer04/simulation.log",
+          "sha256": "e7dc4fac6a937c0477ed6b803eae86b4c3ffaa1dcc8675a456b78249cd29abc9"
+        },
+        {
+          "path": "build/bus_soc_opt27_fusedwait_20261111_141752_225940/layer05/simulation.log",
+          "sha256": "e7dc4fac6a937c0477ed6b803eae86b4c3ffaa1dcc8675a456b78249cd29abc9"
+        },
+        {
+          "path": "build/bus_soc_opt27_fusedwait_20261111_141752_225940/layer06/simulation.log",
+          "sha256": "e7dc4fac6a937c0477ed6b803eae86b4c3ffaa1dcc8675a456b78249cd29abc9"
+        },
+        {
+          "path": "build/bus_soc_opt27_fusedwait_20261111_141752_225940/layer07/simulation.log",
+          "sha256": "e7dc4fac6a937c0477ed6b803eae86b4c3ffaa1dcc8675a456b78249cd29abc9"
+        },
+        {
+          "path": "build/bus_soc_opt27_fusedwait_20261111_141752_225940/layer08/simulation.log",
+          "sha256": "e7dc4fac6a937c0477ed6b803eae86b4c3ffaa1dcc8675a456b78249cd29abc9"
+        },
+        {
+          "path": "build/bus_soc_opt27_fusedwait_20261111_141752_225940/layer09/simulation.log",
+          "sha256": "e7dc4fac6a937c0477ed6b803eae86b4c3ffaa1dcc8675a456b78249cd29abc9"
+        },
+        {
+          "path": "build/bus_soc_opt27_fusedwait_20261111_141752_225940/layer10/simulation.log",
+          "sha256": "e7dc4fac6a937c0477ed6b803eae86b4c3ffaa1dcc8675a456b78249cd29abc9"
+        },
+        {
+          "path": "build/bus_soc_opt27_fusedwait_20261111_141752_225940/layer11/simulation.log",
+          "sha256": "e7dc4fac6a937c0477ed6b803eae86b4c3ffaa1dcc8675a456b78249cd29abc9"
+        }
+      ],
+      "metric_groups": [
+        {
+          "layers": [
+            0
+          ],
+          "metrics": {
+            "QINGYU_BUS_CLASSES": {
+              "live_reads": 576,
+              "live_writes": 11936,
+              "load_reads": 11936,
+              "output_writes": 12672,
+              "private_inputs": 3168,
+              "private_weights": 8192,
+              "source_reads": 12256,
+              "validation_reads": 320
+            },
+            "QINGYU_BUS_COUNTS": {
+              "cpu_cmds": 320,
+              "dma_cmds": 37120,
+              "dma_rsps": 37120,
+              "dma_wait": 0,
+              "fabric_cmds": 37440,
+              "fabric_rsp_wait": 0,
+              "fabric_rsps": 37440,
+              "fabric_wait": 0,
+              "shared_cmds": 37440,
+              "shared_rsp_wait": 0,
+              "shared_rsps": 37440,
+              "shared_wait": 0
+            },
+            "QINGYU_BUS_DMA": {
+              "cw": 11936,
+              "in": 11360,
+              "ld": 576,
+              "mem": 13248,
+              "sr": 0,
+              "sw": 0
+            },
+            "QINGYU_BUS_TASK": {
+              "busy_cycles": 70624,
+              "cycles": 126796,
+              "final_response_return_cycles": 1,
+              "first_busy": 36163,
+              "sram_complete_cycles": 126795,
+              "tail": 270,
+              "validation_and_setup_cycles": 2889
+            }
+          }
+        },
+        {
+          "layers": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11
+          ],
+          "metrics": {
+            "QINGYU_BUS_CLASSES": {
+              "live_reads": 576,
+              "live_writes": 11936,
+              "load_reads": 11936,
+              "output_writes": 12672,
+              "private_inputs": 3168,
+              "private_weights": 8192,
+              "source_reads": 12256,
+              "validation_reads": 320
+            },
+            "QINGYU_BUS_COUNTS": {
+              "cpu_cmds": 320,
+              "dma_cmds": 37120,
+              "dma_rsps": 37120,
+              "dma_wait": 0,
+              "fabric_cmds": 37440,
+              "fabric_rsp_wait": 0,
+              "fabric_rsps": 37440,
+              "fabric_wait": 0,
+              "shared_cmds": 37440,
+              "shared_rsp_wait": 0,
+              "shared_rsps": 37440,
+              "shared_wait": 0
+            },
+            "QINGYU_BUS_DMA": {
+              "cw": 11936,
+              "in": 11360,
+              "ld": 576,
+              "mem": 13248,
+              "sr": 0,
+              "sw": 0
+            },
+            "QINGYU_BUS_TASK": {
+              "busy_cycles": 70639,
+              "cycles": 126826,
+              "final_response_return_cycles": 1,
+              "first_busy": 36163,
+              "sram_complete_cycles": 126825,
+              "tail": 270,
+              "validation_and_setup_cycles": 2889
+            }
+          }
+        }
+      ],
+      "production_readiness": "normal-traffic SoC; fault and blocking-WAIT evidence are separately referenced; no PPA signoff",
+      "primary_performance_comparison": "opt25_fused4",
+      "known_fault_limitations": [
+        "The bounded WAIT response is covered; legacy RESET cleanup while metadata remains permanently unresponsive is not covered or claimed."
+      ],
+      "cycle_reduction_vs_opt20_percent": 14.61948868704662,
+      "throughput_increase_vs_opt20_percent": 17.12274670440941,
+      "controlled_cycle_comparison": {
+        "baseline": "opt25_fused4",
+        "cycle_difference": -267.5,
+        "cycle_reduction_percent": 0.21047910552281437,
+        "same_frequency_throughput_increase_percent": 0.21092305448122683
+      }
+    },
+    {
+      "candidate": "opt28_queuewait4",
+      "result": {
+        "path": "build/bus_queue_soc_opt28_queuewait4_20261111_142808_985400/result.json",
+        "sha256": "be35293def7b1f7a49f502e4b1decf1b3db390a55ec980042b702499ea8dc31b"
+      },
+      "passed": true,
+      "layers": 12,
+      "outputs": 304128,
+      "runner_kind": "official_fabric_queued_single_port",
+      "runner_sha256": "cda585fa4a2c735e652fa98b5a5e2b025ad54a09e2c4b676a1793aae6de947ce",
+      "helper_sha256": "a0f715d99dff05aa126fc0f9f9e40d3924e9a3206f863c09d507948eb19c129f",
+      "complete_task_cycles_by_layer": [
+        101749,
+        101764,
+        101764,
+        101764,
+        101764,
+        101764,
+        101764,
+        101764,
+        101764,
+        101764,
+        101764,
+        101764
+      ],
+      "mean_complete_cycles": 101762.75,
+      "tasks_per_second_at_assumed_150mhz": 1474.0167693974465,
+      "compiled_source_sha256": {
+        "build/bus_queue_soc_opt28_queuewait4_20261111_142808_985400/config.v": "6653d64ac796e1205393600c71c997c2bea9d502bb14991f8102a26fcb7e0726",
+        "experiments/h1500v/opt28_queuewait4/rtl/qingyu_e203_soc_top.v": "e0093f2dd18edbd4c40af7b9bb782c71725f15b015972debf605584fe89954ab",
+        "experiments/h1500v/opt28_queuewait4/rtl/qingyu_e203_subsys_main.v": "afe0867d9cadea6009e7d011a8c04477b02c4e8746a4c5f1c49f3d9b0923e968",
+        "experiments/h1500v/opt28_queuewait4/rtl/qingyu_e203_subsys_top.v": "d3a9974a4030b04171ceebe9f11f6faebeaf4ade77044df6356b490eb5ea6a63",
+        "experiments/h1500v/opt28_queuewait4/rtl/qingyu_accel.sv": "a5b7898d19322b4cad38ce682b3ae727fd19c3a92e3a3eb1f3f747eae5c52b4a",
+        "experiments/h1500v/opt28_queuewait4/rtl/qingyu_fio.sv": "d66e432f3b8e0445206ce7afb3f83123bc3b735fbe2062c3cd154c5235f20d53",
+        "experiments/h1500v/opt28_queuewait4/rtl/qingyu_shared_sram.sv": "983a3f6f22205eaaf9c7cb4da56eb390f2a007bc6fe696f96ac98213ec98ae84",
+        "rtl/qingyu_sram16.sv": "d3d35a1e99e07c75fac13e450c87685e773dc4953ab5a7752dd0ba0622943b18",
+        "tb/tb_qingyu_bus_soc.sv": "4355ba23da04179bac7561f378bb8ed7738d322f174fe8235e610d919455e6de",
+        "tb/tb_qingyu_bus_queue_performance.sv": "a7d8cac9849b2674615f225a4f6b7bfeb4bab42c723f7be4ed884d717e032293",
+        "experiments/h1500v/opt28_queuewait4/rtl/qingyu_icb_merge.sv": "944ac235bc529bc83bbded7ccd89f4f0dfa0e64de8b08bd4b2f703492768ae23"
+      },
+      "firmware_source_sha256": {
+        "experiments/h1500v/opt28_queuewait4/rtl/soc_perf_main.c": "f4d4c1a82cb5c1224cea67018ab3c2cc434b7deb144c17ff76a44d17e4f35fa3",
+        "experiments/h1500v/opt28_queuewait4/rtl/qingyu_accel.c": "d2d3937b66e11697ca4d94b9f717d8530a7069f5bf7613d323c39d4918d24888",
+        "experiments/h1500v/opt28_queuewait4/rtl/qingyu_accel.h": "7af25bd86011eb2862864e7a3ad7ff6f382855950e5e1fdb183740074a260ea1",
+        "sw/startup.S": "68e34b5e5084b2dac1d892450e9c9ff46bd1beac6e5977ec9cc97dcdc8ca5fac",
+        "sw/runtime.c": "729e3273c417aaf861a573d79f9d80658a9e21afb22287673f72b8f374700999",
+        "sw/linker.ld": "5b6c19d5ea24f5edffb6d40ed02386aef837effd1163837f889669709d2f3b55"
+      },
+      "firmware_image_sha256_by_layer": [
+        "187ec4debdb20e25eaebd772d6240fa00e324384f83259a2988e6ec7a37f1166",
+        "20ff4cf794b04b5ecc516172e584e517060e5fb7167bac1ec7cd124da8ff0f21",
+        "1ac4993dd740471cc34d8f8acef813cf92e39efcc496b3f330acebe65376db0b",
+        "3e7f3a08977003485c547ea27190c167adbe7de60b27adb98e1cdd5fc56d7c41",
+        "553caf42d44c123e7ee728afa5e0192737072b78f589cced5f47a4de613008c2",
+        "b1d64c1224f89d7797b9e75e303361d0b43355eb9ad66367d5aad75e6459d3fb",
+        "2bfb31a642f3ad908c04a1b1a8d4048ba9fdadf8919ccd463f930e41887f4d41",
+        "8eadf9e7624d1eda720615c83bd25bc69dae75e0e0e729a9bcfba3a7972013d9",
+        "f260391fd695969a4d498a8ac9712e14bcab081d8bf48e43531e7c71542d9ebd",
+        "71b3aa859619e166900905716488479d2507fd4d136f81de11632bd6c7c8e29c",
+        "948b212b9a99017bc7ffa097f12a9f00811a7ac5343470c4a75ddf9e186dfd41",
+        "b980c88d5c8d66c1d35f46246ca9cafc4b7f2528bdb5c8eb9de199bddfb8f9fb"
+      ],
+      "simulator_sha256": "8779978c47577b229904baf261dad2465cdf9b6fd7be918ac0c6063d8ac8d598",
+      "simulator_build_arguments_sha256": "94384d4caeebbee3cd07b96993e1a40900a651e81f8112ec5b63b0620bb3f8d2",
+      "verification_contract": {
+        "live_read_words": 576,
+        "source_load_words": 11936,
+        "live_write_words": 11936,
+        "private_input_words": 3168,
+        "private_weight_words": 8192,
+        "schema": "qingyu-fused-load-contract-v1",
+        "candidate": "opt28_queuewait4",
+        "base_candidate": "opt26_fusedqueue",
+        "output_write_words": 12672,
+        "flow": "X and W: source read, real live write, successful write response, then private commit. Metadata retains source-to-live copy and 576 live reads. Initial parameter validation remains inside the complete task window and is counted separately from source_load_words.",
+        "constraints": [
+          "Use opt26 queued DMA/CPU arbitration through the unchanged official E203 memory fabric and single 32-bit shared SRAM port. Official vendor OUTS_NUM=1 remains unchanged.",
+          "Every source payload word is copied once to its configured live address; source storage is immutable.",
+          "Private X and W words must match source values and addresses, not only aggregate counts.",
+          "No private commit on failed source read, failed live write, or aborted descriptor.",
+          "No START before full descriptor completion; W targets only the inactive tile bank.",
+          "Do not replace official initial loading with testbench preloading outside the measured window.",
+          "This contract is an engineering validation expectation, not official compliance or signoff.",
+          "WAIT preserves every original source/live/private transaction; timeout releases control only and never cancels an offered DMA request.",
+          "Hardware wait bound is in bus clocks and is not the software device.poll_limit iteration count.",
+          "WAIT observes the complete transport busy/drain state. CONTROL RESET bypasses all DMA busy gates without discarding offered or accepted requests.",
+          "A permanently unresponsive memory slave can cause repeated bounded control timeouts; it cannot be declared drained or permit descriptor restart."
+        ],
+        "fused_interface_id": "0x51462202",
+        "wait_csr": "0xe0",
+        "wait_timeout_cycles": 1000000,
+        "wait_timeout_code": "0x80",
+        "arithmetic_source": "opt25_fused4",
+        "wait_interface_source": "opt27_fusedwait"
+      },
+      "verification_contract_sha256": "50a96ca30eeb15ab7421d8df508e7172978b0af5f44f70da511923878c76bc74",
+      "simulation_logs": [
+        {
+          "path": "build/bus_queue_soc_opt28_queuewait4_20261111_142808_985400/layer00/simulation.log",
+          "sha256": "32242525ac7548298fae4eb9375753d7aed2725e96f430a4e0831685cf022b07"
+        },
+        {
+          "path": "build/bus_queue_soc_opt28_queuewait4_20261111_142808_985400/layer01/simulation.log",
+          "sha256": "9d521d9ec076ff9c009d44d9b33c986355caa31a36bdd02eb0eacc93daec14be"
+        },
+        {
+          "path": "build/bus_queue_soc_opt28_queuewait4_20261111_142808_985400/layer02/simulation.log",
+          "sha256": "9d521d9ec076ff9c009d44d9b33c986355caa31a36bdd02eb0eacc93daec14be"
+        },
+        {
+          "path": "build/bus_queue_soc_opt28_queuewait4_20261111_142808_985400/layer03/simulation.log",
+          "sha256": "9d521d9ec076ff9c009d44d9b33c986355caa31a36bdd02eb0eacc93daec14be"
+        },
+        {
+          "path": "build/bus_queue_soc_opt28_queuewait4_20261111_142808_985400/layer04/simulation.log",
+          "sha256": "9d521d9ec076ff9c009d44d9b33c986355caa31a36bdd02eb0eacc93daec14be"
+        },
+        {
+          "path": "build/bus_queue_soc_opt28_queuewait4_20261111_142808_985400/layer05/simulation.log",
+          "sha256": "9d521d9ec076ff9c009d44d9b33c986355caa31a36bdd02eb0eacc93daec14be"
+        },
+        {
+          "path": "build/bus_queue_soc_opt28_queuewait4_20261111_142808_985400/layer06/simulation.log",
+          "sha256": "9d521d9ec076ff9c009d44d9b33c986355caa31a36bdd02eb0eacc93daec14be"
+        },
+        {
+          "path": "build/bus_queue_soc_opt28_queuewait4_20261111_142808_985400/layer07/simulation.log",
+          "sha256": "9d521d9ec076ff9c009d44d9b33c986355caa31a36bdd02eb0eacc93daec14be"
+        },
+        {
+          "path": "build/bus_queue_soc_opt28_queuewait4_20261111_142808_985400/layer08/simulation.log",
+          "sha256": "9d521d9ec076ff9c009d44d9b33c986355caa31a36bdd02eb0eacc93daec14be"
+        },
+        {
+          "path": "build/bus_queue_soc_opt28_queuewait4_20261111_142808_985400/layer09/simulation.log",
+          "sha256": "9d521d9ec076ff9c009d44d9b33c986355caa31a36bdd02eb0eacc93daec14be"
+        },
+        {
+          "path": "build/bus_queue_soc_opt28_queuewait4_20261111_142808_985400/layer10/simulation.log",
+          "sha256": "9d521d9ec076ff9c009d44d9b33c986355caa31a36bdd02eb0eacc93daec14be"
+        },
+        {
+          "path": "build/bus_queue_soc_opt28_queuewait4_20261111_142808_985400/layer11/simulation.log",
+          "sha256": "9d521d9ec076ff9c009d44d9b33c986355caa31a36bdd02eb0eacc93daec14be"
+        }
+      ],
+      "metric_groups": [
+        {
+          "layers": [
+            0
+          ],
+          "metrics": {
+            "QINGYU_BUS_CLASSES": {
+              "live_reads": 576,
+              "live_writes": 11936,
+              "load_reads": 11936,
+              "output_writes": 12672,
+              "private_inputs": 3168,
+              "private_weights": 8192,
+              "source_reads": 12256,
+              "validation_reads": 320
+            },
+            "QINGYU_BUS_COUNTS": {
+              "cpu_cmds": 320,
+              "dma_cmds": 37120,
+              "dma_rsps": 37120,
+              "dma_wait": 165,
+              "fabric_cmds": 37440,
+              "fabric_rsp_wait": 0,
+              "fabric_rsps": 37440,
+              "fabric_wait": 165,
+              "shared_cmds": 37440,
+              "shared_rsp_wait": 0,
+              "shared_rsps": 37440,
+              "shared_wait": 0
+            },
+            "QINGYU_BUS_DMA": {
+              "cw": 11936,
+              "in": 11360,
+              "ld": 576,
+              "mem": 13248,
+              "sr": 0,
+              "sw": 0
+            },
+            "QINGYU_BUS_QUEUE": {
+              "max_outstanding": 3,
+              "multiple_outstanding_cycles": 37798,
+              "outstanding_cycle_sum": 125656
+            },
+            "QINGYU_BUS_TASK": {
+              "busy_cycles": 49834,
+              "cycles": 101749,
+              "final_response_return_cycles": 1,
+              "first_busy": 35521,
+              "sram_complete_cycles": 101748,
+              "tail": 270,
+              "validation_and_setup_cycles": 2889
+            }
+          }
+        },
+        {
+          "layers": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11
+          ],
+          "metrics": {
+            "QINGYU_BUS_CLASSES": {
+              "live_reads": 576,
+              "live_writes": 11936,
+              "load_reads": 11936,
+              "output_writes": 12672,
+              "private_inputs": 3168,
+              "private_weights": 8192,
+              "source_reads": 12256,
+              "validation_reads": 320
+            },
+            "QINGYU_BUS_COUNTS": {
+              "cpu_cmds": 320,
+              "dma_cmds": 37120,
+              "dma_rsps": 37120,
+              "dma_wait": 165,
+              "fabric_cmds": 37440,
+              "fabric_rsp_wait": 0,
+              "fabric_rsps": 37440,
+              "fabric_wait": 165,
+              "shared_cmds": 37440,
+              "shared_rsp_wait": 0,
+              "shared_rsps": 37440,
+              "shared_wait": 0
+            },
+            "QINGYU_BUS_DMA": {
+              "cw": 11936,
+              "in": 11360,
+              "ld": 576,
+              "mem": 13248,
+              "sr": 0,
+              "sw": 0
+            },
+            "QINGYU_BUS_QUEUE": {
+              "max_outstanding": 3,
+              "multiple_outstanding_cycles": 37798,
+              "outstanding_cycle_sum": 125641
+            },
+            "QINGYU_BUS_TASK": {
+              "busy_cycles": 49834,
+              "cycles": 101764,
+              "final_response_return_cycles": 1,
+              "first_busy": 35521,
+              "sram_complete_cycles": 101763,
+              "tail": 270,
+              "validation_and_setup_cycles": 2889
+            }
+          }
+        }
+      ],
+      "production_readiness": "normal-traffic SoC plus separately referenced error, reset and bounded-control suites; no official accuracy/PPA signoff",
+      "primary_performance_comparison": "opt29_fusedqueue4",
+      "fault_validation": {
+        "expanded_error_barrier_complete": true,
+        "directly_tested_candidate": "opt28_queuewait4",
+        "permanently_blocked_metadata_and_fusion_wait_control_covered": true,
+        "note": "Bounded WAIT/RESET control, restart suppression and subsequent drain/recovery are checked; no claim that a nonresponding external slave is forced to complete an accepted transaction."
+      },
+      "cycle_reduction_vs_opt20_percent": 31.49096478482106,
+      "throughput_increase_vs_opt20_percent": 45.966148385992575,
+      "controlled_cycle_comparison": {
+        "baseline": "opt29_fusedqueue4",
+        "cycle_difference": -401.25,
+        "cycle_reduction_percent": 0.3927508711483497,
+        "same_frequency_throughput_increase_percent": 0.39429948581382046
+      }
+    },
+    {
+      "candidate": "opt29_fusedqueue4",
+      "result": {
+        "path": "build/bus_queue_soc_opt29_fusedqueue4_20261111_141855_742136/result.json",
+        "sha256": "eb932ec2d48294d569bc4365ffe4aa9c911b9f2326bcd08548d3bba500a91044"
+      },
+      "passed": true,
+      "layers": 12,
+      "outputs": 304128,
+      "runner_kind": "official_fabric_queued_single_port",
+      "runner_sha256": "8926f9e98e779705391314645dc61adf6fa04c6f8b3622e1818e0f939ecbaaf3",
+      "helper_sha256": "a0f715d99dff05aa126fc0f9f9e40d3924e9a3206f863c09d507948eb19c129f",
+      "complete_task_cycles_by_layer": [
+        102164,
+        102164,
+        102164,
+        102164,
+        102164,
+        102164,
+        102164,
+        102164,
+        102164,
+        102164,
+        102164,
+        102164
+      ],
+      "mean_complete_cycles": 102164.0,
+      "tasks_per_second_at_assumed_150mhz": 1468.2275556947652,
+      "compiled_source_sha256": {
+        "build/bus_queue_soc_opt29_fusedqueue4_20261111_141855_742136/config.v": "6653d64ac796e1205393600c71c997c2bea9d502bb14991f8102a26fcb7e0726",
+        "experiments/h1500v/opt29_fusedqueue4/rtl/qingyu_e203_soc_top.v": "e0093f2dd18edbd4c40af7b9bb782c71725f15b015972debf605584fe89954ab",
+        "experiments/h1500v/opt29_fusedqueue4/rtl/qingyu_e203_subsys_main.v": "afe0867d9cadea6009e7d011a8c04477b02c4e8746a4c5f1c49f3d9b0923e968",
+        "experiments/h1500v/opt29_fusedqueue4/rtl/qingyu_e203_subsys_top.v": "d3a9974a4030b04171ceebe9f11f6faebeaf4ade77044df6356b490eb5ea6a63",
+        "experiments/h1500v/opt29_fusedqueue4/rtl/qingyu_accel.sv": "a5b7898d19322b4cad38ce682b3ae727fd19c3a92e3a3eb1f3f747eae5c52b4a",
+        "experiments/h1500v/opt29_fusedqueue4/rtl/qingyu_fio.sv": "2eda1dfb10e8ea311b6cbec44f51554d4faefb4c2de2c07abd23b49c765732ab",
+        "experiments/h1500v/opt29_fusedqueue4/rtl/qingyu_shared_sram.sv": "983a3f6f22205eaaf9c7cb4da56eb390f2a007bc6fe696f96ac98213ec98ae84",
+        "rtl/qingyu_sram16.sv": "d3d35a1e99e07c75fac13e450c87685e773dc4953ab5a7752dd0ba0622943b18",
+        "tb/tb_qingyu_bus_soc.sv": "4355ba23da04179bac7561f378bb8ed7738d322f174fe8235e610d919455e6de",
+        "tb/tb_qingyu_bus_queue_performance.sv": "a7d8cac9849b2674615f225a4f6b7bfeb4bab42c723f7be4ed884d717e032293",
+        "experiments/h1500v/opt29_fusedqueue4/rtl/qingyu_icb_merge.sv": "944ac235bc529bc83bbded7ccd89f4f0dfa0e64de8b08bd4b2f703492768ae23"
+      },
+      "firmware_source_sha256": {
+        "experiments/h1500v/opt29_fusedqueue4/rtl/soc_perf_main.c": "f4d4c1a82cb5c1224cea67018ab3c2cc434b7deb144c17ff76a44d17e4f35fa3",
+        "experiments/h1500v/opt29_fusedqueue4/rtl/qingyu_accel.c": "483e328dc9a080871798a66bab20055b97ee7044e9ee4a8ac01f5441f2cf8f96",
+        "experiments/h1500v/opt29_fusedqueue4/rtl/qingyu_accel.h": "2b06463385f5b89daae7a8bc2d20f43958ed1b049fc8a46f36fae098b8461143",
+        "sw/startup.S": "68e34b5e5084b2dac1d892450e9c9ff46bd1beac6e5977ec9cc97dcdc8ca5fac",
+        "sw/runtime.c": "729e3273c417aaf861a573d79f9d80658a9e21afb22287673f72b8f374700999",
+        "sw/linker.ld": "5b6c19d5ea24f5edffb6d40ed02386aef837effd1163837f889669709d2f3b55"
+      },
+      "firmware_image_sha256_by_layer": [
+        "d8d3e71410b28d02e402d09850796af8467497040562360957bee5ef38a03733",
+        "e9c18714561cd8bf72149ecd6a1f975bc9538a6f0bb93c5d5912b429d3a483a3",
+        "63e2f1b077f3bb2331b102fe7301a93b819906d617a8e497c7129a6bc77539fc",
+        "757c8751c917a478b0f96e796f2c20f1f1ed77c8b558c6b706d9701c6b8473df",
+        "59ae9a26d60d113d5d4aec334a6ee33613bcf0f5270f5037b31d7bbe49acb64c",
+        "6faf3bdab9bfc5405b09ede255d58260d4b8938c49ae04d534485e44a30cd1e9",
+        "29fbe80e88e83a28c13aa42cb2736681a530f9cddc1d0aceedefebfdf7c063f5",
+        "b82574345c3bf31a1d6670df34451f1a0a16df3ebbab4516faf0603de5b5c3ec",
+        "b6a2978c9980bc85ecd60e14305f30871c687034dd5b97b681c3853774ac9bb1",
+        "f537d2c729f77ae42fc280e51588836736409b58c04086a959000e2239630925",
+        "b3621232a21e1adf1232f9d7a2e3296a61e0eb50e3ba230c5415f81c7b8a7f1b",
+        "d41f1946c57f6389ca28a60cf28f63e8d1b11a502dc6afa864ff48a6eb06af2b"
+      ],
+      "simulator_sha256": "cc5344aacfb150206ab880d08eb424014402b913002fb75563dc18d3f24c445b",
+      "simulator_build_arguments_sha256": "94384d4caeebbee3cd07b96993e1a40900a651e81f8112ec5b63b0620bb3f8d2",
+      "verification_contract": {
+        "live_read_words": 576,
+        "source_load_words": 11936,
+        "live_write_words": 11936,
+        "private_input_words": 3168,
+        "private_weight_words": 8192,
+        "schema": "qingyu-fused-load-contract-v1",
+        "candidate": "opt29_fusedqueue4",
+        "base_candidate": "opt26_fusedqueue",
+        "output_write_words": 12672,
+        "flow": "X and W: source read, real live write, successful write response, then private commit. Metadata retains source-to-live copy and 576 live reads. Initial parameter validation remains inside the complete task window and is counted separately from source_load_words.",
+        "constraints": [
+          "Use the unchanged opt20 single 32-bit system bus and shared SRAM interface.",
+          "Every source payload word is copied once to its configured live address; source storage is immutable.",
+          "Private X and W words must match source values and addresses, not only aggregate counts.",
+          "No private commit on failed source read, failed live write, or aborted descriptor.",
+          "No START before full descriptor completion; W targets only the inactive tile bank.",
+          "Do not replace official initial loading with testbench preloading outside the measured window.",
+          "This contract is an engineering validation expectation, not official compliance or signoff."
+        ]
+      },
+      "verification_contract_sha256": "98a3a94d5c429c05a0e97cf76f52b77c155d2648c0f1dc66c84cabc73f2ef55d",
+      "simulation_logs": [
+        {
+          "path": "build/bus_queue_soc_opt29_fusedqueue4_20261111_141855_742136/layer00/simulation.log",
+          "sha256": "b06e92bc22625d16fa00633b3557e2e0d2b6d91ba38bc42d078097363ddc9bd5"
+        },
+        {
+          "path": "build/bus_queue_soc_opt29_fusedqueue4_20261111_141855_742136/layer01/simulation.log",
+          "sha256": "38cb636430291b809d1fd2ac189ff9a219c84c12bbacfb7767d7262e17887ac4"
+        },
+        {
+          "path": "build/bus_queue_soc_opt29_fusedqueue4_20261111_141855_742136/layer02/simulation.log",
+          "sha256": "38cb636430291b809d1fd2ac189ff9a219c84c12bbacfb7767d7262e17887ac4"
+        },
+        {
+          "path": "build/bus_queue_soc_opt29_fusedqueue4_20261111_141855_742136/layer03/simulation.log",
+          "sha256": "38cb636430291b809d1fd2ac189ff9a219c84c12bbacfb7767d7262e17887ac4"
+        },
+        {
+          "path": "build/bus_queue_soc_opt29_fusedqueue4_20261111_141855_742136/layer04/simulation.log",
+          "sha256": "38cb636430291b809d1fd2ac189ff9a219c84c12bbacfb7767d7262e17887ac4"
+        },
+        {
+          "path": "build/bus_queue_soc_opt29_fusedqueue4_20261111_141855_742136/layer05/simulation.log",
+          "sha256": "38cb636430291b809d1fd2ac189ff9a219c84c12bbacfb7767d7262e17887ac4"
+        },
+        {
+          "path": "build/bus_queue_soc_opt29_fusedqueue4_20261111_141855_742136/layer06/simulation.log",
+          "sha256": "38cb636430291b809d1fd2ac189ff9a219c84c12bbacfb7767d7262e17887ac4"
+        },
+        {
+          "path": "build/bus_queue_soc_opt29_fusedqueue4_20261111_141855_742136/layer07/simulation.log",
+          "sha256": "38cb636430291b809d1fd2ac189ff9a219c84c12bbacfb7767d7262e17887ac4"
+        },
+        {
+          "path": "build/bus_queue_soc_opt29_fusedqueue4_20261111_141855_742136/layer08/simulation.log",
+          "sha256": "38cb636430291b809d1fd2ac189ff9a219c84c12bbacfb7767d7262e17887ac4"
+        },
+        {
+          "path": "build/bus_queue_soc_opt29_fusedqueue4_20261111_141855_742136/layer09/simulation.log",
+          "sha256": "38cb636430291b809d1fd2ac189ff9a219c84c12bbacfb7767d7262e17887ac4"
+        },
+        {
+          "path": "build/bus_queue_soc_opt29_fusedqueue4_20261111_141855_742136/layer10/simulation.log",
+          "sha256": "38cb636430291b809d1fd2ac189ff9a219c84c12bbacfb7767d7262e17887ac4"
+        },
+        {
+          "path": "build/bus_queue_soc_opt29_fusedqueue4_20261111_141855_742136/layer11/simulation.log",
+          "sha256": "38cb636430291b809d1fd2ac189ff9a219c84c12bbacfb7767d7262e17887ac4"
+        }
+      ],
+      "metric_groups": [
+        {
+          "layers": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11
+          ],
+          "metrics": {
+            "QINGYU_BUS_CLASSES": {
+              "live_reads": 576,
+              "live_writes": 11936,
+              "load_reads": 11936,
+              "output_writes": 12672,
+              "private_inputs": 3168,
+              "private_weights": 8192,
+              "source_reads": 12256,
+              "validation_reads": 320
+            },
+            "QINGYU_BUS_COUNTS": {
+              "cpu_cmds": 320,
+              "dma_cmds": 37120,
+              "dma_rsps": 37120,
+              "dma_wait": 165,
+              "fabric_cmds": 37440,
+              "fabric_rsp_wait": 0,
+              "fabric_rsps": 37440,
+              "fabric_wait": 165,
+              "shared_cmds": 37440,
+              "shared_rsp_wait": 0,
+              "shared_rsps": 37440,
+              "shared_wait": 0
+            },
+            "QINGYU_BUS_DMA": {
+              "cw": 11936,
+              "in": 11360,
+              "ld": 576,
+              "mem": 13248,
+              "sr": 0,
+              "sw": 0
+            },
+            "QINGYU_BUS_QUEUE": {
+              "max_outstanding": 3,
+              "multiple_outstanding_cycles": 37693,
+              "outstanding_cycle_sum": 125641
+            },
+            "QINGYU_BUS_TASK": {
+              "busy_cycles": 49804,
+              "cycles": 102164,
+              "final_response_return_cycles": 1,
+              "first_busy": 35561,
+              "sram_complete_cycles": 102163,
+              "tail": 270,
+              "validation_and_setup_cycles": 2892
+            }
+          }
+        }
+      ],
+      "production_readiness": "four-row normal-traffic comparison; FIO and merge are byte-identical to fault-tested opt26; no PPA signoff",
+      "primary_performance_comparison": "opt26_fusedqueue",
+      "cycle_reduction_vs_opt20_percent": 31.220834011231602,
+      "throughput_increase_vs_opt20_percent": 45.3928650666249,
+      "controlled_cycle_comparison": {
+        "baseline": "opt26_fusedqueue",
+        "cycle_difference": -219.0,
+        "cycle_reduction_percent": 0.21390269869021225,
+        "same_frequency_throughput_increase_percent": 0.2143612231314318
+      }
+    },
+    {
+      "candidate": "opt30_fusedpipe4",
+      "result": {
+        "path": "build/bus_queue_soc_opt30_fusedpipe4_20261111_142724_610244/result.json",
+        "sha256": "a5a37e149f1249529bb2c76f4003a68ff5b96fef47b8603917217c7440f1caae"
+      },
+      "passed": true,
+      "layers": 12,
+      "outputs": 304128,
+      "runner_kind": "official_fabric_queued_single_port",
+      "runner_sha256": "cda585fa4a2c735e652fa98b5a5e2b025ad54a09e2c4b676a1793aae6de947ce",
+      "helper_sha256": "a0f715d99dff05aa126fc0f9f9e40d3924e9a3206f863c09d507948eb19c129f",
+      "complete_task_cycles_by_layer": [
+        92358,
+        92374,
+        92374,
+        92374,
+        92374,
+        92374,
+        92374,
+        92374,
+        92374,
+        92374,
+        92374,
+        92374
+      ],
+      "mean_complete_cycles": 92372.66666666667,
+      "tasks_per_second_at_assumed_150mhz": 1623.8569851110356,
+      "compiled_source_sha256": {
+        "build/bus_queue_soc_opt30_fusedpipe4_20261111_142724_610244/config.v": "6653d64ac796e1205393600c71c997c2bea9d502bb14991f8102a26fcb7e0726",
+        "experiments/h1500v/opt30_fusedpipe4/rtl/qingyu_e203_soc_top.v": "e0093f2dd18edbd4c40af7b9bb782c71725f15b015972debf605584fe89954ab",
+        "experiments/h1500v/opt30_fusedpipe4/rtl/qingyu_e203_subsys_main.v": "afe0867d9cadea6009e7d011a8c04477b02c4e8746a4c5f1c49f3d9b0923e968",
+        "experiments/h1500v/opt30_fusedpipe4/rtl/qingyu_e203_subsys_top.v": "d3a9974a4030b04171ceebe9f11f6faebeaf4ade77044df6356b490eb5ea6a63",
+        "experiments/h1500v/opt30_fusedpipe4/rtl/qingyu_accel.sv": "a5b7898d19322b4cad38ce682b3ae727fd19c3a92e3a3eb1f3f747eae5c52b4a",
+        "experiments/h1500v/opt30_fusedpipe4/rtl/qingyu_fio.sv": "0a8c6831beafe6c8df31fcb8b8c0a4dcf7961a22a6a1e3ae80c026c89ec19ec5",
+        "experiments/h1500v/opt30_fusedpipe4/rtl/qingyu_shared_sram.sv": "983a3f6f22205eaaf9c7cb4da56eb390f2a007bc6fe696f96ac98213ec98ae84",
+        "rtl/qingyu_sram16.sv": "d3d35a1e99e07c75fac13e450c87685e773dc4953ab5a7752dd0ba0622943b18",
+        "tb/tb_qingyu_bus_soc.sv": "4355ba23da04179bac7561f378bb8ed7738d322f174fe8235e610d919455e6de",
+        "tb/tb_qingyu_bus_queue_performance.sv": "a7d8cac9849b2674615f225a4f6b7bfeb4bab42c723f7be4ed884d717e032293",
+        "experiments/h1500v/opt30_fusedpipe4/rtl/qingyu_icb_merge.sv": "944ac235bc529bc83bbded7ccd89f4f0dfa0e64de8b08bd4b2f703492768ae23"
+      },
+      "firmware_source_sha256": {
+        "experiments/h1500v/opt30_fusedpipe4/rtl/soc_perf_main.c": "f4d4c1a82cb5c1224cea67018ab3c2cc434b7deb144c17ff76a44d17e4f35fa3",
+        "experiments/h1500v/opt30_fusedpipe4/rtl/qingyu_accel.c": "d2d3937b66e11697ca4d94b9f717d8530a7069f5bf7613d323c39d4918d24888",
+        "experiments/h1500v/opt30_fusedpipe4/rtl/qingyu_accel.h": "7af25bd86011eb2862864e7a3ad7ff6f382855950e5e1fdb183740074a260ea1",
+        "sw/startup.S": "68e34b5e5084b2dac1d892450e9c9ff46bd1beac6e5977ec9cc97dcdc8ca5fac",
+        "sw/runtime.c": "729e3273c417aaf861a573d79f9d80658a9e21afb22287673f72b8f374700999",
+        "sw/linker.ld": "5b6c19d5ea24f5edffb6d40ed02386aef837effd1163837f889669709d2f3b55"
+      },
+      "firmware_image_sha256_by_layer": [
+        "187ec4debdb20e25eaebd772d6240fa00e324384f83259a2988e6ec7a37f1166",
+        "20ff4cf794b04b5ecc516172e584e517060e5fb7167bac1ec7cd124da8ff0f21",
+        "1ac4993dd740471cc34d8f8acef813cf92e39efcc496b3f330acebe65376db0b",
+        "3e7f3a08977003485c547ea27190c167adbe7de60b27adb98e1cdd5fc56d7c41",
+        "553caf42d44c123e7ee728afa5e0192737072b78f589cced5f47a4de613008c2",
+        "b1d64c1224f89d7797b9e75e303361d0b43355eb9ad66367d5aad75e6459d3fb",
+        "2bfb31a642f3ad908c04a1b1a8d4048ba9fdadf8919ccd463f930e41887f4d41",
+        "8eadf9e7624d1eda720615c83bd25bc69dae75e0e0e729a9bcfba3a7972013d9",
+        "f260391fd695969a4d498a8ac9712e14bcab081d8bf48e43531e7c71542d9ebd",
+        "71b3aa859619e166900905716488479d2507fd4d136f81de11632bd6c7c8e29c",
+        "948b212b9a99017bc7ffa097f12a9f00811a7ac5343470c4a75ddf9e186dfd41",
+        "b980c88d5c8d66c1d35f46246ca9cafc4b7f2528bdb5c8eb9de199bddfb8f9fb"
+      ],
+      "simulator_sha256": "99f9fcf224004f3b58d82569d6b26e4a9f0544823f24cd2c621eb35d88155857",
+      "simulator_build_arguments_sha256": "94384d4caeebbee3cd07b96993e1a40900a651e81f8112ec5b63b0620bb3f8d2",
+      "verification_contract": {
+        "live_read_words": 576,
+        "source_load_words": 11936,
+        "live_write_words": 11936,
+        "private_input_words": 3168,
+        "private_weight_words": 8192,
+        "schema": "qingyu-fused-load-contract-v1",
+        "candidate": "opt30_fusedpipe4",
+        "base_candidate": "opt26_fusedqueue",
+        "output_write_words": 12672,
+        "flow": "X/W: source read and real live write, two FIFO slots overlap independent read/write ports; private commit only on successful ordered live write response. Metadata retains cold copy and 576 live reads.",
+        "constraints": [
+          "Use the unchanged opt20 single 32-bit system bus and shared SRAM interface.",
+          "Every source payload word is copied once to its configured live address; source storage is immutable.",
+          "Private X and W words must match source values and addresses, not only aggregate counts.",
+          "No private commit on failed source read, failed live write, or aborted descriptor.",
+          "No START before full descriptor completion; W targets only the inactive tile bank.",
+          "Do not replace official initial loading with testbench preloading outside the measured window.",
+          "This contract is an engineering validation expectation, not official compliance or signoff."
+        ],
+        "implementation": "four-row datapath; queued official bus; two-entry fused FIFO; bounded WAIT_FUSED"
+      },
+      "verification_contract_sha256": "0ce756d4037c153bcd2ac2ab892e6bc7c367f922c81b40ca573b3135be9eeab7",
+      "simulation_logs": [
+        {
+          "path": "build/bus_queue_soc_opt30_fusedpipe4_20261111_142724_610244/layer00/simulation.log",
+          "sha256": "b37bb6afb4f9e7a75ca3fa67aebff1a113dcc948271c57fd641304df98b0495b"
+        },
+        {
+          "path": "build/bus_queue_soc_opt30_fusedpipe4_20261111_142724_610244/layer01/simulation.log",
+          "sha256": "624d57aee40325bf5218f2f0cfc5b90745423403055b2b0947b47d90d1255ef8"
+        },
+        {
+          "path": "build/bus_queue_soc_opt30_fusedpipe4_20261111_142724_610244/layer02/simulation.log",
+          "sha256": "624d57aee40325bf5218f2f0cfc5b90745423403055b2b0947b47d90d1255ef8"
+        },
+        {
+          "path": "build/bus_queue_soc_opt30_fusedpipe4_20261111_142724_610244/layer03/simulation.log",
+          "sha256": "624d57aee40325bf5218f2f0cfc5b90745423403055b2b0947b47d90d1255ef8"
+        },
+        {
+          "path": "build/bus_queue_soc_opt30_fusedpipe4_20261111_142724_610244/layer04/simulation.log",
+          "sha256": "624d57aee40325bf5218f2f0cfc5b90745423403055b2b0947b47d90d1255ef8"
+        },
+        {
+          "path": "build/bus_queue_soc_opt30_fusedpipe4_20261111_142724_610244/layer05/simulation.log",
+          "sha256": "624d57aee40325bf5218f2f0cfc5b90745423403055b2b0947b47d90d1255ef8"
+        },
+        {
+          "path": "build/bus_queue_soc_opt30_fusedpipe4_20261111_142724_610244/layer06/simulation.log",
+          "sha256": "624d57aee40325bf5218f2f0cfc5b90745423403055b2b0947b47d90d1255ef8"
+        },
+        {
+          "path": "build/bus_queue_soc_opt30_fusedpipe4_20261111_142724_610244/layer07/simulation.log",
+          "sha256": "624d57aee40325bf5218f2f0cfc5b90745423403055b2b0947b47d90d1255ef8"
+        },
+        {
+          "path": "build/bus_queue_soc_opt30_fusedpipe4_20261111_142724_610244/layer08/simulation.log",
+          "sha256": "624d57aee40325bf5218f2f0cfc5b90745423403055b2b0947b47d90d1255ef8"
+        },
+        {
+          "path": "build/bus_queue_soc_opt30_fusedpipe4_20261111_142724_610244/layer09/simulation.log",
+          "sha256": "624d57aee40325bf5218f2f0cfc5b90745423403055b2b0947b47d90d1255ef8"
+        },
+        {
+          "path": "build/bus_queue_soc_opt30_fusedpipe4_20261111_142724_610244/layer10/simulation.log",
+          "sha256": "624d57aee40325bf5218f2f0cfc5b90745423403055b2b0947b47d90d1255ef8"
+        },
+        {
+          "path": "build/bus_queue_soc_opt30_fusedpipe4_20261111_142724_610244/layer11/simulation.log",
+          "sha256": "624d57aee40325bf5218f2f0cfc5b90745423403055b2b0947b47d90d1255ef8"
+        }
+      ],
+      "metric_groups": [
+        {
+          "layers": [
+            0
+          ],
+          "metrics": {
+            "QINGYU_BUS_CLASSES": {
+              "live_reads": 576,
+              "live_writes": 11936,
+              "load_reads": 11936,
+              "output_writes": 12672,
+              "private_inputs": 3168,
+              "private_weights": 8192,
+              "source_reads": 12256,
+              "validation_reads": 320
+            },
+            "QINGYU_BUS_COUNTS": {
+              "cpu_cmds": 320,
+              "dma_cmds": 37120,
+              "dma_rsps": 37120,
+              "dma_wait": 535,
+              "fabric_cmds": 37440,
+              "fabric_rsp_wait": 0,
+              "fabric_rsps": 37440,
+              "fabric_wait": 535,
+              "shared_cmds": 37440,
+              "shared_rsp_wait": 0,
+              "shared_rsps": 37440,
+              "shared_wait": 0
+            },
+            "QINGYU_BUS_DMA": {
+              "cw": 11936,
+              "in": 11360,
+              "ld": 576,
+              "mem": 13248,
+              "sr": 0,
+              "sw": 0
+            },
+            "QINGYU_BUS_QUEUE": {
+              "max_outstanding": 3,
+              "multiple_outstanding_cycles": 47476,
+              "outstanding_cycle_sum": 140388
+            },
+            "QINGYU_BUS_TASK": {
+              "busy_cycles": 62377,
+              "cycles": 92358,
+              "final_response_return_cycles": 1,
+              "first_busy": 28197,
+              "sram_complete_cycles": 92357,
+              "tail": 270,
+              "validation_and_setup_cycles": 2889
+            }
+          }
+        },
+        {
+          "layers": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11
+          ],
+          "metrics": {
+            "QINGYU_BUS_CLASSES": {
+              "live_reads": 576,
+              "live_writes": 11936,
+              "load_reads": 11936,
+              "output_writes": 12672,
+              "private_inputs": 3168,
+              "private_weights": 8192,
+              "source_reads": 12256,
+              "validation_reads": 320
+            },
+            "QINGYU_BUS_COUNTS": {
+              "cpu_cmds": 320,
+              "dma_cmds": 37120,
+              "dma_rsps": 37120,
+              "dma_wait": 535,
+              "fabric_cmds": 37440,
+              "fabric_rsp_wait": 0,
+              "fabric_rsps": 37440,
+              "fabric_wait": 535,
+              "shared_cmds": 37440,
+              "shared_rsp_wait": 0,
+              "shared_rsps": 37440,
+              "shared_wait": 0
+            },
+            "QINGYU_BUS_DMA": {
+              "cw": 11936,
+              "in": 11360,
+              "ld": 576,
+              "mem": 13248,
+              "sr": 0,
+              "sw": 0
+            },
+            "QINGYU_BUS_QUEUE": {
+              "max_outstanding": 3,
+              "multiple_outstanding_cycles": 47448,
+              "outstanding_cycle_sum": 140375
+            },
+            "QINGYU_BUS_TASK": {
+              "busy_cycles": 62378,
+              "cycles": 92374,
+              "final_response_return_cycles": 1,
+              "first_busy": 28197,
+              "sram_complete_cycles": 92373,
+              "tail": 270,
+              "validation_and_setup_cycles": 2889
+            }
+          }
+        }
+      ],
+      "production_readiness": "normal-traffic SoC plus separately referenced error, reset and bounded-control suites; no official accuracy/PPA signoff",
+      "primary_performance_comparison": "opt28_queuewait4",
+      "fault_validation": {
+        "expanded_error_barrier_complete": true,
+        "directly_tested_candidate": "opt30_fusedpipe4",
+        "permanently_blocked_metadata_and_fusion_wait_control_covered": true,
+        "note": "Bounded WAIT/RESET control, restart suppression and subsequent drain/recovery are checked; no claim that a nonresponding external slave is forced to complete an accepted transaction."
+      },
+      "cycle_reduction_vs_opt20_percent": 37.81258590607415,
+      "throughput_increase_vs_opt20_percent": 60.8042422361593,
+      "controlled_cycle_comparison": {
+        "baseline": "opt28_queuewait4",
+        "cycle_difference": -9390.083333333328,
+        "cycle_reduction_percent": 9.227426866248532,
+        "same_frequency_throughput_increase_percent": 10.165434941072027
+      }
+    }
+  ],
+  "supporting_protocol_checks": [
+    {
+      "candidate": "opt20_sysbus",
+      "testbench_sha256": "1ca269e2667757aa8bcc89e930f44946704cb3455bcedd856a71caa18b9fa1c0",
+      "runs": [
+        {
+          "path": "build/bus_soc_opt20_sysbus_20261111_134818_505660/merge_17.log",
+          "sha256": "7d9b8d6ee0eedeee42637366b4c6731c718fd5e3d5b1a68974177c9e87966f8f",
+          "pass_message": [
+            "PASS ICB merge seed=17 responses=1205 errors=600 command_stalls=428 response_stalls=421 reset_cases=2"
+          ]
+        },
+        {
+          "path": "build/bus_soc_opt20_sysbus_20261111_134818_505660/merge_20261111.log",
+          "sha256": "ec5aba980fd7c7fbc43f43d06c0ee174471a5b904e5eb55cd616a5df173988f6",
+          "pass_message": [
+            "PASS ICB merge seed=20261111 responses=1205 errors=600 command_stalls=420 response_stalls=382 reset_cases=2"
+          ]
+        },
+        {
+          "path": "build/bus_soc_opt20_sysbus_20261111_134818_505660/merge_90210.log",
+          "sha256": "083f5f363b640123ba9ee7fe8645848f8969aa08a5b55e66eebac1dc8e981a6c",
+          "pass_message": [
+            "PASS ICB merge seed=90210 responses=1205 errors=600 command_stalls=374 response_stalls=443 reset_cases=2"
+          ]
+        }
+      ]
+    },
+    {
+      "candidate": "opt21_xcompact",
+      "testbench_sha256": "1ca269e2667757aa8bcc89e930f44946704cb3455bcedd856a71caa18b9fa1c0",
+      "runs": [
+        {
+          "path": "build/bus_soc_opt21_xcompact_20261111_134920_143482/merge_17.log",
+          "sha256": "7d9b8d6ee0eedeee42637366b4c6731c718fd5e3d5b1a68974177c9e87966f8f",
+          "pass_message": [
+            "PASS ICB merge seed=17 responses=1205 errors=600 command_stalls=428 response_stalls=421 reset_cases=2"
+          ]
+        },
+        {
+          "path": "build/bus_soc_opt21_xcompact_20261111_134920_143482/merge_20261111.log",
+          "sha256": "ec5aba980fd7c7fbc43f43d06c0ee174471a5b904e5eb55cd616a5df173988f6",
+          "pass_message": [
+            "PASS ICB merge seed=20261111 responses=1205 errors=600 command_stalls=420 response_stalls=382 reset_cases=2"
+          ]
+        },
+        {
+          "path": "build/bus_soc_opt21_xcompact_20261111_134920_143482/merge_90210.log",
+          "sha256": "083f5f363b640123ba9ee7fe8645848f8969aa08a5b55e66eebac1dc8e981a6c",
+          "pass_message": [
+            "PASS ICB merge seed=90210 responses=1205 errors=600 command_stalls=374 response_stalls=443 reset_cases=2"
+          ]
+        }
+      ]
+    },
+    {
+      "candidate": "opt22_fused",
+      "testbench_sha256": "1ca269e2667757aa8bcc89e930f44946704cb3455bcedd856a71caa18b9fa1c0",
+      "runs": [
+        {
+          "path": "build/bus_soc_opt22_fused_20261111_140017_271620/merge_17.log",
+          "sha256": "7d9b8d6ee0eedeee42637366b4c6731c718fd5e3d5b1a68974177c9e87966f8f",
+          "pass_message": [
+            "PASS ICB merge seed=17 responses=1205 errors=600 command_stalls=428 response_stalls=421 reset_cases=2"
+          ]
+        },
+        {
+          "path": "build/bus_soc_opt22_fused_20261111_140017_271620/merge_20261111.log",
+          "sha256": "ec5aba980fd7c7fbc43f43d06c0ee174471a5b904e5eb55cd616a5df173988f6",
+          "pass_message": [
+            "PASS ICB merge seed=20261111 responses=1205 errors=600 command_stalls=420 response_stalls=382 reset_cases=2"
+          ]
+        },
+        {
+          "path": "build/bus_soc_opt22_fused_20261111_140017_271620/merge_90210.log",
+          "sha256": "083f5f363b640123ba9ee7fe8645848f8969aa08a5b55e66eebac1dc8e981a6c",
+          "pass_message": [
+            "PASS ICB merge seed=90210 responses=1205 errors=600 command_stalls=374 response_stalls=443 reset_cases=2"
+          ]
+        }
+      ]
+    },
+    {
+      "candidate": "opt23_sysbus4",
+      "testbench_sha256": "1ca269e2667757aa8bcc89e930f44946704cb3455bcedd856a71caa18b9fa1c0",
+      "runs": [
+        {
+          "path": "build/bus_soc_opt23_sysbus4_20261111_134920_142696/merge_17.log",
+          "sha256": "7d9b8d6ee0eedeee42637366b4c6731c718fd5e3d5b1a68974177c9e87966f8f",
+          "pass_message": [
+            "PASS ICB merge seed=17 responses=1205 errors=600 command_stalls=428 response_stalls=421 reset_cases=2"
+          ]
+        },
+        {
+          "path": "build/bus_soc_opt23_sysbus4_20261111_134920_142696/merge_20261111.log",
+          "sha256": "ec5aba980fd7c7fbc43f43d06c0ee174471a5b904e5eb55cd616a5df173988f6",
+          "pass_message": [
+            "PASS ICB merge seed=20261111 responses=1205 errors=600 command_stalls=420 response_stalls=382 reset_cases=2"
+          ]
+        },
+        {
+          "path": "build/bus_soc_opt23_sysbus4_20261111_134920_142696/merge_90210.log",
+          "sha256": "083f5f363b640123ba9ee7fe8645848f8969aa08a5b55e66eebac1dc8e981a6c",
+          "pass_message": [
+            "PASS ICB merge seed=90210 responses=1205 errors=600 command_stalls=374 response_stalls=443 reset_cases=2"
+          ]
+        }
+      ]
+    },
+    {
+      "candidate": "opt24_busqueue",
+      "testbench_sha256": "558fec0d0d81d68850c627f22dca2c53e1a0177daf83ff9c37e2b7bca3633577",
+      "runs": [
+        {
+          "path": "build/bus_queue_soc_opt24_busqueue_20261111_140405_835308/merge_p2_d4_m1_17.log",
+          "sha256": "74dd584cb103d5993f31d569537555e756149c876fad8fb6d0db4db2dfec62ce",
+          "pass_message": [
+            "PASS queue NP=2 DEPTH=4 MASK=1 seed=17 responses=1505 errors=751 command_stalls=482 response_stalls=520 full_cycles=1151 replacements=487 resets=2 max_depth=4"
+          ]
+        },
+        {
+          "path": "build/bus_queue_soc_opt24_busqueue_20261111_140405_835308/merge_p2_d4_m1_20261111.log",
+          "sha256": "e5762ae3b9e0bcc15fe2b7e593f487146fed0084228dd62342488f596c1960d6",
+          "pass_message": [
+            "PASS queue NP=2 DEPTH=4 MASK=1 seed=20261111 responses=1504 errors=750 command_stalls=495 response_stalls=455 full_cycles=856 replacements=367 resets=2 max_depth=4"
+          ]
+        },
+        {
+          "path": "build/bus_queue_soc_opt24_busqueue_20261111_140405_835308/merge_p2_d4_m1_90210.log",
+          "sha256": "d4f575a902dcd2a161ffe46a3db10c8113ec9ae6c14ed2a86c5de6fa2e842180",
+          "pass_message": [
+            "PASS queue NP=2 DEPTH=4 MASK=1 seed=90210 responses=1504 errors=751 command_stalls=517 response_stalls=562 full_cycles=1174 replacements=481 resets=2 max_depth=4"
+          ]
+        },
+        {
+          "path": "build/bus_queue_soc_opt24_busqueue_20261111_140405_835308/merge_p6_d4_m63_17.log",
+          "sha256": "a6178f4d912c4f60183ff86b10b6c242447f16cc3a580cc02c4103ff2ded5d2e",
+          "pass_message": [
+            "PASS queue NP=6 DEPTH=4 MASK=3f seed=17 responses=1508 errors=746 command_stalls=486 response_stalls=498 full_cycles=1441 replacements=657 resets=2 max_depth=4"
+          ]
+        },
+        {
+          "path": "build/bus_queue_soc_opt24_busqueue_20261111_140405_835308/merge_p6_d4_m63_20261111.log",
+          "sha256": "2956e4c11295816fc9626f162608b378b9e213d8aa0b6cc85cb8b9f74c2eb224",
+          "pass_message": [
+            "PASS queue NP=6 DEPTH=4 MASK=3f seed=20261111 responses=1509 errors=747 command_stalls=477 response_stalls=484 full_cycles=1393 replacements=672 resets=2 max_depth=4"
+          ]
+        },
+        {
+          "path": "build/bus_queue_soc_opt24_busqueue_20261111_140405_835308/merge_p6_d4_m63_90210.log",
+          "sha256": "0e713f2ee7498302582e0f291bd342cc77e6ddccd22648459a655a6f660be778",
+          "pass_message": [
+            "PASS queue NP=6 DEPTH=4 MASK=3f seed=90210 responses=1507 errors=745 command_stalls=491 response_stalls=502 full_cycles=1335 replacements=622 resets=2 max_depth=4"
+          ]
+        }
+      ]
+    },
+    {
+      "candidate": "opt25_fused4",
+      "testbench_sha256": "1ca269e2667757aa8bcc89e930f44946704cb3455bcedd856a71caa18b9fa1c0",
+      "runs": [
+        {
+          "path": "build/bus_soc_opt25_fused4_20261111_135602_476362/merge_17.log",
+          "sha256": "7d9b8d6ee0eedeee42637366b4c6731c718fd5e3d5b1a68974177c9e87966f8f",
+          "pass_message": [
+            "PASS ICB merge seed=17 responses=1205 errors=600 command_stalls=428 response_stalls=421 reset_cases=2"
+          ]
+        },
+        {
+          "path": "build/bus_soc_opt25_fused4_20261111_135602_476362/merge_20261111.log",
+          "sha256": "ec5aba980fd7c7fbc43f43d06c0ee174471a5b904e5eb55cd616a5df173988f6",
+          "pass_message": [
+            "PASS ICB merge seed=20261111 responses=1205 errors=600 command_stalls=420 response_stalls=382 reset_cases=2"
+          ]
+        },
+        {
+          "path": "build/bus_soc_opt25_fused4_20261111_135602_476362/merge_90210.log",
+          "sha256": "083f5f363b640123ba9ee7fe8645848f8969aa08a5b55e66eebac1dc8e981a6c",
+          "pass_message": [
+            "PASS ICB merge seed=90210 responses=1205 errors=600 command_stalls=374 response_stalls=443 reset_cases=2"
+          ]
+        }
+      ]
+    },
+    {
+      "candidate": "opt26_fusedqueue",
+      "testbench_sha256": "558fec0d0d81d68850c627f22dca2c53e1a0177daf83ff9c37e2b7bca3633577",
+      "runs": [
+        {
+          "path": "build/bus_queue_soc_opt26_fusedqueue_20261111_141620_604247/merge_p2_d4_m1_17.log",
+          "sha256": "74dd584cb103d5993f31d569537555e756149c876fad8fb6d0db4db2dfec62ce",
+          "pass_message": [
+            "PASS queue NP=2 DEPTH=4 MASK=1 seed=17 responses=1505 errors=751 command_stalls=482 response_stalls=520 full_cycles=1151 replacements=487 resets=2 max_depth=4"
+          ]
+        },
+        {
+          "path": "build/bus_queue_soc_opt26_fusedqueue_20261111_141620_604247/merge_p2_d4_m1_20261111.log",
+          "sha256": "e5762ae3b9e0bcc15fe2b7e593f487146fed0084228dd62342488f596c1960d6",
+          "pass_message": [
+            "PASS queue NP=2 DEPTH=4 MASK=1 seed=20261111 responses=1504 errors=750 command_stalls=495 response_stalls=455 full_cycles=856 replacements=367 resets=2 max_depth=4"
+          ]
+        },
+        {
+          "path": "build/bus_queue_soc_opt26_fusedqueue_20261111_141620_604247/merge_p2_d4_m1_90210.log",
+          "sha256": "d4f575a902dcd2a161ffe46a3db10c8113ec9ae6c14ed2a86c5de6fa2e842180",
+          "pass_message": [
+            "PASS queue NP=2 DEPTH=4 MASK=1 seed=90210 responses=1504 errors=751 command_stalls=517 response_stalls=562 full_cycles=1174 replacements=481 resets=2 max_depth=4"
+          ]
+        },
+        {
+          "path": "build/bus_queue_soc_opt26_fusedqueue_20261111_141620_604247/merge_p6_d4_m63_17.log",
+          "sha256": "a6178f4d912c4f60183ff86b10b6c242447f16cc3a580cc02c4103ff2ded5d2e",
+          "pass_message": [
+            "PASS queue NP=6 DEPTH=4 MASK=3f seed=17 responses=1508 errors=746 command_stalls=486 response_stalls=498 full_cycles=1441 replacements=657 resets=2 max_depth=4"
+          ]
+        },
+        {
+          "path": "build/bus_queue_soc_opt26_fusedqueue_20261111_141620_604247/merge_p6_d4_m63_20261111.log",
+          "sha256": "2956e4c11295816fc9626f162608b378b9e213d8aa0b6cc85cb8b9f74c2eb224",
+          "pass_message": [
+            "PASS queue NP=6 DEPTH=4 MASK=3f seed=20261111 responses=1509 errors=747 command_stalls=477 response_stalls=484 full_cycles=1393 replacements=672 resets=2 max_depth=4"
+          ]
+        },
+        {
+          "path": "build/bus_queue_soc_opt26_fusedqueue_20261111_141620_604247/merge_p6_d4_m63_90210.log",
+          "sha256": "0e713f2ee7498302582e0f291bd342cc77e6ddccd22648459a655a6f660be778",
+          "pass_message": [
+            "PASS queue NP=6 DEPTH=4 MASK=3f seed=90210 responses=1507 errors=745 command_stalls=491 response_stalls=502 full_cycles=1335 replacements=622 resets=2 max_depth=4"
+          ]
+        }
+      ]
+    },
+    {
+      "candidate": "opt27_fusedwait",
+      "testbench_sha256": "1ca269e2667757aa8bcc89e930f44946704cb3455bcedd856a71caa18b9fa1c0",
+      "runs": [
+        {
+          "path": "build/bus_soc_opt27_fusedwait_20261111_141752_225940/merge_17.log",
+          "sha256": "7d9b8d6ee0eedeee42637366b4c6731c718fd5e3d5b1a68974177c9e87966f8f",
+          "pass_message": [
+            "PASS ICB merge seed=17 responses=1205 errors=600 command_stalls=428 response_stalls=421 reset_cases=2"
+          ]
+        },
+        {
+          "path": "build/bus_soc_opt27_fusedwait_20261111_141752_225940/merge_20261111.log",
+          "sha256": "ec5aba980fd7c7fbc43f43d06c0ee174471a5b904e5eb55cd616a5df173988f6",
+          "pass_message": [
+            "PASS ICB merge seed=20261111 responses=1205 errors=600 command_stalls=420 response_stalls=382 reset_cases=2"
+          ]
+        },
+        {
+          "path": "build/bus_soc_opt27_fusedwait_20261111_141752_225940/merge_90210.log",
+          "sha256": "083f5f363b640123ba9ee7fe8645848f8969aa08a5b55e66eebac1dc8e981a6c",
+          "pass_message": [
+            "PASS ICB merge seed=90210 responses=1205 errors=600 command_stalls=374 response_stalls=443 reset_cases=2"
+          ]
+        }
+      ]
+    },
+    {
+      "candidate": "opt28_queuewait4",
+      "testbench_sha256": "558fec0d0d81d68850c627f22dca2c53e1a0177daf83ff9c37e2b7bca3633577",
+      "runs": [
+        {
+          "path": "build/bus_queue_soc_opt28_queuewait4_20261111_142808_985400/merge_p2_d4_m1_17.log",
+          "sha256": "74dd584cb103d5993f31d569537555e756149c876fad8fb6d0db4db2dfec62ce",
+          "pass_message": [
+            "PASS queue NP=2 DEPTH=4 MASK=1 seed=17 responses=1505 errors=751 command_stalls=482 response_stalls=520 full_cycles=1151 replacements=487 resets=2 max_depth=4"
+          ]
+        },
+        {
+          "path": "build/bus_queue_soc_opt28_queuewait4_20261111_142808_985400/merge_p2_d4_m1_20261111.log",
+          "sha256": "e5762ae3b9e0bcc15fe2b7e593f487146fed0084228dd62342488f596c1960d6",
+          "pass_message": [
+            "PASS queue NP=2 DEPTH=4 MASK=1 seed=20261111 responses=1504 errors=750 command_stalls=495 response_stalls=455 full_cycles=856 replacements=367 resets=2 max_depth=4"
+          ]
+        },
+        {
+          "path": "build/bus_queue_soc_opt28_queuewait4_20261111_142808_985400/merge_p2_d4_m1_90210.log",
+          "sha256": "d4f575a902dcd2a161ffe46a3db10c8113ec9ae6c14ed2a86c5de6fa2e842180",
+          "pass_message": [
+            "PASS queue NP=2 DEPTH=4 MASK=1 seed=90210 responses=1504 errors=751 command_stalls=517 response_stalls=562 full_cycles=1174 replacements=481 resets=2 max_depth=4"
+          ]
+        },
+        {
+          "path": "build/bus_queue_soc_opt28_queuewait4_20261111_142808_985400/merge_p6_d4_m63_17.log",
+          "sha256": "a6178f4d912c4f60183ff86b10b6c242447f16cc3a580cc02c4103ff2ded5d2e",
+          "pass_message": [
+            "PASS queue NP=6 DEPTH=4 MASK=3f seed=17 responses=1508 errors=746 command_stalls=486 response_stalls=498 full_cycles=1441 replacements=657 resets=2 max_depth=4"
+          ]
+        },
+        {
+          "path": "build/bus_queue_soc_opt28_queuewait4_20261111_142808_985400/merge_p6_d4_m63_20261111.log",
+          "sha256": "2956e4c11295816fc9626f162608b378b9e213d8aa0b6cc85cb8b9f74c2eb224",
+          "pass_message": [
+            "PASS queue NP=6 DEPTH=4 MASK=3f seed=20261111 responses=1509 errors=747 command_stalls=477 response_stalls=484 full_cycles=1393 replacements=672 resets=2 max_depth=4"
+          ]
+        },
+        {
+          "path": "build/bus_queue_soc_opt28_queuewait4_20261111_142808_985400/merge_p6_d4_m63_90210.log",
+          "sha256": "0e713f2ee7498302582e0f291bd342cc77e6ddccd22648459a655a6f660be778",
+          "pass_message": [
+            "PASS queue NP=6 DEPTH=4 MASK=3f seed=90210 responses=1507 errors=745 command_stalls=491 response_stalls=502 full_cycles=1335 replacements=622 resets=2 max_depth=4"
+          ]
+        }
+      ]
+    },
+    {
+      "candidate": "opt29_fusedqueue4",
+      "testbench_sha256": "558fec0d0d81d68850c627f22dca2c53e1a0177daf83ff9c37e2b7bca3633577",
+      "runs": [
+        {
+          "path": "build/bus_queue_soc_opt29_fusedqueue4_20261111_141855_742136/merge_p2_d4_m1_17.log",
+          "sha256": "74dd584cb103d5993f31d569537555e756149c876fad8fb6d0db4db2dfec62ce",
+          "pass_message": [
+            "PASS queue NP=2 DEPTH=4 MASK=1 seed=17 responses=1505 errors=751 command_stalls=482 response_stalls=520 full_cycles=1151 replacements=487 resets=2 max_depth=4"
+          ]
+        },
+        {
+          "path": "build/bus_queue_soc_opt29_fusedqueue4_20261111_141855_742136/merge_p2_d4_m1_20261111.log",
+          "sha256": "e5762ae3b9e0bcc15fe2b7e593f487146fed0084228dd62342488f596c1960d6",
+          "pass_message": [
+            "PASS queue NP=2 DEPTH=4 MASK=1 seed=20261111 responses=1504 errors=750 command_stalls=495 response_stalls=455 full_cycles=856 replacements=367 resets=2 max_depth=4"
+          ]
+        },
+        {
+          "path": "build/bus_queue_soc_opt29_fusedqueue4_20261111_141855_742136/merge_p2_d4_m1_90210.log",
+          "sha256": "d4f575a902dcd2a161ffe46a3db10c8113ec9ae6c14ed2a86c5de6fa2e842180",
+          "pass_message": [
+            "PASS queue NP=2 DEPTH=4 MASK=1 seed=90210 responses=1504 errors=751 command_stalls=517 response_stalls=562 full_cycles=1174 replacements=481 resets=2 max_depth=4"
+          ]
+        },
+        {
+          "path": "build/bus_queue_soc_opt29_fusedqueue4_20261111_141855_742136/merge_p6_d4_m63_17.log",
+          "sha256": "a6178f4d912c4f60183ff86b10b6c242447f16cc3a580cc02c4103ff2ded5d2e",
+          "pass_message": [
+            "PASS queue NP=6 DEPTH=4 MASK=3f seed=17 responses=1508 errors=746 command_stalls=486 response_stalls=498 full_cycles=1441 replacements=657 resets=2 max_depth=4"
+          ]
+        },
+        {
+          "path": "build/bus_queue_soc_opt29_fusedqueue4_20261111_141855_742136/merge_p6_d4_m63_20261111.log",
+          "sha256": "2956e4c11295816fc9626f162608b378b9e213d8aa0b6cc85cb8b9f74c2eb224",
+          "pass_message": [
+            "PASS queue NP=6 DEPTH=4 MASK=3f seed=20261111 responses=1509 errors=747 command_stalls=477 response_stalls=484 full_cycles=1393 replacements=672 resets=2 max_depth=4"
+          ]
+        },
+        {
+          "path": "build/bus_queue_soc_opt29_fusedqueue4_20261111_141855_742136/merge_p6_d4_m63_90210.log",
+          "sha256": "0e713f2ee7498302582e0f291bd342cc77e6ddccd22648459a655a6f660be778",
+          "pass_message": [
+            "PASS queue NP=6 DEPTH=4 MASK=3f seed=90210 responses=1507 errors=745 command_stalls=491 response_stalls=502 full_cycles=1335 replacements=622 resets=2 max_depth=4"
+          ]
+        }
+      ]
+    },
+    {
+      "candidate": "opt30_fusedpipe4",
+      "testbench_sha256": "558fec0d0d81d68850c627f22dca2c53e1a0177daf83ff9c37e2b7bca3633577",
+      "runs": [
+        {
+          "path": "build/bus_queue_soc_opt30_fusedpipe4_20261111_142724_610244/merge_p2_d4_m1_17.log",
+          "sha256": "74dd584cb103d5993f31d569537555e756149c876fad8fb6d0db4db2dfec62ce",
+          "pass_message": [
+            "PASS queue NP=2 DEPTH=4 MASK=1 seed=17 responses=1505 errors=751 command_stalls=482 response_stalls=520 full_cycles=1151 replacements=487 resets=2 max_depth=4"
+          ]
+        },
+        {
+          "path": "build/bus_queue_soc_opt30_fusedpipe4_20261111_142724_610244/merge_p2_d4_m1_20261111.log",
+          "sha256": "e5762ae3b9e0bcc15fe2b7e593f487146fed0084228dd62342488f596c1960d6",
+          "pass_message": [
+            "PASS queue NP=2 DEPTH=4 MASK=1 seed=20261111 responses=1504 errors=750 command_stalls=495 response_stalls=455 full_cycles=856 replacements=367 resets=2 max_depth=4"
+          ]
+        },
+        {
+          "path": "build/bus_queue_soc_opt30_fusedpipe4_20261111_142724_610244/merge_p2_d4_m1_90210.log",
+          "sha256": "d4f575a902dcd2a161ffe46a3db10c8113ec9ae6c14ed2a86c5de6fa2e842180",
+          "pass_message": [
+            "PASS queue NP=2 DEPTH=4 MASK=1 seed=90210 responses=1504 errors=751 command_stalls=517 response_stalls=562 full_cycles=1174 replacements=481 resets=2 max_depth=4"
+          ]
+        },
+        {
+          "path": "build/bus_queue_soc_opt30_fusedpipe4_20261111_142724_610244/merge_p6_d4_m63_17.log",
+          "sha256": "a6178f4d912c4f60183ff86b10b6c242447f16cc3a580cc02c4103ff2ded5d2e",
+          "pass_message": [
+            "PASS queue NP=6 DEPTH=4 MASK=3f seed=17 responses=1508 errors=746 command_stalls=486 response_stalls=498 full_cycles=1441 replacements=657 resets=2 max_depth=4"
+          ]
+        },
+        {
+          "path": "build/bus_queue_soc_opt30_fusedpipe4_20261111_142724_610244/merge_p6_d4_m63_20261111.log",
+          "sha256": "2956e4c11295816fc9626f162608b378b9e213d8aa0b6cc85cb8b9f74c2eb224",
+          "pass_message": [
+            "PASS queue NP=6 DEPTH=4 MASK=3f seed=20261111 responses=1509 errors=747 command_stalls=477 response_stalls=484 full_cycles=1393 replacements=672 resets=2 max_depth=4"
+          ]
+        },
+        {
+          "path": "build/bus_queue_soc_opt30_fusedpipe4_20261111_142724_610244/merge_p6_d4_m63_90210.log",
+          "sha256": "0e713f2ee7498302582e0f291bd342cc77e6ddccd22648459a655a6f660be778",
+          "pass_message": [
+            "PASS queue NP=6 DEPTH=4 MASK=3f seed=90210 responses=1507 errors=745 command_stalls=491 response_stalls=502 full_cycles=1335 replacements=622 resets=2 max_depth=4"
+          ]
+        }
+      ]
+    },
+    {
+      "candidate": "opt22_fused",
+      "scope": "FIO transport errors; no SoC performance or PPA claim",
+      "result": {
+        "path": "build/fio_faults_opt22_fused_20261111_135305_065456/result.json",
+        "sha256": "882c76371d8f63a7fd23aca618b79c4a74262ed31fff3ad24ad3639792e8ca38"
+      },
+      "sources_sha256": {
+        "rtl/qingyu_sram16.sv": "d3d35a1e99e07c75fac13e450c87685e773dc4953ab5a7752dd0ba0622943b18",
+        "experiments/h1500v/opt22_fused/rtl/qingyu_accel.sv": "2bc62a94efd26cab9bb572e536d93911a93420f3710a133b7485b4c38a5cbec3",
+        "experiments/h1500v/opt22_fused/rtl/qingyu_fio.sv": "8b9043d4a0db81c9c86a2cabf9fc5aacd61c5fb94db74080ce3a825aa5d633b0",
+        "experiments/h1500v/opt22_fused/rtl/qingyu_icb_merge.sv": "ba4a8c37c895a83a24fdb6b4dd4b9097cbe86c56aa0e8f2735c14eae66b2aa7e",
+        "tb/tb_fio_faults.sv": "b94115b2127b57f9d4801152b06b2f9d1305583b9956b17e827893c3836cd34a"
+      }
+    },
+    {
+      "candidate": "opt26_fusedqueue",
+      "scope": "FIO transport errors; no SoC performance or PPA claim",
+      "result": {
+        "path": "build/fio_faults_opt26_fusedqueue_20261111_140945_834857/result.json",
+        "sha256": "60d003228bc59ba67b4f814857d0a44855dcbae8099c48334594c81229a873d1"
+      },
+      "sources_sha256": {
+        "rtl\\qingyu_sram16.sv": "d3d35a1e99e07c75fac13e450c87685e773dc4953ab5a7752dd0ba0622943b18",
+        "experiments\\h1500v\\opt26_fusedqueue\\rtl\\qingyu_accel.sv": "2bc62a94efd26cab9bb572e536d93911a93420f3710a133b7485b4c38a5cbec3",
+        "experiments\\h1500v\\opt26_fusedqueue\\rtl\\qingyu_fio.sv": "2eda1dfb10e8ea311b6cbec44f51554d4faefb4c2de2c07abd23b49c765732ab",
+        "experiments\\h1500v\\opt26_fusedqueue\\rtl\\qingyu_icb_merge.sv": "944ac235bc529bc83bbded7ccd89f4f0dfa0e64de8b08bd4b2f703492768ae23",
+        "tb\\tb_fio_faults.sv": "b94115b2127b57f9d4801152b06b2f9d1305583b9956b17e827893c3836cd34a"
+      }
+    },
+    {
+      "candidate": "opt27_fusedwait",
+      "scope": "FIO transport errors; no SoC performance or PPA claim",
+      "result": {
+        "path": "build/fio_faults_opt27_fusedwait_20261111_141112_256033/result.json",
+        "sha256": "10cb2f5ea904775a40ef3d9580301f27136d01d320fe55802df3068033d3b1fd"
+      },
+      "sources_sha256": {
+        "rtl/qingyu_sram16.sv": "d3d35a1e99e07c75fac13e450c87685e773dc4953ab5a7752dd0ba0622943b18",
+        "experiments/h1500v/opt27_fusedwait/rtl/qingyu_accel.sv": "a5b7898d19322b4cad38ce682b3ae727fd19c3a92e3a3eb1f3f747eae5c52b4a",
+        "experiments/h1500v/opt27_fusedwait/rtl/qingyu_fio.sv": "e0f45d92c122b98369727f0c22f72714070234aab395f0e7b7e9fdf7618b97a9",
+        "experiments/h1500v/opt27_fusedwait/rtl/qingyu_icb_merge.sv": "ba4a8c37c895a83a24fdb6b4dd4b9097cbe86c56aa0e8f2735c14eae66b2aa7e",
+        "tb/tb_fio_faults.sv": "b94115b2127b57f9d4801152b06b2f9d1305583b9956b17e827893c3836cd34a"
+      }
+    },
+    {
+      "candidate": "opt28_queuewait4",
+      "scope": "FIO transport errors; no SoC performance or PPA claim",
+      "result": {
+        "path": "build/fio_faults_opt28_queuewait4_20261111_142448_923771/result.json",
+        "sha256": "ac4cf348c5caa63782b96bd537d32018b888ff01625a886cc770a43d98eaec5e"
+      },
+      "sources_sha256": {
+        "rtl/qingyu_sram16.sv": "d3d35a1e99e07c75fac13e450c87685e773dc4953ab5a7752dd0ba0622943b18",
+        "experiments/h1500v/opt28_queuewait4/rtl/qingyu_accel.sv": "a5b7898d19322b4cad38ce682b3ae727fd19c3a92e3a3eb1f3f747eae5c52b4a",
+        "experiments/h1500v/opt28_queuewait4/rtl/qingyu_fio.sv": "d66e432f3b8e0445206ce7afb3f83123bc3b735fbe2062c3cd154c5235f20d53",
+        "experiments/h1500v/opt28_queuewait4/rtl/qingyu_icb_merge.sv": "944ac235bc529bc83bbded7ccd89f4f0dfa0e64de8b08bd4b2f703492768ae23",
+        "tb/tb_fio_faults.sv": "b94115b2127b57f9d4801152b06b2f9d1305583b9956b17e827893c3836cd34a"
+      }
+    },
+    {
+      "candidate": "opt30_fusedpipe4",
+      "scope": "FIO transport errors; no SoC performance or PPA claim",
+      "result": {
+        "path": "build/fio_faults_opt30_fusedpipe4_20261111_142545_331162/result.json",
+        "sha256": "aeda96dd69147cbfc5b0aa9c0d5f80a32142b9cd93194f430b0f62f0cf9c6f36"
+      },
+      "sources_sha256": {
+        "rtl/qingyu_sram16.sv": "d3d35a1e99e07c75fac13e450c87685e773dc4953ab5a7752dd0ba0622943b18",
+        "experiments/h1500v/opt30_fusedpipe4/rtl/qingyu_accel.sv": "a5b7898d19322b4cad38ce682b3ae727fd19c3a92e3a3eb1f3f747eae5c52b4a",
+        "experiments/h1500v/opt30_fusedpipe4/rtl/qingyu_fio.sv": "0a8c6831beafe6c8df31fcb8b8c0a4dcf7961a22a6a1e3ae80c026c89ec19ec5",
+        "experiments/h1500v/opt30_fusedpipe4/rtl/qingyu_icb_merge.sv": "944ac235bc529bc83bbded7ccd89f4f0dfa0e64de8b08bd4b2f703492768ae23",
+        "tb/tb_fio_faults.sv": "b94115b2127b57f9d4801152b06b2f9d1305583b9956b17e827893c3836cd34a"
+      }
+    },
+    {
+      "candidate": "opt27_fusedwait",
+      "scope": "bounded blocking-WAIT command tests; separate from permanent downstream metadata cleanup",
+      "result": {
+        "path": "build/fused_wait_opt27_fusedwait_20261111_141106_958049/result.json",
+        "sha256": "6b711b00940e247f24f962bad0ad1494ade0cef3568ea9577c6159d0197992b9"
+      }
+    },
+    {
+      "candidate": "opt26_fusedqueue",
+      "scope": "six held FIO offers: concurrent errors, reset priority, drain and reload; no PPA claim",
+      "result": {
+        "path": "build/fio_queue_faults/20261111T140952220394Z/result.json",
+        "sha256": "b9c495c441e6c51b3475d62412481edf20e684ae3a968f503f534121ed266c99"
+      },
+      "log": {
+        "path": "build/fio_queue_faults/20261111T140952220394Z/simulate.log",
+        "sha256": "19e83bae8ba007eba32001a7ee5b289d427f2f84d974693b132e286323a71a2c"
+      },
+      "sources_sha256": {
+        "rtl/qingyu_sram16.sv": "d3d35a1e99e07c75fac13e450c87685e773dc4953ab5a7752dd0ba0622943b18",
+        "experiments/h1500v/opt26_fusedqueue/rtl/qingyu_accel.sv": "2bc62a94efd26cab9bb572e536d93911a93420f3710a133b7485b4c38a5cbec3",
+        "experiments/h1500v/opt26_fusedqueue/rtl/qingyu_fio.sv": "2eda1dfb10e8ea311b6cbec44f51554d4faefb4c2de2c07abd23b49c765732ab",
+        "experiments/h1500v/opt26_fusedqueue/rtl/qingyu_icb_merge.sv": "944ac235bc529bc83bbded7ccd89f4f0dfa0e64de8b08bd4b2f703492768ae23",
+        "tb/tb_fio_queue_faults.sv": "9d0a74f310c8ce8847ed6c56a1cc3aba27588de44eca232b08d3d94fa1d0420b"
+      }
+    },
+    {
+      "candidate": "opt28_queuewait4",
+      "scope": "WAIT control and data protocol, not performance or PPA",
+      "result": {
+        "path": "build/fused_wait_opt28_queuewait4_20261111_142146_752916/result.json",
+        "sha256": "1cebab71376978a4df1e517fbcb4558130f16ec6d63b8cc10a45878e0f75c539"
+      },
+      "sources_sha256": {
+        "rtl/qingyu_sram16.sv": "d3d35a1e99e07c75fac13e450c87685e773dc4953ab5a7752dd0ba0622943b18",
+        "experiments/h1500v/opt28_queuewait4/rtl/qingyu_accel.sv": "a5b7898d19322b4cad38ce682b3ae727fd19c3a92e3a3eb1f3f747eae5c52b4a",
+        "experiments/h1500v/opt28_queuewait4/rtl/qingyu_fio.sv": "d66e432f3b8e0445206ce7afb3f83123bc3b735fbe2062c3cd154c5235f20d53",
+        "experiments/h1500v/opt28_queuewait4/rtl/qingyu_icb_merge.sv": "944ac235bc529bc83bbded7ccd89f4f0dfa0e64de8b08bd4b2f703492768ae23",
+        "tb/tb_fused_wait_queue.sv": "0f0c8221a9ae5a6c83ed6cad3e59006acf3af79e6c26fdfc4aa2587102c6a81a"
+      },
+      "logs": [
+        {
+          "path": "build/fused_wait_opt28_queuewait4_20261111_142146_752916/compile.log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "build/fused_wait_opt28_queuewait4_20261111_142146_752916/simulate.log",
+          "sha256": "63eb0c91f02d2cbb5f9dcd1f8c0dfa95ae05cfb1cac2cc6bd93242b2c5b992c4"
+        }
+      ]
+    },
+    {
+      "candidate": "opt28_queuewait4",
+      "scope": "six held FIO offers: concurrent errors, reset priority, drain and reload; no PPA claim",
+      "result": {
+        "path": "build/fio_queue_faults/20261111T142448892351Z/result.json",
+        "sha256": "29cbeff7ca1523f18f00eb4afd58bdfa09237a5417213baa29f2745124753282"
+      },
+      "sources_sha256": {
+        "rtl/qingyu_sram16.sv": "d3d35a1e99e07c75fac13e450c87685e773dc4953ab5a7752dd0ba0622943b18",
+        "experiments/h1500v/opt28_queuewait4/rtl/qingyu_accel.sv": "a5b7898d19322b4cad38ce682b3ae727fd19c3a92e3a3eb1f3f747eae5c52b4a",
+        "experiments/h1500v/opt28_queuewait4/rtl/qingyu_fio.sv": "d66e432f3b8e0445206ce7afb3f83123bc3b735fbe2062c3cd154c5235f20d53",
+        "experiments/h1500v/opt28_queuewait4/rtl/qingyu_icb_merge.sv": "944ac235bc529bc83bbded7ccd89f4f0dfa0e64de8b08bd4b2f703492768ae23",
+        "tb/tb_fio_queue_faults.sv": "9d0a74f310c8ce8847ed6c56a1cc3aba27588de44eca232b08d3d94fa1d0420b"
+      },
+      "logs": [
+        {
+          "path": "build/fio_queue_faults/20261111T142448892351Z/compile.log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "build/fio_queue_faults/20261111T142448892351Z/simulate.log",
+          "sha256": "7f8bee194baf7adf019114606b993d5daad0906aa9a96c2820fd7257a1f4255a"
+        }
+      ]
+    },
+    {
+      "candidate": "opt30_fusedpipe4",
+      "scope": "WAIT control and data protocol, not performance or PPA",
+      "result": {
+        "path": "build/fused_wait_opt30_fusedpipe4_20261111_142545_480423/result.json",
+        "sha256": "e0ff885ac17ed4740875cfbec8ae4c579c3803e0ceeab5ac8ebe6a8904be0129"
+      },
+      "sources_sha256": {
+        "rtl/qingyu_sram16.sv": "d3d35a1e99e07c75fac13e450c87685e773dc4953ab5a7752dd0ba0622943b18",
+        "experiments/h1500v/opt30_fusedpipe4/rtl/qingyu_accel.sv": "a5b7898d19322b4cad38ce682b3ae727fd19c3a92e3a3eb1f3f747eae5c52b4a",
+        "experiments/h1500v/opt30_fusedpipe4/rtl/qingyu_fio.sv": "0a8c6831beafe6c8df31fcb8b8c0a4dcf7961a22a6a1e3ae80c026c89ec19ec5",
+        "experiments/h1500v/opt30_fusedpipe4/rtl/qingyu_icb_merge.sv": "944ac235bc529bc83bbded7ccd89f4f0dfa0e64de8b08bd4b2f703492768ae23",
+        "tb/tb_fused_wait_queue.sv": "0f0c8221a9ae5a6c83ed6cad3e59006acf3af79e6c26fdfc4aa2587102c6a81a"
+      },
+      "logs": [
+        {
+          "path": "build/fused_wait_opt30_fusedpipe4_20261111_142545_480423/compile.log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "build/fused_wait_opt30_fusedpipe4_20261111_142545_480423/simulate.log",
+          "sha256": "173d6aa4476d70e971367bc26e0c9ccb0bf85e34fb883123d7cbaeb55654757c"
+        }
+      ]
+    },
+    {
+      "candidate": "opt30_fusedpipe4",
+      "scope": "six held FIO offers: concurrent errors, reset priority, drain and reload; no PPA claim",
+      "result": {
+        "path": "build/fio_queue_faults/20261111T142545331875Z/result.json",
+        "sha256": "c485a41cc69274e8a0c3cc89118c14a27bef9d6b5b96272f631533d420acbd10"
+      },
+      "sources_sha256": {
+        "rtl/qingyu_sram16.sv": "d3d35a1e99e07c75fac13e450c87685e773dc4953ab5a7752dd0ba0622943b18",
+        "experiments/h1500v/opt30_fusedpipe4/rtl/qingyu_accel.sv": "a5b7898d19322b4cad38ce682b3ae727fd19c3a92e3a3eb1f3f747eae5c52b4a",
+        "experiments/h1500v/opt30_fusedpipe4/rtl/qingyu_fio.sv": "0a8c6831beafe6c8df31fcb8b8c0a4dcf7961a22a6a1e3ae80c026c89ec19ec5",
+        "experiments/h1500v/opt30_fusedpipe4/rtl/qingyu_icb_merge.sv": "944ac235bc529bc83bbded7ccd89f4f0dfa0e64de8b08bd4b2f703492768ae23",
+        "tb/tb_fio_queue_faults.sv": "9d0a74f310c8ce8847ed6c56a1cc3aba27588de44eca232b08d3d94fa1d0420b"
+      },
+      "logs": [
+        {
+          "path": "build/fio_queue_faults/20261111T142545331875Z/compile.log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "build/fio_queue_faults/20261111T142545331875Z/simulate.log",
+          "sha256": "7ba78cf193e7e94401dba57d08c6d3288457817c502c20cee52d2b4594126077"
+        }
+      ]
+    },
+    {
+      "candidate": "opt30_fusedpipe4",
+      "scope": "three seeds, full X/W loads, unique address-derived data, mid-stream read/write faults; no PPA claim",
+      "result": {
+        "path": "build/fused_pipe_checks/20261111T142545343863Z/result.json",
+        "sha256": "bf106623088500a5888842e02f8f97c81d4779008e655fc1aec2f7107267cbaf"
+      },
+      "sources_sha256": {
+        "rtl/qingyu_sram16.sv": "d3d35a1e99e07c75fac13e450c87685e773dc4953ab5a7752dd0ba0622943b18",
+        "experiments/h1500v/opt30_fusedpipe4/rtl/qingyu_accel.sv": "a5b7898d19322b4cad38ce682b3ae727fd19c3a92e3a3eb1f3f747eae5c52b4a",
+        "experiments/h1500v/opt30_fusedpipe4/rtl/qingyu_fio.sv": "0a8c6831beafe6c8df31fcb8b8c0a4dcf7961a22a6a1e3ae80c026c89ec19ec5",
+        "experiments/h1500v/opt30_fusedpipe4/rtl/qingyu_icb_merge.sv": "944ac235bc529bc83bbded7ccd89f4f0dfa0e64de8b08bd4b2f703492768ae23",
+        "tb/tb_fused_pipe.sv": "5e9fc31a215002b343b5fcd902280d9b6d4d5d742ed40ef3a19783a1bfe5e28d"
+      },
+      "logs": [
+        {
+          "path": "build/fused_pipe_checks/20261111T142545343863Z/compile.log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "build/fused_pipe_checks/20261111T142545343863Z/simulate.log",
+          "sha256": "f8c6ca99fbfe1df30a62f851d17be74d9651e7f7ac35ca1ef478bea5410cafeb"
+        }
+      ]
+    }
+  ],
+  "source_template_reproducibility": {
+    "path": "docs/evidence/20261111_soc_source_template.json",
+    "sha256": "8e9408418b9e6d09db6266c8da955681f6a472c839d8432813cb4357c085c9b1"
+  },
+  "known_fault_failure": {
+    "candidate": "opt20_sysbus",
+    "result": {
+      "path": "build/fio_faults_opt20_sysbus_20261111_134726_314854/result.json",
+      "sha256": "b385325c3d3ff16dd0a0403bc4caf2cdc3551c0eaa539883ff2396de89f91e37"
+    },
+    "log": {
+      "path": "build/fio_faults_opt20_sysbus_20261111_134726_314854/simulate.log",
+      "sha256": "d03120022d2c1ab91bf3e00e5f602ea59ecff9f884ff13e93938b01b717a7950"
+    },
+    "diagnostic": "failed START initiated arithmetic scenario=0",
+    "scope": "This is separate from, and does not invalidate, the normal-response numerical/performance comparison."
+  },
+  "environment_inventory": {
+    "path": "reports/environment.json",
+    "sha256": "c2ca866426fbcf4ae8c0e016f665bf6656cf1d5415780e847dfbc903d8bf74db",
+    "generated_utc": "2026-11-11T12:09:02.7202470Z",
+    "versions": {
+      "python3": "Python 3.12.3",
+      "git": "git version 2.43.0",
+      "verilator": "Verilator 5.020 2024-01-01 rev (Debian 5.020-1)",
+      "iverilog": "Icarus Verilog version 12.0 (stable) ()",
+      "vvp": "Icarus Verilog runtime version 12.0 (stable) ()",
+      "g++": "g++ (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0",
+      "make": "GNU Make 4.3",
+      "riscv64-unknown-elf-gcc": "riscv64-unknown-elf-gcc (13.2.0-11ubuntu1+12) 13.2.0",
+      "riscv64-unknown-elf-objcopy": "GNU objcopy (2.42-1ubuntu1+6) 2.42"
+    }
+  },
+  "compile_warning_review": {
+    "artifact": {
+      "path": "reports/local_bus_lint_review.json",
+      "sha256": "1653431b9589831994e4d3627e16153388da859a1888e3ea1c0c7a78d3bd80b8"
+    },
+    "review": {
+      "scope": "read-only review of actual full-SoC production compile logs; not STA, CDC, formal or physical signoff",
+      "baseline_log": {
+        "path": "build/bus_queue_soc_opt24_busqueue_20261111_140027_109001/build.log",
+        "sha256": "6218ada6fa4e8b2ad41493721f802d806d930c8d0823c83d35790079fda7ae9d"
+      },
+      "candidates": [
+        {
+          "candidate": "opt28_queuewait4",
+          "compile_log": {
+            "path": "build/bus_queue_soc_opt28_queuewait4_20261111_142808_985400/build.log",
+            "sha256": "4df749c597f61a1a5970a08e34c2161f495756a16954f971e159a75c1dd6b293"
+          },
+          "verilator_errors": 0,
+          "counts": {
+            "LATCH": 15,
+            "MULTIDRIVEN": 0,
+            "UNOPTFLAT": 2
+          },
+          "non_vendor_warnings": [],
+          "warning_set_identical_to_opt24": true,
+          "unique_locations": [
+            [
+              "LATCH",
+              "vendor/e203_hbirdv2/rtl/e203/core/e203_clkgate.v",
+              "44"
+            ],
+            [
+              "UNOPTFLAT",
+              "vendor/e203_hbirdv2/rtl/e203/core/e203_biu.v",
+              "282"
+            ],
+            [
+              "UNOPTFLAT",
+              "vendor/e203_hbirdv2/rtl/e203/perips/sirv_qspi_arbiter.v",
+              "103"
+            ]
+          ],
+          "candidate_source_manifest": {
+            "path": "experiments/h1500v/opt28_queuewait4/SOURCE_SHA256.json",
+            "sha256": "24d32d2dc744a8d1266ef442d2ef1b1bf656798faee9f771ac1b99dfe46eb5fc",
+            "all_listed_files_match": true,
+            "files": 15
+          },
+          "interpretation": "15 existing vendor clock-gating latches and 2 existing vendor BIU/QSPI UNOPTFLAT warnings; no LATCH, MULTIDRIVEN or UNOPTFLAT warning is attributed to candidate RTL or new monitors. Unchanged warnings are retained, not claimed formally false."
+        },
+        {
+          "candidate": "opt30_fusedpipe4",
+          "compile_log": {
+            "path": "build/bus_queue_soc_opt30_fusedpipe4_20261111_142724_610244/build.log",
+            "sha256": "65218d1df8629f0efdb0311d45597022ef4f021d4a12f2acc786ff61cd502c3c"
+          },
+          "verilator_errors": 0,
+          "counts": {
+            "LATCH": 15,
+            "MULTIDRIVEN": 0,
+            "UNOPTFLAT": 2
+          },
+          "non_vendor_warnings": [],
+          "warning_set_identical_to_opt24": true,
+          "unique_locations": [
+            [
+              "LATCH",
+              "vendor/e203_hbirdv2/rtl/e203/core/e203_clkgate.v",
+              "44"
+            ],
+            [
+              "UNOPTFLAT",
+              "vendor/e203_hbirdv2/rtl/e203/core/e203_biu.v",
+              "282"
+            ],
+            [
+              "UNOPTFLAT",
+              "vendor/e203_hbirdv2/rtl/e203/perips/sirv_qspi_arbiter.v",
+              "103"
+            ]
+          ],
+          "candidate_source_manifest": {
+            "path": "experiments/h1500v/opt30_fusedpipe4/SOURCE_SHA256.json",
+            "sha256": "076f0b235d2f6873eb3ca5dc7e8faad2378aeebfd1cad0d468eb832e4fe98e45",
+            "all_listed_files_match": true,
+            "files": 14
+          },
+          "interpretation": "15 existing vendor clock-gating latches and 2 existing vendor BIU/QSPI UNOPTFLAT warnings; no LATCH, MULTIDRIVEN or UNOPTFLAT warning is attributed to candidate RTL or new monitors. Unchanged warnings are retained, not claimed formally false."
+        }
+      ]
+    }
+  },
+  "delivered_runners": [
+    {
+      "path": "scripts/run_bus_candidate_soc.py",
+      "sha256": "47cf92d80578b758b0db55f478e058655b3f63783cf97538962ce43804c5b2f7",
+      "default_candidate": "opt25_fused4",
+      "help_smoke_exit_code": 0
+    },
+    {
+      "path": "scripts/run_bus_queue_candidate_soc.py",
+      "sha256": "daa21530bb7384bbca2867eeaab9552cb6149d63614b8322872db6831e4e6fcd",
+      "default_candidate": "opt30_fusedpipe4",
+      "help_smoke_exit_code": 0
+    }
+  ],
+  "post_validation_cli_change": "After all explicit-candidate full runs completed, only candidate defaults and help text were changed to opt25/opt30. The measured candidate sources, ordered source template, compiler arguments and testbench were not changed; help smoke checks passed. Original result runner hashes are retained.",
+  "preferred_local_candidate": "opt30_fusedpipe4",
+  "preference_scope": "Best measured internal cold-task cycles among the tested official-fabric candidates with the listed corrected error-control suites; physical PPA and official initial-loading evaluation remain pending."
+}

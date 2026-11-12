@@ -28,7 +28,9 @@ def main():
     args.work.mkdir(parents=True, exist_ok=True)
     scripts = Path(__file__).resolve().parent
     repo = str(args.repo.resolve())
-    data = str(args.data_dir.resolve())
+    # Preserve a same-volume ASCII junction on Windows. Resolving it restores
+    # Unicode parent names that TensorFlow's Win32 directory glob cannot list.
+    data = str(args.data_dir.absolute())
     work = args.work.resolve()
     stages = [
         ("prepare_training", ["prepare_official_audio.py", "--repo", repo, "--data-dir", data,

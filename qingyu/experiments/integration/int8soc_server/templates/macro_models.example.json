@@ -1,0 +1,12 @@
+{
+  "schema": "qingyu-manufacturer-sram-models-v1",
+  "review": "pending",
+  "model_kind": "official_manufacturer",
+  "source_library": "SRAM_Lib_2025",
+  "origin_review": "Replace with reviewed official distribution identity and source location. Hashes alone do not establish trusted origin.",
+  "files": {
+    "RAMSP128X16": "replace with SHA-256 of the actual manufacturer Verilog model",
+    "RAMSP1024X16": "replace with SHA-256 of the actual manufacturer Verilog model",
+    "RAMSP4096X16": "replace with SHA-256 of the actual manufacturer Verilog model"
+  }
+}

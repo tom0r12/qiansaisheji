@@ -1,0 +1,26 @@
+{
+  "schema": "qingyu-fused-load-contract-v1",
+  "candidate": "opt33_readcache",
+  "base_candidate": "opt32_outputqueue",
+  "live_read_words": 576,
+  "source_load_words": 11936,
+  "live_write_words": 11936,
+  "private_input_words": 3168,
+  "private_weight_words": 8192,
+  "output_write_words": 12672,
+  "flow": "X/W: source read and real live write, two FIFO slots overlap independent read/write ports; private commit only on successful ordered live write response. Metadata retains cold copy and 576 live reads.",
+  "constraints": [
+    "Use the unchanged opt20 single 32-bit system bus and shared SRAM interface.",
+    "Every source payload word is copied once to its configured live address; source storage is immutable.",
+    "Private X and W words must match source values and addresses, not only aggregate counts.",
+    "No private commit on failed source read, failed live write, or aborted descriptor.",
+    "No START before full descriptor completion; W targets only the inactive tile bank.",
+    "Do not replace official initial loading with testbench preloading outside the measured window.",
+    "This contract is an engineering validation expectation, not official compliance or signoff.",
+    "Write command and response may handshake on the same edge; the actual memory byte write occurs on that edge. Backpressure must prevent both acceptance and mutation.",
+    "All external reads/writes traverse the original fabric; internal speculative SRAM reads are separately counted and included in power.",
+    "Cache clear invalidates speculative data/refill eligibility without cancelling an accepted response.",
+    "Cold reset is explicitly issued before first validation read; no cache may carry a task into the next."
+  ],
+  "implementation": "opt32 output queue plus coherent shared-slave read-ahead; unchanged official fabric; explicit accepted CONTROL_RESET clears cache before validation"
+}
