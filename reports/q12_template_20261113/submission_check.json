@@ -1,0 +1,51 @@
+{
+  "review_date": "2026-11-13",
+  "submission_commit": "8731bf4f553e80a1ac5e68fb924b0436ddbdb77f",
+  "submission_tag": "q12-submission-20261113-r1",
+  "source_and_evidence_consistency": "PASS",
+  "files": {
+    "FREEZE_MANIFEST.json": {
+      "sha256": "7c0fa2f5ee0e93e8688e5481dfa0782aad8af9923a3fde776f607b3ebe3af5dc",
+      "verified_files": 169
+    },
+    "DELIVERY_SHA256.json": {
+      "sha256": "bc36e89610b539579b5286a2e7eefffd5536aaa31f9bce14fbda1d6c008c231b",
+      "verified_files": 179
+    },
+    "earlycheck_observation.json": {
+      "sha256": "d985ce84e690b4cb28533f644ba0c47abae44f017dc77377f1eb1947f2876c91",
+      "identical_to_submission": true
+    },
+    "power_observation.json": {
+      "sha256": "00259ec2b463e967678560b9fc21f4f6b2aacbe8c977d753ff45a30e07bed5be",
+      "identical_to_submission": true
+    },
+    "final_report_data.json": {
+      "sha256": "e55048d90f07f35cf56d0734573e6a66f996aa9cc5bfc866e0659737a8d020f4",
+      "identical_to_submission": true
+    }
+  },
+  "candidate_manifest_sha256": "0d8f89edcdd0e26f819dce379c610763d6788f712bb136843b64ca820892a5dc",
+  "unchanged_evidence_figures": 5,
+  "arithmetic": {
+    "mean_cycles": 24687.333333333332,
+    "throughput_at_150mhz": 6075.990386432989,
+    "incremental_area_mm2": 0.38858236043399996,
+    "full_soc_area_mm2": 2.73073391531,
+    "weighted_power_mw": 58.35833254567305,
+    "mean_energy_uj": 9.6033945645,
+    "private_sram_kib": 19.5
+  },
+  "local_functional_evidence": {
+    "tasks": 12,
+    "values": 304128,
+    "fault_modes": 2,
+    "requantize_proof_same_function": true
+  },
+  "document_scope": "Frozen source, historical full-task measurements, synthesis, and prelayout power estimate.",
+  "engineering_acceptance": "OPEN_ITEMS_REMAIN",
+  "mandatory_cover_fields_empty": [
+    "team_id",
+    "team_name"
+  ]
+}

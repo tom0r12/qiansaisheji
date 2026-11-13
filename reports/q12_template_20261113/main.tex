@@ -4,6 +4,7 @@
 \setmainfont{TeX Gyre Termes}
 \setCJKmainfont[AutoFakeBold=true]{FandolKai-Regular.otf}
 \newCJKfontfamily\zhkai[AutoFakeBold=true]{FandolKai-Regular.otf}
+\newCJKfontfamily\zhsong[BoldFont=FandolSong-Bold.otf]{FandolSong-Regular.otf}
 \newfontfamily\enkai{TeX Gyre Termes}
 \setCJKsansfont{FandolHei-Regular.otf}
 \setCJKmonofont{FandolFang-Regular.otf}
@@ -11,6 +12,11 @@
 \usepackage[a4paper,left=2.50cm,right=2.50cm,top=2.70cm,bottom=2.56cm]{geometry}
 \usepackage{fancyhdr,tabularx,booktabs,longtable,array,makecell,enumitem}
 \usepackage{pdfpages,pdflscape,tikz,pgfplots,xcolor,float,caption}
+\usepackage[titles]{tocloft}
+\setlength{\cftbeforesecskip}{7pt}
+\setlength{\cftbeforesubsecskip}{1pt}
+\renewcommand{\cftsecfont}{\bfseries}
+\renewcommand{\cftsecpagefont}{\bfseries}
 \usetikzlibrary{arrows.meta,positioning,fit,calc,backgrounds}
 \pgfplotsset{compat=1.18}
 \usepackage[unicode,hidelinks]{hyperref}
@@ -28,6 +34,9 @@
 \linespread{1.20}
 \setlength{\parskip}{3pt}
 \setlength{\emergencystretch}{2em}
+\clubpenalty=10000
+\widowpenalty=10000
+\displaywidowpenalty=10000
 \setlist{nosep,topsep=5pt,leftmargin=2em}
 \ctexset{section={format=\Large\bfseries},subsection={format=\large\bfseries},subsubsection={format=\normalsize\bfseries}}
 \captionsetup{font=small,labelfont=bf,labelsep=quad,skip=6pt}
@@ -114,7 +123,7 @@ DC setup / hold & $0 / +0.00070456$ ns & 已报告路径非负；未约束端点
 
 \noindent\textbf{版本标识。}源码提交 \code{8731bf4}；版本标签 \code{q12-submission-20261113-r1}。本报告的吞吐、面积、时序和功耗均对应这一配置。
 \clearpage
-\begingroup\small\linespread{1.02}\selectfont\setlength{\parskip}{0pt}
+\begingroup\zhsong\linespread{1}\fontsize{12}{16}\selectfont\setlength{\parskip}{0pt}
 \tableofcontents
 \endgroup
 \clearpage
@@ -148,7 +157,7 @@ The frozen design passed twelve historical full-task tests with vendor SRAM mode
 \begin{tabularx}{\linewidth}{p{35mm}YY}\toprule
 工具或资源 & 用途 & 验证资料\\\midrule
 Verilator / Icarus & 合成数据整机验证与定向检查 & 本地 12 任务结果、错误注入记录\\
-Yosys & 选定算术/局部变换的一致性检查 & 局部检查记录；不替代整机 LEC\\
+Yosys & signed12 舍入与饱和逻辑的一致性检查 & 32 位累加值、8 位移位量的局部证明\\
 VCS 与厂家 SRAM 模型 & 与宏时序行为相关的整机任务回放 & 12 个完整窗口、物理读回与活动文件\\
 Design Compiler & 同版整机综合、面积及约束检查 & 映射网表、SDC、setup/hold 与面积报告\\
 Formality & RTL 与映射网表等价检查 & 通过点、未匹配点、黑盒与告警记录\\
@@ -391,7 +400,7 @@ NP3 仲裁逻辑 & 1113.050400 & 0.001113\\
 \bottomrule\end{tabularx}
 \end{table}
 
-增量综合面积低于赛题规定的 2.25 mm$^2$ 上限。成对乘积、行列修正复用、寄存器有效位管理及输出格式共同决定映射结果。当前统计针对完整配置，尚未进行各项结构改动的独立面积消融实验；最终物理面积仍需结合布局布线结果评估。
+增量综合面积低于赛题规定的 2.25 mm$^2$ 上限。成对乘积、行列修正复用、寄存器有效位管理及输出格式共同决定映射结果。当前统计针对完整配置，尚未进行各项结构改动的独立面积消融实验。赛题以逻辑综合面积核验，本报告未将其表述为布局布线或流片实测面积。
 
 \subsection{150 MHz 约束与时序修复}
 目标周期为 6.666666667 ns，setup 不确定度为 0.1 ns、hold 不确定度为 0.02 ns；数据 I/O 延迟未放宽。loader 导出时钟用 1:1 generated clock 表达，移除误加在该时钟输出上的数据输出延迟。四个 PWM 异步同步器第 0 级入口按异步来源单独约束，后续同步级继续计时，未对加速器、SRAM 或总线数据通路设置泛化 false path。
@@ -452,12 +461,10 @@ SRAM 采用两侧对应的对称黑盒，黑盒匹配完成；没有 dont\_verif
 
 任务能耗由平均功耗与任务时长共同决定。逻辑面积减小后，若运行时间或存储访问次数增加，整机静态功耗与处理器运行开销仍可能抵消局部节省。本版完整输出具有固定的总线写入量，与旧版压缩输出的访存负载不同。能效分析因此采用完整任务窗口内的整机能量作为指标。
 
-\subsection{吞吐瓶颈与优化顺序}
-在 150 MHz 下达到 6000 tasks/s 的平均周期预算为 25000，本版均值距离预算只余约 313 周期。达到 10450 tasks/s 则平均周期需降至约 14354，要求比当前减少约 41.9\%。计算阵列按 25 个行组、16 个列 tile、每点积 32 对计算，仅主计算读请求就有 12800 个发出周期；这一计数仅覆盖主计算请求，端到端任务还包含装载、状态切换、后处理和完整写回。
+\subsection{任务周期与传输开销}
+在 150 MHz 下达到 6000 tasks/s 的平均周期预算为 25000，本版均值距离预算约 313 周期。计算阵列按 25 个行组、16 个列 tile、每点积 32 对计算，主计算读请求共占 12800 个发出周期；这一计数由阵列调度方式推得，端到端任务还包含装载、状态切换、后处理和完整写回。
 
-输出本身固定需要 9522 个写命令。共享 SRAM 保持单一 32 位访问入口，因此增加更多 PE 并不保证端到端吞吐同比增加。性能分析应分别统计总线空泡、已提交数据等待和输出反压，并结合阵列占用率确定瓶颈。当前仅有完整任务周期记录，各类等待的周期分解尚待补充。
-
-可以继续研究的方向包括：在原协议能力内提高请求连续性；缩短提交和状态切换空泡；在完整输出不变的前提下压缩私有缓存冗余位；减少不必要的数据翻转。每一方向都必须重跑同版功能、150 MHz 时序、面积和能耗检查。共享 SRAM 直连、扩大接口位宽或省略输出值不属于可采用的优化路径。
+输出本身固定需要 9522 个写命令。共享 SRAM 保持单一 32 位访问入口，装载、读取和输出写回共同占用该通路。计算请求与传输存在交叠，上述计数不能直接相加为总时延。本报告采用完整任务窗口统计吞吐，未将总线空泡、数据等待或输出反压分别归因为已实测瓶颈。
 
 \subsection{规则核对与当前完成情况}
 \begin{longtable}{p{26mm}p{82mm}p{37mm}}
@@ -478,10 +485,10 @@ SRAM 采用两侧对应的对称黑盒，黑盒匹配完成；没有 dont\_verif
 \bottomrule
 \end{longtable}
 
-\subsection{设计总结与后续工作}
+\subsection{设计总结}
 本设计完成了 E203 控制、总线 DMA、成对乘积阵列、私有缓存和完整输出写回的系统集成。统一的任务边界覆盖参数装载与最终写响应，固定输出格式支持逐元素物理读回。源码、综合网表和活动窗口采用版本标识及哈希关联，使功能验证与性能统计对应同一配置。
 
-后续工作包括正式 600 样本精度评测、外设未约束端点分析、等价未匹配点复核，以及功耗活动覆盖和模型超表检查。性能优化重点为总线请求连续性、装载与计算交叠、输出反压及私有缓存冗余位。各项修改均需在统一配置下重新完成整数功能、时序、面积和能耗测试。
+本次测试完成整数参考模型一致性检查、厂家 SRAM 模型回放及综合面积统计；功耗和能耗为综合阶段工程估计。正式样本精度、全约束时序及严格等价验收的完成范围见表\ref{tab:rules}。
 
 \section{工程文件与测试记录}
 \subsection{工程版本与文件组织}
@@ -509,7 +516,7 @@ SRAM 采用两侧对应的对称黑盒，黑盒匹配完成；没有 dont\_verif
 
 \begin{landscape}
 \begin{figure}[p]\centering
-\fcolorbox{gray!35}{white}{\includegraphics[trim={22bp 367bp 318.5bp 41bp},clip,width=.88\linewidth,height=.34\textheight,keepaspectratio]{assets/26_measurement_comparison.png}}
+\fcolorbox{gray!35}{white}{\includegraphics[trim={22bp 363.5bp 318.5bp 41bp},clip,width=.88\linewidth,height=.35\textheight,keepaspectratio]{assets/26_measurement_comparison.png}}
 \par\vspace{4mm}
 \fcolorbox{gray!35}{white}{\includegraphics[trim={22bp 167.5bp 381bp 190bp},clip,width=.88\linewidth,height=.50\textheight,keepaspectratio]{assets/26_measurement_comparison.png}}
 \caption{测试记录 A：周期、面积与时序汇总（上），12 个任务窗口的功耗及能量记录（下）。}
@@ -539,6 +546,6 @@ SRAM 采用两侧对应的对称黑盒，黑盒匹配完成；没有 dont\_verif
 \bibitem{upload} 全国大学生嵌入式芯片与系统设计竞赛. 芯片设计赛道作品上传要求（初赛）. 2026.
 \bibitem{hbird} E203 hbirdv2 开源处理器工程. 随本设计归档的 RTL 与 LICENSE，参见冻结工程 \path{src/vendor/e203_hbirdv2/}.
 \bibitem{source} 轻语项目. Q12 native12 earlycheck 设计源码与测试记录. 2026-11-13. 标签 \code{q12-submission-20261113-r1}，提交 \code{8731bf4}.
-\bibitem{eda} 轻语项目. 同版 DC、Formality、PrimeTime 原始报告及 VNC 记录. 2026-11-13，授权服务器工程留存；本报告列出源码与网表版本标识.
+\bibitem{eda} 轻语项目. 同版 DC、Formality、PrimeTime 原始报告及测试记录. 2026-11-13，授权服务器工程留存；本报告列出源码与网表版本标识.
 \end{thebibliography}
 \end{document}

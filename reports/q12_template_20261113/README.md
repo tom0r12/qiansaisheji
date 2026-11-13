@@ -4,6 +4,8 @@
 
 2026 年全国大学生嵌入式芯片与系统设计竞赛芯片设计赛道技术报告。设计版本为 `8731bf4f553e80a1ac5e68fb924b0436ddbdb77f`，标签为 `q12-submission-20261113-r1`。本目录包含 PDF、LaTeX 源文件、图表素材、测试数据和编译脚本。
 
+2026 年 11 月 13 日完成正文与排版定稿核对：22 页、14 幅图、10 个编号表格；冻结源码、证据文件与报告数据一致，全部页面已检查。封面两项必填信息见下方说明。
+
 ## 内容
 
 - 两页快速预览：系统架构、设计要点、性能指标和验证结果。
@@ -15,13 +17,13 @@
 
 在 `cover_config.json` 中填写 `team_id`（队伍编号）和 `team_name`（参赛队名）。这两个字段目前为空。
 
-已有 PDF 可直接阅读。修改封面时，在 Windows Python 环境安装 `pypdf`、`reportlab` 后执行：
+已有 PDF 可直接阅读。修改封面时，在 Windows Python 环境安装 `reportlab` 后执行：
 
 ```powershell
 python make_cover.py
 ```
 
-脚本默认使用 Windows 的楷体与黑体，不打包或分发字体。其他系统可以通过 `--kai-font`、`--hei-font` 指向有授权的中文 TrueType 字体。脚本从 `assets/cover_blank.pdf` 重新生成封面，不会叠加旧文字。编辑字段后再编译正文。
+脚本默认使用 Windows 的宋体与黑体，不打包或分发字体。其他系统可以通过 `--song-font`、`--hei-font` 指向有授权的中文 TrueType 字体。封面保留官方底稿的标题、字段和顺序，重新排齐字体、填写基线和间距；每次生成独立矢量封面，不叠加旧文字。编辑字段后再编译正文。目录使用 12 磅宋体、16 磅基线间距。
 
 ## 重新编译
 
@@ -48,4 +50,4 @@ pdftotext qingyu_technical_report.pdf build/report.txt
 
 `earlycheck_observation.json` 保存早期测试快照，其中 Formality 状态为运行中；后续结果保存在 `final_report_data.json` 和 `power_observation.json`。各文件保留对应测试阶段的状态。
 
-`report_provenance.json` 保存模板来源、源码、网表及截图的哈希；`quality_check.json` 保存 PDF 哈希、页数和排版检查结果。`assets/cover_blank.pdf` 为封面底稿，`assets/cover.pdf` 为填充后的封面。
+`report_provenance.json` 保存模板来源、源码、网表及截图的哈希；`submission_check.json` 保存本次与冻结交付包的核对记录；`quality_check.json` 保存 PDF 哈希、页数和排版检查结果。`assets/cover_blank.pdf` 为官方封面底稿，`assets/cover.pdf` 为按相同内容重新排版后的封面。
