@@ -9,7 +9,7 @@
 ## 内容
 
 - 两页快速预览：系统架构、设计要点、性能指标和验证结果。
-- 中英文摘要、设计平台、完整任务流程、成对乘积推导、PE 阵列、私有 SRAM、定点格式、输出映射、总线与固件协议。
+- 中文摘要、设计平台、完整任务流程、成对乘积推导、PE 阵列、私有 SRAM、定点格式、输出映射、总线与固件协议。
 - 功能验证、12 个历史任务的完整周期、面积明细、时序边界、逐任务功耗/能耗、等价性及规则核对。
 - 五页测试报告节选及 TikZ/PGFPlots 矢量架构图与曲线。截图采用结果区域，图像裁剪范围由 LaTeX 的 `trim` 参数控制。
 
@@ -17,13 +17,13 @@
 
 在 `cover_config.json` 中填写 `team_id`（队伍编号）和 `team_name`（参赛队名）。这两个字段目前为空。
 
-已有 PDF 可直接阅读。修改封面时，在 Windows Python 环境安装 `reportlab` 后执行：
+已有 PDF 可直接阅读。修改封面时，在 Windows Python 环境安装 `reportlab`、`pypdf` 后执行：
 
 ```powershell
 python make_cover.py
 ```
 
-脚本默认使用 Windows 的宋体与黑体，不打包或分发字体。其他系统可以通过 `--song-font`、`--hei-font` 指向有授权的中文 TrueType 字体。封面保留官方底稿的标题、字段和顺序，重新排齐字体、填写基线和间距；每次生成独立矢量封面，不叠加旧文字。编辑字段后再编译正文。目录使用 12 磅宋体、16 磅基线间距。
+封面直接使用所提供官方 PDF 的第一页，保留原标志、标题、字体、填写线及位置，只叠加报告类型、作品名称和日期。填写文字默认采用 Windows 华文中宋及仿宋；不打包或分发字体，其他系统可通过 `--title-font`、`--field-font` 指向有授权的中文 TrueType 字体。每次从 `assets/cover_blank.pdf` 生成，避免重复叠字。编辑字段后再编译正文。目录使用 12 磅宋体、16 磅基线间距。
 
 ## 重新编译
 
@@ -50,4 +50,4 @@ pdftotext qingyu_technical_report.pdf build/report.txt
 
 `earlycheck_observation.json` 保存早期测试快照，其中 Formality 状态为运行中；后续结果保存在 `final_report_data.json` 和 `power_observation.json`。各文件保留对应测试阶段的状态。
 
-`report_provenance.json` 保存模板来源、源码、网表及截图的哈希；`submission_check.json` 保存本次与冻结交付包的核对记录；`quality_check.json` 保存 PDF 哈希、页数和排版检查结果。`assets/cover_blank.pdf` 为官方封面底稿，`assets/cover.pdf` 为按相同内容重新排版后的封面。
+`report_provenance.json` 保存模板来源、源码、网表及截图的哈希；`submission_check.json` 保存本次与冻结交付包的核对记录；`quality_check.json` 保存 PDF 哈希、页数和排版检查结果。`assets/cover_blank.pdf` 为官方封面底稿，`assets/cover.pdf` 为填写后的封面。

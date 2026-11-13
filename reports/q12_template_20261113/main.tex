@@ -129,7 +129,6 @@ DC setup / hold & $0 / +0.00070456$ ns & 已报告路径非负；未约束端点
 \clearpage
 
 \section{摘要}
-\subsection{中文摘要}
 针对端侧语音识别模型中的前馈线性计算，本设计在指定 E203 SoC 平台上实现一套定点矩阵加速器。计算范围为 $99\times64$ 与 $64\times256$ 矩阵相乘并加偏置，结果为完整 $99\times256$ 矩阵。系统采用 X12/W10/Y12 数值配置，以最近偶数舍入、算术移位和饱和处理完成数值转换。权重和偏置的格式转换采用固定规则，不进行重训、微调或按评测样本拟合参数。
 
 计算阵列由 $4\times16$ 个成对乘积处理单元组成，利用行、列修正项复用减少矩阵计算中的乘法次数。输入、权重与元数据保存在指定 SRAM 宏构成的私有缓存中；装载控制与计算控制分离，权重通过四个槽位循环复用。DMA 保持原有 32 位 System Bus 访问通路，输入参数装载、CPU 调度、总线等待和完整结果写回均纳入任务窗口。输出使用每元素 12 位的固定数值格式，不再对结果进行独立压缩。
@@ -138,12 +137,6 @@ DC setup / hold & $0 / +0.00070456$ ns & 已报告路径非负；未约束端点
 
 \noindent\textbf{关键词：}E203；前馈线性层；定点量化；成对乘积；System Bus；SRAM；综合评估
 
-\subsection{English Abstract}
-This work implements a fixed-point feed-forward linear accelerator on the prescribed E203 SoC platform. It computes a $99\times64$ input matrix multiplied by a $64\times256$ weight matrix, adds bias, and stores the complete $99\times256$ output matrix. The X12/W10/Y12 representation uses round-to-nearest-even and saturation. Weight and bias conversion follows fixed rules without retraining, fine-tuning, or fitting to evaluation samples.
-
-The datapath contains a $4\times16$ pair-product array with shared row and column correction terms. Dedicated SRAM macros hold input, weight, and metadata buffers. Separate loading and computation controllers reuse four weight slots. All shared-SRAM traffic follows the original 32-bit System Bus path, and timing includes loading, CPU scheduling, bus stalls, and final writeback. Each output occupies a fixed 12-bit field; no separate output compression is applied.
-
-The frozen design passed twelve historical full-task tests with vendor SRAM models. Its mean latency is 24687.33 cycles, corresponding to 6075.99 tasks/s at 150 MHz. At TT, 1.10 V and 25 $^\circ$C, the incremental mapped area is 0.388582 mm$^2$, while total SoC area is 2.730734 mm$^2$. Twelve activity windows on the same netlist yield an engineering estimate of 58.36 mW and 9.60 $\mu$J per task. Reported setup and hold slacks are 0 and +0.00070456 ns, respectively. Unconstrained endpoints, power-model warnings, strict equivalence review, and the official 600-sample accuracy evaluation remain open; the measurements are not presented as complete signoff.
 \clearpage
 
 \section{设计平台与工具}

@@ -1,7 +1,7 @@
 {
   "pdf": "qingyu_technical_report.pdf",
-  "pdf_sha256": "92b032f279bd49cf747c3359425aa3b16d0433dc177688b3e14b9aa378087e6c",
-  "pdf_bytes": 2125295,
+  "pdf_sha256": "27763e25977dd34edc2bf7ad34df7ecfcf790320e07c95b83b9bd47d4af7a385",
+  "pdf_bytes": 2221031,
   "page_count_including_cover": 22,
   "quick_preview_pdf_pages": [
     2,
@@ -10,13 +10,16 @@
   "figure_count": 14,
   "numbered_table_count": 10,
   "raw_screenshot_count": 5,
-  "chinese_character_count_in_poppler_text_including_headers": 8631,
+  "chinese_character_count_in_poppler_text_including_headers": 8623,
   "visual_review": "PASS",
   "visually_reviewed_pages": 22,
   "document_status": "FINAL_TEXT_AND_LAYOUT; MANDATORY_COVER_FIELDS_PENDING",
   "source_consistency_record": "submission_check.json",
   "toc_font_pt": 12,
   "toc_baseline_pt": 16,
+  "abstract_language": "zh-CN",
+  "cover_mode": "Original supplied PDF page with field overlays",
+  "cover_original_text_positions_fonts_preserved": true,
   "text_outside_page_count": 0,
   "text_extraction_checked_with": "Poppler pdftotext 24.02.0",
   "latex_checks": {
