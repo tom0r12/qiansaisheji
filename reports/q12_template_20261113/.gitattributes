@@ -1,0 +1,6 @@
+*.pdf binary
+assets/*.pdf binary
+assets/*.png binary
+*.tex text eol=lf
+*.py text eol=lf
+*.sh text eol=lf

@@ -1,0 +1,23 @@
+{
+  "template_sources": {
+    "20261110f9d9dm4l4k1uj1hf08989hf82.pdf": "356f2a4d87e30bbca82510dbe57cd9a42368899be71e0dc42f6cbcc5321503cb",
+    "中文技术报告_template.zip": "19730fe9162d0e18bf09f5bfb12fec4e9f059eb7bcaaabc97234f002395d78cb",
+    "芯绘丹青_技术报告_匿名内容修订版_20261104.pdf": "3dd18a6321c4a921405510a2c5937a27bc4ea3c24150c9d439bb986d73e6c2cf",
+    "CICC1000056+全国总决赛+技术文档(2).pdf": "5ea8539e8a9213182a119c5f2cafad02392d6c9fbf08e33a3e868360c12c2ebf"
+  },
+  "frozen_commit": "8731bf4f553e80a1ac5e68fb924b0436ddbdb77f",
+  "frozen_engine_sha256": "9447724c51ee9e4e80e72818cf1a448002b485fb00956be98d3f1a9f5848d432",
+  "frozen_netlist_sha256": "3eb43b4d79bbeb0389f4bb272e93629e7241dc1a6186c4e6c37a8b7bd448b712",
+  "missing_cover_fields": [
+    "team_id",
+    "team_name"
+  ],
+  "evidence_figures": {
+    "22_timing_audit_tail.png": "a739b7dbdadcf99b8f7a3066405cf33a12941b06d089b69177372dd8a9903943",
+    "24_timing_check_header.png": "383b0fa458e9fe3f556178535adfdfb23500bc6d5fdc45a8ab70a0d20b8ede9e",
+    "25_power_activity_sources.png": "41dbe1d4c51e2cbd978a24e628ac1c6776f6e98bb5ba2dfafa923560ad39bf32",
+    "26_measurement_comparison.png": "2e752705a7ea8187531e502a0d00cd834bf4a6794774d3285c9492e44078d3b5",
+    "27_formal_unmatched_points.png": "6ff2faa8978ff631aec0cc62652ca5983c5271e62d888547e39e72c73c07d34c"
+  },
+  "scope": "Template-based technical report; no server or RTL mutations."
+}

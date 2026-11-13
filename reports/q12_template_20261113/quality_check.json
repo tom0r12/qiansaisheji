@@ -1,0 +1,27 @@
+{
+  "pdf": "qingyu_technical_report.pdf",
+  "pdf_sha256": "1bd8ae5c084718dd55b163339e53cd1e26498740a52e43c360cebaa2369fa542",
+  "pdf_bytes": 2227282,
+  "page_count_including_cover": 22,
+  "quick_preview_pdf_pages": [
+    2,
+    3
+  ],
+  "figure_count": 14,
+  "numbered_table_count": 10,
+  "raw_screenshot_count": 5,
+  "chinese_character_count_in_poppler_text_including_headers": 9113,
+  "visual_review": "All pages inspected; no observed clipping, overlap, missing glyphs, or unintended nearly-empty continuation pages. Cover fields below intentionally blank.",
+  "text_extraction_checked_with": "Poppler pdftotext 24.02.0; Chinese content and headline values verified.",
+  "latex_checks": {
+    "overfull_boxes": 0,
+    "missing_character_warnings": 0,
+    "undefined_references_or_citations": 0
+  },
+  "cover_fields_still_empty": [
+    "team_id",
+    "team_name"
+  ],
+  "engineering_acceptance": "Not changed by report preparation; see report limitations.",
+  "server_operations_during_report_preparation": false
+}
