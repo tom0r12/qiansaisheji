@@ -1,4 +1,4 @@
-"""Fill a fresh copy of the supplied official cover; preserve the blank original."""
+"""Generate the report cover from cover_config.json."""
 from pathlib import Path
 import argparse
 import io

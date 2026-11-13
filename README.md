@@ -4,7 +4,7 @@
 
 [测量报告](final/q12_submission_20261113/report/q12_measurement_report.pdf)包含对比、方法和原始截图。当前版本已冻结，后续修复在 `q12-followup-20261113` 分支进行。旧的 [final/q12_20261113](final/q12_20261113/README.md) 是历史压缩输出基线，不能直接替代本次提交版本。
 
-完整的[模板版技术报告](reports/q12_template_20261113/qingyu_technical_report.pdf)采用指定官方封面，前置两页快速预览，包含设计原理、数据通路、测量分析和原始截图；[可编辑源码与编译说明](reports/q12_template_20261113/README.md)独立保存在报告目录。封面的队伍编号和参赛队名尚待填写；报告如实保留未闭合的验收项。
+完整的[技术报告](reports/q12_template_20261113/qingyu_technical_report.pdf)包含两页快速预览、设计原理、数据通路、测试分析和原始截图。[报告源码与编译说明](reports/q12_template_20261113/README.md)位于报告目录；队伍编号和参赛队名在封面配置中填写。
 
 公开仓库不包含 PDK、厂家 SRAM 模型、私有任务向量、语音数据集、工具链和大体积波形。目录内保存了缺项说明及 SHA-256，复现需在授权环境恢复依赖。
 
