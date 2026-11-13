@@ -1,0 +1,29 @@
+{
+  "candidate": "q12_dense16_v1",
+  "baseline": "305648e85802afe19adf1570d79c9a7720feb7eb",
+  "output_format": "signed13 sign-extended to signed16; tile-major 16 tiles of 99x16; no compression",
+  "matrix_elements": 25344,
+  "matrix_bytes": 50688,
+  "allocation_words": 12689,
+  "writes_per_task": 12690,
+  "magic_hex": "0x31443151",
+  "baseline_engine_sha256": "b757d8dfa246bb19d8705386b85d47d421411d6f3a069ed9a77cfbe07d212ef7",
+  "candidate_sources": {
+    "rtl\\q12_dense16_writer.sv": "2852f012059142e252867a84709daf5875488d325b0c6540bdd9a03db1af24ca",
+    "rtl\\q12_stream_engine_overlap.sv": "30236a9795ccc8a40a17ab5f1064cab16e04eda77972bcd98fade5345b384233",
+    "firmware\\linker.ld": "86cdf591907b570b6f954ae3d84829f07e522190751fe0348e1971639ab1fb32",
+    "firmware\\soc_main.c": "cd594b4a2ee9d7d8de3cf3e8392f12c8724428ae61f8b9e2dcbd8565e2712cf1",
+    "firmware\\startup.S": "04c3ccd5e5cea15b72c6dfa30aedeaaf19586ace81cb150a030e7ebd74fd76ef",
+    "tb\\tb_dense_behavioral.sv": "7c5ddc58b5f33089796507503031dc338f9d6117cd0fbc0213c35bd02788ac68",
+    "tb\\tb_dense_vendor.sv": "28eccd0fd0ca8041e6e45db1b2797bd6226e7c8044b63e66223f486c2c25d51f"
+  },
+  "limits": {
+    "minimum_tasks_per_s": 6000,
+    "preferred_tasks_per_s": 6022.403340426386,
+    "max_incremental_area_mm2": 0.448646862835
+  },
+  "measured_throughput": null,
+  "measured_area_mm2": null,
+  "energy_uj": null,
+  "timing_pass": null
+}

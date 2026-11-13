@@ -1,0 +1,308 @@
+{
+  "candidate": "q12_x12_w10_y12_native_write_priority",
+  "status": "EXPERIMENTAL_NOT_PROMOTED",
+  "source_sha256": {
+    "q12_task4.sv": "15304c13c41e2c76f173d551130248676b4dfb075f9c523c0765f12763e6cd71",
+    "q12_rice_decoder.sv": "65a2c8e2b9ee54c6be330d55d7e857ae0544bdbb1d09fe6c44cced5b5b52d8bf",
+    "q12_stream_engine_overlap.sv": "90b1661e15ab3ad1baf6ff8cd9945e917920254e51955af693cd13d4fe1f5814",
+    "q12_icb_stream_prefix.sv": "0dd56f2e7aec082157eb5708e4350f0f33c611ea96c892e7c4ba913c4a11edef",
+    "soc_main.c": "d50df8b2c261f6a2d5fee411223d8e7664b2f086ad2ffa7e722b9458322081da",
+    "q12_dense12_writer.sv": "3d770374be8fc8370956edbd4c4d2952c0ed5599acc7684c1f620ee2eb3528a4",
+    "tb_native_vendor.sv": "bb41ff2ca4be705d390f393c70691b54ef37e6afc7c8eea1d0b8ffb76a856b41",
+    "startup.S": "04c3ccd5e5cea15b72c6dfa30aedeaaf19586ace81cb150a030e7ebd74fd76ef",
+    "linker.ld": "86cdf591907b570b6f954ae3d84829f07e522190751fe0348e1971639ab1fb32"
+  },
+  "generator_sha256": "fd9e24f77dde0d080849c73ac592016e87348fefb9d08a1ef717818eb3a499db",
+  "server_package_identity": {
+    "baseline_manifest_sha256": "720567d9f166861ec87e54b1ecdf1dbc982077790816e7a62d78546d4fac9972",
+    "firmware_sha256": "b5f024329c03b647185b89d21005430c5f14b2d3e991c73f5f0e18c1576834d8",
+    "files": {
+      "q12_task4.sv": "15304c13c41e2c76f173d551130248676b4dfb075f9c523c0765f12763e6cd71",
+      "q12_rice_decoder.sv": "65a2c8e2b9ee54c6be330d55d7e857ae0544bdbb1d09fe6c44cced5b5b52d8bf",
+      "q12_icb_stream_prefix.sv": "0dd56f2e7aec082157eb5708e4350f0f33c611ea96c892e7c4ba913c4a11edef",
+      "q12_stream_engine_overlap.sv": "90b1661e15ab3ad1baf6ff8cd9945e917920254e51955af693cd13d4fe1f5814",
+      "q12_dense12_writer.sv": "3d770374be8fc8370956edbd4c4d2952c0ed5599acc7684c1f620ee2eb3528a4",
+      "firmware64.hex": "b5f024329c03b647185b89d21005430c5f14b2d3e991c73f5f0e18c1576834d8",
+      "run_dense.py": "491bc0cb2d24ca7fb230c0bd5d70b545012d2b3a7272a8b71d8016cd32c89b8b",
+      "decode_native.py": "3b176c54fd6566bb822ca758122a7149acbf576efa17f30064326808ef39fb5d",
+      "tb_native_vendor.sv": "bb41ff2ca4be705d390f393c70691b54ef37e6afc7c8eea1d0b8ffb76a856b41",
+      "packet_reference.py": "21ba2541c0c2da2bd30078a163789e25510540a9c020604cbd94c6a74b6d7a19"
+    },
+    "overrides": {
+      "src/q12/core_datareset/q12_task4.sv": "q12_task4.sv",
+      "src/q12/decoder2/q12_rice_decoder.sv": "q12_rice_decoder.sv",
+      "src/q12/integration/q12_icb_stream_prefix.sv": "q12_icb_stream_prefix.sv",
+      "src/q12/integration/q12_stream_engine_overlap.sv": "q12_stream_engine_overlap.sv",
+      "src/q12/encoder_bounded/q13_rice_encoder.sv": "q12_dense12_writer.sv",
+      "firmware64.hex": "firmware64.hex",
+      "decode_output.py": "decode_native.py",
+      "src/q12_vendor/tb_q12soc_vendor.sv": "tb_native_vendor.sv"
+    },
+    "local_synthetic_result": {
+      "passed": true,
+      "mode": "dense12_w10_wp",
+      "scope": "synthetic full SoC; behavioral SRAM; no official throughput or PPA",
+      "firmware_sha256": "b5f024329c03b647185b89d21005430c5f14b2d3e991c73f5f0e18c1576834d8",
+      "tasks": [
+        {
+          "case": 0,
+          "cycles": 23204,
+          "input_words": 5883,
+          "output_writes": 9522,
+          "values": 25344,
+          "passed": true
+        },
+        {
+          "case": 1,
+          "cycles": 24644,
+          "input_words": 6761,
+          "output_writes": 9522,
+          "values": 25344,
+          "passed": true
+        },
+        {
+          "case": 2,
+          "cycles": 26262,
+          "input_words": 7603,
+          "output_writes": 9522,
+          "values": 25344,
+          "passed": true
+        },
+        {
+          "case": 3,
+          "cycles": 28551,
+          "input_words": 8617,
+          "output_writes": 9522,
+          "values": 25344,
+          "passed": true
+        },
+        {
+          "case": 4,
+          "cycles": 23010,
+          "input_words": 5835,
+          "output_writes": 9522,
+          "values": 25344,
+          "passed": true
+        },
+        {
+          "case": 5,
+          "cycles": 24665,
+          "input_words": 6767,
+          "output_writes": 9522,
+          "values": 25344,
+          "passed": true
+        },
+        {
+          "case": 6,
+          "cycles": 26239,
+          "input_words": 7592,
+          "output_writes": 9522,
+          "values": 25344,
+          "passed": true
+        },
+        {
+          "case": 7,
+          "cycles": 28546,
+          "input_words": 8612,
+          "output_writes": 9522,
+          "values": 25344,
+          "passed": true
+        },
+        {
+          "case": 8,
+          "cycles": 23209,
+          "input_words": 5883,
+          "output_writes": 9522,
+          "values": 25344,
+          "passed": true
+        },
+        {
+          "case": 9,
+          "cycles": 24668,
+          "input_words": 6768,
+          "output_writes": 9522,
+          "values": 25344,
+          "passed": true
+        },
+        {
+          "case": 10,
+          "cycles": 26251,
+          "input_words": 7597,
+          "output_writes": 9522,
+          "values": 25344,
+          "passed": true
+        },
+        {
+          "case": 11,
+          "cycles": 28524,
+          "input_words": 8598,
+          "output_writes": 9522,
+          "values": 25344,
+          "passed": true
+        }
+      ],
+      "mean_cycles": 25647.75
+    },
+    "maximum_area_mm2": 0.448646862835,
+    "minimum_throughput": 6000
+  },
+  "output": {
+    "format": "signed12 fixed-index full matrix",
+    "compression": false,
+    "elements": 25344,
+    "tile_count": 16,
+    "rows_per_tile": 99,
+    "columns_per_tile": 16,
+    "tile_words": 594,
+    "allocation_words": 9521,
+    "task_writes": 9522,
+    "magic": "0x32443151"
+  },
+  "numeric_transform": {
+    "x": "unchanged frozen signed12",
+    "weights": "RNE(original signed12 / 4), clamp [-512,511]",
+    "bias": "RNE(original signed22 / 4)",
+    "shift": "original shift - 1",
+    "output": "signed12 RNE, clamp [-2048,2047]",
+    "physical_output_scale": "twice original signed13 output scale",
+    "training_or_finetuning": false
+  },
+  "requirements": {
+    "min_throughput_tasks_s": 6000,
+    "preferred_min_throughput": 6022.403340426386,
+    "max_incremental_area_mm2": 0.448646862835,
+    "system_bus_bits": 32,
+    "full_loading_window": true
+  },
+  "evidence": {
+    "synthetic_soc12": {
+      "passed": true,
+      "mode": "dense12_w10_wp",
+      "scope": "synthetic full SoC; behavioral SRAM; no official throughput or PPA",
+      "firmware_sha256": "b5f024329c03b647185b89d21005430c5f14b2d3e991c73f5f0e18c1576834d8",
+      "tasks": [
+        {
+          "case": 0,
+          "cycles": 23204,
+          "input_words": 5883,
+          "output_writes": 9522,
+          "values": 25344,
+          "passed": true
+        },
+        {
+          "case": 1,
+          "cycles": 24644,
+          "input_words": 6761,
+          "output_writes": 9522,
+          "values": 25344,
+          "passed": true
+        },
+        {
+          "case": 2,
+          "cycles": 26262,
+          "input_words": 7603,
+          "output_writes": 9522,
+          "values": 25344,
+          "passed": true
+        },
+        {
+          "case": 3,
+          "cycles": 28551,
+          "input_words": 8617,
+          "output_writes": 9522,
+          "values": 25344,
+          "passed": true
+        },
+        {
+          "case": 4,
+          "cycles": 23010,
+          "input_words": 5835,
+          "output_writes": 9522,
+          "values": 25344,
+          "passed": true
+        },
+        {
+          "case": 5,
+          "cycles": 24665,
+          "input_words": 6767,
+          "output_writes": 9522,
+          "values": 25344,
+          "passed": true
+        },
+        {
+          "case": 6,
+          "cycles": 26239,
+          "input_words": 7592,
+          "output_writes": 9522,
+          "values": 25344,
+          "passed": true
+        },
+        {
+          "case": 7,
+          "cycles": 28546,
+          "input_words": 8612,
+          "output_writes": 9522,
+          "values": 25344,
+          "passed": true
+        },
+        {
+          "case": 8,
+          "cycles": 23209,
+          "input_words": 5883,
+          "output_writes": 9522,
+          "values": 25344,
+          "passed": true
+        },
+        {
+          "case": 9,
+          "cycles": 24668,
+          "input_words": 6768,
+          "output_writes": 9522,
+          "values": 25344,
+          "passed": true
+        },
+        {
+          "case": 10,
+          "cycles": 26251,
+          "input_words": 7597,
+          "output_writes": 9522,
+          "values": 25344,
+          "passed": true
+        },
+        {
+          "case": 11,
+          "cycles": 28524,
+          "input_words": 8598,
+          "output_writes": 9522,
+          "values": 25344,
+          "passed": true
+        }
+      ],
+      "mean_cycles": 25647.75
+    },
+    "writer12_result.json": {
+      "passed": true,
+      "source_sha256": "3d770374be8fc8370956edbd4c4d2952c0ed5599acc7684c1f620ee2eb3528a4",
+      "summary": "PASS dense writer frames=12 checked_bus_bits=228096 reset+invalid_last=PASS full_rate=1_word_per_cycle\n/mnt/d/\u82af\u7247\u8bbe\u8ba1\u8d5b\u9053/q12-area-optimization/experiments/q12_dense_20261113/checks/writer12_tb.sv:59: $finish called at 95660000 (1ps)"
+    },
+    "requant12_result.json": {
+      "passed": true,
+      "accumulator_bits": 32,
+      "shift_bits": 8,
+      "all_bit_patterns": true,
+      "signed12_sign_extension": true,
+      "candidate_source_sha256": "15304c13c41e2c76f173d551130248676b4dfb075f9c523c0765f12763e6cd71"
+    },
+    "decoder_k7_result.json": {
+      "passed": true,
+      "cases": 416,
+      "candidate_sha256": "65a2c8e2b9ee54c6be330d55d7e857ae0544bdbb1d09fe6c44cced5b5b52d8bf",
+      "summary": "PASS decoder lockstep cases=416 normal=208 mutated=208 cycles=20587\ntb.sv:47: $finish called at 226670000 (1ps)"
+    }
+  },
+  "qualified_throughput": null,
+  "area_mm2": null,
+  "energy_uj": null,
+  "timing_pass": false,
+  "official600_accuracy_pass": false
+}

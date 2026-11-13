@@ -1,0 +1,53 @@
+{
+  "provenance": "Read from visible RDserver04 VNC terminal; transcription, not downloaded raw reports",
+  "date": "2026-11-13",
+  "candidate": "q12_x12_w10_y12_native_write_priority",
+  "source_binding": "candidates/native12/candidate.json",
+  "vendor_functional": {
+    "phase": "complete",
+    "passed_tasks": 12,
+    "values_checked": 304128,
+    "task_cycles": [24560, 24708, 24725, 24689, 24686, 24533, 24710, 24646, 24802, 24652, 24778, 24759],
+    "mean_cycles": 24687.333333333332,
+    "throughput_at_assumed_150mhz": 6075.990386432989,
+    "timing_qualified": false,
+    "full_matrix_output": true,
+    "output_writes_per_task": 9522,
+    "scope": "12 historical private tasks, independent external loader through original System Bus, official manufacturer SRAM models, full load-to-final-ACK window",
+    "official600_accuracy": null
+  },
+  "full_assessment": {
+    "launcher_pid": 271791,
+    "launcher_directory": "/tmp/q12_native_full_launch_p5vg672f",
+    "run_directory": "/tmp/q12_native12_full_9h2x8z44",
+    "observed_phase": "synthesis",
+    "area_mm2": null,
+    "setup_slack_ns": null,
+    "hold_slack_ns": null,
+    "energy_uj": null,
+    "formal_pass": null
+  },
+  "compact_weights_candidate": {
+    "provenance": "VNC status transcription at approximately 14:25 local time",
+    "source_binding": "candidates/native12_compact/candidate.json",
+    "converter_sha256": "a63d7606a2761e54f397c1ef54d7041a9d4704a03ae428de54afe65f0e1b26c3",
+    "vendor_phase": "activity_complete",
+    "vendor_tasks": 12,
+    "cycles_identical_to_native12": true,
+    "mean_cycles": 24687.333333333332,
+    "conditional_throughput_150mhz": 6075.990386432989,
+    "expected_and_checked_macro_counts": {"RAMSP128X16": 26, "RAMSP1024X16": 6, "RAMSP4096X16": 80},
+    "full_assessment_launcher_pid": 290638,
+    "full_assessment_phase": "waiting_for_native12_synthesis",
+    "area_mm2": null,
+    "energy_uj": null,
+    "timing_qualified": false,
+    "official600_accuracy": null
+  },
+  "baseline_area_correction": {
+    "incremental_area_um2": 448646.862835,
+    "incremental_area_mm2": 0.448646862835,
+    "previous_incorrect_transcription_mm2": 0.468646862835,
+    "scope": "Previous compressed-output version; not this native-output candidate"
+  }
+}
