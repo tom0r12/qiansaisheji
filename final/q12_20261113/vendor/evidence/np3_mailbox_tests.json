@@ -1,0 +1,62 @@
+{
+  "passed": true,
+  "scope": "Three independent masters plus synthesizable request mailbox; no full SoC performance or official interface approval",
+  "sources_sha256": {
+    "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_candidate\\loader_master\\q12_loader_bus_merge.sv": "6372646d05056b64eaef8a8aca5f659a13123ee1f099f646e440b1fc9f4c59a7",
+    "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_candidate\\loader_master\\q12_loader_request.sv": "0bef32d72b0984d748bccb3c7fbe1fb68acdb73750124bf0fd744ad2b42cefe5",
+    "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_candidate\\loader_master\\tb_loader_request.sv": "d5c0bd9b7fccd7fa5540c698c363674a7e92ceec6065c1aded4e2d4c3477b244",
+    "E:\\Desktop\\qiansaisheji\\output\\github-qiansaisheji\\qingyu\\experiments\\h1500v\\opt33_readcache\\rtl\\qingyu_icb_merge.sv": "22de459b44f3308f9d66c904be48ffeedeaa124c8b531215f22b79b6768e66a8"
+  },
+  "original_queue_tb_sha256": "8778fb12001b86fc52467acd233c150da224139e99e5bad250c7f329ec6827d2",
+  "cases": [
+    {
+      "name": "np3_compile",
+      "returncode": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "last_lines": []
+    },
+    {
+      "name": "np3_17",
+      "returncode": 0,
+      "log_sha256": "8ca02fc4f4d53ce3fefe59079856e76b90d13a19bc1f7bba352a5a02066ab132",
+      "last_lines": [
+        "PASS queue NP=3 DEPTH=4 MASK=0 seed=17 responses=1506 errors=752 command_stalls=485 response_stalls=538 full_cycles=1474 replacements=674 resets=2 max_depth=4",
+        "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_candidate\\loader_master\\unit_runs\\20261112T151318900621Z\\tb_np3.sv:89: $finish called at 26070000 (1ps)"
+      ]
+    },
+    {
+      "name": "np3_271",
+      "returncode": 0,
+      "log_sha256": "9578409207737add5a0c6763383bdb9ae4b7a8347736b16371038e89f9787ee0",
+      "last_lines": [
+        "PASS queue NP=3 DEPTH=4 MASK=0 seed=271 responses=1502 errors=750 command_stalls=470 response_stalls=507 full_cycles=1406 replacements=656 resets=2 max_depth=4",
+        "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_candidate\\loader_master\\unit_runs\\20261112T151318900621Z\\tb_np3.sv:89: $finish called at 25470000 (1ps)"
+      ]
+    },
+    {
+      "name": "np3_20261112",
+      "returncode": 0,
+      "log_sha256": "0413e05b33b0b6ffb4644bca502f84c0f8a2b122908977a9731fbbf34780dcd9",
+      "last_lines": [
+        "PASS queue NP=3 DEPTH=4 MASK=0 seed=20261112 responses=1506 errors=753 command_stalls=488 response_stalls=487 full_cycles=1348 replacements=652 resets=2 max_depth=4",
+        "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_candidate\\loader_master\\unit_runs\\20261112T151318900621Z\\tb_np3.sv:89: $finish called at 25290000 (1ps)"
+      ]
+    },
+    {
+      "name": "request_compile",
+      "returncode": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "last_lines": []
+    },
+    {
+      "name": "request",
+      "returncode": 0,
+      "log_sha256": "c2c2d9bf40efccdd8a6376b586fde1e9b6d062a5a963d1bfc908c45a45ee418b",
+      "last_lines": [
+        "PASS loader request mailbox cases=17 commands=17 responses=17 delivered=2 reset_cancelled=1",
+        "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_candidate\\loader_master\\tb_loader_request.sv:62: $finish called at 1430000 (1ps)"
+      ]
+    }
+  ],
+  "run_directory": "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_candidate\\loader_master\\unit_runs\\20261112T151318900621Z"
+}

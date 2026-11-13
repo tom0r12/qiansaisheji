@@ -1,0 +1,17 @@
+{
+  "updated_local": "2026-11-13 09:33",
+  "frozen_result_sha256": "07bc11f0d6301a7570979e70aca022f54845c8bab6468eae58f10ba94aa3a80e",
+  "scope": "Final evaluation only; no design optimization",
+  "remote_work_root": "/tmp/q12_final_s4_36usr_20261113",
+  "vendor_launcher_pid": 245224,
+  "vendor_log": "/tmp/q12_final_s4_36usr_20261113/vendor.log",
+  "vendor_zip_sha256": "e0353a0765a9df551f66bdbaf76e562e9aabd0cb3423b24b1bab73b738329ae3",
+  "assessment_zip_uploaded": "q12_final_assessment_20261113T011845048986Z.zip",
+  "assessment_zip_sha256": "e3abe55c2f74d2a0931201dd0c996f0cff51fcdda132e3ded238934d7bd91dc8",
+  "assessment_started": true,
+  "storage_note": "Desktop mkdir failed ENOSPC; df /storage2 100%; /tmp on local root had 498G available; no historical files deleted",
+  "assessment_launcher_pid": 250896,
+  "assessment_log": "/tmp/q12_final_s4_36usr_20261113/assessment.log",
+  "evidence_note": "Updated from prior observed launcher output and vendor 12-layer PASS. Current process liveness and final SAIF/synthesis completion not rechecked by this metadata update.",
+  "vendor_functional_12_layers_observed": true
+}

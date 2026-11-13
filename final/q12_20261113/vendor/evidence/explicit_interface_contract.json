@@ -1,0 +1,50 @@
+{
+  "status": "Explicit hardware loading interface implemented; real CPU SoC regression pending",
+  "boundary": "New explicit external ICB input, not claimed to be an organizer-approved existing top-level port",
+  "ports": {
+    "port0": "unchanged real CPU memory master",
+    "port1": "Q12 engine DMA",
+    "port2": "independent external parameter/input loader"
+  },
+  "ownership": "Round-robin qingyu_icb_merge NP3 OUTSTANDING4 MASK000, in-order bounded owner FIFO; no CPU replacement or stolen response",
+  "request": "CPU writes real MMIO mailbox0xf0020000:+4epoch,+8chunk1..9; request valid/ready/epoch/chunk exposed at top; successful MMIO enqueue is not data completion",
+  "completion": "BFM only writes READY_SEQ after every source prefix and preceding control word receives its real shared/SystemBus response; CPU reads actual shared READY and then sends accelerator commit",
+  "BFM_role": "File read and once-only packet parsing outside timing; external request handshake plus real independent ICB commands/responses only. No private CPU signal observation or hardware-source substitution.",
+  "timing": {
+    "start": "Earliest task mailbox or shared control offer, loader request offer, or actual loader write offer",
+    "end": "Final actual output marker response ACK",
+    "includes": "new MMIO request latency, loader/shared control writes, CPU polls, arbitration, stalls and output writes",
+    "excludes": "firmware/poison initialization and boot before the first task control offer; post-task output inspection"
+  },
+  "area_power_accounting": [
+    "3rd source command mux and enlarged owner queue",
+    "new real MMIO mailbox and FIO response route",
+    "all new clocked/request signals; no baseline area/power reuse"
+  ],
+  "official_scope": "Guide requires platform interfaces and real transport but does not mandate serial package pins. Exposing a new ICB master does not itself prove permitted existing-interface status. Original ext2dtcm+CPU-copy remains a separate sensitivity option.",
+  "forbidden_shortcuts": [
+    "no SRAM hierarchy runtime writes",
+    "no force during task",
+    "no CPU master substitution",
+    "no virtual completion ACK",
+    "no unmodeled source bus master excluded from PPA"
+  ],
+  "unit_results": {
+    "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_candidate\\loader_master\\unit_result.json": "195d48855047d02fe93aaead8b19ce6d0ce47e8776fd00521bb9ce2ab992b1f7",
+    "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_candidate\\loader_master\\soc\\loader_result.json": "66689160232a682385e9948d60061eac7e6b2bc24fc00adc637207e5f34d3fb3",
+    "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_candidate\\loader_master\\soc\\mmio_result.json": "e3a4bdc7b712989d2fda41e725ed94b69383ca9bbe010a54fc8026a6a6543c98"
+  },
+  "sources_sha256": {
+    "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_candidate\\loader_master\\hardware\\qingyu_e203_soc_top.v": "2ed282b3431806175101d1f944537ed5cf5b53d494dfa4277b9846a0974ab973",
+    "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_candidate\\loader_master\\hardware\\qingyu_e203_subsys_main.v": "256cb4a0e351621fab59de63a4d61b96302035d988e88763f10e8999938104a5",
+    "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_candidate\\loader_master\\hardware\\qingyu_e203_subsys_top.v": "eae092ac584b63a951090b70720d4cd73ac7d3cd9a704af8305fc3a846ba3b8e",
+    "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_candidate\\loader_master\\soc\\q12_loader_master_bfm.sv": "4d838a3334584ca21ec897f13da988ff4a878e0ec8f16bef174d7e11f641762b",
+    "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_candidate\\loader_master\\soc\\qingyu_q12_loader_fio.sv": "2c85938a4b7edd7b73b5064129ca9f7cb9e1ad9f937f12e6f48caadc2cf4c14d",
+    "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_candidate\\loader_master\\soc\\qingyu_q12_stream_fio.sv": "ec519dee77b5401130b7051d5fda9782f07a3e3fba43162c00181620de990d2a",
+    "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_candidate\\loader_master\\soc\\tb_q12_loader_fio.sv": "fe2ac82b7acc7da765855b4ae2759326a132d45cd0a448763cba935ed5fd612f",
+    "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_candidate\\loader_master\\soc\\tb_q12soc.sv": "586e13f24c05f2ed59e8a2b4dabd766104983e1cb33f132f5e78d4e2e2402d32",
+    "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_candidate\\loader_master\\q12_loader_bus_merge.sv": "6372646d05056b64eaef8a8aca5f659a13123ee1f099f646e440b1fc9f4c59a7",
+    "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_candidate\\loader_master\\q12_loader_request.sv": "0bef32d72b0984d748bccb3c7fbe1fb68acdb73750124bf0fd744ad2b42cefe5",
+    "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_candidate\\loader_master\\soc\\soc_main.c": "e2a4e03902bd9280a4d50b5147a281ba0b33b5d450f6b41c584c0b3eb5a8e932"
+  }
+}

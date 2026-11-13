@@ -1,0 +1,241 @@
+--- frozen/tb_q12soc.sv
++++ vendor/tb_q12soc_vendor.sv
+@@ -33,7 +33,9 @@
+  );
+ `define MAIN dut.u_e203_subsys_top.u_e203_subsys_main
+ `define CPU `MAIN.u_e203_cpu_top
+-`define ITCM `CPU.u_e203_srams.u_e203_itcm_ram.u_e203_itcm_gnrl_ram.u_sirv_sim_ram
++`define ITCM `CPU.u_e203_srams.u_e203_itcm_ram.u_e203_itcm_gnrl_ram.u_storage
++`define DTCM `CPU.u_e203_srams.u_e203_dtcm_ram.u_e203_dtcm_gnrl_ram.u_storage
++`define SHARED dut.u_shared
+ 
+ `define MERGE `MAIN.u_mem_merge
+ `define LOADER u_loader
+@@ -67,6 +69,99 @@
+  reg dma_held=0,cpu_held=0;reg [68:0] held_payload,cpu_held_payload;
+  reg [1023:0] firmware_path,input_path,expected_path,output_dump_path;
+  integer dump_requested=0,dump_fd;
++ reg runtime_enabled=0,assessment_done=0;
++ reg activity_enabled=0;
++ event fullwindow_dump_stop;
++ always @(fullwindow_dump_stop)begin #0.001;$dumpoff;end
++ string activity_path;
++ initial if($value$plusargs("ACTIVITY=%s",activity_path))begin
++  activity_enabled=1;$dumpfile(activity_path);$dumpvars(0,dut);$dumpoff;
++ end
++ reg fixture_attached=0,tcm_fixture_attached=0;
++ reg [31:0] shared_readback[0:131071];
++ reg [16:0] shared_address=0;
++ reg [12:0] itcm_address=0;
++ reg [13:0] dtcm_address=0;
++ reg [31:0] shared_din=0;
++ reg [63:0] itcm_din=0;
++ reg shared_cs=0,itcm_cs=0,dtcm_cs=0,shared_we=1,shared_reset=0,loader_clear=0;
++ wire loader_read=!shared_we;
++ wire [31:0] loader_address={13'h1400,shared_address,2'b00};
++ integer preload_commands=0,preload_responses=0;
++ integer macro128_count=0,macro1024_count=0,macro4096_count=0;
++ task attach_shared_loader;
++  begin
++   fixture_attached=1;
++   force `SHARED.cache_clear=loader_clear;
++   force `SHARED.clk=clk;
++   force `SHARED.rst_n=shared_reset;
++   force `SHARED.icb_cmd_valid=shared_cs;
++   force `SHARED.icb_cmd_read=loader_read;
++   force `SHARED.icb_cmd_addr=loader_address;
++   force `SHARED.icb_cmd_wdata=shared_din;
++   force `SHARED.icb_cmd_wmask=4'hf;
++   force `SHARED.icb_rsp_ready=1'b1;
++  end
++ endtask
++ task release_shared_loader;
++  begin
++   release `SHARED.icb_cmd_valid; release `SHARED.icb_cmd_read; release `SHARED.icb_cmd_addr;
++   release `SHARED.icb_cmd_wdata; release `SHARED.icb_cmd_wmask; release `SHARED.icb_rsp_ready;
++   release `SHARED.cache_clear;
++   release `SHARED.rst_n; release `SHARED.clk;
++   fixture_attached=0;
++  end
++ endtask
++ reg [31:0] readback_data;
++ task automatic read_shared_word(input [16:0] address,output [31:0] value);
++  integer guard;
++  reg response_on_accept;
++  begin
++   @(negedge clk);shared_cs=1;shared_address=address;
++   @(posedge clk);guard=0;
++   while(`SHARED.icb_cmd_ready!==1'b1)begin @(posedge clk);guard++;if(guard>1000)$fatal(1,"readback command stalled or unknown");end
++   // Read-cache hits may return on the command acceptance edge. Capture the
++   // value before a speculative next-word macro access changes its output.
++   response_on_accept=`SHARED.icb_rsp_valid===1'b1;
++   if(response_on_accept)begin
++    if(`SHARED.icb_rsp_err!==1'b0)$fatal(1,"same-edge readback error or unknown");
++    value=`SHARED.icb_rsp_rdata;
++   end
++   @(negedge clk);shared_cs=0;
++   if(!response_on_accept)begin
++    @(posedge clk);guard=0;
++    while(`SHARED.icb_rsp_valid!==1'b1)begin @(posedge clk);guard++;if(guard>1000)$fatal(1,"readback response stalled or unknown");end
++    if(`SHARED.icb_rsp_err!==1'b0)$fatal(1,"readback response error or unknown");
++    value=`SHARED.icb_rsp_rdata;
++   end
++  end
++ endtask
++ task automatic preload_shared_word;
++  integer guard;
++  reg response_on_accept;
++  begin
++   @(posedge clk);guard=0;
++   while(`SHARED.icb_cmd_ready!==1'b1)begin
++    @(posedge clk);guard++;if(guard>1000)$fatal(1,"preload command stalled or unknown");
++   end
++   preload_commands++;
++   response_on_accept=`SHARED.icb_rsp_valid===1'b1;
++   if(response_on_accept)begin
++    if(`SHARED.icb_rsp_err!==1'b0)$fatal(1,"zero-cycle preload error");
++    preload_responses++;
++   end
++   @(negedge clk);shared_cs=0;itcm_cs=0;dtcm_cs=0;
++   if(!response_on_accept)begin
++    @(posedge clk);guard=0;
++    while(`SHARED.icb_rsp_valid!==1'b1)begin
++     @(posedge clk);guard++;if(guard>1000)$fatal(1,"preload response stalled or unknown");
++    end
++    if(`SHARED.icb_rsp_err!==1'b0)$fatal(1,"registered preload error");
++    preload_responses++;
++   end
++  end
++ endtask
++
+  initial begin
+   if(!$value$plusargs("FIRMWARE=%s",firmware_path))$fatal(1,"missing FIRMWARE");
+   if(!$value$plusargs("INPUT=%s",input_path))$fatal(1,"missing INPUT");
+@@ -78,18 +173,39 @@
+   // OUTPUT_WORDS includes initial invalidation, 16 length words and final magic.
+   if(input_words<330||input_words>8873||output_words<18||output_words>10354)$fatal(1,"invalid fixture bounds");
+   $readmemh(firmware_path,firmware);$readmemh(input_path,source_image,0,input_words-1);$readmemh(expected_path,expected);
+-  for(i=0;i<8192;i=i+1)`ITCM.mem_r[i]=firmware[i];
++
+   for(i=0;i<16384;i=i+1)read_seen[i]=0;
+   for(i=0;i<10353;i=i+1)write_seen[i]=0;
+   // Initialization contains no tensor or parameter preload. Every source word
+   // must arrive later through platform ingress -> original bus -> shared SRAM.
+-  for(i=0;i<131072;i=i+1)dut.u_shared.mem[i]=32'hcccccccc;
+-  repeat(8)@(negedge lfclk);rst_n=1;
++  attach_shared_loader;
++  tcm_fixture_attached=1;
++  force `ITCM.clk=clk;force `ITCM.cs=itcm_cs;force `ITCM.we=1'b1;
++  force `ITCM.addr=itcm_address;force `ITCM.din=itcm_din;force `ITCM.wem=8'hff;
++  force `DTCM.clk=clk;force `DTCM.cs=dtcm_cs;force `DTCM.we=1'b1;
++  force `DTCM.addr=dtcm_address;force `DTCM.din=32'b0;force `DTCM.wem=4'hf;
++  repeat(4)@(negedge clk);shared_reset=1;
++  for(i=0;i<131072;i=i+1)begin
++   @(negedge clk);shared_cs=1;shared_address=17'(i);shared_din=32'hcccccccc;
++   itcm_cs=i<8192;itcm_address=13'(i);itcm_din=i<8192?firmware[i]:64'b0;
++   dtcm_cs=i<16384;dtcm_address=14'(i);
++   preload_shared_word();
++  end
++  @(negedge clk);shared_cs=0;itcm_cs=0;dtcm_cs=0;
++  @(posedge clk);#1;release_shared_loader;
++  release `ITCM.cs;release `ITCM.we;release `ITCM.addr;release `ITCM.din;release `ITCM.wem;release `ITCM.clk;
++  release `DTCM.cs;release `DTCM.we;release `DTCM.addr;release `DTCM.din;release `DTCM.wem;release `DTCM.clk;
++  tcm_fixture_attached=0;
++  if(preload_commands!=131072||preload_responses!=131072||rst_n!==1'b0)$fatal(1,"incomplete physical poison preload or CPU not reset");
++  if(macro128_count!=30||macro1024_count!=6||macro4096_count!=80)$fatal(1,"wrong elaborated macro organization");
++  $display("Q12_VENDOR_MACROS RAMSP128X16=%0d RAMSP1024X16=%0d RAMSP4096X16=%0d total=%0d",macro128_count,macro1024_count,macro4096_count,macro128_count+macro1024_count+macro4096_count);
++  $display("Q12_POISON_PRELOAD_COMPLETE commands=%0d responses=%0d tensor_words=0 CPU_reset=%b",preload_commands,preload_responses,rst_n);
++  repeat(8)@(negedge lfclk);runtime_enabled=1;if(activity_enabled)$dumpon;rst_n=1;
+  end
+- always @(negedge dut.qingyu_bus_clk)if(dut.qingyu_bus_rst_n&&dut.u_fio.u_engine_fio.engine_done)done_cycle=cycles;
++ always @(negedge dut.qingyu_bus_clk)if(runtime_enabled&&!assessment_done&&dut.qingyu_bus_rst_n&&dut.u_fio.u_engine_fio.engine_done)done_cycle=cycles;
+  always @(posedge dut.qingyu_bus_clk)begin
+   cycles=cycles+1;
+-  if(dut.qingyu_bus_rst_n)begin
++  if(runtime_enabled&&!assessment_done&&dut.qingyu_bus_rst_n)begin
+    // Earliest control offer counts CPU setup and every subsequent loader wait.
+    if(full_start<0&&((`MAIN.mem_icb_cmd_valid&&!`MAIN.mem_icb_cmd_read&&
+       `MAIN.mem_icb_cmd_addr>=32'ha0030100&&`MAIN.mem_icb_cmd_addr<32'ha0030140)||
+@@ -242,7 +358,7 @@
+       if(dma_data[responses]==0)invalidation_acked=1;
+       else begin
+        if(dma_data[responses]!=32'h31593151||responses+1!=commands)$fatal(1,"invalid final ACK");
+-       last_ack=cycles;$display("Q12_FULL_END cycle=%0d time_ps=%0.0f",cycles,$realtime*1000.0);
++       last_ack=cycles;$display("Q12_FULL_END cycle=%0d time_ps=%0.0f",cycles,$realtime*1000.0);if(activity_enabled)->fullwindow_dump_stop;
+       end
+      end
+     end
+@@ -266,34 +382,61 @@
+        loader_commands!=input_words+45||loader_responses!=loader_commands||`LOADER.source_acks!=input_words||`LOADER.chunks!=9||
+        cpu_responses!=cpu_commands||fabric_commands!=commands+cpu_commands+loader_commands||shared_commands!=fabric_commands||
+        shared_responses!=shared_commands||fabric_responses!=fabric_commands)$fatal(1,"transaction conservation failure");
++    assessment_done=1;
++   end
++  end
++  if(runtime_enabled&&!assessment_done&&cycles>4000000)$fatal(1,"timeout PC=%h engine_state=%0d error=%h loader_state=%0d seq=%0d pending=%0d",`CPU.inspect_pc,dut.u_fio.u_engine_fio.engine.state,dut.u_fio.u_engine_fio.engine_error_code,`LOADER.state,`LOADER.next_seq,`LOADER.pending_seq);
++ end
++ always @(posedge clk)begin
++  if(runtime_enabled&&!assessment_done&&(fixture_attached||tcm_fixture_attached))
++   $fatal(1,"fixture force active during measured runtime");
++  if(assessment_done&&fixture_attached&&shared_cs&&shared_we)
++   $fatal(1,"post-task fixture attempted a write");
++ end
++ initial begin
++  wait(assessment_done===1'b1);
++  @(negedge clk);shared_cs=0;shared_we=0;loader_clear=1;
++  attach_shared_loader;
++  repeat(2)@(negedge clk);loader_clear=0;
++  for(integer word_index=0;word_index<131072;word_index++)begin
++   read_shared_word(17'(word_index),readback_data);
++   shared_readback[word_index]=readback_data;
++  end
++  @(negedge clk);shared_cs=0;
++  @(posedge clk);#1;release_shared_loader;
++  $display("Q12_MACRO_READBACK_COMPLETE words=131072 output_slots=10353 source_words=%0d",input_words);
+     mismatches=0;
+     for(i=0;i<10353;i=i+1)begin
+-     if(dut.u_shared.mem[i]!==expected[i])mismatches=mismatches+1;
++     if(shared_readback[i]!==expected[i])mismatches=mismatches+1;
+      if(i==0)expected_writes=2;else if(i<17)expected_writes=1;
+      else begin tile=(i-17)/646;slotword=(i-17)%646;expected_writes=(slotword<int'((expected[tile+1]+31)>>5))?1:0;end
+      if(write_seen[i]!=expected_writes)$fatal(1,"missing/extra output write %0d",i);
+     end
+-    for(i=0;i<input_words;i=i+1)if(dut.u_shared.mem[65536+i]!==source_image[i]||read_seen[i]!=1)mismatches=mismatches+1;
++    for(i=0;i<input_words;i=i+1)if(shared_readback[65536+i]!==source_image[i]||read_seen[i]!=1)mismatches=mismatches+1;
+     // Only seven specified protocol words and four diagnostic words may differ.
+     for(i=10353;i<131072;i=i+1)
+      if(!(i>=65536&&i<65536+input_words)&&!(i>=49152&&i<=49155)&&!(i>=49216&&i<=49222)&&
+-        dut.u_shared.mem[i]!==32'hcccccccc)mismatches=mismatches+1;
+-    if(dut.u_shared.mem[49216]!=9||dut.u_shared.mem[49217]!=9||dut.u_shared.mem[49218]!=32'(input_words)||
+-       dut.u_shared.mem[49219]!=1||dut.u_shared.mem[49220]!=32'(input_words)||dut.u_shared.mem[49221]!=0||dut.u_shared.mem[49222]!=1)
++        shared_readback[i]!==32'hcccccccc)mismatches=mismatches+1;
++    if(shared_readback[49216]!=9||shared_readback[49217]!=9||shared_readback[49218]!=32'(input_words)||
++       shared_readback[49219]!=1||shared_readback[49220]!=32'(input_words)||shared_readback[49221]!=0||shared_readback[49222]!=1)
+        $fatal(1,"final control protocol state mismatch");
+     if(mismatches)$fatal(1,"memory/source/guards mismatches=%0d",mismatches);
+     if(dump_requested)begin
+      dump_fd=$fopen(output_dump_path,"w");if(!dump_fd)$fatal(1,"cannot create output dump");
+-     for(i=0;i<10353;i=i+1)$fdisplay(dump_fd,"%08x",dut.u_shared.mem[i]);$fclose(dump_fd);
++     for(i=0;i<10353;i=i+1)$fdisplay(dump_fd,"%08x",shared_readback[i]);$fclose(dump_fd);
+     end
+     if(dut.u_fio.u_engine_fio.task_cycles!=32'(done_cycle-start_cycle+1))$fatal(1,"engine counter mismatch");
+     $display("Q12SOC_PHASES core=%0d load=%0d factor=%0d cache=%0d compute=%0d store=%0d",
+       dut.u_fio.u_engine_fio.core_cycles,dut.u_fio.u_engine_fio.load_cycles,dut.u_fio.u_engine_fio.factor_cycles,dut.u_fio.u_engine_fio.cache_cycles,dut.u_fio.u_engine_fio.compute_cycles,dut.u_fio.u_engine_fio.store_cycles);
+-    $display("Q12SOC_METRICS layer=%0d full_window_cycles=%0d start_to_ack=%0d first_read_to_ack=%0d load_first=%0d load_last_ack=%0d done_delay=%0d engine_counter=%0d reads=%0d writes=%0d cpu_commands=%0d loader_commands=%0d fabric_commands=%0d responses=%0d peak_pending=%0d macro_reads=%0d macro_writes=%0d firmware_cycles=%0d",layer,last_ack-full_start+1,last_ack-start_cycle+1,last_ack-first_read+1,`LOADER.first_source_cycle,`LOADER.last_source_ack_cycle,done_cycle-last_ack,dut.u_fio.u_engine_fio.task_cycles,reads,writes,cpu_commands,loader_commands,fabric_commands,responses,peak_pending,macro_reads,macro_writes,{dut.u_shared.mem[49153],dut.u_shared.mem[49152]});
+-    $display("PASS real E203 Q12 cold task; explicit independent loader and original System Bus; 10353 slots/source/guards verified");
+-    #1;$finish;
+-   end
+-  end
+-  if(cycles>1000000)$fatal(1,"timeout PC=%h engine_state=%0d error=%h loader_state=%0d seq=%0d pending=%0d",`CPU.inspect_pc,dut.u_fio.u_engine_fio.engine.state,dut.u_fio.u_engine_fio.engine_error_code,`LOADER.state,`LOADER.next_seq,`LOADER.pending_seq);
++    $display("Q12SOC_METRICS layer=%0d full_window_cycles=%0d start_to_ack=%0d first_read_to_ack=%0d load_first=%0d load_last_ack=%0d done_delay=%0d engine_counter=%0d reads=%0d writes=%0d cpu_commands=%0d loader_commands=%0d fabric_commands=%0d responses=%0d peak_pending=%0d macro_reads=%0d macro_writes=%0d firmware_cycles=%0d",layer,last_ack-full_start+1,last_ack-start_cycle+1,last_ack-first_read+1,`LOADER.first_source_cycle,`LOADER.last_source_ack_cycle,done_cycle-last_ack,dut.u_fio.u_engine_fio.task_cycles,reads,writes,cpu_commands,loader_commands,fabric_commands,responses,peak_pending,macro_reads,macro_writes,{shared_readback[49153],shared_readback[49152]});
++    $display("PASS real E203 Q12 vendor task; explicit independent loader and original System Bus; manufacturer SRAM and full physical readback verified");
++  #1;$finish;
+  end
+ endmodule
++`undef MAIN
++`undef CPU
++`undef ITCM
++`undef DTCM
++`undef SHARED
++`undef MERGE
++`undef LOADER

@@ -1,0 +1,445 @@
+{
+  "passed": true,
+  "scope": "Whole-core cycle simulation miter plus independent numeric golden fixtures. Local SRAM macro-port stubs only; no formal equivalence, manufacturer SRAM, full SoC or PPA claim.",
+  "baseline_sources": {
+    "q12_task4.sv": "7e732afb6ae3683ccf5516bc26606d2d3900d14046fe60af030f6f9d486adf7e",
+    "q12_pair_acc.sv": "1d0577083bc12d9f88e0b4055e76faa4225ee7a2a6d8f10826f5c3a0d81ba0e6",
+    "q12_striped_sram.sv": "8364055ebe25c5a61e3e97ee0b963a7e5aa4400f658384a03c3ec812b405ada8"
+  },
+  "candidate_sources": {
+    "q12_task4.sv": "7e732afb6ae3683ccf5516bc26606d2d3900d14046fe60af030f6f9d486adf7e",
+    "q12_pair_acc.sv": "76252e95902fd2b9e05dc3928c01138e35e5a9d399a1134c9483e22f3a04f665",
+    "q12_striped_sram.sv": "8364055ebe25c5a61e3e97ee0b963a7e5aa4400f658384a03c3ec812b405ada8"
+  },
+  "generated_sources": {
+    "baseline_core.sv": "2ef55f10b525670ba7feb05b376851be62f05949023eab329405886f8affe7e4",
+    "baseline_pe.sv": "22c34f867f4b664898dd477f0f879edbb7a063c57e5c26283171ab9945b53b8b",
+    "tb_miter.sv": "968a902d930bce238b6f463a32589cad20338cb64cda01de5979c4b1967ae9c5"
+  },
+  "fixture_hashes": {
+    "vectors\\maxmax\\acc.hex": "f7dc4f4755197e33591db5337c8624f7c8858fd48ce217dcd06868ab351a6b42",
+    "vectors\\maxmax\\gold.hex": "9f68ac737d86abc7087367d8972816241d4dc58b128bb1549fa511a3f3fa8538",
+    "vectors\\maxmax\\meta.hex": "f45878c8186942f63d3974652e3781c13bcf50c66863d0ebd2ba7f7f7f16abb9",
+    "vectors\\maxmax\\w.hex": "787b094be62123167669712da5bd84870c4479e3b1084954782a3f3c77aae434",
+    "vectors\\maxmax\\x.hex": "1ba97f8dfe8060d722a8288e8e72f5b95ce0209e0f51014c0c7534b5b35681e8",
+    "vectors\\minmax\\acc.hex": "408b2ba524d144b1c82e35a50dcf09355f6a0d6b1c335a556c8d858d6484cbe1",
+    "vectors\\minmax\\gold.hex": "f05388cb5b9074739652d7febf69f41340142b90480cfc80e9ae8b35f0642558",
+    "vectors\\minmax\\meta.hex": "a89595dea0459da16ae8177941e99989528e733d10300a3d634dbbb7d2b1365b",
+    "vectors\\minmax\\w.hex": "787b094be62123167669712da5bd84870c4479e3b1084954782a3f3c77aae434",
+    "vectors\\minmax\\x.hex": "6af8e050b556ba8eb53316cc993063ff2aa4e88291f400d3e35130cae2db6364",
+    "vectors\\minmin\\acc.hex": "f7ee6ea246b4377a59e7e3b37845ba563d5185559ce512847404827c9c65a6c4",
+    "vectors\\minmin\\gold.hex": "3239c37dc069ef7ed75abc022d03145315ad41a74b41ac51cc1a2643162d7cef",
+    "vectors\\minmin\\meta.hex": "f1937aa51b0739d3e43962648e46be21bba89e561a0f424d4caad665084d9965",
+    "vectors\\minmin\\w.hex": "a6c903daa933ac67ec63f4fe5ac5ea038c7dfe98dfd18e936f9843a438b5867d",
+    "vectors\\minmin\\x.hex": "6af8e050b556ba8eb53316cc993063ff2aa4e88291f400d3e35130cae2db6364",
+    "vectors\\random\\acc.hex": "19dd95b20b5dec5addeab79784272922142f2ec7a7a8afe6cfd6c164c9cbc12d",
+    "vectors\\random\\gold.hex": "a78e69685f227095eeeb83252b676696bde3425fa5a12718d762b66769a8cf74",
+    "vectors\\random\\meta.hex": "9df75bd01d9f03fa229ed893143241f1ec399e87ca2f695a74adc6f7b60214a9",
+    "vectors\\random\\w.hex": "42e2ad263a32d1f92a37faa9a5eac3d84ef9af6df6633fbba7233d335d8e4b25",
+    "vectors\\random\\x.hex": "f2a923051202e0e289a6491af07fa34f1882a8068908fbd2d2de01d49178afde",
+    "vectors\\rne\\acc.hex": "ee31e1092705863d16af91cc8c302a8b54b68bdacecb028fa3720e6a4fe9392e",
+    "vectors\\rne\\gold.hex": "3ebcb1bc6ec2d036e73a909ef8d4567ba0ce867aec80db5707d7ec7d9ad6af16",
+    "vectors\\rne\\meta.hex": "d01f385ad1e567f8ffbeb14a4e7ed567c1bd91da96892d90c33bb9172fb58f6c",
+    "vectors\\rne\\w.hex": "e1eb95e108d2902aa8e3507077725a187a3ea32dddd3fab656e902e817c5de81",
+    "vectors\\rne\\x.hex": "40b9fba417f6a605600145175fef1a5b13d505a88d6999666a0fc90b933ba568"
+  },
+  "baseline_evidence_sha256": "4b72b96caaf2387569946086168cd35d7d27ce03c3e979fad49b20ba49954e4c",
+  "runner_sha256": "3fee44d45e38ee158a1581b07253ca40903cedb2aa67beeab39d2c20f1dab66f",
+  "runs": [
+    {
+      "job": [
+        "behavioral",
+        "random",
+        0,
+        0,
+        0,
+        0
+      ],
+      "passed": true,
+      "metrics": {
+        "outputs": 25344,
+        "cycles": 16667,
+        "load": 2168,
+        "factor": 35,
+        "cache": 272,
+        "compute": 14000,
+        "store": 192,
+        "aborts": 0
+      },
+      "miter_cycles": 16669,
+      "pe_results": 25344,
+      "log": "behavioral_random_s0_a0_b0_r0.log",
+      "log_sha256": "3d810d83c7f3898086af87c89ebf3036c5d43f2a16f288eaebe5a7a08138955c"
+    },
+    {
+      "job": [
+        "behavioral",
+        "minmin",
+        0,
+        0,
+        0,
+        0
+      ],
+      "passed": true,
+      "metrics": {
+        "outputs": 25344,
+        "cycles": 16667,
+        "load": 2168,
+        "factor": 35,
+        "cache": 272,
+        "compute": 14000,
+        "store": 192,
+        "aborts": 0
+      },
+      "miter_cycles": 16669,
+      "pe_results": 25344,
+      "log": "behavioral_minmin_s0_a0_b0_r0.log",
+      "log_sha256": "3d810d83c7f3898086af87c89ebf3036c5d43f2a16f288eaebe5a7a08138955c"
+    },
+    {
+      "job": [
+        "behavioral",
+        "maxmax",
+        0,
+        0,
+        0,
+        0
+      ],
+      "passed": true,
+      "metrics": {
+        "outputs": 25344,
+        "cycles": 16667,
+        "load": 2168,
+        "factor": 35,
+        "cache": 272,
+        "compute": 14000,
+        "store": 192,
+        "aborts": 0
+      },
+      "miter_cycles": 16669,
+      "pe_results": 25344,
+      "log": "behavioral_maxmax_s0_a0_b0_r0.log",
+      "log_sha256": "3d810d83c7f3898086af87c89ebf3036c5d43f2a16f288eaebe5a7a08138955c"
+    },
+    {
+      "job": [
+        "behavioral",
+        "minmax",
+        0,
+        0,
+        0,
+        0
+      ],
+      "passed": true,
+      "metrics": {
+        "outputs": 25344,
+        "cycles": 16667,
+        "load": 2168,
+        "factor": 35,
+        "cache": 272,
+        "compute": 14000,
+        "store": 192,
+        "aborts": 0
+      },
+      "miter_cycles": 16669,
+      "pe_results": 25344,
+      "log": "behavioral_minmax_s0_a0_b0_r0.log",
+      "log_sha256": "3d810d83c7f3898086af87c89ebf3036c5d43f2a16f288eaebe5a7a08138955c"
+    },
+    {
+      "job": [
+        "behavioral",
+        "rne",
+        0,
+        0,
+        0,
+        0
+      ],
+      "passed": true,
+      "metrics": {
+        "outputs": 25344,
+        "cycles": 16667,
+        "load": 2168,
+        "factor": 35,
+        "cache": 272,
+        "compute": 14000,
+        "store": 192,
+        "aborts": 0
+      },
+      "miter_cycles": 16669,
+      "pe_results": 25344,
+      "log": "behavioral_rne_s0_a0_b0_r0.log",
+      "log_sha256": "3d810d83c7f3898086af87c89ebf3036c5d43f2a16f288eaebe5a7a08138955c"
+    },
+    {
+      "job": [
+        "behavioral",
+        "random",
+        1,
+        0,
+        0,
+        0
+      ],
+      "passed": true,
+      "metrics": {
+        "outputs": 25344,
+        "cycles": 17163,
+        "load": 2621,
+        "factor": 35,
+        "cache": 272,
+        "compute": 14000,
+        "store": 235,
+        "aborts": 0
+      },
+      "miter_cycles": 17165,
+      "pe_results": 25344,
+      "log": "behavioral_random_s1_a0_b0_r0.log",
+      "log_sha256": "2375495a69c64eecf5893f783fafeacb00e9221d34b68541d2c6e41a8b0b82fd"
+    },
+    {
+      "job": [
+        "behavioral",
+        "random",
+        1,
+        0,
+        1,
+        0
+      ],
+      "passed": true,
+      "metrics": {
+        "rejected": 1,
+        "outputs": 0,
+        "cycles": 2608
+      },
+      "miter_cycles": 2610,
+      "pe_results": 0,
+      "log": "behavioral_random_s1_a0_b1_r0.log",
+      "log_sha256": "c60dd09098cf2bc341184aa1b95b4d5df8da23665fd235c7ce736d765df1cd9b"
+    },
+    {
+      "job": [
+        "behavioral",
+        "random",
+        1,
+        0,
+        2,
+        0
+      ],
+      "passed": true,
+      "metrics": {
+        "rejected": 2,
+        "outputs": 0,
+        "cycles": 2608
+      },
+      "miter_cycles": 2610,
+      "pe_results": 0,
+      "log": "behavioral_random_s1_a0_b2_r0.log",
+      "log_sha256": "399f10f9d13565ecb8075097bca69e13b9f5e67d0b2522a3a321ed404754255a"
+    },
+    {
+      "job": [
+        "behavioral",
+        "random",
+        1,
+        1,
+        0,
+        0
+      ],
+      "passed": true,
+      "metrics": {
+        "outputs": 25344,
+        "cycles": 17165,
+        "load": 2622,
+        "factor": 35,
+        "cache": 272,
+        "compute": 14000,
+        "store": 236,
+        "aborts": 1
+      },
+      "miter_cycles": 19897,
+      "pe_results": 25472,
+      "log": "behavioral_random_s1_a1_b0_r0.log",
+      "log_sha256": "2c092c8923cbcec4cefda24896e6ea02f885ac52434d11abebede5c5ce39fde8"
+    },
+    {
+      "job": [
+        "behavioral",
+        "random",
+        1,
+        1,
+        0,
+        1
+      ],
+      "passed": true,
+      "metrics": {
+        "outputs": 25344,
+        "cycles": 17164,
+        "load": 2622,
+        "factor": 35,
+        "cache": 272,
+        "compute": 14000,
+        "store": 235,
+        "aborts": 1
+      },
+      "miter_cycles": 17316,
+      "pe_results": 25344,
+      "log": "behavioral_random_s1_a1_b0_r1.log",
+      "log_sha256": "ea1e71c5f4009b711c75c300e5be47f509ff7e00a3a3e8aeb53e434323d1a6fb"
+    },
+    {
+      "job": [
+        "behavioral",
+        "random",
+        1,
+        1,
+        0,
+        2
+      ],
+      "passed": true,
+      "metrics": {
+        "outputs": 25344,
+        "cycles": 17164,
+        "load": 2622,
+        "factor": 35,
+        "cache": 272,
+        "compute": 14000,
+        "store": 235,
+        "aborts": 1
+      },
+      "miter_cycles": 19827,
+      "pe_results": 25344,
+      "log": "behavioral_random_s1_a1_b0_r2.log",
+      "log_sha256": "2e5f78953116e0d090ad9b9afa04ea0582658fb530fb9f186ed3e2d957a3e273"
+    },
+    {
+      "job": [
+        "behavioral",
+        "random",
+        1,
+        1,
+        0,
+        3
+      ],
+      "passed": true,
+      "metrics": {
+        "outputs": 25344,
+        "cycles": 17162,
+        "load": 2622,
+        "factor": 35,
+        "cache": 272,
+        "compute": 14000,
+        "store": 233,
+        "aborts": 1
+      },
+      "miter_cycles": 19863,
+      "pe_results": 25408,
+      "log": "behavioral_random_s1_a1_b0_r3.log",
+      "log_sha256": "71cf0814ceda47de2f77f4c55cfb4ecb15a9d0881211d611ec5fb7751335b6d1"
+    },
+    {
+      "job": [
+        "behavioral",
+        "random",
+        1,
+        1,
+        0,
+        4
+      ],
+      "passed": true,
+      "metrics": {
+        "outputs": 25344,
+        "cycles": 17162,
+        "load": 2622,
+        "factor": 35,
+        "cache": 272,
+        "compute": 14000,
+        "store": 233,
+        "aborts": 1
+      },
+      "miter_cycles": 20679,
+      "pe_results": 26880,
+      "log": "behavioral_random_s1_a1_b0_r4.log",
+      "log_sha256": "529d00f9e7758a78067a276f8ad7ead3fc807ac901213dd417dabe87368d3f92"
+    },
+    {
+      "job": [
+        "macro",
+        "random",
+        1,
+        1,
+        0,
+        0
+      ],
+      "passed": true,
+      "metrics": {
+        "outputs": 25344,
+        "cycles": 17165,
+        "load": 2622,
+        "factor": 35,
+        "cache": 272,
+        "compute": 14000,
+        "store": 236,
+        "aborts": 1
+      },
+      "miter_cycles": 19897,
+      "pe_results": 25472,
+      "log": "macro_random_s1_a1_b0_r0.log",
+      "log_sha256": "2c092c8923cbcec4cefda24896e6ea02f885ac52434d11abebede5c5ce39fde8"
+    },
+    {
+      "job": [
+        "macro",
+        "random",
+        1,
+        1,
+        0,
+        2
+      ],
+      "passed": true,
+      "metrics": {
+        "outputs": 25344,
+        "cycles": 17164,
+        "load": 2622,
+        "factor": 35,
+        "cache": 272,
+        "compute": 14000,
+        "store": 235,
+        "aborts": 1
+      },
+      "miter_cycles": 19827,
+      "pe_results": 25344,
+      "log": "macro_random_s1_a1_b0_r2.log",
+      "log_sha256": "2e5f78953116e0d090ad9b9afa04ea0582658fb530fb9f186ed3e2d957a3e273"
+    },
+    {
+      "job": [
+        "macro",
+        "random",
+        1,
+        1,
+        0,
+        4
+      ],
+      "passed": true,
+      "metrics": {
+        "outputs": 25344,
+        "cycles": 17162,
+        "load": 2622,
+        "factor": 35,
+        "cache": 272,
+        "compute": 14000,
+        "store": 233,
+        "aborts": 1
+      },
+      "miter_cycles": 20679,
+      "pe_results": 26880,
+      "log": "macro_random_s1_a1_b0_r4.log",
+      "log_sha256": "529d00f9e7758a78067a276f8ad7ead3fc807ac901213dd417dabe87368d3f92"
+    }
+  ],
+  "dual_instance_macro_counts": {
+    "RAMSP128X16": 60,
+    "RAMSP1024X16": 12
+  },
+  "run_directory": "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_candidate\\core_datareset\\runs\\20261112T153552816100Z"
+}

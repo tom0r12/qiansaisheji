@@ -1,0 +1,357 @@
+{
+  "passed": true,
+  "scope": "Existing numeric evidence reused after exact configuration/fixture hashes and selected SoC outputs verified. Existing 3072 task metrics independently reaggregated; no new numeric matrix computation.",
+  "configuration": "X12 W12 Y13, one output headroom bit; per-layer training-only calibrated scales",
+  "frozen_config_sha256": {
+    "layer00.json": "5029c9c202b30dd78353a1f4112f36ea354bca6c16e58232beb08634817f4dee",
+    "layer01.json": "9f663da2c4743ad0e0f7bdbfe22645301a2febf831f1c71441b7443229cbca9b",
+    "layer02.json": "5cd9bf40583fb34db321897c4fe470569fec7b3edff1940fd8c5f1a03bf72ad0",
+    "layer03.json": "ab81a4da730484731daa951964f6497ac93420b00c2b3a44b3251898c219a566",
+    "layer04.json": "5129a302838cfba746c35de7ce441180c9f789ee62473482912f64f2ee07eafa",
+    "layer05.json": "d81d4c5246d82c9fb0f335a6bc60d7ee276d467772bfaf3f8dc990256831dd84",
+    "layer06.json": "de64f56025abd498eb630f1e78af38848c099c9741e3e6afe3ab6726646f6ab3",
+    "layer07.json": "ad2c43c8b521b7a257e11da7007587de40358b42a6146bd0bb1e53e3d101cf27",
+    "layer08.json": "b707d9ab3ef742bd4b60951384135cb87a3a243955bd04c32fd2f4bf59633066",
+    "layer09.json": "f0a2f96d36e7466f8fda7b7ea824588f515bd590a17076d656db2dfdcb0d1385",
+    "layer10.json": "3d6fa4f37964c79c7c8f7eaffdd4fe8ebde09d58aeab301b4e2655c5889843cd",
+    "layer11.json": "3c8238e8ab9ba8a46e2e9606ba36b490c7691fa64013c53cdeccc9cd42c39790"
+  },
+  "selected_soc_result": "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_candidate\\loader_master\\soc_runner\\runs\\20261112T161939623706Z\\result.json",
+  "selected_soc_sha256": "07bc11f0d6301a7570979e70aca022f54845c8bab6468eae58f10ba94aa3a80e",
+  "selected_soc_decoded_values": 304128,
+  "training_samples": 256,
+  "validation_samples": 256,
+  "validation_tasks": 3072,
+  "validation_output_elements": 77856768,
+  "per_layer_pooled": [
+    {
+      "layer": 0,
+      "samples": 256,
+      "elements": 6488064,
+      "nrmse_percent": 0.10373103129952405
+    },
+    {
+      "layer": 1,
+      "samples": 256,
+      "elements": 6488064,
+      "nrmse_percent": 0.09907107445617357
+    },
+    {
+      "layer": 2,
+      "samples": 256,
+      "elements": 6488064,
+      "nrmse_percent": 0.10720337130469863
+    },
+    {
+      "layer": 3,
+      "samples": 256,
+      "elements": 6488064,
+      "nrmse_percent": 0.11247505250777376
+    },
+    {
+      "layer": 4,
+      "samples": 256,
+      "elements": 6488064,
+      "nrmse_percent": 0.11202498852775197
+    },
+    {
+      "layer": 5,
+      "samples": 256,
+      "elements": 6488064,
+      "nrmse_percent": 0.0998310805297531
+    },
+    {
+      "layer": 6,
+      "samples": 256,
+      "elements": 6488064,
+      "nrmse_percent": 0.09695388672025558
+    },
+    {
+      "layer": 7,
+      "samples": 256,
+      "elements": 6488064,
+      "nrmse_percent": 0.10059502874457242
+    },
+    {
+      "layer": 8,
+      "samples": 256,
+      "elements": 6488064,
+      "nrmse_percent": 0.1066805596691308
+    },
+    {
+      "layer": 9,
+      "samples": 256,
+      "elements": 6488064,
+      "nrmse_percent": 0.11194387584317345
+    },
+    {
+      "layer": 10,
+      "samples": 256,
+      "elements": 6488064,
+      "nrmse_percent": 0.11889683787690639
+    },
+    {
+      "layer": 11,
+      "samples": 256,
+      "elements": 6488064,
+      "nrmse_percent": 0.12079373005424553
+    }
+  ],
+  "max_pooled_nrmse_percent": 0.12079373005424553,
+  "historical_local_precision_score": 9.597354233152515,
+  "score_formula": "max(0, 10 - max_pooled_NRMSE_percent / 0.3)",
+  "max_individual_task_nrmse_percent": 0.15195561719670722,
+  "tasks_above_3_percent": 0,
+  "official_600_sample_score": null,
+  "official_600_sample_evaluation": false,
+  "limitations": [
+    "No official600-sample evaluation; these are historical local256 validation inputs.",
+    "Widths selected in exploratory study that inspected this historical validation; no claim this is a fresh held-out official score.",
+    "This audit hashes/inspects existing complete-task data and independently recomputes aggregate score from3072 per-task records; it does not rerun all3072 dot-product numeric evaluations.",
+    "Current realSoC functional replay covers12 selected tasks, not all3072; required final assessment still uses organizer-selected tasks and frozen numeric model.",
+    "Float extraction used TF2.14.1 while original repository environment was TF2.4.0rc1; original checkpoint/source hashes are recorded, and local dense-reference check maxdiff is1.9073486328125e-6."
+  ],
+  "datasets": [
+    {
+      "role": "training",
+      "layer": 0,
+      "path": "E:\\Desktop\\qiansaisheji\\qingyu\\model\\full_v2_run\\float_training\\layer00.npz",
+      "sha256": "86a8fbf0165f0551146063e1a8f0055e7e71ef61990884f42784c833aee1992b",
+      "samples": 256,
+      "elements": 6488064,
+      "hash_rechecked_at_freeze": true,
+      "copied": false
+    },
+    {
+      "role": "training",
+      "layer": 1,
+      "path": "E:\\Desktop\\qiansaisheji\\qingyu\\model\\full_v2_run\\float_training\\layer01.npz",
+      "sha256": "abf765b90c8c033527c942b9e134f377ea784271be6b76748ccccc03aaf6293b",
+      "samples": 256,
+      "elements": 6488064,
+      "hash_rechecked_at_freeze": true,
+      "copied": false
+    },
+    {
+      "role": "training",
+      "layer": 2,
+      "path": "E:\\Desktop\\qiansaisheji\\qingyu\\model\\full_v2_run\\float_training\\layer02.npz",
+      "sha256": "6e08d7fa0f6f09edd8b7e857c56dbe4d9787730487de62d35568aa871ca3ff7b",
+      "samples": 256,
+      "elements": 6488064,
+      "hash_rechecked_at_freeze": true,
+      "copied": false
+    },
+    {
+      "role": "training",
+      "layer": 3,
+      "path": "E:\\Desktop\\qiansaisheji\\qingyu\\model\\full_v2_run\\float_training\\layer03.npz",
+      "sha256": "2fc2a6d63de0c35f34ab296ec382733c51100ab534fd69781e99876a8d87fda5",
+      "samples": 256,
+      "elements": 6488064,
+      "hash_rechecked_at_freeze": true,
+      "copied": false
+    },
+    {
+      "role": "training",
+      "layer": 4,
+      "path": "E:\\Desktop\\qiansaisheji\\qingyu\\model\\full_v2_run\\float_training\\layer04.npz",
+      "sha256": "b71aa6e2d6d92e5f9aa2dce015e2603880752dd197b898b943fd1914d31a3d7a",
+      "samples": 256,
+      "elements": 6488064,
+      "hash_rechecked_at_freeze": true,
+      "copied": false
+    },
+    {
+      "role": "training",
+      "layer": 5,
+      "path": "E:\\Desktop\\qiansaisheji\\qingyu\\model\\full_v2_run\\float_training\\layer05.npz",
+      "sha256": "fdca7468c4bca651279e027cb5af2b46e780df3215ed03cf9a74bea6d7e0e2e6",
+      "samples": 256,
+      "elements": 6488064,
+      "hash_rechecked_at_freeze": true,
+      "copied": false
+    },
+    {
+      "role": "training",
+      "layer": 6,
+      "path": "E:\\Desktop\\qiansaisheji\\qingyu\\model\\full_v2_run\\float_training\\layer06.npz",
+      "sha256": "8afdef1e4a86113711e1d8e10da0eea49725547552080d1811cd1e702b9687f8",
+      "samples": 256,
+      "elements": 6488064,
+      "hash_rechecked_at_freeze": true,
+      "copied": false
+    },
+    {
+      "role": "training",
+      "layer": 7,
+      "path": "E:\\Desktop\\qiansaisheji\\qingyu\\model\\full_v2_run\\float_training\\layer07.npz",
+      "sha256": "731d6e8f69dab7bb122e0a6c8937e5301167371eb7a4151ede6be40595040051",
+      "samples": 256,
+      "elements": 6488064,
+      "hash_rechecked_at_freeze": true,
+      "copied": false
+    },
+    {
+      "role": "training",
+      "layer": 8,
+      "path": "E:\\Desktop\\qiansaisheji\\qingyu\\model\\full_v2_run\\float_training\\layer08.npz",
+      "sha256": "c252d9aabcb5b23d24a6331afb95898e3ecfc8bd26141f6d76eef1468d63de98",
+      "samples": 256,
+      "elements": 6488064,
+      "hash_rechecked_at_freeze": true,
+      "copied": false
+    },
+    {
+      "role": "training",
+      "layer": 9,
+      "path": "E:\\Desktop\\qiansaisheji\\qingyu\\model\\full_v2_run\\float_training\\layer09.npz",
+      "sha256": "bd29a88556218db51c25426482275fc6c873bfc74e6ed3a4d607d8c7f295a0a9",
+      "samples": 256,
+      "elements": 6488064,
+      "hash_rechecked_at_freeze": true,
+      "copied": false
+    },
+    {
+      "role": "training",
+      "layer": 10,
+      "path": "E:\\Desktop\\qiansaisheji\\qingyu\\model\\full_v2_run\\float_training\\layer10.npz",
+      "sha256": "1f7cac8924d5718769b322f200591061280a88632bb72292ad1d897ccfff32b5",
+      "samples": 256,
+      "elements": 6488064,
+      "hash_rechecked_at_freeze": true,
+      "copied": false
+    },
+    {
+      "role": "training",
+      "layer": 11,
+      "path": "E:\\Desktop\\qiansaisheji\\qingyu\\model\\full_v2_run\\float_training\\layer11.npz",
+      "sha256": "c69ef5f8d6cee369b5dbf1beb832e0e6338281ab6c6c9095ae580920457bbd95",
+      "samples": 256,
+      "elements": 6488064,
+      "hash_rechecked_at_freeze": true,
+      "copied": false
+    },
+    {
+      "role": "validation",
+      "layer": 0,
+      "path": "E:\\Desktop\\qiansaisheji\\qingyu\\model\\full_v2_run\\float_validation\\layer00.npz",
+      "sha256": "3c05f36a3ec77e82dde2f32330cfe123dda7c89a50c88b831d40aaa0d41e036b",
+      "samples": 256,
+      "elements": 6488064,
+      "hash_rechecked_at_freeze": true,
+      "copied": false
+    },
+    {
+      "role": "validation",
+      "layer": 1,
+      "path": "E:\\Desktop\\qiansaisheji\\qingyu\\model\\full_v2_run\\float_validation\\layer01.npz",
+      "sha256": "09f723ba8d621fe72a25bd0d9350ff130da5ea9bd96baec029b0412db5418dc4",
+      "samples": 256,
+      "elements": 6488064,
+      "hash_rechecked_at_freeze": true,
+      "copied": false
+    },
+    {
+      "role": "validation",
+      "layer": 2,
+      "path": "E:\\Desktop\\qiansaisheji\\qingyu\\model\\full_v2_run\\float_validation\\layer02.npz",
+      "sha256": "c87dc340d71983609857c247f29412a42b0f6c95b4485839a75af0b65625155a",
+      "samples": 256,
+      "elements": 6488064,
+      "hash_rechecked_at_freeze": true,
+      "copied": false
+    },
+    {
+      "role": "validation",
+      "layer": 3,
+      "path": "E:\\Desktop\\qiansaisheji\\qingyu\\model\\full_v2_run\\float_validation\\layer03.npz",
+      "sha256": "9dc6353d3cba80b283517f8d87564575342607aa01b9895011c53aa4be66744a",
+      "samples": 256,
+      "elements": 6488064,
+      "hash_rechecked_at_freeze": true,
+      "copied": false
+    },
+    {
+      "role": "validation",
+      "layer": 4,
+      "path": "E:\\Desktop\\qiansaisheji\\qingyu\\model\\full_v2_run\\float_validation\\layer04.npz",
+      "sha256": "5ec74a69c43dfdb944b52a1a04892ce843c04b1f15408736a77b5ad3e0de8ecc",
+      "samples": 256,
+      "elements": 6488064,
+      "hash_rechecked_at_freeze": true,
+      "copied": false
+    },
+    {
+      "role": "validation",
+      "layer": 5,
+      "path": "E:\\Desktop\\qiansaisheji\\qingyu\\model\\full_v2_run\\float_validation\\layer05.npz",
+      "sha256": "c3ec3cc1dd0924328dc722c5c030fba6f4b521a97e470b72af79bff75c220a2e",
+      "samples": 256,
+      "elements": 6488064,
+      "hash_rechecked_at_freeze": true,
+      "copied": false
+    },
+    {
+      "role": "validation",
+      "layer": 6,
+      "path": "E:\\Desktop\\qiansaisheji\\qingyu\\model\\full_v2_run\\float_validation\\layer06.npz",
+      "sha256": "020ae6ae668e7ce175d12dd25f5a78ae1326b5915da0fdc78f82842ea2a4b7e1",
+      "samples": 256,
+      "elements": 6488064,
+      "hash_rechecked_at_freeze": true,
+      "copied": false
+    },
+    {
+      "role": "validation",
+      "layer": 7,
+      "path": "E:\\Desktop\\qiansaisheji\\qingyu\\model\\full_v2_run\\float_validation\\layer07.npz",
+      "sha256": "37c7207d2f05305a657fb7ee09a9c10723daaba3173c86a5ff1d943edfd592b2",
+      "samples": 256,
+      "elements": 6488064,
+      "hash_rechecked_at_freeze": true,
+      "copied": false
+    },
+    {
+      "role": "validation",
+      "layer": 8,
+      "path": "E:\\Desktop\\qiansaisheji\\qingyu\\model\\full_v2_run\\float_validation\\layer08.npz",
+      "sha256": "29d318aa0c6e71841d9773432de38006b777642599fe3e6bcfea2298436bfde8",
+      "samples": 256,
+      "elements": 6488064,
+      "hash_rechecked_at_freeze": true,
+      "copied": false
+    },
+    {
+      "role": "validation",
+      "layer": 9,
+      "path": "E:\\Desktop\\qiansaisheji\\qingyu\\model\\full_v2_run\\float_validation\\layer09.npz",
+      "sha256": "bcceda32ed45ac854476dc7f3771289afc6d48834e7bd19cca67870f73ebf3b0",
+      "samples": 256,
+      "elements": 6488064,
+      "hash_rechecked_at_freeze": true,
+      "copied": false
+    },
+    {
+      "role": "validation",
+      "layer": 10,
+      "path": "E:\\Desktop\\qiansaisheji\\qingyu\\model\\full_v2_run\\float_validation\\layer10.npz",
+      "sha256": "de365c5215778c6365109a8d1a39974db63fc7015e13b4e7baa9901ab22ffff4",
+      "samples": 256,
+      "elements": 6488064,
+      "hash_rechecked_at_freeze": true,
+      "copied": false
+    },
+    {
+      "role": "validation",
+      "layer": 11,
+      "path": "E:\\Desktop\\qiansaisheji\\qingyu\\model\\full_v2_run\\float_validation\\layer11.npz",
+      "sha256": "772b6b6e76cb90a6b06020a00e9ca2d60605da536d70b271b097ff2fda461596",
+      "samples": 256,
+      "elements": 6488064,
+      "hash_rechecked_at_freeze": true,
+      "copied": false
+    }
+  ],
+  "source_audit": "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_candidate\\loader_master\\audit\\current_compliance_precision_audit.json"
+}

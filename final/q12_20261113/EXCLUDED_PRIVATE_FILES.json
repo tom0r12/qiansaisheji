@@ -1,0 +1,226 @@
+{
+  "status": "intentional omissions, not verification failures",
+  "files": [
+    {
+      "public_path": "vendor/tasks/layer00_sample000/dense.hex",
+      "reason": "private real validation/model task data",
+      "sha256": "23297290ba14038ba5f6184cc210313b3340ef7cbeaf8dc33e4fa82af7175532",
+      "bytes": 126720
+    },
+    {
+      "public_path": "vendor/tasks/layer00_sample000/expected.hex",
+      "reason": "private real validation/model task data",
+      "sha256": "68afcdb4a13aa370df1e206e14865df64c3cfbbe69e7ab30e6763ddd7727acbd",
+      "bytes": 93177
+    },
+    {
+      "public_path": "vendor/tasks/layer00_sample000/input.hex",
+      "reason": "private real validation/model task data",
+      "sha256": "192ecba0281a7917b42a8f69b602a32d7acd0f19645bf51f17db54747c5bd98b",
+      "bytes": 69228
+    },
+    {
+      "public_path": "vendor/tasks/layer01_sample000/dense.hex",
+      "reason": "private real validation/model task data",
+      "sha256": "8de620db7c4d5038f7859c1225cb2091b31d37d67fc5f91175f5da1bf05aa14e",
+      "bytes": 126720
+    },
+    {
+      "public_path": "vendor/tasks/layer01_sample000/expected.hex",
+      "reason": "private real validation/model task data",
+      "sha256": "c2064e20299ccb648b83961a6baf0e57f9b275bcc4789cebfbe5feba08a83955",
+      "bytes": 93177
+    },
+    {
+      "public_path": "vendor/tasks/layer01_sample000/input.hex",
+      "reason": "private real validation/model task data",
+      "sha256": "b67fa6bdafb3c49bfc296ec1d7eeda3cce3dc9d4407d9d59135b646325c76482",
+      "bytes": 69723
+    },
+    {
+      "public_path": "vendor/tasks/layer02_sample000/dense.hex",
+      "reason": "private real validation/model task data",
+      "sha256": "5285302631ca8477d1fa7e1181d7b78e4c7c66c2a352674419296a8022146df9",
+      "bytes": 126720
+    },
+    {
+      "public_path": "vendor/tasks/layer02_sample000/expected.hex",
+      "reason": "private real validation/model task data",
+      "sha256": "07166b0c5d00a31c9631b8d3890a81b6562514f5040291b8027e9f373491a5c4",
+      "bytes": 93177
+    },
+    {
+      "public_path": "vendor/tasks/layer02_sample000/input.hex",
+      "reason": "private real validation/model task data",
+      "sha256": "d5d82ccde4c027024b0868fe5e17827d1aa5f31a80c6e4596d084e08695df8c4",
+      "bytes": 69930
+    },
+    {
+      "public_path": "vendor/tasks/layer03_sample000/dense.hex",
+      "reason": "private real validation/model task data",
+      "sha256": "24e1253a338bf3c14f242aca02740fc5549c66fca32202fa4d94a856812def49",
+      "bytes": 126720
+    },
+    {
+      "public_path": "vendor/tasks/layer03_sample000/expected.hex",
+      "reason": "private real validation/model task data",
+      "sha256": "26b875a4b27de1abf4e10f78554555cf30f766ee9beb3dc41934c9b9a3d183bf",
+      "bytes": 93177
+    },
+    {
+      "public_path": "vendor/tasks/layer03_sample000/input.hex",
+      "reason": "private real validation/model task data",
+      "sha256": "144dbc0d4593b5884c0eeeb88cdf10a5ba9aa4fa72a02c2516be57cfae88693a",
+      "bytes": 69714
+    },
+    {
+      "public_path": "vendor/tasks/layer04_sample000/dense.hex",
+      "reason": "private real validation/model task data",
+      "sha256": "cc1bf0e2fb9dee17c96d9c57b95f5a96dca202771d1b1d0d522b50a062ad962b",
+      "bytes": 126720
+    },
+    {
+      "public_path": "vendor/tasks/layer04_sample000/expected.hex",
+      "reason": "private real validation/model task data",
+      "sha256": "02f5768e8d98dc4516810ab020c1868e1084bd0e75acff01d8906c6de3860c1e",
+      "bytes": 93177
+    },
+    {
+      "public_path": "vendor/tasks/layer04_sample000/input.hex",
+      "reason": "private real validation/model task data",
+      "sha256": "b4bab5378b7f25e6eca750cc8f0ce93204371688a31ca8d5e9b6cbabdf4b5ee5",
+      "bytes": 69813
+    },
+    {
+      "public_path": "vendor/tasks/layer05_sample000/dense.hex",
+      "reason": "private real validation/model task data",
+      "sha256": "5b7e81fc7b5f80415f3bfa14a78a1afb096395a3d2c61238a0f6a3bed415796d",
+      "bytes": 126720
+    },
+    {
+      "public_path": "vendor/tasks/layer05_sample000/expected.hex",
+      "reason": "private real validation/model task data",
+      "sha256": "e78dc64a94bda84c54f8f90f2526d749769a1d5488a3d7a68051321ea3d9f8b3",
+      "bytes": 93177
+    },
+    {
+      "public_path": "vendor/tasks/layer05_sample000/input.hex",
+      "reason": "private real validation/model task data",
+      "sha256": "122ac4040787e7a6dff5927f4d66ca426253c8c165d8788907d0455c96973c10",
+      "bytes": 69156
+    },
+    {
+      "public_path": "vendor/tasks/layer06_sample000/dense.hex",
+      "reason": "private real validation/model task data",
+      "sha256": "9ae8624fabe5e518a4d13935ee7c662579012af94d5e8c3c6fdbab867684e8cc",
+      "bytes": 126720
+    },
+    {
+      "public_path": "vendor/tasks/layer06_sample000/expected.hex",
+      "reason": "private real validation/model task data",
+      "sha256": "c42c0d6b52c8b87829c178dfac694f1492461f58e4590142f342b43863f99793",
+      "bytes": 93177
+    },
+    {
+      "public_path": "vendor/tasks/layer06_sample000/input.hex",
+      "reason": "private real validation/model task data",
+      "sha256": "814fdafd4b6df8c00c7222f5574dd3d7d8613745cacd260614e4da924dc2d7fb",
+      "bytes": 69840
+    },
+    {
+      "public_path": "vendor/tasks/layer07_sample000/dense.hex",
+      "reason": "private real validation/model task data",
+      "sha256": "dacedad3fd7d6be3f5c087caa6b3cd225de41595cdb92102d0160ca9356b1c9e",
+      "bytes": 126720
+    },
+    {
+      "public_path": "vendor/tasks/layer07_sample000/expected.hex",
+      "reason": "private real validation/model task data",
+      "sha256": "d963e8ad10a3d734b89d1627eb2e86cb79bf8b0cd503c6f137d6d55e8225ddca",
+      "bytes": 93177
+    },
+    {
+      "public_path": "vendor/tasks/layer07_sample000/input.hex",
+      "reason": "private real validation/model task data",
+      "sha256": "c0cce53c4974237975ea2e0f6e50a8a6bf7f13b51544d97f6ed9550e8f441866",
+      "bytes": 69633
+    },
+    {
+      "public_path": "vendor/tasks/layer08_sample000/dense.hex",
+      "reason": "private real validation/model task data",
+      "sha256": "c92c6ee4fb6efa1a5d5a76952aa44a213fffc62d0d8dbed4c5da823c16792cd9",
+      "bytes": 126720
+    },
+    {
+      "public_path": "vendor/tasks/layer08_sample000/expected.hex",
+      "reason": "private real validation/model task data",
+      "sha256": "e20ad95804021904062d0741a8f774f0d8e744af03380f15c2217defe95d6c2e",
+      "bytes": 93177
+    },
+    {
+      "public_path": "vendor/tasks/layer08_sample000/input.hex",
+      "reason": "private real validation/model task data",
+      "sha256": "298c99dab61dbefbc07dcb22adcd3d74fb92137367e1b1ee248ba75a45c27999",
+      "bytes": 70299
+    },
+    {
+      "public_path": "vendor/tasks/layer09_sample000/dense.hex",
+      "reason": "private real validation/model task data",
+      "sha256": "80c6b79541d5ce18835ae23480e2c611c512a325d86c00bebde68f878070dd9b",
+      "bytes": 126720
+    },
+    {
+      "public_path": "vendor/tasks/layer09_sample000/expected.hex",
+      "reason": "private real validation/model task data",
+      "sha256": "5e7f8d625e8975fbd4786363e3c6818d95d4f448fdc45cb84e1e4f11ecf705ea",
+      "bytes": 93177
+    },
+    {
+      "public_path": "vendor/tasks/layer09_sample000/input.hex",
+      "reason": "private real validation/model task data",
+      "sha256": "354f3338374d4f5cc6380ad381d8bea17668468074a9aa919db57a79cbe8778c",
+      "bytes": 69822
+    },
+    {
+      "public_path": "vendor/tasks/layer10_sample000/dense.hex",
+      "reason": "private real validation/model task data",
+      "sha256": "0107e6acdeb9def8d4472d569bf84694ffb0ac24e8d11c6f2bf5f2a7e3fbb27b",
+      "bytes": 126720
+    },
+    {
+      "public_path": "vendor/tasks/layer10_sample000/expected.hex",
+      "reason": "private real validation/model task data",
+      "sha256": "8a9450fe560f40dc8487a92112db191222b2f8e8276157e7b8924d557a86ab4e",
+      "bytes": 93177
+    },
+    {
+      "public_path": "vendor/tasks/layer10_sample000/input.hex",
+      "reason": "private real validation/model task data",
+      "sha256": "6feedffcf3da01f3680837eee12eb2a14fa63d5c6dfd27f7d801dd87eaa66963",
+      "bytes": 70308
+    },
+    {
+      "public_path": "vendor/tasks/layer11_sample000/dense.hex",
+      "reason": "private real validation/model task data",
+      "sha256": "62bddf776f66a393d8c22ad04ff694ea0317cc7d0a2cca957c33bab737fb78d1",
+      "bytes": 126720
+    },
+    {
+      "public_path": "vendor/tasks/layer11_sample000/expected.hex",
+      "reason": "private real validation/model task data",
+      "sha256": "1159f2b4229c6ce9424faf4c2fb4f1c4dddad6bb42670281d2aba98b72d72d7d",
+      "bytes": 93177
+    },
+    {
+      "public_path": "vendor/tasks/layer11_sample000/input.hex",
+      "reason": "private real validation/model task data",
+      "sha256": "5ca6245c34c712f6855eb32040dacafb0c1b958658101dcb1b29b726e89b2f5c",
+      "bytes": 70218
+    }
+  ],
+  "other_dependencies": [
+    "Official SRAM vendor models and SCC40NLL RVT libraries",
+    "EDA tools and licenses",
+    "Private calibration/validation source dataset and weight arrays"
+  ]
+}

@@ -1,0 +1,59 @@
+{
+  "passed": true,
+  "scope": "Independent numerical/format and ready-valid/error/reset reference regression. Two-symbol throughput differs; no cycle-equivalence or PPA claim.",
+  "rtl_sha256": "68b5c28cbaa29a6a450f939f007fc26e5efd26873c6148dd73b6beffba1cfd18",
+  "tb_sha256": "09707d8114ac191d412744d1a3374d15037718694557da2859a67a553d47d96c",
+  "runner_sha256": "52a6cb172c2a5470db9e225a8e63234ce028dfd653188229979f6ad7153211b4",
+  "parent_evidence_sha256": "664534b6e8c73f03872d46623a337738e74d83768555ca198028bf84348bf372",
+  "fixtures_directory": "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_candidate\\integration\\reorder_runs\\20261112T141158670283Z",
+  "fixture_hashes": {
+    "case0.gold.hex": "63f13c67fd8565d9363b6f2d39e3eb1516e402be171a5a332eca72ff30510246",
+    "case0.raw.hex": "21d0a367c547a329f0c0a2f78f766e0fb62ea805a9c2bfbd93a43f8ed35ba090",
+    "case1.gold.hex": "27c681a601a236fb447afc78e3cc34440c0f82c1de83da2fe1f4f4f52573f395",
+    "case1.raw.hex": "204c83679a7f3439397ea460f518a2c698df721ac03090ba56b20512e7752acb",
+    "case2.gold.hex": "525f4c1a65853481774d952b0ea5c9d5ae37ecba9ae64cfeb26352289a64221f",
+    "case2.raw.hex": "140fed18741abfc13e388259cc7e92116c9790dd33e58f51c9d2a4fbc3fa9303",
+    "case3.gold.hex": "7127361dd70a95004e7b6b62aa9bda8f50fb3f8abcca92fe4d782956d5c001a9",
+    "case3.raw.hex": "f5a804d27f6c4c65e05a19368e481afd0c0569600a9914e39eaa0a20752d4ee6",
+    "case4.gold.hex": "8a20b196fc9ed9caefc5565865f159efed66d09e9cdc40c237ea5067d7db1c92",
+    "case4.raw.hex": "9fbb5b0adc146e20823fe996affc9e1b0febf8f06f9022efd60865025552932c",
+    "case5.gold.hex": "4af33a2fd33b900b59edbb95d4830528e76c68c67abe05e33e14615a41f517f4",
+    "case5.raw.hex": "9dba45a0748418ddf11338e5a45db904f4f3618008df4b90a120e183ffd6d03d",
+    "case6.gold.hex": "763914ff616a34b678a3a0c9643ff9dab5eabe86e439410638bcd0865d847eaf",
+    "case6.raw.hex": "47365808a7332d5890011e4466b05364e6225bf37e5d10e7573d8fa973f63488",
+    "case7.gold.hex": "2fef352a6874932ef396f5feb19f5ce60bcbae7c59875230bd934eda8b261353",
+    "case7.raw.hex": "ae63ca7c9228aaa80d38d4bf640746186d8f588c33fdc15b6ee949ae0fcd3168",
+    "direct_w.gold.hex": "8a20b196fc9ed9caefc5565865f159efed66d09e9cdc40c237ea5067d7db1c92",
+    "direct_w.raw.hex": "9fbb5b0adc146e20823fe996affc9e1b0febf8f06f9022efd60865025552932c",
+    "direct_x.gold.hex": "63f13c67fd8565d9363b6f2d39e3eb1516e402be171a5a332eca72ff30510246",
+    "direct_x.raw.hex": "21d0a367c547a329f0c0a2f78f766e0fb62ea805a9c2bfbd93a43f8ed35ba090",
+    "manifest.txt": "ac2f8612dd4beb10a85e491332a47be0b790da3abe6b3947b5fbc0351fc04b5a"
+  },
+  "runs": [
+    {
+      "seed": 17,
+      "passed": true,
+      "summary": [
+        "PASS rowpair normal=52 errors=28 resets=8 held=3140 seed=17"
+      ],
+      "log_sha256": "64be615efb908e2be71d513a8f926d54e832339af88484210e8dc63d34264328"
+    },
+    {
+      "seed": 271,
+      "passed": true,
+      "summary": [
+        "PASS rowpair normal=52 errors=28 resets=8 held=3236 seed=271"
+      ],
+      "log_sha256": "4ca7906f4c794cca76715e34dad9b75d070bde9787e2ba405e17f4c82afc2617"
+    },
+    {
+      "seed": 20261112,
+      "passed": true,
+      "summary": [
+        "PASS rowpair normal=52 errors=28 resets=8 held=3118 seed=20261112"
+      ],
+      "log_sha256": "2780f71a59979e69942c7d2b2826854f87f0261238b3e9ce7e2f333447d2c813"
+    }
+  ],
+  "run_directory": "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_candidate\\decoder2\\rowpair_runs\\20261112T155551242209Z"
+}

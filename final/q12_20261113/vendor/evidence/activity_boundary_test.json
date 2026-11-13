@@ -1,0 +1,13 @@
+{
+  "passed": true,
+  "scope": "Icarus minimal VCD timestamp/ACK-NBA unit test only, not vendor SoC or power",
+  "start_ps": 9999,
+  "end_ps": 43329,
+  "old_rounded_end_ps": 43000,
+  "ack_assertion_ps": 39996,
+  "committed_NBA_recorded_at_exact_end": true,
+  "dumpoff_ps": 43330,
+  "timescale_ps": 1,
+  "source_sha256": "0a0da983f47ac104033c94dcf4675aba4ecb8dedaa7d810dddc38dffad366245",
+  "log_sha256": "fae344d1a4067c073289113628124c23acde0cebb953fdae53578b32b9ff2094"
+}

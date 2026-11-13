@@ -1,0 +1,41 @@
+{
+  "passed": true,
+  "scope": "Explicit independent loader/CPU/engine ownership, queued target memory, actual delayed ACKs; not full SoC performance",
+  "sources_sha256": {
+    "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_candidate\\loader_master\\q12_loader_bus_merge.sv": "6372646d05056b64eaef8a8aca5f659a13123ee1f099f646e440b1fc9f4c59a7",
+    "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_candidate\\loader_master\\soc\\q12_loader_master_bfm.sv": "4d838a3334584ca21ec897f13da988ff4a878e0ec8f16bef174d7e11f641762b",
+    "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_candidate\\loader_master\\tb_loader_master.sv": "6422c864ac7ebaa053d360d39fc21bfdbf4f1c1ee5a5df52fd3db09f6d5bda0a",
+    "E:\\Desktop\\qiansaisheji\\output\\github-qiansaisheji\\qingyu\\experiments\\h1500v\\opt33_readcache\\rtl\\qingyu_icb_merge.sv": "22de459b44f3308f9d66c904be48ffeedeaa124c8b531215f22b79b6768e66a8"
+  },
+  "cases": [
+    {
+      "name": "compile",
+      "returncode": 0,
+      "expected_error": false,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "summary": ""
+    },
+    {
+      "name": "normal_reset0",
+      "returncode": 0,
+      "expected_error": false,
+      "log_sha256": "31896529c7ae7ccb8db1c1cc0ae0e0a8a0281419f01f87dc9034a7eea2028163",
+      "summary": "Q12_LOADER_CHUNK_ACK seq=1 words=331 cycle=875\nQ12_LOADER_CHUNK_ACK seq=2 words=332 cycle=957\nQ12_LOADER_CHUNK_ACK seq=3 words=333 cycle=1029\nQ12_LOADER_CHUNK_ACK seq=4 words=334 cycle=1099\nQ12_LOADER_CHUNK_ACK seq=5 words=335 cycle=1171\nQ12_LOADER_CHUNK_ACK seq=6 words=336 cycle=1240\nQ12_LOADER_CHUNK_ACK seq=7 words=337 cycle=1312\nQ12_LOADER_CHUNK_ACK seq=8 words=338 cycle=1378\nQ12_LOADER_CHUNK_ACK seq=9 words=339 cycle=1446\nEXPLICIT_MASTER peak_pending=4 public_requests=9 cancelled_by_global_reset=0 reset_case=0\nPASS q12 explicit loader master chunks=9 source=339 commits=45 dma=32 original_merger=1 all_requests=573 all_responses=573\nE:\\Desktop\\qiansaisheji\\output\\eda\\q12_candidate\\loader_master\\tb_loader_master.sv:101: $finish called at 14650000 (1ps)"
+    },
+    {
+      "name": "normal_reset1",
+      "returncode": 0,
+      "expected_error": false,
+      "log_sha256": "fd0310c6cca66a0af2f0f389c3fff293dfe9c86f6ae42e043d47902d1cef0e1d",
+      "summary": "Q12_LOADER_CHUNK_ACK seq=1 words=331 cycle=1046\nQ12_LOADER_CHUNK_ACK seq=2 words=332 cycle=1131\nQ12_LOADER_CHUNK_ACK seq=3 words=333 cycle=1202\nQ12_LOADER_CHUNK_ACK seq=4 words=334 cycle=1268\nQ12_LOADER_CHUNK_ACK seq=5 words=335 cycle=1337\nQ12_LOADER_CHUNK_ACK seq=6 words=336 cycle=1406\nQ12_LOADER_CHUNK_ACK seq=7 words=337 cycle=1478\nQ12_LOADER_CHUNK_ACK seq=8 words=338 cycle=1552\nQ12_LOADER_CHUNK_ACK seq=9 words=339 cycle=1616\nEXPLICIT_MASTER peak_pending=4 public_requests=9 cancelled_by_global_reset=4 reset_case=1\nPASS q12 explicit loader master chunks=9 source=339 commits=45 dma=32 original_merger=1 all_requests=646 all_responses=642\nE:\\Desktop\\qiansaisheji\\output\\eda\\q12_candidate\\loader_master\\tb_loader_master.sv:101: $finish called at 16350000 (1ps)"
+    },
+    {
+      "name": "error",
+      "returncode": 1,
+      "expected_error": true,
+      "log_sha256": "db8337edde71381abe087f40d1d6d24d8438d37b5f1bc05e06cc87dd6c521774",
+      "summary": "FATAL: E:\\Desktop\\qiansaisheji\\output\\eda\\q12_candidate\\loader_master\\soc\\q12_loader_master_bfm.sv:81: platform loader write response error\n       Time: 1145000  Scope: tb_loader_fixture.loader"
+    }
+  ],
+  "run_directory": "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_candidate\\loader_master\\loader_runs\\20261112T151746947871Z"
+}

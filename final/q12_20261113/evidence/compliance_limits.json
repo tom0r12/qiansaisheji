@@ -1,0 +1,22 @@
+{
+  "final_candidate_selected_by_user": true,
+  "strict_interface_acceptance": "OPEN",
+  "demonstrated": "Loader public hardware and testbench agree; CPU retained; bounded NP3 real arbitration; all source/result traffic through unchanged downstream E203 fabric and one logical512KB shared SRAM port; full control/load-to-finalACK timing. Shared read-ahead controller is custom, not original vendor logic.",
+  "remaining_interface_question": "Whether the newly added loader_* public port is an allowed platform-existing access interface; thus strict final compliance is OPEN.",
+  "physical_inventory": {
+    "private_RAMSP128X16": 30,
+    "private_RAMSP1024X16": 6,
+    "fixed_shared_RAMSP4096X16": 64,
+    "CPU_TCM_macros_separately_excluded_from_added_area": 16
+  },
+  "area_rule": "Count all added FIO/core/codec/transport/mailbox/NP3/shared-cache-and-bank-control. Deduct only fixed shared physical macros from incremental integrated wrapper; CPU/fixed fabric excluded at actual boundaries.",
+  "remaining_acceptance": [
+    "Integrated official-library mapped area",
+    "150MHz final multicorner setup and hold",
+    "RTL-to-final-mapped-netlist equivalence and gate checks",
+    "Same final netlist full-window whole-SoC activity power and 12-task mean energy",
+    "Organizer-selected 600-sample precision evaluation"
+  ],
+  "no_new_design_change": true,
+  "source_audit": "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_candidate\\loader_master\\audit\\current_compliance_precision_audit.json"
+}

@@ -1,0 +1,46 @@
+{
+  "passed": true,
+  "scope": "8500-case reference-wire regression plus cycle-exact simulation miter; no PPA or formal claim",
+  "candidate_sha256": "048c6d54c8c54f7753d0c73085bac5fe4662f69d4f29d0a16d479c879bfbe608",
+  "baseline_sha256": "d4ed09b9846c5b5b4d0d8f40fe219cbd642b05d6534536f1b16bcb6e02f96a7d",
+  "wrapper_sha256": "fa3abe58b691aebbf8d0d4ef089d92e20531052fc7617ff18202a26d0724d436",
+  "tb_sha256": "a43d922eb9934330ce28c98e817e0a3c59f06aace63e39a27071ba0040044841",
+  "baseline_evidence_sha256": "5db41ba0ee2e9c16d29cde2b4280999f80923a5eac0a73b54dacc2ac4d0e8452",
+  "fixture_hashes": {
+    "cases.json": "70785ffeccb83fca8f7030a73bb90d5cfff4842d69afae862283355e7e36f686",
+    "manifest.txt": "541861a225930cb97dde8438fce92a641d3719d70e6b85a6c310eed435615f1e",
+    "raw.hex": "87ea236839ee4594d52f5940afaa9e1529428886fce215c2b6856cf3fded9c4a",
+    "coded.hex": "05b5fc51f036afbc40b5c623647fa1e434b23b74ad2c607a1cbebe28a3a14c0a"
+  },
+  "case_count": 8500,
+  "runs": [
+    {
+      "seed": 17,
+      "passed": true,
+      "summary": [
+        "PASS q13_encoder seed=17 normal=8500 errors=25 resets=2 held=87229 peak_bits=384 max_append=192 max_words=646 full_hits=550"
+      ],
+      "cycles": 494597,
+      "log_sha256": "dd9f38bf1f0c9f1a40a010d7cb7db4d3e47be716d3736c74092dfd5825b2fa23"
+    },
+    {
+      "seed": 271,
+      "passed": true,
+      "summary": [
+        "PASS q13_encoder seed=271 normal=8500 errors=25 resets=2 held=86555 peak_bits=384 max_append=192 max_words=646 full_hits=773"
+      ],
+      "cycles": 493887,
+      "log_sha256": "731edc745fece0e1145e800d1d87cc765f1b66633d99eb6e783584abf5de4246"
+    },
+    {
+      "seed": 20261112,
+      "passed": true,
+      "summary": [
+        "PASS q13_encoder seed=20261112 normal=8500 errors=25 resets=2 held=86634 peak_bits=384 max_append=192 max_words=646 full_hits=722"
+      ],
+      "cycles": 494069,
+      "log_sha256": "236b5a127a87ec1607941ca0bfd7efaca48be7a5b82d72d000a37b6c1ffb9d52"
+    }
+  ],
+  "run_directory": "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_candidate\\encoder_bounded\\runs\\20261112T155857717467Z"
+}

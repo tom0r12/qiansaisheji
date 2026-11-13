@@ -1,0 +1,12 @@
+{
+  "prepared": true,
+  "scope": "Unit-tested independent blocking WAIT, actual SoC performance pending",
+  "sources_sha256": {
+    "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_candidate\\loader_master\\blocking_wait\\q12_loader_request.sv": "1413d6097134dfd99ad8c002c3a165803ec695ce6f3084af54bdcbb86be4a5f4",
+    "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_candidate\\loader_master\\blocking_wait\\soc\\soc_main.c": "58969069d40e6c65fbc8cfaea768e7f791674342b40bd489f540ffa0fa26a66c",
+    "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_candidate\\loader_master\\blocking_wait\\soc\\tb_q12soc.sv": "0d8c7efa5e216b85386b3bfb4c23d81085d693d71d29c85addd9d428017e8d8c",
+    "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_candidate\\loader_master\\blocking_wait\\unit_result.json": "18ae9056cac58d74ddf3f8cad6633edd49c6b21dc1533819c8991aeb5c7cd9fa",
+    "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_candidate\\loader_master\\blocking_wait\\soc\\firmware_result.json": "d2f32c67246665ee4b51777a2bce0414ccedd220631c1edf454efa335b90266a"
+  },
+  "accounting": "Exactly 10 mailbox writes, 9 WAIT reads, 19 real responses, zero timeout; 9 real public requests. Shared READY/epoch/words remain real CPU reads. Loader and DMA proceed while CPU response is held. No clock gating added."
+}

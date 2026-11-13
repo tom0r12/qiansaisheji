@@ -1,0 +1,11 @@
+{
+  "passed": true,
+  "hardware_source_count": 157,
+  "vendor_source_count": 160,
+  "vendor_manifest_sha256": "720567d9f166861ec87e54b1ecdf1dbc982077790816e7a62d78546d4fac9972",
+  "vendor_only_simulation_files": [
+    "src/q12_vendor/macro_presence.sv",
+    "src/q12/loader_master/soc/q12_loader_master_bfm.sv",
+    "src/q12_vendor/tb_q12soc_vendor.sv"
+  ]
+}

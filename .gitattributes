@@ -1,0 +1,2 @@
+# Frozen source/manifests must retain their exact uploaded bytes on any OS.
+final/q12_20261113/** -text

@@ -1,0 +1,93 @@
+{
+  "passed": true,
+  "scope": "Q12 prefix count extension 398->646, unchanged official fabric and shared controller; not throughput or PPA",
+  "dependencies_sha256": {
+    "E:\\Desktop\\qiansaisheji\\qingyu\\vendor\\e203_hbirdv2\\rtl\\e203\\subsys\\e203_subsys_mems.v": "dc63cbcc9ebe9331c824c27f6f3645f0f330740573ee1b9a52dc5ca259a339fd",
+    "E:\\Desktop\\qiansaisheji\\qingyu\\vendor\\e203_hbirdv2\\rtl\\e203\\fab\\sirv_icb1to8_bus.v": "110922ec61bc9c3fea85c43661ce65b74c831dfe6cdcaf717d67cdea66cf856a",
+    "E:\\Desktop\\qiansaisheji\\qingyu\\vendor\\e203_hbirdv2\\rtl\\e203\\mems\\sirv_mrom_top.v": "6c0740339727880b7f9f0513a2b4e773afbeb08b7c02183fb05bef937ba8110f",
+    "E:\\Desktop\\qiansaisheji\\qingyu\\vendor\\e203_hbirdv2\\rtl\\e203\\mems\\sirv_mrom.v": "9386d9014b59f782b2fcf1901327b4a71f25064aaa1943de70feae2fffcb6aa0",
+    "E:\\Desktop\\qiansaisheji\\qingyu\\vendor\\e203_hbirdv2\\rtl\\e203\\perips\\sirv_expl_axi_slv.v": "963f5d2b8f8a0e5df37d830857e5b28c583283b331af3903c896cc9d0083dec1",
+    "E:\\Desktop\\qiansaisheji\\qingyu\\vendor\\e203_hbirdv2\\rtl\\e203\\general\\sirv_1cyc_sram_ctrl.v": "bb5ec8cd01da783be4dfe45774fda1662009d178b26a46f89adea95e202905ae",
+    "E:\\Desktop\\qiansaisheji\\qingyu\\vendor\\e203_hbirdv2\\rtl\\e203\\general\\sirv_gnrl_bufs.v": "d46f8701f99a79b321cecd2e2b776caa2d7a76925e07b675bbd3952a47fb3ab2",
+    "E:\\Desktop\\qiansaisheji\\qingyu\\vendor\\e203_hbirdv2\\rtl\\e203\\general\\sirv_gnrl_dffs.v": "cd903d78882040cc17b6fb8bec3862f8d440726d7027ba9c61310d18801f8d83",
+    "E:\\Desktop\\qiansaisheji\\qingyu\\vendor\\e203_hbirdv2\\rtl\\e203\\general\\sirv_gnrl_icbs.v": "35eb816a2960f3444af19150845447f6140990a0a3e30a4626edcd242bcf3db8",
+    "E:\\Desktop\\qiansaisheji\\qingyu\\vendor\\e203_hbirdv2\\rtl\\e203\\general\\sirv_gnrl_ram.v": "07ade2feda6635e67aa79821f256b21cd0db9308537906c55612ee1e74034260",
+    "E:\\Desktop\\qiansaisheji\\qingyu\\vendor\\e203_hbirdv2\\rtl\\e203\\general\\sirv_gnrl_xchecker.v": "9c610fd2636f26bdf7e6546b6e2a24b43bf5fb5244a308f84d608ed623f3a2b3",
+    "E:\\Desktop\\qiansaisheji\\qingyu\\vendor\\e203_hbirdv2\\rtl\\e203\\general\\sirv_sim_ram.v": "f25074ac97a3511c393c1b17a8081ef650d1f53ab12b4f4334c222342e31e63b",
+    "E:\\Desktop\\qiansaisheji\\qingyu\\vendor\\e203_hbirdv2\\rtl\\e203\\general\\sirv_sram_icb_ctrl.v": "c8cb42edc2a85e0e50b9f78f6b395682fecae4d8bade144ddc34aba3c89d14e6",
+    "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_candidate\\integration\\q12_icb_stream_prefix.sv": "f325a71a173d9cd9b321b19195f37cad77f446078c43905cd38497a67ba7be71",
+    "E:\\Desktop\\qiansaisheji\\output\\github-qiansaisheji\\qingyu\\experiments\\h1500v\\opt33_readcache\\rtl\\qingyu_shared_sram.sv": "11fcbe1fc390917daa921e268416d6e04743c866b87b7b16317c389f0bd7e0f7",
+    "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_candidate\\integration\\tb_q12_stream_prefix.sv": "36a553db4fec58fc3053994fe3228b08a2f66cdc6069b5e9a2ba13ba7be87dae",
+    "E:\\Desktop\\qiansaisheji\\qingyu\\vendor\\e203_hbirdv2\\rtl\\e203\\core\\e203_defines.v": "50348b28a961b87eff4040cecc44b35e163acc28042eb6fa53bd1c2e69682109",
+    "E:\\Desktop\\qiansaisheji\\qingyu\\vendor\\e203_hbirdv2\\rtl\\e203\\core\\config.v": "235fc827eb88290dab3e4d6ecaf9cd22aa897ac8f5da9abf562a308ded191d9c",
+    "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_candidate\\integration\\run_prefix_checks.py": "e6f195cfb71cb90200eb00165a7e042b2a8478bf11e5a6002fae154cd1fcad73"
+  },
+  "commands": [
+    [
+      "E:\\Desktop\\qiansaisheji\\qingyu\\tools\\verilator\\mingw64\\bin\\verilator_bin.exe",
+      "--cc",
+      "--main",
+      "--exe",
+      "--timing",
+      "--autoflush",
+      "-Wno-fatal",
+      "-DDISABLE_SV_ASSERTION=1",
+      "--top-module",
+      "tb_q12_stream_prefix",
+      "--prefix",
+      "Vprefix",
+      "--Mdir",
+      "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_candidate\\integration\\prefix_runs\\20261112T141717324629Z\\vbuild",
+      "-GOUTSTANDING=8",
+      "-GRESPONSE_QUEUE=1",
+      "-f",
+      "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_candidate\\integration\\prefix_runs\\20261112T141717324629Z\\sources.f"
+    ],
+    [
+      "D:/mingw/mingw64/bin/mingw32-make.exe",
+      "-C",
+      "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_candidate\\integration\\prefix_runs\\20261112T141717324629Z\\vbuild",
+      "-f",
+      "Vprefix.mk",
+      "-j2",
+      "SHELL=D:/Git/bin/sh.exe",
+      "CXX=g++",
+      "LINK=g++",
+      "CFG_CXXFLAGS_STD=-std=gnu++20",
+      "OPT_GLOBAL=-Os -fno-declone-ctor-dtor"
+    ]
+  ],
+  "runs": [
+    {
+      "seed": 17,
+      "returncode": 0,
+      "summary": [
+        "PASS q12_stream_prefix outstanding=8 seed=17 response_queue=1 cases=59 maximum_credit_seen=8 full_replacements=2148 abort_events=5 error_events=10 fault_with_held_command=1 fault_with_held_read_output=4 hard_reset_events=1"
+      ],
+      "log_sha256": "7c6454e9edd136d3cd6445b5195d75e4618b5d125f4acd4c3d78caff545ef607"
+    },
+    {
+      "seed": 271,
+      "returncode": 0,
+      "summary": [
+        "PASS q12_stream_prefix outstanding=8 seed=271 response_queue=1 cases=59 maximum_credit_seen=8 full_replacements=2183 abort_events=5 error_events=10 fault_with_held_command=0 fault_with_held_read_output=6 hard_reset_events=1"
+      ],
+      "log_sha256": "44fd11b28a7b5805349f8c2ef965101b576dbf10664eff18c9df382220890709"
+    },
+    {
+      "seed": 20261112,
+      "returncode": 0,
+      "summary": [
+        "PASS q12_stream_prefix outstanding=8 seed=20261112 response_queue=1 cases=59 maximum_credit_seen=8 full_replacements=1996 abort_events=5 error_events=10 fault_with_held_command=0 fault_with_held_read_output=4 hard_reset_events=1"
+      ],
+      "log_sha256": "c867b299b4faeba1345e0a44f9ab3ab13a8cd88e1f03760efef40da158b2b497"
+    }
+  ],
+  "executable_sha256": "fc362102cf3345e154e53b56bef75166e52bbac76b50b787425fd1da72cdfd50",
+  "runtime_sha256": {
+    "libgcc_s_seh-1.dll": "661f70dc19fde8c25bb56387b807b7a9ab7e532cf58fa8aeee078256c19d8980",
+    "libstdc++-6.dll": "b720a96289bcd6d9ec6f5f1f5612f1b1a523ce15d3ada20fe119791274cb512f",
+    "libwinpthread-1.dll": "69d7bb54bfa7502501b8cda3e09ae9d0a7ae3325d7419aeaeb55c13f4ae8dddb"
+  },
+  "run_directory": "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_candidate\\integration\\prefix_runs\\20261112T141717324629Z"
+}

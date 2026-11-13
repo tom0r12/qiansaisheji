@@ -1,0 +1,75 @@
+{
+  "passed": true,
+  "scope": "Independent blocking WAIT protocol: delayed source/control ACKs, DMA/loader progress, timeout/fault/reset/backpressure. Not SoC performance, power or official interface approval.",
+  "sources_sha256": {
+    "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_candidate\\loader_master\\blocking_wait\\q12_loader_request.sv": "1413d6097134dfd99ad8c002c3a165803ec695ce6f3084af54bdcbb86be4a5f4",
+    "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_candidate\\loader_master\\blocking_wait\\tb_blocking_request.sv": "802e8f9b090d84733f8f3508b582008eacc3615d483cbcdcbf9d2dc96693d9bf",
+    "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_candidate\\loader_master\\blocking_wait\\tb_blocking_fio.sv": "e094ee2a1cb181f3dff1bf2c58fb8e6923aa4c37445ec1471b13bd526f027007",
+    "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_candidate\\loader_master\\blocking_wait\\tb_blocking_loader.sv": "b59e0e96482bdc1e8e922d9dfc315136ba7886fa505e7851c427728bf7803b8b",
+    "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_candidate\\loader_master\\soc\\qingyu_q12_loader_fio.sv": "2c85938a4b7edd7b73b5064129ca9f7cb9e1ad9f937f12e6f48caadc2cf4c14d",
+    "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_candidate\\loader_master\\soc\\qingyu_q12_stream_fio.sv": "ec519dee77b5401130b7051d5fda9782f07a3e3fba43162c00181620de990d2a",
+    "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_candidate\\loader_master\\soc\\q12_loader_master_bfm.sv": "4d838a3334584ca21ec897f13da988ff4a878e0ec8f16bef174d7e11f641762b",
+    "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_candidate\\loader_master\\q12_loader_bus_merge.sv": "6372646d05056b64eaef8a8aca5f659a13123ee1f099f646e440b1fc9f4c59a7",
+    "E:\\Desktop\\qiansaisheji\\output\\github-qiansaisheji\\qingyu\\experiments\\h1500v\\opt33_readcache\\rtl\\qingyu_icb_merge.sv": "22de459b44f3308f9d66c904be48ffeedeaa124c8b531215f22b79b6768e66a8",
+    "E:\\Desktop\\qiansaisheji\\output\\eda\\q11_candidate\\overlap\\q11_commit_gate.sv": "682c9b46d156a0e96357570acda2716d028e609490704b5ab8d3eba6e62f7237"
+  },
+  "cases": [
+    {
+      "name": "mailbox_compile",
+      "returncode": 0,
+      "expected_failure": false,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "summary": ""
+    },
+    {
+      "name": "mailbox",
+      "returncode": 0,
+      "expected_failure": false,
+      "log_sha256": "9bed9d76fee96476864a266db68a039f701d9bc054b29ea34888878937e339f9",
+      "summary": "PASS blocking mailbox checks=14 commands=15 responses=14 reset_cancelled=1 timeout_test=1\nE:\\Desktop\\qiansaisheji\\output\\eda\\q12_candidate\\loader_master\\blocking_wait\\tb_blocking_request.sv:50: $finish called at 2030000 (1ps)\n"
+    },
+    {
+      "name": "fio_compile",
+      "returncode": 0,
+      "expected_failure": false,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "summary": ""
+    },
+    {
+      "name": "fio",
+      "returncode": 0,
+      "expected_failure": false,
+      "log_sha256": "b152f461faed1aa0603629d934738313d61c9d1843f36f357413c758c3c2a5dd",
+      "summary": "PASS q12_explicit_fio_mmio checks=31 commits=5 replies=5 real_compute=0 real_cpu=0\nE:\\Desktop\\qiansaisheji\\output\\eda\\q12_candidate\\loader_master\\blocking_wait\\tb_blocking_fio.sv:118: $finish called at 1960000 (1ps)\n"
+    },
+    {
+      "name": "loader_compile",
+      "returncode": 0,
+      "expected_failure": false,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "summary": ""
+    },
+    {
+      "name": "loader_reset0",
+      "returncode": 0,
+      "expected_failure": false,
+      "log_sha256": "81fdc2dc29eb89e4d2c562f4862cf8e1c282b1a8174aeec6ead6eeb9c5fa504e",
+      "summary": "Q12_LOADER_CHUNK_ACK seq=1 words=331 cycle=724\nQ12_LOADER_CHUNK_ACK seq=2 words=332 cycle=811\nQ12_LOADER_CHUNK_ACK seq=3 words=333 cycle=888\nQ12_LOADER_CHUNK_ACK seq=4 words=334 cycle=963\nQ12_LOADER_CHUNK_ACK seq=5 words=335 cycle=1039\nQ12_LOADER_CHUNK_ACK seq=6 words=336 cycle=1116\nQ12_LOADER_CHUNK_ACK seq=7 words=337 cycle=1194\nQ12_LOADER_CHUNK_ACK seq=8 words=338 cycle=1270\nQ12_LOADER_CHUNK_ACK seq=9 words=339 cycle=1348\nWAIT_BUS_PROGRESS loader=373 dma=18\nEXPLICIT_MASTER peak_pending=4 public_requests=9 cancelled_by_global_reset=0 reset_case=0\nPASS q12 explicit loader master chunks=9 source=339 commits=45 dma=32 original_merger=1 all_requests=446 all_responses=446\nE:\\Desktop\\qiansaisheji\\output\\eda\\q12_candidate\\loader_master\\blocking_wait\\tb_blocking_loader.sv:138: $finish called at 13740000 (1ps)\n"
+    },
+    {
+      "name": "loader_reset1",
+      "returncode": 0,
+      "expected_failure": false,
+      "log_sha256": "7af99968d0c50d1e25111ac0fbbd8167053c5146944ff1a7dc8acbccad09f3d2",
+      "summary": "Q12_LOADER_CHUNK_ACK seq=1 words=331 cycle=901\nQ12_LOADER_CHUNK_ACK seq=2 words=332 cycle=991\nQ12_LOADER_CHUNK_ACK seq=3 words=333 cycle=1068\nQ12_LOADER_CHUNK_ACK seq=4 words=334 cycle=1144\nQ12_LOADER_CHUNK_ACK seq=5 words=335 cycle=1219\nQ12_LOADER_CHUNK_ACK seq=6 words=336 cycle=1295\nQ12_LOADER_CHUNK_ACK seq=7 words=337 cycle=1369\nQ12_LOADER_CHUNK_ACK seq=8 words=338 cycle=1446\nQ12_LOADER_CHUNK_ACK seq=9 words=339 cycle=1525\nWAIT_BUS_PROGRESS loader=372 dma=15\nEXPLICIT_MASTER peak_pending=4 public_requests=9 cancelled_by_global_reset=3 reset_case=1\nPASS q12 explicit loader master chunks=9 source=339 commits=45 dma=32 original_merger=1 all_requests=517 all_responses=514\nE:\\Desktop\\qiansaisheji\\output\\eda\\q12_candidate\\loader_master\\blocking_wait\\tb_blocking_loader.sv:138: $finish called at 15480000 (1ps)\n"
+    },
+    {
+      "name": "loader_error",
+      "returncode": 1,
+      "expected_failure": true,
+      "log_sha256": "26607b50c690fb3f8f3a6f938abd21767d62a5a5e1670dfcfd38c59cf077db66",
+      "summary": "FATAL: E:\\Desktop\\qiansaisheji\\output\\eda\\q12_candidate\\loader_master\\soc\\q12_loader_master_bfm.sv:81: platform loader write response error\n       Time: 1225000  Scope: tb_loader_fixture.loader\n"
+    }
+  ],
+  "run_directory": "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_candidate\\loader_master\\blocking_wait\\test_runs\\20261112T153824427520Z"
+}
