@@ -1,0 +1,17 @@
+__pycache__/
+server/*.zip
+checks/quant_reference.json
+checks/quant_candidate.json
+server/*_launch.txt
+server/status_query.txt
+server/qg_base64.txt
+server/qg_command.txt
+variants/decoder_window/checks/case*_input.hex
+variants/decoder_window/checks/case*_expected.hex
+variants/decoder_window/checks/cases.txt
+variants/decoder_window/checks/decoder_sim
+variants/decoder_window/checks/tb.sv
+variants/decoder_window/checks/reference.sv
+variants/decoder_window/checks/checked_candidate.sv
+variants/decoder_window/checks/miter.sv
+variants/decoder_window/checks/end_check_miter.sv
