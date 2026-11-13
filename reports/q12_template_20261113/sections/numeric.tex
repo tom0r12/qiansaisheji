@@ -1,0 +1,41 @@
+\subsubsection{最近偶数舍入的边界行为}
+对右移量 $s>0$，令 $q=\lfloor v/2^s\rfloor$ 为算术右移后的整数，guard 为被丢弃的最高位，sticky 为其余被丢弃位的逻辑或。进位条件为
+\[
+u=\mathrm{guard}\land(\mathrm{sticky}\lor q_0),\qquad q_{\mathrm{RNE}}=q+u.
+\]
+当 guard 为零时保留 $q$；大于半个量化步长时进位；恰好半个步长时由保留最低位 $q_0$ 选择偶数。负数同样从算术右移结果出发，不能用对绝对值简单加半再恢复符号的方式代替偶数规则。
+
+\begin{table}[H]\centering\small
+\caption{RNE 算术示例：右移 2 位，相当于除以 4}
+\begin{tabular}{rrrrl}\toprule
+输入 $v$ & 精确商 & 算术右移 $q$ & RNE 结果 & 判定\\\midrule
+6 & 1.50 & 1 & 2 & 半值，选择偶数 2\\
+10 & 2.50 & 2 & 2 & 半值，保留偶数 2\\
+$-6$ & $-1.50$ & $-2$ & $-2$ & 半值，保留偶数 $-2$\\
+$-10$ & $-2.50$ & $-3$ & $-2$ & 半值，向偶数 $-2$ 进位\\
+11 & 2.75 & 2 & 3 & 大于半值\\
+$-11$ & $-2.75$ & $-3$ & $-3$ & 距离 $-3$ 更近\\\bottomrule
+\end{tabular}
+\end{table}
+
+RTL 对 $s=0$ 单独处理，无需访问负编号的 guard 位；对 $s\ge32$ 的 32 位输入返回零，避免超范围动态索引。量化后将结果限制在 $[-2048,2047]$，边界外返回相应极值。饱和避免环绕，但引入的误差不再受半个量化步长限制，因此饱和样本与普通舍入样本在精度分析中具有不同含义。
+
+\begin{figure}[H]\centering
+\begin{tikzpicture}[x=1cm,y=1cm]
+\draw[fill=pale,draw=ink](0,0)rectangle(7.2,1);
+\draw[fill=accent!20,draw=ink](7.2,0)rectangle(9.1,1);
+\draw[fill=warm!15,draw=ink](9.1,0)rectangle(13.2,1);
+\node[note]at(3.6,.5){保留整数部分 $q$，末位为 $q_0$};
+\node[note]at(8.15,.5){guard};\node[note]at(11.15,.5){其余低位：sticky};
+\draw[arr](8.15,-.1)--(8.15,-.8);
+\node[box,text width=90mm]at(6.6,-1.5){guard 为 1 且 sticky 或 $q_0$ 为 1：整数部分加 1\\随后按 signed12 范围饱和};
+\end{tikzpicture}
+\caption{舍入位的功能划分。分区宽度随移位量变化，图中宽度不表示固定比特数量。}
+\end{figure}
+
+\subsubsection{整数一致性与模型精度的不同对象}
+整数参考逐值相等说明硬件准确实现了既定 X12/W10/Y12 算法；浮点误差评估则衡量这个算法相对于原模型计算的损失。前者通过不能推导后者必然达到 3\% 门槛。特别是本版权重和偏置除以 4、输出尺度变为原来的两倍，必须将整数输出按新尺度还原后再与浮点参考比较。
+
+未饱和时，权重 RNE 的误差可写为 $W_{10}=W_{12}/4+\varepsilon_w$，其中 $|\varepsilon_w|\le1/2$。于是单个输出在移位前的权重误差项为 $\sum_k X_{i,k}\varepsilon_{w,k,j}$，另有偏置转换误差。保守界 $\frac12\sum_k|X_{i,k}|$ 解释误差可能随输入幅度累积，但它不是实际数据集 NRMSE，也没有利用误差之间的抵消。报告不以这个界替代正式样本测试。
+
+输入压缩解码和输出数值格式需要分开描述：冻结源码保留输入参数流的解码逻辑；输出链路使用完整定长 signed12，不存在结果 Rice 编码、差分编码或零值省略。输入解码器的存在不代表输出仍在压缩，二者通过独立的数据通路和文件职责加以区分。

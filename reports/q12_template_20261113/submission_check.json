@@ -42,6 +42,10 @@
     "fault_modes": 2,
     "requantize_proof_same_function": true
   },
+  "expanded_report_data": {
+    "synthetic_records_identical_to_candidate": true,
+    "candidate_sha256": "0d8f89edcdd0e26f819dce379c610763d6788f712bb136843b64ca820892a5dc"
+  },
   "document_scope": "Frozen source, historical full-task measurements, synthesis, and prelayout power estimate.",
   "engineering_acceptance": "OPEN_ITEMS_REMAIN",
   "mandatory_cover_fields_empty": [

@@ -1,0 +1,31 @@
+\subsubsection{共享地址空间与任务提交}
+固件将输出置于共享 SRAM 起点，输入置于后半区，诊断与控制记录放在两者之间。固定布局将输出写入、输入读取和完成记录分开，便于逐地址检查；图\ref{fig:address-map}只展示已使用区域，空白部分不代表已计入任务流量的数据。
+
+\begin{figure}[H]\centering
+\begin{tikzpicture}[x=1cm,y=1cm]
+\foreach \y/\addr/\txt in {0/0xa0000000/输出头部与完整矩阵（38084 字节）,1.2/0xa0030000/诊断记录（软件周期、内部周期、状态）,2.4/0xa0030100/共享控制记录（序号、边界、epoch、错误）,3.6/0xa0040000/输入元数据及参数流（最多 8873 字）}{
+\node[anchor=east,font=\small\ttfamily]at(3,-\y){\addr};
+\draw[fill=pale,draw=ink](3.3,-\y-.4)rectangle(13,-\y+.4);
+\node[note]at(8.15,-\y){\txt};}
+\node[note]at(8.15,-4.55){共享区上界 0xa0080000；地址间隔不按比例绘制};
+\end{tikzpicture}
+\caption{冻结固件使用的共享 SRAM 地址布局。}\label{fig:address-map}
+\end{figure}
+
+初始请求序号 1 提交元数据和输入；之后序号 2 到 9 依次提交八组权重流。固件根据输入头记录的比特数计算各组结束位置，并对 READY\_WORDS、TOTAL\_WORDS 和 READY\_EPOCH 逐项核对。只有真实数据写入及控制记录写响应完成后才扩展加速器的可读边界。加速器能够在后续权重装载时计算前面的数据，但不能读取尚未提交的地址。
+
+\begin{table}[H]\centering\small
+\caption{共享提交记录的核对关系}
+\begin{tabularx}{\linewidth}{p{39mm}Y}\toprule
+记录 & 固件检查与意义\\\midrule
+REQUEST\_SEQ / READY\_SEQ & 请求与完成序号相同后才接受该批参数\\
+REQUEST\_EPOCH / READY\_EPOCH & 检查装载结果属于当前任务上下文\\
+READY\_WORDS & 必须等于从输入头计算的本批结束边界\\
+TOTAL\_WORDS & 各批总字数不变且不超过 8873\\
+LOAD\_ERROR & 非零立即终止，不继续发布更大可读边界\\\bottomrule
+\end{tabularx}
+\end{table}
+
+冻结固件在每次复位任务中使用 epoch 值 1，并配合控制记录初始化区分当前运行；它不实现跨任意长时间、永不复位的任务编号服务。\code{volatile} 保留实际 MMIO 读写，\code{fence rw,rw} 用于软件的内存顺序控制。RISC-V 对内存访问与设备 I/O 的屏障类型有区分\cite{riscv}，本工程的可见性还依赖原平台访问通路和逐笔响应确认，不能把一条屏障指令解释为脱离平台的全部同步保证。
+
+最终 WAIT 放在最后一批参数已提交之后，防止处理器等待计算结束时又无人推进后续装载。退出 WAIT 后仍检查状态、完成标志以及 16 个固定长度字段。软件诊断计数用于定位运行阶段；性能表继续使用测试平台在装载起点与最终写响应之间取得的完整窗口。

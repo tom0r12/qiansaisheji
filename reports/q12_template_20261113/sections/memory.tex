@@ -1,0 +1,35 @@
+\subsubsection{宽字条带与单端口调度}
+一个 X 读字携带四行各一对 signed12，即 $4\times2\times12=96$ 位；一个 W 读字携带十六列各一对符号扩展值，即 $16\times2\times12=384$ 位。两者在同一配对索引下送入阵列，输入沿列广播、权重沿行广播。增加读字宽度提高单次数据供给能力，但需要按物理宏条带支付面积，不能以有效 W10 数据量替代 384 位物理存储宽度。
+
+\begin{figure}[H]\centering
+\begin{tikzpicture}[x=1cm,y=1cm]
+\foreach \i in {0,...,5}{\draw[fill=pale,draw=ink](\i*2.1,0)rectangle+(2.1,.75);\node[note]at(\i*2.1+1.05,.38){16 位宏};}
+\draw[decorate,decoration={brace,amplitude=5pt},ink](0,.9)--(12.6,.9)node[midway,above=5pt,note]{6 条带 $\times$ 16 位 $=$ 96 位 X 读字};
+\draw[arr](6.3,-.15)--(6.3,-.8);
+\foreach \i in {0,...,3}{\draw[fill=accent!15,draw=ink](\i*3.15,-1.7)rectangle+(3.15,.75);\node[note]at(\i*3.15+1.575,-1.33){行 \i：偶、奇元素};}
+\node[note]at(6.3,-2.3){权重同理：24 条 16 位宏组成 384 位读字，供给 16 列};
+\end{tikzpicture}
+\caption{私有 SRAM 宏条带与阵列数据字的关系。条带并联扩展字宽，各宏仍按单端口方式调度。}
+\end{figure}
+
+四个权重槽位采用 tile 的低两位选择位置，同时保存完整 tile 标签。仅检查低两位不足以判断数据归属，例如 tile 0 与 tile 4 会映射到同一位置；完整标签和有效状态用于区分不同轮次。装载端在提交该槽所需权重及元数据后发布有效状态，消费端结束对应 tile 后释放槽位，使覆盖写入与在用数据互斥。
+
+\begin{figure}[H]\centering
+\begin{tikzpicture}
+\node[box,text width=24mm] (a) at (0,0) {空闲槽位};
+\node[box,text width=27mm] (b) at (3.6,0) {装载权重\\写入元数据};
+\node[box,text width=27mm] (c) at (7.3,0) {完整提交\\标签有效};
+\node[box,text width=27mm] (d) at (11,0) {计算使用\\等待结果接收};
+\draw[arr](a)--(b);\draw[arr](b)--(c);\draw[arr](c)--(d);
+\draw[arr](d.south)--++(0,-.8)-|(a.south);
+\node[fill=white,note]at(5.5,-.8){对应 tile 的最终结果被接受后释放};
+\end{tikzpicture}
+\caption{权重槽位生命周期示意。该图归纳有效位和标签关系，不另设 RTL 状态编码。}
+\end{figure}
+
+装载端的三个 384 位突发缓冲吸收输入流到达节奏与 SRAM 写入时隙之间的差异。缓冲完成不意味着可立即写宏：在计算侧占用读边沿时，写入必须等待；当缓冲耗尽可用空间时，反压继续向输入解码和 DMA 传播。有限缓冲允许局部交叠，也保留了所有等待开销，报告没有将缓冲视为无限带宽存储。
+
+末尾行组覆盖第 96、97、98 行，第 4 个 PE 行无有效矩阵位置。控制器仍沿用四行阵列调度，但写出只保留有效的三行。物理填充、阵列有效行数和输出矩阵大小分别处理，既保持规则数据通路，又避免把填充结果写入 25344 个有效元素之外。
+
+\subsubsection{缓存容量与输出容量的区别}
+私有 SRAM 的 19.5 KiB 是按宏实例宽深计算的物理容量，包含组织对齐造成的空余空间；输出的 38084 字节是共享 SRAM 中的固定地址分配。二者属于不同存储层级，不能将输出占用从私有缓存面积中扣除，也不能把私有缓存容量直接当作新增芯片面积。面积换算必须读取综合后的宏面积及标准单元面积，本报告的面积明细采用该测量口径。

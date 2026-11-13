@@ -1,0 +1,29 @@
+\subsubsection{舍入逻辑的局部等价范围}
+局部证明将 32 位有符号累加输入及 8 位移位量同时送入参考函数与候选函数，构造输出不同的 miter，再检查是否存在使两侧输出不等的赋值。Yosys 的 SAT 证明接口允许对指定信号要求恒为真或恒为零，失败时保留反例\cite{yosys}。冻结量化函数与已证明函数的源码对应关系另由哈希和函数内容核对。
+
+\begin{figure}[H]\centering
+\begin{tikzpicture}
+\node[box,text width=31mm] (in) at (0,0) {任意 32 位输入\\任意 8 位移位量};
+\node[box,text width=34mm] (r) at (4.6,1) {独立参考\\舍入与饱和};
+\node[box,text width=34mm] (c) at (4.6,-1) {冻结候选\\舍入与饱和};
+\node[box,text width=30mm] (out) at (9.1,0) {输出相等判定\\SAT 检查反例};
+\draw[arr](in)--(r);\draw[arr](in)--(c);\draw[arr](r)--(out);\draw[arr](c)--(out);
+\end{tikzpicture}
+\caption{组合量化函数的一致性证明结构。该范围不包含 DMA 状态、SRAM 内部或浮点模型精度。}
+\end{figure}
+
+局部证明覆盖函数输入空间，不依赖挑选少量有利的数值样例；但它不会自动覆盖参数装载、成对乘积帧边界或总线丢包。完整 SoC 仿真负责这些系统关系，综合前后等价负责映射变化，三个层次的结论分别保存。
+
+\subsubsection{未匹配点与工具通过状态}
+\begin{table}[H]\centering\small
+\caption{Formality 参考侧未匹配点的已记录分布}
+\begin{tabularx}{\linewidth}{p{49mm}rY}\toprule
+位置类别 & 数量 & 已记录的对象\\\midrule
+原总线合并控制 & 3 & 合并器 active 状态寄存器\\
+AON PMU & 1 & 计数器 count 的第 15 位\\
+输入参数解码 & 5 & symbol\_value 的第 0--4 位\\\midrule
+合计 & 9 & 仍需逐点分析是否可观测及其约束关系\\\bottomrule
+\end{tabularx}
+\end{table}
+
+35565 个比较点通过、0 个失败点是工具实际报告；625 个 unread 点和 9 个未匹配点描述证明覆盖与两侧结构差异。没有失败比较点并不等价于所有参考状态都已建立对应关系。当前保留两侧对称 SRAM 黑盒，也没有人为添加 dont\_verify 或用户常量，因此仍需对未匹配对象做独立解释，严格验收状态保持未完成。

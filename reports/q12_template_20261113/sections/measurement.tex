@@ -1,0 +1,34 @@
+\subsubsection{功耗、时长与任务能量的对应关系}
+功耗单位为瓦，能量由窗口积分得到。以第 0 个任务为例，窗口为 163.710294 $\mu$s，报告功耗为 58.50 mW，相乘得到 9.577052 $\mu$J。十二个任务先逐个相乘再平均得到 9.6033946 $\mu$J，不能把不同长度窗口的功耗简单平均后再乘任意一个窗口时长。
+
+\begin{figure}[H]\centering
+\begin{tikzpicture}
+\begin{axis}[width=.92\linewidth,height=58mm,ybar,bar width=6mm,xmin=-.6,xmax=11.6,ymin=0,ymax=11,
+ xtick={0,1,...,11},xlabel={历史任务编号},ylabel={单任务能耗（$\mu$J）},
+ ymajorgrids=true,grid style={gray!20},tick label style={font=\small},label style={font=\small}]
+\addplot[fill=accent!65,draw=accent] table[x=task,y=energy_uj,col sep=comma]{power_tasks.csv};
+\end{axis}\end{tikzpicture}
+\caption{同版网表十二个活动窗口的任务能耗。由原始报告功耗和窗口时长计算，柱形纵轴从零开始。}
+\end{figure}
+
+本组能耗范围约为 9.53--9.65 $\mu$J，功耗范围为 58.2--58.5 mW。窗口差异较小，不能据此推断对所有输入分布都稳定，也不能将十二个不同任务当成同一任务的独立重复测量来构造置信区间。报告保留逐任务值和取样范围，使均值的含义可以复核。
+
+按相同计时定义，任务能量满足 $E=\overline P/\mathrm{Throughput}$。在功耗保持 58.36 mW 的纯假设下，6000 tasks/s 对应约 9.73 $\mu$J；6075.99 tasks/s 对应约 9.60 $\mu$J。这一关系只用于解释吞吐和能耗的耦合，不构成提高频率后的功耗预测：频率、活动、缓冲与时序修复都可能改变实际功耗。
+
+\subsubsection{活动覆盖与模型警告的解释}
+SAIF 将统计窗口内的切换与静态概率交给功耗工具，工具结合综合网表和库计算动态、静态功耗。活动文件的层次、实例名、时间单位和窗口范围必须与目标网表对应；若层次匹配不充分，部分网络可能采用传播值或默认值。原报告记录 198844 条网络中 47989 条已注释，约 24.13\%；173948 个叶单元中 4413 个完全注释，约 2.54\%。这两种统计对象不同，不能互相替代，也不是宏模型覆盖率。
+
+\begin{figure}[H]\centering
+\begin{tikzpicture}[node distance=5mm]
+\node[box,text width=120mm] (a) {冻结 RTL 与厂家 SRAM 模型：记录同一完整任务窗口};
+\node[box,text width=120mm,below=of a] (b) {活动数据：层次映射、时间单位、信号与宏端口来源};
+\node[box,text width=120mm,below=of b] (c) {同版综合网表与 TT 库：功耗计算、覆盖和模型警告};
+\node[box,text width=120mm,below=of c] (d) {按真实窗口求能量，再对十二个任务求平均};
+\foreach\u/\v in {a/b,b/c,c/d}\draw[arr](\u)--(\v);
+\end{tikzpicture}
+\caption{本报告功耗估计的数据关联链。覆盖检查和库警告与数值结果一起保留。}
+\end{figure}
+
+所有 116 个 SRAM 宏实例进入整机统计，表示没有把已实例化宏从范围中剔除；这并不自动证明每个端口的切换统计都已正确归属。宏输入活动来源查询共涉及 5986 条记录，其中部分属性受当前工具版本支持限制，需要独立数值复核。首窗口的 slew、负载超表以及无逻辑函数警告均在原图中保留，未通过清零活动或改库数值消除告警。
+
+因此，58.36 mW 和 9.60 $\mu$J 的有效用途是记录当前同版工程估计及其计算方法。它们不能作为流片实测值，也不能在覆盖复核前作为功耗签核结论。整机面积中原平台占比较大、共享 SRAM 访问由多个主设备参与，局部计算单元面积下降也不保证整机任务能量按同等比例下降。

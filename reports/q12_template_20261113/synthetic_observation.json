@@ -1,0 +1,103 @@
+{
+  "source_path": "experiments/q12_dense_20261113/candidates/native12_earlycheck/candidate.json",
+  "source_sha256": "0d8f89edcdd0e26f819dce379c610763d6788f712bb136843b64ca820892a5dc",
+  "scope": "synthetic full SoC; behavioral SRAM; no official throughput or PPA",
+  "tasks": [
+    {
+      "case": 0,
+      "cycles": 23204,
+      "input_words": 5883,
+      "output_writes": 9522,
+      "values": 25344,
+      "passed": true
+    },
+    {
+      "case": 1,
+      "cycles": 24644,
+      "input_words": 6761,
+      "output_writes": 9522,
+      "values": 25344,
+      "passed": true
+    },
+    {
+      "case": 2,
+      "cycles": 26262,
+      "input_words": 7603,
+      "output_writes": 9522,
+      "values": 25344,
+      "passed": true
+    },
+    {
+      "case": 3,
+      "cycles": 28551,
+      "input_words": 8617,
+      "output_writes": 9522,
+      "values": 25344,
+      "passed": true
+    },
+    {
+      "case": 4,
+      "cycles": 23010,
+      "input_words": 5835,
+      "output_writes": 9522,
+      "values": 25344,
+      "passed": true
+    },
+    {
+      "case": 5,
+      "cycles": 24665,
+      "input_words": 6767,
+      "output_writes": 9522,
+      "values": 25344,
+      "passed": true
+    },
+    {
+      "case": 6,
+      "cycles": 26239,
+      "input_words": 7592,
+      "output_writes": 9522,
+      "values": 25344,
+      "passed": true
+    },
+    {
+      "case": 7,
+      "cycles": 28546,
+      "input_words": 8612,
+      "output_writes": 9522,
+      "values": 25344,
+      "passed": true
+    },
+    {
+      "case": 8,
+      "cycles": 23209,
+      "input_words": 5883,
+      "output_writes": 9522,
+      "values": 25344,
+      "passed": true
+    },
+    {
+      "case": 9,
+      "cycles": 24668,
+      "input_words": 6768,
+      "output_writes": 9522,
+      "values": 25344,
+      "passed": true
+    },
+    {
+      "case": 10,
+      "cycles": 26251,
+      "input_words": 7597,
+      "output_writes": 9522,
+      "values": 25344,
+      "passed": true
+    },
+    {
+      "case": 11,
+      "cycles": 28524,
+      "input_words": 8598,
+      "output_writes": 9522,
+      "values": 25344,
+      "passed": true
+    }
+  ]
+}

@@ -25,3 +25,28 @@ table += '\n'.join(rows) + '\n' + r'\bottomrule\end{tabular}' + '\n'
 (ROOT / 'task_table.tex').write_text(table, encoding='utf-8')
 (ROOT / 'task_rows.tex').write_text('\n'.join(rows) + '\n', encoding='utf-8')
 print('PASS: identities, area sum, throughput/energy arithmetic, and five unchanged evidence figures.')
+
+# Derived chart inputs retain every recorded task and do not fit or smooth data.
+import csv
+synthetic = json.loads((ROOT / 'synthetic_observation.json').read_text(encoding='utf-8'))
+tasks = synthetic['tasks']
+assert len(tasks) == 12 and all(t['passed'] for t in tasks)
+assert sum(t['cycles'] for t in tasks) / 12 == 25647.75
+assert all(t['values'] == 25344 and t['output_writes'] == 9522 for t in tasks)
+with (ROOT / 'synthetic_tasks.csv').open('w', encoding='utf-8', newline='') as f:
+    writer = csv.writer(f)
+    writer.writerow(['task', 'input_words', 'cycles'])
+    writer.writerows((t['case'], t['input_words'], t['cycles']) for t in tasks)
+rows = [f"{t['case']:02d} & {t['input_words']} & {t['cycles']} & {t['output_writes']} & {t['values']} & 通过 " + r'\\' for t in tasks]
+table = r'\begin{tabular}{rrrrrl}\toprule' + '\n'
+table += r'任务 & 输入字数 & 周期 & 输出写命令 & 核对值数 & 结果\\\midrule' + '\n'
+table += '\n'.join(rows) + '\n' + r'\bottomrule\end{tabular}' + '\n'
+(ROOT / 'synthetic_table.tex').write_text(table, encoding='utf-8')
+with (ROOT / 'power_tasks.csv').open('w', encoding='utf-8', newline='') as f:
+    writer = csv.writer(f)
+    writer.writerow(['task', 'cycles', 'duration_us', 'power_mw', 'energy_uj'])
+    writer.writerows((i, n, t/1e6, p*1000, p*t*1e-6) for i,(n,t,p) in enumerate(zip(cycles,durations,watts)))
+assert 17 + 594 * 15 + (12 * 1583) // 32 == 9520
+assert (12 * 1583) % 32 == 20
+assert 6336 + 16384 == 22720
+print('PASS: synthetic records, complete chart inputs, and final output index.')

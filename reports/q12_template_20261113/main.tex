@@ -1,5 +1,5 @@
 % XeLaTeX
-\documentclass[UTF8,punct,fontset=none]{ctexart}
+\documentclass[UTF8,punct,fontset=none,zihao=-4]{ctexart}
 \usepackage{fontspec,xeCJK}
 \setmainfont{TeX Gyre Termes}
 \setCJKmainfont[AutoFakeBold=true]{FandolKai-Regular.otf}
@@ -13,11 +13,12 @@
 \usepackage{fancyhdr,tabularx,booktabs,longtable,array,makecell,enumitem}
 \usepackage{pdfpages,pdflscape,tikz,pgfplots,xcolor,float,caption}
 \usepackage[titles]{tocloft}
+\usepackage{needspace,placeins,etoolbox}
 \setlength{\cftbeforesecskip}{7pt}
 \setlength{\cftbeforesubsecskip}{1pt}
 \renewcommand{\cftsecfont}{\bfseries}
 \renewcommand{\cftsecpagefont}{\bfseries}
-\usetikzlibrary{arrows.meta,positioning,fit,calc,backgrounds}
+\usetikzlibrary{arrows.meta,positioning,fit,calc,backgrounds,decorations.pathreplacing}
 \pgfplotsset{compat=1.18}
 \usepackage[unicode,hidelinks]{hyperref}
 \hypersetup{pdftitle={轻语：基于 E203 的前馈线性加速器技术报告},pdfauthor={},pdfcreator={},pdfproducer={},pdfsubject={Q12 前馈线性加速器设计与测试}}
@@ -33,6 +34,11 @@
 \renewcommand{\headrulewidth}{0.4pt}
 \linespread{1.20}
 \setlength{\parskip}{3pt}
+\raggedbottom
+\setcounter{tocdepth}{2}
+\pretocmd{\section}{\Needspace{10\baselineskip}}{}{}
+\pretocmd{\subsection}{\Needspace{5\baselineskip}}{}{}
+\pretocmd{\subsubsection}{\Needspace{5\baselineskip}}{}{}
 \setlength{\emergencystretch}{2em}
 \clubpenalty=10000
 \widowpenalty=10000
@@ -53,6 +59,7 @@
 \includepdf[pages=1,pagecommand={\thispagestyle{empty}},fitpaper=true]{assets/cover.pdf}
 \pagenumbering{arabic}
 
+\begingroup\fontsize{10.5}{14.5}\selectfont
 \section*{快速预览（一）：系统架构与设计要点}
 \addcontentsline{toc}{section}{快速预览}
 \begin{center}
@@ -123,6 +130,7 @@ DC setup / hold & $0 / +0.00070456$ ns & 已报告路径非负；未约束端点
 
 \noindent\textbf{版本标识。}源码提交 \code{8731bf4}；版本标签 \code{q12-submission-20261113-r1}。本报告的吞吐、面积、时序和功耗均对应这一配置。
 \clearpage
+\endgroup
 \begingroup\zhsong\linespread{1}\fontsize{12}{16}\selectfont\setlength{\parskip}{0pt}
 \tableofcontents
 \endgroup
@@ -137,13 +145,11 @@ DC setup / hold & $0 / +0.00070456$ ns & 已报告路径非负；未约束端点
 
 \noindent\textbf{关键词：}E203；前馈线性层；定点量化；成对乘积；System Bus；SRAM；综合评估
 
-\clearpage
-
 \section{设计平台与工具}
 \subsection{任务范围与系统条件}
-赛题采用 KWT-1 开源预训练模型，前馈网络维度为 $64\rightarrow256\rightarrow64$。本设计覆盖本科必做的第一线性层，输入由指定模型的对应层处理流程离线提取；GELU、第二线性层、注意力和完整分类链路均不属于本版已实现范围\cite{guide}。软件数值模型用于生成和核对参考值，不代替加速器必做计算。
+赛题采用 KWT-1 开源预训练模型，前馈网络维度为 $64\rightarrow256\rightarrow64$。本设计覆盖本科必做的第一线性层，输入由指定模型的对应层处理流程离线提取；GELU、第二线性层、注意力和完整分类链路均不属于本版已实现范围。软件数值模型用于生成和核对参考值，不代替加速器必做计算。
 
-平台保留 E203、原总线及外设框架，系统共享 SRAM 为 512 KiB。工作频率目标为 150 MHz；常开域低速时钟按照原平台保留。设计交付覆盖 RTL、功能仿真与逻辑综合，结果来自上述前端设计阶段的测量与检查\cite{hbird,source,eda}。
+平台保留 E203、原总线及外设框架，系统共享 SRAM 为 512 KiB。工作频率目标为 150 MHz；常开域低速时钟按照原平台保留。设计交付覆盖 RTL、功能仿真与逻辑综合，结果来自上述前端设计阶段的测量与检查\cite{hbird}。
 
 \begin{table}[H]\centering\small
 \caption{工具和资源的职责分工}
@@ -189,8 +195,10 @@ PrimeTime 功耗分析 & 读取同版网表与活动估计整机功耗 & 12 窗�
 
 控制、DMA 和数值计算分别由 \code{qingyu_q12_stream_fio}、\code{q12_icb_stream_prefix} 与 \code{q12_task4} 等模块承担。原 E203 控制端与自有 DMA 入口分离，但计算输入、权重及结果全部经过规定的共享 SRAM 通路。输出矩阵由硬件生成，测试平台只提供输入和执行独立检查。
 
+\input{sections/model}
+
 \subsection{成对乘积与行列修正复用}
-对于长度 64 的整数点积，令 $x_k$ 表示输入行、$w_k$ 表示某输出列权重。按相邻元素成对分组，有
+成对乘积属于快速内积的算术重排，相关算法与硬件研究见文献\cite{fip}。本版实现下述恒等式及独立的四行十六列调度。对于长度 64 的整数点积，令 $x_k$ 表示输入行、$w_k$ 表示某输出列权重。按相邻元素成对分组，有
 \begin{align}
 S &= \sum_{k=0}^{31}(x_{2k}+w_{2k+1})(x_{2k+1}+w_{2k}),\\
 R &= \sum_{k=0}^{31}x_{2k}x_{2k+1},\qquad
@@ -214,6 +222,8 @@ C = \sum_{k=0}^{31}w_{2k}w_{2k+1},\\
 \end{tikzpicture}
 \caption{单个成对乘积通路及共享后处理。W10 数值在本冻结版缓存和 PE 输入处仍符号扩展为 12 位。}
 \end{figure}
+
+\input{sections/arithmetic}
 
 \subsection{并行阵列与分块调度}
 阵列每次处理最多 4 行、16 列，共 64 个输出位置。256 列划分为 16 个 tile，99 行划分为 25 个行组，最后一组仅有 3 行有效。每个点积发出 32 对读请求，控制器根据有效行数屏蔽补齐位置。PE 接收 first/last 标记，first 使用零初值参与第一项累加，last 发布结果有效，避免跨任务残留数据进入有效结果。
@@ -250,6 +260,8 @@ C = \sum_{k=0}^{31}w_{2k}w_{2k+1},\\
 
 全 SoC 宏实例为 RAMSP128X16、RAMSP1024X16、RAMSP4096X16 各 30、6、80 个，共 116 个。共享 SRAM 的 64 个 RAMSP4096X16 保持不变，其余原平台存储随整机统计。本版私有 W 缓存保持 384 位物理宽度，元数据采用独立存储；面积统计包含这些宏的完整容量。
 
+\input{sections/memory}
+
 \subsection{数值格式、舍入与误差来源}
 输入保留原 signed12 编码。对原整数权重 $W_{12}$ 和偏置 $b$，转换定义为
 \begin{align}
@@ -261,10 +273,12 @@ Y_{12}&=\sat_{[-2048,2047]}\left(\RNE\left(\frac{XW_{10}+b'}{2^{s'}}\right)\righ
 
 实现使用算术右移、guard 位、sticky 位和保留最低位判断进位。对半值采用偶数舍入，使正负方向具有一致规则；最终按 signed12 范围饱和。对于移位、饱和边界和符号扩展，验证以独立整数参考为准。成对乘积恒等式没有近似误差，主要数值误差来源是输入/权重量化、偏置转换、输出舍入和饱和。
 
-正式精度应按每一层汇总全部 600 条样本的输出误差 RMS，并除以浮点参考 RMS（分母下限 $10^{-8}$），取 12 层中的最大值；本科门槛为 3\%\cite{guide}。本版已完成整数参考模型一致性检查，正式浮点参考精度评估尚未完成。
+正式精度应按每一层汇总全部 600 条样本的输出误差 RMS，并除以浮点参考 RMS（分母下限 $10^{-8}$），取 12 层中的最大值；本科门槛为 3\%。本版已完成整数参考模型一致性检查，正式浮点参考精度评估尚未完成。
+
+\input{sections/numeric}
 
 \subsection{完整输出格式与地址映射}
-共享 SRAM 按赛题要求保存完整输出矩阵\cite{qa}。本版以固定 signed12 字段顺序保存每个元素，每 8 个元素恰好对应 3 个 32 位字；存储长度不依赖数值大小和零值比例。每个 tile 含 $99\times16=1584$ 个元素，即 19008 位、594 个 32 位字。
+共享 SRAM 按赛题要求保存完整输出矩阵。本版以固定 signed12 字段顺序保存每个元素，每 8 个元素恰好对应 3 个 32 位字；存储长度不依赖数值大小和零值比例。每个 tile 含 $99\times16=1584$ 个元素，即 19008 位、594 个 32 位字。
 
 \begin{figure}[H]\centering
 \begin{tikzpicture}[x=1cm]
@@ -286,6 +300,8 @@ Y_{12}&=\sat_{[-2048,2047]}\left(\RNE\left(\frac{XW_{10}+b'}{2^{s'}}\right)\righ
 \]
 读取该字及必要的下一字，右移 $r$ 后取低 12 位并符号扩展，即可直接得到 $Y_{i,j}$。固定下标读取不需要压缩解码器。输出写回采用完整长度检查及最终响应确认，计时终点设在最后一个写响应返回时。
 
+\input{sections/output}
+
 \subsection{ICB 传输、反压和错误排空}
 DMA 使用 4 项在途请求记录、16 字读缓冲和 8 字写缓冲。每笔命令记录读写归属和结束标记，响应必须按对应归属消费。若总线没有接受已提出的命令，地址、读写方向和载荷保存在保持寄存器中，直到握手完成。新请求选择采用已就绪输出写优先，降低结果反压；该策略只作用于自有 DMA，不改变下游官方总线位宽和协议。
 
@@ -305,8 +321,10 @@ DMA 使用 4 项在途请求记录、16 字读缓冲和 8 字写缓冲。每笔�
 
 发生错误后系统停止产生新命令，继续接收已发出的响应并排空在途记录；失败任务不能发布有效完成矩阵。分别在 ready 为 1 和 0 时注入非法输出索引的整机测试均通过，观测到 5 周期排空，已发命令数与响应数分别保持 2046/2046 和 2047/2047。
 
+\input{sections/bus}
+
 \subsection{固件寄存器与同步协议}
-软件配置接口位于 \code{0xf0000000}，装载邮箱位于 \code{0xf0020000}。输出区域从 \code{0xa0000000} 开始，输入区从 \code{0xa0040000} 开始，控制记录位于 \code{0xa0030100}。驱动以 \code{fence rw,rw} 保证提交记录与后续访问的顺序，epoch 避免旧任务就绪记录被新任务误用。
+软件配置接口位于 \code{0xf0000000}，装载邮箱位于 \code{0xf0020000}。输出区域从 \code{0xa0000000} 开始，输入区从 \code{0xa0040000} 开始，控制记录位于 \code{0xa0030100}。驱动使用 \code{fence rw,rw} 配合提交响应和控制记录核对访问顺序，epoch 用于检查任务归属。
 
 \begin{table}[H]\centering\small
 \caption{加速器关键控制寄存器（相对配置基址）}
@@ -323,6 +341,8 @@ DMA 使用 4 项在途请求记录、16 字读缓冲和 8 字写缓冲。每笔�
 \end{table}
 
 CPU 通过阻塞 WAIT 减少重复轮询，但仍检查实际共享控制记录和最终输出头。驱动采样的周期与测试平台完整窗口具有不同边界，吞吐统计采用测试平台记录的完整任务窗口。
+
+\input{sections/firmware}
 
 \section{验证过程与数据分析}
 \subsection{验证层次和通过条件}
@@ -354,8 +374,10 @@ Formality 工具比较 & 35565 通过，0 失败 & 仍有未匹配、unread 与�
 \bottomrule\end{tabularx}
 \end{table}
 
+\input{sections/synthetic}
+
 \subsection{计时窗口与吞吐量}
-赛题要求从输入和参数开始装载计时，到结果全部写回结束，包含装载、总线等待与 E203 调度\cite{guide,qa}。本版测试保留真实加载请求、共享存储写入、DMA 读回和结果写入的事务计数。任务间复位不计入运行时间，计算机端文件读取及一次性格式转换不计入硬件窗口。
+赛题要求从输入和参数开始装载计时，到结果全部写回结束，包含装载、总线等待与 E203 调度。本版测试保留真实加载请求、共享存储写入、DMA 读回和结果写入的事务计数。任务间复位不计入运行时间，计算机端文件读取及一次性格式转换不计入硬件窗口。
 
 令第 $i$ 个任务耗费 $N_i$ 个系统时钟周期，时钟频率为 $f$，则
 \[
@@ -379,7 +401,7 @@ T_{\mathrm{task}}=\frac{\sum_i N_i}{Mf},\qquad
 \end{figure}
 
 \subsection{面积统计与结构影响}
-赛题的加速器面积包括新增计算逻辑、接口和内部 SRAM；复用 E203、512 KiB 共享 SRAM、固定总线及外设面积单列\cite{guide}。本版在同一网表上分别统计加速器增量面积和整机总面积，SRAM 宏按实例归属计入各分项。
+赛题的加速器面积包括新增计算逻辑、接口和内部 SRAM；复用 E203、512 KiB 共享 SRAM、固定总线及外设面积单列。本版在同一网表上分别统计加速器增量面积和整机总面积，SRAM 宏按实例归属计入各分项。
 
 \begin{table}[H]\centering
 \caption{同版综合面积明细}
@@ -431,10 +453,14 @@ NP3 仲裁逻辑 & 1113.050400 & 0.001113\\
 
 首窗口 \code{check_power} 报告 215 个 slew 超表、2685 个负载超表及 3 个无逻辑函数库单元；活动来源属性与当前工具版本存在兼容问题。活动覆盖和模型外推警告尚待复核，当前功耗与能耗属于工程估计，尚未达到签核条件。
 
+\input{sections/measurement}
+
 \subsection{综合前后等价性及其边界}
 同一 RTL、mapped.v 和 mapped.svf 的 Formality 工具结果显示 Verification SUCCEEDED，35565 个比较点通过、0 个失败点。然而仍有 625 个 unread 点、9 个仅参考侧未匹配寄存器及 RTL 解释告警。9 个未匹配点分布在原总线合并控制、AON PMU 计数器与输入解码器状态中，尚未逐项完成独立判定。
 
 SRAM 采用两侧对应的对称黑盒，黑盒匹配完成；没有 dont\_verify 点和用户定义常量。该证明范围止于 SRAM 边界，并不证明宏内部实现。未匹配点及 RTL 解释告警仍待逐项分析，严格等价验收尚未完成。
+
+\input{sections/formal}
 
 \section{分析与讨论}
 \subsection{版本对比与结果分析}
@@ -504,41 +530,45 @@ SRAM 采用两侧对应的对称黑盒，黑盒匹配完成；没有 dont\_verif
 \end{table}
 表中脚本位于 \path{experiments/q12_dense_20261113/} 及其 \path{server/} 子目录。运行依赖授权工艺库、厂家模型和任务数据包；迁移环境时需配置依赖路径、运行目录及作业时限。具体依赖和调用参数见工程 README。
 
+\input{sections/reproduce}
+
 \subsection{测试记录说明}
-图 10--14 为测试报告节选，依次包含性能汇总、未约束端点、SRAM 保持时间路径、功耗覆盖与模型警告、等价验证结果及未匹配点。
+图\ref{fig:record-a}--\ref{fig:record-e} 为测试报告节选，依次包含性能汇总、未约束端点、SRAM 保持时间路径、功耗覆盖与模型警告、等价验证结果及未匹配点。
 
 \begin{landscape}
 \begin{figure}[p]\centering
 \fcolorbox{gray!35}{white}{\includegraphics[trim={22bp 363.5bp 318.5bp 41bp},clip,width=.88\linewidth,height=.35\textheight,keepaspectratio]{assets/26_measurement_comparison.png}}
 \par\vspace{4mm}
 \fcolorbox{gray!35}{white}{\includegraphics[trim={22bp 167.5bp 381bp 190bp},clip,width=.88\linewidth,height=.50\textheight,keepaspectratio]{assets/26_measurement_comparison.png}}
-\caption{测试记录 A：周期、面积与时序汇总（上），12 个任务窗口的功耗及能量记录（下）。}
+\caption{测试记录 A：周期、面积与时序汇总（上），12 个任务窗口的功耗及能量记录（下）。}\label{fig:record-a}
 \end{figure}\clearpage
 \begin{figure}[p]\centering
 \fcolorbox{gray!35}{white}{\includegraphics[trim={161bp 29.5bp 223.5bp 236bp},clip,width=.94\linewidth,height=.82\textheight,keepaspectratio]{assets/24_timing_check_header.png}}
-\caption{测试记录 B：check\_timing 未约束端点报告节选。}
+\caption{测试记录 B：check\_timing 未约束端点报告节选。}\label{fig:record-b}
 \end{figure}\clearpage
 \begin{figure}[p]\centering
 \fcolorbox{gray!35}{white}{\includegraphics[trim={171.5bp 206bp 83.5bp 41bp},clip,width=.94\linewidth,height=.82\textheight,keepaspectratio]{assets/22_timing_audit_tail.png}}
-\caption{测试记录 C：SRAM 数据路径保持时间报告节选，hold slack 为 +0.00070456 ns。}
+\caption{测试记录 C：SRAM 数据路径保持时间报告节选，hold slack 为 +0.00070456 ns。}\label{fig:record-c}
 \end{figure}\clearpage
 \begin{figure}[p]\centering
 \fcolorbox{gray!35}{white}{\includegraphics[trim={161bp 130.5bp 351bp 96.5bp},clip,width=.94\linewidth,height=.82\textheight,keepaspectratio]{assets/25_power_activity_sources.png}}
-\caption{测试记录 D：SAIF 活动覆盖统计、功耗模型警告及宏输入活动来源。}
+\caption{测试记录 D：SAIF 活动覆盖统计、功耗模型警告及宏输入活动来源。}\label{fig:record-d}
 \end{figure}\clearpage
 \begin{figure}[p]\centering
 \fcolorbox{gray!35}{white}{\includegraphics[trim={22.5bp 169bp 143.5bp 50bp},clip,width=.94\linewidth,height=.82\textheight,keepaspectratio]{assets/27_formal_unmatched_points.png}}
-\caption{测试记录 E：35565 个通过点、0 个失败点、625 个 unread 点及 9 个参考侧未匹配点。}
+\caption{测试记录 E：35565 个通过点、0 个失败点、625 个 unread 点及 9 个参考侧未匹配点。}\label{fig:record-e}
 \end{figure}\clearpage
 \end{landscape}
 
+\clearpage
 \begin{thebibliography}{9}
 \addcontentsline{toc}{section}{参考文献}
-\bibitem{guide} 全国大学生嵌入式芯片与系统设计竞赛组委会. 芯片设计赛道赛题指南：正式赛题. 2026，15 页.
-\bibitem{qa} 全国大学生嵌入式芯片与系统设计竞赛组委会. 芯片设计赛道赛题问题答复. 2026，4 页.
-\bibitem{upload} 全国大学生嵌入式芯片与系统设计竞赛. 芯片设计赛道作品上传要求（初赛）. 2026.
-\bibitem{hbird} E203 hbirdv2 开源处理器工程. 随本设计归档的 RTL 与 LICENSE，参见冻结工程 \path{src/vendor/e203_hbirdv2/}.
-\bibitem{source} 轻语项目. Q12 native12 earlycheck 设计源码与测试记录. 2026-11-13. 标签 \code{q12-submission-20261113-r1}，提交 \code{8731bf4}.
-\bibitem{eda} 轻语项目. 同版 DC、Formality、PrimeTime 原始报告及测试记录. 2026-11-13，授权服务器工程留存；本报告列出源码与网表版本标识.
+\raggedright
+\setlength{\itemsep}{9pt}
+\bibitem{kwt} BERG A, O'CONNOR M, CRUZ M T. Keyword Transformer: A Self-Attention Model for Keyword Spotting[C]//Interspeech 2021. 2021: 4249–4253. DOI: 10.21437/Interspeech.2021-1286. \url{https://arxiv.org/abs/2104.00769}.
+\bibitem{hbird} RISC-V MCU. Hummingbirdv2 E203 Core and SoC[CP/OL]. [2026-11-13]. \url{https://github.com/riscv-mcu/e203_hbirdv2}.
+\bibitem{fip} POGUE T E, NICOLICI N. Fast Inner-Product Algorithms and Architectures for Deep Neural Network Accelerators[EB/OL]. 2023-11-20 [2026-11-13]. arXiv:2311.12224. \url{https://arxiv.org/abs/2311.12224}.
+\bibitem{riscv} RISC-V INTERNATIONAL. The RISC-V Instruction Set Manual, Volume I: Unprivileged Architecture: RV32I Base Integer Instruction Set, Version 2.1[EB/OL]. 2026-01-20 [2026-11-13]. \url{https://docs.riscv.org/reference/isa/v20260120/unpriv/rv32.html}.
+\bibitem{yosys} YOSYSHQ. Yosys 0.42 Documentation: sat: Solve a SAT Problem in the Circuit[EB/OL]. [2026-11-13]. \url{https://yosyshq.readthedocs.io/projects/yosys/en/0.42/cmd/sat.html}.
 \end{thebibliography}
 \end{document}

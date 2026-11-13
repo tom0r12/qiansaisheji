@@ -1,0 +1,23 @@
+\subsection{合成任务覆盖与总线事务核对}
+本地 12 个任务改变输入参数流长度，同时保持矩阵维度、输出格式和硬件配置一致。逐任务记录见表\ref{tab:synthetic}。每个任务比较 25344 个数并确认 9522 次输出写命令，既检查正常数值，也约束完整矩阵必须实际经过总线写入。输入字数较少的任务仍有相同输出流量，因而不能按输入流长度同比例推断总任务周期。
+
+\begin{table}[H]\centering\small
+\caption{本地合成任务的已记录结果}\label{tab:synthetic}
+\input{synthetic_table.tex}
+\end{table}
+
+\begin{figure}[H]\centering
+\begin{tikzpicture}
+\begin{axis}[width=.92\linewidth,height=62mm,xlabel={输入流字数（32 位字）},ylabel={完整任务周期},
+ xmin=5600,xmax=8900,ymin=22000,ymax=29500,xtick={6000,6500,7000,7500,8000,8500},
+ xticklabel style={/pgf/number format/.cd,fixed,1000 sep={}},
+ grid=major,grid style={gray!20},scaled ticks=false,
+ tick label style={font=\small},label style={font=\small},yticklabel style={/pgf/number format/fixed}]
+\addplot[only marks,mark=*,accent,mark size=2pt] table[x=input_words,y=cycles,col sep=comma]{synthetic_tasks.csv};
+\end{axis}\end{tikzpicture}
+\caption{合成任务的输入字数与周期关系。每点对应一个已完成任务；未作拟合，不将相关关系解释为单一瓶颈的测量。}
+\end{figure}
+
+合成任务周期从 23010 到 28551 不等，均值为 25647.75。图中任务分布反映输入编码、装载与计算交叠共同形成的运行结果。这些合成任务不是官方最终性能集，因此不能用其中最短任务宣称吞吐，也不能将它们与厂家模型历史任务逐编号相减作为优化增益。
+
+总线检查至少同时观察命令、响应和物理存储结果：命令与响应守恒防止遗漏事务；目标地址和顺序检查防止写错区域；最终 SRAM 解包逐值比对防止仅有正确计数却数据错误。错误注入另行检查失败任务不发布完成标志。三类检查互相补充，单独一项 PASS 都不足以说明完整任务正确。
