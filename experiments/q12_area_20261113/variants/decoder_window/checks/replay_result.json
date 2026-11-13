@@ -1,0 +1,6 @@
+{
+  "passed": true,
+  "cases": 416,
+  "candidate_sha256": "e06ca6f0355c8ef76fd13efc5222458213bff698d1e54fec6b99c097bfe1e387",
+  "summary": "PASS decoder lockstep cases=416 normal=208 mutated=208 cycles=20587\ntb.sv:47: $finish called at 226670000 (1ps)"
+}

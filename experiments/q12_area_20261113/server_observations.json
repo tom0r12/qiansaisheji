@@ -1,0 +1,91 @@
+{
+  "provenance": "Transcribed from server terminal output of source-identified final_status.py; not an exported raw report",
+  "observed_local_date": "2026-11-13",
+  "units": "um2; standard library and private macro Liberty area checked against LEF dimensions",
+  "library": "SCC40NLL VHSC40 RVT TT 1.10 V 25 C and matching SRAM DBs",
+  "scope": "standalone q12_task4 compute core including 36 private SRAM macros; excludes codecs/interfaces and remaining SoC",
+  "baseline_git": "305648e85802afe19adf1570d79c9a7720feb7eb",
+  "core_results": [
+    {
+      "candidate": "baseline",
+      "source_sha256": "7e732afb6ae3683ccf5516bc26606d2d3900d14046fe60af030f6f9d486adf7e",
+      "area_um2": 311959.679983,
+      "area_mm2": 0.311959679983,
+      "setup_slack_ns": 0.00100994,
+      "private_macro_count": 36,
+      "private_macro_area_um2": 135202.677234,
+      "area_saving_percent": 0.0
+    },
+    {
+      "candidate": "requant_v1",
+      "source_sha256": "a3e09c079620c46b91b1cb9ea6ed756264a950c46e2617071ae3dbbe455237ab",
+      "area_um2": 307225.943927,
+      "area_mm2": 0.307225943927,
+      "setup_slack_ns": 0.606234,
+      "private_macro_count": 36,
+      "private_macro_area_um2": 135202.677234,
+      "area_saving_percent": 1.517419192203927
+    },
+    {
+      "candidate": "data_hold_v2",
+      "source_sha256": "3e53fea269dd62c23642b7bb397234eba0809338061301dbbfe193ba44735c17",
+      "area_um2": 307076.239126,
+      "area_mm2": 0.30707623912599996,
+      "setup_slack_ns": 0.662876,
+      "private_macro_count": 36,
+      "private_macro_area_um2": 135202.677234,
+      "area_saving_percent": 1.5654077018113777
+    }
+  ],
+  "shared_sram_and_bus_unchanged": true,
+  "full_soc_new_area_mm2": null,
+  "energy_uj": null,
+  "vendor_replays": [
+    {
+      "candidate": "requant_v1",
+      "tasks_passed": 12,
+      "values_checked": 304128,
+      "mean_full_window_cycles": 24907,
+      "cycle_deltas": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "throughput_if_150mhz": 6022.403340426386,
+      "burst_init_checks": null,
+      "metadata_init_checks": null
+    },
+    {
+      "candidate": "data_hold_v2",
+      "tasks_passed": 12,
+      "values_checked": 304128,
+      "mean_full_window_cycles": 24907,
+      "cycle_deltas": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "throughput_if_150mhz": 6022.403340426386,
+      "burst_init_checks": 6144,
+      "metadata_init_checks": 3072
+    }
+  ]
+}

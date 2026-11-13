@@ -1,0 +1,11 @@
+{
+  "git_commit": "305648e85802afe19adf1570d79c9a7720feb7eb",
+  "candidate": "q12_final_20261113_decoder2_boundedencoder_coredatareset_blockingWAIT_NP3",
+  "source": "final/q12_20261113/vendor/src/q12/core_datareset/q12_task4.sv",
+  "source_sha256": "7e732afb6ae3683ccf5516bc26606d2d3900d14046fe60af030f6f9d486adf7e",
+  "mean_cycles": 24907,
+  "throughput_assumed_150mhz": 6022.403340426386,
+  "area_mm2": null,
+  "reported_area_budget_mm2": 0.48,
+  "change": "Combinational requantize function only; no pipeline or control changes."
+}

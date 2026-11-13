@@ -1,0 +1,2 @@
+#!/bin/sh
+python3 "$HOME/Desktop/q12_area_status.py"

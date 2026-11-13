@@ -1,0 +1,24 @@
+from pathlib import Path
+import json,re,subprocess,collections
+for p in Path('/tmp').glob('q12_decoder_package_*/run.log'):
+ print('LAUNCH',str(p));print('\n'.join(p.read_text(errors='replace').splitlines()[-5:]))
+for p in Path('/tmp').glob('q12_decoder_window_*/result.json'):
+ r=json.loads(p.read_text());print('DECODER',str(p));print(json.dumps(r.get('stages',{})));print(json.dumps({k:r.get(k)for k in ('phase','error','vendor_result','mean_full_window_cycles')}))
+ for proc in p.parent.glob('**/process.json'):
+  r=json.loads(proc.read_text());subprocess.run(['ps','-p',str(r['pid']),'-o','pid,etime,pcpu,comm'])
+for p in Path('/tmp').glob('q12_area_full_*/synth/timing_max.rpt'):
+ print('WHOLE_SOC',str(p));rows=collections.OrderedDict()
+ for text in p.read_text().split('  Startpoint:')[1:]:
+  slack=re.search(r'slack\s*\([^)]*\)\s*([-+\d.]+)',text)
+  if not slack or float(slack[1])>=0:continue
+  endpoint=re.search(r'Endpoint:\s*([^\n]+)',text)
+  group=re.search(r'Path Group:\s*(\S+)',text)
+  start=text.splitlines()[0].strip();end=endpoint[1].strip()
+  key=(group[1],re.sub(r'\[\d+\]','[]',start),re.sub(r'\[\d+\]','[]',end))
+  if key not in rows:rows[key]=[0,float(slack[1])]
+  rows[key][0]+=1;rows[key][1]=min(rows[key][1],float(slack[1]))
+ for key,val in rows.items():print('PATH',json.dumps({'clock':key[0],'start':key[1],'end':key[2],'count':val[0],'wns':val[1]}))
+ print('CHECK_TIMING');print((p.parent/'check_timing_after.rpt').read_text()[:7500])
+root=Path('/tmp/q12_final_s4_36usr_20261113')
+for p in root.glob('qingyu_q12_final_assessment_*/result.json'):
+ r=json.loads(p.read_text());print('BASELINE',p,r.get('current_stage'));print(json.dumps({k:{field:v.get(field)for field in ('complete','passed','accepted','energy_uj','provisional_unqualified','error')}for k,v in r.get('stages',{}).items()}))

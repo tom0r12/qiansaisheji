@@ -1,0 +1,28 @@
+from pathlib import Path
+import re,json,gzip
+
+def text(p):return gzip.open(str(p),'rt',errors='replace').read() if p.suffix=='.gz' else p.read_text(errors='replace')
+values={}
+for name in ('RAMSP128X16','RAMSP1024X16'):
+ root=Path('/storage1/admin_public_dir/SRAM_Lib_2025')/name
+ files=[p for p in root.rglob('*') if p.is_file()]
+ libs=[p for p in files if p.name.lower().endswith(('.lib','.lib.gz'))]
+ lefs=[p for p in files if p.name.lower().endswith(('.lef','.lef.gz'))]
+ print('MACRO_UNIT_FILES',name,len(libs),len(lefs))
+ for lp in libs:
+  s=text(lp);m=re.search(r'\bcell\s*\(\s*"?'+name+r'"?\s*\)',s)
+  if not m:continue
+  a=re.search(r'\barea\s*:\s*([\d.eE+-]+)\s*;',s[m.end():])
+  if not a:continue
+  for fp in lefs:
+   s=text(fp);m=re.search(r'\bMACRO\s+'+name+r'\b(.*?)\bEND\s+'+name+r'\b',s,re.S)
+   if not m:continue
+   z=re.search(r'\bSIZE\s+([\d.eE+-]+)\s+BY\s+([\d.eE+-]+)\s*;',m.group(1))
+   if not z:continue
+   area=float(a.group(1));physical=float(z.group(1))*float(z.group(2))
+   values[name]=area
+   print(json.dumps({'macro':name,'area':area,'width_um':float(z.group(1)),'height_um':float(z.group(2)),
+      'ratio':area/physical,'lib':str(lp),'lef':str(fp)}));break
+  if name in values:break
+if len(values)==2:
+ print('EXPECTED_PRIVATE_MACRO_AREA_UM2',30*values['RAMSP128X16']+6*values['RAMSP1024X16'])

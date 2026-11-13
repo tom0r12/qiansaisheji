@@ -1,0 +1,2 @@
+PASS decoder lockstep cases=416 normal=208 mutated=208 cycles=20587
+tb.sv:47: $finish called at 226670000 (1ps)

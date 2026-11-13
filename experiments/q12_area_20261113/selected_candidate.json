@@ -1,0 +1,33 @@
+{
+  "candidate": "q12_area_requant_data_hold_v2",
+  "source": "variants/data_hold/q12_task4.sv",
+  "source_sha256": "3e53fea269dd62c23642b7bb397234eba0809338061301dbbfe193ba44735c17",
+  "status": "verified optimization experiment, not full-SoC PPA signoff",
+  "baseline_commit": "305648e85802afe19adf1570d79c9a7720feb7eb",
+  "throughput_cycles_unchanged": true,
+  "mean_cycles": 24907,
+  "throughput_if_150mhz": 6022.403340426386,
+  "measured_core_area_mm2": 0.30707623912599996,
+  "baseline_core_area_mm2": 0.311959679983,
+  "full_soc_incremental_area_mm2": null,
+  "energy_uj": null,
+  "full_soc_timing_passed": null,
+  "official_downstream_bus_unchanged": true,
+  "shared_sram_bypass": false,
+  "inherited_np3_interface_acceptance": "OPEN",
+  "evidence": [
+    "checks/result.json",
+    "checks/data_hold_source_audit.json",
+    "server_observations.json"
+  ],
+  "full_soc_mapping": {
+    "status": "running_observed",
+    "launcher_pid": 54342,
+    "dc_pid": 54345,
+    "launch_log": "/tmp/q12_full_package_a23uic/run.log",
+    "status_command": "sh ~/Desktop/qw",
+    "candidate_zip_sha256": "1aace7c44a6b9d886e27bf02fb04875e37dcd629fb6aae1574160f2d2352e19c",
+    "last_observed_phase": "Pass 1 Mapping / Rice encoder",
+    "complete": false
+  }
+}

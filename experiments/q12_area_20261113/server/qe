@@ -1,0 +1,9 @@
+#!/bin/sh
+set -eu
+archive="$HOME/Desktop/q12_data_hold_core.zip"
+printf '%s  %s\n' '23383138ac76fd419590794096eace2f662fea39d326f51f53059b8c92031e45' "$archive" | sha256sum -c -
+run_dir=$(mktemp -d /tmp/q12_core_package_XXXXXX)
+python3 -m zipfile -e "$archive" "$run_dir"
+nohup python3 -u "$run_dir/run_core.py" > "$run_dir/run.log" 2>&1 < /dev/null &
+echo "Q12_DATA_HOLD_CORE_PID=$!"
+echo "Q12_DATA_HOLD_CORE_LOG=$run_dir/run.log"

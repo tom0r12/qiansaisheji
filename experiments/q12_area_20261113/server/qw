@@ -1,0 +1,19 @@
+#!/bin/sh
+python3 - <<'PY'
+from pathlib import Path
+import json,subprocess
+
+for p in sorted(Path('/tmp').glob('q12_full_package_*/run.log')):
+ print('LAUNCH',str(p));print('\n'.join(p.read_text(errors='replace').splitlines()[-8:]))
+for p in sorted(Path('/tmp').glob('q12_area_full_*/result.json')):
+ r=json.loads(p.read_text())
+ if r.get('candidate_sha256')!='3e53fea269dd62c23642b7bb397234eba0809338061301dbbfe193ba44735c17':continue
+ print('FULL_RESULT',str(p));print(json.dumps({k:r.get(k) for k in ('candidate','phase','pid','compile_complete','error','area_library_units','reported_setup_slacks_ns','review_required')}))
+ if r.get('pid'):subprocess.run(['ps','-p',str(r['pid']),'-o','pid,etime,pcpu,comm'])
+ log=p.parent/'synth/dc.log'
+ if log.is_file():print('\n'.join(log.read_text(errors='replace').splitlines()[-6:]))
+root=Path('/tmp/q12_final_s4_36usr_20261113')
+for p in root.glob('qingyu_q12_final_assessment_*/result.json'):
+ r=json.loads(p.read_text());print('BASELINE',str(p));print(json.dumps({k:r.get(k) for k in ('passed','phase','current_stage','error')}))
+
+PY

@@ -1,0 +1,27 @@
+from pathlib import Path
+import json,re
+
+def last_paths(pattern,limit=3):
+    return sorted(Path('/tmp').glob(pattern),key=lambda p:p.stat().st_mtime)[-limit:]
+for prefix in ('q12_quant_area_','q12_area_replay_','q12_core_area_'):
+    for p in last_paths(prefix+'*/result.json'):
+        r=json.loads(p.read_text());print('RUN',str(p.parent))
+        if 'results' in r:
+            for v in r['results']:
+                name=v.get('top',v.get('variant'));run=p.parent/name
+                metrics=dict(line.split('=',1) for line in (v.get('metrics') or '').splitlines() if '=' in line)
+                path=run/'area.rpt';text=path.read_text(errors='replace') if path.is_file() else ''
+                area=re.findall(r'^\s*Total cell area:\s*([\d.]+)',text,re.M)
+                print(json.dumps({'variant':name,'returncode':v['returncode'],'area':float(area[-1]) if area else None,
+                    'slack_ns':metrics.get('setup_slack_ns'),'macro_count':metrics.get('macro_count'),
+                    'macro_area':metrics.get('macro_area_library_units')}))
+        else:
+            print(json.dumps({k:r.get(k) for k in ('candidate','passed','phase','error','mean_full_window_cycles','throughput_at_assumed_150mhz')}))
+            tasks=r.get('tasks',[])
+            print('TASKS',len(tasks),'VALUES',sum(t['values_checked'] for t in tasks),'CYCLE_DELTAS',[t['cycle_delta'] for t in tasks])
+            if r.get('init_monitor_sha256'):print('INIT_COUNTS',[t.get('initialized_before_use_checks') for t in tasks])
+for p in last_paths('q12_core_package_*/run.log',2):
+    text=p.read_text(errors='replace');print('CORE_LAUNCH',str(p));print('\n'.join(text.splitlines()[-2:]))
+for p in last_paths('q12_area_package_*/run.log',2):
+    text=p.read_text(errors='replace')
+    if 'Traceback' in text:print('REPLAY_FAILURE',str(p));print('\n'.join(text.splitlines()[-7:]))

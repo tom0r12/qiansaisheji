@@ -1,0 +1,4 @@
+*.py text eol=lf
+*.sv text eol=lf
+*.tcl text eol=lf
+q? text eol=lf

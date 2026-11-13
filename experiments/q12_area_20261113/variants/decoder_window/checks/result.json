@@ -1,0 +1,18 @@
+{
+  "passed": true,
+  "baseline_sha256": "46faf82fb99a0c222e7855d4df7b02d35ffc00a9fcd2a8b29f8c2c04b16b6d21",
+  "candidate_sha256": "e06ca6f0355c8ef76fd13efc5222458213bff698d1e54fec6b99c097bfe1e387",
+  "sequential_logic_unchanged": true,
+  "proof": "all 320-bit reservoirs and offsets 0..320",
+  "domain_justification": "Each parse group resets offset to zero. LANES is fixed at 2. Before the second peek at most one header bit, one code of at most 70 bits, and one further header bit have been consumed (offset <= 72). No other caller exists. Offsets >320 are unreachable; the original wrapped subtraction differs there, with the counterexample retained.",
+  "logs": {
+    "baseline_lint.log": "d18bd74c717581c08cd8b859207f8c1fc58813efa3a445e17be4efd6023358e6",
+    "candidate_lint.log": "1b2662ec09acdee88e225d0ffc47f87af9bd237e643902aa4c61490d4223d250",
+    "end_check_equivalence.log": "a18ee00735ee5993afca7b0e79d9f4c1741d783526c3407e4ea24ebb156dad9a",
+    "equivalence.log": "a5ba656898ef5a8789ae4416a0c1a4fc29e918f837a41ff82782a826beea0b18",
+    "lint.log": "ec062fce6716623af75b7dcdf56ff4c94f5f67f3b0bbab90ce370dda6df2e320",
+    "out_of_domain_counterexample.log": "94682b5c4be999ab662b91f244d5ad047b242bef3f3b36c6950ec384aa744af7",
+    "replay.log": "71e220a798548d77c173a9ffdb53539012dfcbb03c461ecbd31837a868d13fd6",
+    "replay_compile.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+}

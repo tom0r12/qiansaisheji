@@ -1,0 +1,103 @@
+{
+  "baseline_commit": "305648e85802afe19adf1570d79c9a7720feb7eb",
+  "baseline_sha256": "7e732afb6ae3683ccf5516bc26606d2d3900d14046fe60af030f6f9d486adf7e",
+  "candidate_sha256": "a3e09c079620c46b91b1cb9ea6ed756264a950c46e2617071ae3dbbe455237ab",
+  "control_pipeline_memory_unchanged": true,
+  "area_mm2": null,
+  "energy_uj": null,
+  "full_soc_measured": false,
+  "baseline_mean_cycles": 24907,
+  "candidate_cycle_equivalence": "unchanged sequential RTL plus exhaustive function equivalence",
+  "tools": {
+    "yosys": "Yosys 0.33 (git sha1 2584903a060)",
+    "verilator": "Verilator 5.020 2024-01-01 rev (Debian 5.020-1)"
+  },
+  "checks": {
+    "formal": {
+      "command": [
+        "yosys",
+        "-Q",
+        "-T",
+        "-p",
+        "read_verilog -sv checks/quant_miter.sv; prep -top quant_miter -flatten; sat -prove mismatch 0 -verify -show-inputs -show-outputs"
+      ],
+      "seconds": 0.3747718929998882,
+      "log": "checks/quant_equivalence.log",
+      "log_sha256": "cb12ec6fa2ef3b7d9d7fba4626ce344765f02788c0e5e9673a277bdb0f05d949"
+    },
+    "lint": {
+      "command": [
+        "verilator",
+        "--lint-only",
+        "--timing",
+        "-Wall",
+        "--top-module",
+        "q12_task4",
+        "/mnt/d/\u82af\u7247\u8bbe\u8ba1\u8d5b\u9053/q12-area-optimization/experiments/q12_area_20261113/rtl/q12_task4.sv",
+        "/mnt/d/\u82af\u7247\u8bbe\u8ba1\u8d5b\u9053/q12-area-optimization/final/q12_20261113/vendor/src/q12/core_datareset/q12_pair_acc.sv",
+        "/mnt/d/\u82af\u7247\u8bbe\u8ba1\u8d5b\u9053/q12-area-optimization/final/q12_20261113/vendor/src/q12/core_datareset/q12_striped_sram.sv"
+      ],
+      "seconds": 0.2210871170000246,
+      "log": "checks/core_lint.log",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "quant_reference": {
+      "command": [
+        "yosys",
+        "-Q",
+        "-T",
+        "-p",
+        "read_verilog -sv checks/quant_miter.sv; synth -top quant_reference; stat; write_json checks/quant_reference.json"
+      ],
+      "seconds": 0.8259276250000767,
+      "log": "checks/quant_reference_synth.log",
+      "log_sha256": "79f9285649070839a924391226d9c576010f2d20e5a8709e714998ee9c94157d"
+    },
+    "quant_candidate": {
+      "command": [
+        "yosys",
+        "-Q",
+        "-T",
+        "-p",
+        "read_verilog -sv checks/quant_miter.sv; synth -top quant_candidate; stat; write_json checks/quant_candidate.json"
+      ],
+      "seconds": 0.47293023699990044,
+      "log": "checks/quant_candidate_synth.log",
+      "log_sha256": "eb3b88939c119aacce48fe7f66dd563bef0c87d573ce851a2a7f10b2a5f2b2ef"
+    }
+  },
+  "generic_logic_cells": {
+    "quant_reference": {
+      "total": 1526,
+      "by_type": {
+        "$_ANDNOT_": 359,
+        "$_AND_": 11,
+        "$_MUX_": 263,
+        "$_NAND_": 31,
+        "$_NOR_": 65,
+        "$_NOT_": 109,
+        "$_ORNOT_": 83,
+        "$_OR_": 436,
+        "$_XNOR_": 40,
+        "$_XOR_": 129
+      }
+    },
+    "quant_candidate": {
+      "total": 361,
+      "by_type": {
+        "$_ANDNOT_": 77,
+        "$_AND_": 12,
+        "$_MUX_": 162,
+        "$_NAND_": 13,
+        "$_NOR_": 4,
+        "$_NOT_": 2,
+        "$_ORNOT_": 13,
+        "$_OR_": 63,
+        "$_XNOR_": 1,
+        "$_XOR_": 14
+      }
+    }
+  },
+  "generic_logic_reduction_percent": 76.34338138925295,
+  "passed": true
+}
