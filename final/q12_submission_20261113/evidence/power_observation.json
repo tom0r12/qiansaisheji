@@ -1,0 +1,17 @@
+{
+  "source": "Manual transcription of 26_measurement_comparison.png from server-saved reports",
+  "run": "/tmp/q12_power_recovery_gghtgybp",
+  "netlist_sha256": "3eb43b4d79bbeb0389f4bb272e93629e7241dc1a6186c4e6c37a8b7bd448b712",
+  "windows_completed": 12,
+  "window_duration_ps": [163710294,164696862,164810184,164570208,164550210,163530312,164710194,164283570,165323466,164323566,165163482,165036828],
+  "power_w": [0.0585,0.0584,0.0584,0.0584,0.0583,0.0583,0.0583,0.0582,0.0584,0.0584,0.0583,0.0584],
+  "mean_energy_uj": 9.603394564,
+  "weighted_power_mw": 58.358332546,
+  "units_from_power_report": {"dynamic": "1 W", "leakage": "1 W"},
+  "measurement_kind": "Full-SoC prelayout RTL-SAIF engineering estimate, unqualified",
+  "accepted": false,
+  "first_window_check_power": {"out_of_range_ramps": 215, "out_of_range_loads": 2685, "library_cells_without_function": 3},
+  "first_window_macro_input_rows": 5986,
+  "pin_source_attributes": "Unsupported by installed PT release; independent raw SAIF numeric cross-check pending",
+  "notes": "Read-only estimates preserved; neither activity nor library values changed to clear warnings. Total Power printed to four significant figures, so final results should be rounded."
+}

@@ -1,7 +1,7 @@
 """Compact read-only status, bound to source identity rather than latest mtime."""
 from pathlib import Path
 import json,re,subprocess
-for p in sorted(list(Path('/tmp').glob('q12_native12_*/result.json'))+list(Path('/tmp').glob('q12_compact12_*/result.json'))):
+for p in sorted(list(Path('/tmp').glob('q12_native12_*/result.json'))+list(Path('/tmp').glob('q12_compact12_*/result.json'))+list(Path('/tmp').glob('q12_c2512_*/result.json'))):
  try:r=json.loads(p.read_text())
  except (OSError,ValueError):continue
  files=r.get('identity',{}).get('files',{})
@@ -25,5 +25,5 @@ for p in sorted(list(Path('/tmp').glob('q12_native12_*/result.json'))+list(Path(
   if q.is_file():
    slacks=re.findall(r'slack\s*\([^)]*\)\s*([-+\d.]+)',q.read_text())
    if slacks:print(name,'MIN_SLACK',min(map(float,slacks)))
-for p in sorted(list(Path('/tmp').glob('q12_native_full_launch_*/run.log'))+list(Path('/tmp').glob('q12_compact_full_launch_*/run.log'))+list(Path('/tmp').glob('q12_compact_launch_*/run.log'))):
+for p in sorted(list(Path('/tmp').glob('q12_native_full_launch_*/run.log'))+list(Path('/tmp').glob('q12_compact_full_launch_*/run.log'))+list(Path('/tmp').glob('q12_compact_launch_*/run.log'))+list(Path('/tmp').glob('q12_c25_full_launch_*/run.log'))+list(Path('/tmp').glob('q12_c25_launch_*/run.log'))):
  print('FULL_LAUNCH',p,' | '.join(p.read_text(errors='replace').splitlines()[-3:]))

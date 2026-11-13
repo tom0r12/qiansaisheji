@@ -1,2 +1,6 @@
 # Frozen source/manifests must retain their exact uploaded bytes on any OS.
 final/q12_20261113/** -text
+final/q12_submission_20261113/** -text
+final/q12_submission_20261113/**/*.pdf binary
+final/q12_submission_20261113/**/*.png binary
+experiments/q12_dense_20261113/candidates/** -text

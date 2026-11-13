@@ -4,7 +4,7 @@ Synthetic inputs test functionality and traffic, not official competition scores
 Run on Linux/WSL; private official fixtures stay on the contest server.
 """
 from pathlib import Path
-import argparse,hashlib,json,subprocess,sys,struct,re,time
+import argparse,hashlib,json,subprocess,sys,struct,re,time,os
 import numpy as np
 H=Path(__file__).resolve().parent;R=H.parents[1];B=R/'final/q12_20261113/vendor'
 F=R/'final/q12_20261113/freeze_snapshot'
@@ -22,8 +22,9 @@ def hexwords(p,b):p.write_text(''.join('%08x\n'%x for x in struct.unpack('<%dI'%
 def main():
  ap=argparse.ArgumentParser();ap.add_argument('--baseline',action='store_true');ap.add_argument('--cases',type=int,default=12);ap.add_argument('--reuse',action='store_true')
  ap.add_argument('--storage-bits',type=int,choices=(10,11,12,13,16),default=16);ap.add_argument('--weight-bits',type=int,choices=(10,11,12),default=12)
- ap.add_argument('--write-priority',action='store_true');ap.add_argument('--compact-weights',action='store_true');a=ap.parse_args()
+ ap.add_argument('--write-priority',action='store_true');ap.add_argument('--compact-weights',action='store_true');ap.add_argument('--compact-metadata',action='store_true');ap.add_argument('--early-output-check',action='store_true');a=ap.parse_args()
  assert not a.compact_weights or (a.storage_bits==12 and a.weight_bits==10 and not a.baseline)
+ assert not a.compact_metadata or a.compact_weights
  assert not a.baseline or (a.storage_bits==16 and a.weight_bits==12)
  ybits=a.storage_bits if a.storage_bits!=16 else 13;cut=12-a.weight_bits;outcut=13-ybits
  tilebits=1584*a.storage_bits;tilewords=(tilebits+31)//32;output_words=17+16*tilewords
@@ -31,6 +32,8 @@ def main():
  mode='baseline'if a.baseline else 'dense16'if (a.storage_bits==16 and not cut) else 'dense%d_w%d'%(a.storage_bits,a.weight_bits)
  if a.write_priority:mode+='_wp'
  if a.compact_weights:mode+='_m10'
+ if a.compact_metadata:mode+='_c25'
+ if a.early_output_check:mode+='_earlycheck'
  out=H/'build'/mode;out.mkdir(parents=True,exist_ok=True)
  m=json.loads((B/'manifest.json').read_text());sources=[]
  oldram=F/'qingyu/vendor/e203_hbirdv2/rtl/e203/general/sirv_gnrl_ram.v'
@@ -55,6 +58,10 @@ def main():
    module='q12_dense12_writer' if a.storage_bits==12 else 'q12_native_writer #(.VALUE_BITS(%d))'%ybits
    engine=(H/'rtl/q12_stream_engine_overlap.sv').read_text().replace('q12_dense16_writer',module).replace('25344',str(tilebits)).replace('3168',str(tilewords*4)).replace('wr_desc_count=792','wr_desc_count=%d'%tilewords).replace('50756',str(output_words*4)).replace('31443151','%08x'%magic)
    engine=engine.replace("decode_weights?4'd9:4'd6","decode_weights?4'd%d:4'd6"%(9-cut))
+   if a.early_output_check:
+    old='invalid_core_output=formatter_input && formatter_in_ready &&'
+    assert engine.count(old)==1
+    engine=engine.replace(old,'invalid_core_output=formatter_input &&')
    (out/'q12_stream_engine_overlap.sv').write_text(engine)
    replace['src/q12/integration/q12_stream_engine_overlap.sv']=out/'q12_stream_engine_overlap.sv'
    replace['src/q12/encoder_bounded/q13_rice_encoder.sv']=H/('rtl/q12_dense12_writer.sv'if a.storage_bits==12 else 'rtl/q12_native_writer.sv')
@@ -62,6 +69,9 @@ def main():
    core=replace['src/q12/core_datareset/q12_task4.sv'].read_text().replace("32'sd4095","32'sd%d"%(limit-1)).replace("32'sd4096","32'sd%d"%limit).replace("13'hfff","13'h%x"%(limit-1)).replace("13'h1000","13'h%x"%((-limit)&8191))
    if a.compact_weights:
     from compact_weights import transform
+    core=transform(core)
+   if a.compact_metadata:
+    from compact_metadata import transform
     core=transform(core)
    (out/'q12_task4.sv').write_text(core);replace['src/q12/core_datareset/q12_task4.sv']=out/'q12_task4.sv'
    decoder=(R/'experiments/q12_area_20261113/variants/decoder_window/q12_rice_decoder.sv').read_text()
@@ -139,8 +149,10 @@ def main():
     payload.append(block.to_bytes(tilewords*4,'little'))
    expected=struct.pack('<17I',magic,*([tilebits]*16))+b''.join(payload);writes=output_words+1
   t=out/('case%02d'%case);t.mkdir(exist_ok=True);hexwords(t/'input.hex',ip);hexwords(t/'expected.hex',expected)
-  cmd=[obj/'sim','+FIRMWARE='+str(firmware),'+INPUT='+str(t/'input.hex'),'+EXPECTED='+str(t/'expected.hex'),'+INPUT_WORDS='+str(len(ip)//4),'+OUTPUT_WORDS='+str(writes),'+LAYER='+str(case),'+OUTPUT_DUMP='+str(t/'actual.hex')]
-  run(cmd,t/'simulation.log',timeout=120)
+  # The testbench stores filenames in a fixed-width packed vector. Relative
+  # paths keep long workspace/candidate names from truncating the plusargs.
+  cmd=[obj/'sim','+FIRMWARE='+os.path.relpath(firmware,t),'+INPUT=input.hex','+EXPECTED=expected.hex','+INPUT_WORDS='+str(len(ip)//4),'+OUTPUT_WORDS='+str(writes),'+LAYER='+str(case),'+OUTPUT_DUMP=actual.hex']
+  run(cmd,t/'simulation.log',cwd=t,timeout=120)
   log=(t/'simulation.log').read_text();assert 'PASS real E203 Q12 cold task' in log
   words=[int(v,16)for v in(t/'actual.hex').read_text().split()]
   actual=struct.pack('<%dI'%len(words),*words);assert actual==expected

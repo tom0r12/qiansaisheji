@@ -1,8 +1,9 @@
 """Lossless-width proof and rejected out-of-range weight inputs."""
 from pathlib import Path
-import hashlib,json,subprocess,re
-H=Path(__file__).resolve().parent;R=H.parents[1];O=H/'checks/compact_weights';O.mkdir(parents=True,exist_ok=True)
-C=H/'build/dense12_w10_wp_m10/q12_task4.sv'
+import argparse,hashlib,json,subprocess,re
+ap=argparse.ArgumentParser();ap.add_argument('--metadata',action='store_true');args=ap.parse_args()
+H=Path(__file__).resolve().parent;R=H.parents[1];O=H/('checks/compact_metadata_weights'if args.metadata else'checks/compact_weights');O.mkdir(parents=True,exist_ok=True)
+C=H/('build/dense12_w10_wp_m10'+('_c25'if args.metadata else'')+'/q12_task4.sv')
 def run(cmd,name):
  with(O/name).open('w')as f:subprocess.run(cmd,stdout=f,stderr=subprocess.STDOUT,check=True,timeout=300)
 # This specifies the numerical contract independently of the RTL's bit indices.

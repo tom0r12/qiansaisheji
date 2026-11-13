@@ -1,0 +1,4 @@
+# Unedited raw desktop captures are retained locally for review.
+# Only selected, reviewed report figures should be published explicitly.
+images/
+rendered/

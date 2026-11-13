@@ -1,0 +1,20 @@
+{
+  "provenance": "Manual transcription from VNC display of unmodified server reports",
+  "observation_local": "2026-11-13 16:04",
+  "candidate": "native12 before output-feedback fix",
+  "server_run": "/tmp/q12_native12_timing_h_gu568q",
+  "area_incremental_um2": 398823.892434,
+  "area_incremental_mm2": 0.398823892434,
+  "area_full_soc_um2": 2740573.25531,
+  "fio_um2": 394948.804434,
+  "np3_um2": 1132.8408,
+  "shared_nonmacro_um2": 2742.2472,
+  "setup_wns_ns": 0.0,
+  "hold_wns_ns": -0.14896035,
+  "timing_pass": false,
+  "has_accelerator_combinational_feedback": true,
+  "qualified_throughput_tasks_s": null,
+  "qualified_energy_uj": null,
+  "status": "Superseded by early-output-identity-check candidate; not submission-ready",
+  "source_images": ["images/11_timing_and_activity_status.png", "images/13_hold_clock_and_sram.png"]
+}

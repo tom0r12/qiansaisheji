@@ -1,0 +1,19 @@
+{
+  "cutoff": "17:22 冻结提交候选；本轮后台测试已停止",
+  "headline": "吞吐超过 6000、面积降低；整机功耗测量完成。全约束时序和评测验收尚未全部闭合。",
+  "timing_scope": "已报告路径无负 slack；仍有官方外设未约束端点，不能宣布整机全约束通过",
+  "timing_review": "组合环警告已消除。check_timing 留有 loader 时钟输出、3 路 UART 共 24 个锁存器 D 端及 2 个 AON 异步入口；原始报告已保留，未用泛化 false path 掩盖。",
+  "formal_text": "Formality 工具证明完成；独立验收仍需复核",
+  "formal_detail": "Formality 显示 Verification SUCCEEDED、35565 个通过点、0 个失败点；另有 625 个 unread 点和 9 个仅参考侧未匹配寄存器，以及 RTL 解释告警。SRAM 黑盒全部匹配，无 dont_verify 或用户常量。独立严格审计仍未通过，不作为完整等价签核。",
+  "power_text": "约 58.36 mW / 9.60 uJ",
+  "power_scope": "12 个完整窗口、同版整机 RTL-SAIF 工程估计；活动与库外推警告未全部闭合",
+  "power_detail": "12 组窗口均已完成。平均能耗 9.6033945645 uJ，按窗口时长加权功耗 58.358332546 mW。首窗口 check_power 报 215 个 slew 超表、2685 个负载超表及 3 个无逻辑函数的库单元；不得把此估计称为无警告签核值。",
+  "open_items": "官方随机 600 样本精度；loader_* 平台接口验收；继承外设未约束端点的完整 STA；独立等价报告核查；功耗活动来源与库外推警告。",
+  "figures": [
+    {"file":"26_measurement_comparison.png","title":"同版吞吐、面积、十二窗口功耗","caption":"从服务器保存结果生成的只读汇总，完整原始 VNC 截图；明确保留未验收标记。"},
+    {"file":"24_timing_check_header.png","title":"check_timing 的未约束端点","caption":"检查 generated clocks、loops、I/O delay 及未约束端点；告警仍保留，不裁去不利信息。"},
+    {"file":"22_timing_audit_tail.png","title":"修复后的 SRAM 保持时间路径","caption":"真实 SRAM 数据路径 hold slack 为正；此图不能代替全 SoC 的未约束端点核查。"},
+    {"file":"25_power_activity_sources.png","title":"功耗覆盖及模型警告","caption":"记录 read_saif、check_power、宏输入行数和版本兼容问题；功耗数值保留工程估计限定。"},
+    {"file":"27_formal_unmatched_points.png","title":"等价证明结果与未匹配点","caption":"35565 个通过点、0 个失败点，同时保留 625 个 unread 点与 9 个参考侧未匹配点，严格验收未通过。"}
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "observed_local_time": "2026-11-13T16:45:03+08:00",
+  "source": "Manual transcription of read-only server result display; raw screenshot 21_earlycheck_final_status.png",
+  "run": "/tmp/q12_earlycheck_full_y0zb5w2z",
+  "engine_sha256": "9447724c51ee9e4e80e72818cf1a448002b485fb00956be98d3f1a9f5848d432",
+  "netlist_sha256": "3eb43b4d79bbeb0389f4bb272e93629e7241dc1a6186c4e6c37a8b7bd448b712",
+  "vendor_cases": 12,
+  "task_cycles": [24560,24708,24725,24689,24686,24533,24710,24646,24802,24652,24778,24759],
+  "mean_cycles": 24687.333333333332,
+  "throughput_at_150mhz": 6075.990386432989,
+  "synth_seconds": 1470.0038923060056,
+  "worst_reported_setup_ns": 0.0,
+  "worst_reported_hold_ns": 0.00070456,
+  "incremental_area_um2": 388582.360434,
+  "full_soc_area_um2": 2730733.91531,
+  "fio_area_um2": 384884.747634,
+  "np3_area_um2": 1113.0504,
+  "shared_nonmacro_area_um2": 2584.5624,
+  "formal_status": "running",
+  "timing_report_review": "pending",
+  "power_energy": null,
+  "status": "NOT_YET_ACCEPTED"
+}

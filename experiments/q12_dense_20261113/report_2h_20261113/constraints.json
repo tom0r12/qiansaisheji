@@ -1,0 +1,25 @@
+{
+  "start_utc": "2026-11-13T07:27:58Z",
+  "deadline_utc": "2026-11-13T09:27:58Z",
+  "throughput_min_tasks_s": 6000,
+  "frequency_mhz": 150,
+  "setup_wns_min_ns": 0,
+  "hold_wns_min_ns": 0,
+  "area_baseline_mm2": 0.448646862835,
+  "full_output_elements": 25344,
+  "output_element_bits": 12,
+  "output_entropy_compression": false,
+  "shared_sram_bits": 4194304,
+  "system_bus_bits": 32,
+  "rules": [
+    "Complete native numerical matrix through original System Bus",
+    "No direct shared SRAM bypass or extra SRAM port",
+    "Actual loading through final write ACK included in task window",
+    "Same source and netlist identities for all reported measurements",
+    "No invented results or masking real timing violations",
+    "Preserve screenshots and full server-side source reports",
+    "Keep original frozen submission unchanged"
+  ],
+  "measurement_scope": "Official TT 1.1 V 25 C prelayout engineering estimate; not routed signoff",
+  "open_items": ["Official random 600 sample precision", "Official loader interface acceptance"]
+}
