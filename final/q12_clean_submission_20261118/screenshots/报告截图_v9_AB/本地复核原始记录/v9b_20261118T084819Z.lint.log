@@ -1,0 +1,392 @@
+- V e r i l a t i o n   R e p o r t: Verilator 5.050 2026-07-01 rev vUNKNOWN-built20260702
+- Verilator: Built from 318.282 MB sources in 172 modules, into 14.204 MB in 14 C++ files needing 0.000 MB
+- Verilator: Walltime 4.401 s (elab=0.484, cvt=2.365, bld=0.000); cpu 0.000 s on 1 threads; allocated 234.141 MB
+%Warning-PINMISSING: E:/Desktop/qiansaisheji/output/eda/q12_clean_20261118/runs/v9b_20261118T084819Z/sources\142_tb_q12soc.sv:16:22: Instance has missing pin: 'io_pads_jtag_TDO_o_oval'
+   16 |  qingyu_e203_soc_top dut(
+      |                      ^~~
+                     E:/Desktop/qiansaisheji/output/eda/q12_clean_20261118/runs/v9b_20261118T084819Z/sources\137_qingyu_e203_soc_top.v:43:11: ... Location of port declaration
+   43 |   output  io_pads_jtag_TDO_o_oval,
+      |           ^~~~~~~~~~~~~~~~~~~~~~~
+                     ... For warning description see https://verilator.org/warn/PINMISSING?v=5.050
+                     ... Use "/* verilator lint_off PINMISSING */" and lint_on around source to disable this message.
+%Warning-PINMISSING: E:/Desktop/qiansaisheji/output/eda/q12_clean_20261118/runs/v9b_20261118T084819Z/sources\142_tb_q12soc.sv:16:22: Instance has missing pin: 'io_pads_jtag_TDO_o_oe'
+   16 |  qingyu_e203_soc_top dut(
+      |                      ^~~
+                     E:/Desktop/qiansaisheji/output/eda/q12_clean_20261118/runs/v9b_20261118T084819Z/sources\137_qingyu_e203_soc_top.v:44:11: ... Location of port declaration
+   44 |   output  io_pads_jtag_TDO_o_oe,
+      |           ^~~~~~~~~~~~~~~~~~~~~
+%Warning-PINMISSING: E:/Desktop/qiansaisheji/output/eda/q12_clean_20261118/runs/v9b_20261118T084819Z/sources\142_tb_q12soc.sv:16:22: Instance has missing pin: 'io_pads_gpioA_o_oval'
+   16 |  qingyu_e203_soc_top dut(
+      |                      ^~~
+                     E:/Desktop/qiansaisheji/output/eda/q12_clean_20261118/runs/v9b_20261118T084819Z/sources\137_qingyu_e203_soc_top.v:48:19: ... Location of port declaration
+   48 |   output [32-1:0] io_pads_gpioA_o_oval,
+      |                   ^~~~~~~~~~~~~~~~~~~~
+%Warning-PINMISSING: E:/Desktop/qiansaisheji/output/eda/q12_clean_20261118/runs/v9b_20261118T084819Z/sources\142_tb_q12soc.sv:16:22: Instance has missing pin: 'io_pads_qspi0_sck_o_oval'
+   16 |  qingyu_e203_soc_top dut(
+      |                      ^~~
+                     E:/Desktop/qiansaisheji/output/eda/q12_clean_20261118/runs/v9b_20261118T084819Z/sources\137_qingyu_e203_soc_top.v:56:11: ... Location of port declaration
+   56 |   output  io_pads_qspi0_sck_o_oval,
+      |           ^~~~~~~~~~~~~~~~~~~~~~~~
+%Warning-PINMISSING: E:/Desktop/qiansaisheji/output/eda/q12_clean_20261118/runs/v9b_20261118T084819Z/sources\142_tb_q12soc.sv:16:22: Instance has missing pin: 'io_pads_qspi0_cs_0_o_oval'
+   16 |  qingyu_e203_soc_top dut(
+      |                      ^~~
+                     E:/Desktop/qiansaisheji/output/eda/q12_clean_20261118/runs/v9b_20261118T084819Z/sources\137_qingyu_e203_soc_top.v:57:11: ... Location of port declaration
+   57 |   output  io_pads_qspi0_cs_0_o_oval,
+      |           ^~~~~~~~~~~~~~~~~~~~~~~~~
+%Warning-PINMISSING: E:/Desktop/qiansaisheji/output/eda/q12_clean_20261118/runs/v9b_20261118T084819Z/sources\142_tb_q12soc.sv:16:22: Instance has missing pin: 'io_pads_qspi0_dq_0_o_oval'
+   16 |  qingyu_e203_soc_top dut(
+      |                      ^~~
+                     E:/Desktop/qiansaisheji/output/eda/q12_clean_20261118/runs/v9b_20261118T084819Z/sources\137_qingyu_e203_soc_top.v:61:11: ... Location of port declaration
+   61 |   output  io_pads_qspi0_dq_0_o_oval,
+      |           ^~~~~~~~~~~~~~~~~~~~~~~~~
+%Warning-PINMISSING: E:/Desktop/qiansaisheji/output/eda/q12_clean_20261118/runs/v9b_20261118T084819Z/sources\142_tb_q12soc.sv:16:22: Instance has missing pin: 'io_pads_qspi0_dq_0_o_oe'
+   16 |  qingyu_e203_soc_top dut(
+      |                      ^~~
+                     E:/Desktop/qiansaisheji/output/eda/q12_clean_20261118/runs/v9b_20261118T084819Z/sources\137_qingyu_e203_soc_top.v:62:11: ... Location of port declaration
+   62 |   output  io_pads_qspi0_dq_0_o_oe,
+      |           ^~~~~~~~~~~~~~~~~~~~~~~
+%Warning-PINMISSING: E:/Desktop/qiansaisheji/output/eda/q12_clean_20261118/runs/v9b_20261118T084819Z/sources\142_tb_q12soc.sv:16:22: Instance has missing pin: 'io_pads_qspi0_dq_1_o_oval'
+   16 |  qingyu_e203_soc_top dut(
+      |                      ^~~
+                     E:/Desktop/qiansaisheji/output/eda/q12_clean_20261118/runs/v9b_20261118T084819Z/sources\137_qingyu_e203_soc_top.v:64:11: ... Location of port declaration
+   64 |   output  io_pads_qspi0_dq_1_o_oval,
+      |           ^~~~~~~~~~~~~~~~~~~~~~~~~
+%Warning-PINMISSING: E:/Desktop/qiansaisheji/output/eda/q12_clean_20261118/runs/v9b_20261118T084819Z/sources\142_tb_q12soc.sv:16:22: Instance has missing pin: 'io_pads_qspi0_dq_1_o_oe'
+   16 |  qingyu_e203_soc_top dut(
+      |                      ^~~
+                     E:/Desktop/qiansaisheji/output/eda/q12_clean_20261118/runs/v9b_20261118T084819Z/sources\137_qingyu_e203_soc_top.v:65:11: ... Location of port declaration
+   65 |   output  io_pads_qspi0_dq_1_o_oe,
+      |           ^~~~~~~~~~~~~~~~~~~~~~~
+%Warning-PINMISSING: E:/Desktop/qiansaisheji/output/eda/q12_clean_20261118/runs/v9b_20261118T084819Z/sources\142_tb_q12soc.sv:16:22: Instance has missing pin: 'io_pads_qspi0_dq_2_o_oval'
+   16 |  qingyu_e203_soc_top dut(
+      |                      ^~~
+                     E:/Desktop/qiansaisheji/output/eda/q12_clean_20261118/runs/v9b_20261118T084819Z/sources\137_qingyu_e203_soc_top.v:67:11: ... Location of port declaration
+   67 |   output  io_pads_qspi0_dq_2_o_oval,
+      |           ^~~~~~~~~~~~~~~~~~~~~~~~~
+%Warning-PINMISSING: E:/Desktop/qiansaisheji/output/eda/q12_clean_20261118/runs/v9b_20261118T084819Z/sources\142_tb_q12soc.sv:16:22: Instance has missing pin: 'io_pads_qspi0_dq_2_o_oe'
+   16 |  qingyu_e203_soc_top dut(
+      |                      ^~~
+                     E:/Desktop/qiansaisheji/output/eda/q12_clean_20261118/runs/v9b_20261118T084819Z/sources\137_qingyu_e203_soc_top.v:68:11: ... Location of port declaration
+   68 |   output  io_pads_qspi0_dq_2_o_oe,
+      |           ^~~~~~~~~~~~~~~~~~~~~~~
+%Warning-PINMISSING: E:/Desktop/qiansaisheji/output/eda/q12_clean_20261118/runs/v9b_20261118T084819Z/sources\142_tb_q12soc.sv:16:22: Instance has missing pin: 'io_pads_qspi0_dq_3_o_oval'
+   16 |  qingyu_e203_soc_top dut(
+      |                      ^~~
+                     E:/Desktop/qiansaisheji/output/eda/q12_clean_20261118/runs/v9b_20261118T084819Z/sources\137_qingyu_e203_soc_top.v:70:11: ... Location of port declaration
+   70 |   output  io_pads_qspi0_dq_3_o_oval,
+      |           ^~~~~~~~~~~~~~~~~~~~~~~~~
+%Warning-PINMISSING: E:/Desktop/qiansaisheji/output/eda/q12_clean_20261118/runs/v9b_20261118T084819Z/sources\142_tb_q12soc.sv:16:22: Instance has missing pin: 'io_pads_qspi0_dq_3_o_oe'
+   16 |  qingyu_e203_soc_top dut(
+      |                      ^~~
+                     E:/Desktop/qiansaisheji/output/eda/q12_clean_20261118/runs/v9b_20261118T084819Z/sources\137_qingyu_e203_soc_top.v:71:11: ... Location of port declaration
+   71 |   output  io_pads_qspi0_dq_3_o_oe,
+      |           ^~~~~~~~~~~~~~~~~~~~~~~
+%Warning-PINMISSING: E:/Desktop/qiansaisheji/output/eda/q12_clean_20261118/runs/v9b_20261118T084819Z/sources\142_tb_q12soc.sv:16:22: Instance has missing pin: 'io_pads_aon_pmu_padrst_o_oval'
+   16 |  qingyu_e203_soc_top dut(
+      |                      ^~~
+                     E:/Desktop/qiansaisheji/output/eda/q12_clean_20261118/runs/v9b_20261118T084819Z/sources\137_qingyu_e203_soc_top.v:89:10: ... Location of port declaration
+   89 |   output io_pads_aon_pmu_padrst_o_oval,
+      |          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+%Warning-PINMISSING: E:/Desktop/qiansaisheji/output/eda/q12_clean_20261118/runs/v9b_20261118T084819Z/sources\142_tb_q12soc.sv:16:22: Instance has missing pin: 'io_pads_aon_pmu_vddpaden_o_oval'
+   16 |  qingyu_e203_soc_top dut(
+      |                      ^~~
+                     E:/Desktop/qiansaisheji/output/eda/q12_clean_20261118/runs/v9b_20261118T084819Z/sources\137_qingyu_e203_soc_top.v:90:10: ... Location of port declaration
+   90 |   output io_pads_aon_pmu_vddpaden_o_oval 
+      |          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+%Warning-WIDTHEXPAND: E:/Desktop/qiansaisheji/output/eda/q12_clean_20261118/runs/v9b_20261118T084819Z/sources\054_sirv_gnrl_icbs.v:255:43: Operator OR expects 32 bits on the LHS, but LHS's VARREF 'i_arbt_indic_id' generates 1 bits.
+                                                                                                                                         : ... note: In instance 'tb_q12soc.dut.u_e203_subsys_top.u_e203_subsys_main.u_e203_cpu_top.u_e203_cpu.u_e203_core.u_e203_lsu.u_e203_lsu_ctrl.u_lsu_icb_arbt'
+  255 |         i_arbt_indic_id = i_arbt_indic_id | {ARBT_PTR_W{i_bus_icb_cmd_sel[j]}} & $unsigned(j);
+      |                                           ^
+                      ... For warning description see https://verilator.org/warn/WIDTHEXPAND?v=5.050
+                      ... Use "/* verilator lint_off WIDTHEXPAND */" and lint_on around source to disable this message.
+%Warning-WIDTHEXPAND: E:/Desktop/qiansaisheji/output/eda/q12_clean_20261118/runs/v9b_20261118T084819Z/sources\054_sirv_gnrl_icbs.v:255:80: Operator AND expects 32 bits on the LHS, but LHS's REPLICATE generates 1 bits.
+                                                                                                                                         : ... note: In instance 'tb_q12soc.dut.u_e203_subsys_top.u_e203_subsys_main.u_e203_cpu_top.u_e203_cpu.u_e203_core.u_e203_lsu.u_e203_lsu_ctrl.u_lsu_icb_arbt'
+  255 |         i_arbt_indic_id = i_arbt_indic_id | {ARBT_PTR_W{i_bus_icb_cmd_sel[j]}} & $unsigned(j);
+      |                                                                                ^
+%Warning-WIDTHTRUNC: E:/Desktop/qiansaisheji/output/eda/q12_clean_20261118/runs/v9b_20261118T084819Z/sources\054_sirv_gnrl_icbs.v:255:25: Operator ASSIGN expects 1 bits on the Assign RHS, but Assign RHS's OR generates 32 bits.
+                                                                                                                                        : ... note: In instance 'tb_q12soc.dut.u_e203_subsys_top.u_e203_subsys_main.u_e203_cpu_top.u_e203_cpu.u_e203_core.u_e203_lsu.u_e203_lsu_ctrl.u_lsu_icb_arbt'
+  255 |         i_arbt_indic_id = i_arbt_indic_id | {ARBT_PTR_W{i_bus_icb_cmd_sel[j]}} & $unsigned(j);
+      |                         ^
+                     ... For warning description see https://verilator.org/warn/WIDTHTRUNC?v=5.050
+                     ... Use "/* verilator lint_off WIDTHTRUNC */" and lint_on around source to disable this message.
+%Warning-WIDTHEXPAND: E:/Desktop/qiansaisheji/output/eda/q12_clean_20261118/runs/v9b_20261118T084819Z/sources\040_e203_lsu_ctrl.v:283:37: Operator ASSIGNW expects 39 bits on the Assign RHS, but Assign RHS's REPLICATE generates 38 bits.
+                                                                                                                                        : ... note: In instance 'tb_q12soc.dut.u_e203_subsys_top.u_e203_subsys_main.u_e203_cpu_top.u_e203_cpu.u_e203_core.u_e203_lsu.u_e203_lsu_ctrl'
+  283 |   wire [USR_W-1:0] nice_icb_cmd_usr = {USR_W-1{1'b0}};
+      |                                     ^
+%Warning-WIDTHEXPAND: E:/Desktop/qiansaisheji/output/eda/q12_clean_20261118/runs/v9b_20261118T084819Z/sources\040_e203_lsu_ctrl.v:286:36: Operator ASSIGNW expects 39 bits on the Assign RHS, but Assign RHS's REPLICATE generates 38 bits.
+                                                                                                                                        : ... note: In instance 'tb_q12soc.dut.u_e203_subsys_top.u_e203_subsys_main.u_e203_cpu_top.u_e203_cpu.u_e203_core.u_e203_lsu.u_e203_lsu_ctrl'
+  286 |   wire [USR_W-1:0] fpu_icb_cmd_usr = {USR_W-1{1'b0}};
+      |                                    ^
+%Warning-WIDTHEXPAND: E:/Desktop/qiansaisheji/output/eda/q12_clean_20261118/runs/v9b_20261118T084819Z/sources\040_e203_lsu_ctrl.v:415:32: Operator ASSIGNW expects 4 bits on the Assign RHS, but Assign RHS's REPLICATE generates 2 bits.
+                                                                                                                                        : ... note: In instance 'tb_q12soc.dut.u_e203_subsys_top.u_e203_subsys_main.u_e203_cpu_top.u_e203_cpu.u_e203_core.u_e203_lsu.u_e203_lsu_ctrl'
+  415 |   assign arbt_bus_icb_cmd_beat =
+      |                                ^
+%Warning-WIDTHEXPAND: E:/Desktop/qiansaisheji/output/eda/q12_clean_20261118/runs/v9b_20261118T084819Z/sources\032_e203_ifu_ifetch.v:458:48: Operator COND expects 32 bits on the Conditional False, but Conditional False's VARREF 'pc_incr_ofst' generates 3 bits.
+                                                                                                                                          : ... note: In instance 'tb_q12soc.dut.u_e203_subsys_top.u_e203_subsys_main.u_e203_cpu_top.u_e203_cpu.u_e203_core.u_e203_ifu.u_e203_ifu_ifetch'
+  458 |                                ifu_reset_req   ? 32'b0 :
+      |                                                ^
+%Warning-WIDTHEXPAND: E:/Desktop/qiansaisheji/output/eda/q12_clean_20261118/runs/v9b_20261118T084819Z/sources\028_e203_exu_oitf.v:91:41: Operator EQ expects 32 bits on the LHS, but LHS's VARREF 'alc_ptr_r' generates 1 bits.
+                                                                                                                                       : ... note: In instance 'tb_q12soc.dut.u_e203_subsys_top.u_e203_subsys_main.u_e203_cpu_top.u_e203_cpu.u_e203_core.u_e203_exu.u_e203_exu_oitf'
+   91 |       wire alc_ptr_flg_ena = (alc_ptr_r == ($unsigned(2-1))) & alc_ptr_ena;
+      |                                         ^~
+%Warning-WIDTHEXPAND: E:/Desktop/qiansaisheji/output/eda/q12_clean_20261118/runs/v9b_20261118T084819Z/sources\028_e203_exu_oitf.v:104:41: Operator EQ expects 32 bits on the LHS, but LHS's VARREF 'ret_ptr_r' generates 1 bits.
+                                                                                                                                        : ... note: In instance 'tb_q12soc.dut.u_e203_subsys_top.u_e203_subsys_main.u_e203_cpu_top.u_e203_cpu.u_e203_core.u_e203_exu.u_e203_exu_oitf'
+  104 |       wire ret_ptr_flg_ena = (ret_ptr_r == ($unsigned(2-1))) & ret_ptr_ena;
+      |                                         ^~
+%Warning-WIDTHEXPAND: E:/Desktop/qiansaisheji/output/eda/q12_clean_20261118/runs/v9b_20261118T084819Z/sources\064_input_stage.v:104:23: Operator EQ expects 32 bits on the LHS, but LHS's VARREF 'r_sel' generates 8 bits.
+                                                                                                                                      : ... note: In instance 'tb_q12soc.dut.u_e203_subsys_top.u_e203_subsys_main.u_e203_subsys_perips.u_perips_apb_pwm.u_tim3.u_in_stage'
+  104 |             if (r_sel == i)  s_int_sig = signal_i[i];
+      |                       ^~
+%Warning-WIDTHTRUNC: E:/Desktop/qiansaisheji/output/eda/q12_clean_20261118/runs/v9b_20261118T084819Z/sources\111_sirv_qspi_media.v:322:15: Operator ASSIGNDLY expects 1 bits on the Assign RHS, but Assign RHS's CONST '2'h0' generates 2 bits.
+                                                                                                                                         : ... note: In instance 'tb_q12soc.dut.u_e203_subsys_top.u_e203_subsys_main.u_e203_subsys_perips.u_sirv_qspi0_top.u_sirv_flash_qspi.mac'
+  322 |     cs_id     <= 2'b0;
+      |               ^~
+%Warning-WIDTHTRUNC: E:/Desktop/qiansaisheji/output/eda/q12_clean_20261118/runs/v9b_20261118T084819Z/sources\071_i2c_master_bit_ctrl.v:248:41: Operator ASSIGNDLY expects 14 bits on the Assign RHS, but Assign RHS's SHIFTR generates 16 bits.
+                                                                                                                                             : ... note: In instance 'tb_q12soc.dut.u_e203_subsys_top.u_e203_subsys_main.u_e203_subsys_perips.u_perips_apb_i2c1.byte_controller.bit_controller'
+  248 |       else if (~|filter_cnt) filter_cnt <= clk_cnt >> 2;  
+      |                                         ^~
+%Warning-WIDTHEXPAND: E:/Desktop/qiansaisheji/output/eda/q12_clean_20261118/runs/v9b_20261118T084819Z/sources\066_timer_cntrl.v:38:26: Operator ASSIGNW expects 8 bits on the Assign RHS, but Assign RHS's REPLICATE generates 7 bits.
+                                                                                                                                     : ... note: In instance 'tb_q12soc.dut.u_e203_subsys_top.u_e203_subsys_main.u_e203_subsys_perips.u_perips_apb_pwm.u_tim3.u_controller'
+   38 |     assign status_o      = {6'h00, r_pending};
+      |                          ^
+%Warning-WIDTHEXPAND: E:/Desktop/qiansaisheji/output/eda/q12_clean_20261118/runs/v9b_20261118T084819Z/sources\078_spi_master_fifo.v:88:32: Operator EQ expects 32 bits on the LHS, but LHS's VARREF 'pointer_in' generates 4 bits.
+                                                                                                                                         : ... note: In instance 'tb_q12soc.dut.u_e203_subsys_top.u_e203_subsys_main.u_e203_subsys_perips.u_perips_apb_spi2.u_rxfifo'
+   88 |                 if (pointer_in == $unsigned(BUFFER_DEPTH - 1))
+      |                                ^~
+%Warning-WIDTHEXPAND: E:/Desktop/qiansaisheji/output/eda/q12_clean_20261118/runs/v9b_20261118T084819Z/sources\078_spi_master_fifo.v:100:33: Operator EQ expects 32 bits on the LHS, but LHS's VARREF 'pointer_out' generates 4 bits.
+                                                                                                                                          : ... note: In instance 'tb_q12soc.dut.u_e203_subsys_top.u_e203_subsys_main.u_e203_subsys_perips.u_perips_apb_spi2.u_rxfifo'
+  100 |                 if (pointer_out == $unsigned(BUFFER_DEPTH - 1))
+      |                                 ^~
+%Warning-WIDTHEXPAND: E:/Desktop/qiansaisheji/output/eda/q12_clean_20261118/runs/v9b_20261118T084819Z/sources\082_io_generic_fifo.v:85:32: Operator EQ expects 32 bits on the LHS, but LHS's VARREF 'pointer_in' generates 4 bits.
+                                                                                                                                         : ... note: In instance 'tb_q12soc.dut.u_e203_subsys_top.u_e203_subsys_main.u_e203_subsys_perips.u_perips_apb_uart2.uart_tx_fifo_i'
+   85 |                 if (pointer_in == $unsigned(BUFFER_DEPTH - 1))
+      |                                ^~
+%Warning-WIDTHEXPAND: E:/Desktop/qiansaisheji/output/eda/q12_clean_20261118/runs/v9b_20261118T084819Z/sources\082_io_generic_fifo.v:98:33: Operator EQ expects 32 bits on the LHS, but LHS's VARREF 'pointer_out' generates 4 bits.
+                                                                                                                                         : ... note: In instance 'tb_q12soc.dut.u_e203_subsys_top.u_e203_subsys_main.u_e203_subsys_perips.u_perips_apb_uart2.uart_tx_fifo_i'
+   98 |                 if (pointer_out == $unsigned(BUFFER_DEPTH - 1))
+      |                                 ^~
+%Warning-WIDTHEXPAND: E:/Desktop/qiansaisheji/output/eda/q12_clean_20261118/runs/v9b_20261118T084819Z/sources\105_sirv_plic_man.v:405:49: Operator EQ expects 32 bits on the LHS, but LHS's VARREF 'icb_cmd_addr' generates 24 bits.
+                                                                                                                                        : ... note: In instance 'tb_q12soc.dut.u_e203_subsys_top.u_e203_subsys_main.u_e203_subsys_plic.u_sirv_plic_top.u_sirv_plic_man'
+  405 |      assign icb_cmd_sel_prio[i] = (icb_cmd_addr == ($unsigned(i) * 4)); 
+      |                                                 ^~
+%Warning-WIDTHEXPAND: E:/Desktop/qiansaisheji/output/eda/q12_clean_20261118/runs/v9b_20261118T084819Z/sources\105_sirv_plic_man.v:412:49: Operator EQ expects 32 bits on the LHS, but LHS's VARREF 'icb_cmd_addr' generates 24 bits.
+                                                                                                                                        : ... note: In instance 'tb_q12soc.dut.u_e203_subsys_top.u_e203_subsys_main.u_e203_subsys_plic.u_sirv_plic_top.u_sirv_plic_man'
+  412 |      assign icb_cmd_sel_pend[i] = (icb_cmd_addr == (($unsigned(i) * 4) + 24'h1000)); 
+      |                                                 ^~
+%Warning-WIDTHEXPAND: E:/Desktop/qiansaisheji/output/eda/q12_clean_20261118/runs/v9b_20261118T084819Z/sources\105_sirv_plic_man.v:412:72: Operator ADD expects 32 bits on the RHS, but RHS's CONST '24'h1000' generates 24 bits.
+                                                                                                                                        : ... note: In instance 'tb_q12soc.dut.u_e203_subsys_top.u_e203_subsys_main.u_e203_subsys_plic.u_sirv_plic_top.u_sirv_plic_man'
+  412 |      assign icb_cmd_sel_pend[i] = (icb_cmd_addr == (($unsigned(i) * 4) + 24'h1000)); 
+      |                                                                        ^
+%Warning-WIDTHEXPAND: E:/Desktop/qiansaisheji/output/eda/q12_clean_20261118/runs/v9b_20261118T084819Z/sources\105_sirv_plic_man.v:421:51: Operator EQ expects 32 bits on the LHS, but LHS's VARREF 'icb_cmd_addr' generates 24 bits.
+                                                                                                                                        : ... note: In instance 'tb_q12soc.dut.u_e203_subsys_top.u_e203_subsys_main.u_e203_subsys_plic.u_sirv_plic_top.u_sirv_plic_man'
+  421 |        assign icb_cmd_sel_enab[i] = (icb_cmd_addr == (($unsigned(i) * 4) + 24'h2000)); 
+      |                                                   ^~
+%Warning-WIDTHEXPAND: E:/Desktop/qiansaisheji/output/eda/q12_clean_20261118/runs/v9b_20261118T084819Z/sources\105_sirv_plic_man.v:421:74: Operator ADD expects 32 bits on the RHS, but RHS's CONST '24'h2000' generates 24 bits.
+                                                                                                                                        : ... note: In instance 'tb_q12soc.dut.u_e203_subsys_top.u_e203_subsys_main.u_e203_subsys_plic.u_sirv_plic_top.u_sirv_plic_man'
+  421 |        assign icb_cmd_sel_enab[i] = (icb_cmd_addr == (($unsigned(i) * 4) + 24'h2000)); 
+      |                                                                          ^
+%Warning-WIDTHEXPAND: E:/Desktop/qiansaisheji/output/eda/q12_clean_20261118/runs/v9b_20261118T084819Z/sources\105_sirv_plic_man.v:445:72: Operator AND expects 32 bits on the RHS, but RHS's ARRAYSEL generates 3 bits.
+                                                                                                                                        : ... note: In instance 'tb_q12soc.dut.u_e203_subsys_top.u_e203_subsys_main.u_e203_subsys_plic.u_sirv_plic_top.u_sirv_plic_man'
+  445 |          rsp_rdata_prio = rsp_rdata_prio | ({32{icb_cmd_sel_prio[ii]}} & irq_prio_r[ii] );
+      |                                                                        ^
+%Warning-WIDTHEXPAND: E:/Desktop/qiansaisheji/output/eda/q12_clean_20261118/runs/v9b_20261118T084819Z/sources\105_sirv_plic_man.v:470:66: Operator AND expects 32 bits on the RHS, but RHS's VARREF 'irq_thod_r' generates 3 bits.
+                                                                                                                                        : ... note: In instance 'tb_q12soc.dut.u_e203_subsys_top.u_e203_subsys_main.u_e203_subsys_plic.u_sirv_plic_top.u_sirv_plic_man'
+  470 |        rsp_rdata_targ = rsp_rdata_targ | ({32{icb_cmd_sel_thod}} & irq_thod_r ); 
+      |                                                                  ^
+%Warning-WIDTHEXPAND: E:/Desktop/qiansaisheji/output/eda/q12_clean_20261118/runs/v9b_20261118T084819Z/sources\105_sirv_plic_man.v:471:66: Operator AND expects 32 bits on the RHS, but RHS's VARREF 'plic_irq_id' generates 6 bits.
+                                                                                                                                        : ... note: In instance 'tb_q12soc.dut.u_e203_subsys_top.u_e203_subsys_main.u_e203_subsys_plic.u_sirv_plic_top.u_sirv_plic_man'
+  471 |        rsp_rdata_targ = rsp_rdata_targ | ({32{icb_cmd_sel_clam}} & plic_irq_id);
+      |                                                                  ^
+%Warning-WIDTHEXPAND: E:/Desktop/qiansaisheji/output/eda/q12_clean_20261118/runs/v9b_20261118T084819Z/sources\077_spi_master_controller.v:226:42: Operator ASSIGN expects 16 bits on the Assign RHS, but Assign RHS's REPLICATE generates 14 bits.
+                                                                                                                                                : ... note: In instance 'tb_q12soc.dut.u_e203_subsys_top.u_e203_subsys_main.u_e203_subsys_perips.u_perips_apb_spi2.u_spictrl'
+  226 |                         counter_tx       = {8'h00, spi_cmd_len};
+      |                                          ^
+%Warning-WIDTHEXPAND: E:/Desktop/qiansaisheji/output/eda/q12_clean_20261118/runs/v9b_20261118T084819Z/sources\077_spi_master_controller.v:234:39: Operator ASSIGN expects 16 bits on the Assign RHS, but Assign RHS's REPLICATE generates 14 bits.
+                                                                                                                                                : ... note: In instance 'tb_q12soc.dut.u_e203_subsys_top.u_e203_subsys_main.u_e203_subsys_perips.u_perips_apb_spi2.u_spictrl'
+  234 |                      counter_tx       = {8'h00, spi_addr_len};
+      |                                       ^
+%Warning-WIDTHEXPAND: E:/Desktop/qiansaisheji/output/eda/q12_clean_20261118/runs/v9b_20261118T084819Z/sources\077_spi_master_controller.v:288:42: Operator ASSIGN expects 16 bits on the Assign RHS, but Assign RHS's REPLICATE generates 14 bits.
+                                                                                                                                                : ... note: In instance 'tb_q12soc.dut.u_e203_subsys_top.u_e203_subsys_main.u_e203_subsys_perips.u_perips_apb_spi2.u_spictrl'
+  288 |                         counter_tx       = {8'h00, spi_addr_len};
+      |                                          ^
+%Warning-WIDTHEXPAND: E:/Desktop/qiansaisheji/output/eda/q12_clean_20261118/runs/v9b_20261118T084819Z/sources\070_apb_i2c.v:96:13: Operator CASE expects 4 bits on the Case Item, but Case Item's CONST '3'h0' generates 3 bits.
+                                                                                                                                 : ... note: In instance 'tb_q12soc.dut.u_e203_subsys_top.u_e203_subsys_main.u_e203_subsys_perips.u_perips_apb_i2c1'
+   96 |             case (s_apb_addr)
+      |             ^~~~
+%Warning-WIDTHEXPAND: E:/Desktop/qiansaisheji/output/eda/q12_clean_20261118/runs/v9b_20261118T084819Z/sources\070_apb_i2c.v:96:13: Operator CASE expects 4 bits on the Case Item, but Case Item's CONST '3'h1' generates 3 bits.
+                                                                                                                                 : ... note: In instance 'tb_q12soc.dut.u_e203_subsys_top.u_e203_subsys_main.u_e203_subsys_perips.u_perips_apb_i2c1'
+   96 |             case (s_apb_addr)
+      |             ^~~~
+%Warning-WIDTHEXPAND: E:/Desktop/qiansaisheji/output/eda/q12_clean_20261118/runs/v9b_20261118T084819Z/sources\070_apb_i2c.v:96:13: Operator CASE expects 4 bits on the Case Item, but Case Item's CONST '3'h4' generates 3 bits.
+                                                                                                                                 : ... note: In instance 'tb_q12soc.dut.u_e203_subsys_top.u_e203_subsys_main.u_e203_subsys_perips.u_perips_apb_i2c1'
+   96 |             case (s_apb_addr)
+      |             ^~~~
+%Warning-WIDTHEXPAND: E:/Desktop/qiansaisheji/output/eda/q12_clean_20261118/runs/v9b_20261118T084819Z/sources\070_apb_i2c.v:96:13: Operator CASE expects 4 bits on the Case Item, but Case Item's CONST '3'h5' generates 3 bits.
+                                                                                                                                 : ... note: In instance 'tb_q12soc.dut.u_e203_subsys_top.u_e203_subsys_main.u_e203_subsys_perips.u_perips_apb_i2c1'
+   96 |             case (s_apb_addr)
+      |             ^~~~
+%Warning-WIDTHEXPAND: E:/Desktop/qiansaisheji/output/eda/q12_clean_20261118/runs/v9b_20261118T084819Z/sources\070_apb_i2c.v:114:9: Operator CASE expects 4 bits on the Case Item, but Case Item's CONST '3'h0' generates 3 bits.
+                                                                                                                                 : ... note: In instance 'tb_q12soc.dut.u_e203_subsys_top.u_e203_subsys_main.u_e203_subsys_perips.u_perips_apb_i2c1'
+  114 |         case (s_apb_addr)
+      |         ^~~~
+%Warning-WIDTHEXPAND: E:/Desktop/qiansaisheji/output/eda/q12_clean_20261118/runs/v9b_20261118T084819Z/sources\070_apb_i2c.v:114:9: Operator CASE expects 4 bits on the Case Item, but Case Item's CONST '3'h1' generates 3 bits.
+                                                                                                                                 : ... note: In instance 'tb_q12soc.dut.u_e203_subsys_top.u_e203_subsys_main.u_e203_subsys_perips.u_perips_apb_i2c1'
+  114 |         case (s_apb_addr)
+      |         ^~~~
+%Warning-WIDTHEXPAND: E:/Desktop/qiansaisheji/output/eda/q12_clean_20261118/runs/v9b_20261118T084819Z/sources\070_apb_i2c.v:114:9: Operator CASE expects 4 bits on the Case Item, but Case Item's CONST '3'h2' generates 3 bits.
+                                                                                                                                 : ... note: In instance 'tb_q12soc.dut.u_e203_subsys_top.u_e203_subsys_main.u_e203_subsys_perips.u_perips_apb_i2c1'
+  114 |         case (s_apb_addr)
+      |         ^~~~
+%Warning-WIDTHEXPAND: E:/Desktop/qiansaisheji/output/eda/q12_clean_20261118/runs/v9b_20261118T084819Z/sources\070_apb_i2c.v:114:9: Operator CASE expects 4 bits on the Case Item, but Case Item's CONST '3'h3' generates 3 bits.
+                                                                                                                                 : ... note: In instance 'tb_q12soc.dut.u_e203_subsys_top.u_e203_subsys_main.u_e203_subsys_perips.u_perips_apb_i2c1'
+  114 |         case (s_apb_addr)
+      |         ^~~~
+%Warning-WIDTHEXPAND: E:/Desktop/qiansaisheji/output/eda/q12_clean_20261118/runs/v9b_20261118T084819Z/sources\070_apb_i2c.v:114:9: Operator CASE expects 4 bits on the Case Item, but Case Item's CONST '3'h4' generates 3 bits.
+                                                                                                                                 : ... note: In instance 'tb_q12soc.dut.u_e203_subsys_top.u_e203_subsys_main.u_e203_subsys_perips.u_perips_apb_i2c1'
+  114 |         case (s_apb_addr)
+      |         ^~~~
+%Warning-WIDTHEXPAND: E:/Desktop/qiansaisheji/output/eda/q12_clean_20261118/runs/v9b_20261118T084819Z/sources\070_apb_i2c.v:114:9: Operator CASE expects 4 bits on the Case Item, but Case Item's CONST '3'h5' generates 3 bits.
+                                                                                                                                 : ... note: In instance 'tb_q12soc.dut.u_e203_subsys_top.u_e203_subsys_main.u_e203_subsys_perips.u_perips_apb_i2c1'
+  114 |         case (s_apb_addr)
+      |         ^~~~
+%Warning-WIDTHEXPAND: E:/Desktop/qiansaisheji/output/eda/q12_clean_20261118/runs/v9b_20261118T084819Z/sources\074_apb_spi_master.v:116:25: Operator ASSIGNW expects 32 bits on the Assign RHS, but Assign RHS's REPLICATE generates 2 bits.
+                                                                                                                                         : ... note: In instance 'tb_q12soc.dut.u_e203_subsys_top.u_e203_subsys_main.u_e203_subsys_perips.u_perips_apb_spi2'
+  116 |     assign s_int_status = {s_rise_int_rx, s_rise_int_tx};
+      |                         ^
+%Warning-WIDTHTRUNC: E:/Desktop/qiansaisheji/output/eda/q12_clean_20261118/runs/v9b_20261118T084819Z/sources\142_tb_q12soc.sv:374:5: Logical operator IF expects 1 bit on the If, but If's VARREF 'mismatches' generates 32 bits.
+                                                                                                                                   : ... note: In instance 'tb_q12soc'
+  374 |     if(mismatches)$fatal(1,"output/source/guards mismatches=%0d",mismatches);
+      |     ^~
+%Warning-WIDTHTRUNC: E:/Desktop/qiansaisheji/output/eda/q12_clean_20261118/runs/v9b_20261118T084819Z/sources\142_tb_q12soc.sv:376:46: Logical operator LOGNOT expects 1 bit on the LHS, but LHS's VARREF 'dump_fd' generates 32 bits.
+                                                                                                                                    : ... note: In instance 'tb_q12soc'
+  376 |      dump_fd=$fopen(output_dump_path,"w");if(!dump_fd)$fatal(1,"cannot create output dump");
+      |                                              ^
+%Warning-WIDTHTRUNC: E:/Desktop/qiansaisheji/output/eda/q12_clean_20261118/runs/v9b_20261118T084819Z/sources\142_tb_q12soc.sv:375:5: Logical operator IF expects 1 bit on the If, but If's VARREF 'dump_requested' generates 32 bits.
+                                                                                                                                   : ... note: In instance 'tb_q12soc'
+  375 |     if(dump_requested)begin
+      |     ^~
+%Warning-CASEINCOMPLETE: E:/Desktop/qiansaisheji/output/eda/q12_clean_20261118/runs/v9b_20261118T084819Z/sources\061_adv_timer_apb_if.v:626:13: Case values incompletely covered (example pattern 0xb)
+  626 |             case (s_apb_addr)
+      |             ^~~~
+                         ... For warning description see https://verilator.org/warn/CASEINCOMPLETE?v=5.050
+                         ... Use "/* verilator lint_off CASEINCOMPLETE */" and lint_on around source to disable this message.
+%Warning-CASEINCOMPLETE: E:/Desktop/qiansaisheji/output/eda/q12_clean_20261118/runs/v9b_20261118T084819Z/sources\074_apb_spi_master.v:124:9: Case values incompletely covered (example pattern 0x3)
+  124 |         case (spi_mode)
+      |         ^~~~
+%Warning-CASEINCOMPLETE: E:/Desktop/qiansaisheji/output/eda/q12_clean_20261118/runs/v9b_20261118T084819Z/sources\077_spi_master_controller.v:172:9: Case values incompletely covered (example pattern 0x5)
+  172 |         case (ctrl_data_mux)
+      |         ^~~~
+%Warning-CASEINCOMPLETE: E:/Desktop/qiansaisheji/output/eda/q12_clean_20261118/runs/v9b_20261118T084819Z/sources\077_spi_master_controller.v:215:9: Case values incompletely covered (example pattern 0x8)
+  215 |         case (state)
+      |         ^~~~
+%Warning-CASEINCOMPLETE: E:/Desktop/qiansaisheji/output/eda/q12_clean_20261118/runs/v9b_20261118T084819Z/sources\075_spi_master_apb_if.v:109:13: Case values incompletely covered (example pattern 0x6)
+  109 |             case (write_address)
+      |             ^~~~
+%Warning-CASEINCOMPLETE: E:/Desktop/qiansaisheji/output/eda/q12_clean_20261118/runs/v9b_20261118T084819Z/sources\081_apb_uart.v:181:13: Case values incompletely covered (example pattern 0x4)
+  181 |             case (register_adr)
+      |             ^~~~
+%Warning-CASEINCOMPLETE: E:/Desktop/qiansaisheji/output/eda/q12_clean_20261118/runs/v9b_20261118T084819Z/sources\070_apb_i2c.v:96:13: Case values incompletely covered (example pattern 0x2)
+   96 |             case (s_apb_addr)
+      |             ^~~~
+%Warning-CASEINCOMPLETE: E:/Desktop/qiansaisheji/output/eda/q12_clean_20261118/runs/v9b_20261118T084819Z/sources\069_apb_gpio.v:132:13: Case values incompletely covered (example pattern 0x1)
+  132 |             case (s_apb_addr)
+      |             ^~~~
+%Warning-CASEINCOMPLETE: E:/Desktop/qiansaisheji/output/eda/q12_clean_20261118/runs/v9b_20261118T084819Z/sources\047_sirv_jtag_dtm.v:237:7: Case values incompletely covered (example pattern 0x0)
+  237 |       case (jtagStateReg)
+      |       ^~~~
+%Warning-CASEINCOMPLETE: E:/Desktop/qiansaisheji/output/eda/q12_clean_20261118/runs/v9b_20261118T084819Z/sources\047_sirv_jtag_dtm.v:295:10: Case values incompletely covered (example pattern 0x0)
+  295 |          case(jtagStateReg)
+      |          ^~~~
+%Warning-CASEINCOMPLETE: E:/Desktop/qiansaisheji/output/eda/q12_clean_20261118/runs/v9b_20261118T084819Z/sources\047_sirv_jtag_dtm.v:308:10: Case values incompletely covered (example pattern 0x0)
+  308 |          case(jtagStateReg)
+      |          ^~~~
+%Warning-LATCH: E:/Desktop/qiansaisheji/output/eda/q12_clean_20261118/runs/v9b_20261118T084819Z/sources\004_e203_clkgate.v:44:1: Latch inferred for signal 'tb_q12soc.dut.u_e203_subsys_top.u_e203_subsys_main.u_e203_cpu_top.u_e203_cpu.u_e203_itcm_ctrl.u_sram_icb_ctrl.u_sirv_1cyc_sram_ctrl.u_ram_clkgate.enb' (not all control paths of combinational always assign a value)
+                                                                                                                               : ... Suggest use of always_latch for intentional latches
+   44 | always@(*)
+      | ^~~~~~
+                ... For warning description see https://verilator.org/warn/LATCH?v=5.050
+                ... Use "/* verilator lint_off LATCH */" and lint_on around source to disable this message.
+%Warning-LATCH: E:/Desktop/qiansaisheji/output/eda/q12_clean_20261118/runs/v9b_20261118T084819Z/sources\004_e203_clkgate.v:44:1: Latch inferred for signal 'tb_q12soc.dut.u_e203_subsys_top.u_e203_subsys_main.u_e203_cpu_top.u_e203_cpu.u_e203_dtcm_ctrl.u_sram_icb_ctrl.u_sirv_1cyc_sram_ctrl.u_ram_clkgate.enb' (not all control paths of combinational always assign a value)
+                                                                                                                               : ... Suggest use of always_latch for intentional latches
+   44 | always@(*)
+      | ^~~~~~
+%Warning-LATCH: E:/Desktop/qiansaisheji/output/eda/q12_clean_20261118/runs/v9b_20261118T084819Z/sources\004_e203_clkgate.v:44:1: Latch inferred for signal 'tb_q12soc.dut.u_e203_subsys_top.u_e203_subsys_main.u_e203_cpu_top.u_e203_cpu.u_e203_clk_ctrl.u_dtcm_clkgate.enb' (not all control paths of combinational always assign a value)
+                                                                                                                               : ... Suggest use of always_latch for intentional latches
+   44 | always@(*)
+      | ^~~~~~
+%Warning-LATCH: E:/Desktop/qiansaisheji/output/eda/q12_clean_20261118/runs/v9b_20261118T084819Z/sources\004_e203_clkgate.v:44:1: Latch inferred for signal 'tb_q12soc.dut.u_e203_subsys_top.u_e203_subsys_main.u_e203_cpu_top.u_e203_cpu.u_e203_clk_ctrl.u_itcm_clkgate.enb' (not all control paths of combinational always assign a value)
+                                                                                                                               : ... Suggest use of always_latch for intentional latches
+   44 | always@(*)
+      | ^~~~~~
+%Warning-LATCH: E:/Desktop/qiansaisheji/output/eda/q12_clean_20261118/runs/v9b_20261118T084819Z/sources\004_e203_clkgate.v:44:1: Latch inferred for signal 'tb_q12soc.dut.u_e203_subsys_top.u_e203_subsys_main.u_e203_cpu_top.u_e203_cpu.u_e203_clk_ctrl.u_biu_clkgate.enb' (not all control paths of combinational always assign a value)
+                                                                                                                               : ... Suggest use of always_latch for intentional latches
+   44 | always@(*)
+      | ^~~~~~
+%Warning-LATCH: E:/Desktop/qiansaisheji/output/eda/q12_clean_20261118/runs/v9b_20261118T084819Z/sources\004_e203_clkgate.v:44:1: Latch inferred for signal 'tb_q12soc.dut.u_e203_subsys_top.u_e203_subsys_main.u_e203_cpu_top.u_e203_cpu.u_e203_clk_ctrl.u_lsu_clkgate.enb' (not all control paths of combinational always assign a value)
+                                                                                                                               : ... Suggest use of always_latch for intentional latches
+   44 | always@(*)
+      | ^~~~~~
+%Warning-LATCH: E:/Desktop/qiansaisheji/output/eda/q12_clean_20261118/runs/v9b_20261118T084819Z/sources\004_e203_clkgate.v:44:1: Latch inferred for signal 'tb_q12soc.dut.u_e203_subsys_top.u_e203_subsys_main.u_e203_cpu_top.u_e203_cpu.u_e203_clk_ctrl.u_exu_clkgate.enb' (not all control paths of combinational always assign a value)
+                                                                                                                               : ... Suggest use of always_latch for intentional latches
+   44 | always@(*)
+      | ^~~~~~
+%Warning-LATCH: E:/Desktop/qiansaisheji/output/eda/q12_clean_20261118/runs/v9b_20261118T084819Z/sources\004_e203_clkgate.v:44:1: Latch inferred for signal 'tb_q12soc.dut.u_e203_subsys_top.u_e203_subsys_main.u_e203_cpu_top.u_e203_cpu.u_e203_clk_ctrl.u_ifu_clkgate.enb' (not all control paths of combinational always assign a value)
+                                                                                                                               : ... Suggest use of always_latch for intentional latches
+   44 | always@(*)
+      | ^~~~~~
+%Warning-LATCH: E:/Desktop/qiansaisheji/output/eda/q12_clean_20261118/runs/v9b_20261118T084819Z/sources\004_e203_clkgate.v:44:1: Latch inferred for signal 'tb_q12soc.dut.u_e203_subsys_top.u_e203_subsys_main.u_e203_subsys_perips.u_perips_apb_pwm.i_clk_gate_timer3.enb' (not all control paths of combinational always assign a value)
+                                                                                                                               : ... Suggest use of always_latch for intentional latches
+   44 | always@(*)
+      | ^~~~~~
+%Warning-LATCH: E:/Desktop/qiansaisheji/output/eda/q12_clean_20261118/runs/v9b_20261118T084819Z/sources\004_e203_clkgate.v:44:1: Latch inferred for signal 'tb_q12soc.dut.u_e203_subsys_top.u_e203_subsys_main.u_e203_subsys_perips.u_perips_apb_pwm.i_clk_gate_timer2.enb' (not all control paths of combinational always assign a value)
+                                                                                                                               : ... Suggest use of always_latch for intentional latches
+   44 | always@(*)
+      | ^~~~~~
+%Warning-LATCH: E:/Desktop/qiansaisheji/output/eda/q12_clean_20261118/runs/v9b_20261118T084819Z/sources\004_e203_clkgate.v:44:1: Latch inferred for signal 'tb_q12soc.dut.u_e203_subsys_top.u_e203_subsys_main.u_e203_subsys_perips.u_perips_apb_pwm.i_clk_gate_timer1.enb' (not all control paths of combinational always assign a value)
+                                                                                                                               : ... Suggest use of always_latch for intentional latches
+   44 | always@(*)
+      | ^~~~~~
+%Warning-LATCH: E:/Desktop/qiansaisheji/output/eda/q12_clean_20261118/runs/v9b_20261118T084819Z/sources\004_e203_clkgate.v:44:1: Latch inferred for signal 'tb_q12soc.dut.u_e203_subsys_top.u_e203_subsys_main.u_e203_subsys_perips.u_perips_apb_pwm.i_clk_gate_timer0.enb' (not all control paths of combinational always assign a value)
+                                                                                                                               : ... Suggest use of always_latch for intentional latches
+   44 | always@(*)
+      | ^~~~~~
+%Warning-LATCH: E:/Desktop/qiansaisheji/output/eda/q12_clean_20261118/runs/v9b_20261118T084819Z/sources\081_apb_uart.v:161:5: Latch inferred for signal 'tb_q12soc.dut.u_e203_subsys_top.u_e203_subsys_main.u_e203_subsys_perips.u_perips_apb_uart2.fifo_tx_data' (not all control paths of combinational always assign a value)
+                                                                                                                            : ... Suggest use of always_latch for intentional latches
+  161 |     always @(*) begin
+      |     ^~~~~~
+%Warning-LATCH: E:/Desktop/qiansaisheji/output/eda/q12_clean_20261118/runs/v9b_20261118T084819Z/sources\081_apb_uart.v:161:5: Latch inferred for signal 'tb_q12soc.dut.u_e203_subsys_top.u_e203_subsys_main.u_e203_subsys_perips.u_perips_apb_uart1.fifo_tx_data' (not all control paths of combinational always assign a value)
+                                                                                                                            : ... Suggest use of always_latch for intentional latches
+  161 |     always @(*) begin
+      |     ^~~~~~
+%Warning-LATCH: E:/Desktop/qiansaisheji/output/eda/q12_clean_20261118/runs/v9b_20261118T084819Z/sources\081_apb_uart.v:161:5: Latch inferred for signal 'tb_q12soc.dut.u_e203_subsys_top.u_e203_subsys_main.u_e203_subsys_perips.u_perips_apb_uart0.fifo_tx_data' (not all control paths of combinational always assign a value)
+                                                                                                                            : ... Suggest use of always_latch for intentional latches
+  161 |     always @(*) begin
+      |     ^~~~~~
+%Warning-LATCH: E:/Desktop/qiansaisheji/output/eda/q12_clean_20261118/runs/v9b_20261118T084819Z/sources\004_e203_clkgate.v:44:1: Latch inferred for signal 'tb_q12soc.dut.u_e203_subsys_top.u_e203_subsys_main.u_e203_subsys_hclkgen.u_e203_subsys_pllclkdiv.u_pllclkdiv_clkgate.enb' (not all control paths of combinational always assign a value)
+                                                                                                                               : ... Suggest use of always_latch for intentional latches
+   44 | always@(*)
+      | ^~~~~~
+%Warning-LATCH: E:/Desktop/qiansaisheji/output/eda/q12_clean_20261118/runs/v9b_20261118T084819Z/sources\004_e203_clkgate.v:44:1: Latch inferred for signal 'tb_q12soc.dut.u_e203_subsys_top.u_e203_subsys_main.u_e203_subsys_hclkgen.u_e203_subsys_gfcm.u_clk1_clkgate.enb' (not all control paths of combinational always assign a value)
+                                                                                                                               : ... Suggest use of always_latch for intentional latches
+   44 | always@(*)
+      | ^~~~~~
+%Warning-LATCH: E:/Desktop/qiansaisheji/output/eda/q12_clean_20261118/runs/v9b_20261118T084819Z/sources\004_e203_clkgate.v:44:1: Latch inferred for signal 'tb_q12soc.dut.u_e203_subsys_top.u_e203_subsys_main.u_e203_subsys_hclkgen.u_e203_subsys_gfcm.u_clk0_clkgate.enb' (not all control paths of combinational always assign a value)
+                                                                                                                               : ... Suggest use of always_latch for intentional latches
+   44 | always@(*)
+      | ^~~~~~
+%Warning-ZERODLY: E:/Desktop/qiansaisheji/output/eda/q12_clean_20261118/runs/v9b_20261118T084819Z/sources\q12_gpio_source.sv:33:13: Value of # delay control statically unknown. Assuming it can be #0.
+                                                                                                                                  : ... If all # delays are non-zero at runtime,
+                                                                                                                                  : ... use '--no-sched-zero-delay' for improved performance.
+                                                                                                                                  : ... If a real #0 is expected at runtime,
+                                                                                                                                  : ... use '--sched-zero-delay' to suppress this warning.
+   33 |     if(k==0)#(access_ns);else #(period_ns);
+      |             ^
+                  ... For warning description see https://verilator.org/warn/ZERODLY?v=5.050
+                  ... Use "/* verilator lint_off ZERODLY */" and lint_on around source to disable this message.
+%Warning-ZERODLY: E:/Desktop/qiansaisheji/output/eda/q12_clean_20261118/runs/v9b_20261118T084819Z/sources\q12_gpio_source.sv:33:31: Value of # delay control statically unknown. Assuming it can be #0.
+                                                                                                                                  : ... If all # delays are non-zero at runtime,
+                                                                                                                                  : ... use '--no-sched-zero-delay' for improved performance.
+                                                                                                                                  : ... If a real #0 is expected at runtime,
+                                                                                                                                  : ... use '--sched-zero-delay' to suppress this warning.
+   33 |     if(k==0)#(access_ns);else #(period_ns);
+      |                               ^

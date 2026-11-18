@@ -1,0 +1,23 @@
+{
+  "label": "B",
+  "variant": "v9b",
+  "run": "v9b_20261118T084819Z",
+  "period_ns": "26.714",
+  "access_ns": "0.5",
+  "rc": 0,
+  "passed": true,
+  "output_match": true,
+  "argv": [
+    "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_clean_20261118\\build_cache\\2d4c8dace4418aa2\\Vq12gpio.exe",
+    "+FIRMWARE=firmware64.hex",
+    "+INPUT=input.hex",
+    "+EXPECTED=expected.hex",
+    "+OUTPUT_DUMP=observed.hex",
+    "+INPUT_WORDS=7826",
+    "+SERIAL_LOAD=0",
+    "+OUTPUT_WORDS=12690",
+    "+LAYER=00",
+    "+GPIO_PERIOD_NS=26.714",
+    "+GPIO_ACCESS_NS=0.5"
+  ]
+}

@@ -2,7 +2,7 @@
   "project": "轻语 (Qingyu) — E203 Feed-Forward Linear Accelerator (Q12 Clean Compliance Release)",
   "frozen_at": "2026-11-18T17:10:00+08:00",
   "git_branch": "q12clean6-20261118",
-  "git_tag": "q12clean6-submission-20261118-r1",
+  "git_tag": "q12clean6-submission-20261118-r2",
   "compliance_status": {
     "upstream_e203_files_byte_identical": 135,
     "entropy_rice_delta_coding": false,
@@ -30,7 +30,7 @@
     "mean_full_window_cycles": 44230.0,
     "throughput_150mhz_layers_per_s": 3391.3633280578792,
     "local_72_fixtures_passed": "72/72 (1,824,768 outputs exact match)",
-    "max_layer_nrmse_pct": 0.2584,
+    "max_layer_nrmse_pct": 0.12114061114015678,
     "incremental_area_um2": 316365.914034,
     "incremental_area_mm2": 0.316366,
     "full_soc_area_mm2": 2.636421,
@@ -47,7 +47,9 @@
       9.1692
     ],
     "saif_not_annotated_pct": 0.0,
-    "whole_soc_tt_sdf_gls": "PASS (44230 cycles, dma_reads=8850, dma_writes=12690, output_words=12689, mismatches=0 across init0, init1, and random seed with 131072x 0xcccccccc SRAM poison)"
+    "whole_soc_tt_sdf_gls": "PASS (44230 cycles, dma_reads=8850, dma_writes=12690, output_words=12689, mismatches=0 across init0, init1, and random seed with 131072x 0xcccccccc SRAM poison)",
+    "precision_score_10pt": 9.596197962866144,
+    "saif_total_nets_eco": 140040
   },
   "candidate_B_backup": {
     "variant": "v9b",
@@ -58,7 +60,7 @@
     "mean_full_window_cycles": 41267.0,
     "throughput_150mhz_layers_per_s": 3634.865631133836,
     "local_72_fixtures_passed": "72/72 (1,824,768 outputs exact match)",
-    "max_layer_nrmse_pct": 0.2587,
+    "max_layer_nrmse_pct": 0.2348757795742048,
     "incremental_area_um2": 303804.434734,
     "incremental_area_mm2": 0.303804,
     "full_soc_area_mm2": 2.623667,
@@ -69,6 +71,92 @@
     "pt_sta_150mhz_standalone_u_fio_5corners": "ALL 5 CORNERS SETUP & HOLD MET (worst setup ss_m40c +0.000152 ns, worst hold ff_m40c +0.025334 ns)",
     "pt_sta_150mhz_whole_soc": "TT 25C setup MET (core_clk +0.007676 ns, hfext_clk 0.000000 ns) & ALL 5 CORNERS HOLD MET (worst hold ff_125c +0.016796 ns, ff_m40c +0.025743 ns)",
     "pt_px_4window_mean_power_mw": 30.875,
-    "pt_px_4window_mean_energy_uj": 8.4931
+    "pt_px_4window_mean_energy_uj": 8.4931,
+    "precision_score_10pt": 9.21708073475265,
+    "saif_total_nets_eco": 139483
+  },
+  "screenshots_13": {
+    "VNC_01_VCS_厂家SRAM_12层功能仿真与吞吐量.jpg": {
+      "bytes": 114004,
+      "sha256": "053d7fd42cfad07b01708cd55160f472bcc42f5f5cb5c5e5a8978a0e95e0de43"
+    },
+    "VNC_02_DC_整机综合_增量面积与时钟门控报告.jpg": {
+      "bytes": 127029,
+      "sha256": "bd22484a97afa3a640140ff65cb887403f535d9bf9b0355890a68d4f7a0735c1"
+    },
+    "VNC_03_Formality_整机与加速器等价性验证通过.jpg": {
+      "bytes": 129379,
+      "sha256": "9602d910d5e1fce31a11b9d7885f598eaff28701543d1c142e81d966cbaa7b45"
+    },
+    "VNC_04_PrimeTime_150MHz_整机TT时序报告.jpg": {
+      "bytes": 137392,
+      "sha256": "6938ca2f91df8e9355bf19346dfc21dbf89a4c75aabfca67cfd1037e00320382"
+    },
+    "VNC_05_PrimeTime_150MHz_五角STA全闭合签核.jpg": {
+      "bytes": 167555,
+      "sha256": "a7cb90e9e3b6b2d1ad05398cabe28ff0f33cd7a175d504a2abdd44e8c04cef17"
+    },
+    "VNC_06_PrimeTime_PX_12层全量功耗能耗与SAIF覆盖.jpg": {
+      "bytes": 136582,
+      "sha256": "7f539d2fc2c417a60755d43b766e589222d5860e8750701e182086ba5dc54e42"
+    },
+    "VNC_07_VCS_整机门级网表_TT_SDF反标仿真通过.jpg": {
+      "bytes": 136683,
+      "sha256": "3ed3c3128af8c39bcf7a980150f57b44ad2f95e3291a55a858a2e9ac90fb20ae"
+    },
+    "VNC_08_双候选全项实测签核总览_A主推与B备选.jpg": {
+      "bytes": 161125,
+      "sha256": "f212bb6a1b62769c2e06cefe3d3bf29cbc308cdf856b18be1b0cb0e224794f7a"
+    },
+    "VNC_09_DesignVision_GUI_整机网表层次与原理图.jpg": {
+      "bytes": 157608,
+      "sha256": "af3afc9b0b7caa6f37fae41c9bb206077b930016ea9634081e2a633132928496"
+    },
+    "VNC_10_PrimeTime_GUI_整机150MHz时序分析.jpg": {
+      "bytes": 128832,
+      "sha256": "8e2f6d4519657daa4b7391d75734d528870aba20f0420ff2908ff20935e567d6"
+    }
+  },
+  "screenshots_report_AB": {
+    "01_AB_服务器验收总览.jpg": {
+      "bytes": 259627,
+      "sha256": "269ab43391103c773c1274090b0d0f3f61dc10b4e70d0d6d7fb84502efc12504"
+    },
+    "02_AB_独立加速器五角时序.jpg": {
+      "bytes": 346477,
+      "sha256": "1bdf64388a68d080ffad3e497109aafe5e7ef09efb3227d90bb70ce2ee2328ba"
+    },
+    "03_AB_整机五角时序.jpg": {
+      "bytes": 324058,
+      "sha256": "89c63a60e301c21c6fa60f03c137f8a4e5935a56b72f3e80fac42aeda524361e"
+    },
+    "04_AB_逐层功耗与能耗.jpg": {
+      "bytes": 220426,
+      "sha256": "d9f92ddae5111a4167196df78bafc4cca5d21a989ab40a3cde5bbccbfc1a3421"
+    },
+    "05_A_TT_SDF门级仿真与无初始化对照.jpg": {
+      "bytes": 268004,
+      "sha256": "960fb8f8f2b8d6cb6e757c35fc41fd45b28d513c66cd950a81ee0c17d66de4bb"
+    },
+    "06_AB_SAIF活动注释.jpg": {
+      "bytes": 252950,
+      "sha256": "dfde794ffd91fc4f3e9a70dded28c6e80df880993231c37f1a14671b157b762e"
+    },
+    "07_AB_厂家SRAM功能_门控与归档.jpg": {
+      "bytes": 227380,
+      "sha256": "f0fdb36ae086599837e2fd23edbb08cfe10ced3add49a314f4a55d6a27ba5b12"
+    },
+    "08_AB_第0层功耗分解.jpg": {
+      "bytes": 181770,
+      "sha256": "1dc69356fa05ade8430a056488d1e00d17f2b2bbc3266d03967aa4ebfbf71c15"
+    },
+    "09_AB_本地600样本逐层精度.jpg": {
+      "bytes": 122187,
+      "sha256": "a8629c1c660ea996f8e545e7c6bae0ba132d2eeea3c6b1f6dfa59319a8704e4b"
+    },
+    "10_AB_本地回归_合规与GPIO复核.jpg": {
+      "bytes": 132835,
+      "sha256": "6106ad1d8e9034fb7a94cae07c039f67ddad2cc55639b4ad05b3ef61e3c3d0d5"
+    }
   }
 }

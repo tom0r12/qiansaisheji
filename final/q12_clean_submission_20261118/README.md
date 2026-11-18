@@ -13,7 +13,7 @@
 | **全 SoC 增量面积**（`SCC40NLL_VHSC40_RVT` + 私有宏） | **0.316366 mm²**（`316,365.9 µm²`） | **0.303804 mm²**（`303,804.4 µm²`） | < 0.4 mm² | ✅ |
 | **独立 `u_fio` 五角综合面积**（含全部私有 SRAM） | **0.314656 mm²**（`314,656.3 µm²`） | **0.302485 mm²**（`302,484.9 µm²`） | < 0.4 mm² | ✅ |
 | **单任务平均能耗**（VCS SAIF + PrimeTime PX TT） | 全 12 层均值 **9.1397 µJ**（`9.1103～9.1692 µJ`，`31.000 mW`） | 4 窗口均值 **8.4931 µJ**（`8.4724～8.4999 µJ`，`30.875 mW`） | < 10 µJ | ✅ |
-| **PT 开关活动注释覆盖**（140,038 条网表连线） | `Not Annotated = 0 (0.00%)` | `Not Annotated = 0 (0.00%)` | 0% 未注释 | ✅ |
+| **PT 开关活动注释覆盖**（`synth_eco` 网表连线） | `Not Annotated = 0 (0.00%)`（`140,040` 条连线） | `Not Annotated = 0 (0.00%)`（`139,483` 条连线） | 0% 未注释 | ✅ |
 | **独立 `u_fio` 五角 150 MHz STA**（PrimeTime） | **五角 setup & hold 全正**（最坏 `SS−40` setup `+0.000080 ns`，`FF125` hold `+0.025025 ns`） | **五角 setup & hold 全正**（最坏 `SS−40` setup `+0.000152 ns`，`FF−40` hold `+0.025334 ns`） | 10 项全 ≥ 0 | ✅ |
 | **全 SoC 150 MHz STA**（PrimeTime） | **TT setup 全正**（`core_clk +1.7306 ns`，`hfext_clk 0.0000 ns`）；**全部五角 hold 全正**（最坏 `FF125` `+0.016796 ns`） | **TT setup 全正**（`core_clk +0.0077 ns`，`hfext_clk 0.0000 ns`）；**全部五角 hold 全正**（最坏 `FF125` `+0.016796 ns`） | TT setup ≥ 0，五角 hold ≥ 0 | ✅ |
 | **Formality 形式等价验证** | 全 SoC **SUCCEEDED**（31,227 点）+ `u_fio` **SUCCEEDED**（14,881 点） | 全 SoC **SUCCEEDED**（30,843 点）+ `u_fio` **SUCCEEDED**（14,497 点） | 0 失败 / 0 未验证 | ✅ |
@@ -59,7 +59,8 @@
   - 候选 B 本地基准运行：`output/eda/q12_clean_20261118/runs/v9b_20261118T061815Z`（终版 72 夹具全过见 `runs/v9b_20261118T084819Z`）
   - 服务器主包：`output/eda/q12clean6.zip`（SHA-256 `475ea5b1f6f52174cf6fee541bfe7003b3b80362e110df3fb2f5be1b96c495e4`）
   - 服务器 12 号收尾脚本：`output/eda/q12_12_final_close.py`（SHA-256 `3479f59e81801529ac83059faacdbbbc874800f50ac9c746eb4ff1f57684cacf`）
-  - 本地回交完整日志：`服务器操作/结果_11.txt`、`服务器操作/结果_11_独立五角与TT复核.txt`、`服务器操作/结果_11_保持路径与活动注释.txt`、`服务器操作/结果_12.txt`、`服务器操作/结果_12_无初始化门级对照.txt`（以及 `v8` 基线 `结果_08.txt`、`结果_09.txt`）
+  - 本地回交完整日志：`服务器操作/结果_11.txt`、`服务器操作/结果_11_独立五角与TT复核.txt`、`服务器操作/结果_11_保持路径与活动注释.txt`、`服务器操作/结果_12.txt`、`服务器操作/结果_12_无初始化门级对照.txt`、`服务器操作/结果_13.txt`（以及 `v8` 基线 `结果_08.txt`、`结果_09.txt`）
+  - 服务器 VNC / GUI 实测截图集：`服务器操作/截图_13/`（10 张：含 8 张最大化终端报告截图 + Synopsys `Design Vision` 整机原理图 GUI + `PrimeTime` 150 MHz 端点裕量 GUI）与 `服务器操作/报告截图_v9_AB/`（10 张双候选分项对比截图及 `截图索引.md`）
 - **服务器 `RDserver04` 桌面持久化归档：**
   - `~/Desktop/q12clean6_reports_archive.tar.gz`（664 个文件，16,788,994 字节，SHA-256 `c2dd107e158e7496572927de6aaf54a7a8a039c7014962cb12bf4d5999644322`）
   - `~/Desktop/q12clean6_12_final_archive.tar.gz`（418 个文件，12,560,463 字节，SHA-256 `27f836a1c4f3c29128cb5f12ec459201367c3cd83d06376f0bd655fc63eb32d2`）

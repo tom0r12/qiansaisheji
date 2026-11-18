@@ -1,0 +1,10 @@
+Q12_FULL_START cycle=4634 time_ps=8255431041
+Q12_FULL_END cycle=45900 time_ps=8530510197
+Q12GPIO_CLOCK core_period_ps=6666 core_assumed_hz=150000000
+Q12SOC_PHASES core=0 load=0 factor=0 cache=0 compute=0 store=0
+Q12GPIO_METRICS layer=0 full_window_cycles=41267 start_to_ack=41179 first_read_to_ack=41168 first_gpio=4726 last_gpio_read_ack=36515 first_source=4729 last_source_ack=36520 done_delay=3 engine_counter=41182 reads=7826 writes=12690 cpu_commands=22 cpu_responses=22 gpio_words=7826 gpio_word_responses=7826 source_writes=7826 source_write_responses=7826 fabric_commands=28364 fabric_responses=28364 shared_commands=28364 shared_responses=28364 dma_responses=20516 peak_pending=3 gpio_presented=7826 gpio_requested=7826 gpio_bursts=123 gpio_apb_reads=7826 gpio_ready_reads=0 window_bus_fire=28342 window_bus_stall=4801 window_bus_empty=8124 dma_stall=12092 shared_stall=0 input_words=7826 cache_clear=1 macro_reads=7826 macro_writes=20516 start_source_acks=0 publish_commands=0 commit_responses=0 serial_load=0 firmware_cycles=41281
+PASS real E203 Q12 GPIO cold task; original GPIOA/B pins, internal peripheral DMA, NP2 original System Bus, fixed12 X / fixed10 W input (no entropy coding), plain shared SRAM (no readcache); 12689 dense words/source/guards verified
+- E:/Desktop/qiansaisheji/output/eda/q12_clean_20261118/runs/v9b_20261118T061815Z/sources\142_tb_q12soc.sv:384: Verilog $finish
+- S i m u l a t i o n   R e p o r t: Verilator 5.050 2026-07-01
+- Verilator: $finish at 9ms; walltime 12.577 s; speed 678.371 us/s
+- Verilator: cpu 12.016 s on 1 threads; allocated 12 MB

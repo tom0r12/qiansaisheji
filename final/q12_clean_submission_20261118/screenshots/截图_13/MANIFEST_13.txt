@@ -1,0 +1,20 @@
+== Q12 SCREENSHOTS 13 MANIFEST (2026-11-18 17:27:31) ==
+server_host=RDserver04
+display=:36
+source_11_A=/tmp/q12clean_A_wwfomkyb
+source_12_root=/tmp/q12_12_final_aei2gkux
+output_dir=/storage2/2026contest/server4/s4_36usr/Desktop/q12_screenshots_13
+count=10
+SCREENSHOT 01_VCS_厂家SRAM_12层功能仿真与吞吐量.png  bytes=155693  method=import  sha256=a22eab0cc31367da531e87ee448e4655aaa9aa3a0cce85c138beb3bebbfe2089
+SCREENSHOT 02_DC_整机综合_增量面积与时钟门控报告.png  bytes=165918  method=import  sha256=0150e0657c85783dc62978004a14a3ce31430936be6d02a2fd7471615bafb352
+SCREENSHOT 03_Formality_整机与加速器等价性验证通过.png  bytes=158720  method=import  sha256=052133cc8907aa1d02abc6d8b7e9773bbc45483a4fd862a1ef04bbfe7869b377
+SCREENSHOT 04_PrimeTime_150MHz_整机TT时序报告.png  bytes=172878  method=import  sha256=512de60d757be87c7063e9114feea3bbed04a5d9f4111feea232078f8092d923
+SCREENSHOT 05_PrimeTime_150MHz_五角STA全闭合签核.png  bytes=240598  method=import  sha256=fcf2b61cf2373f05880956762158df2a89c6895cb5204fc048573be7c8f68039
+SCREENSHOT 06_PrimeTime_PX_12层全量功耗能耗与SAIF覆盖.png  bytes=176068  method=import  sha256=1c1a00c452c67c1c31904df01d78cf4e80ff2c4426a09b0142d96b7d6922963b
+SCREENSHOT 07_VCS_整机门级网表_TT_SDF反标仿真通过.png  bytes=194613  method=import  sha256=1b7681b15a0b40a77d9ed46c2876c5a2fa07612abadc0e147a0ad9a9f45a1e5b
+SCREENSHOT 08_双候选全项实测签核总览_A主推与B备选.png  bytes=216744  method=import  sha256=ee0c6bd3193ff4b4e2adc89f69aa4c078daf1a8bfc2a6fc779a3ff3782ac3adb
+SCREENSHOT 09_DesignVision_GUI_整机网表层次与原理图.png  bytes=223654  method=import  sha256=0b2a92b2661298b107831017a11477ddd44ced42f025ce27ae08ba3a32409a58
+SCREENSHOT 10_PrimeTime_GUI_整机150MHz时序分析.png  bytes=148665  method=import  sha256=6d13f30f020e353c28999501e95572460ef01d2b42d1781ad582c66d2bef5996
+ARCHIVE q12clean6_reports_archive.tar.gz  bytes=16788994  sha256=c2dd107e158e7496572927de6aaf54a7a8a039c7014962cb12bf4d5999644322
+ARCHIVE q12clean6_12_final_archive.tar.gz  bytes=12560463  sha256=27f836a1c4f3c29128cb5f12ec459201367c3cd83d06376f0bd655fc63eb32d2
+Q12_13_SCREENSHOTS_DONE
