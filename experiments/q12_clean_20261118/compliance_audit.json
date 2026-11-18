@@ -1,0 +1,114 @@
+[
+ {
+  "run": "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_clean_20261118\\runs\\v7a_20261117T230025Z",
+  "upstream_identical_count": 135,
+  "upstream_named_but_modified": [],
+  "project_or_integration_files": [
+   "config.v",
+   "config.v",
+   "qingyu_e203_soc_top.v",
+   "qingyu_e203_subsys_main.v",
+   "qingyu_e203_subsys_top.v",
+   "qingyu_shared_sram.sv",
+   "qingyu_sram16.sv",
+   "tb_q12soc.sv",
+   "q12_stream_engine_overlap.sv",
+   "q12_icb_stream_prefix.sv",
+   "q12_rowpair_pack.sv",
+   "q13_dense16_writer.sv",
+   "q12_task4.sv",
+   "q12_pair_acc.sv",
+   "q12_striped_sram.sv",
+   "q11_commit_gate.sv",
+   "qingyu_icb_merge.sv",
+   "qingyu_q12_stream_fio.sv",
+   "q12_gpio_dma.sv",
+   "q12_gpio_source.sv",
+   "q12_fixed12_reader.sv"
+  ],
+  "forbidden_hits": [],
+  "shared_sram_single_instance_on_original_sysmem_icb": true,
+  "shared_sram_connections": {
+   "clk": "qingyu_bus_clk",
+   "rst_n": "qingyu_bus_rst_n",
+   "icb_cmd_valid": "sysmem_icb_cmd_valid",
+   "icb_cmd_ready": "sysmem_icb_cmd_ready",
+   "icb_cmd_read": "sysmem_icb_cmd_read",
+   "icb_cmd_addr": "sysmem_icb_cmd_addr",
+   "icb_cmd_wdata": "sysmem_icb_cmd_wdata",
+   "icb_cmd_wmask": "sysmem_icb_cmd_wmask",
+   "icb_rsp_valid": "sysmem_icb_rsp_valid",
+   "icb_rsp_ready": "sysmem_icb_rsp_ready",
+   "icb_rsp_err": "sysmem_icb_rsp_err",
+   "icb_rsp_rdata": "sysmem_icb_rsp_rdata"
+  },
+  "other_modules_referencing_u_shared": [],
+  "fabric": {
+   "subsys_mems_identical_upstream": true,
+   "SPLT_FIFO_OUTS_NUM_1": true,
+   "ALLOW_0CYCL_RSP_1_in_original_icb1to8": true,
+   "icb1to8_identical_upstream": true
+  },
+  "widths": {
+   "shared_addr32_data32": true,
+   "dma_port32": true
+  },
+  "passed": true
+ },
+ {
+  "run": "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_clean_20261118\\runs\\v7b_20261117T230128Z",
+  "upstream_identical_count": 135,
+  "upstream_named_but_modified": [],
+  "project_or_integration_files": [
+   "config.v",
+   "config.v",
+   "qingyu_e203_soc_top.v",
+   "qingyu_e203_subsys_main.v",
+   "qingyu_e203_subsys_top.v",
+   "qingyu_shared_sram.sv",
+   "qingyu_sram16.sv",
+   "tb_q12soc.sv",
+   "q12_stream_engine_overlap.sv",
+   "q12_icb_stream_prefix.sv",
+   "q12_rowpair_pack.sv",
+   "q13_dense16_writer.sv",
+   "q12_task4.sv",
+   "q12_pair_acc.sv",
+   "q12_striped_sram.sv",
+   "q11_commit_gate.sv",
+   "qingyu_icb_merge.sv",
+   "qingyu_q12_stream_fio.sv",
+   "q12_gpio_dma.sv",
+   "q12_gpio_source.sv",
+   "q12_fixed12_reader.sv"
+  ],
+  "forbidden_hits": [],
+  "shared_sram_single_instance_on_original_sysmem_icb": true,
+  "shared_sram_connections": {
+   "clk": "qingyu_bus_clk",
+   "rst_n": "qingyu_bus_rst_n",
+   "icb_cmd_valid": "sysmem_icb_cmd_valid",
+   "icb_cmd_ready": "sysmem_icb_cmd_ready",
+   "icb_cmd_read": "sysmem_icb_cmd_read",
+   "icb_cmd_addr": "sysmem_icb_cmd_addr",
+   "icb_cmd_wdata": "sysmem_icb_cmd_wdata",
+   "icb_cmd_wmask": "sysmem_icb_cmd_wmask",
+   "icb_rsp_valid": "sysmem_icb_rsp_valid",
+   "icb_rsp_ready": "sysmem_icb_rsp_ready",
+   "icb_rsp_err": "sysmem_icb_rsp_err",
+   "icb_rsp_rdata": "sysmem_icb_rsp_rdata"
+  },
+  "other_modules_referencing_u_shared": [],
+  "fabric": {
+   "subsys_mems_identical_upstream": true,
+   "SPLT_FIFO_OUTS_NUM_1": true,
+   "ALLOW_0CYCL_RSP_1_in_original_icb1to8": true,
+   "icb1to8_identical_upstream": true
+  },
+  "widths": {
+   "shared_addr32_data32": true,
+   "dma_port32": true
+  },
+  "passed": true
+ }
+]
