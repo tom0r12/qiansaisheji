@@ -90,11 +90,25 @@ set rc [catch {
  set q12_wns [get_attribute -quiet [get_timing_paths -delay_type max -max_paths 1] slack]
  set q12_whs [get_attribute -quiet [get_timing_paths -delay_type min -max_paths 1] slack]
  puts "Q12_POST_COMPILE_WNS=$q12_wns WHS=$q12_whs"
- if {($q12_wns ne "" && $q12_wns < 0) || ($q12_whs ne "" && $q12_whs < 0)} {
+ if {$q12_wns ne "" && [lindex [lsort -real $q12_wns] 0] < 0} {
   redirect -file timing_pre_incremental.rpt {report_timing -delay_type max -max_paths 5 -significant_digits 4}
   set_critical_range 0.3 [current_design]
   if {![compile_ultra -incremental -no_autoungroup -no_boundary_optimization]} {error "Incremental compile failed"}
   puts "Q12_INCREMENTAL_DONE WNS=[get_attribute -quiet [get_timing_paths -delay_type max -max_paths 1] slack] WHS=[get_attribute -quiet [get_timing_paths -delay_type min -max_paths 1] slack]"
+ }
+ # compile_ultra did not repair min-delay (server 07: WHS unchanged -0.156 at SRAM D/A pins).
+ # Dedicated hold-only pass of the basic compiler; setup stays the primary cost.
+ set q12_whs [get_attribute -quiet [get_timing_paths -delay_type min -max_paths 1] slack]
+ if {$q12_whs ne "" && [lindex [lsort -real $q12_whs] 0] < 0} {
+  redirect -file timing_min_pre_holdfix.rpt {report_timing -delay_type min -max_paths 5 -significant_digits 4}
+  set q12_hold_ok 0
+  foreach q12_cmd {{compile -incremental_mapping -only_hold_time} {compile -incremental -only_hold_time} {compile_ultra -incremental -only_hold_time}} {
+   puts "Q12_HOLDFIX_TRY=$q12_cmd"
+   if {![catch {set q12_r [eval $q12_cmd]} q12_m] && $q12_r} {set q12_hold_ok 1; puts "Q12_HOLDFIX_USED=$q12_cmd"; break}
+   puts "Q12_HOLDFIX_FAILED=$q12_cmd: $q12_m"
+  }
+  if {!$q12_hold_ok} {error "No hold-fixing command succeeded"}
+  puts "Q12_HOLDFIX_DONE WNS=[get_attribute -quiet [get_timing_paths -delay_type max -max_paths 1] slack] WHS=[get_attribute -quiet [get_timing_paths -delay_type min -max_paths 1] slack]"
  }
  if {![link]} {error "Mapped link failed"}
  # Preserve source names (SAIF/inventory paths); the writer escapes when needed.

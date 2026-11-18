@@ -1,0 +1,1 @@
+08 号服务器验证包对应 A（v8a，W12）和 B（v8b，W10）。综合流程加入 hold 专项增量修复。原始 q12clean5.zip 为 5489838 字节，SHA-256 为 e20ea294e0c265ce83df706ee5850cbc4ed83b3183712fbf941777eb2a76216a。复现时需在授权环境补齐两个候选的 vendor/tasks、厂家 SRAM 模型和工艺库。

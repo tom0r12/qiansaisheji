@@ -90,6 +90,7 @@ def summary(run, quiet=False):
             m = re.search(r'^\s*' + re.escape(k) + r':\s*(' + NUMBER + ')', q, re.M)
             if m: lines.append('  qor %s=%s' % (k, m.group(1)))
     st = text(s / 'dc.log')
+    lines += ['  dc: ' + x for x in re.findall(r'^(Q12_(?:INSPECT_CLK_PINS|POST_COMPILE_WNS|INCREMENTAL_DONE|HOLDFIX_\w+)\b.*)$', st, re.M)]
     if st: lines.append('synth: ' + ('COMPLETE' if synth_ok(run) else ('FAILED ' + ' | '.join(re.findall(r'^(?:Error:.*|Q12_FINAL_SYNTH_FAILED:.*)$', st, re.M)[:3]) if re.search(r'^Q12_FINAL_SYNTH_FAILED:', st, re.M) else 'running')))
     cg = text(s / 'clock_gating.rpt')
     m1 = re.search(r'Number of Gated registers\s*\|\s*(\d+)', cg); m2 = re.search(r'Number of Ungated registers\s*\|\s*(\d+)', cg)

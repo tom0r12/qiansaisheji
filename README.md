@@ -1,6 +1,6 @@
 # 轻语 · E203 前馈线性加速器
 
-本分支保存 2026-11-18 的 q12clean4 双候选工程。当前候选为 A（v8a，W12）和 B（v8b，W10）。[07 号服务器包源码与复现说明](experiments/q12_clean_20261118/server/snapshot_07/README.md)
+本分支保存 2026-11-18 的 q12clean5 双候选工程。当前候选为 A（v8a，W12）和 B（v8b，W10）。[08 号服务器包源码与复现说明](experiments/q12_clean_20261118/server/snapshot_08/README.md)
 
 11 月 13 日冻结的提交基线为 **Q12 native12 earlycheck（2026-11-13）**，入口在 [final/q12_submission_20261113](final/q12_submission_20261113/README.md)。分支 `q12-submission-20261113`，冻结标签 `q12-submission-20261113-r1`。实测约 **6076 tasks/s、增量面积 0.3886 mm²**；整机功耗工程估计 **58.36 mW、9.60 µJ/任务**。150 MHz 全约束时序、严格功耗及等价审计、正式精度和 loader 接口验收仍有未闭合项，不能宣称已全部合格。
 
