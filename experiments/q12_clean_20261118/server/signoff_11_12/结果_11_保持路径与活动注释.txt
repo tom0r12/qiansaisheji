@@ -1,0 +1,257 @@
+11 SAIF layer00 and FF 125C hold paths
+
+A /tmp/q12clean_A_wwfomkyb/power_layer00/activity_after.rpt
+****************************************
+Report : Switching Activity
+	
+Design : qingyu_e203_soc_top
+Version: T-2022.03-SP5-1
+Date   : Wed Nov 18 15:07:11 2026
+****************************************
+
+ Switching Activity Overview Statistics for "qingyu_e203_soc_top"
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+                  From Activity     From         From         From             From            From                                                            Not
+Object Type       File (%)          SSA (%)      SSA Force (%) SSA Force (%)   SCA (%)         Clock (%)       Default (%)     Propagated(%)   Implied(%)      Annotated(%)  Total
+                                                 Annotated    Implied                                                                                                        
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ Nets             44553(31.81%)     0(0.00%)     0(0.00%)     0(0.00%)         0(0.00%)        0(0.00%)        1280(0.91%)     86787(61.97%)   7418(5.30%)     0(0.00%)      140038
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Nets Driven by
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Primary Input     79(100.00%)       0(0.00%)     0(0.00%)     0(0.00%)         0(0.00%)        0(0.00%)        0(0.00%)        0(0.00%)        0(0.00%)        0(0.00%)      79
+Tri-State         0(0%)             0(0%)        0(0%)        0(0%)            0(0%)           0(0%)           0(0%)           0(0%)           0(0%)           0(0%)         0
+Black Box         0(0%)             0(0%)        0(0%)        0(0%)            0(0%)           0(0%)           0(0%)           0(0%)           0(0%)           0(0%)         0
+Sequential        17527(68.35%)     0(0.00%)     0(0.00%)     0(0.00%)         0(0.00%)        0(0.00%)        0(0.00%)        8054(31.41%)    63(0.25%)       0(0.00%)      25644
+Combinational     26371(23.66%)     0(0.00%)     0(0.00%)     0(0.00%)         0(0.00%)        0(0.00%)        0(0.00%)        77732(69.74%)   7355(6.60%)     0(0.00%)      111458
+Memory            576(31.03%)       0(0.00%)     0(0.00%)     0(0.00%)         0(0.00%)        0(0.00%)        1280(68.97%)    0(0.00%)        0(0.00%)        0(0.00%)      1856
+Clock Gate        0(0.00%)          0(0.00%)     0(0.00%)     0(0.00%)         0(0.00%)        0(0.00%)        0(0.00%)        1001(100.00%)   0(0.00%)        0(0.00%)      1001
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ Static Probability Overview Statistics for "qingyu_e203_soc_top"
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+                  From Activity     From         From         From             From            From                                                            Not
+Object Type       File (%)          SSA (%)      SSA Force (%) SSA Force (%)   SCA (%)         Clock (%)       Default (%)     Propagated(%)   Implied(%)      Annotated(%)  Total
+                                                 Annotated    Implied                                                                                                        
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ Nets             44553(31.81%)     0(0.00%)     0(0.00%)     0(0.00%)         0(0.00%)        0(0.00%)        1280(0.91%)     86787(61.97%)   7418(5.30%)     0(0.00%)      140038
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Nets Driven by
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Primary Input     79(100.00%)       0(0.00%)     0(0.00%)     0(0.00%)         0(0.00%)        0(0.00%)        0(0.00%)        0(0.00%)        0(0.00%)        0(0.00%)      79
+Tri-State         0(0%)             0(0%)        0(0%)        0(0%)            0(0%)           0(0%)           0(0%)           0(0%)           0(0%)           0(0%)         0
+Black Box         0(0%)             0(0%)        0(0%)        0(0%)            0(0%)           0(0%)           0(0%)           0(0%)           0(0%)           0(0%)         0
+Sequential        17527(68.35%)     0(0.00%)     0(0.00%)     0(0.00%)         0(0.00%)        0(0.00%)        0(0.00%)        8054(31.41%)    63(0.25%)       0(0.00%)      25644
+Combinational     26371(23.66%)     0(0.00%)     0(0.00%)     0(0.00%)         0(0.00%)        0(0.00%)        0(0.00%)        77732(69.74%)   7355(6.60%)     0(0.00%)      111458
+Memory            576(31.03%)       0(0.00%)     0(0.00%)     0(0.00%)         0(0.00%)        0(0.00%)        1280(68.97%)    0(0.00%)        0(0.00%)        0(0.00%)      1856
+Clock Gate        0(0.00%)          0(0.00%)     0(0.00%)     0(0.00%)         0(0.00%)        0(0.00%)        0(0.00%)        1001(100.00%)   0(0.00%)        0(0.00%)      1001
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+1
+
+
+A /tmp/q12_11_sta_gn5_6g5c/A/SOC/ff_125c/hold.rpt
+****************************************
+Report : timing
+	-path_type full
+	-delay_type min
+	-slack_lesser_than 100000.000000
+	-max_paths 10
+	-sort_by slack
+Design : qingyu_e203_soc_top
+Version: T-2022.03-SP5-1
+Date   : Wed Nov 18 15:14:26 2026
+****************************************
+
+
+  Startpoint: u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_itcm_ctrl/u_sram_icb_ctrl/u_byp_icb_cmd_buf/u_bypbuf_fifo/dp_gt0.fifo_rf[0].fifo_rf_dffl/qout_r_reg[0]
+               (rising edge-triggered flip-flop clocked by hfext_clk)
+  Endpoint: u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_srams/u_e203_itcm_ram/u_e203_itcm_gnrl_ram/u_storage/banks[0].slices[1].macro_ram
+               (rising edge-triggered flip-flop clocked by hfext_clk)
+  Path Group: hfext_clk
+  Path Type: min
+
+  Point                                                   Incr       Path
+  ------------------------------------------------------------------------------
+  clock hfext_clk (rise edge)                         0.000000   0.000000
+  clock network delay (ideal)                         0.000000   0.000000
+  u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_itcm_ctrl/u_sram_icb_ctrl/u_byp_icb_cmd_buf/u_bypbuf_fifo/dp_gt0.fifo_rf[0].fifo_rf_dffl/qout_r_reg[0]/CK (DQV0_12TR40)
+                                                      0.000000   0.000000 r
+  u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_itcm_ctrl/u_sram_icb_ctrl/u_byp_icb_cmd_buf/u_bypbuf_fifo/dp_gt0.fifo_rf[0].fifo_rf_dffl/qout_r_reg[0]/Q (DQV0_12TR40)
+                                                      0.095112   0.095112 f
+  u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_itcm_ctrl/u_sram_icb_ctrl/u_byp_icb_cmd_buf/U37/ZN (NAND2CV0_12TR40)
+                                                      0.016772   0.111884 r
+  u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_itcm_ctrl/u_sram_icb_ctrl/u_byp_icb_cmd_buf/U2/ZN (OAI21V2_12TR40)
+                                                      0.012834   0.124717 f
+  u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_itcm_ctrl/u_sram_icb_ctrl/u_byp_icb_cmd_buf/U197/Z (BUFV2RD_12TR40)
+                                                      0.021030   0.145748 f
+  u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_itcm_ctrl/u_sram_icb_ctrl/u_sirv_1cyc_sram_ctrl/U1/ZN (CLKINV0_12TR40)
+                                                      0.021026   0.166774 r
+  u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_srams/u_e203_itcm_ram/u_e203_itcm_gnrl_ram/u_storage/U4/ZN (CLKINV2_12TR40)
+                                                      0.042535   0.209308 f
+  u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_srams/u_e203_itcm_ram/u_e203_itcm_gnrl_ram/u_storage/banks[0].slices[1].macro_ram/GWEN (RAMSP4096X16)
+                                                      0.000000   0.209308 f
+  data arrival time                                              0.209308
+
+  clock hfext_clk (rise edge)                         0.000000   0.000000
+  clock network delay (ideal)                         0.000000   0.000000
+  clock reconvergence pessimism                       0.000000   0.000000
+  clock uncertainty                                   0.020000   0.020000
+  u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_srams/u_e203_itcm_ram/u_e203_itcm_gnrl_ram/u_storage/banks[0].slices[1].macro_ram/CLK (RAMSP4096X16)
+                                                                 0.020000 r
+  library hold time                                   0.199800   0.219800
+  data required time                                             0.219800
+  ------------------------------------------------------------------------------
+  data required time                                             0.219800
+  data arrival time                                              -0.209308
+  ------------------------------------------------------------------------------
+  slack (VIOLATED)                                               -0.010491
+
+A /tmp/q12_11_sta_gn5_6g5c/A/SOC/ff_125c/check_timing.rpt
+Warning: Some timing arcs have been disabled for breaking timing loops or because of constant propagation. Use the 'report_disable_timing' command to get the list of these disabled timing arcs. (PTE-003)
+Warning: No clock-gating check is inferred for clock jtag_clk at pins u_e203_subsys_top/u_e203_subsys_main/U5/A1 and u_e203_subsys_top/u_e203_subsys_main/U5/A2 of cell u_e203_subsys_top/u_e203_subsys_main/U5. (PTE-060)
+Warning: No clock-gating check is inferred for clock jtag_clk at pins u_e203_subsys_top/u_e203_subsys_main/U5/B1 and u_e203_subsys_top/u_e203_subsys_main/U5/A2 of cell u_e203_subsys_top/u_e203_subsys_main/U5. (PTE-060)
+Warning: No clock-gating check is inferred for clock jtag_clk at pins u_e203_subsys_top/u_e203_subsys_main/U5/B2 and u_e203_subsys_top/u_e203_subsys_main/U5/A2 of cell u_e203_subsys_top/u_e203_subsys_main/U5. (PTE-060)
+Warning: No clock-gating check is inferred for clock lfext_clk at pins u_e203_subsys_top/u_e203_subsys_main/U7/A1 and u_e203_subsys_top/u_e203_subsys_main/U7/A2 of cell u_e203_subsys_top/u_e203_subsys_main/U7. (PTE-060)
+Warning: No clock-gating check is inferred for clock lfext_clk at pins u_e203_subsys_top/u_e203_subsys_main/U7/B1 and u_e203_subsys_top/u_e203_subsys_main/U7/A2 of cell u_e203_subsys_top/u_e203_subsys_main/U7. (PTE-060)
+Warning: No clock-gating check is inferred for clock lfext_clk at pins u_e203_subsys_top/u_e203_subsys_main/U7/B2 and u_e203_subsys_top/u_e203_subsys_main/U7/A2 of cell u_e203_subsys_top/u_e203_subsys_main/U7. (PTE-060)
+Warning: No clock-gating check is inferred for clock hfext_clk at pins u_e203_subsys_top/u_e203_subsys_main/U6/A1 and u_e203_subsys_top/u_e203_subsys_main/U6/A2 of cell u_e203_subsys_top/u_e203_subsys_main/U6. (PTE-060)
+Warning: No clock-gating check is inferred for clock hfext_clk at pins u_e203_subsys_top/u_e203_subsys_main/U6/B1 and u_e203_subsys_top/u_e203_subsys_main/U6/A2 of cell u_e203_subsys_top/u_e203_subsys_main/U6. (PTE-060)
+Warning: No clock-gating check is inferred for clock hfext_clk at pins u_e203_subsys_top/u_e203_subsys_main/U6/B2 and u_e203_subsys_top/u_e203_subsys_main/U6/A2 of cell u_e203_subsys_top/u_e203_subsys_main/U6. (PTE-060)
+Warning: No clock-gating check is inferred for clock hfext_clk at pins u_e203_subsys_top/u_e203_subsys_main/U8/A1 and u_e203_subsys_top/u_e203_subsys_main/U8/A2 of cell u_e203_subsys_top/u_e203_subsys_main/U8. (PTE-060)
+Warning: No clock-gating check is inferred for clock hfext_clk at pins u_e203_subsys_top/u_e203_subsys_main/U8/B1 and u_e203_subsys_top/u_e203_subsys_main/U8/A2 of cell u_e203_subsys_top/u_e203_subsys_main/U8. (PTE-060)
+Warning: No clock-gating check is inferred for clock hfext_clk at pins u_e203_subsys_top/u_e203_subsys_main/U8/B2 and u_e203_subsys_top/u_e203_subsys_main/U8/A2 of cell u_e203_subsys_top/u_e203_subsys_main/U8. (PTE-060)
+Warning: No clock-gating check is inferred for clock hfext_clk at pins u_e203_subsys_top/u_e203_subsys_main/U9/A1 and u_e203_subsys_top/u_e203_subsys_main/U9/A2 of cell u_e203_subsys_top/u_e203_subsys_main/U9. (PTE-060)
+Warning: No clock-gating check is inferred for clock hfext_clk at pins u_e203_subsys_top/u_e203_subsys_main/U9/B1 and u_e203_subsys_top/u_e203_subsys_main/U9/A2 of cell u_e203_subsys_top/u_e203_subsys_main/U9. (PTE-060)
+Warning: No clock-gating check is inferred for clock hfext_clk at pins u_e203_subsys_top/u_e203_subsys_main/U9/B2 and u_e203_subsys_top/u_e203_subsys_main/U9/A2 of cell u_e203_subsys_top/u_e203_subsys_main/U9. (PTE-060)
+Warning: Loop(s) were detected in the generated source latency network of clock core_clk. PrimeTime is prevented from computing the source latency of this clock with complete accuracy. (PTE-103)
+Information: Checking 'unconstrained_endpoints'.
+Warning: There are 24 endpoints which are not constrained for maximum delay.
+Warning: There are 24 register clock pins with no clock.
+Warning: Loop(s) were detected in the generated source latency network of clock core_clk. PrimeTime is prevented from computing the source latency of this clock with complete accuracy. (PTE-103)
+
+B /tmp/q12clean_B__b0skb4j/power_layer00/activity_after.rpt
+****************************************
+Report : Switching Activity
+	
+Design : qingyu_e203_soc_top
+Version: T-2022.03-SP5-1
+Date   : Wed Nov 18 15:33:38 2026
+****************************************
+
+ Switching Activity Overview Statistics for "qingyu_e203_soc_top"
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+                  From Activity     From         From         From             From            From                                                            Not
+Object Type       File (%)          SSA (%)      SSA Force (%) SSA Force (%)   SCA (%)         Clock (%)       Default (%)     Propagated(%)   Implied(%)      Annotated(%)  Total
+                                                 Annotated    Implied                                                                                                        
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ Nets             44277(31.74%)     0(0.00%)     0(0.00%)     0(0.00%)         0(0.00%)        0(0.00%)        1280(0.92%)     86667(62.14%)   7257(5.20%)     0(0.00%)      139481
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Nets Driven by
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Primary Input     79(100.00%)       0(0.00%)     0(0.00%)     0(0.00%)         0(0.00%)        0(0.00%)        0(0.00%)        0(0.00%)        0(0.00%)        0(0.00%)      79
+Tri-State         0(0%)             0(0%)        0(0%)        0(0%)            0(0%)           0(0%)           0(0%)           0(0%)           0(0%)           0(0%)         0
+Black Box         0(0%)             0(0%)        0(0%)        0(0%)            0(0%)           0(0%)           0(0%)           0(0%)           0(0%)           0(0%)         0
+Sequential        17527(68.86%)     0(0.00%)     0(0.00%)     0(0.00%)         0(0.00%)        0(0.00%)        0(0.00%)        7862(30.89%)    63(0.25%)       0(0.00%)      25452
+Combinational     26159(23.53%)     0(0.00%)     0(0.00%)     0(0.00%)         0(0.00%)        0(0.00%)        0(0.00%)        77808(70.00%)   7194(6.47%)     0(0.00%)      111161
+Memory            512(28.57%)       0(0.00%)     0(0.00%)     0(0.00%)         0(0.00%)        0(0.00%)        1280(71.43%)    0(0.00%)        0(0.00%)        0(0.00%)      1792
+Clock Gate        0(0.00%)          0(0.00%)     0(0.00%)     0(0.00%)         0(0.00%)        0(0.00%)        0(0.00%)        997(100.00%)    0(0.00%)        0(0.00%)      997
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ Static Probability Overview Statistics for "qingyu_e203_soc_top"
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+                  From Activity     From         From         From             From            From                                                            Not
+Object Type       File (%)          SSA (%)      SSA Force (%) SSA Force (%)   SCA (%)         Clock (%)       Default (%)     Propagated(%)   Implied(%)      Annotated(%)  Total
+                                                 Annotated    Implied                                                                                                        
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ Nets             44277(31.74%)     0(0.00%)     0(0.00%)     0(0.00%)         0(0.00%)        0(0.00%)        1280(0.92%)     86667(62.14%)   7257(5.20%)     0(0.00%)      139481
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Nets Driven by
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Primary Input     79(100.00%)       0(0.00%)     0(0.00%)     0(0.00%)         0(0.00%)        0(0.00%)        0(0.00%)        0(0.00%)        0(0.00%)        0(0.00%)      79
+Tri-State         0(0%)             0(0%)        0(0%)        0(0%)            0(0%)           0(0%)           0(0%)           0(0%)           0(0%)           0(0%)         0
+Black Box         0(0%)             0(0%)        0(0%)        0(0%)            0(0%)           0(0%)           0(0%)           0(0%)           0(0%)           0(0%)         0
+Sequential        17527(68.86%)     0(0.00%)     0(0.00%)     0(0.00%)         0(0.00%)        0(0.00%)        0(0.00%)        7862(30.89%)    63(0.25%)       0(0.00%)      25452
+Combinational     26159(23.53%)     0(0.00%)     0(0.00%)     0(0.00%)         0(0.00%)        0(0.00%)        0(0.00%)        77808(70.00%)   7194(6.47%)     0(0.00%)      111161
+Memory            512(28.57%)       0(0.00%)     0(0.00%)     0(0.00%)         0(0.00%)        0(0.00%)        1280(71.43%)    0(0.00%)        0(0.00%)        0(0.00%)      1792
+Clock Gate        0(0.00%)          0(0.00%)     0(0.00%)     0(0.00%)         0(0.00%)        0(0.00%)        0(0.00%)        997(100.00%)    0(0.00%)        0(0.00%)      997
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+1
+
+
+B /tmp/q12_11_sta_gn5_6g5c/B/SOC/ff_125c/hold.rpt
+****************************************
+Report : timing
+	-path_type full
+	-delay_type min
+	-slack_lesser_than 100000.000000
+	-max_paths 10
+	-sort_by slack
+Design : qingyu_e203_soc_top
+Version: T-2022.03-SP5-1
+Date   : Wed Nov 18 15:33:23 2026
+****************************************
+
+
+  Startpoint: u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_itcm_ctrl/u_sram_icb_ctrl/u_byp_icb_cmd_buf/u_bypbuf_fifo/dp_gt0.fifo_rf[0].fifo_rf_dffl/qout_r_reg[0]
+               (rising edge-triggered flip-flop clocked by hfext_clk)
+  Endpoint: u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_srams/u_e203_itcm_ram/u_e203_itcm_gnrl_ram/u_storage/banks[0].slices[1].macro_ram
+               (rising edge-triggered flip-flop clocked by hfext_clk)
+  Path Group: hfext_clk
+  Path Type: min
+
+  Point                                                   Incr       Path
+  ------------------------------------------------------------------------------
+  clock hfext_clk (rise edge)                         0.000000   0.000000
+  clock network delay (ideal)                         0.000000   0.000000
+  u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_itcm_ctrl/u_sram_icb_ctrl/u_byp_icb_cmd_buf/u_bypbuf_fifo/dp_gt0.fifo_rf[0].fifo_rf_dffl/qout_r_reg[0]/CK (DQV0_12TR40)
+                                                      0.000000   0.000000 r
+  u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_itcm_ctrl/u_sram_icb_ctrl/u_byp_icb_cmd_buf/u_bypbuf_fifo/dp_gt0.fifo_rf[0].fifo_rf_dffl/qout_r_reg[0]/Q (DQV0_12TR40)
+                                                      0.095689   0.095689 f
+  u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_itcm_ctrl/u_sram_icb_ctrl/u_byp_icb_cmd_buf/U90/ZN (NAND2CV1_12TR40)
+                                                      0.013675   0.109364 r
+  u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_itcm_ctrl/u_sram_icb_ctrl/u_byp_icb_cmd_buf/U196/ZN (OAI21V0_12TR40)
+                                                      0.015592   0.124957 f
+  u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_itcm_ctrl/u_sram_icb_ctrl/u_sirv_1cyc_sram_ctrl/U1/ZN (CLKINV2_12TR40)
+                                                      0.011274   0.136231 r
+  u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_itcm_ctrl/u_sram_icb_ctrl/u_sirv_1cyc_sram_ctrl/U6/Z (BUFV2RD_12TR40)
+                                                      0.023068   0.159299 r
+  u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_srams/u_e203_itcm_ram/u_e203_itcm_gnrl_ram/u_storage/U4/ZN (CLKINV1_12TR40)
+                                                      0.048820   0.208119 f
+  u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_srams/u_e203_itcm_ram/u_e203_itcm_gnrl_ram/u_storage/banks[0].slices[1].macro_ram/GWEN (RAMSP4096X16)
+                                                      0.000000   0.208119 f
+  data arrival time                                              0.208119
+
+  clock hfext_clk (rise edge)                         0.000000   0.000000
+  clock network delay (ideal)                         0.000000   0.000000
+  clock reconvergence pessimism                       0.000000   0.000000
+  clock uncertainty                                   0.020000   0.020000
+  u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_srams/u_e203_itcm_ram/u_e203_itcm_gnrl_ram/u_storage/banks[0].slices[1].macro_ram/CLK (RAMSP4096X16)
+                                                                 0.020000 r
+  library hold time                                   0.198700   0.218700
+  data required time                                             0.218700
+  ------------------------------------------------------------------------------
+  data required time                                             0.218700
+  data arrival time                                              -0.208119
+  ------------------------------------------------------------------------------
+  slack (VIOLATED)                                               -0.010581
+
+B /tmp/q12_11_sta_gn5_6g5c/B/SOC/ff_125c/check_timing.rpt
+Warning: Some timing arcs have been disabled for breaking timing loops or because of constant propagation. Use the 'report_disable_timing' command to get the list of these disabled timing arcs. (PTE-003)
+Warning: No clock-gating check is inferred for clock lfext_clk at pins u_e203_subsys_top/u_e203_subsys_main/U7/A1 and u_e203_subsys_top/u_e203_subsys_main/U7/A2 of cell u_e203_subsys_top/u_e203_subsys_main/U7. (PTE-060)
+Warning: No clock-gating check is inferred for clock lfext_clk at pins u_e203_subsys_top/u_e203_subsys_main/U7/B1 and u_e203_subsys_top/u_e203_subsys_main/U7/A2 of cell u_e203_subsys_top/u_e203_subsys_main/U7. (PTE-060)
+Warning: No clock-gating check is inferred for clock lfext_clk at pins u_e203_subsys_top/u_e203_subsys_main/U7/B2 and u_e203_subsys_top/u_e203_subsys_main/U7/A2 of cell u_e203_subsys_top/u_e203_subsys_main/U7. (PTE-060)
+Warning: No clock-gating check is inferred for clock hfext_clk at pins u_e203_subsys_top/u_e203_subsys_main/U6/A1 and u_e203_subsys_top/u_e203_subsys_main/U6/A2 of cell u_e203_subsys_top/u_e203_subsys_main/U6. (PTE-060)
+Warning: No clock-gating check is inferred for clock hfext_clk at pins u_e203_subsys_top/u_e203_subsys_main/U6/B1 and u_e203_subsys_top/u_e203_subsys_main/U6/A2 of cell u_e203_subsys_top/u_e203_subsys_main/U6. (PTE-060)
+Warning: No clock-gating check is inferred for clock hfext_clk at pins u_e203_subsys_top/u_e203_subsys_main/U6/B2 and u_e203_subsys_top/u_e203_subsys_main/U6/A2 of cell u_e203_subsys_top/u_e203_subsys_main/U6. (PTE-060)
+Warning: No clock-gating check is inferred for clock jtag_clk at pins u_e203_subsys_top/u_e203_subsys_main/U5/A1 and u_e203_subsys_top/u_e203_subsys_main/U5/A2 of cell u_e203_subsys_top/u_e203_subsys_main/U5. (PTE-060)
+Warning: No clock-gating check is inferred for clock jtag_clk at pins u_e203_subsys_top/u_e203_subsys_main/U5/B1 and u_e203_subsys_top/u_e203_subsys_main/U5/A2 of cell u_e203_subsys_top/u_e203_subsys_main/U5. (PTE-060)
+Warning: No clock-gating check is inferred for clock jtag_clk at pins u_e203_subsys_top/u_e203_subsys_main/U5/B2 and u_e203_subsys_top/u_e203_subsys_main/U5/A2 of cell u_e203_subsys_top/u_e203_subsys_main/U5. (PTE-060)
+Warning: No clock-gating check is inferred for clock hfext_clk at pins u_e203_subsys_top/u_e203_subsys_main/U8/A1 and u_e203_subsys_top/u_e203_subsys_main/U8/A2 of cell u_e203_subsys_top/u_e203_subsys_main/U8. (PTE-060)
+Warning: No clock-gating check is inferred for clock hfext_clk at pins u_e203_subsys_top/u_e203_subsys_main/U8/B1 and u_e203_subsys_top/u_e203_subsys_main/U8/A2 of cell u_e203_subsys_top/u_e203_subsys_main/U8. (PTE-060)
+Warning: No clock-gating check is inferred for clock hfext_clk at pins u_e203_subsys_top/u_e203_subsys_main/U8/B2 and u_e203_subsys_top/u_e203_subsys_main/U8/A2 of cell u_e203_subsys_top/u_e203_subsys_main/U8. (PTE-060)
+Warning: No clock-gating check is inferred for clock hfext_clk at pins u_e203_subsys_top/u_e203_subsys_main/U9/A1 and u_e203_subsys_top/u_e203_subsys_main/U9/A2 of cell u_e203_subsys_top/u_e203_subsys_main/U9. (PTE-060)
+Warning: No clock-gating check is inferred for clock hfext_clk at pins u_e203_subsys_top/u_e203_subsys_main/U9/B1 and u_e203_subsys_top/u_e203_subsys_main/U9/A2 of cell u_e203_subsys_top/u_e203_subsys_main/U9. (PTE-060)
+Warning: No clock-gating check is inferred for clock hfext_clk at pins u_e203_subsys_top/u_e203_subsys_main/U9/B2 and u_e203_subsys_top/u_e203_subsys_main/U9/A2 of cell u_e203_subsys_top/u_e203_subsys_main/U9. (PTE-060)
+Warning: Loop(s) were detected in the generated source latency network of clock core_clk. PrimeTime is prevented from computing the source latency of this clock with complete accuracy. (PTE-103)
+Information: Checking 'unconstrained_endpoints'.
+Warning: There are 24 endpoints which are not constrained for maximum delay.
+Warning: There are 24 register clock pins with no clock.
+Warning: Loop(s) were detected in the generated source latency network of clock core_clk. PrimeTime is prevented from computing the source latency of this clock with complete accuracy. (PTE-103)

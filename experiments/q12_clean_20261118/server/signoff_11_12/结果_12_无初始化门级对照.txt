@@ -1,0 +1,145 @@
+12 A TT SDF transport-delay control without any +vcs+initreg compile or runtime switch. Unmodified manufacturer cell models. +notimingcheck. Same five transport/pulse compile switches as original modes, same frozen mapped.v and SDC, same harness.
+run=/tmp/q12_12_rawgls_2ul4k245
+source_run=/tmp/q12_12_final_aei2gkux
+rc=1
+mapped.v sha256=dab44a73e9e145223ed16ccfa73ad236865c6329f3ed032771e49aee89bcc9ac
+mapped.sdc sha256=9646274f9a70bf56237444cc0cd963864c2c3d5f7b94a5320a0fefb432eacbb9
+/tmp/q12_12_final_aei2gkux/A/gls_eco/tb_gls.sv sha256=0981ef138fed6505fda4ed166d0760fa5b002a6f902a7a3c482b5ab158eee123
+/tmp/q12_12_rawgls_2ul4k245/gls/tb_gls.sv sha256=0981ef138fed6505fda4ed166d0760fa5b002a6f902a7a3c482b5ab158eee123
+
+=== /tmp/q12_12_rawgls_2ul4k245/gls/result.json
+{
+  "passed": false,
+  "phase": "simulate",
+  "sdf_bytes": 144408499,
+  "error": "RuntimeError('GLS simulation did not pass cleanly; see sim_gls.log',)"
+}
+
+=== /tmp/q12_12_rawgls_2ul4k245/gls/sim_gls.log
+Notice: timing checks disabled with +notimingcheck at compile-time
+Chronologic VCS simulator copyright 1991-2020
+Contains Synopsys proprietary information.
+Compiler version Q-2020.03-SP2-6_Full64; Runtime version Q-2020.03-SP2-6_Full64;  Nov 18 16:26 2026
+Doing SDF annotation ...... Done
+Q12_GLS_PRELOAD_DONE commands=131072 responses=131072
+Q12_GLS_FULL_START cycle=44 time_ps=9994930407
+Fatal: "/tmp/q12_12_rawgls_2ul4k245/gls/tb_gls.sv", 41: tb_gls.u_source: at time 9997237083 ps
+GPIO output disabled mid-task
+$finish called from file "/tmp/q12_12_rawgls_2ul4k245/gls/tb_gls.sv", line 41.
+$finish at simulation time           9997237083
+           V C S   S i m u l a t i o n   R e p o r t 
+Time: 9997237083 ps
+
+=== /tmp/q12_12_rawgls_2ul4k245/gls/compile.log
+
+Warning-[SDFCOM_TI] TIMINGCHECKs Ignored
+  SDF Warning: TIMINGCHECKs ignored, model compiled or invoked with 
+Warning-[SDFCOM_TI] TIMINGCHECKs Ignored
+  SDF Warning: TIMINGCHECKs ignored, model compiled or invoked with 
+  +notimingcheck option.
+  SDF Warning: TIMINGCHECKs ignored, model compiled or invoked with 
+  +notimingcheck option.
+
+
+=== /tmp/q12_12_rawgls_2ul4k245/gls/pt_sdf.log
+Error: Library Compiler executable path is not set. (PT-063)
+
+
+=== /tmp/q12_12_final_aei2gkux/A/gls_eco/sim_init0.log
+Notice: timing checks disabled with +notimingcheck at compile-time
+Chronologic VCS simulator copyright 1991-2020
+Contains Synopsys proprietary information.
+Compiler version Q-2020.03-SP2-6_Full64; Runtime version Q-2020.03-SP2-6_Full64;  Nov 18 16:10 2026
+Doing SDF annotation ...... Done
+Q12_GLS_PRELOAD_DONE commands=131072 responses=131072
+Q12_GLS_FULL_START cycle=44 time_ps=9994930407
+Q12_GLS_FULL_END cycle=44273 time_ps=10289760921 full_window_cycles=44230
+PASS Q12_GLS_COMPLETE full_window_cycles=44230 dma_reads=8850 dma_writes=12690 output_words=12689 mismatches=0
+$finish called from file "/tmp/q12_12_final_aei2gkux/A/gls_eco/tb_gls.sv", line 233.
+$finish at simulation time          12038733673
+           V C S   S i m u l a t i o n   R e p o r t 
+Time: 12038733673 ps
+CPU Time:    204.840 seconds;       Data structure size:  40.7Mb
+Wed Nov 18 16:13:33 2026
+
+=== /tmp/q12_12_final_aei2gkux/A/gls_eco/sim_init1.log
+Notice: timing checks disabled with +notimingcheck at compile-time
+Chronologic VCS simulator copyright 1991-2020
+Contains Synopsys proprietary information.
+Compiler version Q-2020.03-SP2-6_Full64; Runtime version Q-2020.03-SP2-6_Full64;  Nov 18 16:13 2026
+Doing SDF annotation ...... Done
+Q12_GLS_PRELOAD_DONE commands=131072 responses=131072
+Q12_GLS_FULL_START cycle=44 time_ps=9994930407
+Q12_GLS_FULL_END cycle=44273 time_ps=10289760921 full_window_cycles=44230
+PASS Q12_GLS_COMPLETE full_window_cycles=44230 dma_reads=8850 dma_writes=12690 output_words=12689 mismatches=0
+$finish called from file "/tmp/q12_12_final_aei2gkux/A/gls_eco/tb_gls.sv", line 233.
+$finish at simulation time          12038733673
+           V C S   S i m u l a t i o n   R e p o r t 
+Time: 12038733673 ps
+CPU Time:    204.350 seconds;       Data structure size:  40.7Mb
+Wed Nov 18 16:16:58 2026
+
+=== /tmp/q12_12_final_aei2gkux/A/gls_eco/sim_raw_transport_only.log
+Notice: timing checks disabled with +notimingcheck at compile-time
+Chronologic VCS simulator copyright 1991-2020
+Contains Synopsys proprietary information.
+Compiler version Q-2020.03-SP2-6_Full64; Runtime version Q-2020.03-SP2-6_Full64;  Nov 18 16:16 2026
+Doing SDF annotation ...... Done
+Q12_GLS_PRELOAD_DONE commands=131072 responses=131072
+Q12_GLS_FULL_START cycle=44 time_ps=9994930407
+Q12_GLS_FULL_END cycle=44273 time_ps=10289760921 full_window_cycles=44230
+PASS Q12_GLS_COMPLETE full_window_cycles=44230 dma_reads=8850 dma_writes=12690 output_words=12689 mismatches=0
+$finish called from file "/tmp/q12_12_final_aei2gkux/A/gls_eco/tb_gls.sv", line 233.
+$finish at simulation time          12038733673
+           V C S   S i m u l a t i o n   R e p o r t 
+Time: 12038733673 ps
+CPU Time:    205.310 seconds;       Data structure size:  40.7Mb
+Wed Nov 18 16:20:24 2026
+
+=== /tmp/q12_12_final_aei2gkux/A/gls_eco/compile.log
+
+Warning-[SDFCOM_TI] TIMINGCHECKs Ignored
+  SDF Warning: TIMINGCHECKs ignored, model compiled or invoked with 
+Warning-[SDFCOM_TI] TIMINGCHECKs Ignored
+  SDF Warning: TIMINGCHECKs ignored, model compiled or invoked with 
+  +notimingcheck option.
+  SDF Warning: TIMINGCHECKs ignored, model compiled or invoked with 
+  +notimingcheck option.
+
+
+A DC original library and ECO markers
+Reading ddc file '/tmp/q12clean_A_wwfomkyb/synth/mapped.ddc'.
+Information: Checking out the license 'DesignWare'. (SEC-104)
+Error: Can't find the specified library 'scc40nll_vhsc40_rvt_ff_v1p21_-40c_basic.db:scc40nll_vhsc40_rvt_ff_v1p21_-40c_basic' in memory. (UID-131)
+Loaded 1952 designs.
+Information: Updating design information... (UID-85)
+Warning: Design 'qingyu_e203_soc_top' contains 1 high-fanout nets. A fanout number of 1000 will be used for delay calculations involving these nets. (TIM-134)
+Q12_ECO_PRE WNS=1.73061 0 0 30515 WHS=0.0113854 -0.0254914 0.0503378 0.0458422
+Information: Performing power optimization. (PWR-850)
+Information: Updating design information... (UID-85)
+Warning: Design 'qingyu_e203_soc_top' contains 1 high-fanout nets. A fanout number of 1000 will be used for delay calculations involving these nets. (TIM-134)
+Q12_ECO_POST WNS=1.73061 0 0 30515 WHS=0.0113854 0.00179601 0.0503378 0.0458422
+
+INCREMENTAL_LIBRARY_AREA=316365.914034
+Q12_EXPLICIT_AREA_READY: new GPIO DMA, FIFO, both arbiters, top configuration logic and custom shared control counted; confirm library units
+Q12_ECO_SYNTH_COMPLETE
+0
+
+B DC original library and ECO markers
+Reading ddc file '/tmp/q12clean_B__b0skb4j/synth/mapped.ddc'.
+Information: Checking out the license 'DesignWare'. (SEC-104)
+Error: Can't find the specified library 'scc40nll_vhsc40_rvt_ff_v1p21_-40c_basic.db:scc40nll_vhsc40_rvt_ff_v1p21_-40c_basic' in memory. (UID-131)
+Loaded 1948 designs.
+Information: Updating design information... (UID-85)
+Warning: Design 'qingyu_e203_soc_top' contains 1 high-fanout nets. A fanout number of 1000 will be used for delay calculations involving these nets. (TIM-134)
+Q12_ECO_PRE WNS=0.00767279 0 0 30515 WHS=0.0124048 -0.0255805 0.0503378 0.0458422
+Information: Performing power optimization. (PWR-850)
+Information: Updating design information... (UID-85)
+Warning: Design 'qingyu_e203_soc_top' contains 1 high-fanout nets. A fanout number of 1000 will be used for delay calculations involving these nets. (TIM-134)
+Q12_ECO_POST WNS=0.00767279 0 0 30515 WHS=0.0124048 0.00179575 0.0503378 0.0458422
+
+INCREMENTAL_LIBRARY_AREA=303804.434734
+Q12_EXPLICIT_AREA_READY: new GPIO DMA, FIFO, both arbiters, top configuration logic and custom shared control counted; confirm library units
+Q12_ECO_SYNTH_COMPLETE
+0
+END_STRICT_RAW_12

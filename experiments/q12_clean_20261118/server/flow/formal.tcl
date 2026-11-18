@@ -1,6 +1,5 @@
-# Exact staged whole-SoC RTL versus the same run's mapped.v and mapped.svf.
-# This does not prove SRAM internal behavior. No manual boxes, cuts, matches,
-# constants or dont_verify exceptions are introduced by this script.
+# Exact staged RTL versus the same run's mapped netlist and SVF (whole-SoC or standalone u_fio).
+# No manual boxes, cuts, matches, constants or dont_verify exceptions are introduced.
 set q12_report_errors 0
 proc q12_report {filename command} {
     global q12_report_errors
@@ -13,9 +12,10 @@ proc q12_report {filename command} {
 }
 set rc [catch {
     set synopsys_auto_setup true
-    # DC clock-gating insertion: let the SVF-guided flow verify gated clocks.
     set verification_clock_gate_hold_mode any
     set hdlin_unresolved_modules error
+    set top_mod [expr {[info exists env(Q12_TOP_MODULE)] ? $env(Q12_TOP_MODULE) : "qingyu_e203_soc_top"}]
+    puts "Q12_FORMAL_TOP=$top_mod"
     source [file join $env(Q12_PACKAGE) hardware sources.tcl]
     set search_path [concat $Q12_INCLUDES $search_path]
     foreach library $env(Q12_LIBRARIES) {
@@ -26,7 +26,6 @@ set rc [catch {
         if {![file readable $path] || [file size $path] == 0} {error "Missing mapped artifact: $path"}
     }
     set_svf $env(Q12_SVF)
-    # Translate exactly the mapping-stage defines; no separately maintained list.
     set defines [file normalize defines.v]
     set f [open $defines w]
     foreach definition $Q12_DEFINES {
@@ -37,9 +36,9 @@ set rc [catch {
     }
     close $f
     read_sverilog -r -libname WORK [concat [list $defines] $Q12_SOURCES]
-    set_top r:/WORK/qingyu_e203_soc_top
+    set_top r:/WORK/$top_mod
     read_verilog -i -libname WORK $env(Q12_NETLIST)
-    set_top i:/WORK/qingyu_e203_soc_top
+    set_top i:/WORK/$top_mod
     q12_report blackboxes_reference.rpt {report_black_boxes -r -all}
     q12_report blackboxes_implementation.rpt {report_black_boxes -i -all}
     match
@@ -49,7 +48,6 @@ set rc [catch {
     set verified 0
     set verify_error [catch {set verified [verify]} verify_message]
     if {$verify_error} {puts "Q12_FORMAL_VERIFY_EXCEPTION=$verify_message"}
-    # Retain every diagnostic even when verify fails or a report command errors.
     q12_report status.rpt {report_status}
     q12_report failing.rpt {report_failing_points}
     q12_report aborted.rpt {report_aborted_points}
@@ -67,7 +65,6 @@ set rc [catch {
     puts "Q12_FORMAL_REPORT_ERRORS=$q12_report_errors"
     puts Q12_FINAL_FORMAL_REPORTS_COMPLETE
     if {$verify_error || !$verified || $q12_report_errors != 0} {error "Formal proof or diagnostic reports incomplete"}
-    # Tool completion is distinct from the independent Python scope/report audit.
     puts Q12_FINAL_FORMAL_COMPLETE
 } message]
 if {$rc} {puts "Q12_FINAL_FORMAL_FAILED: $message";puts $errorInfo;exit 2}

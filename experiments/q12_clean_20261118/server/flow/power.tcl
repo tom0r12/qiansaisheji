@@ -21,8 +21,8 @@ set rc [catch {
  redirect -file activity_before.rpt {report_switching_activity}
  redirect -file analysis_coverage.rpt {report_analysis_coverage}
  redirect -file check_timing.rpt {check_timing}
- redirect -file setup.rpt {report_timing -delay_type max -max_paths 20 -significant_digits 8}
- redirect -file hold.rpt {report_timing -delay_type min -max_paths 20 -significant_digits 8}
+ redirect -file setup.rpt {report_timing -delay_type max -slack_lesser_than 100000 -max_paths 20 -significant_digits 8}
+ redirect -file hold.rpt {report_timing -delay_type min -slack_lesser_than 100000 -max_paths 20 -significant_digits 8}
  redirect -file check_power.rpt {check_power}
  update_power
  redirect -file activity_after.rpt {report_switching_activity}
@@ -30,10 +30,7 @@ set rc [catch {
  redirect -file power_hierarchy.rpt {report_power -hierarchy}
  q12_optional_report power_hier3.rpt {report_power -hierarchy -levels 3}
  q12_optional_report units.rpt {report_units}
- q12_optional_report power_units.rpt {report_units -power}
  q12_optional_report pin_attributes.rpt {list_attributes -application -class pin}
- # Compatibility-sensitive fields are diagnostic, never silently accepted.
- # Unsupported source metadata becomes UNKNOWN and closes the acceptance gate.
  set f [open macro_pin_activity.tsv w]
  puts $f "instance\tpin\tdirection\ttoggle_rate\tstatic_probability\ttoggle_source\tprobability_source"
  puts Q12_OPTIONAL_REPORT_BEGIN=macro_pin_activity

@@ -1,0 +1,1693 @@
+11 PrimeTime corner audit on frozen v9 netlists. Each independent process links exactly one stdcell DB and three SRAM DBs from the same corner. Strip the single full multi-line DC set_operating_conditions from a copy of mapped.sdc. Keep all other constraints. Original output preserved.
+Audit dir: /tmp/q12_11_sta_gn5_6g5c
+
+A original run /tmp/q12clean_A_wwfomkyb
+A SOC net_sha256 2aafa1e6eef09a9604b70bcd4e204d402fe75ac31beefb7ad2d82dad23e2bda8 orig_sdc_sha256 9275522338d5b4c02dc9bb2c035efcce86a5eb0952524d2091d08dd7a4da38f1 single_corner_sdc_sha256 3d7a9bc163fba086a4264ca747ba6e7b4be8288b0d179efd371696d47a6215f9
+removed complete command:
+set_operating_conditions -max tt_v1p1_25c -max_library                         \
+scc40nll_vhsc40_rvt_tt_v1p1_25c_basic\
+                         -min ff_v1p21_-40c -min_library                       \
+scc40nll_vhsc40_rvt_ff_v1p21_-40c_basic
+
+A FIO net_sha256 f8cc66e0fc305f1d2650c031a7ca2c4e0e3e5870e5151b3550af1e6d2b01f6d5 orig_sdc_sha256 739e1889f092d8bcfeda654423d471a687d9cc3983c7bb625d6d937ed8892e85 single_corner_sdc_sha256 dd6c9d0920388c8960f1227b4bcb5806f62cf669f746734cc05370f171ae205f
+removed complete command:
+set_operating_conditions -max ss_v0p99_-40c -max_library                       \
+scc40nll_vhsc40_rvt_ss_v0p99_-40c_basic\
+                         -min ff_v1p21_-40c -min_library                       \
+scc40nll_vhsc40_rvt_ff_v1p21_-40c_basic
+
+
+== A SOC tt_25c rc=0 ==
+requested libraries: scc40nll_vhsc40_rvt_tt_v1p1_25c_basic.db RAMSP128X16_tt_1p10v_1p10v_25c.db RAMSP1024X16_tt_1p10v_1p10v_25c.db RAMSP4096X16_tt_1p10v_1p10v_25c.db
+Error: Library Compiler executable path is not set. (PT-063)
+AUDIT_READ_SDC 1
+AUDIT_LINK_LIBRARY scc40nll_vhsc40_rvt_tt_v1p1_25c_basic
+AUDIT_LINK_LIBRARY RAMSP128X16_tt_1p10v_1p10v_25c
+AUDIT_LINK_LIBRARY RAMSP1024X16_tt_1p10v_1p10v_25c
+AUDIT_LINK_LIBRARY RAMSP4096X16_tt_1p10v_1p10v_25c
+Q12_PT_CORNER top=qingyu_e203_soc_top corner=tt_25c group=**async_default** setup=5.027089 hold=0.097229
+Q12_PT_CORNER top=qingyu_e203_soc_top corner=tt_25c group=**clock_gating_default** setup=0.204954 hold=0.058618
+Q12_PT_CORNER top=qingyu_e203_soc_top corner=tt_25c group=core_clk setup=1.730615 hold=0.092280
+Q12_PT_CORNER top=qingyu_e203_soc_top corner=tt_25c group=hfext_clk setup=0.000000 hold=0.046746
+Q12_PT_CORNER top=qingyu_e203_soc_top corner=tt_25c group=jtag_clk setup=0.000000 hold=0.111203
+Q12_PT_CORNER top=qingyu_e203_soc_top corner=tt_25c group=lfext_clk setup=30515.039062 hold=0.103505
+Q12_PT_CORNER top=qingyu_e203_soc_top corner=tt_25c group=u_fio_internal setup=1.730615 hold=0.092280
+Operating Conditions:
+  process_min                            1
+  temperature_min                        25
+  voltage_min                            1.1
+  process_max                            1
+  temperature_max                        25
+  voltage_max                            1.1
+Warning: Some timing arcs have been disabled for breaking timing loops or because of constant propagation. Use the 'report_disable_timing' command to get the list of these disabled timing arcs. (PTE-003)
+Warning: No clock-gating check is inferred for clock jtag_clk at pins u_e203_subsys_top/u_e203_subsys_main/U5/A1 and u_e203_subsys_top/u_e203_subsys_main/U5/A2 of cell u_e203_subsys_top/u_e203_subsys_main/U5. (PTE-060)
+Warning: No clock-gating check is inferred for clock jtag_clk at pins u_e203_subsys_top/u_e203_subsys_main/U5/B1 and u_e203_subsys_top/u_e203_subsys_main/U5/A2 of cell u_e203_subsys_top/u_e203_subsys_main/U5. (PTE-060)
+Warning: No clock-gating check is inferred for clock jtag_clk at pins u_e203_subsys_top/u_e203_subsys_main/U5/B2 and u_e203_subsys_top/u_e203_subsys_main/U5/A2 of cell u_e203_subsys_top/u_e203_subsys_main/U5. (PTE-060)
+Warning: No clock-gating check is inferred for clock lfext_clk at pins u_e203_subsys_top/u_e203_subsys_main/U7/A1 and u_e203_subsys_top/u_e203_subsys_main/U7/A2 of cell u_e203_subsys_top/u_e203_subsys_main/U7. (PTE-060)
+Warning: No clock-g
+setup Startpoint: u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_srams/u_e203_itcm_ram/u_e203_itcm_gnrl_ram/u_storage/banks[1].slices[0].macro_ram
+setup Endpoint: u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_clk_ctrl/u_itcm_clkgate/enb_reg
+setup Path Group: hfext_clk
+setup slack (MET)                                                    0.000000
+setup Startpoint: u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_srams/u_e203_itcm_ram/u_e203_itcm_gnrl_ram/u_storage/banks[1].slices[0].macro_ram
+setup Endpoint: u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_itcm_ctrl/u_sram_icb_ctrl/u_sirv_1cyc_sram_ctrl/u_ram_clkgate/enb_reg
+setup Path Group: hfext_clk
+setup slack (MET)                                                    0.000000
+setup Startpoint: u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_srams/u_e203_itcm_ram/u_e203_itcm_gnrl_ram/u_storage/banks[1].slices[0].macro_ram
+setup Endpoint: u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_clk_ctrl/u_biu_clkgate/enb_reg
+setup Path Group: hfext_clk
+setup slack (MET)                                                    0.000000
+setup Startpoint: u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_core/u_e203_ifu/u_e203_ifu_ifetch/ifu_lo_ir_dfflr/qout_r_reg[3]
+setup Endpoint: u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_clk_ctrl/u_dtcm_clkgate/enb_reg
+setup Path Group: hfext_clk
+setup slack (MET)                                                    0.000000
+setup Startpoint: u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_core/u_e203_ifu/u_e203_ifu_ifetch/ifu_lo_ir_dfflr/qout_r_reg[3]
+setup Endpoint: u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_dtcm_ctrl/u_sram_icb_ctrl/u_sirv_1cyc_sram_ctrl/u_ram_clkgate/enb_reg
+setup Path Group: hfext_clk
+setup slack (MET)                                                    0.000000
+setup Startpoint: u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_core/u_e203_ifu/u_e203_ifu_ifetch/ifu_lo_ir_dfflr/qout_r_reg[3]
+setup Endpoint: u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_clk_ctrl/u_ifu_clkgate/enb_reg
+setup Path Group: hfext_clk
+setup slack (MET)                                                    0.000000
+setup Startpoint: u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_core/u_e203_ifu/u_e203_ifu_ifetch/ifu_lo_ir_dfflr/qout_r_reg[3]
+setup Endpoint: u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_clk_ctrl/u_lsu_clkgate/enb_reg
+setup Path Group: hfext_clk
+setup slack (MET)                                                    0.000000
+setup Startpoint: u_e203_subsys_top/u_sirv_debug_module/jtag_dtm_gen.u_sirv_jtag_dtm/jtagStateReg_reg[3]
+setup Endpoint: u_e203_subsys_top/u_sirv_debug_module/jtag_dtm_gen.u_sirv_jtag_dtm/clk_gate_irReg_reg/latch
+setup Path Group: jtag_clk
+setup slack (MET)                                                    0.000000
+setup Startpoint: u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_srams/u_e203_itcm_ram/u_e203_itcm_gnrl_ram/u_storage/banks[1].slices[0].macro_ram
+setup Endpoint: u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_srams/u_e203_itcm_ram/u_e203_itcm_gnrl_ram/u_storage/banks[0].slices[1].macro_ram
+setup Path Group: hfext_clk
+setup slack 
+
+
+== A SOC ss_125c rc=0 ==
+requested libraries: scc40nll_vhsc40_rvt_ss_v0p99_125c_basic.db RAMSP128X16_ss_0p99v_0p99v_125c.db RAMSP1024X16_ss_0p99v_0p99v_125c.db RAMSP4096X16_ss_0p99v_0p99v_125c.db
+Error: Library Compiler executable path is not set. (PT-063)
+AUDIT_READ_SDC 1
+AUDIT_LINK_LIBRARY scc40nll_vhsc40_rvt_ss_v0p99_125c_basic
+AUDIT_LINK_LIBRARY RAMSP128X16_ss_0p99v_0p99v_125c
+AUDIT_LINK_LIBRARY RAMSP1024X16_ss_0p99v_0p99v_125c
+AUDIT_LINK_LIBRARY RAMSP4096X16_ss_0p99v_0p99v_125c
+Q12_PT_CORNER top=qingyu_e203_soc_top corner=ss_125c group=**async_default** setup=3.856798 hold=0.186783
+Q12_PT_CORNER top=qingyu_e203_soc_top corner=ss_125c group=**clock_gating_default** setup=-4.599610 hold=0.103851
+Q12_PT_CORNER top=qingyu_e203_soc_top corner=ss_125c group=core_clk setup=-2.129736 hold=0.205780
+Q12_PT_CORNER top=qingyu_e203_soc_top corner=ss_125c group=hfext_clk setup=-4.950633 hold=0.088605
+Q12_PT_CORNER top=qingyu_e203_soc_top corner=ss_125c group=jtag_clk setup=0.000000 hold=0.217791
+Q12_PT_CORNER top=qingyu_e203_soc_top corner=ss_125c group=lfext_clk setup=30512.974609 hold=0.205447
+Q12_PT_CORNER top=qingyu_e203_soc_top corner=ss_125c group=u_fio_internal setup=-2.234531 hold=0.205780
+Operating Conditions:
+  process_min                            1
+  temperature_min                        125
+  voltage_min                            0.99
+  process_max                            1
+  temperature_max                        125
+  voltage_max                            0.99
+Warning: Some timing arcs have been disabled for breaking timing loops or because of constant propagation. Use the 'report_disable_timing' command to get the list of these disabled timing arcs. (PTE-003)
+Warning: No clock-gating check is inferred for clock hfext_clk at pins u_e203_subsys_top/u_e203_subsys_main/U8/A1 and u_e203_subsys_top/u_e203_subsys_main/U8/A2 of cell u_e203_subsys_top/u_e203_subsys_main/U8. (PTE-060)
+Warning: No clock-gating check is inferred for clock hfext_clk at pins u_e203_subsys_top/u_e203_subsys_main/U8/B1 and u_e203_subsys_top/u_e203_subsys_main/U8/A2 of cell u_e203_subsys_top/u_e203_subsys_main/U8. (PTE-060)
+Warning: No clock-gating check is inferred for clock hfext_clk at pins u_e203_subsys_top/u_e203_subsys_main/U8/B2 and u_e203_subsys_top/u_e203_subsys_main/U8/A2 of cell u_e203_subsys_top/u_e203_subsys_main/U8. (PTE-060)
+Warning: No clock-gating check is inferred for clock hfext_clk at pins u_e203_subsys_top/u_e203_subsys_main/U9/A1 and u_e203_subsys_top/u_e203_subsys_main/U9/A2 of cell u_e203_subsys_top/u_e203_subsys_main/U9. (PTE-060)
+Warning: No cloc
+setup Startpoint: u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_core/u_e203_exu/u_e203_exu_oitf/depth_gt1.ret_ptr_dfflrs/qout_r_reg[0]
+setup Endpoint: u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_srams/u_e203_itcm_ram/u_e203_itcm_gnrl_ram/u_storage/banks[0].slices[1].macro_ram
+setup Path Group: hfext_clk
+setup slack (VIOLATED)                                               -4.950633
+setup Startpoint: u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_core/u_e203_exu/u_e203_exu_oitf/depth_gt1.ret_ptr_dfflrs/qout_r_reg[0]
+setup Endpoint: u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_srams/u_e203_itcm_ram/u_e203_itcm_gnrl_ram/u_storage/banks[0].slices[3].macro_ram
+setup Path Group: hfext_clk
+setup slack (VIOLATED)                                               -4.950633
+setup Startpoint: u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_core/u_e203_exu/u_e203_exu_oitf/depth_gt1.ret_ptr_dfflrs/qout_r_reg[0]
+setup Endpoint: u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_srams/u_e203_itcm_ram/u_e203_itcm_gnrl_ram/u_storage/banks[1].slices[3].macro_ram
+setup Path Group: hfext_clk
+setup slack (VIOLATED)                                               -4.950633
+setup Startpoint: u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_core/u_e203_exu/u_e203_exu_oitf/depth_gt1.ret_ptr_dfflrs/qout_r_reg[0]
+setup Endpoint: u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_srams/u_e203_itcm_ram/u_e203_itcm_gnrl_ram/u_storage/banks[1].slices[0].macro_ram
+setup Path Group: hfext_clk
+setup slack (VIOLATED)                                               -4.950633
+setup Startpoint: u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_core/u_e203_exu/u_e203_exu_oitf/depth_gt1.ret_ptr_dfflrs/qout_r_reg[0]
+setup Endpoint: u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_srams/u_e203_itcm_ram/u_e203_itcm_gnrl_ram/u_storage/banks[0].slices[0].macro_ram
+setup Path Group: hfext_clk
+setup slack (VIOLATED)                                               -4.950633
+setup Startpoint: u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_core/u_e203_exu/u_e203_exu_oitf/depth_gt1.ret_ptr_dfflrs/qout_r_reg[0]
+setup Endpoint: u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_srams/u_e203_itcm_ram/u_e203_itcm_gnrl_ram/u_storage/banks[0].slices[2].macro_ram
+setup Path Group: hfext_clk
+setup slack (VIOLATED)                                               -4.950633
+setup Startpoint: u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_core/u_e203_exu/u_e203_exu_oitf/depth_gt1.ret_ptr_dfflrs/qout_r_reg[0]
+setup Endpoint: u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_srams/u_e203_itcm_ram/u_e203_itcm_gnrl_ram/u_storage/banks[1].slices[2].macro_ram
+setup Path Group: hfext_clk
+setup slack (VIOLATED)                                               -4.950633
+setup Startpoint: u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_core/u_e203_exu/u_e203_exu_oitf/depth_gt1.ret_ptr_dfflrs/qout_r_reg[0]
+setup Endpoint: u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_srams/u_e203_itcm_ram/u_e203_itcm_gnrl_ram/u_storage/banks[1].slices[1].macro_ram
+setup Path Group: hfext_clk
+setup slack (VIOLATED)                                               -4.950633
+setup Startpoint
+
+
+== A SOC ss_m40c rc=0 ==
+requested libraries: scc40nll_vhsc40_rvt_ss_v0p99_-40c_basic.db RAMSP128X16_ss_0p99v_0p99v_m40c.db RAMSP1024X16_ss_0p99v_0p99v_m40c.db RAMSP4096X16_ss_0p99v_0p99v_m40c.db
+Error: Library Compiler executable path is not set. (PT-063)
+AUDIT_READ_SDC 1
+AUDIT_LINK_LIBRARY scc40nll_vhsc40_rvt_ss_v0p99_-40c_basic
+AUDIT_LINK_LIBRARY RAMSP128X16_ss_0p99v_0p99v_m40c
+AUDIT_LINK_LIBRARY RAMSP1024X16_ss_0p99v_0p99v_m40c
+AUDIT_LINK_LIBRARY RAMSP4096X16_ss_0p99v_0p99v_m40c
+Q12_PT_CORNER top=qingyu_e203_soc_top corner=ss_m40c group=**async_default** setup=3.374740 hold=0.203543
+Q12_PT_CORNER top=qingyu_e203_soc_top corner=ss_m40c group=**clock_gating_default** setup=-5.695613 hold=0.118873
+Q12_PT_CORNER top=qingyu_e203_soc_top corner=ss_m40c group=core_clk setup=-3.089702 hold=0.212810
+Q12_PT_CORNER top=qingyu_e203_soc_top corner=ss_m40c group=hfext_clk setup=-6.056549 hold=0.086520
+Q12_PT_CORNER top=qingyu_e203_soc_top corner=ss_m40c group=jtag_clk setup=0.000000 hold=0.225368
+Q12_PT_CORNER top=qingyu_e203_soc_top corner=ss_m40c group=lfext_clk setup=30512.496094 hold=0.212829
+Q12_PT_CORNER top=qingyu_e203_soc_top corner=ss_m40c group=u_fio_internal setup=-3.272563 hold=0.212810
+Operating Conditions:
+  process_min                            1
+  temperature_min                        -40
+  voltage_min                            0.99
+  process_max                            1
+  temperature_max                        -40
+  voltage_max                            0.99
+Warning: Some timing arcs have been disabled for breaking timing loops or because of constant propagation. Use the 'report_disable_timing' command to get the list of these disabled timing arcs. (PTE-003)
+Warning: No clock-gating check is inferred for clock hfext_clk at pins u_e203_subsys_top/u_e203_subsys_main/U6/A1 and u_e203_subsys_top/u_e203_subsys_main/U6/A2 of cell u_e203_subsys_top/u_e203_subsys_main/U6. (PTE-060)
+Warning: No clock-gating check is inferred for clock hfext_clk at pins u_e203_subsys_top/u_e203_subsys_main/U6/B1 and u_e203_subsys_top/u_e203_subsys_main/U6/A2 of cell u_e203_subsys_top/u_e203_subsys_main/U6. (PTE-060)
+Warning: No clock-gating check is inferred for clock hfext_clk at pins u_e203_subsys_top/u_e203_subsys_main/U6/B2 and u_e203_subsys_top/u_e203_subsys_main/U6/A2 of cell u_e203_subsys_top/u_e203_subsys_main/U6. (PTE-060)
+Warning: No clock-gating check is inferred for clock hfext_clk at pins u_e203_subsys_top/u_e203_subsys_main/U9/A1 and u_e203_subsys_top/u_e203_subsys_main/U9/A2 of cell u_e203_subsys_top/u_e203_subsys_main/U9. (PTE-060)
+Warning: No cloc
+setup Startpoint: u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_core/u_e203_exu/u_e203_exu_oitf/depth_gt1.ret_ptr_dfflrs/qout_r_reg[0]
+setup Endpoint: u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_srams/u_e203_itcm_ram/u_e203_itcm_gnrl_ram/u_storage/banks[0].slices[1].macro_ram
+setup Path Group: hfext_clk
+setup slack (VIOLATED)                                               -6.056549
+setup Startpoint: u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_core/u_e203_exu/u_e203_exu_oitf/depth_gt1.ret_ptr_dfflrs/qout_r_reg[0]
+setup Endpoint: u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_srams/u_e203_itcm_ram/u_e203_itcm_gnrl_ram/u_storage/banks[0].slices[3].macro_ram
+setup Path Group: hfext_clk
+setup slack (VIOLATED)                                               -6.056549
+setup Startpoint: u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_core/u_e203_exu/u_e203_exu_oitf/depth_gt1.ret_ptr_dfflrs/qout_r_reg[0]
+setup Endpoint: u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_srams/u_e203_itcm_ram/u_e203_itcm_gnrl_ram/u_storage/banks[1].slices[3].macro_ram
+setup Path Group: hfext_clk
+setup slack (VIOLATED)                                               -6.056549
+setup Startpoint: u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_core/u_e203_exu/u_e203_exu_oitf/depth_gt1.ret_ptr_dfflrs/qout_r_reg[0]
+setup Endpoint: u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_srams/u_e203_itcm_ram/u_e203_itcm_gnrl_ram/u_storage/banks[1].slices[0].macro_ram
+setup Path Group: hfext_clk
+setup slack (VIOLATED)                                               -6.056549
+setup Startpoint: u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_core/u_e203_exu/u_e203_exu_oitf/depth_gt1.ret_ptr_dfflrs/qout_r_reg[0]
+setup Endpoint: u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_srams/u_e203_itcm_ram/u_e203_itcm_gnrl_ram/u_storage/banks[0].slices[0].macro_ram
+setup Path Group: hfext_clk
+setup slack (VIOLATED)                                               -6.056549
+setup Startpoint: u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_core/u_e203_exu/u_e203_exu_oitf/depth_gt1.ret_ptr_dfflrs/qout_r_reg[0]
+setup Endpoint: u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_srams/u_e203_itcm_ram/u_e203_itcm_gnrl_ram/u_storage/banks[0].slices[2].macro_ram
+setup Path Group: hfext_clk
+setup slack (VIOLATED)                                               -6.056549
+setup Startpoint: u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_core/u_e203_exu/u_e203_exu_oitf/depth_gt1.ret_ptr_dfflrs/qout_r_reg[0]
+setup Endpoint: u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_srams/u_e203_itcm_ram/u_e203_itcm_gnrl_ram/u_storage/banks[1].slices[2].macro_ram
+setup Path Group: hfext_clk
+setup slack (VIOLATED)                                               -6.056549
+setup Startpoint: u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_core/u_e203_exu/u_e203_exu_oitf/depth_gt1.ret_ptr_dfflrs/qout_r_reg[0]
+setup Endpoint: u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_srams/u_e203_itcm_ram/u_e203_itcm_gnrl_ram/u_storage/banks[1].slices[1].macro_ram
+setup Path Group: hfext_clk
+setup slack (VIOLATED)                                               -6.056549
+setup Startpoint
+
+
+== A SOC ff_125c rc=0 ==
+requested libraries: scc40nll_vhsc40_rvt_ff_v1p21_125c_basic.db RAMSP128X16_ff_1p21v_1p21v_125c.db RAMSP1024X16_ff_1p21v_1p21v_125c.db RAMSP4096X16_ff_1p21v_1p21v_125c.db
+Error: Library Compiler executable path is not set. (PT-063)
+AUDIT_READ_SDC 1
+AUDIT_LINK_LIBRARY scc40nll_vhsc40_rvt_ff_v1p21_125c_basic
+AUDIT_LINK_LIBRARY RAMSP128X16_ff_1p21v_1p21v_125c
+AUDIT_LINK_LIBRARY RAMSP1024X16_ff_1p21v_1p21v_125c
+AUDIT_LINK_LIBRARY RAMSP4096X16_ff_1p21v_1p21v_125c
+Q12_PT_CORNER top=qingyu_e203_soc_top corner=ff_125c group=**async_default** setup=5.513500 hold=0.057058
+Q12_PT_CORNER top=qingyu_e203_soc_top corner=ff_125c group=**clock_gating_default** setup=2.332160 hold=0.029687
+Q12_PT_CORNER top=qingyu_e203_soc_top corner=ff_125c group=core_clk setup=3.383176 hold=0.026385
+Q12_PT_CORNER top=qingyu_e203_soc_top corner=ff_125c group=hfext_clk setup=0.000000 hold=-0.010491
+Q12_PT_CORNER top=qingyu_e203_soc_top corner=ff_125c group=jtag_clk setup=0.000000 hold=0.065338
+Q12_PT_CORNER top=qingyu_e203_soc_top corner=ff_125c group=lfext_clk setup=30515.880859 hold=0.060842
+Q12_PT_CORNER top=qingyu_e203_soc_top corner=ff_125c group=u_fio_internal setup=3.383176 hold=0.027405
+Operating Conditions:
+  process_min                            1
+  temperature_min                        125
+  voltage_min                            1.21
+  process_max                            1
+  temperature_max                        125
+  voltage_max                            1.21
+Warning: Some timing arcs have been disabled for breaking timing loops or because of constant propagation. Use the 'report_disable_timing' command to get the list of these disabled timing arcs. (PTE-003)
+Warning: No clock-gating check is inferred for clock jtag_clk at pins u_e203_subsys_top/u_e203_subsys_main/U5/A1 and u_e203_subsys_top/u_e203_subsys_main/U5/A2 of cell u_e203_subsys_top/u_e203_subsys_main/U5. (PTE-060)
+Warning: No clock-gating check is inferred for clock jtag_clk at pins u_e203_subsys_top/u_e203_subsys_main/U5/B1 and u_e203_subsys_top/u_e203_subsys_main/U5/A2 of cell u_e203_subsys_top/u_e203_subsys_main/U5. (PTE-060)
+Warning: No clock-gating check is inferred for clock jtag_clk at pins u_e203_subsys_top/u_e203_subsys_main/U5/B2 and u_e203_subsys_top/u_e203_subsys_main/U5/A2 of cell u_e203_subsys_top/u_e203_subsys_main/U5. (PTE-060)
+Warning: No clock-gating check is inferred for clock lfext_clk at pins u_e203_subsys_top/u_e203_subsys_main/U7/A1 and u_e203_subsys_top/u_e203_subsys_main/U7/A2 of cell u_e203_subsys_top/u_e203_subsys_main/U7. (PTE-060)
+Warning: No clock-g
+setup Startpoint: u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_core/u_e203_ifu/u_e203_ifu_ifetch/ifu_hi_ir_dfflr/qout_r_reg[14]
+setup Endpoint: u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_clk_ctrl/u_itcm_clkgate/enb_reg
+setup Path Group: hfext_clk
+setup slack (MET)                                                    0.000000
+setup Startpoint: u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_core/u_e203_ifu/u_e203_ifu_ifetch/ifu_hi_ir_dfflr/qout_r_reg[14]
+setup Endpoint: u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_itcm_ctrl/u_sram_icb_ctrl/u_sirv_1cyc_sram_ctrl/u_ram_clkgate/enb_reg
+setup Path Group: hfext_clk
+setup slack (MET)                                                    0.000000
+setup Startpoint: u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_core/u_e203_ifu/u_e203_ifu_ifetch/ifu_hi_ir_dfflr/qout_r_reg[14]
+setup Endpoint: u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_clk_ctrl/u_biu_clkgate/enb_reg
+setup Path Group: hfext_clk
+setup slack (MET)                                                    0.000000
+setup Startpoint: u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_core/u_e203_ifu/u_e203_ifu_ifetch/ifu_hi_ir_dfflr/qout_r_reg[14]
+setup Endpoint: u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_clk_ctrl/u_dtcm_clkgate/enb_reg
+setup Path Group: hfext_clk
+setup slack (MET)                                                    0.000000
+setup Startpoint: u_e203_subsys_top/u_sirv_debug_module/jtag_dtm_gen.u_sirv_jtag_dtm/jtagStateReg_reg[3]
+setup Endpoint: u_e203_subsys_top/u_sirv_debug_module/jtag_dtm_gen.u_sirv_jtag_dtm/clk_gate_irReg_reg/latch
+setup Path Group: jtag_clk
+setup slack (MET)                                                    0.000000
+setup Startpoint: u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_core/u_e203_ifu/u_e203_ifu_ifetch/ifu_hi_ir_dfflr/qout_r_reg[14]
+setup Endpoint: u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_dtcm_ctrl/u_sram_icb_ctrl/u_sirv_1cyc_sram_ctrl/u_ram_clkgate/enb_reg
+setup Path Group: hfext_clk
+setup slack (MET)                                                    0.000000
+setup Startpoint: u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_core/u_e203_ifu/u_e203_ifu_ifetch/ifu_hi_ir_dfflr/qout_r_reg[14]
+setup Endpoint: u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_clk_ctrl/u_ifu_clkgate/enb_reg
+setup Path Group: hfext_clk
+setup slack (MET)                                                    0.000000
+setup Startpoint: u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_core/u_e203_ifu/u_e203_ifu_ifetch/ifu_hi_ir_dfflr/qout_r_reg[14]
+setup Endpoint: u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_clk_ctrl/u_lsu_clkgate/enb_reg
+setup Path Group: hfext_clk
+setup slack (MET)                                                    0.025615
+setup Startpoint: hfextclk (clock source 'hfext_clk')
+setup Endpoint: io_pads_gpioA_o_oval[31]
+setup Path Group: hfext_clk
+setup slack (MET)                                                    2.124089
+setup Startpoint: hfextclk (clock source 'hfext_clk')
+setup Endpoint: io_pads_gpioA_o_oval[30]
+setup Path Group: hfext_clk
+setup slack (MET)                             
+
+
+== A SOC ff_m40c rc=0 ==
+requested libraries: scc40nll_vhsc40_rvt_ff_v1p21_-40c_basic.db RAMSP128X16_ff_1p21v_1p21v_m40c.db RAMSP1024X16_ff_1p21v_1p21v_m40c.db RAMSP4096X16_ff_1p21v_1p21v_m40c.db
+Error: Library Compiler executable path is not set. (PT-063)
+AUDIT_READ_SDC 1
+AUDIT_LINK_LIBRARY scc40nll_vhsc40_rvt_ff_v1p21_-40c_basic
+AUDIT_LINK_LIBRARY RAMSP128X16_ff_1p21v_1p21v_m40c
+AUDIT_LINK_LIBRARY RAMSP1024X16_ff_1p21v_1p21v_m40c
+AUDIT_LINK_LIBRARY RAMSP4096X16_ff_1p21v_1p21v_m40c
+Q12_PT_CORNER top=qingyu_e203_soc_top corner=ff_m40c group=**async_default** setup=5.576869 hold=0.054488
+Q12_PT_CORNER top=qingyu_e203_soc_top corner=ff_m40c group=**clock_gating_default** setup=2.588639 hold=0.031033
+Q12_PT_CORNER top=qingyu_e203_soc_top corner=ff_m40c group=core_clk setup=3.595765 hold=0.025743
+Q12_PT_CORNER top=qingyu_e203_soc_top corner=ff_m40c group=hfext_clk setup=0.000000 hold=0.025765
+Q12_PT_CORNER top=qingyu_e203_soc_top corner=ff_m40c group=jtag_clk setup=0.000000 hold=0.059382
+Q12_PT_CORNER top=qingyu_e203_soc_top corner=ff_m40c group=lfext_clk setup=30516.007812 hold=0.057356
+Q12_PT_CORNER top=qingyu_e203_soc_top corner=ff_m40c group=u_fio_internal setup=3.595765 hold=0.026935
+Operating Conditions:
+  process_min                            1
+  temperature_min                        -40
+  voltage_min                            1.21
+  process_max                            1
+  temperature_max                        -40
+  voltage_max                            1.21
+Warning: Some timing arcs have been disabled for breaking timing loops or because of constant propagation. Use the 'report_disable_timing' command to get the list of these disabled timing arcs. (PTE-003)
+Warning: No clock-gating check is inferred for clock hfext_clk at pins u_e203_subsys_top/u_e203_subsys_main/U9/A1 and u_e203_subsys_top/u_e203_subsys_main/U9/A2 of cell u_e203_subsys_top/u_e203_subsys_main/U9. (PTE-060)
+Warning: No clock-gating check is inferred for clock hfext_clk at pins u_e203_subsys_top/u_e203_subsys_main/U9/B1 and u_e203_subsys_top/u_e203_subsys_main/U9/A2 of cell u_e203_subsys_top/u_e203_subsys_main/U9. (PTE-060)
+Warning: No clock-gating check is inferred for clock hfext_clk at pins u_e203_subsys_top/u_e203_subsys_main/U9/B2 and u_e203_subsys_top/u_e203_subsys_main/U9/A2 of cell u_e203_subsys_top/u_e203_subsys_main/U9. (PTE-060)
+Warning: No clock-gating check is inferred for clock hfext_clk at pins u_e203_subsys_top/u_e203_subsys_main/U6/A1 and u_e203_subsys_top/u_e203_subsys_main/U6/A2 of cell u_e203_subsys_top/u_e203_subsys_main/U6. (PTE-060)
+Warning: No cloc
+setup Startpoint: u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_srams/u_e203_itcm_ram/u_e203_itcm_gnrl_ram/u_storage/banks[1].slices[0].macro_ram
+setup Endpoint: u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_clk_ctrl/u_itcm_clkgate/enb_reg
+setup Path Group: hfext_clk
+setup slack (MET)                                                    0.000000
+setup Startpoint: u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_srams/u_e203_itcm_ram/u_e203_itcm_gnrl_ram/u_storage/banks[1].slices[0].macro_ram
+setup Endpoint: u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_itcm_ctrl/u_sram_icb_ctrl/u_sirv_1cyc_sram_ctrl/u_ram_clkgate/enb_reg
+setup Path Group: hfext_clk
+setup slack (MET)                                                    0.000000
+setup Startpoint: u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_srams/u_e203_itcm_ram/u_e203_itcm_gnrl_ram/u_storage/banks[1].slices[0].macro_ram
+setup Endpoint: u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_clk_ctrl/u_biu_clkgate/enb_reg
+setup Path Group: hfext_clk
+setup slack (MET)                                                    0.000000
+setup Startpoint: u_e203_subsys_top/u_sirv_debug_module/jtag_dtm_gen.u_sirv_jtag_dtm/jtagStateReg_reg[3]
+setup Endpoint: u_e203_subsys_top/u_sirv_debug_module/jtag_dtm_gen.u_sirv_jtag_dtm/clk_gate_irReg_reg/latch
+setup Path Group: jtag_clk
+setup slack (MET)                                                    0.000000
+setup Startpoint: u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_core/u_e203_ifu/u_e203_ifu_ifetch/ifu_hi_ir_dfflr/qout_r_reg[14]
+setup Endpoint: u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_clk_ctrl/u_dtcm_clkgate/enb_reg
+setup Path Group: hfext_clk
+setup slack (MET)                                                    0.000000
+setup Startpoint: u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_core/u_e203_ifu/u_e203_ifu_ifetch/ifu_hi_ir_dfflr/qout_r_reg[14]
+setup Endpoint: u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_dtcm_ctrl/u_sram_icb_ctrl/u_sirv_1cyc_sram_ctrl/u_ram_clkgate/enb_reg
+setup Path Group: hfext_clk
+setup slack (MET)                                                    0.000000
+setup Startpoint: u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_core/u_e203_ifu/u_e203_ifu_ifetch/ifu_hi_ir_dfflr/qout_r_reg[14]
+setup Endpoint: u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_clk_ctrl/u_ifu_clkgate/enb_reg
+setup Path Group: hfext_clk
+setup slack (MET)                                                    0.093130
+setup Startpoint: u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_core/u_e203_ifu/u_e203_ifu_ifetch/ifu_hi_ir_dfflr/qout_r_reg[14]
+setup Endpoint: u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_clk_ctrl/u_lsu_clkgate/enb_reg
+setup Path Group: hfext_clk
+setup slack (MET)                                                    0.223799
+setup Startpoint: hfextclk (clock source 'hfext_clk')
+setup Endpoint: io_pads_gpioA_o_oval[31]
+setup Path Group: hfext_clk
+setup slack (MET)                                                    2.134906
+setup Startpoint: hfextclk (clock source 'hfext_clk')
+setup Endpoint: io_pads_gpioA_o_oval[30]
+setup Path Group: hfext_clk
+setup slack (MET)           
+
+
+== A FIO tt_25c rc=0 ==
+requested libraries: scc40nll_vhsc40_rvt_tt_v1p1_25c_basic.db RAMSP128X16_tt_1p10v_1p10v_25c.db RAMSP1024X16_tt_1p10v_1p10v_25c.db RAMSP4096X16_tt_1p10v_1p10v_25c.db
+Error: Library Compiler executable path is not set. (PT-063)
+AUDIT_READ_SDC 1
+AUDIT_LINK_LIBRARY scc40nll_vhsc40_rvt_tt_v1p1_25c_basic
+AUDIT_LINK_LIBRARY RAMSP128X16_tt_1p10v_1p10v_25c
+AUDIT_LINK_LIBRARY RAMSP1024X16_tt_1p10v_1p10v_25c
+AUDIT_LINK_LIBRARY RAMSP4096X16_tt_1p10v_1p10v_25c
+Q12_PT_CORNER top=qingyu_q12_stream_fio corner=tt_25c group=**clock_gating_default** setup=2.926802 hold=0.048911
+Q12_PT_CORNER top=qingyu_q12_stream_fio corner=tt_25c group=core_clk setup=2.548469 hold=0.041073
+Operating Conditions:
+  process_min                            1
+  temperature_min                        25
+  voltage_min                            1.1
+  process_max                            1
+  temperature_max                        25
+  voltage_max                            1.1
+Warning: Some timing arcs have been disabled for breaking timing loops or because of constant propagation. Use the 'report_disable_timing' command to get the list of these disabled timing arcs. (PTE-003)
+setup Startpoint: rst_n (input port clocked by core_clk)
+setup Endpoint: dma_cmd_wdata[31]
+setup Path Group: core_clk
+setup slack (MET)                                                    2.548469
+setup Startpoint: rst_n (input port clocked by core_clk)
+setup Endpoint: dma_cmd_wdata[30]
+setup Path Group: core_clk
+setup slack (MET)                                                    2.548469
+setup Startpoint: rst_n (input port clocked by core_clk)
+setup Endpoint: dma_cmd_wdata[29]
+setup Path Group: core_clk
+setup slack (MET)                                                    2.548469
+setup Startpoint: rst_n (input port clocked by core_clk)
+setup Endpoint: dma_cmd_wdata[28]
+setup Path Group: core_clk
+setup slack (MET)                                                    2.548469
+setup Startpoint: rst_n (input port clocked by core_clk)
+setup Endpoint: dma_cmd_wdata[27]
+setup Path Group: core_clk
+setup slack (MET)                                                    2.576284
+setup Startpoint: rst_n (input port clocked by core_clk)
+setup Endpoint: dma_cmd_wdata[26]
+setup Path Group: core_clk
+setup slack (MET)                                                    2.576284
+setup Startpoint: rst_n (input port clocked by core_clk)
+setup Endpoint: dma_cmd_wdata[25]
+setup Path Group: core_clk
+setup slack (MET)                                                    2.576284
+setup Startpoint: rst_n (input port clocked by core_clk)
+setup Endpoint: dma_cmd_wdata[24]
+setup Path Group: core_clk
+setup slack (MET)                                                    2.576284
+setup Startpoint: rst_n (input port clocked by core_clk)
+setup Endpoint: dma_cmd_wdata[23]
+setup Path Group: core_clk
+setup slack (MET)                                                    2.576284
+setup Startpoint: rst_n (input port clocked by core_clk)
+setup Endpoint: dma_cmd_wdata[22]
+setup Path Group: core_clk
+setup slack (MET)                                                    2.576284
+hold Startpoint: icb_cmd_wdata[30]
+hold Endpoint: available_words_reg[30]
+hold Path Group: core_clk
+hold slack (MET)                                                    0.041073
+hold Startpoint: icb_cmd_wdata[28]
+hold Endpoint: available_words_reg[28]
+hold Path Group: core_clk
+hold slack (MET)                                                    0.041364
+hold Startpoint: icb_cmd_wdata[18]
+hold Endpoint: available_words_reg[18]
+hold Path Group: core_clk
+hold slack (MET)                                                    0.041458
+hold Startpoint: icb_cmd_wdata[10]
+hold Endpoint: available_words_reg[10]
+hold Path Group: core_clk
+hold slack (MET)                                                    0.041558
+hold Startpoint: icb_cmd_wdata[29]
+hold Endpoint: available_words_reg[29]
+hold Path Group: core_clk
+hold slack (MET)                                                    0.041617
+hold Startpoint: icb_cmd_wdata[20]
+hold Endpoint: available_words_reg[20]
+hold Path Group: core_clk
+hold slack (MET)                                                    0.041728
+hold Startpoint: icb_cmd_wdata[31]
+hold Endpoint: available_words_reg[31]
+hold Path Group: core_clk
+hold slack (MET)                                                    0.041838
+hold Startpoint: icb_cmd_wdata[22]
+hold Endpoint: available_words_reg[22]
+hold Path Group: core_clk
+hold slack (MET)                                                    0.042413
+hold Startpoint: icb_cmd
+
+
+== A FIO ss_125c rc=0 ==
+requested libraries: scc40nll_vhsc40_rvt_ss_v0p99_125c_basic.db RAMSP128X16_ss_0p99v_0p99v_125c.db RAMSP1024X16_ss_0p99v_0p99v_125c.db RAMSP4096X16_ss_0p99v_0p99v_125c.db
+Error: Library Compiler executable path is not set. (PT-063)
+AUDIT_READ_SDC 1
+AUDIT_LINK_LIBRARY scc40nll_vhsc40_rvt_ss_v0p99_125c_basic
+AUDIT_LINK_LIBRARY RAMSP128X16_ss_0p99v_0p99v_125c
+AUDIT_LINK_LIBRARY RAMSP1024X16_ss_0p99v_0p99v_125c
+AUDIT_LINK_LIBRARY RAMSP4096X16_ss_0p99v_0p99v_125c
+Q12_PT_CORNER top=qingyu_q12_stream_fio corner=ss_125c group=**clock_gating_default** setup=0.281086 hold=0.103090
+Q12_PT_CORNER top=qingyu_q12_stream_fio corner=ss_125c group=core_clk setup=0.367258 hold=0.078314
+Operating Conditions:
+  process_min                            1
+  temperature_min                        125
+  voltage_min                            0.99
+  process_max                            1
+  temperature_max                        125
+  voltage_max                            0.99
+Warning: Some timing arcs have been disabled for breaking timing loops or because of constant propagation. Use the 'report_disable_timing' command to get the list of these disabled timing arcs. (PTE-003)
+setup Startpoint: engine/state_reg[2]
+setup Endpoint: engine/clk_gate_read_state_reg/latch
+setup Path Group: **clock_gating_default**
+setup slack (MET)                                                    0.281086
+setup Startpoint: engine/state_reg[2]
+setup Endpoint: engine/clk_gate_state_reg/latch
+setup Path Group: **clock_gating_default**
+setup slack (MET)                                                    0.304357
+setup Startpoint: engine/state_reg[2]
+setup Endpoint: engine/source_guard/clk_gate_offer_addr_reg/latch
+setup Path Group: **clock_gating_default**
+setup slack (MET)                                                    0.358910
+setup Startpoint: engine/compute/corr_val_q_reg[3][4]
+setup Endpoint: engine/compute/out_data_reg[39]
+setup Path Group: core_clk
+setup slack (MET)                                                    0.367258
+setup Startpoint: engine/compute/corr_val_q_reg[3][4]
+setup Endpoint: engine/compute/out_data_reg[40]
+setup Path Group: core_clk
+setup slack (MET)                                                    0.367258
+setup Startpoint: engine/compute/corr_val_q_reg[3][4]
+setup Endpoint: engine/compute/out_data_reg[41]
+setup Path Group: core_clk
+setup slack (MET)                                                    0.367258
+setup Startpoint: engine/compute/corr_val_q_reg[3][4]
+setup Endpoint: engine/compute/out_data_reg[42]
+setup Path Group: core_clk
+setup slack (MET)                                                    0.367258
+setup Startpoint: engine/compute/corr_val_q_reg[3][4]
+setup Endpoint: engine/compute/out_data_reg[43]
+setup Path Group: core_clk
+setup slack (MET)                                                    0.367258
+setup Startpoint: engine/compute/corr_val_q_reg[3][4]
+setup Endpoint: engine/compute/out_data_reg[44]
+setup Path Group: core_clk
+setup slack (MET)                                                    0.367258
+setup Startpoint: engine/compute/corr_val_q_reg[3][4]
+setup Endpoint: engine/compute/out_data_reg[45]
+setup Path Group: core_clk
+setup slack (MET)                                                    0.367258
+hold Startpoint: icb_cmd_wdata[30]
+hold Endpoint: available_words_reg[30]
+hold Path Group: core_clk
+hold slack (MET)                                                    0.078314
+hold Startpoint: icb_cmd_wdata[18]
+hold Endpoint: available_words_reg[18]
+hold Path Group: core_clk
+hold slack (MET)                                                    0.078988
+hold Startpoint: icb_cmd_wdata[29]
+hold Endpoint: available_words_reg[29]
+hold Path Group: core_clk
+hold slack (MET)                                                    0.079058
+hold Startpoint: icb_cmd_wdata[10]
+hold Endpoint: available_words_reg[10]
+hold Path Group: core_clk
+hold slack (MET)                                                    0.079115
+hold Startpoint: icb_cmd_wdata[28]
+hold Endpoint: available_words_reg[28]
+hold Path Group: core_clk
+hold slack (MET)                                                    0.079155
+hold Startpoint: icb_cmd_wdata[20]
+hold Endpoint: available_words_reg[20]
+hold Path Group: core_clk
+hold slack (MET)                                                    0.079524
+hold Startpoint: icb_cmd_wdata[31]
+hold Endpoint: available_words_reg[31]
+hold Path Group: core_clk
+hold slack (MET)                                                    0.079763
+hold Startpoint: icb_cmd_wdata[22]
+hold Endpoint: available_words_re
+
+
+== A FIO ss_m40c rc=0 ==
+requested libraries: scc40nll_vhsc40_rvt_ss_v0p99_-40c_basic.db RAMSP128X16_ss_0p99v_0p99v_m40c.db RAMSP1024X16_ss_0p99v_0p99v_m40c.db RAMSP4096X16_ss_0p99v_0p99v_m40c.db
+Error: Library Compiler executable path is not set. (PT-063)
+AUDIT_READ_SDC 1
+AUDIT_LINK_LIBRARY scc40nll_vhsc40_rvt_ss_v0p99_-40c_basic
+AUDIT_LINK_LIBRARY RAMSP128X16_ss_0p99v_0p99v_m40c
+AUDIT_LINK_LIBRARY RAMSP1024X16_ss_0p99v_0p99v_m40c
+AUDIT_LINK_LIBRARY RAMSP4096X16_ss_0p99v_0p99v_m40c
+Q12_PT_CORNER top=qingyu_q12_stream_fio corner=ss_m40c group=**clock_gating_default** setup=0.000365 hold=0.109426
+Q12_PT_CORNER top=qingyu_q12_stream_fio corner=ss_m40c group=core_clk setup=0.000080 hold=0.075363
+Operating Conditions:
+  process_min                            1
+  temperature_min                        -40
+  voltage_min                            0.99
+  process_max                            1
+  temperature_max                        -40
+  voltage_max                            0.99
+Warning: Some timing arcs have been disabled for breaking timing loops or because of constant propagation. Use the 'report_disable_timing' command to get the list of these disabled timing arcs. (PTE-003)
+setup Startpoint: rst_n (input port clocked by core_clk)
+setup Endpoint: engine/compute/product_hi_q_reg[23]
+setup Path Group: core_clk
+setup slack (MET)                                                    0.000079
+setup Startpoint: engine/compute/x_memory/stripe[2].g1024.macro_ram
+setup Endpoint: engine/compute/x_bank[1].lane[1].pe/product_q_reg[24]
+setup Path Group: core_clk
+setup slack (MET)                                                    0.000119
+setup Startpoint: engine/compute/x_memory/stripe[1].g1024.macro_ram
+setup Endpoint: engine/compute/x_bank[1].lane[10].pe/product_q_reg[24]
+setup Path Group: core_clk
+setup slack (MET)                                                    0.000309
+setup Startpoint: engine/compute/x_memory/stripe[0].g1024.macro_ram
+setup Endpoint: engine/compute/x_bank[0].lane[12].pe/product_q_reg[24]
+setup Path Group: core_clk
+setup slack (MET)                                                    0.000346
+setup Startpoint: engine/decode_weights_reg
+setup Endpoint: engine/clk_gate_read_state_reg/latch
+setup Path Group: **clock_gating_default**
+setup slack (MET)                                                    0.000365
+setup Startpoint: engine/compute/x_memory/stripe[3].g1024.macro_ram
+setup Endpoint: engine/compute/x_bank[2].lane[11].pe/product_q_reg[24]
+setup Path Group: core_clk
+setup slack (MET)                                                    0.000445
+setup Startpoint: engine/compute/x_memory/stripe[3].g1024.macro_ram
+setup Endpoint: engine/compute/x_bank[2].lane[0].pe/product_q_reg[24]
+setup Path Group: core_clk
+setup slack (MET)                                                    0.000641
+setup Startpoint: engine/compute/x_memory/stripe[3].g1024.macro_ram
+setup Endpoint: engine/compute/x_bank[2].lane[15].pe/product_q_reg[24]
+setup Path Group: core_clk
+setup slack (MET)                                                    0.000658
+setup Startpoint: engine/compute/x_memory/stripe[0].g1024.macro_ram
+setup Endpoint: engine/compute/x_bank[0].lane[0].pe/product_q_reg[24]
+setup Path Group: core_clk
+setup slack (MET)                                                    0.000669
+setup Startpoint: engine/compute/x_memory/stripe[4].g1024.macro_ram
+setup Endpoint: engine/compute/x_bank[3].lane[13].pe/product_q_reg[24]
+setup Path Group: core_clk
+setup slack (MET)                                                    0.000736
+hold Startpoint: icb_cmd_wdata[30]
+hold Endpoint: available_words_reg[30]
+hold Path Group: core_clk
+hold slack (MET)                                                    0.075363
+hold Startpoint: icb_cmd_wdata[0]
+hold Endpoint: available_words_reg[0]
+hold Path Group: core_clk
+hold slack (MET)                                                    0.075571
+hold Startpoint: icb_cmd_wdata[6]
+hold Endpoint: available_words_reg[6]
+hold Path Group: core_clk
+hold slack (MET)                                                    0.075911
+hold Startpoint: icb_cmd_wdata[29]
+hold Endpoint: available_words_reg[29]
+hold Path Group: core_clk
+hold slack (MET)                                                    0.076136
+hold Startpoint: icb_cmd_wdata[18]
+hold Endpoint: available_words_reg[18]
+hold Path Group: core_clk
+hold slack (MET)                                                    0.076199
+hold Startpoint: icb_cmd_wdata[10]
+hold Endpoint: available_words_reg[10]
+hold Path Group: core_clk
+hold slack (MET)                      
+
+
+== A FIO ff_125c rc=0 ==
+requested libraries: scc40nll_vhsc40_rvt_ff_v1p21_125c_basic.db RAMSP128X16_ff_1p21v_1p21v_125c.db RAMSP1024X16_ff_1p21v_1p21v_125c.db RAMSP4096X16_ff_1p21v_1p21v_125c.db
+Error: Library Compiler executable path is not set. (PT-063)
+AUDIT_READ_SDC 1
+AUDIT_LINK_LIBRARY scc40nll_vhsc40_rvt_ff_v1p21_125c_basic
+AUDIT_LINK_LIBRARY RAMSP128X16_ff_1p21v_1p21v_125c
+AUDIT_LINK_LIBRARY RAMSP1024X16_ff_1p21v_1p21v_125c
+AUDIT_LINK_LIBRARY RAMSP4096X16_ff_1p21v_1p21v_125c
+Q12_PT_CORNER top=qingyu_q12_stream_fio corner=ff_125c group=**clock_gating_default** setup=4.201165 hold=0.026976
+Q12_PT_CORNER top=qingyu_q12_stream_fio corner=ff_125c group=core_clk setup=3.217330 hold=0.025025
+Operating Conditions:
+  process_min                            1
+  temperature_min                        125
+  voltage_min                            1.21
+  process_max                            1
+  temperature_max                        125
+  voltage_max                            1.21
+Warning: Some timing arcs have been disabled for breaking timing loops or because of constant propagation. Use the 'report_disable_timing' command to get the list of these disabled timing arcs. (PTE-003)
+setup Startpoint: rst_n (input port clocked by core_clk)
+setup Endpoint: dma_cmd_wdata[31]
+setup Path Group: core_clk
+setup slack (MET)                                                    3.217330
+setup Startpoint: rst_n (input port clocked by core_clk)
+setup Endpoint: dma_cmd_wdata[30]
+setup Path Group: core_clk
+setup slack (MET)                                                    3.217330
+setup Startpoint: rst_n (input port clocked by core_clk)
+setup Endpoint: dma_cmd_wdata[29]
+setup Path Group: core_clk
+setup slack (MET)                                                    3.217330
+setup Startpoint: rst_n (input port clocked by core_clk)
+setup Endpoint: dma_cmd_wdata[28]
+setup Path Group: core_clk
+setup slack (MET)                                                    3.217330
+setup Startpoint: rst_n (input port clocked by core_clk)
+setup Endpoint: dma_cmd_wdata[27]
+setup Path Group: core_clk
+setup slack (MET)                                                    3.234644
+setup Startpoint: rst_n (input port clocked by core_clk)
+setup Endpoint: dma_cmd_wdata[26]
+setup Path Group: core_clk
+setup slack (MET)                                                    3.234644
+setup Startpoint: rst_n (input port clocked by core_clk)
+setup Endpoint: dma_cmd_wdata[25]
+setup Path Group: core_clk
+setup slack (MET)                                                    3.234644
+setup Startpoint: rst_n (input port clocked by core_clk)
+setup Endpoint: dma_cmd_wdata[24]
+setup Path Group: core_clk
+setup slack (MET)                                                    3.234644
+setup Startpoint: rst_n (input port clocked by core_clk)
+setup Endpoint: dma_cmd_wdata[23]
+setup Path Group: core_clk
+setup slack (MET)                                                    3.234644
+setup Startpoint: rst_n (input port clocked by core_clk)
+setup Endpoint: dma_cmd_wdata[22]
+setup Path Group: core_clk
+setup slack (MET)                                                    3.234644
+hold Startpoint: engine/compute/x_count_q_reg[9]
+hold Endpoint: engine/compute/x_memory/stripe[3].g1024.macro_ram
+hold Path Group: core_clk
+hold slack (MET)                                                    0.025025
+hold Startpoint: engine/compute/x_count_q_reg[9]
+hold Endpoint: engine/compute/x_memory/stripe[2].g1024.macro_ram
+hold Path Group: core_clk
+hold slack (MET)                                                    0.025025
+hold Startpoint: engine/compute/x_count_q_reg[9]
+hold Endpoint: engine/compute/x_memory/stripe[1].g1024.macro_ram
+hold Path Group: core_clk
+hold slack (MET)                                                    0.025025
+hold Startpoint: engine/compute/x_count_q_reg[9]
+hold Endpoint: engine/compute/x_memory/stripe[0].g1024.macro_ram
+hold Path Group: core_clk
+hold slack (MET)                                                    0.025025
+hold Startpoint: engine/compute/x_count_q_reg[9]
+hold Endpoint: engine/compute/x_memory/stripe[5].g1024.macro_ram
+hold Path Group: core_clk
+hold slack (MET)                                                    0.025025
+hold Startpoint: engine/compute/x_count_q_reg[9]
+hold Endpoint: engine/compute/x_memory/stripe[4].g1024.macro_ram
+hold Path Group: core_clk
+hold slack (MET)                                                    0.025025
+hold Startpoint: engine/compute/x_count_q_reg[1]
+hold Endpoint: engine/compute/x_memory/stripe[3].g1024.macro_ram
+hold Path Group: core_cl
+
+
+== A FIO ff_m40c rc=0 ==
+requested libraries: scc40nll_vhsc40_rvt_ff_v1p21_-40c_basic.db RAMSP128X16_ff_1p21v_1p21v_m40c.db RAMSP1024X16_ff_1p21v_1p21v_m40c.db RAMSP4096X16_ff_1p21v_1p21v_m40c.db
+Error: Library Compiler executable path is not set. (PT-063)
+AUDIT_READ_SDC 1
+AUDIT_LINK_LIBRARY scc40nll_vhsc40_rvt_ff_v1p21_-40c_basic
+AUDIT_LINK_LIBRARY RAMSP128X16_ff_1p21v_1p21v_m40c
+AUDIT_LINK_LIBRARY RAMSP1024X16_ff_1p21v_1p21v_m40c
+AUDIT_LINK_LIBRARY RAMSP4096X16_ff_1p21v_1p21v_m40c
+Q12_PT_CORNER top=qingyu_q12_stream_fio corner=ff_m40c group=**clock_gating_default** setup=4.256856 hold=0.026469
+Q12_PT_CORNER top=qingyu_q12_stream_fio corner=ff_m40c group=core_clk setup=3.298685 hold=0.025858
+Operating Conditions:
+  process_min                            1
+  temperature_min                        -40
+  voltage_min                            1.21
+  process_max                            1
+  temperature_max                        -40
+  voltage_max                            1.21
+Warning: Some timing arcs have been disabled for breaking timing loops or because of constant propagation. Use the 'report_disable_timing' command to get the list of these disabled timing arcs. (PTE-003)
+setup Startpoint: rst_n (input port clocked by core_clk)
+setup Endpoint: dma_cmd_wdata[31]
+setup Path Group: core_clk
+setup slack (MET)                                                    3.298684
+setup Startpoint: rst_n (input port clocked by core_clk)
+setup Endpoint: dma_cmd_wdata[30]
+setup Path Group: core_clk
+setup slack (MET)                                                    3.298684
+setup Startpoint: rst_n (input port clocked by core_clk)
+setup Endpoint: dma_cmd_wdata[29]
+setup Path Group: core_clk
+setup slack (MET)                                                    3.298684
+setup Startpoint: rst_n (input port clocked by core_clk)
+setup Endpoint: dma_cmd_wdata[28]
+setup Path Group: core_clk
+setup slack (MET)                                                    3.298684
+setup Startpoint: rst_n (input port clocked by core_clk)
+setup Endpoint: dma_cmd_wdata[27]
+setup Path Group: core_clk
+setup slack (MET)                                                    3.316072
+setup Startpoint: rst_n (input port clocked by core_clk)
+setup Endpoint: dma_cmd_wdata[26]
+setup Path Group: core_clk
+setup slack (MET)                                                    3.316072
+setup Startpoint: rst_n (input port clocked by core_clk)
+setup Endpoint: dma_cmd_wdata[25]
+setup Path Group: core_clk
+setup slack (MET)                                                    3.316072
+setup Startpoint: rst_n (input port clocked by core_clk)
+setup Endpoint: dma_cmd_wdata[24]
+setup Path Group: core_clk
+setup slack (MET)                                                    3.316072
+setup Startpoint: rst_n (input port clocked by core_clk)
+setup Endpoint: dma_cmd_wdata[23]
+setup Path Group: core_clk
+setup slack (MET)                                                    3.316072
+setup Startpoint: rst_n (input port clocked by core_clk)
+setup Endpoint: dma_cmd_wdata[22]
+setup Path Group: core_clk
+setup slack (MET)                                                    3.316072
+hold Startpoint: engine/compute/x_count_q_reg[9]
+hold Endpoint: engine/compute/x_memory/stripe[3].g1024.macro_ram
+hold Path Group: core_clk
+hold slack (MET)                                                    0.025858
+hold Startpoint: engine/compute/x_count_q_reg[9]
+hold Endpoint: engine/compute/x_memory/stripe[2].g1024.macro_ram
+hold Path Group: core_clk
+hold slack (MET)                                                    0.025858
+hold Startpoint: engine/compute/x_count_q_reg[9]
+hold Endpoint: engine/compute/x_memory/stripe[1].g1024.macro_ram
+hold Path Group: core_clk
+hold slack (MET)                                                    0.025858
+hold Startpoint: engine/compute/x_count_q_reg[9]
+hold Endpoint: engine/compute/x_memory/stripe[0].g1024.macro_ram
+hold Path Group: core_clk
+hold slack (MET)                                                    0.025858
+hold Startpoint: engine/compute/x_count_q_reg[9]
+hold Endpoint: engine/compute/x_memory/stripe[5].g1024.macro_ram
+hold Path Group: core_clk
+hold slack (MET)                                                    0.025858
+hold Startpoint: engine/compute/x_count_q_reg[9]
+hold Endpoint: engine/compute/x_memory/stripe[4].g1024.macro_ram
+hold Path Group: core_clk
+hold slack (MET)                                                    0.025858
+hold Startpoint: icb_cmd_wdata[30]
+hold Endpoint: available_words_reg[30]
+hold Path Group: core_clk
+hold slack (MET)                      
+
+
+B original run /tmp/q12clean_B__b0skb4j
+B SOC net_sha256 60ce7ed730683b088a68f1d5c811ad7a357831e70d1fe6c9b867200e763ef5ea orig_sdc_sha256 eb1e41c2b677d7f1162f8b95e04643ffaa16d06fc80a7c581d6f24d8e36416dc single_corner_sdc_sha256 e8c33b0f0baab46bcdc584e0d3b88c8d66901e1a83482cb954e8737bc0b16900
+removed complete command:
+set_operating_conditions -max tt_v1p1_25c -max_library                         \
+scc40nll_vhsc40_rvt_tt_v1p1_25c_basic\
+                         -min ff_v1p21_-40c -min_library                       \
+scc40nll_vhsc40_rvt_ff_v1p21_-40c_basic
+
+B FIO net_sha256 0bf704bebc7acda7b0790608f2014e7588e7776f47ababcd881aeb927cc33e2f orig_sdc_sha256 3f672a64954580b226807d4d2fa3607378f3181f889d98232b30a060aa9bfa72 single_corner_sdc_sha256 dbd6e81392e1cc810e7a0ebc98864fffae419163f4c67ba827f93f43e78a1cbc
+removed complete command:
+set_operating_conditions -max ss_v0p99_-40c -max_library                       \
+scc40nll_vhsc40_rvt_ss_v0p99_-40c_basic\
+                         -min ff_v1p21_-40c -min_library                       \
+scc40nll_vhsc40_rvt_ff_v1p21_-40c_basic
+
+
+== B SOC tt_25c rc=0 ==
+requested libraries: scc40nll_vhsc40_rvt_tt_v1p1_25c_basic.db RAMSP128X16_tt_1p10v_1p10v_25c.db RAMSP1024X16_tt_1p10v_1p10v_25c.db RAMSP4096X16_tt_1p10v_1p10v_25c.db
+Error: Library Compiler executable path is not set. (PT-063)
+AUDIT_READ_SDC 1
+AUDIT_LINK_LIBRARY scc40nll_vhsc40_rvt_tt_v1p1_25c_basic
+AUDIT_LINK_LIBRARY RAMSP128X16_tt_1p10v_1p10v_25c
+AUDIT_LINK_LIBRARY RAMSP1024X16_tt_1p10v_1p10v_25c
+AUDIT_LINK_LIBRARY RAMSP4096X16_tt_1p10v_1p10v_25c
+Q12_PT_CORNER top=qingyu_e203_soc_top corner=tt_25c group=**async_default** setup=4.758267 hold=0.097229
+Q12_PT_CORNER top=qingyu_e203_soc_top corner=tt_25c group=**clock_gating_default** setup=0.201186 hold=0.058618
+Q12_PT_CORNER top=qingyu_e203_soc_top corner=tt_25c group=core_clk setup=0.007676 hold=0.083457
+Q12_PT_CORNER top=qingyu_e203_soc_top corner=tt_25c group=hfext_clk setup=0.000000 hold=0.046746
+Q12_PT_CORNER top=qingyu_e203_soc_top corner=tt_25c group=jtag_clk setup=0.000000 hold=0.111203
+Q12_PT_CORNER top=qingyu_e203_soc_top corner=tt_25c group=lfext_clk setup=30515.039062 hold=0.103505
+Q12_PT_CORNER top=qingyu_e203_soc_top corner=tt_25c group=u_fio_internal setup=1.407561 hold=0.083457
+Operating Conditions:
+  process_min                            1
+  temperature_min                        25
+  voltage_min                            1.1
+  process_max                            1
+  temperature_max                        25
+  voltage_max                            1.1
+Warning: Some timing arcs have been disabled for breaking timing loops or because of constant propagation. Use the 'report_disable_timing' command to get the list of these disabled timing arcs. (PTE-003)
+Warning: No clock-gating check is inferred for clock hfext_clk at pins u_e203_subsys_top/u_e203_subsys_main/U6/A1 and u_e203_subsys_top/u_e203_subsys_main/U6/A2 of cell u_e203_subsys_top/u_e203_subsys_main/U6. (PTE-060)
+Warning: No clock-gating check is inferred for clock hfext_clk at pins u_e203_subsys_top/u_e203_subsys_main/U6/B1 and u_e203_subsys_top/u_e203_subsys_main/U6/A2 of cell u_e203_subsys_top/u_e203_subsys_main/U6. (PTE-060)
+Warning: No clock-gating check is inferred for clock hfext_clk at pins u_e203_subsys_top/u_e203_subsys_main/U6/B2 and u_e203_subsys_top/u_e203_subsys_main/U6/A2 of cell u_e203_subsys_top/u_e203_subsys_main/U6. (PTE-060)
+Warning: No clock-gating check is inferred for clock lfext_clk at pins u_e203_subsys_top/u_e203_subsys_main/U7/A1 and u_e203_subsys_top/u_e203_subsys_main/U7/A2 of cell u_e203_subsys_top/u_e203_subsys_main/U7. (PTE-060)
+Warning: No cloc
+setup Startpoint: u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_srams/u_e203_itcm_ram/u_e203_itcm_gnrl_ram/u_storage/banks[1].slices[0].macro_ram
+setup Endpoint: u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_clk_ctrl/u_itcm_clkgate/enb_reg
+setup Path Group: hfext_clk
+setup slack (MET)                                                    0.000000
+setup Startpoint: u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_srams/u_e203_itcm_ram/u_e203_itcm_gnrl_ram/u_storage/banks[1].slices[0].macro_ram
+setup Endpoint: u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_itcm_ctrl/u_sram_icb_ctrl/u_sirv_1cyc_sram_ctrl/u_ram_clkgate/enb_reg
+setup Path Group: hfext_clk
+setup slack (MET)                                                    0.000000
+setup Startpoint: u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_srams/u_e203_itcm_ram/u_e203_itcm_gnrl_ram/u_storage/banks[1].slices[0].macro_ram
+setup Endpoint: u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_clk_ctrl/u_biu_clkgate/enb_reg
+setup Path Group: hfext_clk
+setup slack (MET)                                                    0.000000
+setup Startpoint: u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_core/u_e203_ifu/u_e203_ifu_ifetch/ifu_lo_ir_dfflr/qout_r_reg[12]
+setup Endpoint: u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_clk_ctrl/u_dtcm_clkgate/enb_reg
+setup Path Group: hfext_clk
+setup slack (MET)                                                    0.000000
+setup Startpoint: u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_core/u_e203_ifu/u_e203_ifu_ifetch/ifu_lo_ir_dfflr/qout_r_reg[12]
+setup Endpoint: u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_dtcm_ctrl/u_sram_icb_ctrl/u_sirv_1cyc_sram_ctrl/u_ram_clkgate/enb_reg
+setup Path Group: hfext_clk
+setup slack (MET)                                                    0.000000
+setup Startpoint: u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_core/u_e203_ifu/u_e203_ifu_ifetch/ifu_lo_ir_dfflr/qout_r_reg[12]
+setup Endpoint: u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_clk_ctrl/u_ifu_clkgate/enb_reg
+setup Path Group: hfext_clk
+setup slack (MET)                                                    0.000000
+setup Startpoint: u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_core/u_e203_ifu/u_e203_ifu_ifetch/ifu_lo_ir_dfflr/qout_r_reg[12]
+setup Endpoint: u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_clk_ctrl/u_lsu_clkgate/enb_reg
+setup Path Group: hfext_clk
+setup slack (MET)                                                    0.000000
+setup Startpoint: u_e203_subsys_top/u_sirv_debug_module/jtag_dtm_gen.u_sirv_jtag_dtm/jtagStateReg_reg[3]
+setup Endpoint: u_e203_subsys_top/u_sirv_debug_module/jtag_dtm_gen.u_sirv_jtag_dtm/clk_gate_irReg_reg/latch
+setup Path Group: jtag_clk
+setup slack (MET)                                                    0.000000
+setup Startpoint: u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_srams/u_e203_itcm_ram/u_e203_itcm_gnrl_ram/u_storage/banks[1].slices[0].macro_ram
+setup Endpoint: u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_srams/u_e203_itcm_ram/u_e203_itcm_gnrl_ram/u_storage/banks[0].slices[1].macro_ram
+setup Path Group: hfext_clk
+setup sl
+
+
+== B SOC ss_125c rc=0 ==
+requested libraries: scc40nll_vhsc40_rvt_ss_v0p99_125c_basic.db RAMSP128X16_ss_0p99v_0p99v_125c.db RAMSP1024X16_ss_0p99v_0p99v_125c.db RAMSP4096X16_ss_0p99v_0p99v_125c.db
+Error: Library Compiler executable path is not set. (PT-063)
+AUDIT_READ_SDC 1
+AUDIT_LINK_LIBRARY scc40nll_vhsc40_rvt_ss_v0p99_125c_basic
+AUDIT_LINK_LIBRARY RAMSP128X16_ss_0p99v_0p99v_125c
+AUDIT_LINK_LIBRARY RAMSP1024X16_ss_0p99v_0p99v_125c
+AUDIT_LINK_LIBRARY RAMSP4096X16_ss_0p99v_0p99v_125c
+Q12_PT_CORNER top=qingyu_e203_soc_top corner=ss_125c group=**async_default** setup=3.366190 hold=0.186783
+Q12_PT_CORNER top=qingyu_e203_soc_top corner=ss_125c group=**clock_gating_default** setup=-4.466087 hold=0.103851
+Q12_PT_CORNER top=qingyu_e203_soc_top corner=ss_125c group=core_clk setup=-5.050155 hold=0.185392
+Q12_PT_CORNER top=qingyu_e203_soc_top corner=ss_125c group=hfext_clk setup=-4.927287 hold=0.088605
+Q12_PT_CORNER top=qingyu_e203_soc_top corner=ss_125c group=jtag_clk setup=0.000000 hold=0.217791
+Q12_PT_CORNER top=qingyu_e203_soc_top corner=ss_125c group=lfext_clk setup=30512.974609 hold=0.205447
+Q12_PT_CORNER top=qingyu_e203_soc_top corner=ss_125c group=u_fio_internal setup=-2.657257 hold=0.185392
+Operating Conditions:
+  process_min                            1
+  temperature_min                        125
+  voltage_min                            0.99
+  process_max                            1
+  temperature_max                        125
+  voltage_max                            0.99
+Warning: Some timing arcs have been disabled for breaking timing loops or because of constant propagation. Use the 'report_disable_timing' command to get the list of these disabled timing arcs. (PTE-003)
+Warning: No clock-gating check is inferred for clock jtag_clk at pins u_e203_subsys_top/u_e203_subsys_main/U5/A1 and u_e203_subsys_top/u_e203_subsys_main/U5/A2 of cell u_e203_subsys_top/u_e203_subsys_main/U5. (PTE-060)
+Warning: No clock-gating check is inferred for clock jtag_clk at pins u_e203_subsys_top/u_e203_subsys_main/U5/B1 and u_e203_subsys_top/u_e203_subsys_main/U5/A2 of cell u_e203_subsys_top/u_e203_subsys_main/U5. (PTE-060)
+Warning: No clock-gating check is inferred for clock jtag_clk at pins u_e203_subsys_top/u_e203_subsys_main/U5/B2 and u_e203_subsys_top/u_e203_subsys_main/U5/A2 of cell u_e203_subsys_top/u_e203_subsys_main/U5. (PTE-060)
+Warning: No clock-gating check is inferred for clock hfext_clk at pins u_e203_subsys_top/u_e203_subsys_main/U9/A1 and u_e203_subsys_top/u_e203_subsys_main/U9/A2 of cell u_e203_subsys_top/u_e203_subsys_main/U9. (PTE-060)
+Warning: No clock-g
+setup Startpoint: u_e203_subsys_top/u_e203_subsys_main/u_main_ResetCatchAndSync_2_1/reset_n_catch_reg/reg_0/q_reg
+setup Endpoint: u_fio/engine/source_guard/available_end_o_reg[33]
+setup Path Group: core_clk
+setup slack (VIOLATED)                                               -5.050155
+setup Startpoint: u_e203_subsys_top/u_e203_subsys_main/u_main_ResetCatchAndSync_2_1/reset_n_catch_reg/reg_0/q_reg
+setup Endpoint: u_fio/engine/source_guard/available_end_o_reg[34]
+setup Path Group: core_clk
+setup slack (VIOLATED)                                               -4.987353
+setup Startpoint: u_e203_subsys_top/u_e203_subsys_main/u_main_ResetCatchAndSync_2_1/reset_n_catch_reg/reg_0/q_reg
+setup Endpoint: u_fio/engine/source_guard/available_end_o_reg[32]
+setup Path Group: core_clk
+setup slack (VIOLATED)                                               -4.969810
+setup Startpoint: u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_itcm_ctrl/u_sram_icb_ctrl/u_sirv_1cyc_sram_ctrl/u_e1_stage/dp_gt_0.vld_dfflr/qout_r_reg[0]
+setup Endpoint: u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_srams/u_e203_itcm_ram/u_e203_itcm_gnrl_ram/u_storage/banks[0].slices[1].macro_ram
+setup Path Group: hfext_clk
+setup slack (VIOLATED)                                               -4.927287
+setup Startpoint: u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_itcm_ctrl/u_sram_icb_ctrl/u_sirv_1cyc_sram_ctrl/u_e1_stage/dp_gt_0.vld_dfflr/qout_r_reg[0]
+setup Endpoint: u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_srams/u_e203_itcm_ram/u_e203_itcm_gnrl_ram/u_storage/banks[0].slices[3].macro_ram
+setup Path Group: hfext_clk
+setup slack (VIOLATED)                                               -4.927287
+setup Startpoint: u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_itcm_ctrl/u_sram_icb_ctrl/u_sirv_1cyc_sram_ctrl/u_e1_stage/dp_gt_0.vld_dfflr/qout_r_reg[0]
+setup Endpoint: u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_srams/u_e203_itcm_ram/u_e203_itcm_gnrl_ram/u_storage/banks[1].slices[3].macro_ram
+setup Path Group: hfext_clk
+setup slack (VIOLATED)                                               -4.927287
+setup Startpoint: u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_itcm_ctrl/u_sram_icb_ctrl/u_sirv_1cyc_sram_ctrl/u_e1_stage/dp_gt_0.vld_dfflr/qout_r_reg[0]
+setup Endpoint: u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_srams/u_e203_itcm_ram/u_e203_itcm_gnrl_ram/u_storage/banks[1].slices[0].macro_ram
+setup Path Group: hfext_clk
+setup slack (VIOLATED)                                               -4.927287
+setup Startpoint: u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_itcm_ctrl/u_sram_icb_ctrl/u_sirv_1cyc_sram_ctrl/u_e1_stage/dp_gt_0.vld_dfflr/qout_r_reg[0]
+setup Endpoint: u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_srams/u_e203_itcm_ram/u_e203_itcm_gnrl_ram/u_storage/banks[0].slices[0].macro_ram
+setup Path Group: hfext_clk
+setup slack (VIOLATED)                                               -4.927287
+setup Startpoint: u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_itcm_ctrl/u_sram_icb_ctrl/u_sirv_1cyc_sram_ctrl/u_e1_stage/dp_gt_0.vld_dfflr/qout_r_reg[0]
+setup Endpoint: u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_srams/u_e203_itcm_ram/u_e203_itcm_gnrl_ram/u_storage/banks[0].slices[2].m
+
+
+== B SOC ss_m40c rc=0 ==
+requested libraries: scc40nll_vhsc40_rvt_ss_v0p99_-40c_basic.db RAMSP128X16_ss_0p99v_0p99v_m40c.db RAMSP1024X16_ss_0p99v_0p99v_m40c.db RAMSP4096X16_ss_0p99v_0p99v_m40c.db
+Error: Library Compiler executable path is not set. (PT-063)
+AUDIT_READ_SDC 1
+AUDIT_LINK_LIBRARY scc40nll_vhsc40_rvt_ss_v0p99_-40c_basic
+AUDIT_LINK_LIBRARY RAMSP128X16_ss_0p99v_0p99v_m40c
+AUDIT_LINK_LIBRARY RAMSP1024X16_ss_0p99v_0p99v_m40c
+AUDIT_LINK_LIBRARY RAMSP4096X16_ss_0p99v_0p99v_m40c
+Q12_PT_CORNER top=qingyu_e203_soc_top corner=ss_m40c group=**async_default** setup=2.854245 hold=0.203543
+Q12_PT_CORNER top=qingyu_e203_soc_top corner=ss_m40c group=**clock_gating_default** setup=-5.501253 hold=0.118873
+Q12_PT_CORNER top=qingyu_e203_soc_top corner=ss_m40c group=core_clk setup=-6.263703 hold=0.197414
+Q12_PT_CORNER top=qingyu_e203_soc_top corner=ss_m40c group=hfext_clk setup=-5.998165 hold=0.086520
+Q12_PT_CORNER top=qingyu_e203_soc_top corner=ss_m40c group=jtag_clk setup=0.000000 hold=0.225368
+Q12_PT_CORNER top=qingyu_e203_soc_top corner=ss_m40c group=lfext_clk setup=30512.496094 hold=0.212829
+Q12_PT_CORNER top=qingyu_e203_soc_top corner=ss_m40c group=u_fio_internal setup=-3.586316 hold=0.197414
+Operating Conditions:
+  process_min                            1
+  temperature_min                        -40
+  voltage_min                            0.99
+  process_max                            1
+  temperature_max                        -40
+  voltage_max                            0.99
+Warning: Some timing arcs have been disabled for breaking timing loops or because of constant propagation. Use the 'report_disable_timing' command to get the list of these disabled timing arcs. (PTE-003)
+Warning: No clock-gating check is inferred for clock jtag_clk at pins u_e203_subsys_top/u_e203_subsys_main/U5/A1 and u_e203_subsys_top/u_e203_subsys_main/U5/A2 of cell u_e203_subsys_top/u_e203_subsys_main/U5. (PTE-060)
+Warning: No clock-gating check is inferred for clock jtag_clk at pins u_e203_subsys_top/u_e203_subsys_main/U5/B1 and u_e203_subsys_top/u_e203_subsys_main/U5/A2 of cell u_e203_subsys_top/u_e203_subsys_main/U5. (PTE-060)
+Warning: No clock-gating check is inferred for clock jtag_clk at pins u_e203_subsys_top/u_e203_subsys_main/U5/B2 and u_e203_subsys_top/u_e203_subsys_main/U5/A2 of cell u_e203_subsys_top/u_e203_subsys_main/U5. (PTE-060)
+Warning: No clock-gating check is inferred for clock hfext_clk at pins u_e203_subsys_top/u_e203_subsys_main/U6/A1 and u_e203_subsys_top/u_e203_subsys_main/U6/A2 of cell u_e203_subsys_top/u_e203_subsys_main/U6. (PTE-060)
+Warning: No clock-g
+setup Startpoint: u_e203_subsys_top/u_e203_subsys_main/u_main_ResetCatchAndSync_2_1/reset_n_catch_reg/reg_0/q_reg
+setup Endpoint: u_fio/engine/source_guard/available_end_o_reg[33]
+setup Path Group: core_clk
+setup slack (VIOLATED)                                               -6.263701
+setup Startpoint: u_e203_subsys_top/u_e203_subsys_main/u_main_ResetCatchAndSync_2_1/reset_n_catch_reg/reg_0/q_reg
+setup Endpoint: u_fio/engine/source_guard/available_end_o_reg[34]
+setup Path Group: core_clk
+setup slack (VIOLATED)                                               -6.195760
+setup Startpoint: u_e203_subsys_top/u_e203_subsys_main/u_main_ResetCatchAndSync_2_1/reset_n_catch_reg/reg_0/q_reg
+setup Endpoint: u_fio/engine/source_guard/available_end_o_reg[32]
+setup Path Group: core_clk
+setup slack (VIOLATED)                                               -6.180006
+setup Startpoint: u_e203_subsys_top/u_e203_subsys_main/u_main_ResetCatchAndSync_2_1/reset_n_catch_reg/reg_0/q_reg
+setup Endpoint: u_fio/engine/source_guard/available_end_o_reg[31]
+setup Path Group: core_clk
+setup slack (VIOLATED)                                               -6.086862
+setup Startpoint: u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_core/u_e203_ifu/u_e203_ifu_ifetch/ifu_lo_ir_dfflr/qout_r_reg[14]
+setup Endpoint: u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_srams/u_e203_itcm_ram/u_e203_itcm_gnrl_ram/u_storage/banks[0].slices[1].macro_ram
+setup Path Group: hfext_clk
+setup slack (VIOLATED)                                               -5.998165
+setup Startpoint: u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_core/u_e203_ifu/u_e203_ifu_ifetch/ifu_lo_ir_dfflr/qout_r_reg[14]
+setup Endpoint: u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_srams/u_e203_itcm_ram/u_e203_itcm_gnrl_ram/u_storage/banks[0].slices[3].macro_ram
+setup Path Group: hfext_clk
+setup slack (VIOLATED)                                               -5.998165
+setup Startpoint: u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_core/u_e203_ifu/u_e203_ifu_ifetch/ifu_lo_ir_dfflr/qout_r_reg[14]
+setup Endpoint: u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_srams/u_e203_itcm_ram/u_e203_itcm_gnrl_ram/u_storage/banks[1].slices[3].macro_ram
+setup Path Group: hfext_clk
+setup slack (VIOLATED)                                               -5.998165
+setup Startpoint: u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_core/u_e203_ifu/u_e203_ifu_ifetch/ifu_lo_ir_dfflr/qout_r_reg[14]
+setup Endpoint: u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_srams/u_e203_itcm_ram/u_e203_itcm_gnrl_ram/u_storage/banks[1].slices[0].macro_ram
+setup Path Group: hfext_clk
+setup slack (VIOLATED)                                               -5.998165
+setup Startpoint: u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_core/u_e203_ifu/u_e203_ifu_ifetch/ifu_lo_ir_dfflr/qout_r_reg[14]
+setup Endpoint: u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_srams/u_e203_itcm_ram/u_e203_itcm_gnrl_ram/u_storage/banks[0].slices[0].macro_ram
+setup Path Group: hfext_clk
+setup slack (VIOLATED)                                               -5.998165
+setup Startpoint: u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_core/u_e203_ifu/u_e203_ifu_ifetch/ifu_lo_ir_dfflr/qout_r_reg[14]
+setup Endpoint: u_
+
+
+== B SOC ff_125c rc=0 ==
+requested libraries: scc40nll_vhsc40_rvt_ff_v1p21_125c_basic.db RAMSP128X16_ff_1p21v_1p21v_125c.db RAMSP1024X16_ff_1p21v_1p21v_125c.db RAMSP4096X16_ff_1p21v_1p21v_125c.db
+Error: Library Compiler executable path is not set. (PT-063)
+AUDIT_READ_SDC 1
+AUDIT_LINK_LIBRARY scc40nll_vhsc40_rvt_ff_v1p21_125c_basic
+AUDIT_LINK_LIBRARY RAMSP128X16_ff_1p21v_1p21v_125c
+AUDIT_LINK_LIBRARY RAMSP1024X16_ff_1p21v_1p21v_125c
+AUDIT_LINK_LIBRARY RAMSP4096X16_ff_1p21v_1p21v_125c
+Q12_PT_CORNER top=qingyu_e203_soc_top corner=ff_125c group=**async_default** setup=5.348679 hold=0.057058
+Q12_PT_CORNER top=qingyu_e203_soc_top corner=ff_125c group=**clock_gating_default** setup=2.340634 hold=0.029687
+Q12_PT_CORNER top=qingyu_e203_soc_top corner=ff_125c group=core_clk setup=2.214591 hold=0.027405
+Q12_PT_CORNER top=qingyu_e203_soc_top corner=ff_125c group=hfext_clk setup=0.000000 hold=-0.010581
+Q12_PT_CORNER top=qingyu_e203_soc_top corner=ff_125c group=jtag_clk setup=0.000000 hold=0.065338
+Q12_PT_CORNER top=qingyu_e203_soc_top corner=ff_125c group=lfext_clk setup=30515.880859 hold=0.060842
+Q12_PT_CORNER top=qingyu_e203_soc_top corner=ff_125c group=u_fio_internal setup=3.172771 hold=0.027405
+Operating Conditions:
+  process_min                            1
+  temperature_min                        125
+  voltage_min                            1.21
+  process_max                            1
+  temperature_max                        125
+  voltage_max                            1.21
+Warning: Some timing arcs have been disabled for breaking timing loops or because of constant propagation. Use the 'report_disable_timing' command to get the list of these disabled timing arcs. (PTE-003)
+Warning: No clock-gating check is inferred for clock lfext_clk at pins u_e203_subsys_top/u_e203_subsys_main/U7/A1 and u_e203_subsys_top/u_e203_subsys_main/U7/A2 of cell u_e203_subsys_top/u_e203_subsys_main/U7. (PTE-060)
+Warning: No clock-gating check is inferred for clock lfext_clk at pins u_e203_subsys_top/u_e203_subsys_main/U7/B1 and u_e203_subsys_top/u_e203_subsys_main/U7/A2 of cell u_e203_subsys_top/u_e203_subsys_main/U7. (PTE-060)
+Warning: No clock-gating check is inferred for clock lfext_clk at pins u_e203_subsys_top/u_e203_subsys_main/U7/B2 and u_e203_subsys_top/u_e203_subsys_main/U7/A2 of cell u_e203_subsys_top/u_e203_subsys_main/U7. (PTE-060)
+Warning: No clock-gating check is inferred for clock hfext_clk at pins u_e203_subsys_top/u_e203_subsys_main/U6/A1 and u_e203_subsys_top/u_e203_subsys_main/U6/A2 of cell u_e203_subsys_top/u_e203_subsys_main/U6. (PTE-060)
+Warning: No cloc
+setup Startpoint: u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_core/u_e203_ifu/u_e203_ifu_ifetch/ifu_lo_ir_dfflr/qout_r_reg[12]
+setup Endpoint: u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_clk_ctrl/u_itcm_clkgate/enb_reg
+setup Path Group: hfext_clk
+setup slack (MET)                                                    0.000000
+setup Startpoint: u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_core/u_e203_ifu/u_e203_ifu_ifetch/ifu_lo_ir_dfflr/qout_r_reg[12]
+setup Endpoint: u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_itcm_ctrl/u_sram_icb_ctrl/u_sirv_1cyc_sram_ctrl/u_ram_clkgate/enb_reg
+setup Path Group: hfext_clk
+setup slack (MET)                                                    0.000000
+setup Startpoint: u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_core/u_e203_ifu/u_e203_ifu_ifetch/ifu_lo_ir_dfflr/qout_r_reg[12]
+setup Endpoint: u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_clk_ctrl/u_biu_clkgate/enb_reg
+setup Path Group: hfext_clk
+setup slack (MET)                                                    0.000000
+setup Startpoint: u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_core/u_e203_ifu/u_e203_ifu_ifetch/ifu_lo_ir_dfflr/qout_r_reg[12]
+setup Endpoint: u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_clk_ctrl/u_dtcm_clkgate/enb_reg
+setup Path Group: hfext_clk
+setup slack (MET)                                                    0.000000
+setup Startpoint: u_e203_subsys_top/u_sirv_debug_module/jtag_dtm_gen.u_sirv_jtag_dtm/jtagStateReg_reg[3]
+setup Endpoint: u_e203_subsys_top/u_sirv_debug_module/jtag_dtm_gen.u_sirv_jtag_dtm/clk_gate_irReg_reg/latch
+setup Path Group: jtag_clk
+setup slack (MET)                                                    0.000000
+setup Startpoint: u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_core/u_e203_ifu/u_e203_ifu_ifetch/ifu_lo_ir_dfflr/qout_r_reg[12]
+setup Endpoint: u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_dtcm_ctrl/u_sram_icb_ctrl/u_sirv_1cyc_sram_ctrl/u_ram_clkgate/enb_reg
+setup Path Group: hfext_clk
+setup slack (MET)                                                    0.000000
+setup Startpoint: u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_core/u_e203_ifu/u_e203_ifu_ifetch/ifu_lo_ir_dfflr/qout_r_reg[12]
+setup Endpoint: u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_clk_ctrl/u_ifu_clkgate/enb_reg
+setup Path Group: hfext_clk
+setup slack (MET)                                                    0.000000
+setup Startpoint: u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_core/u_e203_ifu/u_e203_ifu_ifetch/ifu_lo_ir_dfflr/qout_r_reg[12]
+setup Endpoint: u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_clk_ctrl/u_lsu_clkgate/enb_reg
+setup Path Group: hfext_clk
+setup slack (MET)                                                    0.059693
+setup Startpoint: hfextclk (clock source 'hfext_clk')
+setup Endpoint: io_pads_gpioA_o_oval[31]
+setup Path Group: hfext_clk
+setup slack (MET)                                                    2.124089
+setup Startpoint: hfextclk (clock source 'hfext_clk')
+setup Endpoint: io_pads_gpioA_o_oval[30]
+setup Path Group: hfext_clk
+setup slack (MET)                             
+
+
+== B SOC ff_m40c rc=0 ==
+requested libraries: scc40nll_vhsc40_rvt_ff_v1p21_-40c_basic.db RAMSP128X16_ff_1p21v_1p21v_m40c.db RAMSP1024X16_ff_1p21v_1p21v_m40c.db RAMSP4096X16_ff_1p21v_1p21v_m40c.db
+Error: Library Compiler executable path is not set. (PT-063)
+AUDIT_READ_SDC 1
+AUDIT_LINK_LIBRARY scc40nll_vhsc40_rvt_ff_v1p21_-40c_basic
+AUDIT_LINK_LIBRARY RAMSP128X16_ff_1p21v_1p21v_m40c
+AUDIT_LINK_LIBRARY RAMSP1024X16_ff_1p21v_1p21v_m40c
+AUDIT_LINK_LIBRARY RAMSP4096X16_ff_1p21v_1p21v_m40c
+Q12_PT_CORNER top=qingyu_e203_soc_top corner=ff_m40c group=**async_default** setup=5.417022 hold=0.054488
+Q12_PT_CORNER top=qingyu_e203_soc_top corner=ff_m40c group=**clock_gating_default** setup=2.582870 hold=0.031033
+Q12_PT_CORNER top=qingyu_e203_soc_top corner=ff_m40c group=core_clk setup=2.470324 hold=0.026894
+Q12_PT_CORNER top=qingyu_e203_soc_top corner=ff_m40c group=hfext_clk setup=0.000000 hold=0.025765
+Q12_PT_CORNER top=qingyu_e203_soc_top corner=ff_m40c group=jtag_clk setup=0.000000 hold=0.059382
+Q12_PT_CORNER top=qingyu_e203_soc_top corner=ff_m40c group=lfext_clk setup=30516.007812 hold=0.057356
+Q12_PT_CORNER top=qingyu_e203_soc_top corner=ff_m40c group=u_fio_internal setup=3.380481 hold=0.026894
+Operating Conditions:
+  process_min                            1
+  temperature_min                        -40
+  voltage_min                            1.21
+  process_max                            1
+  temperature_max                        -40
+  voltage_max                            1.21
+Warning: Some timing arcs have been disabled for breaking timing loops or because of constant propagation. Use the 'report_disable_timing' command to get the list of these disabled timing arcs. (PTE-003)
+Warning: No clock-gating check is inferred for clock lfext_clk at pins u_e203_subsys_top/u_e203_subsys_main/U7/A1 and u_e203_subsys_top/u_e203_subsys_main/U7/A2 of cell u_e203_subsys_top/u_e203_subsys_main/U7. (PTE-060)
+Warning: No clock-gating check is inferred for clock lfext_clk at pins u_e203_subsys_top/u_e203_subsys_main/U7/B1 and u_e203_subsys_top/u_e203_subsys_main/U7/A2 of cell u_e203_subsys_top/u_e203_subsys_main/U7. (PTE-060)
+Warning: No clock-gating check is inferred for clock lfext_clk at pins u_e203_subsys_top/u_e203_subsys_main/U7/B2 and u_e203_subsys_top/u_e203_subsys_main/U7/A2 of cell u_e203_subsys_top/u_e203_subsys_main/U7. (PTE-060)
+Warning: No clock-gating check is inferred for clock hfext_clk at pins u_e203_subsys_top/u_e203_subsys_main/U6/A1 and u_e203_subsys_top/u_e203_subsys_main/U6/A2 of cell u_e203_subsys_top/u_e203_subsys_main/U6. (PTE-060)
+Warning: No cloc
+setup Startpoint: u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_srams/u_e203_itcm_ram/u_e203_itcm_gnrl_ram/u_storage/banks[1].slices[1].macro_ram
+setup Endpoint: u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_clk_ctrl/u_itcm_clkgate/enb_reg
+setup Path Group: hfext_clk
+setup slack (MET)                                                    0.000000
+setup Startpoint: u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_srams/u_e203_itcm_ram/u_e203_itcm_gnrl_ram/u_storage/banks[1].slices[1].macro_ram
+setup Endpoint: u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_itcm_ctrl/u_sram_icb_ctrl/u_sirv_1cyc_sram_ctrl/u_ram_clkgate/enb_reg
+setup Path Group: hfext_clk
+setup slack (MET)                                                    0.000000
+setup Startpoint: u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_srams/u_e203_itcm_ram/u_e203_itcm_gnrl_ram/u_storage/banks[1].slices[1].macro_ram
+setup Endpoint: u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_clk_ctrl/u_biu_clkgate/enb_reg
+setup Path Group: hfext_clk
+setup slack (MET)                                                    0.000000
+setup Startpoint: u_e203_subsys_top/u_sirv_debug_module/jtag_dtm_gen.u_sirv_jtag_dtm/jtagStateReg_reg[3]
+setup Endpoint: u_e203_subsys_top/u_sirv_debug_module/jtag_dtm_gen.u_sirv_jtag_dtm/clk_gate_irReg_reg/latch
+setup Path Group: jtag_clk
+setup slack (MET)                                                    0.000000
+setup Startpoint: u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_core/u_e203_ifu/u_e203_ifu_ifetch/ifu_lo_ir_dfflr/qout_r_reg[12]
+setup Endpoint: u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_clk_ctrl/u_dtcm_clkgate/enb_reg
+setup Path Group: hfext_clk
+setup slack (MET)                                                    0.000000
+setup Startpoint: u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_core/u_e203_ifu/u_e203_ifu_ifetch/ifu_lo_ir_dfflr/qout_r_reg[12]
+setup Endpoint: u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_dtcm_ctrl/u_sram_icb_ctrl/u_sirv_1cyc_sram_ctrl/u_ram_clkgate/enb_reg
+setup Path Group: hfext_clk
+setup slack (MET)                                                    0.000000
+setup Startpoint: u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_core/u_e203_ifu/u_e203_ifu_ifetch/ifu_lo_ir_dfflr/qout_r_reg[12]
+setup Endpoint: u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_clk_ctrl/u_ifu_clkgate/enb_reg
+setup Path Group: hfext_clk
+setup slack (MET)                                                    0.093137
+setup Startpoint: u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_core/u_e203_ifu/u_e203_ifu_ifetch/ifu_lo_ir_dfflr/qout_r_reg[12]
+setup Endpoint: u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/u_e203_cpu/u_e203_clk_ctrl/u_lsu_clkgate/enb_reg
+setup Path Group: hfext_clk
+setup slack (MET)                                                    0.242703
+setup Startpoint: hfextclk (clock source 'hfext_clk')
+setup Endpoint: io_pads_gpioA_o_oval[31]
+setup Path Group: hfext_clk
+setup slack (MET)                                                    2.134906
+setup Startpoint: hfextclk (clock source 'hfext_clk')
+setup Endpoint: io_pads_gpioA_o_oval[30]
+setup Path Group: hfext_clk
+setup slack (MET)           
+
+
+== B FIO tt_25c rc=0 ==
+requested libraries: scc40nll_vhsc40_rvt_tt_v1p1_25c_basic.db RAMSP128X16_tt_1p10v_1p10v_25c.db RAMSP1024X16_tt_1p10v_1p10v_25c.db RAMSP4096X16_tt_1p10v_1p10v_25c.db
+Error: Library Compiler executable path is not set. (PT-063)
+AUDIT_READ_SDC 1
+AUDIT_LINK_LIBRARY scc40nll_vhsc40_rvt_tt_v1p1_25c_basic
+AUDIT_LINK_LIBRARY RAMSP128X16_tt_1p10v_1p10v_25c
+AUDIT_LINK_LIBRARY RAMSP1024X16_tt_1p10v_1p10v_25c
+AUDIT_LINK_LIBRARY RAMSP4096X16_tt_1p10v_1p10v_25c
+Q12_PT_CORNER top=qingyu_q12_stream_fio corner=tt_25c group=**clock_gating_default** setup=2.879061 hold=0.101713
+Q12_PT_CORNER top=qingyu_q12_stream_fio corner=tt_25c group=core_clk setup=2.457228 hold=0.041073
+Operating Conditions:
+  process_min                            1
+  temperature_min                        25
+  voltage_min                            1.1
+  process_max                            1
+  temperature_max                        25
+  voltage_max                            1.1
+Warning: Some timing arcs have been disabled for breaking timing loops or because of constant propagation. Use the 'report_disable_timing' command to get the list of these disabled timing arcs. (PTE-003)
+setup Startpoint: rst_n (input port clocked by core_clk)
+setup Endpoint: engine/compute/product_lo_q_reg[23]
+setup Path Group: core_clk
+setup slack (MET)                                                    2.457229
+setup Startpoint: rst_n (input port clocked by core_clk)
+setup Endpoint: engine/compute/product_lo_q_reg[22]
+setup Path Group: core_clk
+setup slack (MET)                                                    2.523112
+setup Startpoint: rst_n (input port clocked by core_clk)
+setup Endpoint: engine/compute/product_hi_q_reg[23]
+setup Path Group: core_clk
+setup slack (MET)                                                    2.588755
+setup Startpoint: rst_n (input port clocked by core_clk)
+setup Endpoint: engine/compute/product_lo_q_reg[21]
+setup Path Group: core_clk
+setup slack (MET)                                                    2.608930
+setup Startpoint: hw_acked_words[9]
+setup Endpoint: engine/source_guard/available_end_o_reg[34]
+setup Path Group: core_clk
+setup slack (MET)                                                    2.622527
+setup Startpoint: hw_acked_words[9]
+setup Endpoint: engine/source_guard/available_end_o_reg[33]
+setup Path Group: core_clk
+setup slack (MET)                                                    2.628397
+setup Startpoint: rst_n (input port clocked by core_clk)
+setup Endpoint: engine/transport/wr_next_addr_reg[31]
+setup Path Group: core_clk
+setup slack (MET)                                                    2.628839
+setup Startpoint: hw_acked_words[9]
+setup Endpoint: engine/source_guard/available_end_o_reg[32]
+setup Path Group: core_clk
+setup slack (MET)                                                    2.632457
+setup Startpoint: rst_n (input port clocked by core_clk)
+setup Endpoint: dma_cmd_wdata[31]
+setup Path Group: core_clk
+setup slack (MET)                                                    2.634456
+setup Startpoint: rst_n (input port clocked by core_clk)
+setup Endpoint: dma_cmd_wdata[30]
+setup Path Group: core_clk
+setup slack (MET)                                                    2.634456
+hold Startpoint: icb_cmd_wdata[30]
+hold Endpoint: available_words_reg[30]
+hold Path Group: core_clk
+hold slack (MET)                                                    0.041073
+hold Startpoint: icb_cmd_wdata[28]
+hold Endpoint: available_words_reg[28]
+hold Path Group: core_clk
+hold slack (MET)                                                    0.041364
+hold Startpoint: icb_cmd_wdata[18]
+hold Endpoint: available_words_reg[18]
+hold Path Group: core_clk
+hold slack (MET)                                                    0.041458
+hold Startpoint: icb_cmd_wdata[10]
+hold Endpoint: available_words_reg[10]
+hold Path Group: core_clk
+hold slack (MET)                                                    0.041558
+hold Startpoint: icb_cmd_wdata[29]
+hold Endpoint: available_words_reg[29]
+hold Path Group: core_clk
+hold slack (MET)                                                    0.041617
+hold Startpoint: icb_cmd_wdata[20]
+hold Endpoint: available_words_reg[20]
+hold Path Group: core_clk
+hold slack (MET)                                                    0.041728
+hold Startpoint: icb_cmd_wdata[31]
+hold Endpoint: available_words_reg[31]
+hold Path Group: core_clk
+hold slack (MET)                                                    0.041838
+hold Startpoint: icb_cmd_wdata[22]
+hold Endpoint: available_words_reg[22]
+hold Path Group: cor
+
+
+== B FIO ss_125c rc=0 ==
+requested libraries: scc40nll_vhsc40_rvt_ss_v0p99_125c_basic.db RAMSP128X16_ss_0p99v_0p99v_125c.db RAMSP1024X16_ss_0p99v_0p99v_125c.db RAMSP4096X16_ss_0p99v_0p99v_125c.db
+Error: Library Compiler executable path is not set. (PT-063)
+AUDIT_READ_SDC 1
+AUDIT_LINK_LIBRARY scc40nll_vhsc40_rvt_ss_v0p99_125c_basic
+AUDIT_LINK_LIBRARY RAMSP128X16_ss_0p99v_0p99v_125c
+AUDIT_LINK_LIBRARY RAMSP1024X16_ss_0p99v_0p99v_125c
+AUDIT_LINK_LIBRARY RAMSP4096X16_ss_0p99v_0p99v_125c
+Q12_PT_CORNER top=qingyu_q12_stream_fio corner=ss_125c group=**clock_gating_default** setup=0.231055 hold=0.176592
+Q12_PT_CORNER top=qingyu_q12_stream_fio corner=ss_125c group=core_clk setup=0.206576 hold=0.078314
+Operating Conditions:
+  process_min                            1
+  temperature_min                        125
+  voltage_min                            0.99
+  process_max                            1
+  temperature_max                        125
+  voltage_max                            0.99
+Warning: Some timing arcs have been disabled for breaking timing loops or because of constant propagation. Use the 'report_disable_timing' command to get the list of these disabled timing arcs. (PTE-003)
+setup Startpoint: rst_n (input port clocked by core_clk)
+setup Endpoint: engine/compute/product_lo_q_reg[23]
+setup Path Group: core_clk
+setup slack (MET)                                                    0.206576
+setup Startpoint: engine/read_state_reg[0]
+setup Endpoint: engine/clk_gate_read_state_reg/latch
+setup Path Group: **clock_gating_default**
+setup slack (MET)                                                    0.231055
+setup Startpoint: engine/layout_index_reg[0]
+setup Endpoint: engine/layout_cursor_reg[34]
+setup Path Group: core_clk
+setup slack (MET)                                                    0.256513
+setup Startpoint: engine/read_state_reg[0]
+setup Endpoint: engine/clk_gate_state_reg/latch
+setup Path Group: **clock_gating_default**
+setup slack (MET)                                                    0.290589
+setup Startpoint: engine/layout_index_reg[0]
+setup Endpoint: engine/layout_cursor_reg[33]
+setup Path Group: core_clk
+setup slack (MET)                                                    0.303495
+setup Startpoint: engine/compute/corr_val_q_reg[2][0]
+setup Endpoint: engine/compute/out_data_reg[27]
+setup Path Group: core_clk
+setup slack (MET)                                                    0.310476
+setup Startpoint: engine/compute/corr_val_q_reg[2][0]
+setup Endpoint: engine/compute/out_data_reg[29]
+setup Path Group: core_clk
+setup slack (MET)                                                    0.310476
+setup Startpoint: engine/compute/corr_val_q_reg[2][0]
+setup Endpoint: engine/compute/out_data_reg[31]
+setup Path Group: core_clk
+setup slack (MET)                                                    0.310476
+setup Startpoint: engine/compute/corr_val_q_reg[2][0]
+setup Endpoint: engine/compute/out_data_reg[33]
+setup Path Group: core_clk
+setup slack (MET)                                                    0.310476
+setup Startpoint: engine/compute/corr_val_q_reg[2][0]
+setup Endpoint: engine/compute/out_data_reg[37]
+setup Path Group: core_clk
+setup slack (MET)                                                    0.310476
+hold Startpoint: icb_cmd_wdata[30]
+hold Endpoint: available_words_reg[30]
+hold Path Group: core_clk
+hold slack (MET)                                                    0.078314
+hold Startpoint: icb_cmd_wdata[18]
+hold Endpoint: available_words_reg[18]
+hold Path Group: core_clk
+hold slack (MET)                                                    0.078988
+hold Startpoint: icb_cmd_wdata[29]
+hold Endpoint: available_words_reg[29]
+hold Path Group: core_clk
+hold slack (MET)                                                    0.079058
+hold Startpoint: icb_cmd_wdata[10]
+hold Endpoint: available_words_reg[10]
+hold Path Group: core_clk
+hold slack (MET)                                                    0.079115
+hold Startpoint: icb_cmd_wdata[28]
+hold Endpoint: available_words_reg[28]
+hold Path Group: core_clk
+hold slack (MET)                                                    0.079155
+hold Startpoint: icb_cmd_wdata[20]
+hold Endpoint: available_words_reg[20]
+hold Path Group: core_clk
+hold slack (MET)                                                    0.079524
+hold Startpoint: icb_cmd_wdata[31]
+hold Endpoint: available_words_reg[31]
+hold Path Group: core_clk
+hold slack (MET)                                                    0.079763
+hold Startpoint: icb_cmd_wdata[22]
+hold Endpoint: available_words_reg[22]
+hold Path Group: co
+
+
+== B FIO ss_m40c rc=0 ==
+requested libraries: scc40nll_vhsc40_rvt_ss_v0p99_-40c_basic.db RAMSP128X16_ss_0p99v_0p99v_m40c.db RAMSP1024X16_ss_0p99v_0p99v_m40c.db RAMSP4096X16_ss_0p99v_0p99v_m40c.db
+Error: Library Compiler executable path is not set. (PT-063)
+AUDIT_READ_SDC 1
+AUDIT_LINK_LIBRARY scc40nll_vhsc40_rvt_ss_v0p99_-40c_basic
+AUDIT_LINK_LIBRARY RAMSP128X16_ss_0p99v_0p99v_m40c
+AUDIT_LINK_LIBRARY RAMSP1024X16_ss_0p99v_0p99v_m40c
+AUDIT_LINK_LIBRARY RAMSP4096X16_ss_0p99v_0p99v_m40c
+Q12_PT_CORNER top=qingyu_q12_stream_fio corner=ss_m40c group=**clock_gating_default** setup=0.002920 hold=0.185686
+Q12_PT_CORNER top=qingyu_q12_stream_fio corner=ss_m40c group=core_clk setup=0.000152 hold=0.075363
+Operating Conditions:
+  process_min                            1
+  temperature_min                        -40
+  voltage_min                            0.99
+  process_max                            1
+  temperature_max                        -40
+  voltage_max                            0.99
+Warning: Some timing arcs have been disabled for breaking timing loops or because of constant propagation. Use the 'report_disable_timing' command to get the list of these disabled timing arcs. (PTE-003)
+setup Startpoint: engine/compute/x_memory/stripe[3].g1024.macro_ram
+setup Endpoint: engine/compute/x_bank[2].lane[14].pe/product_q_reg[24]
+setup Path Group: core_clk
+setup slack (MET)                                                    0.000152
+setup Startpoint: engine/compute/corr_shift_q_reg[2][2]
+setup Endpoint: engine/compute/out_data_reg[27]
+setup Path Group: core_clk
+setup slack (MET)                                                    0.000159
+setup Startpoint: engine/compute/corr_shift_q_reg[2][2]
+setup Endpoint: engine/compute/out_data_reg[29]
+setup Path Group: core_clk
+setup slack (MET)                                                    0.000159
+setup Startpoint: engine/compute/corr_shift_q_reg[2][2]
+setup Endpoint: engine/compute/out_data_reg[31]
+setup Path Group: core_clk
+setup slack (MET)                                                    0.000159
+setup Startpoint: engine/compute/corr_shift_q_reg[2][2]
+setup Endpoint: engine/compute/out_data_reg[33]
+setup Path Group: core_clk
+setup slack (MET)                                                    0.000159
+setup Startpoint: engine/compute/corr_shift_q_reg[2][2]
+setup Endpoint: engine/compute/out_data_reg[37]
+setup Path Group: core_clk
+setup slack (MET)                                                    0.000159
+setup Startpoint: engine/compute/x_memory/stripe[3].g1024.macro_ram
+setup Endpoint: engine/compute/x_bank[2].lane[12].pe/product_q_reg[24]
+setup Path Group: core_clk
+setup slack (MET)                                                    0.000243
+setup Startpoint: engine/compute/x_memory/stripe[3].g1024.macro_ram
+setup Endpoint: engine/compute/x_bank[2].lane[3].pe/product_q_reg[24]
+setup Path Group: core_clk
+setup slack (MET)                                                    0.000246
+setup Startpoint: engine/compute/x_memory/stripe[3].g1024.macro_ram
+setup Endpoint: engine/compute/x_bank[2].lane[13].pe/product_q_reg[24]
+setup Path Group: core_clk
+setup slack (MET)                                                    0.000361
+setup Startpoint: engine/compute/x_memory/stripe[0].g1024.macro_ram
+setup Endpoint: engine/compute/x_bank[0].lane[15].pe/product_q_reg[24]
+setup Path Group: core_clk
+setup slack (MET)                                                    0.000426
+hold Startpoint: icb_cmd_wdata[30]
+hold Endpoint: available_words_reg[30]
+hold Path Group: core_clk
+hold slack (MET)                                                    0.075363
+hold Startpoint: icb_cmd_wdata[0]
+hold Endpoint: available_words_reg[0]
+hold Path Group: core_clk
+hold slack (MET)                                                    0.075571
+hold Startpoint: icb_cmd_wdata[6]
+hold Endpoint: available_words_reg[6]
+hold Path Group: core_clk
+hold slack (MET)                                                    0.075911
+hold Startpoint: icb_cmd_wdata[29]
+hold Endpoint: available_words_reg[29]
+hold Path Group: core_clk
+hold slack (MET)                                                    0.076136
+hold Startpoint: icb_cmd_wdata[18]
+hold Endpoint: available_words_reg[18]
+hold Path Group: core_clk
+hold slack (MET)                                                    0.076199
+hold Startpoint: icb_cmd_wdata[10]
+hold Endpoint: available_words_reg[10]
+hold Path Group: core_clk
+hold slack (MET)                                                    0.076247
+hold Startpoint: icb_cmd_wdata[28]
+hold Endpoint: available_words_reg[28]
+hold
+
+
+== B FIO ff_125c rc=0 ==
+requested libraries: scc40nll_vhsc40_rvt_ff_v1p21_125c_basic.db RAMSP128X16_ff_1p21v_1p21v_125c.db RAMSP1024X16_ff_1p21v_1p21v_125c.db RAMSP4096X16_ff_1p21v_1p21v_125c.db
+Error: Library Compiler executable path is not set. (PT-063)
+AUDIT_READ_SDC 1
+AUDIT_LINK_LIBRARY scc40nll_vhsc40_rvt_ff_v1p21_125c_basic
+AUDIT_LINK_LIBRARY RAMSP128X16_ff_1p21v_1p21v_125c
+AUDIT_LINK_LIBRARY RAMSP1024X16_ff_1p21v_1p21v_125c
+AUDIT_LINK_LIBRARY RAMSP4096X16_ff_1p21v_1p21v_125c
+Q12_PT_CORNER top=qingyu_q12_stream_fio corner=ff_125c group=**clock_gating_default** setup=4.329942 hold=0.064821
+Q12_PT_CORNER top=qingyu_q12_stream_fio corner=ff_125c group=core_clk setup=3.285796 hold=0.025540
+Operating Conditions:
+  process_min                            1
+  temperature_min                        125
+  voltage_min                            1.21
+  process_max                            1
+  temperature_max                        125
+  voltage_max                            1.21
+Warning: Some timing arcs have been disabled for breaking timing loops or because of constant propagation. Use the 'report_disable_timing' command to get the list of these disabled timing arcs. (PTE-003)
+setup Startpoint: rst_n (input port clocked by core_clk)
+setup Endpoint: dma_cmd_wdata[31]
+setup Path Group: core_clk
+setup slack (MET)                                                    3.285796
+setup Startpoint: rst_n (input port clocked by core_clk)
+setup Endpoint: dma_cmd_wdata[30]
+setup Path Group: core_clk
+setup slack (MET)                                                    3.285796
+setup Startpoint: rst_n (input port clocked by core_clk)
+setup Endpoint: dma_cmd_wdata[29]
+setup Path Group: core_clk
+setup slack (MET)                                                    3.285796
+setup Startpoint: rst_n (input port clocked by core_clk)
+setup Endpoint: dma_cmd_wdata[28]
+setup Path Group: core_clk
+setup slack (MET)                                                    3.285796
+setup Startpoint: rst_n (input port clocked by core_clk)
+setup Endpoint: dma_cmd_wdata[27]
+setup Path Group: core_clk
+setup slack (MET)                                                    3.303260
+setup Startpoint: rst_n (input port clocked by core_clk)
+setup Endpoint: dma_cmd_wdata[26]
+setup Path Group: core_clk
+setup slack (MET)                                                    3.303260
+setup Startpoint: rst_n (input port clocked by core_clk)
+setup Endpoint: dma_cmd_wdata[25]
+setup Path Group: core_clk
+setup slack (MET)                                                    3.303260
+setup Startpoint: rst_n (input port clocked by core_clk)
+setup Endpoint: dma_cmd_wdata[24]
+setup Path Group: core_clk
+setup slack (MET)                                                    3.303260
+setup Startpoint: rst_n (input port clocked by core_clk)
+setup Endpoint: dma_cmd_wdata[23]
+setup Path Group: core_clk
+setup slack (MET)                                                    3.303260
+setup Startpoint: rst_n (input port clocked by core_clk)
+setup Endpoint: dma_cmd_wdata[22]
+setup Path Group: core_clk
+setup slack (MET)                                                    3.303260
+hold Startpoint: icb_cmd_wdata[30]
+hold Endpoint: available_words_reg[30]
+hold Path Group: core_clk
+hold slack (MET)                                                    0.025540
+hold Startpoint: icb_cmd_wdata[28]
+hold Endpoint: available_words_reg[28]
+hold Path Group: core_clk
+hold slack (MET)                                                    0.025566
+hold Startpoint: icb_cmd_wdata[0]
+hold Endpoint: available_words_reg[0]
+hold Path Group: core_clk
+hold slack (MET)                                                    0.025624
+hold Startpoint: icb_cmd_wdata[18]
+hold Endpoint: available_words_reg[18]
+hold Path Group: core_clk
+hold slack (MET)                                                    0.025739
+hold Startpoint: icb_cmd_wdata[10]
+hold Endpoint: available_words_reg[10]
+hold Path Group: core_clk
+hold slack (MET)                                                    0.025890
+hold Startpoint: icb_cmd_wdata[20]
+hold Endpoint: available_words_reg[20]
+hold Path Group: core_clk
+hold slack (MET)                                                    0.025990
+hold Startpoint: icb_cmd_wdata[31]
+hold Endpoint: available_words_reg[31]
+hold Path Group: core_clk
+hold slack (MET)                                                    0.026027
+hold Startpoint: icb_cmd_wdata[6]
+hold Endpoint: available_words_reg[6]
+hold Path Group: core_clk
+hold slack (MET)                                                    0.026058
+hold Startpoint: icb_cmd_wda
+
+
+== B FIO ff_m40c rc=0 ==
+requested libraries: scc40nll_vhsc40_rvt_ff_v1p21_-40c_basic.db RAMSP128X16_ff_1p21v_1p21v_m40c.db RAMSP1024X16_ff_1p21v_1p21v_m40c.db RAMSP4096X16_ff_1p21v_1p21v_m40c.db
+Error: Library Compiler executable path is not set. (PT-063)
+AUDIT_READ_SDC 1
+AUDIT_LINK_LIBRARY scc40nll_vhsc40_rvt_ff_v1p21_-40c_basic
+AUDIT_LINK_LIBRARY RAMSP128X16_ff_1p21v_1p21v_m40c
+AUDIT_LINK_LIBRARY RAMSP1024X16_ff_1p21v_1p21v_m40c
+AUDIT_LINK_LIBRARY RAMSP4096X16_ff_1p21v_1p21v_m40c
+Q12_PT_CORNER top=qingyu_q12_stream_fio corner=ff_m40c group=**clock_gating_default** setup=4.405352 hold=0.061754
+Q12_PT_CORNER top=qingyu_q12_stream_fio corner=ff_m40c group=core_clk setup=3.364523 hold=0.025334
+Operating Conditions:
+  process_min                            1
+  temperature_min                        -40
+  voltage_min                            1.21
+  process_max                            1
+  temperature_max                        -40
+  voltage_max                            1.21
+Warning: Some timing arcs have been disabled for breaking timing loops or because of constant propagation. Use the 'report_disable_timing' command to get the list of these disabled timing arcs. (PTE-003)
+setup Startpoint: rst_n (input port clocked by core_clk)
+setup Endpoint: dma_cmd_wdata[31]
+setup Path Group: core_clk
+setup slack (MET)                                                    3.364523
+setup Startpoint: rst_n (input port clocked by core_clk)
+setup Endpoint: dma_cmd_wdata[30]
+setup Path Group: core_clk
+setup slack (MET)                                                    3.364523
+setup Startpoint: rst_n (input port clocked by core_clk)
+setup Endpoint: dma_cmd_wdata[29]
+setup Path Group: core_clk
+setup slack (MET)                                                    3.364523
+setup Startpoint: rst_n (input port clocked by core_clk)
+setup Endpoint: dma_cmd_wdata[28]
+setup Path Group: core_clk
+setup slack (MET)                                                    3.364523
+setup Startpoint: rst_n (input port clocked by core_clk)
+setup Endpoint: dma_cmd_wdata[27]
+setup Path Group: core_clk
+setup slack (MET)                                                    3.382040
+setup Startpoint: rst_n (input port clocked by core_clk)
+setup Endpoint: dma_cmd_wdata[26]
+setup Path Group: core_clk
+setup slack (MET)                                                    3.382040
+setup Startpoint: rst_n (input port clocked by core_clk)
+setup Endpoint: dma_cmd_wdata[25]
+setup Path Group: core_clk
+setup slack (MET)                                                    3.382040
+setup Startpoint: rst_n (input port clocked by core_clk)
+setup Endpoint: dma_cmd_wdata[24]
+setup Path Group: core_clk
+setup slack (MET)                                                    3.382040
+setup Startpoint: rst_n (input port clocked by core_clk)
+setup Endpoint: dma_cmd_wdata[23]
+setup Path Group: core_clk
+setup slack (MET)                                                    3.382040
+setup Startpoint: rst_n (input port clocked by core_clk)
+setup Endpoint: dma_cmd_wdata[22]
+setup Path Group: core_clk
+setup slack (MET)                                                    3.382040
+hold Startpoint: engine/decoder/buffer_reg[10]
+hold Endpoint: engine/compute/x_memory/stripe[0].g1024.macro_ram
+hold Path Group: core_clk
+hold slack (MET)                                                    0.025334
+hold Startpoint: engine/decoder/buffer_reg[10]
+hold Endpoint: engine/compute/x_memory/stripe[3].g1024.macro_ram
+hold Path Group: core_clk
+hold slack (MET)                                                    0.025334
+hold Startpoint: icb_cmd_wdata[30]
+hold Endpoint: available_words_reg[30]
+hold Path Group: core_clk
+hold slack (MET)                                                    0.025942
+hold Startpoint: icb_cmd_wdata[0]
+hold Endpoint: available_words_reg[0]
+hold Path Group: core_clk
+hold slack (MET)                                                    0.025973
+hold Startpoint: icb_cmd_wdata[28]
+hold Endpoint: available_words_reg[28]
+hold Path Group: core_clk
+hold slack (MET)                                                    0.025997
+hold Startpoint: icb_cmd_wdata[18]
+hold Endpoint: available_words_reg[18]
+hold Path Group: core_clk
+hold slack (MET)                                                    0.026152
+hold Startpoint: icb_cmd_wdata[10]
+hold Endpoint: available_words_reg[10]
+hold Path Group: core_clk
+hold slack (MET)                                                    0.026275
+hold Startpoint: icb_cmd_wdata[20]
+hold Endpoint: available_words_reg[20]
+hold Path Group: core_clk
+hold slack (MET)           
+
+11 TT recheck after removing DC operating-condition command from mapped SDC. Original frozen netlist, vendor SAIF, candidate power.tcl and GLS harness. Each window uses the original physical duration.
+Work: /tmp/q12_11_tt_2eg2puwa
+
+A original run /tmp/q12clean_A_wwfomkyb
+net SHA 2aafa1e6eef09a9604b70bcd4e204d402fe75ac31beefb7ad2d82dad23e2bda8 SDC SHA 3d7a9bc163fba086a4264ca747ba6e7b4be8288b0d179efd371696d47a6215f9
+A power_layer00 original_W=0.0311 recheck_W=0.0311 duration_ps=294830514 energy_uJ=9.1692290 saif_sha256=3793ef9e6caf733e3076e32ca1d5422f45b660c376af10c4ef3da7266be98fa9; Object Type       File (%)          SSA (%)      SSA Force (%) SSA Force (%)   SCA (%)         Clock (%)       Default (%)     Propagated(%)   Implied(%)      Annotated(%)  Total | Object Type       File (%)          SSA (%)      SSA Force (%) SSA Force (%)   SCA (%)         Clock (%)       Default (%)     Propagated(%)   Implied(%)      Annotated(%)  Total
+A power_layer01 original_W=0.0311 recheck_W=0.0311 duration_ps=294830514 energy_uJ=9.1692290 saif_sha256=8a9b3a93e930ddefec53e224fd1e228407b240e32c6d0c07776d3bd86cc640e4; Object Type       File (%)          SSA (%)      SSA Force (%) SSA Force (%)   SCA (%)         Clock (%)       Default (%)     Propagated(%)   Implied(%)      Annotated(%)  Total | Object Type       File (%)          SSA (%)      SSA Force (%) SSA Force (%)   SCA (%)         Clock (%)       Default (%)     Propagated(%)   Implied(%)      Annotated(%)  Total
+A power_layer02 original_W=0.031 recheck_W=0.031 duration_ps=294830514 energy_uJ=9.1397459 saif_sha256=e89b07d50e449c4f9b9c604273a2cdb8d1eb9dcc6a59edc64bf436a6528a2102; Object Type       File (%)          SSA (%)      SSA Force (%) SSA Force (%)   SCA (%)         Clock (%)       Default (%)     Propagated(%)   Implied(%)      Annotated(%)  Total | Object Type       File (%)          SSA (%)      SSA Force (%) SSA Force (%)   SCA (%)         Clock (%)       Default (%)     Propagated(%)   Implied(%)      Annotated(%)  Total
+A power_layer03 original_W=0.031 recheck_W=0.031 duration_ps=294830514 energy_uJ=9.1397459 saif_sha256=407f448d736224a31aa56e1891847fc3e00c8956c03892de342f74d564056d6b; Object Type       File (%)          SSA (%)      SSA Force (%) SSA Force (%)   SCA (%)         Clock (%)       Default (%)     Propagated(%)   Implied(%)      Annotated(%)  Total | Object Type       File (%)          SSA (%)      SSA Force (%) SSA Force (%)   SCA (%)         Clock (%)       Default (%)     Propagated(%)   Implied(%)      Annotated(%)  Total
+A power_layer04 original_W=0.031 recheck_W=0.031 duration_ps=294830514 energy_uJ=9.1397459 saif_sha256=6b22b406b3d29eb3d94981b23b14e38b4dda36025769ae711e0e3f9d8ae18073; Object Type       File (%)          SSA (%)      SSA Force (%) SSA Force (%)   SCA (%)         Clock (%)       Default (%)     Propagated(%)   Implied(%)      Annotated(%)  Total | Object Type       File (%)          SSA (%)      SSA Force (%) SSA Force (%)   SCA (%)         Clock (%)       Default (%)     Propagated(%)   Implied(%)      Annotated(%)  Total
+A power_layer05 original_W=0.0309 recheck_W=0.0309 duration_ps=294830514 energy_uJ=9.1102629 saif_sha256=8682cc9b448f71babcb67163f88687df2291748278e0975f3d75c89d9b9fb4b1; Object Type       File (%)          SSA (%)      SSA Force (%) SSA Force (%)   SCA (%)         Clock (%)       Default (%)     Propagated(%)   Implied(%)      Annotated(%)  Total | Object Type       File (%)          SSA (%)      SSA Force (%) SSA Force (%)   SCA (%)         Clock (%)       Default (%)     Propagated(%)   Implied(%)      Annotated(%)  Total
+A power_layer06 original_W=0.031 recheck_W=0.031 duration_ps=294830514 energy_uJ=9.1397459 saif_sha256=ac1835bbd68b732bfa670638428e4ed4789cecfe74f564e396e9b021c7b2b663; Object Type       File (%)          SSA (%)      SSA Force (%) SSA Force (%)   SCA (%)         Clock (%)       Default (%)     Propagated(%)   Implied(%)      Annotated(%)  Total | Object Type       File (%)          SSA (%)      SSA Force (%) SSA Force (%)   SCA (%)         Clock (%)       Default (%)     Propagated(%)   Implied(%)      Annotated(%)  Total
+A power_layer07 original_W=0.0309 recheck_W=0.0309 duration_ps=294830514 energy_uJ=9.1102629 saif_sha256=b40072f160bbfe4f84f62022240ab68728ee68f7800e2ffe3896702fe4437980; Object Type       File (%)          SSA (%)      SSA Force (%) SSA Force (%)   SCA (%)         Clock (%)       Default (%)     Propagated(%)   Implied(%)      Annotated(%)  Total | Object Type       File (%)          SSA (%)      SSA Force (%) SSA Force (%)   SCA (%)         Clock (%)       Default (%)     Propagated(%)   Implied(%)      Annotated(%)  Total
+A power_layer08 original_W=0.031 recheck_W=0.031 duration_ps=294830514 energy_uJ=9.1397459 saif_sha256=267e77dcd02f0235dd35d976902c46880c77762e2b34756712e0ffeb8de022b1; Object Type       File (%)          SSA (%)      SSA Force (%) SSA Force (%)   SCA (%)         Clock (%)       Default (%)     Propagated(%)   Implied(%)      Annotated(%)  Total | Object Type       File (%)          SSA (%)      SSA Force (%) SSA Force (%)   SCA (%)         Clock (%)       Default (%)     Propagated(%)   Implied(%)      Annotated(%)  Total
+A power_layer09 original_W=0.031 recheck_W=0.031 duration_ps=294830514 energy_uJ=9.1397459 saif_sha256=62c467ac839b28ec4584610aa8da5f7c08382854e7a68592dce4d04e89f5727d; Object Type       File (%)          SSA (%)      SSA Force (%) SSA Force (%)   SCA (%)         Clock (%)       Default (%)     Propagated(%)   Implied(%)      Annotated(%)  Total | Object Type       File (%)          SSA (%)      SSA Force (%) SSA Force (%)   SCA (%)         Clock (%)       Default (%)     Propagated(%)   Implied(%)      Annotated(%)  Total
+A power_layer10 original_W=0.031 recheck_W=0.031 duration_ps=294830514 energy_uJ=9.1397459 saif_sha256=986a831460793b8279c5e68a76f9bce60f348145a262b45c45d8b5fdea053b2b; Object Type       File (%)          SSA (%)      SSA Force (%) SSA Force (%)   SCA (%)         Clock (%)       Default (%)     Propagated(%)   Implied(%)      Annotated(%)  Total | Object Type       File (%)          SSA (%)      SSA Force (%) SSA Force (%)   SCA (%)         Clock (%)       Default (%)     Propagated(%)   Implied(%)      Annotated(%)  Total
+A power_layer11 original_W=0.031 recheck_W=0.031 duration_ps=294830514 energy_uJ=9.1397459 saif_sha256=33b2e3d54c32859e6641f474dba3de0cba66077d01e7a78afaa74b3ec4328ba8; Object Type       File (%)          SSA (%)      SSA Force (%) SSA Force (%)   SCA (%)         Clock (%)       Default (%)     Propagated(%)   Implied(%)      Annotated(%)  Total | Object Type       File (%)          SSA (%)      SSA Force (%) SSA Force (%)   SCA (%)         Clock (%)       Default (%)     Propagated(%)   Implied(%)      Annotated(%)  Total
+A complete=12/12 mean_uJ=9.139745934000002
+GLS recheck exit=1
+{
+  "passed": false,
+  "phase": "simulate",
+  "sdf_bytes": 144407305,
+  "error": "RuntimeError('GLS simulation did not pass cleanly; see sim_gls.log',)"
+}
+
+Doing SDF annotation ...... Done
+Q12_GLS_PRELOAD_DONE commands=131072 responses=131072
+Q12_GLS_FULL_START cycle=44 time_ps=9994930407
+Fatal: "/tmp/q12_11_tt_2eg2puwa/A/gls/tb_gls.sv", 41: tb_gls.u_source: at time 9997237083 ps
+GPIO output disabled mid-task
+GLS SDF diagnostics: ['Error: Library Compiler executable path is not set. (PT-063)']
+
+B original run /tmp/q12clean_B__b0skb4j
+net SHA 60ce7ed730683b088a68f1d5c811ad7a357831e70d1fe6c9b867200e763ef5ea SDC SHA e8c33b0f0baab46bcdc584e0d3b88c8d66901e1a83482cb954e8737bc0b16900
+B power_layer00 original_W=0.0309 recheck_W=0.0309 duration_ps=275079156 energy_uJ=8.4999459 saif_sha256=721a81cf6ed06b9ef90d3e322bc1661f2e7c8db8a05c5518552cdaefa577f7b9; Object Type       File (%)          SSA (%)      SSA Force (%) SSA Force (%)   SCA (%)         Clock (%)       Default (%)     Propagated(%)   Implied(%)      Annotated(%)  Total | Object Type       File (%)          SSA (%)      SSA Force (%) SSA Force (%)   SCA (%)         Clock (%)       Default (%)     Propagated(%)   Implied(%)      Annotated(%)  Total
+B power_layer04 original_W=0.0308 recheck_W=0.0308 duration_ps=275079156 energy_uJ=8.4724380 saif_sha256=c9010373eb5a4fdcdad3d6ac2aed5a657bf3512ae738584c92f7c84feb82eea9; Object Type       File (%)          SSA (%)      SSA Force (%) SSA Force (%)   SCA (%)         Clock (%)       Default (%)     Propagated(%)   Implied(%)      Annotated(%)  Total | Object Type       File (%)          SSA (%)      SSA Force (%) SSA Force (%)   SCA (%)         Clock (%)       Default (%)     Propagated(%)   Implied(%)      Annotated(%)  Total
+B power_layer08 original_W=0.0309 recheck_W=0.0309 duration_ps=275079156 energy_uJ=8.4999459 saif_sha256=1067e07f7a8165e7bc452ce0b4765ca87a32acce7c284fa58d42342a3952ec13; Object Type       File (%)          SSA (%)      SSA Force (%) SSA Force (%)   SCA (%)         Clock (%)       Default (%)     Propagated(%)   Implied(%)      Annotated(%)  Total | Object Type       File (%)          SSA (%)      SSA Force (%) SSA Force (%)   SCA (%)         Clock (%)       Default (%)     Propagated(%)   Implied(%)      Annotated(%)  Total
+B power_layer11 original_W=0.0309 recheck_W=0.0309 duration_ps=275079156 energy_uJ=8.4999459 saif_sha256=839c999fa691082992e71bca1a6a2576baa55abeae7b721cb75391d223e3c83c; Object Type       File (%)          SSA (%)      SSA Force (%) SSA Force (%)   SCA (%)         Clock (%)       Default (%)     Propagated(%)   Implied(%)      Annotated(%)  Total | Object Type       File (%)          SSA (%)      SSA Force (%) SSA Force (%)   SCA (%)         Clock (%)       Default (%)     Propagated(%)   Implied(%)      Annotated(%)  Total
+B complete=4/4 mean_uJ=8.493068941499999
+
+
+A clock_gating.rpt
+Information: Identification of clock-gating cells has not been performed. Pre-existing clock-gating cells will not be reported. (PWR-947)
+          |    Number of Clock gating elements    |     1002         |
+          |    Number of Gated registers          | 24183 (94.45%)   |
+          |  Number of tool-inserted clock gating elements  |  1002 (100.00%)  |
+          |  Number of pre-existing clock gating elements   |     0 (0.00%)    |
+
+A fio_clock_gating.rpt
+Information: Identification of clock-gating cells has not been performed. Pre-existing clock-gating cells will not be reported. (PWR-947)
+          |    Number of Clock gating elements    |      377         |
+          |    Number of Gated registers          | 12733 (97.61%)   |
+          |  Number of tool-inserted clock gating elements  |   377 (100.00%)  |
+          |  Number of pre-existing clock gating elements   |     0 (0.00%)    |
+
+A formal.log
+Verification SUCCEEDED
+ 31227 Passing compare points
+Verification SUCCEEDED
+ 31227 Passing compare points
+
+A formal.log
+Verification SUCCEEDED
+ 14881 Passing compare points
+Verification SUCCEEDED
+ 14881 Passing compare points
+
+B clock_gating.rpt
+Information: Identification of clock-gating cells has not been performed. Pre-existing clock-gating cells will not be reported. (PWR-947)
+          |    Number of Clock gating elements    |      998         |
+          |    Number of Gated registers          | 23982 (94.37%)   |
+          |  Number of tool-inserted clock gating elements  |   998 (100.00%)  |
+          |  Number of pre-existing clock gating elements   |     0 (0.00%)    |
+
+B fio_clock_gating.rpt
+Information: Identification of clock-gating cells has not been performed. Pre-existing clock-gating cells will not be reported. (PWR-947)
+          |    Number of Clock gating elements    |      374         |
+          |    Number of Gated registers          | 12543 (97.59%)   |
+          |  Number of tool-inserted clock gating elements  |   374 (100.00%)  |
+          |  Number of pre-existing clock gating elements   |     0 (0.00%)    |
+
+B formal.log
+Verification SUCCEEDED
+ 30843 Passing compare points
+Verification SUCCEEDED
+ 30843 Passing compare points
+
+B formal.log
+Verification SUCCEEDED
+ 14497 Passing compare points
+Verification SUCCEEDED
+ 14497 Passing compare points

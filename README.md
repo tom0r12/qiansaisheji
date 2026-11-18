@@ -1,15 +1,32 @@
 # 轻语 · E203 前馈线性加速器
 
-本分支保存 2026-11-18 的 q12clean5 双候选工程。当前候选为 A（v8a，W12）和 B（v8b，W10）。[08 号服务器包源码与复现说明](experiments/q12_clean_20261118/server/snapshot_08/README.md)
+## 2026-11-18 最终合规清理版冻结基线（`q12clean6`：`v9a` 主推 / `v9b` 备选）
 
-11 月 13 日冻结的提交基线为 **Q12 native12 earlycheck（2026-11-13）**，入口在 [final/q12_submission_20261113](final/q12_submission_20261113/README.md)。分支 `q12-submission-20261113`，冻结标签 `q12-submission-20261113-r1`。实测约 **6076 tasks/s、增量面积 0.3886 mm²**；整机功耗工程估计 **58.36 mW、9.60 µJ/任务**。150 MHz 全约束时序、严格功耗及等价审计、正式精度和 loader 接口验收仍有未闭合项，不能宣称已全部合格。
+本分支（`q12clean6-20261118`，冻结标签 `q12clean6-submission-20261118-r1`）保存已完成全部赛题必测项与额外签核项（150 MHz 五角 STA + 双层 Formality + 整机 TT SDF 反标门级仿真）并正式冻结的双候选工程：
 
-[测量报告](final/q12_submission_20261113/report/q12_measurement_report.pdf)包含对比、方法和原始截图。当前版本已冻结，后续修复在 `q12-followup-20261113` 分支进行。旧的 [final/q12_20261113](final/q12_20261113/README.md) 是历史压缩输出基线，不能直接替代本次提交版本。
+- **冻结签核总报告与校验清单**：[final/q12_clean_submission_20261118/README.md](final/q12_clean_submission_20261118/README.md) · [FROZEN_MANIFEST_20261118.json](final/q12_clean_submission_20261118/FROZEN_MANIFEST_20261118.json)
+- **11+12 号冻结服务器包源码（已脱敏私有向量）**：[experiments/q12_clean_20261118/server/snapshot_11_12/README.md](experiments/q12_clean_20261118/server/snapshot_11_12/README.md)
+- **官方服务器实测原始汇总日志（11+12 号）**：[experiments/q12_clean_20261118/server/signoff_11_12/](experiments/q12_clean_20261118/server/signoff_11_12/)
+- **完整迭代与合规自检工程**：[experiments/q12_clean_20261118/README.md](experiments/q12_clean_20261118/README.md)
 
-完整的[技术报告](reports/q12_template_20261113/qingyu_technical_report.pdf)包含两页快速预览、设计原理、数据通路、测试分析和原始截图。[报告源码与编译说明](reports/q12_template_20261113/README.md)位于报告目录；队伍编号和参赛队名在封面配置中填写。
+| 实测指标（同冻结配置、零跨版本拼接） | 赛题/目标门槛 | 候选 A（`v9a`，W12 默认主推） | 候选 B（`v9b`，W10 高吞吐备选） |
+|---|---:|---:|---:|
+| 合规自检（135 份上游 E203 零改动、零熵编码、零共享读缓存、原平台 GPIO+System Bus、稠密输出） | 全部通过 | **PASS** | **PASS** |
+| 厂家 `SRAM_Lib_2025` 12 层周期 / 150 MHz 吞吐量 | ≥ 3,000 layers/s | **44,230 拍 / 3,391.36 layers/s** | **41,267 拍 / 3,634.87 layers/s** |
+| 本地 72 夹具全量回归（1,824,768 个输出逐元素比对） | 100% 一致 | **72/72 PASS** | **72/72 PASS** |
+| 600 样本 12 层最大 NRMSE | ≤ 3.00% | **0.2584%** | **0.2587%** |
+| 官方 SCC40NLL RVT 整机新增加速器增量面积 | < 0.40 mm²（上限 2.25） | **0.316366 mm²** | **0.303804 mm²** |
+| Formality 等价性（整机 `qingyu_e203_soc_top` / 独立 `u_fio`） | SUCCEEDED | **31,227 / 14,881 PASS** | **30,843 / 14,497 PASS** |
+| PrimeTime 150 MHz 独立加速器 `u_fio` 全五角（TT/SS125/SS−40/FF125/FF−40） | Setup & Hold ≥ 0 | **五角全 MET**（最差 `+0.00008 ns`） | **五角全 MET**（最差 `+0.00015 ns`） |
+| PrimeTime 150 MHz 整机 TT Setup & 全五角 Hold | 全部 ≥ 0 | **TT Setup MET + 五角 Hold 全 MET** | **TT Setup MET + 五角 Hold 全 MET** |
+| PrimeTime PX 平均功耗 / 单任务平均能耗（`Not Annotated = 0.00%`） | < 10.00 µJ | **31.000 mW / 9.1397 µJ**（12 层） | **30.875 mW / 8.4931 µJ**（4 窗） |
+| 整机 `synth_eco/mapped.v` + TT SDF 反标门级仿真（含 131,072 字毒化预装） | 0 失配 | **PASS（44,230 拍，mismatches=0）** | — |
 
 公开仓库不包含 PDK、厂家 SRAM 模型、私有任务向量、语音数据集、工具链和大体积波形。目录内保存了缺项说明及 SHA-256，复现需在授权环境恢复依赖。
 
-以下入口保留历史版本，不能用于描述当前候选：
+---
 
-主工程在 qingyu/。当前版本、外部依赖和复现步骤见 [交接说明](HANDOFF.md)。基础 RTL 在 qingyu/rtl，opt12 和 opt13 的实际 RTL、固件、测试平台分别在 qingyu/experiments/h1500v/opt12_wait 和 opt13_row8。
+### 历史版本入口（仅供回溯，不代表当前冻结提交配置）
+
+- 11 月 13 日旧基线：[final/q12_submission_20261113](final/q12_submission_20261113/README.md)（分支 `q12-submission-20261113`）
+- 早期主工程与交接记录：`qingyu/` 及 [HANDOFF.md](HANDOFF.md)

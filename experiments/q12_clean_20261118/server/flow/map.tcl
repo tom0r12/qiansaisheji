@@ -1,4 +1,4 @@
-# Whole-SoC mapping for the clean Q12 candidate (official SCC40NLL RVT TT).
+# Whole-SoC mapping for the clean Q12 candidate (official SCC40NLL RVT TT setup + 5-corner bc_wc hold).
 # Low-power: DC clock-gating insertion on enable registers (Q12_GATE=1).
 # Area: compile_ultra with hierarchy preserved (Q12_COMPILE=ultra|medium).
 proc q12_optional_report {name command} {
@@ -8,6 +8,16 @@ proc q12_optional_report {name command} {
   puts "Q12_REPORT_UNAVAILABLE=$name: $message"
  }
  puts "Q12_OPTIONAL_REPORT_END=$name"
+}
+proc q12_strip_opcond {sdc_file} {
+ set fin [open $sdc_file r];set lines [split [read $fin] "\n"];close $fin
+ set fout [open $sdc_file w];set skip 0
+ foreach ln $lines {
+  if {$skip} {set skip [regexp {\\\s*$} $ln];continue}
+  if {[regexp {^\s*set_operating_conditions\b} $ln]} {set skip [regexp {\\\s*$} $ln];continue}
+  puts $fout $ln
+ }
+ close $fout
 }
 set rc [catch {
  set package $env(Q12_PACKAGE)
@@ -25,7 +35,6 @@ set rc [catch {
  if {[sizeof_collection [get_libs -quiet *scc40nll_vhsc40_rvt_tt*]]!=1} {error "Official SCC40NLL RVT TT library required"}
  define_design_lib WORK -path ./WORK
  set_svf mapped.svf
- # Hierarchy-map guidance for Formality (recommended by FM's own status report).
  catch {set hdlin_enable_hier_map true}
  if {![analyze -format sverilog -define $Q12_DEFINES $Q12_SOURCES]} {error "Analyze failed"}
  elaborate qingyu_e203_soc_top
@@ -46,13 +55,8 @@ set rc [catch {
  create_generated_clock -name core_clk -source [get_ports hfextclk] -divide_by 1 [get_pins u_e203_subsys_top/qingyu_bus_clk]
  set_ideal_network [get_ports {hfextclk lfextclk io_pads_jtag_TCK_i_ival}]
  set_ideal_network [get_pins u_e203_subsys_top/qingyu_bus_clk]
- # lfextclk (32.768 kHz RTC/AON) and JTAG TCK are independent board clocks; E203 synchronises
- # every crossing (sirv_gnrl_sync / AON domain), so they are asynchronous to hfext/core.
  set_clock_groups -asynchronous -group [get_clocks {hfext_clk core_clk}] -group [get_clocks lfext_clk] -group [get_clocks jtag_clk]
  set_fix_hold [get_clocks {hfext_clk core_clk}]
- # Upstream E203 debug "inspect" mux forwards the core CLOCK itself onto a GPIO pad
- # (clock-as-data). A forwarded clock is not a data path; cut only that branch.
- # Ordinary GPIO data outputs remain constrained by set_output_delay below.
  set q12_inspect_clk [get_pins -quiet u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/inspect_core_clk]
  puts "Q12_INSPECT_CLK_PINS=[sizeof_collection $q12_inspect_clk]"
  if {[sizeof_collection $q12_inspect_clk]!=1} {error "inspect_core_clk pin not found"}
@@ -85,8 +89,6 @@ set rc [catch {
  }
  if {!$ok} {error "Compile failed"}
  puts Q12_COMPILE_END
- # Safety net: if any setup/hold violation remains, one timing-driven incremental pass
- # (keeps hierarchy, boundaries and inserted clock gates).
  set q12_wns [get_attribute -quiet [get_timing_paths -delay_type max -max_paths 1] slack]
  set q12_whs [get_attribute -quiet [get_timing_paths -delay_type min -max_paths 1] slack]
  puts "Q12_POST_COMPILE_WNS=$q12_wns WHS=$q12_whs"
@@ -96,8 +98,20 @@ set rc [catch {
   if {![compile_ultra -incremental -no_autoungroup -no_boundary_optimization]} {error "Incremental compile failed"}
   puts "Q12_INCREMENTAL_DONE WNS=[get_attribute -quiet [get_timing_paths -delay_type max -max_paths 1] slack] WHS=[get_attribute -quiet [get_timing_paths -delay_type min -max_paths 1] slack]"
  }
- # compile_ultra did not repair min-delay (server 07: WHS unchanged -0.156 at SRAM D/A pins).
- # Dedicated hold-only pass of the basic compiler; setup stays the primary cost.
+ # If FF 125C min libraries are supplied, activate bc_wc (max=tt_v1p1_25c, min=ff_v1p21_125c)
+ # with 0.035 ns hold uncertainty so hold closes across all 5 corners (both ff_125c and ff_m40c).
+ if {[info exists env(Q12_FF125_STD_DB)] && $env(Q12_FF125_STD_DB) ne ""} {
+  set ff_dbs [list $env(Q12_FF125_STD_DB) $env(Q12_FF125_RAM128_DB) $env(Q12_FF125_RAM1024_DB) $env(Q12_FF125_RAM4096_DB)]
+  set tt_dbs [concat $target_library $sram_libraries]
+  foreach fdb $ff_dbs {
+   if {![file readable $fdb]} {error "Missing FF125 min DB: $fdb"}
+   read_db $fdb
+  }
+  foreach tdb $tt_dbs fdb $ff_dbs {set_min_library $tdb -min_version $fdb}
+  set_operating_conditions -max tt_v1p1_25c -max_library scc40nll_vhsc40_rvt_tt_v1p1_25c_basic -min ff_v1p21_125c -min_library scc40nll_vhsc40_rvt_ff_v1p21_125c_basic
+  set_clock_uncertainty -hold 0.035 [all_clocks]
+  puts "Q12_BCWC_HOLD_ARMED WHS=[get_attribute -quiet [get_timing_paths -delay_type min -max_paths 1] slack]"
+ }
  set q12_whs [get_attribute -quiet [get_timing_paths -delay_type min -max_paths 1] slack]
  if {$q12_whs ne "" && [lindex [lsort -real $q12_whs] 0] < 0} {
   redirect -file timing_min_pre_holdfix.rpt {report_timing -delay_type min -max_paths 5 -significant_digits 4}
@@ -110,11 +124,22 @@ set rc [catch {
   if {!$q12_hold_ok} {error "No hold-fixing command succeeded"}
   puts "Q12_HOLDFIX_DONE WNS=[get_attribute -quiet [get_timing_paths -delay_type max -max_paths 1] slack] WHS=[get_attribute -quiet [get_timing_paths -delay_type min -max_paths 1] slack]"
  }
+ set q12_wns2 [get_attribute -quiet [get_timing_paths -delay_type max -max_paths 1] slack]
+ if {$q12_wns2 ne "" && [lindex [lsort -real $q12_wns2] 0] < 0} {
+  set_critical_range 0.3 [current_design]
+  if {![compile_ultra -incremental -no_autoungroup -no_boundary_optimization]} {error "Post-hold incremental setup compile failed"}
+  set q12_whs2 [get_attribute -quiet [get_timing_paths -delay_type min -max_paths 1] slack]
+  if {$q12_whs2 ne "" && [lindex [lsort -real $q12_whs2] 0] < 0} {
+   compile -incremental_mapping -only_hold_time
+  }
+  puts "Q12_POST_HOLD_RESYNC WNS=[get_attribute -quiet [get_timing_paths -delay_type max -max_paths 1] slack] WHS=[get_attribute -quiet [get_timing_paths -delay_type min -max_paths 1] slack]"
+ }
+ set_clock_uncertainty -hold 0.02 [all_clocks]
  if {![link]} {error "Mapped link failed"}
- # Preserve source names (SAIF/inventory paths); the writer escapes when needed.
  write -format verilog -hierarchy -output mapped.v
  write -format ddc -hierarchy -output mapped.ddc
  write_sdc mapped.sdc
+ q12_strip_opcond mapped.sdc
  set_svf -off
  q12_inventory after
  q12_inventory mapped

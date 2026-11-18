@@ -1,0 +1,9 @@
+{
+ "label": "B",
+ "variant": "v9b",
+ "fmt": "pairw10",
+ "n128": 26,
+ "local_mean_cycles": 41267.0,
+ "local_layers_per_s": 3634.865631133836,
+ "local_run": "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_clean_20261118\\runs\\v9b_20261118T061815Z"
+}

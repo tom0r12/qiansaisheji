@@ -5,8 +5,9 @@ proc q12_report_explicit_area {} {
  foreach_in_collection c [get_cells -hierarchical -filter {is_hierarchical == false}] {
   set n [get_object_name $c];set ref [get_attribute $c ref_name];set a 0.0
   if {$ref ne "**logic_0**" && $ref ne "**logic_1**"} {
-   set lib [get_lib_cells -quiet -of_objects $c]
-   if {[sizeof_collection $lib]!=1} {error "Unresolved leaf $n $ref"}
+   set libs [get_lib_cells -quiet -of_objects $c]
+   if {[sizeof_collection $libs]<1} {error "Unresolved leaf $n $ref"}
+   set lib [index_collection $libs 0]
    set a [get_attribute $lib area]
    if {![string is double -strict $a] || $a<0} {error "Invalid area $n"}
   }

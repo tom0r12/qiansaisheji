@@ -76,12 +76,19 @@ def build(specs):
         label, rest = spec.split('=', 1)
         run, _, n = rest.rpartition(':') if re.search(r':\d+$', rest) else (rest, '', '30')
         candidate(run, label, int(n), B / label); labels.append(label)
-    for n in ['map.tcl', 'power.tcl', 'formal.tcl', 'qflow.py', 'run_all.py']: copy(S / 'flow' / n, B / n)
+    for n in ['map.tcl', 'fio_map.tcl', 'power.tcl', 'formal.tcl', 'pt_5corner.tcl', 'run_gls.py', 'qflow.py', 'run_all.py']:
+        copy(S / 'flow' / n, B / n)
     put(B / 'candidates.json', json.dumps(labels) + '\n')
     put(B / 'README.txt', README)
     ident = {'candidates': labels, 'files': {q.relative_to(B).as_posix(): sha(q) for q in sorted(B.rglob('*')) if q.is_file()}}
     put(B / 'package_identity.json', json.dumps(ident, indent=1) + '\n')
     for q in B.rglob('*.py'): ast.parse(q.read_text(), feature_version=(3, 6))
+    import tkinter
+    interp = tkinter.Tcl()
+    for q in B.rglob('*.tcl'):
+        interp.setvar('_q12_tcl', q.read_text())
+        if int(interp.eval('info complete $_q12_tcl')) != 1:
+            raise SystemExit('Incomplete Tcl syntax in ' + str(q))
     z = B.parent / 'q12clean.zip'
     with zipfile.ZipFile(str(z), 'w', zipfile.ZIP_DEFLATED, compresslevel=9) as f:
         for q in sorted(B.rglob('*')):

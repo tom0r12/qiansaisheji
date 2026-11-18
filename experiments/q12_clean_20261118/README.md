@@ -63,3 +63,24 @@ v8：A/B 72 夹具逐值通过；Verilator UNOPTFLAT 3→0；故障注入（`var
   - ITCM −2.94 ns：上面那条伪路径占住了 hfext_clk 组的 WNS，DC 没有去优化这条路径。
   - 两者已在 `server/flow/map.tcl` 中处理：false path（只切这一支）、异步时钟组、`set_fix_hold`，以及仍有违例时的增量编译。
   - 处理后的全流程重跑包为 `q12clean4`（服务器操作 07）。
+
+2026-11-18 13:10 服务器 08 闭合与 09 收尾深审准备（Antigravity /goal 会话）
+服务器 08（q12clean5，v8a/v8b，加入 compile -incremental_mapping -only_hold_time）：
+- A（v8a，W12，运行目录 /tmp/q12clean_A__31nd3un）：厂家 12 层周期差全 0（44197 拍 = 3393.90 层/s）；增量面积 0.314235 mm2；DC TT setup 全部 MET（core_clk +0.0038 ns，hfext_clk 0.0000 ns），hold 全部 MET（core_clk +0.000346 ns，hfext_clk +0.004173 ns），setup/hold/trans/cap 违例全 0；Formality SUCCEEDED（30974 passing, 0 failing）；4 窗口平均能耗 9.0519 uJ（30.725 mW）。
+- B（v8b，W10，运行目录 /tmp/q12clean_B_4z3c40um）：41258 拍 = 3635.66 层/s；增量面积 0.301410 mm2；DC TT setup/hold 全正（+0.0030 / +0.000346 ns），违例全 0；Formality SUCCEEDED（30590 passing, 0 failing）；4 窗口平均能耗 8.4225 uJ（30.625 mW）。
+本地补充：v8b 合规审计通过；v8a GPIO 四组时序角（26.614/26.714 ns x 0.5/3.0 ns）通过，40 ns 负例被拦截。
+下一步收尾核查（服务器操作 09，output/eda/q12_09_audit.py SHA256=6a0855852eb57a23a33ab9623a63bcef17c73ecebb5439860acd53ca23388a21）：复用 08 目录核查 PT setup/hold、DC loops、FM unverified/blackboxes、面积求和，补齐候选 A 全部 12 层功耗窗口，PT 只读摸底五角 STA（整机与 u_fio），并将 /tmp 报告归档至 ~/Desktop。
+
+
+## 2026-11-18 16:42 终版全项签核闭环（09～12，v9a / v9b，零跨版本拼接）
+详见同目录 `FINAL_SIGNOFF_20261118.md`。
+- **v9 改进：** `patches/v9_core_outpipe.py` 将 `q12_task4.sv` 90 级组合输出链切分为两级寄存器；`patches/v9_transport_addr.py` 将 `dma_cmd_addr` 级联加法改为递推寄存器 `rd_next_addr` / `wr_next_addr` / `available_end_o`。
+- **主推候选 A（`v9a`，X12/W12/Y13，精度 0.1211%）：**
+  - 吞吐：**3,391.36 层/s**（44,230 拍，72 夹具 + 厂家 SRAM 12 层周期差全 0）。
+  - 增量面积：**0.316366 mm²**（整机 `synth_eco/mapped.v`，SHA256 `dab44a73…`；独立 `u_fio` **0.314656 mm²**）。
+  - 全 12 层平均能耗：**9.1397 µJ**（31.000 mW，9.1103～9.1692 µJ，`Not Annotated = 0.00%`）。
+  - 独立 `u_fio` 五角 150 MHz STA：**`tt_25c` / `ss_125c` / `ss_m40c` / `ff_125c` / `ff_m40c` 五角 setup & hold 全正**（最坏 `ss_m40c` setup `+0.000080 ns`，`ff_125c` hold `+0.025025 ns`），`fio_formal` **SUCCEEDED**（14,881 点）。
+  - 整机 STA + Formality + 门级仿真：**TT setup 全正**（`core_clk +1.7306 ns`，`hfext_clk 0.0000 ns`），**全部五角 hold 全正**（最坏 `ff_125c` `+0.016796 ns`），`formal_eco` **SUCCEEDED**（31,227 点），TT SDF 门级仿真（`init0` / `init1` / `random` + 131,072 字 `0xcccccccc` SRAM 毒化预装）全部 **PASS**（`full_window_cycles=44230, mismatches=0`）。
+- **备选候选 B（`v9b`，X12/W10/Y13，精度 0.2349%）：**
+  - **3,634.87 层/s**（41,267 拍）、增量面积 **0.303804 mm²**（`u_fio` **0.302485 mm²**）、4 窗口平均能耗 **8.4931 µJ**；独立 `u_fio` 五角 setup & hold 全正 + 整机 TT setup / 五角 hold 全正 + 双层 Formality **SUCCEEDED**。
+- **服务器归档：** `~/Desktop/q12clean6_reports_archive.tar.gz`（SHA256 `c2dd107e158e7496572927de6aaf54a7a8a039c7014962cb12bf4d5999644322`）与 `~/Desktop/q12clean6_12_final_archive.tar.gz`（SHA256 `27f836a1c4f3c29128cb5f12ec459201367c3cd83d06376f0bd655fc63eb32d2`）。
