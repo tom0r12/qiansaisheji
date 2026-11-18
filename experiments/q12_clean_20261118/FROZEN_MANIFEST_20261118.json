@@ -2,7 +2,7 @@
   "project": "轻语 (Qingyu) — E203 Feed-Forward Linear Accelerator (Q12 Clean Compliance Release)",
   "frozen_at": "2026-11-18T17:10:00+08:00",
   "git_branch": "q12clean6-20261118",
-  "git_tag": "q12clean6-submission-20261118-r2",
+  "git_tag": "q12clean6-submission-20261118-r3",
   "compliance_status": {
     "upstream_e203_files_byte_identical": 135,
     "entropy_rice_delta_coding": false,
@@ -77,82 +77,82 @@
   },
   "screenshots_13": {
     "VNC_01_VCS_厂家SRAM_12层功能仿真与吞吐量.jpg": {
-      "bytes": 114004,
-      "sha256": "053d7fd42cfad07b01708cd55160f472bcc42f5f5cb5c5e5a8978a0e95e0de43"
+      "bytes": 194672,
+      "sha256": "ebaf4350c8f3595aab62f68b46b7372741f0527d38803590ba2c77fd74954ceb"
     },
     "VNC_02_DC_整机综合_增量面积与时钟门控报告.jpg": {
-      "bytes": 127029,
-      "sha256": "bd22484a97afa3a640140ff65cb887403f535d9bf9b0355890a68d4f7a0735c1"
+      "bytes": 219587,
+      "sha256": "3d8c12d913f59901a9a899c841eea837b54ec9dfb2aad8483462704aae0f65bb"
     },
     "VNC_03_Formality_整机与加速器等价性验证通过.jpg": {
-      "bytes": 129379,
-      "sha256": "9602d910d5e1fce31a11b9d7885f598eaff28701543d1c142e81d966cbaa7b45"
+      "bytes": 228851,
+      "sha256": "f99b2c2dec960fd07b0d826602a35cd6b0bd27a4fad66705830e3087fc1e9712"
     },
     "VNC_04_PrimeTime_150MHz_整机TT时序报告.jpg": {
-      "bytes": 137392,
-      "sha256": "6938ca2f91df8e9355bf19346dfc21dbf89a4c75aabfca67cfd1037e00320382"
+      "bytes": 242473,
+      "sha256": "99b31a416e43a656a8b235071bb54a9303fd830539227f11990921d6d012d113"
     },
     "VNC_05_PrimeTime_150MHz_五角STA全闭合签核.jpg": {
-      "bytes": 167555,
-      "sha256": "a7cb90e9e3b6b2d1ad05398cabe28ff0f33cd7a175d504a2abdd44e8c04cef17"
+      "bytes": 293314,
+      "sha256": "dd692811bb7abbed4f4d62878bc9f13a19866f022809effeaa8e48698428ecec"
     },
     "VNC_06_PrimeTime_PX_12层全量功耗能耗与SAIF覆盖.jpg": {
-      "bytes": 136582,
-      "sha256": "7f539d2fc2c417a60755d43b766e589222d5860e8750701e182086ba5dc54e42"
+      "bytes": 238344,
+      "sha256": "841452f21a5457f92723d736f7a29d22fafefd20d6a68a26f5932bd0b1c432f4"
     },
     "VNC_07_VCS_整机门级网表_TT_SDF反标仿真通过.jpg": {
-      "bytes": 136683,
-      "sha256": "3ed3c3128af8c39bcf7a980150f57b44ad2f95e3291a55a858a2e9ac90fb20ae"
+      "bytes": 241357,
+      "sha256": "ba28ded7218a1dfcf7c162c170228a1c7b6097e3598ebf08cb7dcd0a07511b13"
     },
     "VNC_08_双候选全项实测签核总览_A主推与B备选.jpg": {
-      "bytes": 161125,
-      "sha256": "f212bb6a1b62769c2e06cefe3d3bf29cbc308cdf856b18be1b0cb0e224794f7a"
+      "bytes": 283522,
+      "sha256": "b411b0f07b742ba89d9b44c9a432a808fbbde379053386339f776dd8dfe2f86f"
     },
     "VNC_09_DesignVision_GUI_整机网表层次与原理图.jpg": {
-      "bytes": 157608,
-      "sha256": "af3afc9b0b7caa6f37fae41c9bb206077b930016ea9634081e2a633132928496"
+      "bytes": 300751,
+      "sha256": "504c9bc1d7991efe1f047e2bd476570aae790eabea6685c22f02e92cd7983570"
     },
     "VNC_10_PrimeTime_GUI_整机150MHz时序分析.jpg": {
-      "bytes": 128832,
-      "sha256": "8e2f6d4519657daa4b7391d75734d528870aba20f0420ff2908ff20935e567d6"
+      "bytes": 216292,
+      "sha256": "939632e1482a03bb3a926bc69595783f799e5aef3b912f6595112826d3e65cce"
     }
   },
   "screenshots_report_AB": {
     "01_AB_服务器验收总览.jpg": {
-      "bytes": 259627,
-      "sha256": "269ab43391103c773c1274090b0d0f3f61dc10b4e70d0d6d7fb84502efc12504"
+      "bytes": 492410,
+      "sha256": "4a0634e1a05f1ab605c96c2e16b3a12721ea37d8974ff189fa5df52ce6f1d952"
     },
     "02_AB_独立加速器五角时序.jpg": {
-      "bytes": 346477,
-      "sha256": "1bdf64388a68d080ffad3e497109aafe5e7ef09efb3227d90bb70ce2ee2328ba"
+      "bytes": 648699,
+      "sha256": "792e020c4b806d15fbac5d967068499756142619ea5316e5d0ab2895f4a38ea8"
     },
     "03_AB_整机五角时序.jpg": {
-      "bytes": 324058,
-      "sha256": "89c63a60e301c21c6fa60f03c137f8a4e5935a56b72f3e80fac42aeda524361e"
+      "bytes": 615462,
+      "sha256": "237b8bca11177c2f222b3dda879934d78f2d5efcb1120ebfd875d40b702a6f2b"
     },
     "04_AB_逐层功耗与能耗.jpg": {
-      "bytes": 220426,
-      "sha256": "d9f92ddae5111a4167196df78bafc4cca5d21a989ab40a3cde5bbccbfc1a3421"
+      "bytes": 403071,
+      "sha256": "51a2062b9a98839e7a77371d330f38498d134434085b00a002884b4d25ef5a9e"
     },
     "05_A_TT_SDF门级仿真与无初始化对照.jpg": {
-      "bytes": 268004,
-      "sha256": "960fb8f8f2b8d6cb6e757c35fc41fd45b28d513c66cd950a81ee0c17d66de4bb"
+      "bytes": 476463,
+      "sha256": "a0318332d3c48c25a563d10355b88b5276767202261a138c15b87bae29a1ec84"
     },
     "06_AB_SAIF活动注释.jpg": {
-      "bytes": 252950,
-      "sha256": "dfde794ffd91fc4f3e9a70dded28c6e80df880993231c37f1a14671b157b762e"
+      "bytes": 477470,
+      "sha256": "41de23bfa8ca283ef01a7358546db2fd341f7f775e7dcd2a0160c56ed8873758"
     },
     "07_AB_厂家SRAM功能_门控与归档.jpg": {
-      "bytes": 227380,
-      "sha256": "f0fdb36ae086599837e2fd23edbb08cfe10ced3add49a314f4a55d6a27ba5b12"
+      "bytes": 427809,
+      "sha256": "b3785d2e9ba0a7cc8f2e292db2e3859393f97aef7c43e01a032c87803303d073"
     },
     "08_AB_第0层功耗分解.jpg": {
-      "bytes": 181770,
-      "sha256": "1dc69356fa05ade8430a056488d1e00d17f2b2bbc3266d03967aa4ebfbf71c15"
+      "bytes": 334698,
+      "sha256": "7e5ff06e7710ce5300079d03d2e4ea237c4a2025baf4663cc65ba6b632119291"
     },
     "09_AB_本地600样本逐层精度.jpg": {
-      "bytes": 122187,
-      "sha256": "a8629c1c660ea996f8e545e7c6bae0ba132d2eeea3c6b1f6dfa59319a8704e4b"
+      "bytes": 123266,
+      "sha256": "6dd4569c59e98be977809b007da2fd4f96a42a145b49bd7eed958aea88261cd6"
     },
     "10_AB_本地回归_合规与GPIO复核.jpg": {
       "bytes": 132835,

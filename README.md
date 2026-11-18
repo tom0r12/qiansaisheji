@@ -2,7 +2,7 @@
 
 ## 2026-11-18 最终合规清理版冻结基线（`q12clean6`：`v9a` 主推 / `v9b` 备选）
 
-本分支（`q12clean6-20261118`，冻结标签 `q12clean6-submission-20261118-r2`）保存已完成全部赛题必测项与额外签核项（150 MHz 五角 STA + 双层 Formality + 整机 TT SDF 反标门级仿真）并正式冻结的双候选工程：
+本分支（`q12clean6-20261118`，冻结标签 `q12clean6-submission-20261118-r3`）保存已完成全部赛题必测项与额外签核项（150 MHz 五角 STA + 双层 Formality + 整机 TT SDF 反标门级仿真）并正式冻结的双候选工程：
 
 - **冻结签核总报告与校验清单**：[final/q12_clean_submission_20261118/README.md](final/q12_clean_submission_20261118/README.md) · [FROZEN_MANIFEST_20261118.json](final/q12_clean_submission_20261118/FROZEN_MANIFEST_20261118.json)
 - **11+12 号冻结服务器包源码（已脱敏私有向量）**：[experiments/q12_clean_20261118/server/snapshot_11_12/README.md](experiments/q12_clean_20261118/server/snapshot_11_12/README.md)
