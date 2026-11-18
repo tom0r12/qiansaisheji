@@ -1,10 +1,10 @@
 {
- "bundle": "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_clean_20261118\\server\\packages\\20261118T001354Z\\q12clean",
- "zip": "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_clean_20261118\\server\\packages\\20261118T001354Z\\q12clean.zip",
- "zip_sha256": "1c6b4b0d61ef258e46b0794758f58987f34a4924e49e11e384e136f0eaeb1eb5",
- "bytes": 5487786,
+ "bundle": "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_clean_20261118\\server\\packages\\20261118T031252Z\\q12clean",
+ "zip": "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_clean_20261118\\server\\packages\\20261118T031252Z\\q12clean.zip",
+ "zip_sha256": "5a9760a23cd95bdc97d876854ecad6cb17727dc382c4f64553a4c3fe8f1b9532",
+ "bytes": 5489488,
  "candidates": [
-  "A=E:\\Desktop\\qiansaisheji\\output\\eda\\q12_clean_20261118\\runs\\v7a_20261118T001141Z:30",
-  "B=E:\\Desktop\\qiansaisheji\\output\\eda\\q12_clean_20261118\\runs\\v7b_20261118T001249Z:26"
+  "A=E:\\Desktop\\qiansaisheji\\output\\eda\\q12_clean_20261118\\runs\\v8a_20261118T031032Z:30",
+  "B=E:\\Desktop\\qiansaisheji\\output\\eda\\q12_clean_20261118\\runs\\v8b_20261118T031106Z:26"
  ]
 }

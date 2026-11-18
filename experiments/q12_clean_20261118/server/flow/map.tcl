@@ -25,10 +25,13 @@ set rc [catch {
  if {[sizeof_collection [get_libs -quiet *scc40nll_vhsc40_rvt_tt*]]!=1} {error "Official SCC40NLL RVT TT library required"}
  define_design_lib WORK -path ./WORK
  set_svf mapped.svf
+ # Hierarchy-map guidance for Formality (recommended by FM's own status report).
+ catch {set hdlin_enable_hier_map true}
  if {![analyze -format sverilog -define $Q12_DEFINES $Q12_SOURCES]} {error "Analyze failed"}
  elaborate qingyu_e203_soc_top
  current_design qingyu_e203_soc_top
  if {![link]} {error "Link failed"}
+ catch {set_verification_top}
  uniquify
  set hierarchy [get_cells -hierarchical -filter {is_hierarchical == true}]
  set_ungroup $hierarchy false
@@ -43,6 +46,17 @@ set rc [catch {
  create_generated_clock -name core_clk -source [get_ports hfextclk] -divide_by 1 [get_pins u_e203_subsys_top/qingyu_bus_clk]
  set_ideal_network [get_ports {hfextclk lfextclk io_pads_jtag_TCK_i_ival}]
  set_ideal_network [get_pins u_e203_subsys_top/qingyu_bus_clk]
+ # lfextclk (32.768 kHz RTC/AON) and JTAG TCK are independent board clocks; E203 synchronises
+ # every crossing (sirv_gnrl_sync / AON domain), so they are asynchronous to hfext/core.
+ set_clock_groups -asynchronous -group [get_clocks {hfext_clk core_clk}] -group [get_clocks lfext_clk] -group [get_clocks jtag_clk]
+ set_fix_hold [get_clocks {hfext_clk core_clk}]
+ # Upstream E203 debug "inspect" mux forwards the core CLOCK itself onto a GPIO pad
+ # (clock-as-data). A forwarded clock is not a data path; cut only that branch.
+ # Ordinary GPIO data outputs remain constrained by set_output_delay below.
+ set q12_inspect_clk [get_pins -quiet u_e203_subsys_top/u_e203_subsys_main/u_e203_cpu_top/inspect_core_clk]
+ puts "Q12_INSPECT_CLK_PINS=[sizeof_collection $q12_inspect_clk]"
+ if {[sizeof_collection $q12_inspect_clk]!=1} {error "inspect_core_clk pin not found"}
+ set_false_path -through $q12_inspect_clk
  set_clock_uncertainty -setup 0.1 [all_clocks]
  set_clock_uncertainty -hold 0.02 [all_clocks]
  set_clock_transition 0.1 [all_clocks]
@@ -71,6 +85,17 @@ set rc [catch {
  }
  if {!$ok} {error "Compile failed"}
  puts Q12_COMPILE_END
+ # Safety net: if any setup/hold violation remains, one timing-driven incremental pass
+ # (keeps hierarchy, boundaries and inserted clock gates).
+ set q12_wns [get_attribute -quiet [get_timing_paths -delay_type max -max_paths 1] slack]
+ set q12_whs [get_attribute -quiet [get_timing_paths -delay_type min -max_paths 1] slack]
+ puts "Q12_POST_COMPILE_WNS=$q12_wns WHS=$q12_whs"
+ if {($q12_wns ne "" && $q12_wns < 0) || ($q12_whs ne "" && $q12_whs < 0)} {
+  redirect -file timing_pre_incremental.rpt {report_timing -delay_type max -max_paths 5 -significant_digits 4}
+  set_critical_range 0.3 [current_design]
+  if {![compile_ultra -incremental -no_autoungroup -no_boundary_optimization]} {error "Incremental compile failed"}
+  puts "Q12_INCREMENTAL_DONE WNS=[get_attribute -quiet [get_timing_paths -delay_type max -max_paths 1] slack] WHS=[get_attribute -quiet [get_timing_paths -delay_type min -max_paths 1] slack]"
+ }
  if {![link]} {error "Mapped link failed"}
  # Preserve source names (SAIF/inventory paths); the writer escapes when needed.
  write -format verilog -hierarchy -output mapped.v
@@ -88,6 +113,17 @@ set rc [catch {
  redirect -file timing_max.rpt {report_timing -delay_type max -max_paths 20 -significant_digits 8}
  redirect -file timing_min.rpt {report_timing -delay_type min -max_paths 20 -significant_digits 8}
  redirect -file constraints.rpt {report_constraint -all_violators}
+ q12_optional_report qor.rpt {report_qor}
+ set tg [open timing_groups.rpt w];close $tg
+ foreach_in_collection g [get_path_groups *] {
+  set gn [get_object_name $g]
+  redirect -append -file timing_groups.rpt {puts "Q12_GROUP_MAX=$gn"}
+  catch {redirect -append -file timing_groups.rpt {report_timing -delay_type max -max_paths 1 -group $gn -input_pins -nets -transition_time -capacitance -significant_digits 4}}
+  redirect -append -file timing_groups.rpt {puts "Q12_GROUP_MIN=$gn"}
+  catch {redirect -append -file timing_groups.rpt {report_timing -delay_type min -max_paths 1 -group $gn -significant_digits 4}}
+ }
+ q12_optional_report high_fanout.rpt {report_net_fanout -high_fanout -threshold 200}
+ q12_optional_report loops.rpt {report_timing -loops}
  q12_optional_report clock_gating.rpt {report_clock_gating}
  q12_optional_report check_timing_after.rpt {check_timing}
  q12_optional_report clocks.rpt {report_clock -attributes}

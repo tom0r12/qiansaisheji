@@ -1,0 +1,1484 @@
+{
+ "variant": "v8b",
+ "fmt": "pairw10",
+ "passed": true,
+ "phase": "complete",
+ "tasks": [
+  {
+   "task": "layer00/sample000",
+   "metrics": {
+    "layer": 0,
+    "full_window_cycles": 41258,
+    "start_to_ack": 41170,
+    "first_read_to_ack": 41159,
+    "first_gpio": 4726,
+    "last_gpio_read_ack": 36515,
+    "first_source": 4729,
+    "last_source_ack": 36520,
+    "done_delay": 3,
+    "engine_counter": 41173,
+    "reads": 7826,
+    "writes": 12690,
+    "cpu_commands": 22,
+    "cpu_responses": 22,
+    "gpio_words": 7826,
+    "gpio_word_responses": 7826,
+    "source_writes": 7826,
+    "source_write_responses": 7826,
+    "fabric_commands": 28364,
+    "fabric_responses": 28364,
+    "shared_commands": 28364,
+    "shared_responses": 28364,
+    "dma_responses": 20516,
+    "peak_pending": 3,
+    "gpio_presented": 7826,
+    "gpio_requested": 7826,
+    "gpio_bursts": 123,
+    "gpio_apb_reads": 7826,
+    "gpio_ready_reads": 0,
+    "window_bus_fire": 28342,
+    "window_bus_stall": 4801,
+    "window_bus_empty": 8115,
+    "dma_stall": 12095,
+    "shared_stall": 0,
+    "input_words": 7826,
+    "cache_clear": 1,
+    "macro_reads": 7826,
+    "macro_writes": 20516,
+    "start_source_acks": 0,
+    "publish_commands": 0,
+    "commit_responses": 0,
+    "serial_load": 0,
+    "firmware_cycles": 41272
+   },
+   "values_checked": 25344
+  },
+  {
+   "task": "layer01/sample000",
+   "metrics": {
+    "layer": 1,
+    "full_window_cycles": 41258,
+    "start_to_ack": 41170,
+    "first_read_to_ack": 41159,
+    "first_gpio": 4726,
+    "last_gpio_read_ack": 36515,
+    "first_source": 4729,
+    "last_source_ack": 36520,
+    "done_delay": 3,
+    "engine_counter": 41173,
+    "reads": 7826,
+    "writes": 12690,
+    "cpu_commands": 22,
+    "cpu_responses": 22,
+    "gpio_words": 7826,
+    "gpio_word_responses": 7826,
+    "source_writes": 7826,
+    "source_write_responses": 7826,
+    "fabric_commands": 28364,
+    "fabric_responses": 28364,
+    "shared_commands": 28364,
+    "shared_responses": 28364,
+    "dma_responses": 20516,
+    "peak_pending": 3,
+    "gpio_presented": 7826,
+    "gpio_requested": 7826,
+    "gpio_bursts": 123,
+    "gpio_apb_reads": 7826,
+    "gpio_ready_reads": 0,
+    "window_bus_fire": 28342,
+    "window_bus_stall": 4801,
+    "window_bus_empty": 8115,
+    "dma_stall": 12095,
+    "shared_stall": 0,
+    "input_words": 7826,
+    "cache_clear": 1,
+    "macro_reads": 7826,
+    "macro_writes": 20516,
+    "start_source_acks": 0,
+    "publish_commands": 0,
+    "commit_responses": 0,
+    "serial_load": 0,
+    "firmware_cycles": 41272
+   },
+   "values_checked": 25344
+  },
+  {
+   "task": "layer02/sample000",
+   "metrics": {
+    "layer": 2,
+    "full_window_cycles": 41258,
+    "start_to_ack": 41170,
+    "first_read_to_ack": 41159,
+    "first_gpio": 4726,
+    "last_gpio_read_ack": 36515,
+    "first_source": 4729,
+    "last_source_ack": 36520,
+    "done_delay": 3,
+    "engine_counter": 41173,
+    "reads": 7826,
+    "writes": 12690,
+    "cpu_commands": 22,
+    "cpu_responses": 22,
+    "gpio_words": 7826,
+    "gpio_word_responses": 7826,
+    "source_writes": 7826,
+    "source_write_responses": 7826,
+    "fabric_commands": 28364,
+    "fabric_responses": 28364,
+    "shared_commands": 28364,
+    "shared_responses": 28364,
+    "dma_responses": 20516,
+    "peak_pending": 3,
+    "gpio_presented": 7826,
+    "gpio_requested": 7826,
+    "gpio_bursts": 123,
+    "gpio_apb_reads": 7826,
+    "gpio_ready_reads": 0,
+    "window_bus_fire": 28342,
+    "window_bus_stall": 4801,
+    "window_bus_empty": 8115,
+    "dma_stall": 12095,
+    "shared_stall": 0,
+    "input_words": 7826,
+    "cache_clear": 1,
+    "macro_reads": 7826,
+    "macro_writes": 20516,
+    "start_source_acks": 0,
+    "publish_commands": 0,
+    "commit_responses": 0,
+    "serial_load": 0,
+    "firmware_cycles": 41272
+   },
+   "values_checked": 25344
+  },
+  {
+   "task": "layer03/sample000",
+   "metrics": {
+    "layer": 3,
+    "full_window_cycles": 41258,
+    "start_to_ack": 41170,
+    "first_read_to_ack": 41159,
+    "first_gpio": 4726,
+    "last_gpio_read_ack": 36515,
+    "first_source": 4729,
+    "last_source_ack": 36520,
+    "done_delay": 3,
+    "engine_counter": 41173,
+    "reads": 7826,
+    "writes": 12690,
+    "cpu_commands": 22,
+    "cpu_responses": 22,
+    "gpio_words": 7826,
+    "gpio_word_responses": 7826,
+    "source_writes": 7826,
+    "source_write_responses": 7826,
+    "fabric_commands": 28364,
+    "fabric_responses": 28364,
+    "shared_commands": 28364,
+    "shared_responses": 28364,
+    "dma_responses": 20516,
+    "peak_pending": 3,
+    "gpio_presented": 7826,
+    "gpio_requested": 7826,
+    "gpio_bursts": 123,
+    "gpio_apb_reads": 7826,
+    "gpio_ready_reads": 0,
+    "window_bus_fire": 28342,
+    "window_bus_stall": 4801,
+    "window_bus_empty": 8115,
+    "dma_stall": 12095,
+    "shared_stall": 0,
+    "input_words": 7826,
+    "cache_clear": 1,
+    "macro_reads": 7826,
+    "macro_writes": 20516,
+    "start_source_acks": 0,
+    "publish_commands": 0,
+    "commit_responses": 0,
+    "serial_load": 0,
+    "firmware_cycles": 41272
+   },
+   "values_checked": 25344
+  },
+  {
+   "task": "layer04/sample000",
+   "metrics": {
+    "layer": 4,
+    "full_window_cycles": 41258,
+    "start_to_ack": 41170,
+    "first_read_to_ack": 41159,
+    "first_gpio": 4726,
+    "last_gpio_read_ack": 36515,
+    "first_source": 4729,
+    "last_source_ack": 36520,
+    "done_delay": 3,
+    "engine_counter": 41173,
+    "reads": 7826,
+    "writes": 12690,
+    "cpu_commands": 22,
+    "cpu_responses": 22,
+    "gpio_words": 7826,
+    "gpio_word_responses": 7826,
+    "source_writes": 7826,
+    "source_write_responses": 7826,
+    "fabric_commands": 28364,
+    "fabric_responses": 28364,
+    "shared_commands": 28364,
+    "shared_responses": 28364,
+    "dma_responses": 20516,
+    "peak_pending": 3,
+    "gpio_presented": 7826,
+    "gpio_requested": 7826,
+    "gpio_bursts": 123,
+    "gpio_apb_reads": 7826,
+    "gpio_ready_reads": 0,
+    "window_bus_fire": 28342,
+    "window_bus_stall": 4801,
+    "window_bus_empty": 8115,
+    "dma_stall": 12095,
+    "shared_stall": 0,
+    "input_words": 7826,
+    "cache_clear": 1,
+    "macro_reads": 7826,
+    "macro_writes": 20516,
+    "start_source_acks": 0,
+    "publish_commands": 0,
+    "commit_responses": 0,
+    "serial_load": 0,
+    "firmware_cycles": 41272
+   },
+   "values_checked": 25344
+  },
+  {
+   "task": "layer05/sample000",
+   "metrics": {
+    "layer": 5,
+    "full_window_cycles": 41258,
+    "start_to_ack": 41170,
+    "first_read_to_ack": 41159,
+    "first_gpio": 4726,
+    "last_gpio_read_ack": 36515,
+    "first_source": 4729,
+    "last_source_ack": 36520,
+    "done_delay": 3,
+    "engine_counter": 41173,
+    "reads": 7826,
+    "writes": 12690,
+    "cpu_commands": 22,
+    "cpu_responses": 22,
+    "gpio_words": 7826,
+    "gpio_word_responses": 7826,
+    "source_writes": 7826,
+    "source_write_responses": 7826,
+    "fabric_commands": 28364,
+    "fabric_responses": 28364,
+    "shared_commands": 28364,
+    "shared_responses": 28364,
+    "dma_responses": 20516,
+    "peak_pending": 3,
+    "gpio_presented": 7826,
+    "gpio_requested": 7826,
+    "gpio_bursts": 123,
+    "gpio_apb_reads": 7826,
+    "gpio_ready_reads": 0,
+    "window_bus_fire": 28342,
+    "window_bus_stall": 4801,
+    "window_bus_empty": 8115,
+    "dma_stall": 12095,
+    "shared_stall": 0,
+    "input_words": 7826,
+    "cache_clear": 1,
+    "macro_reads": 7826,
+    "macro_writes": 20516,
+    "start_source_acks": 0,
+    "publish_commands": 0,
+    "commit_responses": 0,
+    "serial_load": 0,
+    "firmware_cycles": 41272
+   },
+   "values_checked": 25344
+  },
+  {
+   "task": "layer06/sample000",
+   "metrics": {
+    "layer": 6,
+    "full_window_cycles": 41258,
+    "start_to_ack": 41170,
+    "first_read_to_ack": 41159,
+    "first_gpio": 4726,
+    "last_gpio_read_ack": 36515,
+    "first_source": 4729,
+    "last_source_ack": 36520,
+    "done_delay": 3,
+    "engine_counter": 41173,
+    "reads": 7826,
+    "writes": 12690,
+    "cpu_commands": 22,
+    "cpu_responses": 22,
+    "gpio_words": 7826,
+    "gpio_word_responses": 7826,
+    "source_writes": 7826,
+    "source_write_responses": 7826,
+    "fabric_commands": 28364,
+    "fabric_responses": 28364,
+    "shared_commands": 28364,
+    "shared_responses": 28364,
+    "dma_responses": 20516,
+    "peak_pending": 3,
+    "gpio_presented": 7826,
+    "gpio_requested": 7826,
+    "gpio_bursts": 123,
+    "gpio_apb_reads": 7826,
+    "gpio_ready_reads": 0,
+    "window_bus_fire": 28342,
+    "window_bus_stall": 4801,
+    "window_bus_empty": 8115,
+    "dma_stall": 12095,
+    "shared_stall": 0,
+    "input_words": 7826,
+    "cache_clear": 1,
+    "macro_reads": 7826,
+    "macro_writes": 20516,
+    "start_source_acks": 0,
+    "publish_commands": 0,
+    "commit_responses": 0,
+    "serial_load": 0,
+    "firmware_cycles": 41272
+   },
+   "values_checked": 25344
+  },
+  {
+   "task": "layer07/sample000",
+   "metrics": {
+    "layer": 7,
+    "full_window_cycles": 41258,
+    "start_to_ack": 41170,
+    "first_read_to_ack": 41159,
+    "first_gpio": 4726,
+    "last_gpio_read_ack": 36515,
+    "first_source": 4729,
+    "last_source_ack": 36520,
+    "done_delay": 3,
+    "engine_counter": 41173,
+    "reads": 7826,
+    "writes": 12690,
+    "cpu_commands": 22,
+    "cpu_responses": 22,
+    "gpio_words": 7826,
+    "gpio_word_responses": 7826,
+    "source_writes": 7826,
+    "source_write_responses": 7826,
+    "fabric_commands": 28364,
+    "fabric_responses": 28364,
+    "shared_commands": 28364,
+    "shared_responses": 28364,
+    "dma_responses": 20516,
+    "peak_pending": 3,
+    "gpio_presented": 7826,
+    "gpio_requested": 7826,
+    "gpio_bursts": 123,
+    "gpio_apb_reads": 7826,
+    "gpio_ready_reads": 0,
+    "window_bus_fire": 28342,
+    "window_bus_stall": 4801,
+    "window_bus_empty": 8115,
+    "dma_stall": 12095,
+    "shared_stall": 0,
+    "input_words": 7826,
+    "cache_clear": 1,
+    "macro_reads": 7826,
+    "macro_writes": 20516,
+    "start_source_acks": 0,
+    "publish_commands": 0,
+    "commit_responses": 0,
+    "serial_load": 0,
+    "firmware_cycles": 41272
+   },
+   "values_checked": 25344
+  },
+  {
+   "task": "layer08/sample000",
+   "metrics": {
+    "layer": 8,
+    "full_window_cycles": 41258,
+    "start_to_ack": 41170,
+    "first_read_to_ack": 41159,
+    "first_gpio": 4726,
+    "last_gpio_read_ack": 36515,
+    "first_source": 4729,
+    "last_source_ack": 36520,
+    "done_delay": 3,
+    "engine_counter": 41173,
+    "reads": 7826,
+    "writes": 12690,
+    "cpu_commands": 22,
+    "cpu_responses": 22,
+    "gpio_words": 7826,
+    "gpio_word_responses": 7826,
+    "source_writes": 7826,
+    "source_write_responses": 7826,
+    "fabric_commands": 28364,
+    "fabric_responses": 28364,
+    "shared_commands": 28364,
+    "shared_responses": 28364,
+    "dma_responses": 20516,
+    "peak_pending": 3,
+    "gpio_presented": 7826,
+    "gpio_requested": 7826,
+    "gpio_bursts": 123,
+    "gpio_apb_reads": 7826,
+    "gpio_ready_reads": 0,
+    "window_bus_fire": 28342,
+    "window_bus_stall": 4801,
+    "window_bus_empty": 8115,
+    "dma_stall": 12095,
+    "shared_stall": 0,
+    "input_words": 7826,
+    "cache_clear": 1,
+    "macro_reads": 7826,
+    "macro_writes": 20516,
+    "start_source_acks": 0,
+    "publish_commands": 0,
+    "commit_responses": 0,
+    "serial_load": 0,
+    "firmware_cycles": 41272
+   },
+   "values_checked": 25344
+  },
+  {
+   "task": "layer09/sample000",
+   "metrics": {
+    "layer": 9,
+    "full_window_cycles": 41258,
+    "start_to_ack": 41170,
+    "first_read_to_ack": 41159,
+    "first_gpio": 4726,
+    "last_gpio_read_ack": 36515,
+    "first_source": 4729,
+    "last_source_ack": 36520,
+    "done_delay": 3,
+    "engine_counter": 41173,
+    "reads": 7826,
+    "writes": 12690,
+    "cpu_commands": 22,
+    "cpu_responses": 22,
+    "gpio_words": 7826,
+    "gpio_word_responses": 7826,
+    "source_writes": 7826,
+    "source_write_responses": 7826,
+    "fabric_commands": 28364,
+    "fabric_responses": 28364,
+    "shared_commands": 28364,
+    "shared_responses": 28364,
+    "dma_responses": 20516,
+    "peak_pending": 3,
+    "gpio_presented": 7826,
+    "gpio_requested": 7826,
+    "gpio_bursts": 123,
+    "gpio_apb_reads": 7826,
+    "gpio_ready_reads": 0,
+    "window_bus_fire": 28342,
+    "window_bus_stall": 4801,
+    "window_bus_empty": 8115,
+    "dma_stall": 12095,
+    "shared_stall": 0,
+    "input_words": 7826,
+    "cache_clear": 1,
+    "macro_reads": 7826,
+    "macro_writes": 20516,
+    "start_source_acks": 0,
+    "publish_commands": 0,
+    "commit_responses": 0,
+    "serial_load": 0,
+    "firmware_cycles": 41272
+   },
+   "values_checked": 25344
+  },
+  {
+   "task": "layer10/sample000",
+   "metrics": {
+    "layer": 10,
+    "full_window_cycles": 41258,
+    "start_to_ack": 41170,
+    "first_read_to_ack": 41159,
+    "first_gpio": 4726,
+    "last_gpio_read_ack": 36515,
+    "first_source": 4729,
+    "last_source_ack": 36520,
+    "done_delay": 3,
+    "engine_counter": 41173,
+    "reads": 7826,
+    "writes": 12690,
+    "cpu_commands": 22,
+    "cpu_responses": 22,
+    "gpio_words": 7826,
+    "gpio_word_responses": 7826,
+    "source_writes": 7826,
+    "source_write_responses": 7826,
+    "fabric_commands": 28364,
+    "fabric_responses": 28364,
+    "shared_commands": 28364,
+    "shared_responses": 28364,
+    "dma_responses": 20516,
+    "peak_pending": 3,
+    "gpio_presented": 7826,
+    "gpio_requested": 7826,
+    "gpio_bursts": 123,
+    "gpio_apb_reads": 7826,
+    "gpio_ready_reads": 0,
+    "window_bus_fire": 28342,
+    "window_bus_stall": 4801,
+    "window_bus_empty": 8115,
+    "dma_stall": 12095,
+    "shared_stall": 0,
+    "input_words": 7826,
+    "cache_clear": 1,
+    "macro_reads": 7826,
+    "macro_writes": 20516,
+    "start_source_acks": 0,
+    "publish_commands": 0,
+    "commit_responses": 0,
+    "serial_load": 0,
+    "firmware_cycles": 41272
+   },
+   "values_checked": 25344
+  },
+  {
+   "task": "layer11/sample000",
+   "metrics": {
+    "layer": 11,
+    "full_window_cycles": 41258,
+    "start_to_ack": 41170,
+    "first_read_to_ack": 41159,
+    "first_gpio": 4726,
+    "last_gpio_read_ack": 36515,
+    "first_source": 4729,
+    "last_source_ack": 36520,
+    "done_delay": 3,
+    "engine_counter": 41173,
+    "reads": 7826,
+    "writes": 12690,
+    "cpu_commands": 22,
+    "cpu_responses": 22,
+    "gpio_words": 7826,
+    "gpio_word_responses": 7826,
+    "source_writes": 7826,
+    "source_write_responses": 7826,
+    "fabric_commands": 28364,
+    "fabric_responses": 28364,
+    "shared_commands": 28364,
+    "shared_responses": 28364,
+    "dma_responses": 20516,
+    "peak_pending": 3,
+    "gpio_presented": 7826,
+    "gpio_requested": 7826,
+    "gpio_bursts": 123,
+    "gpio_apb_reads": 7826,
+    "gpio_ready_reads": 0,
+    "window_bus_fire": 28342,
+    "window_bus_stall": 4801,
+    "window_bus_empty": 8115,
+    "dma_stall": 12095,
+    "shared_stall": 0,
+    "input_words": 7826,
+    "cache_clear": 1,
+    "macro_reads": 7826,
+    "macro_writes": 20516,
+    "start_source_acks": 0,
+    "publish_commands": 0,
+    "commit_responses": 0,
+    "serial_load": 0,
+    "firmware_cycles": 41272
+   },
+   "values_checked": 25344
+  }
+ ],
+ "sources": [
+  {
+   "name": "config.v",
+   "path": "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_clean_20261118\\base\\sources\\000_config.v",
+   "sha256": "38b535136d33164004bccd4bb8ba642d2e530d2994cd7971e91724a1b23f4a17"
+  },
+  {
+   "name": "config.v",
+   "path": "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_clean_20261118\\base\\sources\\001_config.v",
+   "sha256": "235fc827eb88290dab3e4d6ecaf9cd22aa897ac8f5da9abf562a308ded191d9c"
+  },
+  {
+   "name": "e203_biu.v",
+   "path": "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_clean_20261118\\base\\sources\\002_e203_biu.v",
+   "sha256": "6f606f70b893f200f7819bf6c28438f40d40519f42908996864b5592ee1af9f2"
+  },
+  {
+   "name": "e203_clk_ctrl.v",
+   "path": "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_clean_20261118\\base\\sources\\003_e203_clk_ctrl.v",
+   "sha256": "85432dcfbf7cc0fa977f7880ffd2856d5bf3389494cddafbf360bba359750d51"
+  },
+  {
+   "name": "e203_clkgate.v",
+   "path": "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_clean_20261118\\base\\sources\\004_e203_clkgate.v",
+   "sha256": "246adffd3af4cc8ffbd1a87f7aafbece1221c538a9f8c66137e388068991c742"
+  },
+  {
+   "name": "e203_core.v",
+   "path": "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_clean_20261118\\base\\sources\\005_e203_core.v",
+   "sha256": "3016af53c8432bc5722eee41d61bbdaaa337a5d76b25a2e7dc95e04f4b0c6a1d"
+  },
+  {
+   "name": "e203_cpu.v",
+   "path": "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_clean_20261118\\base\\sources\\006_e203_cpu.v",
+   "sha256": "4b6c3f5236fc373923fa2a91c9e9feb93fd4336dff7ac423943415e63ecd696b"
+  },
+  {
+   "name": "e203_cpu_top.v",
+   "path": "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_clean_20261118\\base\\sources\\007_e203_cpu_top.v",
+   "sha256": "0970379eabe2253a5d1af51a6c3cab5d44183108ad974b56ed2841bccbbabb5a"
+  },
+  {
+   "name": "e203_defines.v",
+   "path": "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_clean_20261118\\base\\sources\\008_e203_defines.v",
+   "sha256": "50348b28a961b87eff4040cecc44b35e163acc28042eb6fa53bd1c2e69682109"
+  },
+  {
+   "name": "e203_dtcm_ctrl.v",
+   "path": "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_clean_20261118\\base\\sources\\009_e203_dtcm_ctrl.v",
+   "sha256": "e808097c9d7a0bd89156dd9871edd7d10c1a9ad59a4f8673232069623297bb3a"
+  },
+  {
+   "name": "e203_dtcm_ram.v",
+   "path": "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_clean_20261118\\base\\sources\\010_e203_dtcm_ram.v",
+   "sha256": "b13f0819c3d44f96a00ac99caa78cd318f23b600cc8b5c4d1bd1f0cba307be09"
+  },
+  {
+   "name": "e203_extend_csr.v",
+   "path": "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_clean_20261118\\base\\sources\\011_e203_extend_csr.v",
+   "sha256": "4b70b4f73ea57e1b6dcebfce5a4a8ea9b6369786a1fbcb21da66b0e44c984ae6"
+  },
+  {
+   "name": "e203_exu.v",
+   "path": "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_clean_20261118\\base\\sources\\012_e203_exu.v",
+   "sha256": "3a493725dde268fee65a9189e56bf9ff9dba8307fbb4d80c752e7e5c0804a19f"
+  },
+  {
+   "name": "e203_exu_alu.v",
+   "path": "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_clean_20261118\\base\\sources\\013_e203_exu_alu.v",
+   "sha256": "ff60fe05356c8b7e75ab6308779c7cecdf2ce258339ea98498d205b1834c642e"
+  },
+  {
+   "name": "e203_exu_alu_bjp.v",
+   "path": "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_clean_20261118\\base\\sources\\014_e203_exu_alu_bjp.v",
+   "sha256": "8f6f7842f43dce050b54860fc3ef57861ba4f8be3f92c9b82d0a64705696b037"
+  },
+  {
+   "name": "e203_exu_alu_csrctrl.v",
+   "path": "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_clean_20261118\\base\\sources\\015_e203_exu_alu_csrctrl.v",
+   "sha256": "af997d1ee8bbbd39d7cda6294538d7e1857b4d354e8f2683a0ec72f2ea559cec"
+  },
+  {
+   "name": "e203_exu_alu_dpath.v",
+   "path": "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_clean_20261118\\base\\sources\\016_e203_exu_alu_dpath.v",
+   "sha256": "d10516ebd75565bbaf49ffe346e72153d09e70c2686ffd396cda7303b45d8c71"
+  },
+  {
+   "name": "e203_exu_alu_lsuagu.v",
+   "path": "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_clean_20261118\\base\\sources\\017_e203_exu_alu_lsuagu.v",
+   "sha256": "5be64f9755923e8d37ea94ec8596ee86a041d52cf5281d3948911735188d3079"
+  },
+  {
+   "name": "e203_exu_alu_muldiv.v",
+   "path": "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_clean_20261118\\base\\sources\\018_e203_exu_alu_muldiv.v",
+   "sha256": "a981d334e3e1b52b308e73c28a7a27a680cb57aa21a92a919ee3164ba7a59ecb"
+  },
+  {
+   "name": "e203_exu_alu_rglr.v",
+   "path": "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_clean_20261118\\base\\sources\\019_e203_exu_alu_rglr.v",
+   "sha256": "4c96c40b396ffa4868f3347c8dc2f23181c19350341c81244e14be8adcca368f"
+  },
+  {
+   "name": "e203_exu_branchslv.v",
+   "path": "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_clean_20261118\\base\\sources\\020_e203_exu_branchslv.v",
+   "sha256": "ae10046f8c958e8f46486b028bef3cb0d2a836f8ec62923b69fa6374e38c717a"
+  },
+  {
+   "name": "e203_exu_commit.v",
+   "path": "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_clean_20261118\\base\\sources\\021_e203_exu_commit.v",
+   "sha256": "a70d86fc98c2458ed7b9725a640f5706a938ebe698cd311fbdadf242a7bcd173"
+  },
+  {
+   "name": "e203_exu_csr.v",
+   "path": "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_clean_20261118\\base\\sources\\022_e203_exu_csr.v",
+   "sha256": "9be04830364dca8dbccbbd17a6fe25344f95b73cb088f79c4f06cbeffefad80c"
+  },
+  {
+   "name": "e203_exu_decode.v",
+   "path": "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_clean_20261118\\base\\sources\\023_e203_exu_decode.v",
+   "sha256": "432c5e7134e1544e9edf4ecfdf941831083dacad8139346b0aa082aa31d84d62"
+  },
+  {
+   "name": "e203_exu_disp.v",
+   "path": "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_clean_20261118\\base\\sources\\024_e203_exu_disp.v",
+   "sha256": "cd0b2104b450f7679d2d184766b186c0a2bffd75c7eb49062235bf12bfc5eab3"
+  },
+  {
+   "name": "e203_exu_excp.v",
+   "path": "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_clean_20261118\\base\\sources\\025_e203_exu_excp.v",
+   "sha256": "eddf55ed98b2f54aef2bfeed8966e355d587321e5f65200c3e223a0a49d551bf"
+  },
+  {
+   "name": "e203_exu_longpwbck.v",
+   "path": "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_clean_20261118\\base\\sources\\026_e203_exu_longpwbck.v",
+   "sha256": "28458b4a2b8da502b1fe36ac2621604f6368a257fb73e1c1ce75bf2b7b098e1e"
+  },
+  {
+   "name": "e203_exu_nice.v",
+   "path": "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_clean_20261118\\base\\sources\\027_e203_exu_nice.v",
+   "sha256": "2c9a55708a3c9e0426813eae801407e583b82a2283e23b39aa6d6b46c681b077"
+  },
+  {
+   "name": "e203_exu_oitf.v",
+   "path": "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_clean_20261118\\base\\sources\\028_e203_exu_oitf.v",
+   "sha256": "72ad73cc9351afcf7c50c173f26ea9a74e4453fe567ac04a174a20a13aa8d61a"
+  },
+  {
+   "name": "e203_exu_regfile.v",
+   "path": "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_clean_20261118\\base\\sources\\029_e203_exu_regfile.v",
+   "sha256": "bbe6a0a66263761659029e58bad2455d11b0387b1fe142931f575b5ff694d6f8"
+  },
+  {
+   "name": "e203_exu_wbck.v",
+   "path": "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_clean_20261118\\base\\sources\\030_e203_exu_wbck.v",
+   "sha256": "90510cdeb3390936ef852358d52a67844cbe0208cf81119565ddd1bbc6b42af8"
+  },
+  {
+   "name": "e203_ifu.v",
+   "path": "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_clean_20261118\\base\\sources\\031_e203_ifu.v",
+   "sha256": "99ef0b1bce26fb50c287737fd82575c2deec94175847f52d443d88b81dc7a281"
+  },
+  {
+   "name": "e203_ifu_ifetch.v",
+   "path": "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_clean_20261118\\base\\sources\\032_e203_ifu_ifetch.v",
+   "sha256": "9978279418141e7e425bd51f8c6b46a761c2a7d3b0c62162b4ba9812e91d4ca3"
+  },
+  {
+   "name": "e203_ifu_ift2icb.v",
+   "path": "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_clean_20261118\\base\\sources\\033_e203_ifu_ift2icb.v",
+   "sha256": "a6f78df7ecc563bf6227b1a8e509d1c2f7573b80443bdd4531322af6a878f87d"
+  },
+  {
+   "name": "e203_ifu_litebpu.v",
+   "path": "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_clean_20261118\\base\\sources\\034_e203_ifu_litebpu.v",
+   "sha256": "9c9e0374c7526bd678863d47dc145d8cf7e6ed474795dcfcf725f7fe62526349"
+  },
+  {
+   "name": "e203_ifu_minidec.v",
+   "path": "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_clean_20261118\\base\\sources\\035_e203_ifu_minidec.v",
+   "sha256": "b658cf66bf58309b9cafc5c8d7f5eb639237cfe8eede795a7c62656717bec894"
+  },
+  {
+   "name": "e203_irq_sync.v",
+   "path": "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_clean_20261118\\base\\sources\\036_e203_irq_sync.v",
+   "sha256": "ddaa59031209a12134c4254f389872a23446258f23282356ae0d97f387ecc2f9"
+  },
+  {
+   "name": "e203_itcm_ctrl.v",
+   "path": "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_clean_20261118\\base\\sources\\037_e203_itcm_ctrl.v",
+   "sha256": "dff11eddcaf0f50309197440c421a7a4fdee513ebaeaf06d381c33e07096b58d"
+  },
+  {
+   "name": "e203_itcm_ram.v",
+   "path": "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_clean_20261118\\base\\sources\\038_e203_itcm_ram.v",
+   "sha256": "4ec6e718e602088dcd5e50381c341e7fa723461f6a05453753baf9de0c9adbf7"
+  },
+  {
+   "name": "e203_lsu.v",
+   "path": "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_clean_20261118\\base\\sources\\039_e203_lsu.v",
+   "sha256": "05fff2287182f2c185d687d3f311a79e35f37a0cae720cc66f9e76bd6dfa085c"
+  },
+  {
+   "name": "e203_lsu_ctrl.v",
+   "path": "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_clean_20261118\\base\\sources\\040_e203_lsu_ctrl.v",
+   "sha256": "84335692897d7e14326d4e216b3f36591b93fe40d887896a432390eadbaac62f"
+  },
+  {
+   "name": "e203_reset_ctrl.v",
+   "path": "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_clean_20261118\\base\\sources\\041_e203_reset_ctrl.v",
+   "sha256": "9486347d26c4f8ff5bf5769d5a01c402edc6ef3c52be11e94f5e8f70b2c75282"
+  },
+  {
+   "name": "e203_srams.v",
+   "path": "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_clean_20261118\\base\\sources\\042_e203_srams.v",
+   "sha256": "b7dcaf04823b7968862ab8a9e989a176e864f6715aa5e120c4f618a1c7aba550"
+  },
+  {
+   "name": "sirv_debug_csr.v",
+   "path": "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_clean_20261118\\base\\sources\\043_sirv_debug_csr.v",
+   "sha256": "8bbc5aff5aca17d2ef64c367d4461131b8ea52f297676a6245bec9002f34892e"
+  },
+  {
+   "name": "sirv_debug_module.v",
+   "path": "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_clean_20261118\\base\\sources\\044_sirv_debug_module.v",
+   "sha256": "cb1a2aa61cbc22c1e718844fa6cff4df95dafd2d056a64b3a574db01118258e9"
+  },
+  {
+   "name": "sirv_debug_ram.v",
+   "path": "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_clean_20261118\\base\\sources\\045_sirv_debug_ram.v",
+   "sha256": "3d8fd1c9510fa3529fe32194f111014a01ae52c142ba1c4b7cb96be757e3fa16"
+  },
+  {
+   "name": "sirv_debug_rom.v",
+   "path": "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_clean_20261118\\base\\sources\\046_sirv_debug_rom.v",
+   "sha256": "ba51b1a91f79cfc1c0dbc4932dc87412b06c6db4d65025ef86d5805e7fd2be83"
+  },
+  {
+   "name": "sirv_jtag_dtm.v",
+   "path": "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_clean_20261118\\base\\sources\\047_sirv_jtag_dtm.v",
+   "sha256": "e458dabf62b8f70bf02d3fba96ca8be58b5e294db47b3423136af315e794bd03"
+  },
+  {
+   "name": "sirv_icb1to16_bus.v",
+   "path": "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_clean_20261118\\base\\sources\\048_sirv_icb1to16_bus.v",
+   "sha256": "4cbff4ce0fb71a4cd02ae566f772e7756d8dfa040878ab803bab01a355513eed"
+  },
+  {
+   "name": "sirv_icb1to2_bus.v",
+   "path": "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_clean_20261118\\base\\sources\\049_sirv_icb1to2_bus.v",
+   "sha256": "b328e6cc3e170bc199466f51954e04910066b2ec8e9f8a07be4b7581a0a239f0"
+  },
+  {
+   "name": "sirv_icb1to8_bus.v",
+   "path": "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_clean_20261118\\base\\sources\\050_sirv_icb1to8_bus.v",
+   "sha256": "110922ec61bc9c3fea85c43661ce65b74c831dfe6cdcaf717d67cdea66cf856a"
+  },
+  {
+   "name": "sirv_1cyc_sram_ctrl.v",
+   "path": "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_clean_20261118\\base\\sources\\051_sirv_1cyc_sram_ctrl.v",
+   "sha256": "bb5ec8cd01da783be4dfe45774fda1662009d178b26a46f89adea95e202905ae"
+  },
+  {
+   "name": "sirv_gnrl_bufs.v",
+   "path": "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_clean_20261118\\base\\sources\\052_sirv_gnrl_bufs.v",
+   "sha256": "d46f8701f99a79b321cecd2e2b776caa2d7a76925e07b675bbd3952a47fb3ab2"
+  },
+  {
+   "name": "sirv_gnrl_dffs.v",
+   "path": "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_clean_20261118\\base\\sources\\053_sirv_gnrl_dffs.v",
+   "sha256": "cd903d78882040cc17b6fb8bec3862f8d440726d7027ba9c61310d18801f8d83"
+  },
+  {
+   "name": "sirv_gnrl_icbs.v",
+   "path": "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_clean_20261118\\base\\sources\\054_sirv_gnrl_icbs.v",
+   "sha256": "35eb816a2960f3444af19150845447f6140990a0a3e30a4626edcd242bcf3db8"
+  },
+  {
+   "name": "sirv_gnrl_ram.v",
+   "path": "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_clean_20261118\\base\\sources\\055_sirv_gnrl_ram.v",
+   "sha256": "07ade2feda6635e67aa79821f256b21cd0db9308537906c55612ee1e74034260"
+  },
+  {
+   "name": "sirv_gnrl_xchecker.v",
+   "path": "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_clean_20261118\\base\\sources\\056_sirv_gnrl_xchecker.v",
+   "sha256": "9c610fd2636f26bdf7e6546b6e2a24b43bf5fb5244a308f84d608ed623f3a2b3"
+  },
+  {
+   "name": "sirv_sim_ram.v",
+   "path": "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_clean_20261118\\base\\sources\\057_sirv_sim_ram.v",
+   "sha256": "f25074ac97a3511c393c1b17a8081ef650d1f53ab12b4f4334c222342e31e63b"
+  },
+  {
+   "name": "sirv_sram_icb_ctrl.v",
+   "path": "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_clean_20261118\\base\\sources\\058_sirv_sram_icb_ctrl.v",
+   "sha256": "c8cb42edc2a85e0e50b9f78f6b395682fecae4d8bade144ddc34aba3c89d14e6"
+  },
+  {
+   "name": "sirv_mrom.v",
+   "path": "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_clean_20261118\\base\\sources\\059_sirv_mrom.v",
+   "sha256": "9386d9014b59f782b2fcf1901327b4a71f25064aaa1943de70feae2fffcb6aa0"
+  },
+  {
+   "name": "sirv_mrom_top.v",
+   "path": "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_clean_20261118\\base\\sources\\060_sirv_mrom_top.v",
+   "sha256": "6c0740339727880b7f9f0513a2b4e773afbeb08b7c02183fb05bef937ba8110f"
+  },
+  {
+   "name": "adv_timer_apb_if.v",
+   "path": "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_clean_20261118\\base\\sources\\061_adv_timer_apb_if.v",
+   "sha256": "4d371d76d13a66a2d899101703cdb04bf2f09ce8280ec287c4bcc096536ccbe8"
+  },
+  {
+   "name": "apb_adv_timer.v",
+   "path": "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_clean_20261118\\base\\sources\\062_apb_adv_timer.v",
+   "sha256": "e7ca6e01e532ef4219fe4231c75f9da93f6451bb30637a5b4371698ffb758096"
+  },
+  {
+   "name": "comparator.v",
+   "path": "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_clean_20261118\\base\\sources\\063_comparator.v",
+   "sha256": "a9ed41b6147c432a9283fdb6ac5482be48af9451fa41ff47bf4ed699dead191f"
+  },
+  {
+   "name": "input_stage.v",
+   "path": "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_clean_20261118\\base\\sources\\064_input_stage.v",
+   "sha256": "e93b2f66e44ebb3d0d96ecbd5620d28589c818b16411b84bd631d574cf111f34"
+  },
+  {
+   "name": "prescaler.v",
+   "path": "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_clean_20261118\\base\\sources\\065_prescaler.v",
+   "sha256": "ef988285ad3788b859a9ab212be364abb819aa7a41b5ca7eb5306dd88ec7a6d5"
+  },
+  {
+   "name": "timer_cntrl.v",
+   "path": "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_clean_20261118\\base\\sources\\066_timer_cntrl.v",
+   "sha256": "dc2aa8d94308cd7b196a0e0f2568bc3215809149dfa0f895f87ded666c3de656"
+  },
+  {
+   "name": "timer_module.v",
+   "path": "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_clean_20261118\\base\\sources\\067_timer_module.v",
+   "sha256": "59435233271979437d50ae81ce9300221b657a7a7c2ec919f977230d52c452ff"
+  },
+  {
+   "name": "up_down_counter.v",
+   "path": "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_clean_20261118\\base\\sources\\068_up_down_counter.v",
+   "sha256": "a987f14cd590e2a04696066c835bbb0f7f4602281f8bb9c61f2be14ccf44c6a5"
+  },
+  {
+   "name": "apb_gpio.v",
+   "path": "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_clean_20261118\\base\\sources\\069_apb_gpio.v",
+   "sha256": "c2515b9d72d8f5c8c29a2c3e7b35dd880a81751f4c333871371ac95f881f2294"
+  },
+  {
+   "name": "apb_i2c.v",
+   "path": "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_clean_20261118\\base\\sources\\070_apb_i2c.v",
+   "sha256": "384bd5c9f767de9ecce376f6af6e8a47d1d6499e3c9ebfb9a108651387b13d5f"
+  },
+  {
+   "name": "i2c_master_bit_ctrl.v",
+   "path": "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_clean_20261118\\base\\sources\\071_i2c_master_bit_ctrl.v",
+   "sha256": "a9fdbd5b421910e4a301c2361d37a3a59710a747458cb58d33134b37f2981173"
+  },
+  {
+   "name": "i2c_master_byte_ctrl.v",
+   "path": "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_clean_20261118\\base\\sources\\072_i2c_master_byte_ctrl.v",
+   "sha256": "84c975a59642918dc5d31c471413559e8beef3cfe7b589542791742bf212a8e9"
+  },
+  {
+   "name": "i2c_master_defines.v",
+   "path": "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_clean_20261118\\base\\sources\\073_i2c_master_defines.v",
+   "sha256": "64fa14fb58af069c5b497cbefca28945761d69ba2ce3482a557170026de39d16"
+  },
+  {
+   "name": "apb_spi_master.v",
+   "path": "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_clean_20261118\\base\\sources\\074_apb_spi_master.v",
+   "sha256": "ff7fe26e7f54bbea8961d9edf94c1d0ca78e62eb12f63ab961d7322cfdade4ed"
+  },
+  {
+   "name": "spi_master_apb_if.v",
+   "path": "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_clean_20261118\\base\\sources\\075_spi_master_apb_if.v",
+   "sha256": "ddf75a373072c69c6bb0c674fef0584604a7a5d9042f34346315631f71a2ef67"
+  },
+  {
+   "name": "spi_master_clkgen.v",
+   "path": "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_clean_20261118\\base\\sources\\076_spi_master_clkgen.v",
+   "sha256": "7af6f73803cab880ec8926ac95f7b20b74ff748d884db5fb55e4ef98467d7343"
+  },
+  {
+   "name": "spi_master_controller.v",
+   "path": "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_clean_20261118\\base\\sources\\077_spi_master_controller.v",
+   "sha256": "09f113d747e103f3067366529a3116e480f13cb656547a6726eb4465688759a3"
+  },
+  {
+   "name": "spi_master_fifo.v",
+   "path": "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_clean_20261118\\base\\sources\\078_spi_master_fifo.v",
+   "sha256": "8758acb343d6378459006445288b95dfd24c93e5ccc88c6b53b0d0d067d7a66a"
+  },
+  {
+   "name": "spi_master_rx.v",
+   "path": "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_clean_20261118\\base\\sources\\079_spi_master_rx.v",
+   "sha256": "c3b0c7a3cece7606ad5a464c0cdb6b084adbccc5424b7720d768b3812464c124"
+  },
+  {
+   "name": "spi_master_tx.v",
+   "path": "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_clean_20261118\\base\\sources\\080_spi_master_tx.v",
+   "sha256": "b8063cd98a9d1e4709adfb266d59e2e0d1a8a56ac64cfcb64e9ebcf04cea33f0"
+  },
+  {
+   "name": "apb_uart.v",
+   "path": "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_clean_20261118\\base\\sources\\081_apb_uart.v",
+   "sha256": "bd31f4a19b8e81ba2c8ce02b3244ada38cf211445d8ec96151d55f7e946ecadc"
+  },
+  {
+   "name": "io_generic_fifo.v",
+   "path": "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_clean_20261118\\base\\sources\\082_io_generic_fifo.v",
+   "sha256": "106ee607c8e48cee322a61295b52cc275c0fa540ec6d78547723cca5e9dfd0b1"
+  },
+  {
+   "name": "uart_interrupt.v",
+   "path": "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_clean_20261118\\base\\sources\\083_uart_interrupt.v",
+   "sha256": "75298c2bfb4921cee757641927d55500a54f8604d808f59717834e8507045e60"
+  },
+  {
+   "name": "uart_rx.v",
+   "path": "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_clean_20261118\\base\\sources\\084_uart_rx.v",
+   "sha256": "3eaff563777043772c66d1bf504ff5ddcd5723689b53a50444bb90aec618c39a"
+  },
+  {
+   "name": "uart_tx.v",
+   "path": "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_clean_20261118\\base\\sources\\085_uart_tx.v",
+   "sha256": "d21960c4faffb9bbd0687db02d119ac1e95b6f495b5b49f5efcaed18667dbe83"
+  },
+  {
+   "name": "sirv_aon.v",
+   "path": "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_clean_20261118\\base\\sources\\086_sirv_aon.v",
+   "sha256": "265f166b9246d475cb4cf5d847eee5b2c209ad6ada7710059e3858c61b03e163"
+  },
+  {
+   "name": "sirv_aon_lclkgen_regs.v",
+   "path": "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_clean_20261118\\base\\sources\\087_sirv_aon_lclkgen_regs.v",
+   "sha256": "6eb48c563ad47a730a5be405fab10f9998f6db36428324755439c62142d0fa8a"
+  },
+  {
+   "name": "sirv_aon_porrst.v",
+   "path": "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_clean_20261118\\base\\sources\\088_sirv_aon_porrst.v",
+   "sha256": "1bc839e9b50a8169a65e5819c62bcf88b75755f0b60c46b30307fb190eaa285d"
+  },
+  {
+   "name": "sirv_aon_top.v",
+   "path": "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_clean_20261118\\base\\sources\\089_sirv_aon_top.v",
+   "sha256": "1fe9f4ee5d8832de744b7253e756d11d2f961e358955634e2e44db6c00e9ac91"
+  },
+  {
+   "name": "sirv_aon_wrapper.v",
+   "path": "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_clean_20261118\\base\\sources\\090_sirv_aon_wrapper.v",
+   "sha256": "da4ba087072df5e1e1c290e9dca8f9f01726666d9e7f7ed7d6613d6218c99e3d"
+  },
+  {
+   "name": "sirv_AsyncResetReg.v",
+   "path": "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_clean_20261118\\base\\sources\\091_sirv_AsyncResetReg.v",
+   "sha256": "2ca876742ad8590abe6544097ab30054b91e6adae7a6d3976b5941714efe25d9"
+  },
+  {
+   "name": "sirv_AsyncResetRegVec.v",
+   "path": "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_clean_20261118\\base\\sources\\092_sirv_AsyncResetRegVec.v",
+   "sha256": "2675dd51b18345103da79ebb806afb23810a735f8bcc664e0b40d763d1eed1b9"
+  },
+  {
+   "name": "sirv_AsyncResetRegVec_1.v",
+   "path": "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_clean_20261118\\base\\sources\\093_sirv_AsyncResetRegVec_1.v",
+   "sha256": "d492c602befa1dc7ef6bca079324ff75a1f7adcba5240b61cab83db76164528b"
+  },
+  {
+   "name": "sirv_AsyncResetRegVec_129.v",
+   "path": "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_clean_20261118\\base\\sources\\094_sirv_AsyncResetRegVec_129.v",
+   "sha256": "59f7b19022abe58b21db8f5b9880bacc71c14c4d7f0320c37fb91605c93b4e64"
+  },
+  {
+   "name": "sirv_AsyncResetRegVec_36.v",
+   "path": "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_clean_20261118\\base\\sources\\095_sirv_AsyncResetRegVec_36.v",
+   "sha256": "741613f950eb24a1266bbbe2722ac98ecae9abd647350243c6d9545c73cabb7d"
+  },
+  {
+   "name": "sirv_clint.v",
+   "path": "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_clean_20261118\\base\\sources\\096_sirv_clint.v",
+   "sha256": "a2009569b93a9d549d2b4b1f791b43e05b5a96645501126b37b8f1a1711b1444"
+  },
+  {
+   "name": "sirv_clint_top.v",
+   "path": "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_clean_20261118\\base\\sources\\097_sirv_clint_top.v",
+   "sha256": "10eabd1187bd4a45253b300364656a2dab2d42a13bbbeb05ab5235803ae206f3"
+  },
+  {
+   "name": "sirv_DeglitchShiftRegister.v",
+   "path": "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_clean_20261118\\base\\sources\\098_sirv_DeglitchShiftRegister.v",
+   "sha256": "332ad5b31f2e002d14f4a278e1057aede1ba05d0ff16d494cb2b49b981ea53be"
+  },
+  {
+   "name": "sirv_expl_axi_slv.v",
+   "path": "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_clean_20261118\\base\\sources\\099_sirv_expl_axi_slv.v",
+   "sha256": "963f5d2b8f8a0e5df37d830857e5b28c583283b331af3903c896cc9d0083dec1"
+  },
+  {
+   "name": "sirv_flash_qspi.v",
+   "path": "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_clean_20261118\\base\\sources\\100_sirv_flash_qspi.v",
+   "sha256": "904e64f4df6a92594f02e9839d35df2df99d11ef7b6f861491a2140f1b570f53"
+  },
+  {
+   "name": "sirv_flash_qspi_top.v",
+   "path": "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_clean_20261118\\base\\sources\\101_sirv_flash_qspi_top.v",
+   "sha256": "ecc47db786adb9e96e7216fcda3c024872edb0776170f06eab75e2198d753630"
+  },
+  {
+   "name": "sirv_hclkgen_regs.v",
+   "path": "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_clean_20261118\\base\\sources\\102_sirv_hclkgen_regs.v",
+   "sha256": "4da8c7eab7218ca7c401e76b3fab5f4ff69c5d74527fa57fc92d61b0b32c0f94"
+  },
+  {
+   "name": "sirv_jtaggpioport.v",
+   "path": "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_clean_20261118\\base\\sources\\103_sirv_jtaggpioport.v",
+   "sha256": "a9e64f06152c28426c04a7064651439b5bcce827ee7cb43ccd226b8673679d64"
+  },
+  {
+   "name": "sirv_LevelGateway.v",
+   "path": "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_clean_20261118\\base\\sources\\104_sirv_LevelGateway.v",
+   "sha256": "a72ad6d2ae8b199742da8bf228f114b4c718ccf3286597abb39971193cedf25e"
+  },
+  {
+   "name": "sirv_plic_man.v",
+   "path": "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_clean_20261118\\base\\sources\\105_sirv_plic_man.v",
+   "sha256": "b7b8022f306eb7a93f20fda6d131feaa725aa04315bae87d3154572ab052c028"
+  },
+  {
+   "name": "sirv_plic_top.v",
+   "path": "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_clean_20261118\\base\\sources\\106_sirv_plic_top.v",
+   "sha256": "b9770b38590371538154eacfe139660ab4b680fa2794d8d710256316c227c0bc"
+  },
+  {
+   "name": "sirv_pmu.v",
+   "path": "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_clean_20261118\\base\\sources\\107_sirv_pmu.v",
+   "sha256": "3f369dc1ce2de62e8f4de341850fb6567bad18f4bad28dbb4033c607d0c8c0b4"
+  },
+  {
+   "name": "sirv_pmu_core.v",
+   "path": "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_clean_20261118\\base\\sources\\108_sirv_pmu_core.v",
+   "sha256": "d53b2a3a9b14805f057387585800d01d73e4c7919b5ef46e775dc875fb58ce90"
+  },
+  {
+   "name": "sirv_qspi_arbiter.v",
+   "path": "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_clean_20261118\\base\\sources\\109_sirv_qspi_arbiter.v",
+   "sha256": "fbe04b6e1969c2297009d5797b4ab83c412311d75d7dc599aa2e97396daff370"
+  },
+  {
+   "name": "sirv_qspi_fifo.v",
+   "path": "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_clean_20261118\\base\\sources\\110_sirv_qspi_fifo.v",
+   "sha256": "6f61e7ee3c1a86ffc6a43cae8b3e28ffdf5d4273981c265012f9469025246fc7"
+  },
+  {
+   "name": "sirv_qspi_media.v",
+   "path": "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_clean_20261118\\base\\sources\\111_sirv_qspi_media.v",
+   "sha256": "f025be99fed8f13907b1778881619a4ebc7f55342c8d734ab6d6dea629d78d5d"
+  },
+  {
+   "name": "sirv_qspi_physical.v",
+   "path": "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_clean_20261118\\base\\sources\\112_sirv_qspi_physical.v",
+   "sha256": "630ff153c9ee781b5f66ef987ae29d3c19f1313854d65280bad49ba1d1ed8c51"
+  },
+  {
+   "name": "sirv_queue.v",
+   "path": "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_clean_20261118\\base\\sources\\113_sirv_queue.v",
+   "sha256": "fc1b9ee9fe87a9a8ff1a8c50de9d74164d0b5080716557ab814e82a67b1ae133"
+  },
+  {
+   "name": "sirv_queue_1.v",
+   "path": "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_clean_20261118\\base\\sources\\114_sirv_queue_1.v",
+   "sha256": "18c323d0b78c5fe6bc3d8e40a4faa8afa107a57d5f1e7a19f7c821442d1bd95b"
+  },
+  {
+   "name": "sirv_repeater_6.v",
+   "path": "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_clean_20261118\\base\\sources\\115_sirv_repeater_6.v",
+   "sha256": "330a75c050c67454c568890c6e251341972440bf7eb743d73508adfd5321fae0"
+  },
+  {
+   "name": "sirv_ResetCatchAndSync.v",
+   "path": "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_clean_20261118\\base\\sources\\116_sirv_ResetCatchAndSync.v",
+   "sha256": "b6d9378451815c6ba48c86ad32d6ee5d67b337ea01e0dd61fb956800c8516e4c"
+  },
+  {
+   "name": "sirv_ResetCatchAndSync_2.v",
+   "path": "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_clean_20261118\\base\\sources\\117_sirv_ResetCatchAndSync_2.v",
+   "sha256": "1276066c3cb7b5b758c151682c049e6fe4629ef807d69331ca841003f9d669d7"
+  },
+  {
+   "name": "sirv_rtc.v",
+   "path": "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_clean_20261118\\base\\sources\\118_sirv_rtc.v",
+   "sha256": "e361fda5a57919573665ce8f2c90990814e0c92cbab3553d6e6f808e132f239c"
+  },
+  {
+   "name": "sirv_spi_flashmap.v",
+   "path": "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_clean_20261118\\base\\sources\\119_sirv_spi_flashmap.v",
+   "sha256": "75169e7054b1b42e626528a728c668d105eef0a510d23c7d70e454572efa1f3b"
+  },
+  {
+   "name": "sirv_tl_repeater_5.v",
+   "path": "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_clean_20261118\\base\\sources\\120_sirv_tl_repeater_5.v",
+   "sha256": "155959f1b8ed74c808339a03d1a30f253f328685650ba7cde07def693abb258f"
+  },
+  {
+   "name": "sirv_tlfragmenter_qspi_1.v",
+   "path": "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_clean_20261118\\base\\sources\\121_sirv_tlfragmenter_qspi_1.v",
+   "sha256": "366c0f473c5aebfe80a321fef520963dd96fd80b437f03dbf5bd12ab632e0cc8"
+  },
+  {
+   "name": "sirv_tlwidthwidget_qspi.v",
+   "path": "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_clean_20261118\\base\\sources\\122_sirv_tlwidthwidget_qspi.v",
+   "sha256": "1ee34f620ba12cc47fdd6f9dfd04788545cdc986d280f7286544e99dce447db2"
+  },
+  {
+   "name": "sirv_wdog.v",
+   "path": "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_clean_20261118\\base\\sources\\123_sirv_wdog.v",
+   "sha256": "1d254d36ca7feb62e7b0caac71d968c6c46b0d3b0f784953440cc431e609bd91"
+  },
+  {
+   "name": "e203_soc_top.v",
+   "path": "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_clean_20261118\\base\\sources\\124_e203_soc_top.v",
+   "sha256": "97bfe3fd1119b4682589a48f57a60e108d496e2c1c1a53d7c0255b50fe79c02b"
+  },
+  {
+   "name": "e203_subsys_clint.v",
+   "path": "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_clean_20261118\\base\\sources\\125_e203_subsys_clint.v",
+   "sha256": "1b5eb7e633a53c3ae75d6d60ae847a8bb9bd2b8e10192349fa976e29d3d24917"
+  },
+  {
+   "name": "e203_subsys_gfcm.v",
+   "path": "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_clean_20261118\\base\\sources\\126_e203_subsys_gfcm.v",
+   "sha256": "4ab432eabba1f038cdb52c6b42f2d62f5e17e0f17e4f7f3d8fb60c85f209c865"
+  },
+  {
+   "name": "e203_subsys_hclkgen.v",
+   "path": "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_clean_20261118\\base\\sources\\127_e203_subsys_hclkgen.v",
+   "sha256": "d9ec8c4324562a463f1b03453f627cab034cc2dd3a47d8ba6e1b0668d14ac0d5"
+  },
+  {
+   "name": "e203_subsys_hclkgen_rstsync.v",
+   "path": "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_clean_20261118\\base\\sources\\128_e203_subsys_hclkgen_rstsync.v",
+   "sha256": "a016aa4e050a7ba4672649186e95a2ac6d203202c5406767edff2c572b96e7e3"
+  },
+  {
+   "name": "e203_subsys_main.v",
+   "path": "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_clean_20261118\\base\\sources\\129_e203_subsys_main.v",
+   "sha256": "4258161cac87bc56ef19f22ee8c82dbcae9d3effb2f0159282d3f8acd85c015c"
+  },
+  {
+   "name": "e203_subsys_mems.v",
+   "path": "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_clean_20261118\\base\\sources\\130_e203_subsys_mems.v",
+   "sha256": "dc63cbcc9ebe9331c824c27f6f3645f0f330740573ee1b9a52dc5ca259a339fd"
+  },
+  {
+   "name": "e203_subsys_nice_core.v",
+   "path": "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_clean_20261118\\base\\sources\\131_e203_subsys_nice_core.v",
+   "sha256": "7df0c61643882daeb584e419c7f1d07badc2f132cf642ca912f080ebef0a350a"
+  },
+  {
+   "name": "e203_subsys_perips.v",
+   "path": "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_clean_20261118\\base\\sources\\132_e203_subsys_perips.v",
+   "sha256": "9a7e4dd76b55e327eb2a81fbce44404b617fc045060a251e0898970ef2ddf1cb"
+  },
+  {
+   "name": "e203_subsys_plic.v",
+   "path": "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_clean_20261118\\base\\sources\\133_e203_subsys_plic.v",
+   "sha256": "e4404a0972696a3a650b5e6d134b733798c09dcaed3248abce477337d30eb8f1"
+  },
+  {
+   "name": "e203_subsys_pll.v",
+   "path": "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_clean_20261118\\base\\sources\\134_e203_subsys_pll.v",
+   "sha256": "b838d57c4d125f04b73ace93c0c8a02bc77460cd8a428f179404ae9d7266ca13"
+  },
+  {
+   "name": "e203_subsys_pllclkdiv.v",
+   "path": "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_clean_20261118\\base\\sources\\135_e203_subsys_pllclkdiv.v",
+   "sha256": "652153dcf7c940083dbf3f4094473d35207ba3c20f3cf2bf7a16277b750c000a"
+  },
+  {
+   "name": "e203_subsys_top.v",
+   "path": "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_clean_20261118\\base\\sources\\136_e203_subsys_top.v",
+   "sha256": "dcf1a6d8161f724926ef5fb58c52b67c9911444abbd08901b5fb9bd158b0339f"
+  },
+  {
+   "name": "qingyu_e203_soc_top.v",
+   "path": "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_clean_20261118\\variants\\v8b\\src\\qingyu_e203_soc_top.v",
+   "sha256": "140f24e363c6676738541512794f0bad224b655ef99c253b75c72dfe224caa8c"
+  },
+  {
+   "name": "qingyu_e203_subsys_main.v",
+   "path": "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_clean_20261118\\variants\\v8b\\src\\qingyu_e203_subsys_main.v",
+   "sha256": "dfb1175f5b5b29c1fa2ecdb7c778898b512309193b61c8d57fb097e75fb29734"
+  },
+  {
+   "name": "qingyu_e203_subsys_top.v",
+   "path": "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_clean_20261118\\variants\\v8b\\src\\qingyu_e203_subsys_top.v",
+   "sha256": "350b9fa03b3d1dc598ca5b9bfbc37584a5365de0665b8a07a5e38989b2c9ba28"
+  },
+  {
+   "name": "qingyu_shared_sram.sv",
+   "path": "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_clean_20261118\\variants\\v8b\\src\\qingyu_shared_sram.sv",
+   "sha256": "27707f9096f2053ef9f0837f9de935aa5fde203068a028d09cbb68092bbc5dad"
+  },
+  {
+   "name": "qingyu_sram16.sv",
+   "path": "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_clean_20261118\\base\\sources\\141_qingyu_sram16.sv",
+   "sha256": "917708815db8b438a90d7dc28ed7e001f93860a7de937289e60e5f9239988686"
+  },
+  {
+   "name": "tb_q12soc.sv",
+   "path": "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_clean_20261118\\variants\\v8b\\src\\tb_q12soc.sv",
+   "sha256": "b8ee92dad105f77c0ff2f4f74c84b2575e9ef05687ed27c14067334c062c0a50"
+  },
+  {
+   "name": "q12_stream_engine_overlap.sv",
+   "path": "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_clean_20261118\\variants\\v8b\\src\\q12_stream_engine_overlap.sv",
+   "sha256": "e6a4367b086697f7ae42206ef0143993fa7e40a009d5a5ff0873c351ff35ae9c"
+  },
+  {
+   "name": "q12_icb_stream_prefix.sv",
+   "path": "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_clean_20261118\\variants\\v8b\\src\\q12_icb_stream_prefix.sv",
+   "sha256": "02e3f791ae17f9c565bc1ea3ea9ddbebcd96f4d9763f29806edb81abdb090bf6"
+  },
+  {
+   "name": "q12_rowpair_pack.sv",
+   "path": "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_clean_20261118\\variants\\v8b\\src\\q12_rowpair_pack.sv",
+   "sha256": "f69264f2c25be45aaee73eb08ff7abe40b10689a55bc54eef81d645b891c5350"
+  },
+  {
+   "name": "q13_dense16_writer.sv",
+   "path": "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_clean_20261118\\base\\sources\\147_q13_dense16_writer.sv",
+   "sha256": "67d17d9e4653f948d5ec36991ab2382a5f99870ab056262f9c798eacfe4b91bb"
+  },
+  {
+   "name": "q12_task4.sv",
+   "path": "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_clean_20261118\\variants\\v8b\\src\\q12_task4.sv",
+   "sha256": "34a1e432e11e89412001523ac1f39cf930c99bd3a36a16fa00feb3683d566932"
+  },
+  {
+   "name": "q12_pair_acc.sv",
+   "path": "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_clean_20261118\\base\\sources\\149_q12_pair_acc.sv",
+   "sha256": "76252e95902fd2b9e05dc3928c01138e35e5a9d399a1134c9483e22f3a04f665"
+  },
+  {
+   "name": "q12_striped_sram.sv",
+   "path": "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_clean_20261118\\base\\sources\\150_q12_striped_sram.sv",
+   "sha256": "8364055ebe25c5a61e3e97ee0b963a7e5aa4400f658384a03c3ec812b405ada8"
+  },
+  {
+   "name": "q11_commit_gate.sv",
+   "path": "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_clean_20261118\\variants\\v8b\\src\\q11_commit_gate.sv",
+   "sha256": "43de6eadf3f3e6fbfb0be636960fcaf1ed6e199d4f4e444a7f831a3fd5f81686"
+  },
+  {
+   "name": "qingyu_icb_merge.sv",
+   "path": "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_clean_20261118\\base\\sources\\152_qingyu_icb_merge.sv",
+   "sha256": "22de459b44f3308f9d66c904be48ffeedeaa124c8b531215f22b79b6768e66a8"
+  },
+  {
+   "name": "qingyu_q12_stream_fio.sv",
+   "path": "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_clean_20261118\\variants\\v8b\\src\\qingyu_q12_stream_fio.sv",
+   "sha256": "4012735b83b47c224c9db6d68c87c39bdca2fe661f065e048ffaf8bf6b8e05e1"
+  },
+  {
+   "name": "q12_gpio_dma.sv",
+   "path": "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_clean_20261118\\variants\\v8b\\src\\q12_gpio_dma.sv",
+   "sha256": "414dde7f1cc43d08f647d006476599696a28a81e66848f5de68cdab26dbb860d"
+  },
+  {
+   "name": "q12_gpio_source.sv",
+   "path": "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_clean_20261118\\variants\\v8b\\src\\q12_gpio_source.sv",
+   "sha256": "3d1f904b071555ff377f0fdaac449db22828dcf34a5704f0b73ca09e2b8b4391"
+  },
+  {
+   "name": "q12_fixed12_reader.sv",
+   "path": "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_clean_20261118\\variants\\v8b\\src\\q12_fixed12_reader.sv",
+   "sha256": "c37976721853df876538cac5a2162ccb264ec9c055130f565ef58cd9a1c899a7",
+   "added": true
+  }
+ ],
+ "firmware": {
+  "size": 560,
+  "defines": []
+ },
+ "packets": [
+  {
+   "task": "layer00/sample000",
+   "directory": "layer00_sample000",
+   "input_words": 7826,
+   "input_sha256": "eb85e12770e8a227e8314288b2f4df9e2886bc36f57eb2e0950300027383cef2",
+   "dense_sha256": "e61b8ec879f05ac125ffa3b059947971d38adcb299188b33c0e343acb9330c90",
+   "frozen_input_sha256": "8babc60c24c25a53b6fa1dc00c283c4dc67dc2eccf6da1338d2cb1550a8825df"
+  },
+  {
+   "task": "layer01/sample000",
+   "directory": "layer01_sample000",
+   "input_words": 7826,
+   "input_sha256": "9ba9fcc843053674fac649b87dd5d9be96a0d9b97bb0f89411f02bff10b7d068",
+   "dense_sha256": "8a3ee9974e697180e69710e0aed6629fe8b32b6acad379980475ca532a69d9b2",
+   "frozen_input_sha256": "56798e32af813b41da4e6d1a7a89b1c9e6196f43e650644983803d100f3d7b10"
+  },
+  {
+   "task": "layer02/sample000",
+   "directory": "layer02_sample000",
+   "input_words": 7826,
+   "input_sha256": "f6f35f54161d3757a4c7e2779810f6dda2a052f5b2a83c47f040eb47d06ab8ed",
+   "dense_sha256": "6ecd6777901b28335811339933dc8b7e5a9256fd6623a2822997467620a4b6aa",
+   "frozen_input_sha256": "1a6c9c960d58f21397b10ded801e9a656371028dde85c64ab2204fbd50b37d9c"
+  },
+  {
+   "task": "layer03/sample000",
+   "directory": "layer03_sample000",
+   "input_words": 7826,
+   "input_sha256": "eba8c6a9f69d568ca02cfeea9713b5b554cf51560b92ca8882fdabe384077363",
+   "dense_sha256": "339ff4958434f44d5e01b6f2429087e360a82e69ee7209c9c1624217bf6c8959",
+   "frozen_input_sha256": "6ee209391abb68d16f8359b804beb39e7f3b39a8297ed9a42038dde1cae530bf"
+  },
+  {
+   "task": "layer04/sample000",
+   "directory": "layer04_sample000",
+   "input_words": 7826,
+   "input_sha256": "c4d26ea233ebd08beddde123f194d7539b21910c6f6a58cee82756cd82b0b710",
+   "dense_sha256": "2fdd08a17294f8b15e3106b5844681ec6a88b2f9a1a28f1b0f6224c0357370c9",
+   "frozen_input_sha256": "30f56e4b71ac5114cf2f767d0e69ae1ec468f79fe99daafc64a1e00825ea1243"
+  },
+  {
+   "task": "layer05/sample000",
+   "directory": "layer05_sample000",
+   "input_words": 7826,
+   "input_sha256": "de086b60e7042b05666c3a560a9606184b2362eefcde6c8ddd869f6c9c098564",
+   "dense_sha256": "7a08ff1ddb62ea073e940de9403b1b6560a2e3e507d40c50ba3965f857138014",
+   "frozen_input_sha256": "40bc775d9ced223a96be25e405f3724385d648190030f7fd09a53f3710301be2"
+  },
+  {
+   "task": "layer06/sample000",
+   "directory": "layer06_sample000",
+   "input_words": 7826,
+   "input_sha256": "f652c485982fdf8e079d1165da4b8d46cfe88e85cecf90c5fb3d3e4eda2e01a5",
+   "dense_sha256": "a8c26d813c68c7a3f3af04904e88034f4f2e03ab2c76e915098aa45def658a96",
+   "frozen_input_sha256": "9b8ed4cd3436f453282d48325c4d842d00437156000c18254de8727d3ad64cb9"
+  },
+  {
+   "task": "layer07/sample000",
+   "directory": "layer07_sample000",
+   "input_words": 7826,
+   "input_sha256": "80fd810876c62bb071ca5645ec57e0f325fa3e25923fccdbbd48d740887a4952",
+   "dense_sha256": "e48f10d1cc93db9e895067a70ef2228d849043d46f212c1fdfecfdf2cc04bd9d",
+   "frozen_input_sha256": "aa7257f82536be248b485c3a71147cd7d85abe3bcc1a1358c5d58b83e67f5e35"
+  },
+  {
+   "task": "layer08/sample000",
+   "directory": "layer08_sample000",
+   "input_words": 7826,
+   "input_sha256": "384f79ec425b00b21055beacd8dc23618e1bea18d84676b4392fd5a11d7f59d9",
+   "dense_sha256": "02c1d36a9f36f4ff2a7addacc9eca2ce2a34fdeca0a336013b1247847e2aa308",
+   "frozen_input_sha256": "68a536c6812d86b9d003fd8023465ddedc4a84574e2299c82565c6140b203275"
+  },
+  {
+   "task": "layer09/sample000",
+   "directory": "layer09_sample000",
+   "input_words": 7826,
+   "input_sha256": "1fec31ba1245d7ef3a96916cec2865ea669881781f81e847ab7c0bc38aa4f59b",
+   "dense_sha256": "149c8d8110209f319cc2d8bc0ffb3ef5536cf4d71b2d80d07474cf8abd951212",
+   "frozen_input_sha256": "da8b36714eab9bb50c763c4ed8ba049f3323ad5f64c1ccabfed82166ad44c80b"
+  },
+  {
+   "task": "layer10/sample000",
+   "directory": "layer10_sample000",
+   "input_words": 7826,
+   "input_sha256": "8b4ba0f79e5e55b89b9b800dffa223c9b60a469fea7e4d5376ba681638e09b7b",
+   "dense_sha256": "cc5cb5a905baf158cc499ffe22c6f4ac83ebd9d903600ef51734fbf6a9964fa1",
+   "frozen_input_sha256": "fbab210dbb48eac2ba1d04c036c33c39b4f38ffae50ab580b7c4b62fedc89ee4"
+  },
+  {
+   "task": "layer11/sample000",
+   "directory": "layer11_sample000",
+   "input_words": 7826,
+   "input_sha256": "271cdfcdec9147e053c020836100869c2844f26f241dc54a64b0c0ef811ee3dd",
+   "dense_sha256": "f50210438ba42bffe8a07cd19f5e816841e5d9b3550756c19bc004638c473b5a",
+   "frozen_input_sha256": "ed4e395b41169de8cd51b5cfc0260d1b2fd3db15b820afea791aaad0f66ab799"
+  }
+ ],
+ "executable": "E:\\Desktop\\qiansaisheji\\output\\eda\\q12_clean_20261118\\build_cache\\f0b2c60ba6e3154f\\Vq12gpio.exe",
+ "mean_cycles": 41258.0,
+ "layers_per_s": 3635.658538950022
+}

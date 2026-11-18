@@ -66,6 +66,29 @@ def summary(run, quiet=False):
     tmin = re.findall(r'slack\s*\([^)]*\)\s*(' + NUMBER + ')', text(s / 'timing_min.rpt'))
     if tmax or tmin:
         lines.append('TIMING (TT, reported paths): worst setup=%s ns  worst hold=%s ns' % (min(map(float, tmax)) if tmax else 'NA', min(map(float, tmin)) if tmin else 'NA'))
+    # Per-group worst paths (setup+hold) from timing_groups.rpt
+    tg = text(s / 'timing_groups.rpt')
+    for kind, gname, body in re.findall(r'^Q12_GROUP_(MAX|MIN)=(\S+)\n(.*?)(?=^Q12_GROUP_|\Z)', tg, re.M | re.S):
+        sl = re.search(r'slack\s*\(([^)]*)\)\s*(' + NUMBER + ')', body)
+        sp = re.search(r'Startpoint:\s*(\S+)', body); ep = re.search(r'Endpoint:\s*(\S+)', body)
+        if sl: lines.append('  %s group=%-12s slack=%s (%s) %s -> %s' % ('setup' if kind == 'MAX' else 'hold ', gname, sl.group(2), sl.group(1), sp.group(1) if sp else '?', ep.group(1) if ep else '?'))
+    cr = text(s / 'constraints.rpt')
+    if cr:
+        def sec(name):
+            hdr = r'^\s*(max_delay/setup|min_delay/hold|max_transition|max_capacitance|max_fanout|critical_range|max_area|sequential_clock_pulse_width|min_capacitance|min_pulse_width)\b'
+            parts = re.split(hdr, cr, flags=re.M)
+            return sum(len(re.findall(r'\(VIOLATED', parts[i + 1])) for i in range(1, len(parts) - 1, 2) if parts[i] == name)
+        lines.append('constraint violators: setup=%d hold=%d max_transition=%d max_capacitance=%d' % (sec('max_delay/setup'), sec('min_delay/hold'), sec('max_transition'), sec('max_capacitance')))
+        if 'This design has no violated constraints' in cr: lines.append('constraint violators: NONE (report_constraint)')
+    q = text(s / 'qor.rpt')
+    if q:
+        for g, body in re.findall(r"Timing Path Group '([^']+)'\s*\n\s*-+\n(.*?)(?=\n\s*\n)", q, re.S):
+            cps = re.search(r'Critical Path Slack:\s*(' + NUMBER + ')', body); tns = re.search(r'Total Negative Slack:\s*(' + NUMBER + ')', body)
+            hold = re.search(r'Worst Hold Violation:\s*(' + NUMBER + ')', body)
+            lines.append('  qor group=%-12s WNS=%s TNS=%s worst_hold=%s' % (g, cps.group(1) if cps else '?', tns.group(1) if tns else '?', hold.group(1) if hold else '?'))
+        for k in ['Worst Hold Violation', 'Total Hold Violation', 'No. of Hold Violations', 'Total Negative Slack', 'No. of Violating Paths', 'Max Trans Violations', 'Max Cap Violations']:
+            m = re.search(r'^\s*' + re.escape(k) + r':\s*(' + NUMBER + ')', q, re.M)
+            if m: lines.append('  qor %s=%s' % (k, m.group(1)))
     st = text(s / 'dc.log')
     if st: lines.append('synth: ' + ('COMPLETE' if synth_ok(run) else ('FAILED ' + ' | '.join(re.findall(r'^(?:Error:.*|Q12_FINAL_SYNTH_FAILED:.*)$', st, re.M)[:3]) if re.search(r'^Q12_FINAL_SYNTH_FAILED:', st, re.M) else 'running')))
     cg = text(s / 'clock_gating.rpt')
@@ -86,8 +109,16 @@ def summary(run, quiet=False):
     for n, w, e in pw: lines.append('%s: power=%.3f mW energy=%.4f uJ' % (n, w * 1e3, e))
     if pw:
         lines.append('ENERGY mean=%.4f uJ over %d windows; mean power=%.3f mW' % (sum(x[2] for x in pw) / len(pw), len(pw), 1e3 * sum(x[1] for x in pw) / len(pw)))
-        h = text(sorted(run.glob('power_layer*'))[0] / 'power_hierarchy.rpt').splitlines()
-        lines.append('--- power hierarchy (first window) ---'); lines += [x for x in h if x.strip()][:45]
+        d0 = sorted(run.glob('power_layer*'))[0]; h = (text(d0 / 'power_hier3.rpt') or text(d0 / 'power_hierarchy.rpt')).splitlines()
+        kept, skip = [], False
+        for x in h:
+            if skip and re.match(r'^\s+[\d.e+-]+\s', x): skip = False; continue
+            skip = False
+            if 'SNPS_CLOCK_GATE' in x or 'clk_gate_' in x:
+                skip = not re.search(r'\d\.\d+e?-?\d*\s+[\d.]+\s*$', x); continue
+            kept.append(x)
+        h = kept
+        lines.append('--- power hierarchy (first window) ---'); lines += [x for x in h if x.strip()][:70]
     out = '\n'.join(lines) + '\n'
     (run / 'SUMMARY.txt').write_text(out)
     if not quiet: print(out, flush=True)
@@ -108,7 +139,7 @@ def main():
     (run / 'candidate.json').write_text(json.dumps(cj) + '\n')
     print('Q12_CLEAN_RUN=' + str(run), flush=True)
     env = os.environ.copy()
-    env.update(Q12_PACKAGE=str(cand), Q12_EXPECT_128=str(cj['n128']), Q12_LIBRARIES=' '.join('{' + str(p) + '}' for p in dbs),
+    env.update(Q12_PACKAGE=str(cand), Q12_EXPECT_128=str(cj['n128']), Q12_LIBRARIES=' '.join(str(p) for p in dbs),
                Q12_COMPILE=a.compile, Q12_GATE='0' if a.no_gate else '1')
     env.update(dict(zip(['Q12_STD_DB', 'Q12_RAM128_DB', 'Q12_RAM1024_DB', 'Q12_RAM4096_DB'], map(str, dbs))))
     (run / 'tmp').mkdir(); env['TMPDIR'] = str(run / 'tmp')

@@ -44,3 +44,22 @@
 - 原存储总线保持 SPLT_FIFO_OUTS_NUM=1，其拆分器为 ALLOW_0CYCL_RSP=1（原平台支持零周期响应）。
 - 运行时证据：72 个夹具的测试台账逐笔核对——每个总线请求都有来源（CPU/计算 DMA/输入 DMA），共享 SRAM 访问都经过原存储总线，每个 GPIO 字都经原 APB 读出。
 - 敏感点：若共享 SRAM 写应答强制延迟 1 拍，A 降为 2425 层/s（v3r_regwrite 实验）。
+
+## 2026-11-18 11:20 更新：v5–v8 与服务器结果
+| 版本 | 改动 | A 周期/层 | B 周期/层 |
+|---|---|---|---|
+| v5 | 去掉核心 6 个诊断计数器 | 44166 | 41278 |
+| v6 | 主机离线按核心顺序重排，行对缓冲换直通级 | 44129 | 41228 |
+| v7 | transport FIFO 8/4、在途 4、GPIO FIFO 8；B 的 W 暂存 320 位 | 44197 | 41258 |
+| v8 | 引擎 abort 寄存后再送 transport（消除组合环 datapath_fault→abort_now→soft_abort→wr_word_ready→encoder_in_ready） | 44197 | 41258 |
+
+v8：A/B 72 夹具逐值通过；Verilator UNOPTFLAT 3→0；故障注入（`variants/*_fault`，测试专用 TB 钩子 `patches/fault_tb.py`）坏头字→错误码 02、坏移位元数据→12，与 v7 一致并正常收尾；合规审计通过。
+
+服务器 03（v7，官方 SCC40NLL RVT TT + SRAM_Lib_2025）：
+- A：厂家 12 层周期差全 0；增量面积 0.310152 mm²；4 窗口平均能耗 9.074 µJ；Formality 通过。
+- B：0.298346 mm²；8.402 µJ；Formality 失败，失败点在 output_packer，由上述组合环引起。
+- 时序问题（结果_04～06）及处理：
+  - setup −262.8 ns：E203 原版 `inspect_core_clk` 时钟转发到 GPIOA[27]，是伪路径。
+  - ITCM −2.94 ns：上面那条伪路径占住了 hfext_clk 组的 WNS，DC 没有去优化这条路径。
+  - 两者已在 `server/flow/map.tcl` 中处理：false path（只切这一支）、异步时钟组、`set_fix_hold`，以及仍有违例时的增量编译。
+  - 处理后的全流程重跑包为 `q12clean4`（服务器操作 07）。

@@ -28,8 +28,9 @@ set rc [catch {
  redirect -file activity_after.rpt {report_switching_activity}
  redirect -file power.rpt {report_power -verbose}
  redirect -file power_hierarchy.rpt {report_power -hierarchy}
- redirect -file units.rpt {report_units}
- redirect -file power_units.rpt {report_units -power}
+ q12_optional_report power_hier3.rpt {report_power -hierarchy -levels 3}
+ q12_optional_report units.rpt {report_units}
+ q12_optional_report power_units.rpt {report_units -power}
  q12_optional_report pin_attributes.rpt {list_attributes -application -class pin}
  # Compatibility-sensitive fields are diagnostic, never silently accepted.
  # Unsupported source metadata becomes UNKNOWN and closes the acceptance gate.
