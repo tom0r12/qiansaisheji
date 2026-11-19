@@ -1,8 +1,10 @@
 {
   "project": "轻语 (Qingyu) — E203 Feed-Forward Linear Accelerator (Q12 Clean Compliance Release)",
-  "frozen_at": "2026-11-18T17:10:00+08:00",
+  "primary_recommendation": "candidate_B (v9b, pairw10 X12/W10/Y13)",
+  "backup_reference": "candidate_A (v9a, pair12 X12/W12/Y13)",
+  "frozen_at": "2026-11-19T08:35:00+08:00",
   "git_branch": "q12clean6-20261118",
-  "git_tag": "q12clean6-submission-20261118-r3",
+  "git_tag": "q12clean6-submission-20261118-r4",
   "compliance_status": {
     "upstream_e203_files_byte_identical": 135,
     "entropy_rice_delta_coding": false,
@@ -24,7 +26,7 @@
   "candidate_A_primary": {
     "variant": "v9a",
     "format": "pair12 (X12 / W12 / Y13 in dense INT16)",
-    "recommended_role": "Default primary submission (bit-identical precision to original Q12)",
+    "recommended_role": "Backup / High-Precision & Full-GLS Reference (bit-identical W12 precision; 12-layer PT power + TT SDF GLS verified)",
     "mapped_netlist_sha256": "dab44a73e9e145223ed16ccfa73ad236865c6329f3ed032771e49aee89bcc9ac",
     "vendor_12_tasks_passed": "12/12",
     "mean_full_window_cycles": 44230.0,
@@ -54,7 +56,7 @@
   "candidate_B_backup": {
     "variant": "v9b",
     "format": "pairw10 (X12 / W10 / Y13 in dense INT16)",
-    "recommended_role": "High-throughput / lower-energy backup candidate",
+    "recommended_role": "PRIMARY RECOMMENDED SUBMISSION (3,634.87 layers/s, 0.303804 mm2, 8.4931 uJ, 0.2349% max NRMSE)",
     "mapped_netlist_sha256": "b3c52097143f5250801cb4c31c57ebd28780a35e5a6c307f3aaf7e523244028e",
     "vendor_12_tasks_passed": "12/12",
     "mean_full_window_cycles": 41267.0,

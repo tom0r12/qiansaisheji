@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>轻语 Q12 · 系统架构与单次任务全流程交互解析</title>
+  <style>
+    :root {
+      --bg: #f4f7fb;
+      --card: #ffffff;
+      --sidebar: #eef3f9;
+      --border: #d5dfec;
+      --fg: #12263a;
+      --muted: #52657a;
+      --code: #0f4c81;
+      --primary: #0f6cbd;
+      --primary-fg: #ffffff;
+      --secondary: #e4edf7;
+      --secondary-fg: #12263a;
+      --chart-1: #0284c7;
+      --chart-2: #0d9488;
+      --chart-3: #16a34a;
+      --warning: #d97706;
+    }
+    [data-theme="dark"] {
+      --bg: #0b1320;
+      --card: #131f33;
+      --sidebar: #182740;
+      --border: #293d5c;
+      --fg: #e8f0fa;
+      --muted: #98abc4;
+      --code: #67b8ff;
+      --primary: #2b88d8;
+      --primary-fg: #ffffff;
+      --secondary: #1e3150;
+      --secondary-fg: #e8f0fa;
+      --chart-1: #38bdf8;
+      --chart-2: #2dd4bf;
+      --chart-3: #4ade80;
+      --warning: #fbbf24;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      padding: 20px 24px 36px;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei", sans-serif;
+      background: var(--bg);
+      color: var(--fg);
+      line-height: 1.5;
+    }
+    code, .mono { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; }
+    .container { max-width: 1360px; margin: 0 auto; display: flex; flex-direction: column; gap: 16px; }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 16px 18px;
+      box-shadow: 0 2px 8px rgba(15, 35, 60, 0.04);
+    }
+    .header-row { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; }
+    .badge-pill {
+      display: inline-block; padding: 3px 10px; border-radius: 999px; font-size: 12px; font-weight: 700;
+      background: var(--primary); color: var(--primary-fg);
+    }
+    h1 { margin: 0; font-size: 20px; font-weight: 800; letter-spacing: -0.01em; }
+    .sub { font-size: 12.5px; color: var(--muted); margin: 4px 0 0; }
+    .btn-group { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+    button {
+      cursor: pointer; font-family: inherit; font-size: 12.5px; border-radius: 8px;
+      padding: 6px 12px; border: 1px solid var(--border); background: var(--bg); color: var(--fg);
+      transition: all 0.16s ease;
+    }
+    button:hover { background: var(--secondary); }
+    button.active { background: var(--primary); color: var(--primary-fg); border-color: var(--primary); font-weight: 700; }
+    .kpi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(195px, 1fr)); gap: 10px; }
+    .kpi-item { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 12px 14px; }
+    .kpi-label { font-size: 12px; color: var(--muted); }
+    .kpi-val { font-size: 19px; font-weight: 800; margin: 2px 0; }
+    .kpi-sub { font-size: 11.5px; color: var(--muted); }
+    .stage-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 8px; margin-top: 10px; }
+    .stage-btn { text-align: left; padding: 8px 11px; }
+    .stage-btn .s-sub { font-size: 11px; opacity: 0.82; margin-top: 2px; }
+    .legend-bar { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; font-size: 12px; color: var(--muted); margin-bottom: 8px; }
+    .legend-items { display: flex; flex-wrap: wrap; gap: 16px; }
+    .legend-dot { display: inline-block; width: 14px; height: 3px; vertical-align: middle; margin-right: 5px; border-radius: 2px; }
+    .svg-wrap { overflow-x: auto; }
+    svg { width: 100%; min-width: 960px; height: auto; display: block; user-select: none; }
+    @keyframes dashFlow { to { stroke-dashoffset: -28; } }
+    .flow-active { stroke-dasharray: 9 5; animation: dashFlow 0.75s linear infinite; }
+    .flow-dim { opacity: 0.20; transition: opacity 0.25s ease; }
+    .node-box { cursor: pointer; transition: opacity 0.22s ease, filter 0.22s ease; }
+    .node-dim { opacity: 0.28; }
+    .node-highlight { filter: drop-shadow(0 0 6px rgba(15, 108, 189, 0.45)); }
+    .bottom-grid { display: grid; grid-template-columns: 7fr 5fr; gap: 14px; }
+    @media (max-width: 1024px) { .bottom-grid { grid-template-columns: 1fr; } }
+    .bullet-list { list-style: none; padding: 0; margin: 10px 0 0; display: flex; flex-direction: column; gap: 8px; font-size: 13px; }
+    .bullet-list li { display: flex; gap: 8px; align-items: flex-start; }
+    .bullet-arrow { color: var(--primary); font-weight: 800; }
+    .gantt-row { cursor: pointer; margin-bottom: 10px; transition: opacity 0.2s; }
+    .gantt-head { display: flex; justify-content: space-between; font-size: 12px; margin-bottom: 4px; }
+    .gantt-track { width: 100%; height: 12px; background: var(--sidebar); border: 1px solid var(--border); border-radius: 999px; position: relative; overflow: hidden; }
+    .gantt-bar { height: 100%; position: absolute; border-radius: 999px; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header class="card header-row">
+      <div>
+        <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
+          <span class="badge-pill">冻结终版 q12clean6</span>
+          <h1>轻语 Q12 · E203 前馈线性加速器系统架构与单任务全流程</h1>
+        </div>
+        <p class="sub">
+          算子：<code style="color:var(--code)">Y[99,256] = X[99,64] × W[64,256] + b[256]</code>（25,344 个输出）｜135 份上游 E203 RTL 零改动｜SMIC 40nm RVT + 厂家 SRAM 150 MHz 实测签核
+        </p>
+      </div>
+      <div class="btn-group">
+        <button id="btnCandB" onclick="setCandidate('B')"></button>
+        <button id="btnCandA" onclick="setCandidate('A')"></button>
+        <button onclick="toggleTheme()" id="btnTheme">🌙 深色主题</button>
+      </div>
+    </header>
+
+    <section class="kpi-grid" id="kpiStrip"></section>
+
+    <section class="card">
+      <div class="header-row">
+        <span style="font-size:12.5px;font-weight:700;color:var(--muted);">
+          交互指引：点击阶段按钮或直接点击架构图中的硬件模块，动态高亮对应的数据通路、寄存器地址与周期账本：
+        </span>
+        <div class="btn-group">
+          <button onclick="stepDelta(-1)">◀ 上一步</button>
+          <button id="btnPlay" class="active" onclick="togglePlay()">▶ 自动演示</button>
+          <button onclick="stepDelta(1)">下一步 ▶</button>
+        </div>
+      </div>
+      <div class="stage-grid" id="stageButtons"></div>
+    </section>
+
+    <section class="card svg-wrap">
+      <div class="legend-bar">
+        <span>顶层模块：<code style="color:var(--code)">qingyu_e203_soc_top</code>（与 Synopsys Design Vision 综合网表层次严格对应）</span>
+        <div class="legend-items">
+          <span><i class="legend-dot" style="background:var(--chart-1)"></i>参数输入流</span>
+          <span><i class="legend-dot" style="background:var(--chart-2)"></i>核内计算与修正流</span>
+          <span><i class="legend-dot" style="background:var(--chart-3)"></i>稠密结果写回流</span>
+          <span><i class="legend-dot" style="background:var(--warning)"></i>控制 / 已应答前缀门控</span>
+        </div>
+      </div>
+
+      <svg id="archSvg" viewBox="0 0 1180 650">
+        <defs>
+          <marker id="arr1" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+            <path d="M 0 1 L 10 5 L 0 9 z" fill="var(--chart-1)" />
+          </marker>
+          <marker id="arr2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+            <path d="M 0 1 L 10 5 L 0 9 z" fill="var(--chart-2)" />
+          </marker>
+          <marker id="arr3" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+            <path d="M 0 1 L 10 5 L 0 9 z" fill="var(--chart-3)" />
+          </marker>
+          <marker id="arrW" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+            <path d="M 0 1 L 10 5 L 0 9 z" fill="var(--warning)" />
+          </marker>
+        </defs>
+
+        <rect x="12" y="14" width="188" height="620" rx="12" fill="var(--sidebar)" stroke="var(--border)" stroke-dasharray="5 4" />
+        <text x="24" y="36" fill="var(--muted)" font-size="12" font-weight="700">① 外部测试台 &amp; 原平台引脚</text>
+
+        <rect x="214" y="14" width="292" height="620" rx="12" fill="var(--sidebar)" stroke="var(--border)" />
+        <text x="226" y="36" fill="var(--muted)" font-size="12" font-weight="700">② E203 原平台子系统 (135份上游RTL零改动)</text>
+
+        <rect x="520" y="14" width="198" height="620" rx="12" fill="var(--sidebar)" stroke="var(--border)" />
+        <text x="532" y="36" fill="var(--muted)" font-size="12" font-weight="700">③ 512KiB 共享 SRAM (u_shared)</text>
+
+        <rect x="732" y="14" width="436" height="620" rx="12" fill="var(--sidebar)" stroke="var(--primary)" stroke-width="1.5" />
+        <text x="746" y="36" fill="var(--fg)" font-size="12" font-weight="700">④ 轻语前馈线性加速器子系统 u_fio (五角150MHz闭合 · 门控97.6%)</text>
+
+        <g class="node-box" data-stages="0,2" onclick="selectStage(0)">
+          <rect x="24" y="56" width="164" height="122" rx="9" fill="var(--card)" stroke="var(--border)" stroke-width="1.5" />
+          <text x="36" y="78" fill="var(--fg)" font-size="13" font-weight="700">计算机端离线打包</text>
+          <text x="36" y="97" fill="var(--muted)" font-size="11">KWT-1 特征与固定权重</text>
+          <text x="36" y="114" fill="var(--muted)" font-size="11">核序重排 + 定长位打包</text>
+          <text id="svgPacketWords" x="36" y="133" fill="var(--chart-1)" font-size="11" font-weight="700">总计 7,826 个 32b 字</text>
+          <text id="svgHeaderMagic" x="36" y="150" fill="var(--muted)" font-size="10">包头 0x32503152 (无熵编码)</text>
+          <text x="36" y="166" fill="var(--muted)" font-size="10">packets.py / precision_w10.py</text>
+        </g>
+
+        <g class="node-box" data-stages="1,2" onclick="selectStage(2)">
+          <rect x="24" y="220" width="164" height="132" rx="9" fill="var(--card)" stroke="var(--border)" stroke-width="1.5" />
+          <text x="36" y="242" fill="var(--fg)" font-size="13" font-weight="700">原版物理 GPIO 引脚</text>
+          <text x="36" y="262" fill="var(--chart-1)" font-size="11" font-weight="600">GPIOA[31:0]：32b 数据入</text>
+          <text x="36" y="280" fill="var(--warning)" font-size="11">GPIOB[9:2]：突发长度(≤64)</text>
+          <text x="36" y="298" fill="var(--warning)" font-size="11">GPIOB[1]：REQ 翻转握手</text>
+          <text x="36" y="318" fill="var(--muted)" font-size="10">契约：26.664 ns/字 (4拍/字)</text>
+          <text x="36" y="335" fill="var(--muted)" font-size="10">无任何新增 loader_* 顶层口</text>
+        </g>
+
+        <g class="node-box" data-stages="5" onclick="selectStage(5)">
+          <rect x="24" y="476" width="164" height="134" rx="9" fill="var(--card)" stroke="var(--border)" stroke-width="1.5" />
+          <text x="36" y="498" fill="var(--fg)" font-size="13" font-weight="700">测试台物理回读校验</text>
+          <text x="36" y="518" fill="var(--muted)" font-size="11">131,072字毒化预装检查</text>
+          <text x="36" y="536" fill="var(--chart-3)" font-size="11" font-weight="600">逐字比对 25,344 个输出</text>
+          <text id="svgNrmse" x="36" y="555" fill="var(--fg)" font-size="11" font-weight="600">最大 NRMSE: 0.1211%</text>
+          <text x="36" y="574" fill="var(--muted)" font-size="10">72 夹具 + 厂家宏 + SDF门级</text>
+          <text x="36" y="591" fill="var(--muted)" font-size="10">全部 0 失配 (mismatches=0)</text>
+        </g>
+
+        <g class="node-box" data-stages="1,5" onclick="selectStage(1)">
+          <rect x="228" y="56" width="264" height="122" rx="9" fill="var(--card)" stroke="var(--border)" stroke-width="1.5" />
+          <text x="240" y="78" fill="var(--fg)" font-size="13" font-weight="700">Hummingbirdv2 E203 RISC-V 核</text>
+          <text x="240" y="98" fill="var(--muted)" font-size="11">固件 soc_main.c (驻留 64KiB ITCM)</text>
+          <text x="240" y="116" fill="var(--warning)" font-size="11" font-weight="600">① 置基址开启计时 → 配 GPIO &amp; DMA</text>
+          <text x="240" y="134" fill="var(--warning)" font-size="11" font-weight="600">② 读 REG(0x14) 阻塞休眠 (仅22笔访问)</text>
+          <text x="240" y="152" fill="var(--muted)" font-size="10">末拍写应答自动唤醒 CPU 核验魔数</text>
+          <text x="240" y="167" fill="var(--muted)" font-size="10">CPU 休眠期间将总线 100% 让给数据流</text>
+        </g>
+
+        <g class="node-box" data-stages="2" onclick="selectStage(2)">
+          <rect x="228" y="212" width="264" height="148" rx="9" fill="var(--card)" stroke="var(--border)" stroke-width="1.5" />
+          <text x="240" y="234" fill="var(--fg)" font-size="13" font-weight="700">原版 apb_gpio + 片内 GPIO DMA</text>
+          <text x="240" y="254" fill="var(--muted)" font-size="11">• 原版同步器 + APB 寄存器 (0x10012000)</text>
+          <text id="svgBursts" x="240" y="272" fill="var(--chart-1)" font-size="11" font-weight="600">• q12_gpio_dma：64字突发 × 123 批</text>
+          <text x="240" y="290" fill="var(--muted)" font-size="11">• 8字接收 FIFO，请求与采样重叠</text>
+          <text x="240" y="308" fill="var(--muted)" font-size="11">• PPI 突发边界让出仲裁，防饿死 CPU</text>
+          <text x="240" y="328" fill="var(--warning)" font-size="10" font-weight="600">每收到1笔写ACK → 硬件已落盘计数 +1</text>
+          <text x="240" y="345" fill="var(--muted)" font-size="10">传输层面积仅 0.0057 mm²</text>
+        </g>
+
+        <g class="node-box" data-stages="1,2,3,5" onclick="selectStage(3)">
+          <rect x="228" y="398" width="264" height="212" rx="9" fill="var(--card)" stroke="var(--border)" stroke-width="1.5" />
+          <text x="240" y="422" fill="var(--fg)" font-size="13" font-weight="700">原版 32-bit System Bus 互连</text>
+          <text x="240" y="442" fill="var(--muted)" font-size="11">e203_subsys_mems (sirv_icb1to8_bus)</text>
+          <text x="240" y="462" fill="var(--warning)" font-size="11" font-weight="600">• 严格保持 SPLT_FIFO_OUTS_NUM = 1</text>
+          <text x="240" y="482" fill="var(--muted)" font-size="11">• u_dma_channels 仲裁：就绪写优先</text>
+          <text x="240" y="502" fill="var(--chart-1)" font-size="11">① GPIO DMA 写参数：1 拍/字</text>
+          <text x="240" y="520" fill="var(--chart-1)" font-size="11">② 加速器 DMA 读参数：2 拍/字</text>
+          <text x="240" y="538" fill="var(--chart-3)" font-size="11">③ 加速器 DMA 写结果：1 拍/字</text>
+          <text id="svgBusBound" x="240" y="562" fill="var(--fg)" font-size="11" font-weight="700">总线物理下界：39,240 拍 (利用率88.7%)</text>
+          <text x="240" y="582" fill="var(--muted)" font-size="10">利用原生 ALLOW_0CYCL_RSP=1 省 21,540 拍</text>
+        </g>
+
+        <g class="node-box" data-stages="2,3,5" onclick="selectStage(2)">
+          <rect x="532" y="56" width="174" height="554" rx="9" fill="var(--card)" stroke="var(--border)" stroke-width="1.5" />
+          <text x="544" y="80" fill="var(--fg)" font-size="13" font-weight="700">单口无缓存控制器</text>
+          <text x="544" y="98" fill="var(--muted)" font-size="10">qingyu_shared_ctrl (0.0013mm²)</text>
+          <text x="544" y="116" fill="var(--muted)" font-size="10">零预取 / 零 readcache</text>
+          <text x="544" y="132" fill="var(--muted)" font-size="10">1笔总线请求 = 1次宏物理访问</text>
+
+          <rect x="542" y="152" width="154" height="176" rx="7" fill="var(--sidebar)" stroke="var(--chart-1)" stroke-width="1.3" />
+          <text x="550" y="172" fill="var(--chart-1)" font-size="11" font-weight="700">输入与参数区</text>
+          <text x="550" y="189" fill="var(--fg)" font-size="10" font-family="monospace">0xa0040000 起</text>
+          <text id="svgShramMagic" x="550" y="208" fill="var(--muted)" font-size="10">• 包头魔数 0x32503152</text>
+          <text x="550" y="225" fill="var(--muted)" font-size="10">• X[99,64] 核序位打包流</text>
+          <text x="550" y="242" fill="var(--muted)" font-size="10">• 8组 W + 偏置/移位元数据</text>
+          <text id="svgShramIn" x="550" y="264" fill="var(--chart-1)" font-size="11" font-weight="700">写入 8,850 字 / 读出 8,850 字</text>
+          <text x="550" y="284" fill="var(--warning)" font-size="10" font-weight="600">写ACK同拍更新可读上界</text>
+          <text x="550" y="302" fill="var(--muted)" font-size="10">边写边读，严格防越界</text>
+
+          <rect x="542" y="352" width="154" height="192" rx="7" fill="var(--sidebar)" stroke="var(--chart-3)" stroke-width="1.3" />
+          <text x="550" y="372" fill="var(--chart-3)" font-size="11" font-weight="700">稠密输出矩阵区</text>
+          <text x="550" y="389" fill="var(--fg)" font-size="10" font-family="monospace">0xa0000000 起</text>
+          <text x="550" y="408" fill="var(--muted)" font-size="10">• 字0：完成标志 0x32443151</text>
+          <text x="550" y="425" fill="var(--muted)" font-size="10">  (启动首拍先写0清零防误判)</text>
+          <text x="550" y="442" fill="var(--muted)" font-size="10">• 字1..16：各tile元素数1584</text>
+          <text x="550" y="459" fill="var(--muted)" font-size="10">• 字17..12688：25,344个Y13</text>
+          <text x="550" y="476" fill="var(--muted)" font-size="10">  (装入INT16，2值/字无压缩)</text>
+          <text x="550" y="498" fill="var(--chart-3)" font-size="11" font-weight="700">共 12,690 笔写 (末拍停表)</text>
+          <text x="550" y="520" fill="var(--muted)" font-size="10">64 × RAMSP4096X16 宏</text>
+        </g>
+
+        <g class="node-box" data-stages="1,3" onclick="selectStage(3)">
+          <rect x="746" y="56" width="408" height="114" rx="9" fill="var(--card)" stroke="var(--border)" stroke-width="1.5" />
+          <text x="758" y="78" fill="var(--fg)" font-size="13" font-weight="700">前缀门控 + 流式读写 DMA + 定长位解包器</text>
+          <text x="758" y="97" fill="var(--warning)" font-size="11" font-weight="600">• q11_commit_gate：仅放行 addr &lt; available_end_o 已落盘前缀</text>
+          <text x="758" y="115" fill="var(--muted)" font-size="11">• q12_icb_stream_prefix：递推地址 + 跨步写 + 8字读/4字写缓冲</text>
+          <text id="svgReaderMode" x="758" y="133" fill="var(--chart-1)" font-size="11" font-weight="600">• q12_fixed12_reader：96b 移位缓冲跨字拼接 → 每拍吐 48b (4×signed12)</text>
+          <text x="758" y="152" fill="var(--muted)" font-size="10">MMIO 控制口 0xf0000000 (ID=0x51313231)，支持忙态保护与异常排空</text>
+        </g>
+
+        <g class="node-box" data-stages="4" onclick="selectStage(4)">
+          <rect x="746" y="192" width="198" height="148" rx="9" fill="var(--card)" stroke="var(--border)" stroke-width="1.5" />
+          <text x="756" y="214" fill="var(--fg)" font-size="12" font-weight="700">私有输入 X 与行修正缓存</text>
+          <text x="756" y="233" fill="var(--chart-2)" font-size="11" font-weight="600">• X SRAM：6×RAMSP1024X16</text>
+          <text x="756" y="250" fill="var(--muted)" font-size="10">  96b×1024 (12KiB)，单拍供 4 行对</text>
+          <text x="756" y="270" fill="var(--chart-2)" font-size="11" font-weight="600">• 行修正 R_i 预计算与缓存</text>
+          <text x="756" y="287" fill="var(--muted)" font-size="10">  R_i = Σ x[i,2m]·x[i,2m+1]</text>
+          <text x="756" y="304" fill="var(--muted)" font-size="10">  2×RAMSP128X16 (0.5KiB)</text>
+          <text x="756" y="323" fill="var(--muted)" font-size="10">  每行算1次，在全部 256 列间复用！</text>
+        </g>
+
+        <g class="node-box" data-stages="4" onclick="selectStage(4)">
+          <rect x="956" y="192" width="198" height="148" rx="9" fill="var(--card)" stroke="var(--border)" stroke-width="1.5" />
+          <text x="966" y="214" fill="var(--fg)" font-size="12" font-weight="700">4 槽滚动权重 W 与列修正</text>
+          <text id="svgWsramSpec" x="966" y="233" fill="var(--chart-2)" font-size="11" font-weight="600">• W SRAM：24×RAMSP128X16</text>
+          <text id="svgWsramWidth" x="966" y="250" fill="var(--muted)" font-size="10">  384b×128 (6KiB)，单拍供 16 列对</text>
+          <text x="966" y="268" fill="var(--warning)" font-size="10" font-weight="600">• 3×384b 突发写聚合 + 空隙窃取</text>
+          <text x="966" y="285" fill="var(--muted)" font-size="10">  趁阵列非读拍无冲突写单口宏</text>
+          <text x="966" y="303" fill="var(--chart-2)" font-size="11" font-weight="600">• 列修正 C_j &amp; 偏置/移位宏</text>
+          <text x="966" y="321" fill="var(--muted)" font-size="10">  4×RAMSP128X16，99 行共享 C_j！</text>
+        </g>
+
+        <g class="node-box" data-stages="4" onclick="selectStage(4)">
+          <rect x="746" y="362" width="408" height="114" rx="9" fill="var(--card)" stroke="var(--border)" stroke-width="1.5" />
+          <text x="758" y="384" fill="var(--fg)" font-size="13" font-weight="700">4 × 16 成对乘积 PE 并行阵列 (64 × q12_pair_acc) + 快照缓冲</text>
+          <text x="758" y="404" fill="var(--chart-2)" font-size="11" font-weight="600">• 代数恒等式：S = Σ (x[2m] + w[2m+1])·(x[2m+1] + w[2m])，m = 0..31 (32拍/子块)</text>
+          <text x="758" y="422" fill="var(--muted)" font-size="11">• 16 个列 tile × 25 个四行组 = 400 个子块；标量乘法由 162.2万 降至 82.2万 (−49.3%)</text>
+          <text x="758" y="440" fill="var(--muted)" font-size="11">• snapshot_sum_q (64×31b)：32拍算完单拍锁存快照，PE 阵列立即无缝切入下一行组</text>
+          <text x="758" y="459" fill="var(--muted)" font-size="10">first 拍自动清零累加器、末行组自动屏蔽第 4 行，杜绝跨任务脏残留</text>
+        </g>
+
+        <g class="node-box" data-stages="5" onclick="selectStage(5)">
+          <rect x="746" y="498" width="408" height="112" rx="9" fill="var(--card)" stroke="var(--border)" stroke-width="1.5" />
+          <text x="758" y="520" fill="var(--fg)" font-size="13" font-weight="700">两级切分后处理流水 + RNE 偶数舍入 + INT16 稠密写回</text>
+          <text x="758" y="540" fill="var(--chart-3)" font-size="11" font-weight="600">• Stage 1 (corr_val_q)：每拍取 4 路计算精确点积 Z = S − R_i − C_j + b_j</text>
+          <text x="758" y="558" fill="var(--chart-3)" font-size="11" font-weight="600">• Stage 2 (out_data)：动态右移 + guard/sticky/LSB 最近偶数舍入 + signed13 饱和</text>
+          <text x="758" y="576" fill="var(--muted)" font-size="11">• q13_dense16_writer：符号扩展为 INT16 (2值/32b字)，经读/写共享 DMA 写回 0xa0000000</text>
+          <text x="758" y="595" fill="var(--muted)" font-size="10">v9 切分原 90 级组合链为 &lt;38 级/拍，助推 SS −40°C 150 MHz 零违例闭合</text>
+        </g>
+
+        <!-- FLOW ARROWS -->
+        <path class="flow-wire" data-stages="0,2" d="M 106 178 L 106 216" stroke="var(--chart-1)" stroke-width="2.2" fill="none" marker-end="url(#arr1)" />
+        <path class="flow-wire" data-stages="2" d="M 188 282 L 224 282" stroke="var(--chart-1)" stroke-width="2.4" fill="none" marker-end="url(#arr1)" />
+        <path class="flow-wire" data-stages="1" d="M 360 178 L 360 208" stroke="var(--warning)" stroke-width="2" fill="none" marker-end="url(#arrW)" />
+        <path class="flow-wire" data-stages="1" d="M 492 92 L 742 92" stroke="var(--warning)" stroke-width="2" fill="none" marker-end="url(#arrW)" />
+        <path class="flow-wire" data-stages="2" d="M 360 360 L 360 394" stroke="var(--chart-1)" stroke-width="2.4" fill="none" marker-end="url(#arr1)" />
+        <path class="flow-wire" data-stages="2" d="M 492 440 L 514 440 L 514 235 L 538 235" stroke="var(--chart-1)" stroke-width="2.4" fill="none" marker-end="url(#arr1)" />
+        <path class="flow-wire" data-stages="2,3" d="M 696 280 L 718 280 L 718 118 L 742 118" stroke="var(--warning)" stroke-width="2.2" stroke-dasharray="5 3" fill="none" marker-end="url(#arrW)" />
+        <path class="flow-wire" data-stages="3" d="M 696 205 L 724 205 L 724 142 L 742 142" stroke="var(--chart-1)" stroke-width="2.4" fill="none" marker-end="url(#arr1)" />
+        <path class="flow-wire" data-stages="3,4" d="M 845 170 L 845 188" stroke="var(--chart-2)" stroke-width="2.3" fill="none" marker-end="url(#arr2)" />
+        <path class="flow-wire" data-stages="3,4" d="M 1055 170 L 1055 188" stroke="var(--chart-2)" stroke-width="2.3" fill="none" marker-end="url(#arr2)" />
+        <path class="flow-wire" data-stages="4" d="M 845 340 L 845 358" stroke="var(--chart-2)" stroke-width="2.4" fill="none" marker-end="url(#arr2)" />
+        <path class="flow-wire" data-stages="4" d="M 1055 340 L 1055 358" stroke="var(--chart-2)" stroke-width="2.4" fill="none" marker-end="url(#arr2)" />
+        <path class="flow-wire" data-stages="4,5" d="M 950 476 L 950 494" stroke="var(--chart-2)" stroke-width="2.4" fill="none" marker-end="url(#arr2)" />
+        <path class="flow-wire" data-stages="5" d="M 746 556 L 724 556 L 724 468 L 700 468" stroke="var(--chart-3)" stroke-width="2.5" fill="none" marker-end="url(#arr3)" />
+        <path class="flow-wire" data-stages="5" d="M 542 542 L 512 542 L 512 622 L 106 622 L 106 614" stroke="var(--chart-3)" stroke-width="2" fill="none" marker-end="url(#arr3)" />
+      </svg>
+    </section>
+
+    <section class="bottom-grid">
+      <div class="card" id="stageDetailCard"></div>
+      <div class="card">
+        <div class="header-row" style="margin-bottom:6px;">
+          <strong style="font-size:14.5px;">单任务五级并发重叠时序甘特图 (150 MHz 实测)</strong>
+          <span id="ganttTotalBadge" class="mono" style="font-size:12px;font-weight:700;color:var(--primary);">0 → 44,230 拍</span>
+        </div>
+        <p class="sub" style="margin-bottom:12px;">
+          点击任一进度条可跳转对应阶段；装载、读取、计算、写回在时间轴上高度交叠：
+        </p>
+        <div id="ganttContainer"></div>
+        <div id="busLedgerNote" style="margin-top:12px;padding-top:10px;border-top:1px solid var(--border);font-size:12px;color:var(--muted);"></div>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    const DATA = {
+      B: {
+        name: '主推 · 候选 B (v9b · X12/W10/Y13)',
+        short: 'B (v9b · W10 主推)',
+        magic: '0x32503152',
+        cycles: 41267, tput: '3,634.87', area: '0.303804', energy: '8.4931', power: '30.88', powerWin: '4窗均值, 0%未注',
+        nrmse: '0.2349%', score: '9.22 / 10', inWords: 7826, outWords: 12690, bursts: 123,
+        wMacros: 20, wWidth: 320, wCap: '5 KiB', wBits: 'signed10 (16值/5字)',
+        lastGpioAck: 36520, busMin: 36168, busUtil: '87.6%', fmPts: '30,843 / 14,497', staNote: 'u_fio五角+整机TT'
+      },
+      A: {
+        name: '备选 · 候选 A (v9a · X12/W12/Y13)',
+        short: 'A (v9a · W12 高精度备选)',
+        magic: '0x32503151',
+        cycles: 44230, tput: '3,391.36', area: '0.316366', energy: '9.1397', power: '31.00', powerWin: '12窗全测, 0%未注',
+        nrmse: '0.1211%', score: '9.60 / 10', inWords: 8850, outWords: 12690, bursts: 139,
+        wMacros: 24, wWidth: 384, wCap: '6 KiB', wBits: 'signed12 (8值/3字)',
+        lastGpioAck: 40681, busMin: 39240, busUtil: '88.7%', fmPts: '31,227 / 14,881', staNote: '含TT SDF门级零失配'
+      }
+    };
+
+    function getStages(c) {
+      return [
+        {
+          id: 'all', short: '全流程总览', badge: `0 ~ ${c.cycles.toLocaleString()} 拍`,
+          title: `全链路总览：${c.name}`,
+          rtl: 'qingyu_e203_soc_top.v / qingyu_q12_stream_fio.sv / q12_task4.sv',
+          summary: `单次前馈线性层任务从 CPU 写配置前开始计时，直到全部 25,344 个结果及完成魔数写回共享 SRAM 并收到最后一笔写应答为止，恒定耗时 ${c.cycles.toLocaleString()} 拍（150 MHz 下 ${c.tput} layers/s）。`,
+          bullets: [
+            `零可疑点合规架构：135 份上游 E203 RTL 逐字节零修改；移除输入熵编码与共享 SRAM 读缓存；复用原版 GPIOA/B 与 32-bit System Bus（OUTS_NUM=1）。`,
+            `算法减半计算量：成对内积分解 S − R_i − C_j 将标量乘法从 1,622,016 次降至 822,368 次（减少 49.30%，零近似误差）。`,
+            `五级流水重叠：GPIO 64字突发落盘 ‖ 硬件前缀门控读取 ‖ 4槽单口 W 缓存空隙写入 ‖ 4×16 PE 阵列点积 ‖ 两级流水量化与 INT16 稠密写回。`,
+            `全套服务器签核：增量面积 ${c.area} mm²（<0.4），单任务能耗 ${c.energy} µJ（<10），双层 Formality (${c.fmPts}) 全过，u_fio 五角 150 MHz STA 全正。`
+          ]
+        },
+        {
+          id: '0', short: '0. 离线核序打包', badge: '主机预处理 (不计入硬件时延)',
+          title: '第 0 步：特征提取、定点标定与核序定长位打包',
+          rtl: 'packets.py / precision_w10.py',
+          summary: `依据赛题规则在计算机端完成 MFCC 特征与前序层提取，并将输入 X[99,64]、本层权重 W[64,256] 与偏置按硬件阵列读取顺序离线定长打包为 ${c.inWords.toLocaleString()} 个 32-bit 字。`,
+          bullets: [
+            `输入 X (6,336 个 signed12)：按相邻行对 (2p, 2p+1) 与通道对 (2k, 2k+1) 排布，8 个 12-bit 值紧密装入 3 个 32-bit 字。`,
+            `权重 W (16,384 个 ${c.wBits})：切分为 8 个双 tile 权重组（每组 32 列 × 64 行 = 2,048 个权重 + 偏置与右移位数元数据）。`,
+            `无任何变长/差分熵编码：数据包字数固定为 ${c.inWords.toLocaleString()} 字（首字魔数 ${c.magic}），同一架构在任意语音样本上的硬件周期数 100% 恒定。`
+          ]
+        },
+        {
+          id: '1', short: '1. CPU配置与开表', badge: '第 0 ~ 4,726 拍',
+          title: '第 1 步：E203 固件启动计时、配置外设并进入 WAIT 休眠',
+          rtl: 'soc_main.c / q11_commit_gate.sv',
+          summary: 'E203 从 ITCM 执行驱动固件：在配置任何 GPIO 之前先置位源基址触发硬件计时起点，随后下发一整笔非阻塞搬运任务并挂起休眠。',
+          bullets: [
+            `计时起点：写 REG(0x08) = 0xa0040000 开启完整任务窗口计时；加速器首拍自动向 0xa0000000 写 0 清除旧完成魔数。`,
+            `外设初始化：关闭 GPIOA/GPIOB 的 IOF 复用，设 GPIOA[31:0] 为输入、GPIOB[9:1] 为突发控制输出；配置输出基址 0xa0000000 与总字数 ${c.inWords}。`,
+            `零轮询干扰：写 REG(0x80/0x84) 启动 GPIO DMA，写 REG(0x04)=1 启动加速器，随后读 REG(0x14) 阻塞挂起——全任务 CPU 仅发 22 笔命令，零轮询争抢总线！`
+          ]
+        },
+        {
+          id: '2', short: '2. GPIO突发落盘', badge: `第 4,726 ~ ${c.lastGpioAck.toLocaleString()} 拍`,
+          title: '第 2 步：原版 GPIO 64 字突发采样与共享 SRAM 同拍写应答',
+          rtl: 'q12_gpio_dma.sv / qingyu_shared_sram.sv',
+          summary: `片内 GPIO DMA 分 ${c.bursts} 次突发（每次最多 64 字）从原版 apb_gpio 采样外部数据，经 32-bit System Bus 写入 512KiB 共享 SRAM（0xa0040000）。`,
+          bullets: [
+            `突发握手重叠：GPIOB[9:2] 给出本批字数（≤64），翻转 GPIOB[1] 发起请求；以 4 拍/字（26.664 ns）稳定读取 GPIOA 进 8 字 FIFO。`,
+            `PPI 仲裁防饿死：每完成一笔有限突发在边界处恢复 CPU 优先，兼顾高吞吐与系统可响应性。`,
+            `同拍写应答 (1拍/字)：qingyu_shared_ctrl 在命令接收沿直接写单口 RAMSP4096X16 宏，利用上游总线 ALLOW_0CYCL_RSP=1 同拍回 ACK，省去 ${c.inWords.toLocaleString()} 拍写等待！`
+          ]
+        },
+        {
+          id: '3', short: '3. 前缀直通解包', badge: `第 4,740 ~ ${(c.lastGpioAck + 90).toLocaleString()} 拍`,
+          title: '第 3 步：硬件已应答前缀实时放行与 96-bit 移位解包',
+          rtl: 'q11_commit_gate.sv / q12_icb_stream_prefix.sv / q12_fixed12_reader.sv',
+          summary: '无需等待整包落盘：共享 SRAM 每返回 1 笔参数写 ACK，硬件立即将可读上界 +1，加速器读 DMA 紧咬尾巴以 2 拍/字流式读出并解包。',
+          bullets: [
+            `严格顺序安全：commit_gate 仅在 rd_next_addr < available_end_o 时放行读命令，保证绝不读取尚未落盘的 SRAM 地址。`,
+            `递推地址寄存器 (v9 优化)：用 rd_next_addr / wr_next_addr 替代 5 级 32/35-bit 组合加减法链，0 拍周期损失消除 SS −40°C 地址关键路径。`,
+            `定长跨字拼接：q12_fixed12_reader 将 32-bit 总线字推入 96-bit 移位器，每攒够 ${c === DATA.A ? '48' : '40'} bit 即在单拍输出 4 个 12-bit 有符号操作数。`
+          ]
+        },
+        {
+          id: '4', short: '4. 成对乘积阵列', badge: `第 4,750 ~ ${(c.cycles - 320).toLocaleString()} 拍`,
+          title: '第 4 步：私有单口 SRAM 空隙窃取滚动与 4×16 成对内积计算',
+          rtl: 'q12_task4.sv / q12_pair_acc.sv / q12_striped_sram.sv',
+          summary: '先装入整幅 X 并预计算 99 个行修正项 R_i；随后 8 组权重在 4 个私有槽位间滚动复用，4×16 PE 阵列遍历 16 列 tile × 25 行组完成 400 次子块内积。',
+          bullets: [
+            `行列修正项高度复用：R_i 在 256 列间复用，C_j 在 99 行间复用；64 个 PE 每拍处理 2 个 k 维通道，32 拍即完成 4×16=64 个输出点的主项累加 S_ij。`,
+            `单口宏空隙窃取 (Cycle-Stealing)：后台权重凑满 8 拍聚合成 ${c.wWidth}-bit 宽字，专门挑计算核处于 M_WAIT/DOT_WAIT 非读拍时写入 ${c.wMacros} 颗 128×16 宏，零双口开销实现装算重叠！`,
+            `快照解耦：32 拍累加结束当拍锁存进 64×31-bit snapshot_sum_q，阵列立刻开始下一行组，不等待下游量化与总线写回。`
+          ]
+        },
+        {
+          id: '5', short: '5. 量化与稠密写回', badge: `第 15,200 ~ ${c.cycles.toLocaleString()} 拍 (停表)`,
+          title: '第 5 步：两级流水修正、RNE 偶数舍入与 INT16 稠密矩阵写回',
+          rtl: 'q12_task4.sv / q13_dense16_writer.sv',
+          summary: `快照结果以每拍 4 个元素的速率经两级寄存器流水完成修正与 RNE 量化，打包为未压缩 INT16 写回 0xa0000000；第 ${c.cycles.toLocaleString()} 拍末次写 ACK 停表并唤醒 CPU。`,
+          bullets: [
+            `两级后处理流水 (v9 优化)：第 1 级算 Z = S − R_i − C_j + b_j；第 2 级执行算术右移、guard/sticky/LSB 最近偶数舍入 (RNE) 与 signed13 饱和（消除 90 级长组合链）。`,
+            `稠密无压缩输出：25,344 个 signed13 符号扩展为 INT16（字 17..12688），最后写字 1..16 长度头 (1584) 与字 0 完成魔数 0x32443151（共 12,690 笔写，1 拍/字）。`,
+            `精确停表与校验：收到完成魔数的 SRAM 写 ACK 当拍硬件计时器停表（${c.cycles.toLocaleString()} 拍），唤醒 CPU 核验头部并置 HOST=1，测试台逐值比对 25,344 个输出（NRMSE ${c.nrmse}）。`
+          ]
+        }
+      ];
+    }
+
+    let curCand = 'B';
+    let curStageIdx = 0;
+    let playTimer = null;
+
+    function toggleTheme() {
+      const root = document.documentElement;
+      const isDark = root.getAttribute('data-theme') === 'dark';
+      root.setAttribute('data-theme', isDark ? 'light' : 'dark');
+      document.getElementById('btnTheme').textContent = isDark ? '🌙 深色主题' : '☀️ 浅色主题';
+    }
+
+    function setCandidate(cand) { curCand = cand; renderAll(); }
+
+    function selectStage(idxOrId) {
+      const stages = getStages(DATA[curCand]);
+      if (typeof idxOrId === 'number') curStageIdx = idxOrId + 1;
+      else {
+        const found = stages.findIndex(s => s.id === String(idxOrId));
+        curStageIdx = found >= 0 ? found : 0;
+      }
+      renderAll();
+    }
+
+    function stepDelta(delta) {
+      const len = getStages(DATA[curCand]).length;
+      curStageIdx = (curStageIdx + delta + len) % len;
+      renderAll();
+    }
+
+    function togglePlay() {
+      const btn = document.getElementById('btnPlay');
+      if (playTimer) {
+        clearInterval(playTimer);
+        playTimer = null;
+        btn.textContent = '▶ 自动演示';
+      } else {
+        if (curStageIdx === 0) curStageIdx = 1;
+        renderAll();
+        btn.textContent = '⏸ 暂停演示';
+        playTimer = setInterval(() => {
+          const len = getStages(DATA[curCand]).length;
+          curStageIdx = curStageIdx + 1 >= len ? 1 : curStageIdx + 1;
+          renderAll();
+        }, 2800);
+      }
+    }
+
+    function renderAll() {
+      const c = DATA[curCand];
+      const stages = getStages(c);
+      const st = stages[curStageIdx];
+
+      const bA = document.getElementById('btnCandA');
+      const bB = document.getElementById('btnCandB');
+      bA.textContent = DATA.A.short;
+      bB.textContent = DATA.B.short;
+      bA.className = curCand === 'A' ? 'active' : '';
+      bB.className = curCand === 'B' ? 'active' : '';
+
+      const kpis = [
+        { label: '完整任务周期 (恒定)', val: `${c.cycles.toLocaleString()} 拍`, sub: '厂家 SRAM 12/12 零差值' },
+        { label: '150 MHz 实测吞吐', val: `${c.tput} 层/s`, sub: '赛题目标 ≥ 3,000 层/s' },
+        { label: '新增加速器增量面积', val: `${c.area} mm²`, sub: '目标 < 0.40 (上限 2.25)' },
+        { label: '单任务平均能耗', val: `${c.energy} µJ`, sub: `整机均值 ${c.power} mW (${c.powerWin})` },
+        { label: '600 样本最差层误差', val: c.nrmse, sub: `精度得分 ${c.score} (门槛≤3%)` },
+        { label: '五角 STA & 等价签核', val: '100% PASS', sub: `FM ${c.fmPts} · ${c.staNote}` }
+      ];
+      document.getElementById('kpiStrip').innerHTML = kpis.map(k => `
+        <div class="kpi-item">
+          <div class="kpi-label">${k.label}</div>
+          <div class="kpi-val mono">${k.val}</div>
+          <div class="kpi-sub">${k.sub}</div>
+        </div>
+      `).join('');
+
+      document.getElementById('stageButtons').innerHTML = stages.map((s, idx) => `
+        <button onclick="curStageIdx=${idx};renderAll()" class="stage-btn ${idx === curStageIdx ? 'active' : ''}">
+          <div>${s.short}</div>
+          <div class="s-sub mono">${s.badge}</div>
+        </button>
+      `).join('');
+
+      document.getElementById('svgPacketWords').textContent = `总计 ${c.inWords.toLocaleString()} 个 32b 字`;
+      document.getElementById('svgHeaderMagic').textContent = `包头 ${c.magic} (无熵编码)`;
+      document.getElementById('svgShramMagic').textContent = `• 包头魔数 ${c.magic}`;
+      document.getElementById('svgNrmse').textContent = `最大 NRMSE: ${c.nrmse}`;
+      document.getElementById('svgBursts').textContent = `• q12_gpio_dma：64字突发 × ${c.bursts} 批`;
+      document.getElementById('svgBusBound').textContent = `总线物理下界：${c.busMin.toLocaleString()} 拍 (利用率${c.busUtil})`;
+      document.getElementById('svgShramIn').textContent = `写入 ${c.inWords.toLocaleString()} 字 / 读出 ${c.inWords.toLocaleString()} 字`;
+      document.getElementById('svgReaderMode').textContent = curCand === 'A'
+        ? '• q12_fixed12_reader：96b 移位缓冲跨字拼接 → 每拍吐 48b (4×signed12)'
+        : '• q12_fixed12_reader：96b 移位缓冲跨字拼接 → 每拍吐 40b 扩展为 4×signed12';
+      document.getElementById('svgWsramSpec').textContent = `• W SRAM：${c.wMacros}×RAMSP128X16`;
+      document.getElementById('svgWsramWidth').textContent = `  ${c.wWidth}b×128 (${c.wCap})，单拍供 16 列对`;
+
+      document.querySelectorAll('#archSvg .node-box').forEach(el => {
+        const list = (el.getAttribute('data-stages') || '').split(',');
+        const rect = el.querySelector('rect');
+        if (st.id === 'all') {
+          el.classList.remove('node-dim', 'node-highlight');
+          rect.setAttribute('stroke', 'var(--border)');
+          rect.setAttribute('stroke-width', '1.5');
+        } else if (list.includes(st.id)) {
+          el.classList.remove('node-dim');
+          el.classList.add('node-highlight');
+          rect.setAttribute('stroke', 'var(--primary)');
+          rect.setAttribute('stroke-width', '2.6');
+        } else {
+          el.classList.remove('node-highlight');
+          el.classList.add('node-dim');
+          rect.setAttribute('stroke', 'var(--border)');
+          rect.setAttribute('stroke-width', '1.5');
+        }
+      });
+
+      document.querySelectorAll('#archSvg .flow-wire').forEach(el => {
+        const list = (el.getAttribute('data-stages') || '').split(',');
+        if (st.id === 'all' || list.includes(st.id)) {
+          el.classList.remove('flow-dim');
+          el.classList.add('flow-active');
+        } else {
+          el.classList.remove('flow-active');
+          el.classList.add('flow-dim');
+        }
+      });
+
+      document.getElementById('stageDetailCard').innerHTML = `
+        <div class="header-row" style="padding-bottom:10px;border-bottom:1px solid var(--border);">
+          <strong style="font-size:16px;">${st.title}</strong>
+          <span class="mono" style="font-size:12px;padding:3px 8px;border-radius:6px;background:var(--secondary);">${st.badge}</span>
+        </div>
+        <div style="font-size:12px;color:var(--muted);margin-top:8px;">
+          对应源码：<code style="color:var(--code)">${st.rtl}</code>
+        </div>
+        <p style="font-size:13.5px;margin:10px 0 6px;">${st.summary}</p>
+        <ul class="bullet-list">
+          ${st.bullets.map(b => `<li><span class="bullet-arrow">▸</span><span>${b}</span></li>`).join('')}
+        </ul>
+      `;
+
+      document.getElementById('ganttTotalBadge').textContent = `0 → ${c.cycles.toLocaleString()} 拍`;
+      const lanes = [
+        { stage: '1', name: '① CPU 配置与唤醒核验', start: 0, end: 4726, tail: true, color: 'var(--warning)', note: '0~4,726 拍配外设，随后 WAIT 休眠' },
+        { stage: '2', name: '② GPIO 突发写入共享 SRAM', start: 4726, end: c.lastGpioAck, color: 'var(--chart-1)', note: `${c.inWords.toLocaleString()} 字 (4拍/字采，1拍/字写)` },
+        { stage: '3', name: '③ 前缀门控流式读与位解包', start: 4740, end: c.lastGpioAck + 90, color: 'var(--chart-2)', note: '紧追已落盘前缀 (2拍/字读)' },
+        { stage: '4', name: '④ 4×16 PE 阵列 + 4槽滚动', start: 14200, end: c.cycles - 320, color: 'var(--primary)', note: '400 子块×32拍 (与装载深度重叠)' },
+        { stage: '5', name: '⑤ 两级量化 + INT16 写回', start: 15100, end: c.cycles, color: 'var(--chart-3)', note: `12,690 笔写，第 ${c.cycles.toLocaleString()} 拍停表` }
+      ];
+      document.getElementById('ganttContainer').innerHTML = lanes.map(l => {
+        const leftPct = (l.start / c.cycles * 100).toFixed(1);
+        const widthPct = Math.max(2.5, ((l.end - l.start) / c.cycles * 100)).toFixed(1);
+        const active = st.id === 'all' || st.id === l.stage;
+        return `
+          <div onclick="selectStage('${l.stage}')" class="gantt-row" style="opacity:${active ? 1 : 0.35}">
+            <div class="gantt-head">
+              <strong>${l.name}</strong>
+              <span class="mono" style="color:var(--muted)">${l.note}</span>
+            </div>
+            <div class="gantt-track">
+              <div class="gantt-bar" style="left:${leftPct}%;width:${widthPct}%;background:${l.color};"></div>
+              ${l.tail ? `<div class="gantt-bar" style="left:99%;width:1%;background:${l.color};"></div>` : ''}
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      document.getElementById('busLedgerNote').innerHTML = `
+        <div><strong>单口共享 SRAM 周期守恒账本：</strong></div>
+        <div style="margin-top:3px;">参数写 (${c.inWords.toLocaleString()}×1) + 参数读 (${c.inWords.toLocaleString()}×2) + 结果写 (12,690×1) = <strong class="mono" style="color:var(--fg)">${c.busMin.toLocaleString()} 拍</strong>（物理绝对下界），实测 <strong class="mono" style="color:var(--fg)">${c.cycles.toLocaleString()} 拍</strong>，总线有效利用率达 <strong>${c.busUtil}</strong>。</div>
+      `;
+    }
+
+    renderAll();
+  </script>
+</body>
+</html>
